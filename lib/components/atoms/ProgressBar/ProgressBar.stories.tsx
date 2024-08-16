@@ -1,0 +1,65 @@
+import ProgressBar, { ProgressBarProps } from "@/components/atoms/ProgressBar";
+import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
+
+export default {
+  title: "components/atoms/ProgressBar",
+  component: ProgressBar,
+  argTypes: {
+    percentage: {
+      control: { type: "range", min: 0, max: 100, step: 1 },
+    },
+    variant: {
+      control: "select",
+      options: ["primary", "accent"],
+    },
+    height: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+  },
+} as Meta;
+
+const Template: StoryFn<ProgressBarProps> = (args) => <ProgressBar {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  percentage: 50,
+  variant: "primary",
+  height: "md",
+};
+
+export const Accent = Template.bind({});
+Accent.args = {
+  percentage: 75,
+  variant: "accent",
+  height: "md",
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  percentage: 25,
+  variant: "primary",
+  height: "sm",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  percentage: 90,
+  variant: "primary",
+  height: "lg",
+};
+
+export const Full = Template.bind({});
+Full.args = {
+  percentage: 100,
+  variant: "primary",
+  height: "md",
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  percentage: 0,
+  variant: "primary",
+  height: "md",
+};
