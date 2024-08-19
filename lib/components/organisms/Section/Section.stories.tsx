@@ -1,6 +1,12 @@
-import { Section, TierTile } from "@/components/organisms";
+import { Section } from "@/components/organisms";
 import { SectionType } from "@/types/section";
-import { TierTileType, Tile, TileHeight, TileType } from "@/types/tile";
+import {
+  BannerTileConfig,
+  CtaAction,
+  TierTileType,
+  TileHeight,
+  TileType,
+} from "@/types/tile";
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import { View } from "react-native";
@@ -31,18 +37,20 @@ export default {
 
 const Template: StoryFn<typeof Section> = (args) => <Section {...args} />;
 
-export const GridLayout = Template.bind({});
-GridLayout.args = {
+export const GridWithTitleAndDescription = Template.bind({});
+GridWithTitleAndDescription.args = {
   section: {
     id: "1",
     type: SectionType.Grid,
+    title: "Featured Offers",
+    description: "Check out our latest promotions!",
     createdAt: new Date(),
     updatedAt: new Date(),
     tenantId: "tenant1",
     visibilityCriteria: "all",
     tiles: [
       {
-        id: "3",
+        id: "1",
         type: TileType.Tier,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -55,19 +63,6 @@ GridLayout.args = {
         },
       },
       {
-        id: "1",
-        type: TileType.Tier,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        tenantId: "tenant1",
-        visibilityCriteria: "all",
-        tileHeight: TileHeight.Half,
-        configuration: {
-          tierTileType: TierTileType.currentTier,
-          tierId: "2",
-        },
-      },
-      {
         id: "2",
         type: TileType.Tier,
         createdAt: new Date(),
@@ -76,11 +71,23 @@ GridLayout.args = {
         visibilityCriteria: "all",
         tileHeight: TileHeight.Half,
         configuration: {
-          tierTileType: TierTileType.currentTier,
+          tierTileType: TierTileType.nextTier,
+          tierId: "2",
+        },
+      },
+      {
+        id: "3",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Half,
+        configuration: {
+          tierTileType: TierTileType.specificTier,
           tierId: "3",
         },
       },
-
       {
         id: "4",
         type: TileType.Tier,
@@ -95,7 +102,7 @@ GridLayout.args = {
         },
       },
       {
-        id: "5",
+        id: "2",
         type: TileType.Tier,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -103,12 +110,12 @@ GridLayout.args = {
         visibilityCriteria: "all",
         tileHeight: TileHeight.Half,
         configuration: {
-          tierTileType: TierTileType.currentTier,
-          tierId: "5",
+          tierTileType: TierTileType.nextTier,
+          tierId: "2",
         },
       },
       {
-        id: "6",
+        id: "3",
         type: TileType.Tier,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -116,23 +123,265 @@ GridLayout.args = {
         visibilityCriteria: "all",
         tileHeight: TileHeight.Half,
         configuration: {
-          tierTileType: TierTileType.currentTier,
-          tierId: "5",
+          tierTileType: TierTileType.specificTier,
+          tierId: "3",
         },
       },
     ],
   },
-  renderItem: ({ tile }: { tile: Tile }) => <TierTile {...tile} />,
 };
 
-// export const BannerLayout = Template.bind({});
-// BannerLayout.args = {
-//   ...GridLayout.args,
-//   section: {
-//     ...GridLayout.args.section,
-//     type: "BANNER",
-//   },
-//   renderItem: ({ tile }: { tile: Tile }) => (
-//       <TierTile tile={tile} />,
-//   ),
-// };
+export const GridWithoutTitleAndDescription = Template.bind({});
+GridWithoutTitleAndDescription.args = {
+  section: {
+    id: "1",
+    type: SectionType.Grid,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: "tenant1",
+    visibilityCriteria: "all",
+    tiles: [
+      {
+        id: "1",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: {
+          tierTileType: TierTileType.currentTier,
+          tierId: "1",
+        },
+      },
+      {
+        id: "2",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Half,
+        configuration: {
+          tierTileType: TierTileType.nextTier,
+          tierId: "2",
+        },
+      },
+      {
+        id: "3",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Half,
+        configuration: {
+          tierTileType: TierTileType.specificTier,
+          tierId: "3",
+        },
+      },
+      {
+        id: "4",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: {
+          tierTileType: TierTileType.currentTier,
+          tierId: "4",
+        },
+      },
+      {
+        id: "2",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Half,
+        configuration: {
+          tierTileType: TierTileType.nextTier,
+          tierId: "2",
+        },
+      },
+      {
+        id: "3",
+        type: TileType.Tier,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Half,
+        configuration: {
+          tierTileType: TierTileType.specificTier,
+          tierId: "3",
+        },
+      },
+    ],
+  },
+};
+
+export const BannerWithTitleAndDescription = Template.bind({});
+BannerWithTitleAndDescription.args = {
+  section: {
+    id: "2",
+    type: SectionType.Banner,
+    title: "Featured Offers",
+    description: "Check out our latest promotions!",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: "tenant1",
+    visibilityCriteria: "all",
+    tiles: [
+      {
+        id: "banner1",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "Summer Sale",
+          "Get up to 50% off on selected items!",
+          "Shop Now",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+      {
+        id: "banner2",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "New Arrivals",
+          "Check out our latest collection!",
+          "Explore",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+      {
+        id: "banner3",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "Win Big!",
+          "When you do X,Y and Z you’ll get A,B or C!",
+          "Find out more",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+    ],
+  },
+};
+
+export const BannerWithoutTileAndDescription = Template.bind({});
+BannerWithoutTileAndDescription.args = {
+  section: {
+    id: "2",
+    type: SectionType.Banner,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: "tenant1",
+    visibilityCriteria: "all",
+    tiles: [
+      {
+        id: "banner1",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "Summer Sale",
+          "Get up to 50% off on selected items!",
+          "Shop Now",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+      {
+        id: "banner2",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "New Arrivals",
+          "Check out our latest collection!",
+          "Explore",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+      {
+        id: "banner3",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "Win Big!",
+          "When you do X,Y and Z you’ll get A,B or C!",
+          "Find out more",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+    ],
+  },
+};
+
+export const BannerWithSingleBanner = Template.bind({});
+BannerWithSingleBanner.args = {
+  section: {
+    id: "2",
+    type: SectionType.Banner,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: "tenant1",
+    visibilityCriteria: "all",
+    tiles: [
+      {
+        id: "banner1",
+        type: TileType.Banner,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        tenantId: "tenant1",
+        visibilityCriteria: "all",
+        tileHeight: TileHeight.Full,
+        configuration: new BannerTileConfig(
+          "https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg",
+          "Summer Sale",
+          "Get up to 50% off on selected items!",
+          "Shop Now",
+          "https://whitelabel-loyalty.com",
+          CtaAction.sameWindow
+        ),
+      },
+    ],
+  },
+};

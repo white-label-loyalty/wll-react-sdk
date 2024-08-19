@@ -1,66 +1,60 @@
-import { SectionType } from "@/types/section";
+import { TileContainer } from "@/components/atoms";
+import { Carousel, SectionHeader } from "@/components/molecules";
+import { Section as SectionData, SectionType } from "@/types/section";
 import { Tile, TileHeight } from "@/types/tile";
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 
 type SectionProps = {
-  section: {
-    id: string;
-    type: SectionType;
-    tiles: Tile[];
-  };
-  renderItem: (tile: Tile) => React.ReactNode;
+  section: SectionData;
 };
 
-const Section: React.FC<SectionProps> = ({ section, renderItem }) => {
+const Section: React.FC<SectionProps> = ({ section }) => {
   const { width } = useWindowDimensions();
-  const isDesktop = width >= 600;
+  const isDesktop = width >= 768;
   const columnsPerRow = isDesktop ? 4 : 2;
+
+  const renderSectionHeader = () => {
+    return (
+      <SectionHeader title={section.title} description={section.description} />
+    );
+  };
+
+  if (section.type === SectionType.Banner) {
+    return (
+      <View style={styles.section}>
+        <Carousel section={section} />
+      </View>
+    );
+  }
 
   const renderTiles = () => {
     const tileContainers: JSX.Element[] = [];
-    let currentContainer: Tile[] = [];
-
+    let currentTiles: Tile[] = [];
     section.tiles.forEach((tile, index) => {
-      currentContainer.push(tile);
-
+      currentTiles.push(tile);
       if (
-        currentContainer.length === 2 ||
+        currentTiles.length === 2 ||
         tile.tileHeight === TileHeight.Full ||
         index === section.tiles.length - 1
       ) {
-        const containerElement = (
+        tileContainers.push(
           <View
             key={`container-${index}`}
-            style={[styles.tileContainer, { width: `${100 / columnsPerRow}%` }]}
+            style={[styles.columnWrapper, { width: `${100 / columnsPerRow}%` }]}
           >
-            {currentContainer.map((containerTile) => (
-              <View
-                key={containerTile.id}
-                style={[
-                  styles.tileWrapper,
-                  {
-                    aspectRatio:
-                      containerTile.tileHeight === TileHeight.Full ? 1 : 2,
-                  },
-                ]}
-              >
-                {renderItem(containerTile)}
-              </View>
-            ))}
+            <TileContainer tiles={currentTiles} />
           </View>
         );
-
-        tileContainers.push(containerElement);
-        currentContainer = [];
+        currentTiles = [];
       }
     });
-
     return tileContainers;
   };
 
   return (
     <View style={styles.section}>
+      {renderSectionHeader()}
       <View style={styles.grid}>{renderTiles()}</View>
     </View>
   );
@@ -70,20 +64,14 @@ const styles = StyleSheet.create({
   section: {
     width: "100%",
     maxWidth: 1100,
-  },
-  row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    marginHorizontal: "auto",
   },
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  tileContainer: {
+  columnWrapper: {
     padding: 3,
-  },
-  tileWrapper: {
-    padding: 6,
   },
 });
 

@@ -15,6 +15,9 @@ type ButtonProps = {
 const styles = StyleSheet.create({
   button: {
     borderRadius: sizes.borderRadius,
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: 200,
   },
   buttonInner: {
     paddingHorizontal: 14,

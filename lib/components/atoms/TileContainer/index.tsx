@@ -1,45 +1,58 @@
-import { useTheme } from "@/context/ThemeContext";
-import { sizes } from "@/utils/styling";
+import {
+  BadgeTile,
+  ContentTile,
+  PointsTile,
+  RewardCategoryTile,
+  RewardTile,
+  TierTile,
+} from "@/components/organisms";
+import { Tile, TileType } from "@/types/tile";
 import React from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 type TileContainerProps = {
-  children: React.ReactNode;
-  type?: "grid" | "banner";
+  tiles: Tile[];
 };
 
-const TileContainer: React.FC<TileContainerProps> = ({
-  children,
-  type = "grid",
-}) => {
-  const { theme } = useTheme();
-
-  const containerStyle: ViewStyle = {
-    borderColor: theme.derivedBackground,
-    ...styles.container,
-    ...(type === "banner" ? styles.bannerContainer : styles.gridContainer),
+const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
+  const renderTile = (tile: Tile) => {
+    switch (tile.type) {
+      case TileType.Tier:
+        return <TierTile tile={tile} />;
+      case TileType.Points:
+        return <PointsTile tile={tile} />;
+      case TileType.Content:
+        return <ContentTile tile={tile} />;
+      case TileType.Reward:
+        return <RewardTile tile={tile} />;
+      case TileType.Badge:
+        return <BadgeTile tile={tile} />;
+      case TileType.RewardCategory:
+        return <RewardCategoryTile tile={tile} />;
+      default:
+        return null;
+    }
   };
 
-  return <View style={containerStyle}>{children}</View>;
+  return (
+    <View style={styles.container}>
+      {tiles.map((tile, index) => (
+        <View key={tile.id} style={styles.tileContainer}>
+          {renderTile(tile)}
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: sizes.borderRadius,
+    flexDirection: "column",
+    height: "100%",
   },
-  gridContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+  tileContainer: {
     flex: 1,
-    aspectRatio: 1,
-  },
-  bannerContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center",
+    marginBottom: 6,
   },
 });
 

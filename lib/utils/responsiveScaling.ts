@@ -1,6 +1,5 @@
 import { useWindowDimensions } from "react-native";
 
-// Base width to scale from (e.g., iPhone 11 Pro width)
 const BASE_WIDTH = 375;
 const MAX_WIDTH = 1100;
 
@@ -10,7 +9,7 @@ export const useResponsiveScale = () => {
   const responsiveScale = (size: number, factor: number = 0.5): number => {
     let scale = SCREEN_WIDTH / BASE_WIDTH;
 
-    // If screen is wider than MAX_WIDTH, we slow down the scaling
+    // If screen is wider than MAX_WIDTH, slow down the scaling
     if (SCREEN_WIDTH > MAX_WIDTH) {
       scale =
         MAX_WIDTH / BASE_WIDTH + (SCREEN_WIDTH - MAX_WIDTH) / (BASE_WIDTH * 4);

@@ -1,3 +1,4 @@
+import { useTheme } from "@/context/ThemeContext";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -19,65 +20,79 @@ type TextVariant =
 type TextProps = RNTextProps & {
   variant?: TextVariant;
   style?: TextStyle;
+  isSurface?: boolean;
 };
 
 export const Text: React.FC<TextProps> = ({
   variant = "body",
   style,
+  isSurface = false,
   ...props
 }) => {
   const [dimensions, setDimensions] = useState(Dimensions.get("window"));
+  const { theme } = useTheme();
 
   useEffect(() => {
     const subscription = Dimensions.addEventListener("change", ({ window }) => {
       setDimensions(window);
     });
-
     return () => subscription?.remove();
   }, []);
 
-  const variantStyle = styles[variant] || styles.body;
-
-  const responsiveStyle = {
-    ...variantStyle,
-    fontSize: RFPercentage(variantStyle.fontSize as number),
+  const getVariantStyle = (variant: TextVariant): TextStyle => {
+    switch (variant) {
+      case "eyebrow":
+        return {
+          fontSize: RFPercentage(1),
+          fontWeight: "500",
+          color: isSurface ? theme.surfaceText : theme.text,
+        };
+      case "title":
+        return {
+          fontSize: RFPercentage(1.2),
+          fontWeight: "bold",
+          color: isSurface ? theme.surfaceText : theme.text,
+        };
+      case "subtitle":
+        return {
+          fontSize: RFPercentage(1),
+          color: isSurface ? theme.surfaceText : theme.text,
+        };
+      case "body":
+        return {
+          fontSize: RFPercentage(1),
+          color: isSurface ? theme.surfaceText : theme.text,
+          lineHeight: 20,
+        };
+      case "caption":
+        return {
+          fontSize: RFPercentage(1.2),
+          color: isSurface ? theme.surfaceText : theme.text,
+          fontWeight: "bold",
+        };
+      case "label":
+        return {
+          fontSize: RFPercentage(0.7),
+          fontWeight: "500",
+          color: isSurface ? theme.surfaceText : theme.text,
+        };
+      default:
+        return {
+          fontSize: RFPercentage(1),
+          color: isSurface ? theme.surfaceText : theme.text,
+          lineHeight: 20,
+        };
+    }
   };
 
-  return <RNText style={[styles.base, responsiveStyle, style]} {...props} />;
+  const variantStyle = getVariantStyle(variant);
+
+  return <RNText style={[styles.base, variantStyle, style]} {...props} />;
 };
 
 const styles = StyleSheet.create({
   base: {
-    color: "#6B7280",
-  },
-  eyebrow: {
-    fontSize: 1,
-    fontWeight: "500",
-    color: "#6B7280",
-  },
-  title: {
-    fontSize: 1.2,
-    fontWeight: "bold",
-    color: "#000000",
-  },
-  subtitle: {
-    fontSize: 1,
-    color: "#6B7280",
-  },
-  body: {
-    fontSize: 1,
-    color: "#6B7280",
-    lineHeight: 20,
-  },
-  caption: {
-    fontSize: 1.2,
-    color: "#000000",
-    fontWeight: "bold",
-  },
-  label: {
-    fontSize: 0.7,
-    fontWeight: "500",
-    color: "#6B7280",
+    // You can keep some base styles here if needed
   },
 });
 

@@ -1,2 +1,4 @@
+import Carousel from "./Carousel";
 import ProgressIndicator from "./ProgressIndicator";
-export { ProgressIndicator };
+import SectionHeader from "./SectionHeader";
+export { Carousel, ProgressIndicator, SectionHeader };
