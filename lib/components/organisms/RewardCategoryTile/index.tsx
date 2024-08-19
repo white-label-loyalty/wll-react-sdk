@@ -30,6 +30,8 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
   const { theme } = useTheme();
   const { allowDecorationOverlay } = rewardData;
 
+  // TODO: Add logic to fetch the reward data from the API at the moment just using fake data to style components
+
   return (
     <TouchableOpacity
       style={[
