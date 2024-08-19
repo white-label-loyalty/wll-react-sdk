@@ -1,11 +1,11 @@
-import { Button, Icon, Text } from "@/components/atoms";
+import { Icon } from "@/components/atoms";
+import { SectionHeader } from "@/components/molecules";
+import { BannerTile } from "@/components/organisms/";
 import { useTheme } from "@/context/ThemeContext";
 import { Section } from "@/types/section";
 import { BannerTileConfig, Tile, TileType } from "@/types/tile";
 import React, { useRef, useState } from "react";
 import {
-  Image,
-  Linking,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import SectionHeader from "../SectionHeader";
 
 type CarouselProps = {
   section: Section;
@@ -28,13 +27,6 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const bannerTiles = section.tiles.filter(
     (tile: Tile) => tile.type === TileType.Banner
   );
-
-  const handleLinkPress = async (url: string) => {
-    if (!url) return;
-    if (await Linking.canOpenURL(url)) {
-      Linking.openURL(url);
-    }
-  };
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
@@ -107,54 +99,12 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
                 <View
                   key={index}
                   style={[
-                    styles.slide,
                     {
                       width: slideWidth,
-                      backgroundColor: theme.surface,
                     },
                   ]}
                 >
-                  {bannerConfig.imageUrl && (
-                    <View style={styles.imageContainer}>
-                      <Image
-                        source={{ uri: bannerConfig.imageUrl }}
-                        style={styles.image}
-                        resizeMode="cover"
-                        onError={(error) =>
-                          console.error("Image loading error:", error)
-                        }
-                      />
-                    </View>
-                  )}
-                  <View style={styles.slideContent}>
-                    {bannerConfig.title && (
-                      <Text
-                        variant="title"
-                        style={styles.title}
-                        isSurface={true}
-                      >
-                        {bannerConfig.title}
-                      </Text>
-                    )}
-                    {bannerConfig.description && (
-                      <Text
-                        variant="body"
-                        style={styles.description}
-                        isSurface={true}
-                      >
-                        {bannerConfig.description}
-                      </Text>
-                    )}
-                    {bannerConfig.ctaText && (
-                      <Button
-                        title={bannerConfig.ctaText}
-                        variant="accent"
-                        onPress={() =>
-                          handleLinkPress(bannerConfig.ctaLink as string)
-                        }
-                      />
-                    )}
-                  </View>
+                  <BannerTile bannerConfig={bannerConfig} />
                 </View>
               );
             })}
