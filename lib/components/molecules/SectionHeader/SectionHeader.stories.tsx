@@ -1,15 +1,18 @@
-import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
-import SectionHeader from './index';
+import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
+import SectionHeader from "./index";
 
 export default {
-  title: 'components/molecules/SectionHeader',
+  title: "components/molecules/SectionHeader",
   component: SectionHeader,
 } as Meta;
 
-const Template: StoryFn = (args) => <SectionHeader {...args} />;
+const Template: StoryFn<typeof SectionHeader> = (args) => (
+  <SectionHeader {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  // Add default props here
+  title: "Exclusive Offers",
+  description: "Check out our latest promotions!",
 };
