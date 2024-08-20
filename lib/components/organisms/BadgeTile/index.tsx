@@ -1,16 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
+import { BadgeTileConfig } from "@/types/tile";
+import React from "react";
+import { View } from "react-native";
 
 type BadgeTileProps = {
-  // Define your props here
-}
+  configuration: BadgeTileConfig;
+};
 
-const BadgeTile: React.FC<BadgeTileProps> = () => {
-  return (
-    <View>
-      {/* Your component code here */}
-    </View>
-  );
+const BadgeTile: React.FC<BadgeTileProps> = ({ configuration }) => {
+  return <View>{/* Your component code here */}</View>;
 };
 
 export default BadgeTile;

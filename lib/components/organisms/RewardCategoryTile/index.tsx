@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 type RewardCategoryTileProps = {
-  rewardData: {
+  configuration: {
     allowDecorationOverlay: boolean;
     id: string;
     createdAt: string;
@@ -25,10 +25,10 @@ type RewardCategoryTileProps = {
 };
 
 const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
-  rewardData,
+  configuration,
 }) => {
   const { theme } = useTheme();
-  const { allowDecorationOverlay } = rewardData;
+  const { allowDecorationOverlay, name, pictureUrl } = configuration;
 
   // TODO: Add logic to fetch the reward data from the API at the moment just using fake data to style components
 
@@ -49,12 +49,12 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
             ellipsizeMode="tail"
             numberOfLines={1}
           >
-            {rewardData.name}
+            {name}
           </Text>
         </View>
       )}
       <Image
-        source={{ uri: rewardData.pictureUrl }}
+        source={{ uri: pictureUrl }}
         style={styles.image}
         resizeMode="cover"
         onError={(error) => console.error("Image loading error:", error)}

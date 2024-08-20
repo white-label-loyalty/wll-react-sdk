@@ -5,11 +5,12 @@ import React from "react";
 import { Image, Linking, StyleSheet, View } from "react-native";
 
 type BannerTileProps = {
-  bannerConfig: BannerTileConfig;
+  configuration: BannerTileConfig;
 };
 
-const BannerTile: React.FC<BannerTileProps> = ({ bannerConfig }) => {
+const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
   const { theme } = useTheme();
+  const { imageUrl, title, description, ctaText, ctaLink } = configuration;
 
   const handleLinkPress = async (url: string) => {
     if (!url) return;
@@ -26,10 +27,10 @@ const BannerTile: React.FC<BannerTileProps> = ({ bannerConfig }) => {
         },
       ]}
     >
-      {bannerConfig.imageUrl && (
+      {imageUrl && (
         <View style={styles.imageContainer}>
           <Image
-            source={{ uri: bannerConfig.imageUrl }}
+            source={{ uri: imageUrl }}
             style={styles.image}
             resizeMode="cover"
             onError={(error) => console.error("Image loading error:", error)}
@@ -37,21 +38,21 @@ const BannerTile: React.FC<BannerTileProps> = ({ bannerConfig }) => {
         </View>
       )}
       <View style={styles.slideContent}>
-        {bannerConfig.title && (
+        {title && (
           <Text variant="title" style={styles.title} isSurface={true}>
-            {bannerConfig.title}
+            {title}
           </Text>
         )}
-        {bannerConfig.description && (
+        {description && (
           <Text variant="body" style={styles.description} isSurface={true}>
-            {bannerConfig.description}
+            {description}
           </Text>
         )}
-        {bannerConfig.ctaText && (
+        {ctaText && (
           <Button
-            title={bannerConfig.ctaText}
+            title={ctaText}
             variant="accent"
-            onPress={() => handleLinkPress(bannerConfig.ctaLink as string)}
+            onPress={() => handleLinkPress(ctaLink as string)}
           />
         )}
       </View>

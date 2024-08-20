@@ -94,7 +94,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             snapToAlignment="start"
           >
             {bannerTiles.map((tile: Tile, index: number) => {
-              const bannerConfig = tile.configuration as BannerTileConfig;
+              const configuration = tile.configuration as BannerTileConfig;
               return (
                 <View
                   key={index}
@@ -104,7 +104,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
                     },
                   ]}
                 >
-                  <BannerTile bannerConfig={bannerConfig} />
+                  <BannerTile configuration={configuration} />
                 </View>
               );
             })}

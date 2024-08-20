@@ -13,7 +13,7 @@ const Template: StoryFn<typeof RewardCategoryTile> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  rewardData: {
+  configuration: {
     allowDecorationOverlay: true,
     id: "9cb2cc08-e033-4200-86a7-95a03ba09462",
     createdAt: "2018-06-08T08:57:47.198Z",
@@ -29,7 +29,7 @@ Default.args = {
 
 export const LongCategoryName = Template.bind({});
 LongCategoryName.args = {
-  rewardData: {
+  configuration: {
     allowDecorationOverlay: true,
     id: "9cb2cc08-e033-4200-86a7-95a03ba09462",
     createdAt: "2018-06-08T08:57:47.198Z",
@@ -45,7 +45,7 @@ LongCategoryName.args = {
 
 export const NoDecorationOverlay = Template.bind({});
 NoDecorationOverlay.args = {
-  rewardData: {
+  configuration: {
     allowDecorationOverlay: false,
     id: "9cb2cc08-e033-4200-86a7-95a03ba09462",
     createdAt: "2018-06-08T08:57:47.198Z",

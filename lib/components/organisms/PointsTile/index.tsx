@@ -1,16 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
+import { PointsTileConfig } from "@/types/tile";
+import React from "react";
+import { View } from "react-native";
 
 type PointsTileProps = {
-  // Define your props here
-}
+  configuration: PointsTileConfig;
+};
 
-const PointsTile: React.FC<PointsTileProps> = () => {
-  return (
-    <View>
-      {/* Your component code here */}
-    </View>
-  );
+const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
+  return <View>{/* Your component code here */}</View>;
 };
 
 export default PointsTile;

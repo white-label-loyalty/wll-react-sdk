@@ -1,18 +1,20 @@
 import { Text } from "@/components/atoms";
 import { ProgressIndicator } from "@/components/molecules";
 import { useTheme } from "@/context/ThemeContext";
-import { Tile } from "@/types/tile";
+import { TierTileConfig } from "@/types/tile";
 import { useResponsiveScale } from "@/utils/responsiveScaling";
 import { sizes } from "@/utils/styling";
 import React from "react";
 import { View } from "react-native";
+type TierTileProps = {
+  configuration: TierTileConfig;
+};
 
-const TierTile = (tile: Tile) => {
+const TierTile: React.FC<TierTileProps> = ({ configuration }) => {
   const { ms } = useResponsiveScale();
 
-  if (!tile) return null;
+  if (!configuration) return null;
   const { theme } = useTheme();
-  const { tileHeight, configuration } = tile;
 
   const tierData = {
     name: "Gold",
