@@ -177,6 +177,11 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.currentTier,
           tierId: "1",
+          // TODO Add logic to fetch the tier data from the API at the moment just using fake data to style components
+          name: "Gold",
+          earnedPoints: 500,
+          pointsRequirement: 1000,
+          attained: false,
         },
       },
       {
@@ -190,6 +195,10 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.nextTier,
           tierId: "2",
+          name: "Silver",
+          earnedPoints: 50,
+          pointsRequirement: 500,
+          attained: false,
         },
       },
       {
@@ -203,6 +212,10 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.specificTier,
           tierId: "3",
+          name: "Platinum",
+          earnedPoints: 1900,
+          pointsRequirement: 2000,
+          attained: false,
         },
       },
       {
@@ -216,6 +229,10 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.currentTier,
           tierId: "4",
+          name: "Diamond",
+          earnedPoints: 5000,
+          pointsRequirement: 5000,
+          attained: true,
         },
       },
       {
@@ -229,6 +246,10 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.nextTier,
           tierId: "2",
+          name: "Diamond",
+          earnedPoints: 5000,
+          pointsRequirement: 5000,
+          attained: true,
         },
       },
       {
@@ -242,6 +263,10 @@ GridWithoutTitleAndDescription.args = {
         configuration: {
           tierTileType: TierTileType.specificTier,
           tierId: "3",
+          name: "VIP",
+          earnedPoints: 8000,
+          pointsRequirement: 10000,
+          attained: true,
         },
       },
     ],
