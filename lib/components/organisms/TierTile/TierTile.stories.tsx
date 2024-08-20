@@ -7,7 +7,7 @@ export default {
   title: "components/organisms/TierTile",
   component: TierTile,
   argTypes: {
-    tierData: { control: "object" },
+    configuration: { control: "object" },
   },
   decorators: [
     (Story) => (
@@ -28,7 +28,7 @@ const Template: StoryFn<typeof TierTile> = (args) => <TierTile {...args} />;
 
 export const InProgress = Template.bind({});
 InProgress.args = {
-  tierData: {
+  configuration: {
     name: "Gold",
     earnedPoints: 500,
     pointsRequirement: 1000,
@@ -38,7 +38,7 @@ InProgress.args = {
 
 export const JustStarted = Template.bind({});
 JustStarted.args = {
-  tierData: {
+  configuration: {
     name: "Silver",
     earnedPoints: 50,
     pointsRequirement: 500,
@@ -48,7 +48,7 @@ JustStarted.args = {
 
 export const NearlyComplete = Template.bind({});
 NearlyComplete.args = {
-  tierData: {
+  configuration: {
     name: "Platinum",
     earnedPoints: 1900,
     pointsRequirement: 2000,
@@ -58,7 +58,7 @@ NearlyComplete.args = {
 
 export const TierAttained = Template.bind({});
 TierAttained.args = {
-  tierData: {
+  configuration: {
     name: "Diamond",
     earnedPoints: 5000,
     pointsRequirement: 5000,
@@ -68,7 +68,7 @@ TierAttained.args = {
 
 export const TierAttainedEarly = Template.bind({});
 TierAttainedEarly.args = {
-  tierData: {
+  configuration: {
     name: "VIP",
     earnedPoints: 8000,
     pointsRequirement: 10000,
@@ -78,5 +78,5 @@ TierAttainedEarly.args = {
 
 export const NoTierData = Template.bind({});
 NoTierData.args = {
-  tierData: null,
+  configuration: null,
 };
