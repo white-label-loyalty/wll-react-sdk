@@ -35,6 +35,7 @@
     "react-native": ">=0.70.0 <0.73.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.x",
     "@babel/core": "^7.22.20",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/preset-env": "^7.22.20",
