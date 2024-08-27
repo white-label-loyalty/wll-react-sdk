@@ -1,15 +1,15 @@
-import { Section } from "@/components/organisms";
-import { SectionType } from "@/types/section";
+import { Meta, StoryFn } from "@storybook/react";
+import { Section } from "lucide-react";
+import React from "react";
+import { View } from "react-native";
+import { SectionType } from "../../../types/section";
 import {
   BannerTileConfig,
   CtaAction,
   TierTileType,
   TileHeight,
   TileType,
-} from "@/types/tile";
-import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
-import { View } from "react-native";
+} from "../../../types/tile";
 
 export default {
   title: "components/organisms/Section",

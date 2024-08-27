@@ -1,13 +1,13 @@
+import { Meta, StoryFn } from "@storybook/react";
+import React from "react";
+import { Section } from "../../../types/section";
 import {
   BannerTileConfig,
   CtaAction,
-  Section,
   Tile,
   TileHeight,
   TileType,
-} from "@/types/tile";
-import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
+} from "../../../types/tile";
 import Carousel from "./index";
 
 export default {

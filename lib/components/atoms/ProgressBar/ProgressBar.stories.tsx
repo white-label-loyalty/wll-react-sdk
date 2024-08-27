@@ -1,6 +1,6 @@
-import ProgressBar, { ProgressBarProps } from "@/components/atoms/ProgressBar";
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
+import ProgressBar from ".";
 
 export default {
   title: "components/atoms/ProgressBar",
@@ -20,7 +20,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<ProgressBarProps> = (args) => <ProgressBar {...args} />;
+const Template: StoryFn<typeof ProgressBar> = (args) => (
+  <ProgressBar {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

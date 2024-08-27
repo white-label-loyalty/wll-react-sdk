@@ -1,7 +1,7 @@
-import { CtaAction } from "@/types/tile";
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import BannerTile from ".";
+import { CtaAction } from "../../../types/tile";
 
 export default {
   title: "components/organisms/BannerTile",
