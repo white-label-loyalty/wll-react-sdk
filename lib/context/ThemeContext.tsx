@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import {
   BaseThemeObject,
   ThemeContextType,
@@ -25,7 +25,6 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     surfaceText,
     surface,
   } = mergedTheme;
-
   return {
     ...mergedTheme,
     sizes,
@@ -44,17 +43,18 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
   theme: providedTheme,
 }) => {
   const [theme, setTheme] = useState<ThemeObject>(() =>
-    createTheme(providedTheme)
+    createTheme(providedTheme || {})
   );
 
-  useEffect(() => {
-    if (providedTheme) {
-      setTheme(createTheme(providedTheme));
-    }
-  }, [providedTheme]);
+  const contextValue: ThemeContextType = {
+    theme,
+    setTheme: (newTheme: Partial<BaseThemeObject>) => {
+      setTheme(createTheme(newTheme));
+    },
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
