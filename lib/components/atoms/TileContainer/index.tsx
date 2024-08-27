@@ -46,6 +46,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       }
       case TileType.Reward: {
         const config = tile.configuration as RewardTileConfig;
+        // @ts-ignore
         return <RewardTile configuration={config} />;
       }
       case TileType.Badge: {

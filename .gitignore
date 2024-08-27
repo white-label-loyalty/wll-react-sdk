@@ -161,7 +161,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -264,3 +263,13 @@ gradle-app.setting
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative,react
+
+# Additional entries for your project
+# Storybook build output
+storybook-static/
+
+# Chromatic logs
+chromatic.log
+
+# Explicitly include the dist directory
+!dist/

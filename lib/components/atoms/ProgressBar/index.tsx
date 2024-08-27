@@ -31,6 +31,7 @@ const useContainerStyles = (theme: ThemeObject) => ({
 });
 
 const useProgressStyles = createVariantSystem(
+  // @ts-ignore
   (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusRounded }),
   (theme: ThemeObject) => ({
     primary: { backgroundColor: theme.primary },

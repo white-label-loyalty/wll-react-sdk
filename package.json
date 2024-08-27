@@ -1,8 +1,16 @@
 {
   "name": "wll-react-sdk",
   "version": "1.0.0",
-  "main": "lib/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "rm -rf dist && tsc && babel lib --out-dir dist --extensions \".ts,.tsx\" --config-file ./babel.config.js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prepare": "yarn build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",

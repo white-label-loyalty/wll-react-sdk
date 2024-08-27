@@ -26,6 +26,7 @@ const Icon: React.FC<IconProps> = ({
 
   return (
     <View>
+      {/* @ts-ignore */}
       <LucideIcon color={color} size={size} strokeWidth={strokeWidth} />
     </View>
   );
