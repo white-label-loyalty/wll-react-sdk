@@ -68,7 +68,7 @@ export default {
   component: ${COMPONENT_NAME},
 } as Meta;
 
-const Template: StoryFn = (args) => <${COMPONENT_NAME} {...args} />;
+const Template: StoryFn<typeof ${COMPONENT_NAME}> = (args) => <${COMPONENT_NAME} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

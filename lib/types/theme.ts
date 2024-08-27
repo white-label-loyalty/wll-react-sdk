@@ -1,8 +1,9 @@
+import { sizes } from "@/utils/styling";
+import { DerivedColors } from "@/utils/themeHelpers";
 import { ReactNode } from "react";
 
-export type ThemeObject = {
+export type BaseThemeObject = {
   accent: string;
-  accentText: string;
   background: string;
   errorPrimary: string;
   fontFamily: string;
@@ -11,29 +12,34 @@ export type ThemeObject = {
   pageButtonText: string;
   positive: string;
   primary: string;
-  primaryText: string;
   surface: string;
   surfaceText: string;
   text: string;
-  derivedBackground: string;
-  positiveText: string;
-  negativeText: string;
 };
 
-export type DerivedProperties =
-  | "derivedBackground"
-  | "primaryText"
-  | "accentText"
-  | "positiveText"
-  | "negativeText";
+export type DerivedProperties = {
+  accentText: string;
+  derivedBackground: string;
+  primaryText: string;
+  positiveText: string;
+  negativeText: string;
+  derivedSurfaceText: DerivedColors;
+  derivedSurface: DerivedColors;
+};
+
+export type ThemeObject = BaseThemeObject &
+  DerivedProperties & {
+    readonly sizes: typeof sizes;
+  };
 
 export type ThemeContextType = {
   theme: ThemeObject;
+  setTheme: (theme: ThemeObject) => void;
 };
 
 export type ThemeProviderProps = {
   children: ReactNode;
-  initialTheme?: Partial<ThemeObject>;
+  theme?: Partial<BaseThemeObject>;
 };
 
 export type Variant = "primary" | "accent" | "positive" | "negative";

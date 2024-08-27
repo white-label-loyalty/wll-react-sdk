@@ -6,6 +6,7 @@ import RewardCategoryTile from "./RewardCategoryTile";
 import RewardTile from "./RewardTile";
 import Section from "./Section";
 import TierTile from "./TierTile";
+
 export {
   BadgeTile,
   BannerTile,

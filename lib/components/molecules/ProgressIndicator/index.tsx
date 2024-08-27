@@ -16,16 +16,16 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   currentPoints,
   maxPoints,
   variant = "primary",
-  height = "md",
+  height = "sm",
   attained = false,
 }) => {
   const { theme } = useTheme();
   const percentage = attained ? 100 : (currentPoints / maxPoints) * 100;
   const isComplete = percentage >= 100 || attained;
-
   let progressVariant: Variant = variant;
+
   if (isComplete) {
-    progressVariant = "positive";
+    progressVariant = "primary";
   } else if (percentage < 50) {
     progressVariant = "accent";
   }
@@ -37,18 +37,22 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
         variant={progressVariant}
         height={height}
       />
-      {isComplete && (
-        <View style={styles.checkIconContainer}>
-          <View
-            style={[
-              styles.checkIconBackground,
-              { backgroundColor: theme.positive },
-            ]}
-          >
-            <Icon name="Check" size={16} color={theme.positiveText} />
-          </View>
+      <View style={[styles.circleContainer]}>
+        <View
+          style={[
+            styles.circle,
+            {
+              borderColor: theme.derivedSurface[20],
+              backgroundColor: isComplete ? theme.primary : theme.surface,
+              borderWidth: isComplete ? 0 : 4,
+            },
+          ]}
+        >
+          {isComplete && (
+            <Icon name="Check" size={12} color={theme.primaryText} />
+          )}
         </View>
-      )}
+      </View>
     </View>
   );
 };
@@ -60,13 +64,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  checkIconContainer: {
+  circleContainer: {
     position: "absolute",
     right: 0,
   },
-  checkIconBackground: {
+  circle: {
+    width: 21,
+    height: 21,
     borderRadius: 9999,
-    padding: 4,
+    backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

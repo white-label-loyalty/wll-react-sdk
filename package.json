@@ -15,10 +15,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "^0.72.6",
-    "react-native-media-queries": "^0.3.0",
-    "react-native-media-query": "^2.0.1",
-    "react-native-responsive-fontsize": "^0.5.1",
-    "react-native-size-matters": "^0.4.2",
     "react-native-web": "^0.19.9"
   },
   "devDependencies": {

@@ -22,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const { theme } = useTheme();
   const scrollViewRef = useRef<ScrollView>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const slideWidth = 1100;
+  const slideWidth = 1080;
 
   const bannerTiles = section.tiles.filter(
     (tile: Tile) => tile.type === TileType.Banner
@@ -147,7 +147,7 @@ const buttonSize = 30;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    maxWidth: 1100,
+    maxWidth: 1080,
     alignSelf: "center",
     position: "relative",
   },

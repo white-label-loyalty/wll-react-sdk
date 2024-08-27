@@ -1,77 +1,141 @@
-import { TileContainer } from "@/components/atoms";
-import { Carousel, SectionHeader } from "@/components/molecules";
+import { Icon } from "@/components/atoms";
+import { Carousel, Grid } from "@/components/molecules";
+import { useSDK } from "@/context/SDKContext";
+import { useTheme } from "@/context/ThemeContext";
 import { Section as SectionData, SectionType } from "@/types/section";
-import { Tile, TileHeight } from "@/types/tile";
-import React from "react";
-import { StyleSheet, View, useWindowDimensions } from "react-native";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-type SectionProps = {
-  section: SectionData;
+type SectionContextType = {
+  sectionData: SectionData | null;
+  loading: boolean;
+  error: Error | null;
 };
 
-const Section: React.FC<SectionProps> = ({ section }) => {
-  const { width } = useWindowDimensions();
-  const isDesktop = width >= 768;
-  const columnsPerRow = isDesktop ? 4 : 2;
+export const SectionContext = createContext<SectionContextType | undefined>(
+  undefined
+);
 
-  const renderSectionHeader = () => {
-    return (
-      <SectionHeader title={section.title} description={section.description} />
-    );
-  };
+type SectionProviderProps = {
+  sectionId: string;
+  children: React.ReactNode;
+};
 
-  if (section.type === SectionType.Banner) {
-    return (
-      <View style={styles.section}>
-        <Carousel section={section} />
-      </View>
-    );
-  }
+export const SectionProvider: React.FC<SectionProviderProps> = ({
+  sectionId,
+  children,
+}) => {
+  const [sectionData, setSectionData] = useState<SectionData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+  const { getSectionByID } = useSDK();
 
-  const renderTiles = () => {
-    const tileContainers: JSX.Element[] = [];
-    let currentTiles: Tile[] = [];
-    section.tiles.forEach((tile, index) => {
-      currentTiles.push(tile);
-      if (
-        currentTiles.length === 2 ||
-        tile.tileHeight === TileHeight.Full ||
-        index === section.tiles.length - 1
-      ) {
-        tileContainers.push(
-          <View
-            key={`container-${index}`}
-            style={[styles.columnWrapper, { width: `${100 / columnsPerRow}%` }]}
-          >
-            <TileContainer tiles={currentTiles} />
-          </View>
+  useEffect(() => {
+    const fetchSection = async () => {
+      try {
+        setLoading(true);
+
+        // // Simulate an error
+        // const simulateError = true;
+
+        // if (simulateError) {
+        //   throw new Error("Simulated error in fetching section data");
+        // }
+
+        const { data, status } = await getSectionByID(sectionId);
+        if (status === "success") {
+          setSectionData(data);
+        } else {
+          throw new Error(`Unexpected response status: ${status}`);
+        }
+      } catch (err) {
+        setError(
+          err instanceof Error ? err : new Error("An unknown error occurred")
         );
-        currentTiles = [];
+      } finally {
+        setLoading(false);
       }
-    });
-    return tileContainers;
-  };
+    };
+    fetchSection();
+  }, [sectionId, getSectionByID]);
 
   return (
-    <View style={styles.section}>
-      {renderSectionHeader()}
-      <View style={styles.grid}>{renderTiles()}</View>
-    </View>
+    <SectionContext.Provider value={{ sectionData, loading, error }}>
+      {children}
+    </SectionContext.Provider>
+  );
+};
+
+export const useSectionContext = () => {
+  const context = useContext(SectionContext);
+  if (context === undefined) {
+    throw new Error("useSectionContext must be used within a SectionProvider");
+  }
+  return context;
+};
+
+const SectionContent: React.FC = () => {
+  const { theme } = useTheme();
+  const { sectionData, error } = useSectionContext();
+
+  if (error)
+    return (
+      <View
+        style={[
+          styles.sectionContent,
+          { borderRadius: theme.sizes.borderRadius },
+        ]}
+      >
+        <Icon name="AlertTriangle" size={24} color="#967132" />
+        <Text style={styles.sectionContentText}>Error: {error.message}</Text>
+      </View>
+    );
+
+  if (!sectionData) return null;
+
+  switch (sectionData.type) {
+    case SectionType.Banner:
+      return <Carousel section={sectionData} />;
+    case SectionType.Grid:
+      return <Grid section={sectionData} />;
+    default:
+      console.warn(`Unknown section type: ${sectionData.type}`);
+      return null;
+  }
+};
+
+const Section: React.FC<{ sectionId: string }> = ({ sectionId }) => {
+  return (
+    <SectionProvider sectionId={sectionId}>
+      <View style={styles.section}>
+        <SectionContent />
+      </View>
+    </SectionProvider>
   );
 };
 
 const styles = StyleSheet.create({
   section: {
     width: "100%",
-    maxWidth: 1100,
+    maxWidth: 1080,
     marginHorizontal: "auto",
   },
-  grid: {
+  sectionContent: {
+    width: "100%",
+    maxWidth: 1080,
+    marginHorizontal: "auto",
+    padding: 16,
+    alignItems: "center",
     flexDirection: "row",
-    flexWrap: "wrap",
+    justifyContent: "center",
+    borderColor: "#DACF8A",
+    borderWidth: 1,
+    backgroundColor: "#F8F3D6",
   },
-  columnWrapper: {
-    padding: 3,
+  sectionContentText: {
+    color: "#967132",
+    fontSize: 16,
+    marginLeft: 16,
   },
 });
 

@@ -29,50 +29,60 @@ const Template: StoryFn<typeof TierTile> = (args) => <TierTile {...args} />;
 export const InProgress = Template.bind({});
 InProgress.args = {
   configuration: {
-    name: "Gold",
-    earnedPoints: 500,
-    pointsRequirement: 1000,
-    attained: false,
+    tier: {
+      name: "Gold",
+      earnedPoints: 500,
+      pointsRequirement: 1000,
+      attained: false,
+    },
   },
 };
 
 export const JustStarted = Template.bind({});
 JustStarted.args = {
   configuration: {
-    name: "Silver",
-    earnedPoints: 50,
-    pointsRequirement: 500,
-    attained: false,
+    tier: {
+      name: "Silver",
+      earnedPoints: 50,
+      pointsRequirement: 500,
+      attained: false,
+    },
   },
 };
 
 export const NearlyComplete = Template.bind({});
 NearlyComplete.args = {
   configuration: {
-    name: "Platinum",
-    earnedPoints: 1900,
-    pointsRequirement: 2000,
-    attained: false,
+    tier: {
+      name: "Platinum",
+      earnedPoints: 1900,
+      pointsRequirement: 2000,
+      attained: false,
+    },
   },
 };
 
 export const TierAttained = Template.bind({});
 TierAttained.args = {
   configuration: {
-    name: "Diamond",
-    earnedPoints: 5000,
-    pointsRequirement: 5000,
-    attained: true,
+    tier: {
+      name: "Diamond",
+      earnedPoints: 5000,
+      pointsRequirement: 5000,
+      attained: true,
+    },
   },
 };
 
 export const TierAttainedEarly = Template.bind({});
 TierAttainedEarly.args = {
   configuration: {
-    name: "VIP",
-    earnedPoints: 8000,
-    pointsRequirement: 10000,
-    attained: true,
+    tier: {
+      name: "VIP",
+      earnedPoints: 8000,
+      pointsRequirement: 10000,
+      attained: true,
+    },
   },
 };
 

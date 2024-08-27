@@ -1,7 +1,6 @@
 import { useTheme } from "@/context/ThemeContext";
 import { Variant } from "@/types/theme";
 import { useResponsiveScale } from "@/utils/responsiveScaling";
-import { sizes } from "@/utils/styling";
 import { createVariantSystem } from "@/utils/variant";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -14,7 +13,6 @@ type ButtonProps = {
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: sizes.borderRadius,
     justifyContent: "center",
     alignItems: "center",
     maxWidth: 200,
@@ -67,7 +65,10 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
   const textStyle = useTextStyles(theme, variant);
 
   return (
-    <TouchableOpacity style={buttonStyle} onPress={onPress}>
+    <TouchableOpacity
+      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
+      onPress={onPress}
+    >
       <View style={styles.buttonInner}>
         <Text style={[textStyle, { fontSize: fs(12) }]}>{title}</Text>
       </View>

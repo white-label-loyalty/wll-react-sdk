@@ -1,7 +1,12 @@
-import { defaultTheme } from "@/utils/styling";
-import { getDerivedColor, getReadableTextColor } from "@/utils/themeHelpers";
-import React, { createContext, useContext, useState } from "react";
+import { defaultTheme, sizes } from "@/utils/styling";
 import {
+  getDerivedColor,
+  getDerivedColorPercentages,
+  getReadableTextColor,
+} from "@/utils/themeHelpers";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import {
+  BaseThemeObject,
   ThemeContextType,
   ThemeObject,
   ThemeProviderProps,
@@ -9,28 +14,49 @@ import {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const createTheme = (baseTheme: Partial<ThemeObject> = {}): ThemeObject => {
-  const mergedTheme = { ...defaultTheme, ...baseTheme };
-  const { background, primary, positive, negative } = mergedTheme;
+const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
+  const mergedTheme = { ...defaultTheme, ...baseTheme } as BaseThemeObject;
+  const {
+    background,
+    primary,
+    accent,
+    positive,
+    negative,
+    surfaceText,
+    surface,
+  } = mergedTheme;
 
   return {
     ...mergedTheme,
+    sizes,
     derivedBackground: getDerivedColor(background),
     primaryText: getReadableTextColor(primary),
-    accentText: getReadableTextColor(primary),
+    accentText: getReadableTextColor(accent),
     positiveText: getReadableTextColor(positive),
     negativeText: getReadableTextColor(negative),
+    derivedSurface: getDerivedColorPercentages(surface),
+    derivedSurfaceText: getDerivedColorPercentages(surfaceText),
   };
 };
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
-  initialTheme,
+  theme: providedTheme,
 }) => {
-  const [theme] = useState<ThemeObject>(() => createTheme(initialTheme));
+  const [theme, setTheme] = useState<ThemeObject>(() =>
+    createTheme(providedTheme)
+  );
+
+  useEffect(() => {
+    if (providedTheme) {
+      setTheme(createTheme(providedTheme));
+    }
+  }, [providedTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme }}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };
 
@@ -42,4 +68,4 @@ const useTheme = (): ThemeContextType => {
   return context;
 };
 
-export { ThemeProvider, useTheme };
+export { createTheme, ThemeProvider, useTheme };

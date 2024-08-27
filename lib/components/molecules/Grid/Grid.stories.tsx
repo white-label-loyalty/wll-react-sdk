@@ -1,26 +1,32 @@
-import type { Preview } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
-import { SectionContext } from "../lib/components/organisms/Section";
-import { SDKProvider } from "../lib/context/SDKContext";
-import { ThemeProvider } from "../lib/context/ThemeContext";
-import { Section } from "../lib/types/section";
-import { defaultTheme } from "../lib/utils/styling";
+import { View } from "react-native";
+import Grid from "./index";
 
-const sdkConfig = {
-  apiKey: "test",
-  baseUrl: "http://localhost:3000",
-};
+export default {
+  title: "components/molecules/Grid",
+  component: Grid,
+  decorators: [
+    (Story) => (
+      <View
+        style={{
+          width: 1080,
+          height: "100%",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Story />
+      </View>
+    ),
+  ],
+} as Meta;
 
-interface MockSectionProviderProps {
-  children: React.ReactNode;
-  sectionData?: Partial<Section>;
-  loading?: boolean;
-  error?: Error | null;
-}
+const Template: StoryFn<typeof Grid> = (args) => <Grid {...args} />;
 
-export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
-  children,
-  sectionData = {
+export const Default = Template.bind({});
+Default.args = {
+  section: {
     type: "GRID",
     tiles: [
       {
@@ -101,7 +107,7 @@ export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
             name: "Emerald",
             description: null,
             artworkUrl: null,
-            pointsRequirement: 10000,
+            pointsRequirement: 500,
             earnedPoints: 100,
             attained: false,
           },
@@ -303,7 +309,7 @@ export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
             name: "Emerald",
             description: null,
             artworkUrl: null,
-            pointsRequirement: 10000,
+            pointsRequirement: 500,
             earnedPoints: 100,
             attained: false,
           },
@@ -410,113 +416,4 @@ export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
     pointsPrefix: null,
     pointsSuffix: "pts",
   },
-  loading = false,
-  error = null,
-}) => {
-  return (
-    <SectionContext.Provider
-      value={{
-        sectionData: sectionData as Section,
-        loading,
-        error,
-      }}
-    >
-      {children}
-    </SectionContext.Provider>
-  );
 };
-
-const darkTheme = {
-  ...defaultTheme,
-  background: "#1a1a1a",
-  text: "#ffffff",
-  surface: "#2c2c2c",
-  surfaceText: "#ffffff",
-  primary: "#FFD23C",
-};
-
-const clientATheme = {
-  ...defaultTheme,
-  primary: "#e63946",
-  accent: "#a8dadc",
-  surface: "#fff",
-};
-
-const clientBTheme = {
-  ...defaultTheme,
-  primary: "#2E8840",
-  accent: "#2E8840",
-  background: "#ECE3D7",
-  surface: "#fff",
-};
-
-const themes = {
-  default: defaultTheme,
-  dark: darkTheme,
-  clientA: clientATheme,
-  clientB: clientBTheme,
-};
-const styleTag = `
-  <style>
-    #storybook-root {
-      padding: 0 !important;
-    }
-    .sb-show-main {
-      margin: 0 !important;
-    }
-  </style>
-`;
-const preview: Preview = {
-  decorators: [
-    (Story, context) => {
-      const selectedTheme = context.globals.theme;
-      const theme = themes[selectedTheme] || defaultTheme;
-
-      return (
-        <ThemeProvider theme={theme}>
-          <div
-            style={{
-              backgroundColor: theme.background,
-              minHeight: "100vh",
-              padding: "1rem",
-            }}
-          >
-            <SDKProvider config={sdkConfig}>
-              <MockSectionProvider>
-                <Story />
-              </MockSectionProvider>
-            </SDKProvider>
-          </div>
-        </ThemeProvider>
-      );
-    },
-  ],
-  parameters: {
-    layout: "fullscreen",
-    backgrounds: { disable: true }, // Disable the backgrounds addon
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
-  globalTypes: {
-    theme: {
-      name: "Theme",
-      description: "Global theme for components",
-      defaultValue: "default",
-      toolbar: {
-        icon: "paintbrush",
-        items: [
-          { value: "default", title: "Default" },
-          { value: "dark", title: "Dark" },
-          { value: "clientA", title: "Red" },
-          { value: "clientB", title: "Green" },
-        ],
-      },
-    },
-  },
-};
-
-export default preview;

@@ -1,7 +1,7 @@
 import { useWindowDimensions } from "react-native";
 
 const BASE_WIDTH = 375;
-const MAX_WIDTH = 1100;
+const MAX_WIDTH = 1080;
 
 export const useResponsiveScale = () => {
   const { width: SCREEN_WIDTH } = useWindowDimensions();

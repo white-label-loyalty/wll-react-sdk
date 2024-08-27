@@ -1,80 +1,50 @@
+import Tile from "@/components/atoms/Tile";
 import { useTheme } from "@/context/ThemeContext";
-import { sizes } from "@/utils/styling";
+import { RewardCategoryTileConfig } from "@/types/tile";
 import React from "react";
-import {
-  Alert,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 type RewardCategoryTileProps = {
-  configuration: {
-    allowDecorationOverlay: boolean;
-    id: string;
-    createdAt: string;
-    updatedAt: string;
-    name: string;
-    description: string;
-    priority: number;
-    parent: string;
-    pictureUrl: string;
-  };
+  configuration: RewardCategoryTileConfig;
 };
 
 const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
   configuration,
 }) => {
   const { theme } = useTheme();
-  const { allowDecorationOverlay, name, pictureUrl } = configuration;
+  const { allowDecorationOverlay, rewardCategory } = configuration || {};
+  const { name, pictureUrl } = rewardCategory || {};
 
-  // TODO: Add logic to fetch the reward data from the API at the moment just using fake data to style components
+  if (!rewardCategory) return null;
 
   return (
-    <TouchableOpacity
-      style={[
-        styles.container,
-        {
-          borderColor: theme.derivedBackground,
-        },
-      ]}
-      onPress={() => Alert.alert("You Pressed, the reward category tile")}
-    >
+    <Tile>
       {allowDecorationOverlay && (
         <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
-          <Text
-            style={[styles.overlayText, { color: theme.primaryText }]}
-            ellipsizeMode="tail"
-            numberOfLines={1}
-          >
-            {name}
-          </Text>
+          {name && (
+            <Text
+              style={[styles.overlayText, { color: theme.primaryText }]}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              {name}
+            </Text>
+          )}
         </View>
       )}
-      <Image
-        source={{ uri: pictureUrl }}
-        style={styles.image}
-        resizeMode="cover"
-        onError={(error) => console.error("Image loading error:", error)}
-      />
-    </TouchableOpacity>
+      {pictureUrl && (
+        <Image
+          source={{ uri: pictureUrl }}
+          style={styles.image}
+          resizeMode="cover"
+          onError={(error) => console.error("Image loading error:", error)}
+        />
+      )}
+    </Tile>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    maxWidth: 275,
-    aspectRatio: 1,
-    borderRadius: sizes.borderRadius,
-    borderWidth: 1,
-    flex: 1,
-    justifyContent: "center",
-    position: "relative",
-    overflow: "hidden",
-  },
   overlay: {
     position: "absolute",
     top: 0,

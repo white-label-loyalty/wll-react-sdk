@@ -33,7 +33,7 @@ export const Accent = Template.bind({});
 Accent.args = {
   percentage: 75,
   variant: "accent",
-  height: "md",
+  height: "sm",
 };
 
 export const Small = Template.bind({});
@@ -43,23 +43,16 @@ Small.args = {
   height: "sm",
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  percentage: 90,
-  variant: "primary",
-  height: "lg",
-};
-
 export const Full = Template.bind({});
 Full.args = {
   percentage: 100,
   variant: "primary",
-  height: "md",
+  height: "sm",
 };
 
 export const Empty = Template.bind({});
 Empty.args = {
   percentage: 0,
   variant: "primary",
-  height: "md",
+  height: "sm",
 };

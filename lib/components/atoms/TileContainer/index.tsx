@@ -18,6 +18,7 @@ import {
   Tile,
   TileType,
 } from "@/types/tile";
+import { useResponsiveScale } from "@/utils/responsiveScaling";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -26,6 +27,8 @@ type TileContainerProps = {
 };
 
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
+  const { ps, ms } = useResponsiveScale();
+
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
       case TileType.Banner: {
@@ -65,7 +68,15 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
   return (
     <View style={styles.container}>
       {tiles.map((tile, index) => (
-        <View key={tile.id} style={styles.tileContainer}>
+        <View
+          key={tile.id}
+          style={[
+            styles.tileContainer,
+            {
+              marginBottom: index === tiles.length - 1 ? 0 : ms(15),
+            },
+          ]}
+        >
           {renderTile(tile)}
         </View>
       ))}
@@ -76,11 +87,10 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    height: "100%",
+    aspectRatio: 1,
   },
   tileContainer: {
     flex: 1,
-    marginBottom: 6,
   },
 });
 

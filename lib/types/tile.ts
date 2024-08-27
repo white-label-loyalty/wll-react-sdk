@@ -28,6 +28,67 @@ export enum TileHeight {
   Half = "HALF",
   Full = "FULL",
 }
+type Badge = {
+  id: string;
+  name: string;
+  description: string;
+  artworkUrl: string;
+  createdAt: string;
+  updatedAt: string;
+};
+export class RewardCategory {
+  name?: string;
+  priority?: number;
+  type?: string;
+  id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  description?: string;
+  metadata?: string;
+  pictureUrl?: string;
+  rewards?: Reward[];
+  parent?: string;
+}
+
+export class Reward {
+  id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  name?: string;
+  pictureUrl?: string;
+  price?: number;
+  priority?: number;
+  availability?: Availability;
+  purchasable?: boolean;
+  tier?: string;
+  summary?: string;
+  redemptionMessage?: string;
+  visibilityCriteria?: string;
+}
+type Availability = {
+  start: Date;
+  end: Date;
+};
+type Effectivity = {
+  start: Date;
+  end: Date;
+};
+
+export type TierType = {
+  id: string;
+  name: string;
+  description: string;
+  artworkUrl: string;
+  priority: number;
+  pointsRequirement: number;
+  calculation: string;
+  accumulationPeriod: string;
+  effectivity: Effectivity;
+  createdAt: string;
+  updatedAt: string;
+  earnedPoints: number;
+  attained: boolean;
+};
 
 export class BannerTileConfig {
   imageUrl?: string;
@@ -59,6 +120,7 @@ export class PointsTileConfig {
   prefix?: string;
   suffix?: string;
   imageUrl?: string;
+  points?: number;
   constructor(
     title?: string,
     multiplier?: number,
@@ -97,6 +159,7 @@ export class RewardTileConfig {
 export class BadgeTileConfig {
   badgeTileType?: BadgeTileType;
   badgeId?: string;
+  badge?: Badge;
   constructor(badgeTileType?: BadgeTileType, badgeId?: string) {
     this.badgeTileType = badgeTileType;
     this.badgeId = badgeId;
@@ -106,6 +169,7 @@ export class BadgeTileConfig {
 export class RewardCategoryTileConfig {
   categoryId?: string;
   allowDecorationOverlay?: boolean;
+  rewardCategory?: RewardCategory;
   constructor(categoryId?: string, allowDecorationOverlay?: boolean) {
     this.categoryId = categoryId;
     this.allowDecorationOverlay = allowDecorationOverlay;
@@ -115,6 +179,7 @@ export class RewardCategoryTileConfig {
 export class TierTileConfig {
   tierTileType?: TierTileType;
   tierId?: string | null;
+  tier?: TierType;
   constructor(tierTileType?: TierTileType, tierId?: string | null) {
     this.tierTileType = tierTileType;
     this.tierId = tierId;

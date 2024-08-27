@@ -1,17 +1,18 @@
+import { BaseThemeObject } from "@/types/theme";
+
 export const sizes = {
-  borderRadius: 10,
+  borderRadius: 15,
+  borderRadiusButton: 9,
   borderRadiusRounded: 9999,
   sm: 6,
   md: 10,
   lg: 16,
 };
 
-import { DerivedProperties, ThemeObject } from "@/types/theme";
-
-export const defaultTheme: Omit<ThemeObject, DerivedProperties> = {
+export const defaultTheme: BaseThemeObject = {
   fontFamily:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,"Helvetica Neue", sans-serif;',
-  background: "#ffffff",
+  background: "#F0F0F0",
   text: "#000000",
   primary: "#392ed7",
   accent: "#ff6a3d",

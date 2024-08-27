@@ -63,7 +63,7 @@ const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
 const styles = StyleSheet.create({
   slide: {
     width: "100%",
-    maxWidth: 1100,
+    maxWidth: 1080,
     borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",

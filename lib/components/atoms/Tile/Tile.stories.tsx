@@ -1,13 +1,13 @@
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
-import RewardTile from "./index";
+import Tile from "./index";
 
 export default {
-  title: "components/organisms/RewardTile",
-  component: RewardTile,
+  title: "components/atoms/Tile",
+  component: Tile,
 } as Meta;
 
-const Template: StoryFn<typeof RewardTile> = (args) => <RewardTile {...args} />;
+const Template: StoryFn<typeof Tile> = (args) => <Tile {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -15,4 +15,7 @@ export type Section = {
   title?: string;
   description?: string;
   tiles: Tile[];
+  pointsMultiplier?: number;
+  pointsPrefix?: string;
+  pointsSuffix?: string;
 };

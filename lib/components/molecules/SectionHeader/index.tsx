@@ -12,9 +12,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   description,
 }) => {
   return (
-    <>
+    <View style={styles.sectionHeader}>
       {title || description ? (
-        <View style={styles.sectionHeader}>
+        <>
           {title && (
             <Text variant="title" style={styles.sectionTitle}>
               {title}
@@ -25,15 +25,16 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
               {description}
             </Text>
           )}
-        </View>
+        </>
       ) : null}
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   sectionHeader: {
     marginBottom: 20,
+    paddingHorizontal: 15,
   },
   sectionTitle: {
     fontSize: 24,

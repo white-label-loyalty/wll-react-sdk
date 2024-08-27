@@ -1,6 +1,5 @@
 import { useTheme } from "@/context/ThemeContext";
 import { Size, ThemeObject, Variant } from "@/types/theme";
-import { sizes } from "@/utils/styling";
 import { createVariantSystem } from "@/utils/variant";
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
@@ -11,26 +10,28 @@ export type ProgressBarProps = {
   height?: Size;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    borderRadius: sizes.borderRadiusRounded,
-    overflow: "hidden",
-  },
-  progress: {
-    borderRadius: sizes.borderRadiusRounded,
-    height: "100%",
-  },
-});
-
-const containerStyles = {
-  sm: { height: sizes.sm },
-  md: { height: sizes.md },
-  lg: { height: sizes.lg },
+const useStyles = (theme: ThemeObject) => {
+  return StyleSheet.create({
+    container: {
+      width: "100%",
+      borderRadius: theme.sizes.borderRadiusRounded,
+      overflow: "hidden",
+    },
+    progress: {
+      borderRadius: theme.sizes.borderRadiusRounded,
+      height: "100%",
+    },
+  });
 };
 
+const useContainerStyles = (theme: ThemeObject) => ({
+  sm: { height: theme.sizes.sm },
+  md: { height: theme.sizes.md },
+  lg: { height: theme.sizes.lg },
+});
+
 const useProgressStyles = createVariantSystem(
-  styles.progress,
+  (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusRounded }),
   (theme: ThemeObject) => ({
     primary: { backgroundColor: theme.primary },
     accent: { backgroundColor: theme.accent },
@@ -42,15 +43,18 @@ const useProgressStyles = createVariantSystem(
 const ProgressBar: React.FC<ProgressBarProps> = ({
   percentage,
   variant = "primary",
-  height = "md",
+  height = "sm",
 }) => {
   const { theme } = useTheme();
+  const styles = useStyles(theme);
+  const containerStyles = useContainerStyles(theme);
+  const progressStyles = useProgressStyles(theme, variant);
+
   const containerStyle = [
     styles.container,
     containerStyles[height],
-    { backgroundColor: theme.derivedBackground },
+    { backgroundColor: theme.derivedSurface[20] },
   ];
-  const progressStyle = useProgressStyles(theme, variant);
 
   const progressWidth: ViewStyle = {
     width: `${Math.min(Math.max(percentage, 0), 100)}%`,
@@ -58,7 +62,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <View style={containerStyle}>
-      <View style={[styles.progress, progressStyle, progressWidth]} />
+      <View style={[styles.progress, progressStyles, progressWidth]} />
     </View>
   );
 };
