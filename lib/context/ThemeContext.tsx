@@ -5,7 +5,7 @@ import {
   ThemeObject,
   ThemeProviderProps,
 } from "../types/theme";
-import { defaultTheme } from "../utils/styling";
+import { defaultTheme, sizes } from "../utils/styling";
 import {
   getDerivedColor,
   getDerivedColorPercentages,
