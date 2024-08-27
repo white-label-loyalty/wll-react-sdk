@@ -1,7 +1,8 @@
 {
   "name": "wll-react-sdk",
   "version": "1.0.0",
-  "license": "MIT",
+  "main": "lib/index.ts",
+  // "types": "lib/index.d.ts",
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
