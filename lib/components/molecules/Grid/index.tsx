@@ -4,7 +4,7 @@ import { Section as SectionData } from "../../../types/section";
 import { Tile, TileHeight, TileType } from "../../../types/tile";
 import { useResponsiveScale } from "../../../utils/responsiveScaling";
 import { TileContainer } from "../../atoms";
-import SectionHeader from "../SectionHeader";
+import { SectionHeader } from "../../molecules";
 
 type GridProps = {
   section: SectionData;

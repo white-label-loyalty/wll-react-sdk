@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Section } from "lucide-react";
 import React from "react";
 import { View } from "react-native";
+import { Section } from "../../../components/organisms";
 import { SectionType } from "../../../types/section";
 import {
   BannerTileConfig,
