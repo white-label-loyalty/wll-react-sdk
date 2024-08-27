@@ -1,6 +1,6 @@
-import { Text } from "@/components/atoms";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { Text } from "../../atoms";
 
 type SectionHeaderProps = {
   title?: string;

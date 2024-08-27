@@ -1,6 +1,6 @@
-import { sizes } from "@/utils/styling";
-import { DerivedColors } from "@/utils/themeHelpers";
 import { ReactNode } from "react";
+import { sizes } from "../utils/styling";
+import { DerivedColors } from "../utils/themeHelpers";
 
 export type BaseThemeObject = {
   accent: string;

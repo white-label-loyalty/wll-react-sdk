@@ -1,13 +1,4 @@
 import {
-  BadgeTile,
-  BannerTile,
-  ContentTile,
-  PointsTile,
-  RewardCategoryTile,
-  RewardTile,
-  TierTile,
-} from "@/components/organisms";
-import {
   BadgeTileConfig,
   BannerTileConfig,
   ContentTileConfig,
@@ -17,8 +8,18 @@ import {
   TierTileConfig,
   Tile,
   TileType,
-} from "@/types/tile";
-import { useResponsiveScale } from "@/utils/responsiveScaling";
+} from "../../../types/tile";
+import { useResponsiveScale } from "../../../utils/responsiveScaling";
+import {
+  BadgeTile,
+  BannerTile,
+  ContentTile,
+  PointsTile,
+  RewardCategoryTile,
+  RewardTile,
+  TierTile,
+} from "../../organisms";
+
 import React from "react";
 import { StyleSheet, View } from "react-native";
 

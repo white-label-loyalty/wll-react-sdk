@@ -1,9 +1,9 @@
-import { useTheme } from "@/context/ThemeContext";
-import { Variant } from "@/types/theme";
-import { useResponsiveScale } from "@/utils/responsiveScaling";
-import { createVariantSystem } from "@/utils/variant";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { Variant } from "../../../types/theme";
+import { useResponsiveScale } from "../../../utils/responsiveScaling";
+import { createVariantSystem } from "../../../utils/variant";
 
 type ButtonProps = {
   title: string;

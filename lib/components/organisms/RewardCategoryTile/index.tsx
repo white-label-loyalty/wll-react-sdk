@@ -1,8 +1,7 @@
-import Tile from "@/components/atoms/Tile";
-import { useTheme } from "@/context/ThemeContext";
-import { RewardCategoryTileConfig } from "@/types/tile";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { RewardCategoryTileConfig } from "../../../types/tile";
 
 type RewardCategoryTileProps = {
   configuration: RewardCategoryTileConfig;

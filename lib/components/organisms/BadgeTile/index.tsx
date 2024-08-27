@@ -1,8 +1,8 @@
-import { Icon, Text } from "@/components/atoms";
-import Tile from "@/components/atoms/Tile";
-import { useSectionContext } from "@/components/organisms/Section";
-import { BadgeTileConfig } from "@/types/tile";
-import { createResponsiveStyle } from "@/utils/responsiveHelper";
+import { BadgeTileConfig } from "../../../types/tile";
+import { createResponsiveStyle } from "../../../utils/responsiveHelper";
+import { Icon, Text, Tile } from "../../atoms";
+import { useSectionContext } from "../Section";
+
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 

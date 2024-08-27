@@ -1,8 +1,8 @@
-import { Icon, ProgressBar } from "@/components/atoms";
-import { useTheme } from "@/context/ThemeContext";
-import { Size, Variant } from "@/types/theme";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { Size, Variant } from "../../../types/theme";
+import { Icon, ProgressBar } from "../../atoms";
 
 export type ProgressIndicatorProps = {
   currentPoints: number;

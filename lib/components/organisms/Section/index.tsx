@@ -1,8 +1,9 @@
-import { Icon } from "@/components/atoms";
-import { Carousel, Grid } from "@/components/molecules";
-import { useSDK } from "@/context/SDKContext";
-import { useTheme } from "@/context/ThemeContext";
-import { Section as SectionData, SectionType } from "@/types/section";
+import { useSDK } from "../../../context/SDKContext";
+import { useTheme } from "../../../context/ThemeContext";
+import { Section as SectionData, SectionType } from "../../../types/section";
+import { Icon } from "../../atoms";
+import { Carousel, Grid } from "../../molecules";
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 

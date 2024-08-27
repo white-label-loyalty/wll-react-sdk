@@ -1,5 +1,5 @@
 import Carousel from "./Carousel";
+import Grid from "./Grid";
 import ProgressIndicator from "./ProgressIndicator";
 import SectionHeader from "./SectionHeader";
-export { Carousel, ProgressIndicator, SectionHeader , Grid};
-import Grid from './Grid';
+export { Carousel, Grid, ProgressIndicator, SectionHeader };

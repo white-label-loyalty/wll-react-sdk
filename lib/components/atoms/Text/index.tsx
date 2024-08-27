@@ -1,5 +1,3 @@
-import { useTheme } from "@/context/ThemeContext";
-import { createResponsiveStyle } from "@/utils/responsiveHelper";
 import React from "react";
 import {
   Text as RNText,
@@ -7,6 +5,8 @@ import {
   StyleSheet,
   TextStyle,
 } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { createResponsiveStyle } from "../../../utils/responsiveHelper";
 
 type TextVariant =
   | "eyebrow"

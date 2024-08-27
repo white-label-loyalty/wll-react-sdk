@@ -1,8 +1,8 @@
-import { Button, Text } from "@/components/atoms";
-import { useTheme } from "@/context/ThemeContext";
-import { BannerTileConfig } from "@/types/tile";
 import React from "react";
 import { Image, Linking, StyleSheet, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { BannerTileConfig } from "../../../types/tile";
+import { Button, Text } from "../../atoms";
 
 type BannerTileProps = {
   configuration: BannerTileConfig;

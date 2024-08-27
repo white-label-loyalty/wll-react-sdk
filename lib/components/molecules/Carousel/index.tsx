@@ -1,9 +1,3 @@
-import { Icon } from "@/components/atoms";
-import { SectionHeader } from "@/components/molecules";
-import { BannerTile } from "@/components/organisms/";
-import { useTheme } from "@/context/ThemeContext";
-import { Section } from "@/types/section";
-import { BannerTileConfig, Tile, TileType } from "@/types/tile";
 import React, { useRef, useState } from "react";
 import {
   NativeScrollEvent,
@@ -13,6 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { Section } from "../../../types/section";
+import { BannerTileConfig, Tile, TileType } from "../../../types/tile";
+import { Icon } from "../../atoms";
+import { SectionHeader } from "../../molecules";
+import { BannerTile } from "../../organisms";
 
 type CarouselProps = {
   section: Section;

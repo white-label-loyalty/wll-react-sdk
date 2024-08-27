@@ -1,23 +1,18 @@
 // @ts-nocheck
-import { Text } from "@/components/atoms";
-import Tile from "@/components/atoms/Tile";
-import { ProgressIndicator } from "@/components/molecules";
-import { useSectionContext } from "@/components/organisms/Section";
-import { useTheme } from "@/context/ThemeContext";
-import { TierTileConfig, TierTileType } from "@/types/tile";
-import { useResponsiveScale } from "@/utils/responsiveScaling";
+// TODO: Fix this file
 import React from "react";
 import { View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { TierTileConfig, TierTileType } from "../../../types/tile";
+import { useResponsiveScale } from "../../../utils/responsiveScaling";
+import { Text, Tile } from "../../atoms";
+import { ProgressIndicator } from "../../molecules";
 
 type TierTileProps = {
   configuration: TierTileConfig;
 };
 
 const TierTile: React.FC<TierTileProps> = ({ configuration }) => {
-  const { ms, ps } = useResponsiveScale();
-  const { loading } = useSectionContext();
-  const { theme } = useTheme();
-
   if (!configuration?.tier) return null;
 
   const renderTierTileContent = () => {

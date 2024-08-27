@@ -1,9 +1,9 @@
-import { TileContainer } from "@/components/atoms";
-import { Section as SectionData } from "@/types/section";
-import { Tile, TileHeight, TileType } from "@/types/tile";
-import { useResponsiveScale } from "@/utils/responsiveScaling";
 import React from "react";
 import { StyleSheet, useWindowDimensions, View } from "react-native";
+import { Section as SectionData } from "../../../types/section";
+import { Tile, TileHeight, TileType } from "../../../types/tile";
+import { useResponsiveScale } from "../../../utils/responsiveScaling";
+import { TileContainer } from "../../atoms";
 import SectionHeader from "../SectionHeader";
 
 type GridProps = {

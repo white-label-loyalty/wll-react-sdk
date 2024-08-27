@@ -1,6 +1,6 @@
-import { Section } from "@/types/section";
-import { Tile } from "@/types/tile";
 import React, { createContext, ReactNode, useContext } from "react";
+import { Section } from "../types/section";
+import { Tile } from "../types/tile";
 
 type SDKConfig = {
   apiKey: string;

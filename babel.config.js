@@ -4,17 +4,5 @@ module.exports = {
     "@babel/preset-react",
     "@babel/preset-typescript",
   ],
-  plugins: [
-    "@babel/plugin-proposal-export-namespace-from",
-    "react-native-web",
-    [
-      "module-resolver",
-      {
-        root: ["./lib"],
-        alias: {
-          "@": "./lib",
-        },
-      },
-    ],
-  ],
+  plugins: ["@babel/plugin-proposal-export-namespace-from", "react-native-web"],
 };

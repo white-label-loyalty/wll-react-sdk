@@ -1,8 +1,8 @@
-import { useTheme } from "@/context/ThemeContext";
-import { Size, ThemeObject, Variant } from "@/types/theme";
-import { createVariantSystem } from "@/utils/variant";
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { Size, ThemeObject, Variant } from "../../../types/theme";
+import { createVariantSystem } from "../../../utils/variant";
 
 export type ProgressBarProps = {
   percentage: number;

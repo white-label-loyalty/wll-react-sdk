@@ -14,11 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-native",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["lib/*"]
-    }
+    "jsx": "react-native"
   },
   "include": ["lib"]
 }

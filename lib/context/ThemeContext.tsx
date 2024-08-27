@@ -1,9 +1,3 @@
-import { defaultTheme, sizes } from "@/utils/styling";
-import {
-  getDerivedColor,
-  getDerivedColorPercentages,
-  getReadableTextColor,
-} from "@/utils/themeHelpers";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   BaseThemeObject,
@@ -11,6 +5,12 @@ import {
   ThemeObject,
   ThemeProviderProps,
 } from "../types/theme";
+import { defaultTheme } from "../utils/styling";
+import {
+  getDerivedColor,
+  getDerivedColorPercentages,
+  getReadableTextColor,
+} from "../utils/themeHelpers";
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 

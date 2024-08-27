@@ -1,9 +1,8 @@
-import { Text } from "@/components/atoms";
-import Tile from "@/components/atoms/Tile";
-import { useTheme } from "@/context/ThemeContext";
-import { PointsTileConfig } from "@/types/tile";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { PointsTileConfig } from "../../../types/tile";
+import { Text, Tile } from "../../atoms";
 import { useSectionContext } from "../Section";
 
 type PointsTileProps = {

@@ -1,4 +1,4 @@
-import { BaseThemeObject } from "@/types/theme";
+import { BaseThemeObject } from "../types/theme";
 
 export const sizes = {
   borderRadius: 15,

@@ -1,8 +1,8 @@
-import { useSectionContext } from "@/components/organisms/Section";
-import { useTheme } from "@/context/ThemeContext";
 import Color from "color";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
+import { useSectionContext } from "../../organisms/Section";
 import LoadingIndicator from "../LoadingIndicator";
 
 type TileProps = {

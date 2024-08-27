@@ -1,6 +1,6 @@
-import { useTheme } from "@/context/ThemeContext";
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { useTheme } from "../../../context/ThemeContext";
 
 type LoadingIndicatorProps = {
   // Define your props here

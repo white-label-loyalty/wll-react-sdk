@@ -1,10 +1,10 @@
-import { Text } from "@/components/atoms";
-import Tile from "@/components/atoms/Tile";
-import { useSectionContext } from "@/components/organisms/Section";
-import { ContentTileConfig } from "@/types/tile";
-import { createResponsiveStyle } from "@/utils/responsiveHelper";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+import { ContentTileConfig } from "../../../types/tile";
+import { createResponsiveStyle } from "../../../utils/responsiveHelper";
+import { Text, Tile } from "../../atoms";
+
+import { useSectionContext } from "../Section";
 type ContentTileProps = {
   configuration: ContentTileConfig;
 };

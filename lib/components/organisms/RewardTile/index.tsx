@@ -1,11 +1,11 @@
+import React, { createContext, useContext } from "react";
+import { RewardTileConfig } from "../../../types/tile";
 import {
   Button as ButtonAtom,
   Image as ImageAtom,
   Text,
-} from "@/components/atoms";
-import Tile from "@/components/atoms/Tile";
-import { RewardTileConfig } from "@/types/tile";
-import React, { createContext, useContext } from "react";
+  Tile,
+} from "../../atoms";
 
 type RewardTileContextType = {
   configuration: RewardTileConfig;
