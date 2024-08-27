@@ -7,6 +7,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc && babel lib --out-dir dist --extensions \".ts,.tsx\" --config-file ./babel.config.js",
     "build:types": "tsc --emitDeclarationOnly",
