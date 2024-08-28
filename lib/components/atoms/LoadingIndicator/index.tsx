@@ -15,7 +15,7 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
         styles.container,
         {
           backgroundColor: theme.surface,
-          borderRadius: theme.sizes.borderRadius,
+          borderRadius: theme.sizes.borderRadiusSm,
           padding: theme.sizes.md,
         },
       ]}

@@ -14,11 +14,11 @@ const useStyles = (theme: ThemeObject) => {
   return StyleSheet.create({
     container: {
       width: "100%",
-      borderRadius: theme.sizes.borderRadiusRounded,
+      borderRadius: theme.sizes.borderRadiusSmRounded,
       overflow: "hidden",
     },
     progress: {
-      borderRadius: theme.sizes.borderRadiusRounded,
+      borderRadius: theme.sizes.borderRadiusSmRounded,
       height: "100%",
     },
   });
@@ -32,7 +32,7 @@ const useContainerStyles = (theme: ThemeObject) => ({
 
 const useProgressStyles = createVariantSystem(
   // @ts-ignore
-  (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusRounded }),
+  (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusSmRounded }),
   (theme: ThemeObject) => ({
     primary: { backgroundColor: theme.primary },
     accent: { backgroundColor: theme.accent },

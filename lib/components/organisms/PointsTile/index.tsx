@@ -32,7 +32,7 @@ const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
     container: {
       padding: theme.sizes.md,
       maxWidth: 270,
-      borderRadius: theme.sizes.borderRadius,
+      borderRadius: theme.sizes.borderRadiusSm,
       width: "100%",
       flexDirection: "row",
       alignItems: "center",

@@ -84,7 +84,7 @@ const SectionContent: React.FC = () => {
       <View
         style={[
           styles.sectionContent,
-          { borderRadius: theme.sizes.borderRadius },
+          { borderRadius: theme.sizes.borderRadiusSm },
         ]}
       >
         <Icon name="AlertTriangle" size={24} color="#967132" />

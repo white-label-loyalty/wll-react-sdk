@@ -3,8 +3,8 @@ import { Dimensions } from "react-native";
 // Define breakpoints
 const BREAKPOINTS = {
   MOBILE: 0,
-  TABLET: 600,
-  DESKTOP: 1024,
+  TABLET: 767,
+  DESKTOP: 768,
 };
 
 type ResponsiveStyle<T> = {

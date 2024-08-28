@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../context/ThemeContext";
 import { useSectionContext } from "../../organisms/Section";
 import LoadingIndicator from "../LoadingIndicator";
+import { createResponsiveStyle } from "../../../utils/responsiveHelper";
 
 type TileProps = {
   children: React.ReactNode;
@@ -13,6 +14,11 @@ const Tile: React.FC<TileProps> = ({ children }) => {
   const { loading: isLoading } = useSectionContext();
   const { theme } = useTheme();
 
+  const responsiveStyles = createResponsiveStyle({
+    borderRadius: [theme.sizes.borderRadiusSm, theme.sizes.borderRadiusSm, theme.sizes.borderRadiusLg],
+    maxWidth: [270, 270, 320],
+  });
+
   return (
     <View
       style={[
@@ -20,7 +26,8 @@ const Tile: React.FC<TileProps> = ({ children }) => {
         {
           backgroundColor: theme.surface,
           borderColor: Color(theme.surface).darken(0.02).string(),
-          borderRadius: theme.sizes.borderRadius,
+          borderRadius: responsiveStyles.borderRadius,
+          maxWidth: responsiveStyles.maxWidth,
         },
       ]}
     >
@@ -37,7 +44,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "center",
     position: "relative",
-    maxWidth: 270,
     borderWidth: 1,
     aspectRatio: 1,
     // shadowColor: "#AAAAAA",

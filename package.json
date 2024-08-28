@@ -13,9 +13,6 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.cjs --bundleConfigAsCjs",
-    "build:types": "tsc --emitDeclarationOnly",
-    "prepare": "yarn build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",

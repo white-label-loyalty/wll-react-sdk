@@ -66,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
 
   return (
     <TouchableOpacity
-      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
+      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusSmButton }]}
       onPress={onPress}
     >
       <View style={styles.buttonInner}>
