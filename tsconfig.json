@@ -3,24 +3,14 @@
     "target": "es5",
     "module": "esnext",
     "lib": ["dom", "esnext"],
-    "jsx": "react-native",
+    "jsx": "react",
     "declaration": true,
     "declarationDir": "dist",
-    "outDir": "dist",
-    "rootDir": "lib",
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true
   },
   "include": ["lib"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.stories.tsx",
-    "**/*.test.ts",
-    "**/*.test.tsx"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

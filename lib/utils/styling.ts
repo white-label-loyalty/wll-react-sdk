@@ -10,8 +10,6 @@ export const sizes = {
 };
 
 export const defaultTheme: BaseThemeObject = {
-  fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,"Helvetica Neue", sans-serif;',
   background: "#F0F0F0",
   text: "#000000",
   primary: "#392ed7",

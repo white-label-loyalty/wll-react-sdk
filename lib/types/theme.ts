@@ -6,7 +6,6 @@ export type BaseThemeObject = {
   accent: string;
   background: string;
   errorPrimary: string;
-  fontFamily: string;
   negative: string;
   pageButtonBackground: string;
   pageButtonText: string;
