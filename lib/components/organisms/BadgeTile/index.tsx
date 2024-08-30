@@ -1,6 +1,6 @@
 import { BadgeTileConfig } from "../../../types/tile";
 import { createResponsiveStyle } from "../../../utils/responsiveHelper";
-import { Icon, Text, Tile } from "../../atoms";
+import { Icon, Text, BaseTile } from "../../atoms";
 import { useSectionContext } from "../Section";
 
 import React from "react";

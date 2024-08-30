@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,
   StyleSheet,
   TextStyle,
-} from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { createResponsiveStyle } from "../../../utils/responsiveHelper";
+} from 'react-native';
+import { useTheme } from '../../../context/ThemeContext';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 
 type TextVariant =
-  | "eyebrow"
-  | "title"
-  | "subtitle"
-  | "body"
-  | "caption"
-  | "label";
+  | 'eyebrow'
+  | 'title'
+  | 'subtitle'
+  | 'body'
+  | 'caption'
+  | 'label';
 
 type TextProps = RNTextProps & {
   variant?: TextVariant;
@@ -23,7 +23,7 @@ type TextProps = RNTextProps & {
 };
 
 export const Text: React.FC<TextProps> = ({
-  variant = "body",
+  variant = 'body',
   style,
   isSurface = false,
   ...props
@@ -32,30 +32,34 @@ export const Text: React.FC<TextProps> = ({
 
   const getVariantStyle = (variant: TextVariant): TextStyle => {
     const baseStyle = {
-      color: theme.text,
+      color: theme.surfaceText,
     };
     switch (variant) {
-      case "eyebrow":
+      case 'eyebrow':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "title":
+      case 'title':
+        return createResponsiveStyle({
+          ...baseStyle,
+          fontSize: 14,
+          fontWeight: 'bold',
+          marginBottom: [4, 4, 8],
+        });
+      case 'subtitle':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "subtitle":
+      case 'body':
+        return createResponsiveStyle({
+          color: theme.derivedSurfaceText[20],
+          fontSize: 10,
+        });
+      case 'caption':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "body":
-        return createResponsiveStyle({
-          ...baseStyle,
-        });
-      case "caption":
-        return createResponsiveStyle({
-          ...baseStyle,
-        });
-      case "label":
+      case 'label':
         return createResponsiveStyle({
           ...baseStyle,
         });

@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { useTheme } from "../../../context/ThemeContext";
 import { RewardCategoryTileConfig } from "../../../types/tile";
-import { Tile } from "../../atoms";
+import { BaseTile } from "../../atoms";
 
 type RewardCategoryTileProps = {
   configuration: RewardCategoryTileConfig;

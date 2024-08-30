@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { useTheme } from "../../../context/ThemeContext";
 import { PointsTileConfig } from "../../../types/tile";
-import { Text, Tile } from "../../atoms";
+import { Text, BaseTile } from "../../atoms";
 import { useSectionContext } from "../Section";
 
 type PointsTileProps = {

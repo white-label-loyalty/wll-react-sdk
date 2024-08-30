@@ -1,33 +1,34 @@
 export enum CtaAction {
-  sameWindow = "SAME_WINDOW",
-  newWindow = "NEW_WINDOW",
+  sameWindow = 'SAME_WINDOW',
+  newWindow = 'NEW_WINDOW',
 }
 
 export enum BadgeTileType {
-  latestEarned = "LATEST_EARNED",
-  specificBadge = "SPECIFIC_BADGE",
+  latestEarned = 'LATEST_EARNED',
+  specificBadge = 'SPECIFIC_BADGE',
 }
 
 export enum TierTileType {
-  currentTier = "CURRENT_TIER",
-  nextTier = "NEXT_TIER",
-  specificTier = "SPECIFIC_TIER",
+  currentTier = 'CURRENT_TIER',
+  nextTier = 'NEXT_TIER',
+  specificTier = 'SPECIFIC_TIER',
 }
 
 export enum TileType {
-  Banner = "BANNER",
-  Points = "POINTS",
-  Content = "CONTENT",
-  Reward = "REWARD",
-  Badge = "BADGE",
-  RewardCategory = "REWARD_CATEGORY",
-  Tier = "TIER",
+  Banner = 'BANNER',
+  Points = 'POINTS',
+  Content = 'CONTENT',
+  Reward = 'REWARD',
+  Badge = 'BADGE',
+  RewardCategory = 'REWARD_CATEGORY',
+  Tier = 'TIER',
 }
 
 export enum TileHeight {
-  Half = "HALF",
-  Full = "FULL",
+  Half = 'HALF',
+  Full = 'FULL',
 }
+
 type Badge = {
   id: string;
   name: string;
@@ -36,6 +37,7 @@ type Badge = {
   createdAt: string;
   updatedAt: string;
 };
+
 export class RewardCategory {
   name?: string;
   priority?: number;

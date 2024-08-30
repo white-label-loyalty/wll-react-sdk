@@ -1,4 +1,4 @@
-import Color from "color";
+import Color from 'color';
 
 export const getDerivedColor = (color: string): string => {
   const backgroundColor = Color(color);
@@ -9,8 +9,8 @@ export const getDerivedColor = (color: string): string => {
 
 export const getReadableTextColor = (backgroundColor: string): string => {
   const bgColor = Color(backgroundColor);
-  const white = Color("#fff");
-  const black = Color("#000");
+  const white = Color('#fff');
+  const black = Color('#000');
 
   // Calculate contrast ratio with white
   const contrastWithWhite = bgColor.contrast(white);
@@ -36,11 +36,11 @@ export const getDerivedColorPercentages = (color: string): DerivedColors => {
   percentages.forEach((percentage) => {
     let derivedColor: Color;
     if (isDark) {
-      // For dark colors, lighten
-      derivedColor = baseColor.lighten(percentage / 100);
+      // For dark colors, set lightness directly
+      derivedColor = baseColor.lightness(percentage);
     } else {
-      // For light colors, darken
-      derivedColor = baseColor.darken(percentage / 100);
+      // For light colors, invert the percentage
+      derivedColor = baseColor.lightness(100 - percentage);
     }
     result[percentage] = derivedColor.hex();
   });

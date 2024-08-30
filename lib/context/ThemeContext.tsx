@@ -1,16 +1,16 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 import {
   BaseThemeObject,
   ThemeContextType,
   ThemeObject,
   ThemeProviderProps,
-} from "../types/theme";
-import { defaultTheme, sizes } from "../utils/styling";
+} from '../types/theme';
+import { defaultTheme, sizes } from '../utils/styling';
 import {
   getDerivedColor,
   getDerivedColorPercentages,
   getReadableTextColor,
-} from "../utils/themeHelpers";
+} from '../utils/themeHelpers';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -63,7 +63,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({
 const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
 };

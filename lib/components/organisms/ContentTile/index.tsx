@@ -1,54 +1,45 @@
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { ContentTileConfig } from "../../../types/tile";
-import { createResponsiveStyle } from "../../../utils/responsiveHelper";
-import { Text, Tile } from "../../atoms";
+import React, { FC, ReactNode } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Tile } from '../../../types/tile';
+import BaseTile from '../../atoms/BaseTile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 
-import { useSectionContext } from "../Section";
 type ContentTileProps = {
-  configuration: ContentTileConfig;
+  tile: Tile;
+  children?: ReactNode;
 };
 
-const ContentTile: React.FC<ContentTileProps> = ({ configuration }) => {
-  const { loading } = useSectionContext();
-  if (!configuration) return null;
-  const { title, subtitle, imageUrl } = configuration;
-  const responsiveStyles = {
-    title: createResponsiveStyle({
-      marginBottom: [4, 8, 12],
-    }),
-  };
+const ContentTile: FC<ContentTileProps> = ({ children, tile }) => {
   return (
-    <Tile>
-      <View style={styles.textContainer}>
-        <Text variant="title" style={responsiveStyles.title}>
-          {title}
-        </Text>
-        <Text variant="body">{subtitle}</Text>
-      </View>
-      {imageUrl && (
-        <Image
-          source={{ uri: imageUrl }}
-          style={styles.image}
-          resizeMode="cover"
-        />
+    <BaseTile tile={tile}>
+      {children || (
+        <>
+          <BaseTile.Image style={styles.image} />
+          <View style={styles.textContainer}>
+            <BaseTile.Title />
+            <BaseTile.Body />
+          </View>
+        </>
       )}
-    </Tile>
+    </BaseTile>
   );
 };
 
 const styles = StyleSheet.create({
   textContainer: {
-    width: "100%",
-    position: "relative",
-    zIndex: 10,
     paddingHorizontal: 8,
   },
-  image: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
+  subtitle: {
+    fontSize: 14,
+  },
+  image: createResponsiveStyle({
+    width: '100%',
+    marginBottom: [8, 8, 12],
+  }),
 });
 
 export default ContentTile;

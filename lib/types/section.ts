@@ -1,8 +1,8 @@
-import { Tile } from "./tile";
+import { Tile } from './tile';
 
 export enum SectionType {
-  Grid = "GRID",
-  Banner = "BANNER",
+  Grid = 'GRID',
+  Banner = 'BANNER',
 }
 
 export type Section = {
