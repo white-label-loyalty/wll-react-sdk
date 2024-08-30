@@ -26,9 +26,9 @@ const ContentTile: FC<ContentTileProps> = ({ children, tile }) => {
 };
 
 const styles = StyleSheet.create({
-  textContainer: {
-    paddingHorizontal: 8,
-  },
+  textContainer: createResponsiveStyle({
+    paddingHorizontal: [8, 8, 12],
+  }),
   title: {
     fontSize: 16,
     fontWeight: 'bold',
