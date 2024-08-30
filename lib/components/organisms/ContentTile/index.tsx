@@ -29,13 +29,6 @@ const styles = StyleSheet.create({
   textContainer: createResponsiveStyle({
     paddingHorizontal: [8, 8, 12],
   }),
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 14,
-  },
   image: createResponsiveStyle({
     width: '100%',
     marginBottom: [8, 8, 12],
