@@ -1,55 +1,93 @@
-import { BadgeTileConfig } from "../../../types/tile";
-import { createResponsiveStyle } from "../../../utils/responsiveHelper";
-import { Icon, Text, BaseTile } from "../../atoms";
-import { useSectionContext } from "../Section";
-
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import React, { FC } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { BaseTile, Icon, Text } from '../../atoms';
+import { Tile, TileConfig } from '../../../types/tile';
+import { useTileContext } from '../../atoms/BaseTile';
+import { ImagePropsNoSource } from '../../../types/common';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { Badge } from '../../../types/wll';
+import { useTheme } from '../../../context/ThemeContext';
 
 type BadgeTileProps = {
-  configuration: BadgeTileConfig;
+  tile: Tile;
 };
 
-const BadgeTile: React.FC<BadgeTileProps> = ({ configuration }) => {
-  const { loading } = useSectionContext();
-  const { badge } = configuration;
+type BadgeTileComponent = FC<BadgeTileProps> & {
+  Title: FC;
+  Body: FC;
+  Image: FC<ImagePropsNoSource>;
+};
+
+const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
+  const { theme } = useTheme();
   return (
-    <Tile>
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: badge?.artworkUrl }} style={styles.image} />
-      </View>
+    <BaseTile tile={tile}>
+      <BadgeTile.Image style={styles.image} />
       <View style={styles.textContainer}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text variant="title">{badge?.name}</Text>
-          <Icon name="ChevronRight" size={16} color="#666" />
+        <View style={styles.row}>
+          <BadgeTile.Title />
+          <Icon
+            name="ChevronRight"
+            size={16}
+            color={theme.derivedSurfaceText[20]}
+          />
         </View>
-        <Text variant="body">{badge?.description}</Text>
+        <BadgeTile.Body />
       </View>
-    </Tile>
+    </BaseTile>
   );
 };
 
+const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
+  const tile = useTileContext();
+  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  if (!badge) return null;
+  return <Image {...props} source={{ uri: badge.artworkUrl }} />;
+};
+
+const BadgeTileTitle: FC = (props) => {
+  const tile = useTileContext();
+  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  if (!badge) return null;
+  return (
+    <Text variant="title" {...props}>
+      {badge.name}
+    </Text>
+  );
+};
+
+const BadgeTileBody: FC = (props) => {
+  const tile = useTileContext();
+  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  if (!badge) return null;
+  return (
+    <Text variant="body" {...props}>
+      {badge.description}
+    </Text>
+  );
+};
+
+export const BadgeTile = BadgeTileInner as BadgeTileComponent;
+
+BadgeTile.Image = BadgeTileImage;
+BadgeTile.Title = BadgeTileTitle;
+BadgeTile.Body = BadgeTileBody;
+
 const styles = StyleSheet.create({
-  image: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-  },
-  imageContainer: {
-    width: "100%",
-    flex: 1,
-    position: "relative",
-    overflow: "hidden",
-  },
   textContainer: createResponsiveStyle({
-    padding: [8, 10, 12],
+    paddingHorizontal: [8, 8, 12],
     flex: 1,
+  }),
+  image: createResponsiveStyle({
+    width: '100%',
+    flexBasis: '50%',
+    marginBottom: [8, 8, 12],
+  }),
+  row: createResponsiveStyle({
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: [4, 4, 8],
   }),
 });
 

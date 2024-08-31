@@ -42,9 +42,8 @@ export const Text: React.FC<TextProps> = ({
       case 'title':
         return createResponsiveStyle({
           ...baseStyle,
-          fontSize: 14,
+          fontSize: [14, 14, 24],
           fontWeight: 'bold',
-          marginBottom: [4, 4, 8],
         });
       case 'subtitle':
         return createResponsiveStyle({

@@ -1,12 +1,13 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
 import { StyleSheet, View, Image, ImageProps } from 'react-native';
 import Color from 'color';
-import { Text } from '../../atoms';
+import { Icon, Text } from '../../atoms';
 import { useTheme } from '../../../context/ThemeContext';
 import { useSectionContext } from '../../organisms/Section';
 import LoadingIndicator from '../LoadingIndicator';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Tile, TileConfig } from '../../../types/tile';
+import { ImagePropsNoSource } from '../../../types/common';
 
 const TileContext = createContext<Tile | null>(null);
 
@@ -17,8 +18,6 @@ export const useTileContext = () => {
   }
   return context;
 };
-
-type ImagePropsNoSource = Omit<ImageProps, 'source'>;
 
 type BaseTileProps = {
   tile: Tile;
@@ -41,7 +40,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
       theme.sizes.borderRadiusSm,
       theme.sizes.borderRadiusLg,
     ],
-    maxWidth: [175, 175, 175],
+    maxWidth: [175, 175, 258],
   });
 
   return (
@@ -51,7 +50,6 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
           styles.container,
           {
             backgroundColor: theme.surface,
-            borderColor: Color(theme.surface).darken(0.02).string(),
             borderRadius: responsiveStyles.borderRadius,
             maxWidth: responsiveStyles.maxWidth,
           },
@@ -65,14 +63,38 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
 
 const TileTitle: FC = () => {
   const tile = useTileContext();
-  const { title } = tile.configuration as TileConfig & { title?: string };
-  return title ? <Text variant="title">{title}</Text> : null;
+  const { theme } = useTheme();
+  const { title, linkURL } = tile.configuration as TileConfig & {
+    title?: string;
+    linkURL?: string;
+  };
+
+  if (!title) return null;
+
+  return (
+    <View style={styles.titleContainer} accessibilityRole="header">
+      <Text variant="title" accessibilityLabel={title}>
+        {title}
+      </Text>
+      {linkURL && (
+        <Icon
+          name="ChevronRight"
+          size={16}
+          color={theme.derivedSurfaceText[20]}
+        />
+      )}
+    </View>
+  );
 };
 
-const TileBody: FC = () => {
+const TileBody: FC = (props) => {
   const tile = useTileContext();
   const { subtitle } = tile.configuration as TileConfig & { subtitle?: string };
-  return subtitle ? <Text variant="body">{subtitle}</Text> : null;
+  return subtitle ? (
+    <Text variant="body" {...props} accessibilityLabel={subtitle}>
+      {subtitle}
+    </Text>
+  ) : null;
 };
 
 const TileImage: FC<ImagePropsNoSource> = (props) => {
@@ -113,9 +135,14 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'flex-start',
     position: 'relative',
-    borderWidth: 1,
     aspectRatio: 1,
   },
+  titleContainer: createResponsiveStyle({
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: [4, 4, 8],
+  }),
 });
 
 export default BaseTile;
