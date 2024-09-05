@@ -81,10 +81,17 @@ export class ContentTileConfig {
   title?: string;
   subtitle?: string;
   imageUrl?: string;
-  constructor(title?: string, subtitle?: string, imageUrl?: string) {
+  linkURL?: string;
+  constructor(
+    title?: string,
+    subtitle?: string,
+    imageUrl?: string,
+    linkURL?: string
+  ) {
     this.title = title;
     this.subtitle = subtitle;
     this.imageUrl = imageUrl;
+    this.linkURL = linkURL;
   }
 }
 

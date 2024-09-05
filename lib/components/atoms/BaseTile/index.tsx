@@ -1,13 +1,12 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
-import { StyleSheet, View, Image, ImageProps } from 'react-native';
-import Color from 'color';
-import { Icon, Text } from '../../atoms';
+import { FlexStyle, Image, StyleSheet, View, ViewStyle } from 'react-native';
 import { useTheme } from '../../../context/ThemeContext';
+import { ImagePropsNoSource } from '../../../types/common';
+import { Tile, TileConfig, TileHeight } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { Icon, Text } from '../../atoms';
 import { useSectionContext } from '../../organisms/Section';
 import LoadingIndicator from '../LoadingIndicator';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Tile, TileConfig } from '../../../types/tile';
-import { ImagePropsNoSource } from '../../../types/common';
 
 const TileContext = createContext<Tile | null>(null);
 
@@ -22,6 +21,7 @@ export const useTileContext = () => {
 type BaseTileProps = {
   tile: Tile;
   children: ReactNode;
+  style?: ViewStyle;
 };
 
 type BaseTileComponent = FC<BaseTileProps> & {
@@ -30,10 +30,22 @@ type BaseTileComponent = FC<BaseTileProps> & {
   Image: FC<ImagePropsNoSource>;
 };
 
-const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
+type LayoutProps = FlexStyle & {
+  justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between';
+};
+
+const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
   const { loading: isLoading } = useSectionContext();
   const { theme } = useTheme();
 
+  const layout: LayoutProps = {
+    flexDirection: 'column',
+    justifyContent:
+      tile.tileHeight === TileHeight.Half || !tile.configuration.imageUrl
+        ? 'center'
+        : 'flex-start',
+    alignItems: 'stretch',
+  };
   const responsiveStyles = createResponsiveStyle({
     borderRadius: [
       theme.sizes.borderRadiusSm,
@@ -53,6 +65,8 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
             borderRadius: responsiveStyles.borderRadius,
             maxWidth: responsiveStyles.maxWidth,
           },
+          layout,
+          style,
         ]}
       >
         {isLoading ? <LoadingIndicator /> : children}
@@ -64,22 +78,35 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children }) => {
 const TileTitle: FC = () => {
   const tile = useTileContext();
   const { theme } = useTheme();
-  const { title, linkURL } = tile.configuration as TileConfig & {
+  const { title, imageUrl, linkURL } = tile.configuration as TileConfig & {
     title?: string;
     linkURL?: string;
+    imageUrl?: string;
   };
+
+  const titleContainerStyle = createResponsiveStyle({
+    marginTop: [8, 8, 12],
+  });
 
   if (!title) return null;
 
   return (
-    <View style={styles.titleContainer} accessibilityRole="header">
+    <View
+      style={[
+        styles.titleContainer,
+        {
+          marginTop: imageUrl ? titleContainerStyle.marginTop : undefined,
+        },
+      ]}
+      accessibilityRole="header"
+    >
       <Text variant="title" accessibilityLabel={title}>
         {title}
       </Text>
       {linkURL && (
         <Icon
           name="ChevronRight"
-          size={16}
+          size={24}
           color={theme.derivedSurfaceText[20]}
         />
       )}
@@ -132,8 +159,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    alignItems: 'stretch',
-    justifyContent: 'flex-start',
     position: 'relative',
     aspectRatio: 1,
   },

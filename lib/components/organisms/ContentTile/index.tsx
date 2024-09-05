@@ -1,10 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Tile } from '../../../types/tile';
-import BaseTile from '../../atoms/BaseTile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Icon } from '../../atoms';
-import { useTheme } from '../../../context/ThemeContext';
+import BaseTile from '../../atoms/BaseTile';
 
 type ContentTileProps = {
   tile: Tile;
@@ -29,7 +27,6 @@ const styles = StyleSheet.create({
   }),
   image: createResponsiveStyle({
     width: '100%',
-    marginBottom: [8, 8, 12],
   }),
   row: createResponsiveStyle({
     flexDirection: 'row',

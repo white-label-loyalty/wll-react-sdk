@@ -1,5 +1,6 @@
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { View, ViewStyle } from 'react-native';
 import ContentTile from '.';
 import { TileHeight, TileType } from '../../../types/tile';
 
@@ -8,28 +9,23 @@ export default {
   component: ContentTile,
 } as Meta<typeof ContentTile>;
 
-const Template: StoryFn<typeof ContentTile> = (args) => (
-  <ContentTile {...args} />
-);
+const TileWrapper: React.FC<{
+  isHalfTile?: boolean;
+  children: React.ReactNode;
+}> = ({ isHalfTile, children }) => {
+  const wrapperStyle: ViewStyle = {
+    height: isHalfTile ? 125 : '100%',
+    padding: 8,
+  };
 
-export const Default = Template.bind({});
-Default.args = {
-  tile: {
-    id: '1',
-    type: TileType.Content,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    tenantId: 'tenant1',
-    visibilityCriteria: 'all',
-    tileHeight: TileHeight.Half,
-    configuration: {
-      title: 'Welcome Nick! ',
-      imageUrl:
-        'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-  },
+  return <View style={wrapperStyle}>{children}</View>;
 };
+
+const Template: StoryFn<typeof ContentTile> = (args) => (
+  <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
+    <ContentTile {...args} />
+  </TileWrapper>
+);
 
 export const FullSizeImageAndText = Template.bind({});
 FullSizeImageAndText.args = {
@@ -50,10 +46,78 @@ FullSizeImageAndText.args = {
   },
 };
 
+export const FullSizeImageOnly = Template.bind({});
+FullSizeImageOnly.args = {
+  tile: {
+    id: '2',
+    type: TileType.Content,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'tenant1',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Full,
+    configuration: {
+      imageUrl:
+        'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
+    },
+  },
+};
+
+export const FullSizeTextOnly = Template.bind({});
+FullSizeTextOnly.args = {
+  tile: {
+    id: '3',
+    type: TileType.Content,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'tenant1',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Full,
+    configuration: {
+      title: 'Welcome Nick!',
+      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    },
+  },
+};
+export const FullSizeTextOnlyLongBody = Template.bind({});
+FullSizeTextOnlyLongBody.args = {
+  tile: {
+    id: '3',
+    type: TileType.Content,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'tenant1',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Full,
+    configuration: {
+      title: 'Welcome Nick!',
+      subtitle:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias sequi non accusamus veniam iste? Aut assumenda explicabo, beatae, vero illum, saepe perspiciatis soluta tempora consequuntur ipsa voluptates. Placeat, libero! Omnis!',
+    },
+  },
+};
+
+export const HalfSizeImageOnly = Template.bind({});
+HalfSizeImageOnly.args = {
+  tile: {
+    id: '4',
+    type: TileType.Content,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'tenant1',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Half,
+    configuration: {
+      imageUrl:
+        'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
+    },
+  },
+};
+
 export const HalfSizeTextOnly = Template.bind({});
 HalfSizeTextOnly.args = {
   tile: {
-    id: '1',
+    id: '5',
     type: TileType.Content,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -66,10 +130,11 @@ HalfSizeTextOnly.args = {
     },
   },
 };
-export const FullSizeImageOnly = Template.bind({});
-FullSizeImageOnly.args = {
+
+export const HalfSizeTextOnlyWithLink = Template.bind({});
+HalfSizeTextOnlyWithLink.args = {
   tile: {
-    id: '1',
+    id: '5',
     type: TileType.Content,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -77,10 +142,29 @@ FullSizeImageOnly.args = {
     visibilityCriteria: 'all',
     tileHeight: TileHeight.Half,
     configuration: {
+      title: 'Welcome Nick!',
+      subtitle: 'Lorem ipsum dolor sit amet',
+      linkURL: 'https://www.example.com',
+    },
+  },
+};
+
+export const FullSizeWithLink = Template.bind({});
+FullSizeWithLink.args = {
+  tile: {
+    id: '6',
+    type: TileType.Content,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'tenant1',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Full,
+    configuration: {
+      title: 'Welcome Nick!',
+      subtitle: 'Click here to learn more',
       imageUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
-      title: undefined,
-      subtitle: undefined,
+      linkURL: 'https://www.example.com',
     },
   },
 };

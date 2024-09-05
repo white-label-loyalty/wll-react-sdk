@@ -8,8 +8,8 @@ import {
   TierTileConfig,
   Tile,
   TileType,
-} from "../../../types/tile";
-import { useResponsiveScale } from "../../../utils/responsiveScaling";
+} from '../../../types/tile';
+import { useResponsiveScale } from '../../../utils/responsiveScaling';
 import {
   BadgeTile,
   BannerTile,
@@ -18,52 +18,26 @@ import {
   RewardCategoryTile,
   RewardTile,
   TierTile,
-} from "../../organisms";
+} from '../../organisms';
 
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 type TileContainerProps = {
   tiles: Tile[];
 };
 
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
-  const { ps, ms } = useResponsiveScale();
+  const { ms } = useResponsiveScale();
 
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
-      case TileType.Banner: {
-        const config = tile.configuration as BannerTileConfig;
-        return <BannerTile configuration={config} />;
-      }
-      case TileType.Points: {
-        const config = tile.configuration as PointsTileConfig;
-        return <PointsTile configuration={config} />;
-      }
       case TileType.Content: {
-        const config = tile.configuration as ContentTileConfig;
-        return <ContentTile configuration={config} />;
-      }
-      case TileType.Reward: {
-        const config = tile.configuration as RewardTileConfig;
-        // @ts-ignore
-        return <RewardTile configuration={config} />;
+        return <ContentTile tile={tile} />;
       }
       case TileType.Badge: {
-        const config = tile.configuration as BadgeTileConfig;
-        return <BadgeTile configuration={config} />;
+        return <BadgeTile tile={tile} />;
       }
-      case TileType.RewardCategory: {
-        const config = tile.configuration as RewardCategoryTileConfig;
-        // @ts-ignore we know this is wrong for the time being.
-        return <RewardCategoryTile configuration={config} />;
-      }
-      case TileType.Tier: {
-        const config = tile.configuration as TierTileConfig;
-        return <TierTile configuration={config} />;
-      }
-      default:
-        throw new Error(`Unsupported tile type: ${tile.type}`);
     }
   };
 
@@ -88,7 +62,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
+    flexDirection: 'column',
     aspectRatio: 1,
   },
   tileContainer: {

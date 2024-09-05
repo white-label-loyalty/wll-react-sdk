@@ -41,14 +41,14 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
 const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
   const { badge } = tile.configuration as TileConfig & { badge?: Badge };
-  if (!badge) return null;
+  if (!badge?.artworkUrl) return null;
   return <Image {...props} source={{ uri: badge.artworkUrl }} />;
 };
 
 const BadgeTileTitle: FC = (props) => {
   const tile = useTileContext();
   const { badge } = tile.configuration as TileConfig & { badge?: Badge };
-  if (!badge) return null;
+  if (!badge?.name) return null;
   return (
     <Text variant="title" {...props}>
       {badge.name}
@@ -59,7 +59,7 @@ const BadgeTileTitle: FC = (props) => {
 const BadgeTileBody: FC = (props) => {
   const tile = useTileContext();
   const { badge } = tile.configuration as TileConfig & { badge?: Badge };
-  if (!badge) return null;
+  if (!badge?.description) return null;
   return (
     <Text variant="body" {...props}>
       {badge.description}

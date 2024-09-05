@@ -52,7 +52,7 @@ export const Text: React.FC<TextProps> = ({
       case 'body':
         return createResponsiveStyle({
           color: theme.derivedSurfaceText[20],
-          fontSize: 10,
+          fontSize: [10, 10, 14],
         });
       case 'caption':
         return createResponsiveStyle({
