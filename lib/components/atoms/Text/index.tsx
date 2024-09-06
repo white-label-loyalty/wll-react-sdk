@@ -38,6 +38,7 @@ export const Text: React.FC<TextProps> = ({
       case 'eyebrow':
         return createResponsiveStyle({
           ...baseStyle,
+          fontSize: [12, 12, 14],
         });
       case 'title':
         return createResponsiveStyle({
@@ -57,6 +58,9 @@ export const Text: React.FC<TextProps> = ({
       case 'caption':
         return createResponsiveStyle({
           ...baseStyle,
+          fontWeight: 'bold',
+          fontSize: [18, 18, 24],
+          color: theme.primary,
         });
       case 'label':
         return createResponsiveStyle({
