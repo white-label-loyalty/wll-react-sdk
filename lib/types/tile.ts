@@ -137,6 +137,7 @@ export class TierTileConfig {
 export type Tile = {
   id: string;
   type: TileType;
+  active: boolean;
   createdAt: Date;
   updatedAt: Date;
   tenantId: string;

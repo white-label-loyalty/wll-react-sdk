@@ -1,25 +1,13 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
 import ContentTile from '.';
 import { TileHeight, TileType } from '../../../types/tile';
+import { TileWrapper } from '../../../utils/storybookHelpers';
 
 export default {
   title: 'components/organisms/ContentTile',
   component: ContentTile,
 } as Meta<typeof ContentTile>;
-
-const TileWrapper: React.FC<{
-  isHalfTile?: boolean;
-  children: React.ReactNode;
-}> = ({ isHalfTile, children }) => {
-  const wrapperStyle: ViewStyle = {
-    height: isHalfTile ? 125 : '100%',
-    padding: 8,
-  };
-
-  return <View style={wrapperStyle}>{children}</View>;
-};
 
 const Template: StoryFn<typeof ContentTile> = (args) => (
   <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
