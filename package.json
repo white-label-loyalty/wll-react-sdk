@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "react-native": "lib/index.ts",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -24,17 +26,19 @@
   "dependencies": {
     "@types/color": "^3.0.6",
     "color": "^4.2.3",
-    "lucide-react": "^0.427.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native": "0.72.14",
-    "react-native-web": "^0.19.9"
+    "lucide-react": "^0.427.0"
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-native": ">=0.70.0 <0.73.0"
+    "react-dom": "^18.0.0",
+    "react-native": ">=0.70.0 <0.73.0",
+    "react-native-web": "^0.19.0"
   },
   "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native": "0.72.14",
+    "react-native-web": "^0.19.9",
     "@babel/cli": "^7.22.x",
     "@babel/core": "^7.22.20",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
