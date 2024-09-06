@@ -47,3 +47,24 @@ export const getDerivedColorPercentages = (color: string): DerivedColors => {
 
   return result;
 };
+
+type AlphaPercentageKey = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+export type AlphaDerivedColors = {
+  [key in AlphaPercentageKey]: string;
+};
+
+export const getAlphaDerivedColors = (color: string): AlphaDerivedColors => {
+  const baseColor = Color(color);
+  const percentages: AlphaPercentageKey[] = [
+    10, 20, 30, 40, 50, 60, 70, 80, 90,
+  ];
+  const result = {} as AlphaDerivedColors;
+
+  percentages.forEach((percentage) => {
+    const alphaValue = percentage / 100;
+    const derivedColor = baseColor.alpha(alphaValue);
+    result[percentage] = derivedColor.rgb().string();
+  });
+
+  return result;
+};

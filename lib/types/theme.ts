@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { sizes } from "../utils/styling";
-import { DerivedColors } from "../utils/themeHelpers";
+import { ReactNode } from 'react';
+import { sizes } from '../utils/styling';
+import { AlphaDerivedColors, DerivedColors } from '../utils/themeHelpers';
 
 export type BaseThemeObject = {
   accent: string;
@@ -24,6 +24,7 @@ export type DerivedProperties = {
   negativeText: string;
   derivedSurfaceText: DerivedColors;
   derivedSurface: DerivedColors;
+  alphaDerivedPrimary: AlphaDerivedColors;
 };
 
 export type ThemeObject = BaseThemeObject &
@@ -41,5 +42,5 @@ export type ThemeProviderProps = {
   theme?: Partial<BaseThemeObject>;
 };
 
-export type Variant = "primary" | "accent" | "positive" | "negative";
-export type Size = "sm" | "md" | "lg";
+export type Variant = 'primary' | 'accent' | 'positive' | 'negative';
+export type Size = 'sm' | 'md' | 'lg';

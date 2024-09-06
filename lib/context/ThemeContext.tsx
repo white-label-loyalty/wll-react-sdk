@@ -7,6 +7,7 @@ import {
 } from '../types/theme';
 import { defaultTheme, sizes } from '../utils/styling';
 import {
+  getAlphaDerivedColors,
   getDerivedColor,
   getDerivedColorPercentages,
   getReadableTextColor,
@@ -35,6 +36,7 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     negativeText: getReadableTextColor(negative),
     derivedSurface: getDerivedColorPercentages(surface),
     derivedSurfaceText: getDerivedColorPercentages(surfaceText),
+    alphaDerivedPrimary: getAlphaDerivedColors(primary),
   };
 };
 

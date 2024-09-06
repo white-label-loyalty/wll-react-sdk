@@ -1,8 +1,8 @@
-import Color from 'color';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../../context/ThemeContext';
 import { PointsTileConfig, Tile, TileHeight } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useSectionContext } from '../Section';
@@ -20,14 +20,14 @@ const PointsTile: React.FC<PointsTileProps> & {
   const isFullSize = tile.tileHeight === TileHeight.Full;
 
   const styles = StyleSheet.create({
-    container: {
-      padding: theme.sizes.md,
+    container: createResponsiveStyle({
+      paddingHorizontal: [8, 8, 12],
       borderRadius: theme.sizes.borderRadiusSm,
       width: '100%',
       flexDirection: isFullSize ? 'row' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
       justifyContent: 'space-between',
-    },
+    }),
     contentContainer: {
       flexDirection: 'column',
       width: isFullSize ? '100%' : 'auto',
@@ -75,10 +75,10 @@ const PointsTilePoints: React.FC = () => {
     points !== undefined ? points * effectiveMultiplier : null;
 
   const styles = StyleSheet.create({
-    suffix: {
-      fontSize: 16,
+    suffix: createResponsiveStyle({
+      fontSize: [14, 14, 18],
       color: theme.primary,
-    },
+    }),
     pointsWithSuffix: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -108,15 +108,16 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
   const { imageUrl } = configuration as PointsTileConfig;
 
   const styles = StyleSheet.create({
-    imageContainer: {
+    imageContainer: createResponsiveStyle({
       width: isFullSize ? '100%' : 57,
       height: isFullSize ? '50%' : 57,
+      marginBottom: isFullSize ? [8, 8, 12] : 0,
       backgroundColor: isFullSize
-        ? Color(theme.primary).alpha(0.2).string()
+        ? theme.alphaDerivedPrimary[20]
         : theme.surface,
       justifyContent: 'center',
       alignItems: 'center',
-    },
+    }),
     image: {
       width: '80%',
       height: '80%',
