@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { BaseTile, Icon, Text } from '../../atoms';
-import { Tile, TileConfig } from '../../../types/tile';
-import { useTileContext } from '../../atoms/BaseTile';
-import { ImagePropsNoSource } from '../../../types/common';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Badge } from '../../../types/wll';
 import { useTheme } from '../../../context/ThemeContext';
+import { ImagePropsNoSource } from '../../../types/common';
+import { Tile, TileConfig } from '../../../types/tile';
+import { Badge } from '../../../types/wll';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { BaseTile, Icon, Text } from '../../atoms';
+import { useTileContext } from '../../atoms/BaseTile';
 
 type BadgeTileProps = {
   tile: Tile;
@@ -26,11 +26,7 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
       <View style={styles.textContainer}>
         <View style={styles.row}>
           <BadgeTile.Title />
-          <Icon
-            name="ChevronRight"
-            size={16}
-            color={theme.derivedSurfaceText[20]}
-          />
+          <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
         </View>
         <BadgeTile.Body />
       </View>

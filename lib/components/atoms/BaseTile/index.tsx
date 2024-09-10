@@ -104,11 +104,7 @@ const TileTitle: FC = () => {
         {title}
       </Text>
       {linkURL && (
-        <Icon
-          name="ChevronRight"
-          size={24}
-          color={theme.derivedSurfaceText[20]}
-        />
+        <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
       )}
     </View>
   );

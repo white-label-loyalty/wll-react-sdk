@@ -1,9 +1,9 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { Variant } from "../../../types/theme";
-import { useResponsiveScale } from "../../../utils/responsiveScaling";
-import { createVariantSystem } from "../../../utils/variant";
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '../../../context/ThemeContext';
+import { Variant } from '../../../types/theme';
+import { useResponsiveScale } from '../../../utils/responsiveScaling';
+import { createVariantSystem } from '../../../utils/variant';
 
 type ButtonProps = {
   title: string;
@@ -13,8 +13,8 @@ type ButtonProps = {
 
 const styles = StyleSheet.create({
   button: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     maxWidth: 200,
   },
   buttonInner: {
@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
   },
   text: {
-    fontWeight: "bold",
-    textAlign: "center",
-    textTransform: "uppercase",
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });
 
@@ -66,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
 
   return (
     <TouchableOpacity
-      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusSmButton }]}
+      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
       onPress={onPress}
     >
       <View style={styles.buttonInner}>
