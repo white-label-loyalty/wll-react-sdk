@@ -49,7 +49,6 @@ const PointsTile: React.FC<PointsTileProps> & {
 };
 
 const PointsTileTitle: React.FC = () => {
-  const { theme } = useTheme();
   const { configuration } = useTileContext();
   const { title } = configuration as PointsTileConfig;
 

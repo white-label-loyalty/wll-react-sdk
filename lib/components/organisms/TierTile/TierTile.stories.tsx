@@ -1,92 +1,72 @@
-import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
-import { View } from "react-native";
-import TierTile from ".";
+import { Meta, StoryFn } from '@storybook/react';
+import React from 'react';
+import TierTile from '.';
+import goldImage from '../../../assets/gold.png';
+import { TierTileType, TileHeight, TileType } from '../../../types/tile';
+import { TileWrapper } from '../../../utils/storybookHelpers';
 
 export default {
-  title: "components/organisms/TierTile",
+  title: 'components/organisms/TierTile',
   component: TierTile,
   argTypes: {
-    configuration: { control: "object" },
+    tile: { control: 'object' },
   },
-  decorators: [
-    (Story) => (
-      <View
-        style={{
-          width: 257,
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Story />
-      </View>
-    ),
-  ],
 } as Meta<typeof TierTile>;
 
-const Template: StoryFn<typeof TierTile> = (args) => <TierTile {...args} />;
+const Template: StoryFn<typeof TierTile> = (args) => (
+  <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
+    <TierTile {...args} />
+  </TileWrapper>
+);
 
-export const InProgress = Template.bind({});
-InProgress.args = {
-  configuration: {
-    tier: {
-      name: "Gold",
-      earnedPoints: 500,
-      pointsRequirement: 1000,
-      attained: false,
+const CurrentTierHalf = Template.bind({});
+CurrentTierHalf.args = {
+  tile: {
+    id: '1',
+    type: TileType.Tier,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'XXXXXXX',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Half,
+    configuration: {
+      type: TierTileType.currentTier,
+      tierId: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Gold',
+        description: null,
+        artworkUrl: goldImage,
+        pointsRequirement: 10,
+        earnedPoints: 100,
+        attained: false,
+      },
     },
   },
 };
-
-export const JustStarted = Template.bind({});
-JustStarted.args = {
-  configuration: {
-    tier: {
-      name: "Silver",
-      earnedPoints: 50,
-      pointsRequirement: 500,
-      attained: false,
+const CurrentTierFull = Template.bind({});
+CurrentTierFull.args = {
+  tile: {
+    id: '1',
+    type: TileType.Tier,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    tenantId: 'XXXXXXX',
+    visibilityCriteria: 'all',
+    tileHeight: TileHeight.Half,
+    configuration: {
+      type: TierTileType.currentTier,
+      tierId: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Gold',
+        description:
+          'Enjoy 10% off, free upgrades, and exclusive member benefits...',
+        artworkUrl: goldImage,
+        pointsRequirement: 10,
+        earnedPoints: 100,
+        attained: false,
+      },
     },
   },
-};
-
-export const NearlyComplete = Template.bind({});
-NearlyComplete.args = {
-  configuration: {
-    tier: {
-      name: "Platinum",
-      earnedPoints: 1900,
-      pointsRequirement: 2000,
-      attained: false,
-    },
-  },
-};
-
-export const TierAttained = Template.bind({});
-TierAttained.args = {
-  configuration: {
-    tier: {
-      name: "Diamond",
-      earnedPoints: 5000,
-      pointsRequirement: 5000,
-      attained: true,
-    },
-  },
-};
-
-export const TierAttainedEarly = Template.bind({});
-TierAttainedEarly.args = {
-  configuration: {
-    tier: {
-      name: "VIP",
-      earnedPoints: 8000,
-      pointsRequirement: 10000,
-      attained: true,
-    },
-  },
-};
-
-export const NoTierData = Template.bind({});
-NoTierData.args = {
-  configuration: null,
 };
