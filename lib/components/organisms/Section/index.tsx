@@ -121,9 +121,13 @@ const SectionContent: React.FC = () => {
   }
 };
 
-const Section: React.FC<SectionData> = ({ id }) => {
+interface SectionProps {
+  section: SectionData;
+}
+
+const Section: React.FC<SectionProps> = ({ section }) => {
   return (
-    <SectionProvider sectionId={id}>
+    <SectionProvider sectionId={section.id}>
       <View style={styles.section}>
         <SectionContent />
       </View>
