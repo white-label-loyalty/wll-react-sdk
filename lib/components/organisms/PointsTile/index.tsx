@@ -1,16 +1,16 @@
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { PointsTileConfig } from "../../../types/tile";
-import { Text, Tile } from "../../atoms";
-import { useSectionContext } from "../Section";
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { PointsTileConfig } from '../../../types/tile';
+import { Text, Tile } from '../../atoms';
+import { useSectionContext } from '../Section';
 
 type PointsTileProps = {
   configuration: PointsTileConfig;
 };
 
 const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { sectionData } = useSectionContext();
   const {
     title,
@@ -23,8 +23,10 @@ const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
 
   const effectiveMultiplier =
     tileMultiplier ?? sectionData?.pointsMultiplier ?? 1;
-  const effectivePrefix = tilePrefix ?? sectionData?.pointsPrefix ?? "";
-  const effectiveSuffix = tileSuffix ?? sectionData?.pointsSuffix ?? "pts";
+  const effectivePrefix =
+    tilePrefix ?? sectionData?.pointsPrefix ?? '';
+  const effectiveSuffix =
+    tileSuffix ?? sectionData?.pointsSuffix ?? 'pts';
   const calculatedPoints =
     points !== undefined ? points * effectiveMultiplier : null;
 
@@ -33,10 +35,10 @@ const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
       padding: theme.sizes.md,
       maxWidth: 270,
       borderRadius: theme.sizes.borderRadius,
-      width: "100%",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       aspectRatio: 2,
     },
     title: {
@@ -45,7 +47,7 @@ const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
     },
     points: {
       fontSize: 24,
-      fontWeight: "bold",
+      fontWeight: 'bold',
       color: theme.primary,
     },
     image: {
@@ -67,7 +69,9 @@ const PointsTile: React.FC<PointsTileProps> = ({ configuration }) => {
             </Text>
           )}
         </View>
-        {imageUrl && <Image source={{ uri: imageUrl }} style={styles.image} />}
+        {imageUrl && (
+          <Image source={{ uri: imageUrl }} style={styles.image} />
+        )}
       </View>
     </Tile>
   );

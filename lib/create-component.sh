@@ -39,7 +39,7 @@ mkdir -p $COMPONENT_DIR
 
 # Create component file
 cat << EOF > "$COMPONENT_DIR/index.tsx"
-import React from 'react';
+import * as React from 'react';
 import { View } from 'react-native';
 
 type ${COMPONENT_NAME}Props = {
@@ -59,7 +59,7 @@ EOF
 
 # Create story file
 cat << EOF > "$COMPONENT_DIR/${COMPONENT_NAME}.stories.tsx"
-import React from 'react';
+import * as React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import ${COMPONENT_NAME} from './index';
 
@@ -85,15 +85,15 @@ touch "$INDEX_FILE"
 update_index_file() {
     # Read existing content
     content=$(cat "$INDEX_FILE")
-    
+
     # Remove duplicate imports and exports
     content=$(echo "$content" | awk '!seen[$0]++')
-    
+
     # Add new import if it doesn't exist
     if ! echo "$content" | grep -q "import $COMPONENT_NAME from './$COMPONENT_NAME';" ; then
         content=$(echo "$content"; echo "import $COMPONENT_NAME from './$COMPONENT_NAME';")
     fi
-    
+
     # Update export line
     export_line=$(echo "$content" | grep "^export {")
     if [ -n "$export_line" ]; then
@@ -106,7 +106,7 @@ update_index_file() {
         # If no export line, add it
         content=$(echo "$content"; echo "export { $COMPONENT_NAME };")
     fi
-    
+
     # Write updated content back to file
     echo "$content" | sed '/^$/N;/^\n$/D' > "$INDEX_FILE"
 }

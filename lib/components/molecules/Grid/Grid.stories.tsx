@@ -1,8 +1,12 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import * as React from 'react';
 import { View } from 'react-native';
-import { SectionType } from 'types/section';
-import { TierTileType, TileHeight, TileType } from 'types/tile';
+import { SectionType } from '../../../types/section';
+import {
+  TierTileType,
+  TileHeight,
+  TileType,
+} from '../../../types/tile';
 import Grid from './index';
 
 export default {

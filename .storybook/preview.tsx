@@ -1,8 +1,7 @@
 import type { Preview } from '@storybook/react';
-import React from 'react';
+import * as React from 'react';
 import { SectionContext } from '../lib/components/organisms/Section';
-import { SDKProvider } from '../lib/context/SDKContext';
-import { ThemeProvider } from '../lib/context/ThemeContext';
+import { WllSdkProvider } from '../lib/context/WllSdkContext';
 import { Section } from '../lib/types/section';
 import { defaultTheme } from '../lib/utils/styling';
 
@@ -476,7 +475,7 @@ const preview: Preview = {
       const theme = themes[selectedTheme] || defaultTheme;
 
       return (
-        <ThemeProvider theme={theme}>
+        <WllSdkProvider theme={theme} config={sdkConfig}>
           <div
             style={{
               backgroundColor: theme.background,
@@ -484,13 +483,11 @@ const preview: Preview = {
               padding: '1rem',
             }}
           >
-            <SDKProvider config={sdkConfig}>
-              <MockSectionProvider>
-                <Story />
-              </MockSectionProvider>
-            </SDKProvider>
+            <MockSectionProvider>
+              <Story />
+            </MockSectionProvider>
           </div>
-        </ThemeProvider>
+        </WllSdkProvider>
       );
     },
   ],

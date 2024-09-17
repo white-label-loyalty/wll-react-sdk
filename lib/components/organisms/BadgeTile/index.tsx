@@ -2,7 +2,7 @@ import { BadgeTileConfig } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon, Text, Tile } from '../../atoms';
 
-import React from 'react';
+import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 type BadgeTileProps = {

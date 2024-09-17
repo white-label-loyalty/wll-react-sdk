@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { ContentTileConfig } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';

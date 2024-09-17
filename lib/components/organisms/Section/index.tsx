@@ -1,5 +1,4 @@
-import { useSDK } from '../../../context/SDKContext';
-import { useTheme } from '../../../context/ThemeContext';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import {
   Section as SectionData,
   SectionType,
@@ -39,7 +38,7 @@ export const SectionProvider: React.FC<SectionProviderProps> = ({
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const { getSectionByID } = useSDK();
+  const { getSectionByID } = useWllSdk();
 
   useEffect(() => {
     const fetchSection = async () => {
@@ -90,7 +89,7 @@ export const useSectionContext = () => {
 };
 
 const SectionContent: React.FC = () => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { sectionData, error } = useSectionContext();
 
   if (error)

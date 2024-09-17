@@ -1,13 +1,13 @@
-import React from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
+import React from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 
 type LoadingIndicatorProps = {
   // Define your props here
 };
 
 const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   return (
     <View
@@ -27,12 +27,12 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
   },
 });
 

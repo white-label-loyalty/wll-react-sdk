@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { Size, ThemeObject, Variant } from "../../../types/theme";
-import { createVariantSystem } from "../../../utils/variant";
+import React from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { Size, ThemeObject, Variant } from '../../../types/theme';
+import { createVariantSystem } from '../../../utils/variant';
 
 export type ProgressBarProps = {
   percentage: number;
@@ -13,13 +13,13 @@ export type ProgressBarProps = {
 const useStyles = (theme: ThemeObject) => {
   return StyleSheet.create({
     container: {
-      width: "100%",
+      width: '100%',
       borderRadius: theme.sizes.borderRadiusRounded,
-      overflow: "hidden",
+      overflow: 'hidden',
     },
     progress: {
       borderRadius: theme.sizes.borderRadiusRounded,
-      height: "100%",
+      height: '100%',
     },
   });
 };
@@ -32,7 +32,9 @@ const useContainerStyles = (theme: ThemeObject) => ({
 
 const useProgressStyles = createVariantSystem(
   // @ts-ignore
-  (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusRounded }),
+  (theme: ThemeObject) => ({
+    borderRadius: theme.sizes.borderRadiusRounded,
+  }),
   (theme: ThemeObject) => ({
     primary: { backgroundColor: theme.primary },
     accent: { backgroundColor: theme.accent },
@@ -43,10 +45,10 @@ const useProgressStyles = createVariantSystem(
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   percentage,
-  variant = "primary",
-  height = "sm",
+  variant = 'primary',
+  height = 'sm',
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const styles = useStyles(theme);
   const containerStyles = useContainerStyles(theme);
   const progressStyles = useProgressStyles(theme, variant);
@@ -63,7 +65,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <View style={containerStyle}>
-      <View style={[styles.progress, progressStyles, progressWidth]} />
+      <View
+        style={[styles.progress, progressStyles, progressWidth]}
+      />
     </View>
   );
 };

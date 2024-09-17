@@ -1,9 +1,9 @@
-import Color from "color";
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { useSectionContext } from "../../organisms/Section";
-import LoadingIndicator from "../LoadingIndicator";
+import Color from 'color';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { useSectionContext } from '../../organisms/Section';
+import LoadingIndicator from '../LoadingIndicator';
 
 type TileProps = {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ type TileProps = {
 
 const Tile: React.FC<TileProps> = ({ children }) => {
   const { loading: isLoading } = useSectionContext();
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   return (
     <View
@@ -31,12 +31,12 @@ const Tile: React.FC<TileProps> = ({ children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    position: "relative",
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    position: 'relative',
     maxWidth: 270,
     borderWidth: 1,
     aspectRatio: 1,
