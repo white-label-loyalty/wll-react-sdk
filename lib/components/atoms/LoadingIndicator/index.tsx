@@ -1,12 +1,13 @@
-import React from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
+import React from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { useTheme } from '../../../context/ThemeContext';
+import { Tile } from '../../../types/tile';
 
 type LoadingIndicatorProps = {
-  // Define your props here
+  tile: Tile;
 };
 
-const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
+const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ tile }) => {
   const { theme } = useTheme();
 
   return (
@@ -14,7 +15,6 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
       style={[
         styles.container,
         {
-          backgroundColor: theme.surface,
           borderRadius: theme.sizes.borderRadiusSm,
           padding: theme.sizes.md,
         },
@@ -27,12 +27,12 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
   },
 });
 

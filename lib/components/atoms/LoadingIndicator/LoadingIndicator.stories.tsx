@@ -1,5 +1,8 @@
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { TileHeight } from '../../../types/tile';
+import { TileWrapper } from '../../../utils/storybookHelpers';
+
 import LoadingIndicator from './index';
 
 export default {
@@ -7,9 +10,21 @@ export default {
   component: LoadingIndicator,
 } as Meta;
 
-const Template: StoryFn = (args) => <LoadingIndicator {...args} />;
+const Template: StoryFn<typeof LoadingIndicator> = (args) => (
+  <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
+    <LoadingIndicator {...args} />
+  </TileWrapper>
+);
 
-export const Default = Template.bind({});
-Default.args = {
-  // Add default props here
+export const FullHeight = Template.bind({});
+FullHeight.args = {
+  tile: {
+    tileHeight: TileHeight.Full,
+  },
+};
+export const HalfHeight = Template.bind({});
+HalfHeight.args = {
+  tile: {
+    tileHeight: TileHeight.Full,
+  },
 };
