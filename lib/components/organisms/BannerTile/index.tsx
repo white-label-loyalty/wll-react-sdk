@@ -1,16 +1,17 @@
-import React from "react";
-import { Image, Linking, StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { BannerTileConfig } from "../../../types/tile";
-import { Button, Text } from "../../atoms";
+import React from 'react';
+import { Image, Linking, StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { BannerTileConfig } from '../../../types/tile';
+import { Button, Text } from '../../atoms';
 
 type BannerTileProps = {
   configuration: BannerTileConfig;
 };
 
 const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
-  const { theme } = useTheme();
-  const { imageUrl, title, description, ctaText, ctaLink } = configuration;
+  const { theme } = useWllSdk();
+  const { imageUrl, title, description, ctaText, ctaLink } =
+    configuration;
 
   const handleLinkPress = async (url: string) => {
     if (!url) return;
@@ -33,7 +34,9 @@ const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
             source={{ uri: imageUrl }}
             style={styles.image}
             resizeMode="cover"
-            onError={(error) => console.error("Image loading error:", error)}
+            onError={(error) =>
+              console.error('Image loading error:', error)
+            }
           />
         </View>
       )}
@@ -44,7 +47,11 @@ const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
           </Text>
         )}
         {description && (
-          <Text variant="body" style={styles.description} isSurface={true}>
+          <Text
+            variant="body"
+            style={styles.description}
+            isSurface={true}
+          >
             {description}
           </Text>
         )}
@@ -62,29 +69,29 @@ const BannerTile: React.FC<BannerTileProps> = ({ configuration }) => {
 
 const styles = StyleSheet.create({
   slide: {
-    width: "100%",
+    width: '100%',
     maxWidth: 1080,
     borderRadius: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    overflow: "hidden",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    overflow: 'hidden',
   },
   slideContent: {
     padding: 20,
     flex: 1,
   },
   imageContainer: {
-    width: "20%",
+    width: '20%',
     aspectRatio: 1,
-    position: "relative",
-    overflow: "hidden",
+    position: 'relative',
+    overflow: 'hidden',
   },
   image: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
   title: {
     marginBottom: 10,

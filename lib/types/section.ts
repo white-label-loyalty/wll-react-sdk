@@ -1,21 +1,22 @@
-import { Tile } from "./tile";
+import { Tile } from './tile';
 
 export enum SectionType {
-  Grid = "GRID",
-  Banner = "BANNER",
+  Grid = 'GRID',
+  Banner = 'BANNER',
 }
 
 export type Section = {
   id: string;
   type: SectionType;
-  createdAt: Date;
-  updatedAt: Date;
-  tenantId: string;
-  visibilityCriteria: string;
+  createdAt: string;
+  updatedAt: string;
+  visibilityCriteria: object | null;
   title?: string;
   description?: string;
   tiles: Tile[];
   pointsMultiplier?: number;
-  pointsPrefix?: string;
-  pointsSuffix?: string;
+  pointsPrefix?: string | null;
+  pointsSuffix?: string | null;
+  priority: number;
+  active: boolean;
 };

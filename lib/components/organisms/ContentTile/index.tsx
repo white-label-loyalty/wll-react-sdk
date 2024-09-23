@@ -1,15 +1,17 @@
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { ContentTileConfig } from "../../../types/tile";
-import { createResponsiveStyle } from "../../../utils/responsiveHelper";
-import { Text, Tile } from "../../atoms";
+import * as React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { ContentTileConfig } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { Text, Tile } from '../../atoms';
 
-import { useSectionContext } from "../Section";
+import { useSectionContext } from '../Section';
 type ContentTileProps = {
   configuration: ContentTileConfig;
 };
 
-const ContentTile: React.FC<ContentTileProps> = ({ configuration }) => {
+const ContentTile: React.FC<ContentTileProps> = ({
+  configuration,
+}) => {
   const { loading } = useSectionContext();
   if (!configuration) return null;
   const { title, subtitle, imageUrl } = configuration;
@@ -39,15 +41,15 @@ const ContentTile: React.FC<ContentTileProps> = ({ configuration }) => {
 
 const styles = StyleSheet.create({
   textContainer: {
-    width: "100%",
-    position: "relative",
+    width: '100%',
+    position: 'relative',
     zIndex: 10,
     paddingHorizontal: 8,
   },
   image: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
   },
 });
 

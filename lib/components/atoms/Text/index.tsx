@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,
   StyleSheet,
   TextStyle,
-} from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { createResponsiveStyle } from "../../../utils/responsiveHelper";
+} from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 
 type TextVariant =
-  | "eyebrow"
-  | "title"
-  | "subtitle"
-  | "body"
-  | "caption"
-  | "label";
+  | 'eyebrow'
+  | 'title'
+  | 'subtitle'
+  | 'body'
+  | 'caption'
+  | 'label';
 
 type TextProps = RNTextProps & {
   variant?: TextVariant;
@@ -23,39 +23,39 @@ type TextProps = RNTextProps & {
 };
 
 export const Text: React.FC<TextProps> = ({
-  variant = "body",
+  variant = 'body',
   style,
   isSurface = false,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   const getVariantStyle = (variant: TextVariant): TextStyle => {
     const baseStyle = {
       color: theme.text,
     };
     switch (variant) {
-      case "eyebrow":
+      case 'eyebrow':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "title":
+      case 'title':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "subtitle":
+      case 'subtitle':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "body":
+      case 'body':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "caption":
+      case 'caption':
         return createResponsiveStyle({
           ...baseStyle,
         });
-      case "label":
+      case 'label':
         return createResponsiveStyle({
           ...baseStyle,
         });
@@ -68,7 +68,9 @@ export const Text: React.FC<TextProps> = ({
 
   const variantStyle = getVariantStyle(variant);
 
-  return <RNText style={[styles.base, variantStyle, style]} {...props} />;
+  return (
+    <RNText style={[styles.base, variantStyle, style]} {...props} />
+  );
 };
 
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
-export * from "./components/organisms";
+export * from './components/organisms';
 
 // Export contexts
-export * from "./context/SDKContext";
-export * from "./context/ThemeContext";
+export { WllSdkContext, WllSdkProvider, useWllSdk } from './context/WllSdkContext';
+

@@ -1,12 +1,12 @@
 // @ts-nocheck
 // TODO: Fix this file
-import React from "react";
-import { View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { TierTileConfig, TierTileType } from "../../../types/tile";
-import { useResponsiveScale } from "../../../utils/responsiveScaling";
-import { Text, Tile } from "../../atoms";
-import { ProgressIndicator } from "../../molecules";
+import React from 'react';
+import { View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { TierTileConfig, TierTileType } from '../../../types/tile';
+import { useResponsiveScale } from '../../../utils/responsiveScaling';
+import { Text, Tile } from '../../atoms';
+import { ProgressIndicator } from '../../molecules';
 
 type TierTileProps = {
   configuration: TierTileConfig;
@@ -30,13 +30,15 @@ const TierTile: React.FC<TierTileProps> = ({ configuration }) => {
   return <Tile>{renderTierTileContent()}</Tile>;
 };
 
-const SpecificTierTile: React.FC<TierTileProps> = ({ configuration }) => {
+const SpecificTierTile: React.FC<TierTileProps> = ({
+  configuration,
+}) => {
   const { ms, ps } = useResponsiveScale();
   const { tier } = configuration;
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   return (
-    <View style={{ paddingHorizontal: ps(8), width: "100%" }}>
+    <View style={{ paddingHorizontal: ps(8), width: '100%' }}>
       <View style={{ marginBottom: ms(2) }}>
         <Text
           style={{
@@ -93,11 +95,13 @@ const NextTierTile: React.FC<TierTileProps> = ({ configuration }) => {
   );
 };
 
-const CurrentTierTile: React.FC<TierTileProps> = ({ configuration }) => {
+const CurrentTierTile: React.FC<TierTileProps> = ({
+  configuration,
+}) => {
   const { ms } = useResponsiveScale();
   const { tier } = configuration;
 
-  console.log(configuration, "configuration");
+  console.log(configuration, 'configuration');
 
   return (
     <>
