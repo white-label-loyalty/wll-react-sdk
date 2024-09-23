@@ -32,9 +32,7 @@ const useContainerStyles = (theme: ThemeObject) => ({
 
 const useProgressStyles = createVariantSystem(
   // @ts-ignore
-  (theme: ThemeObject) => ({
-    borderRadius: theme.sizes.borderRadiusRounded,
-  }),
+  (theme: ThemeObject) => ({ borderRadius: theme.sizes.borderRadiusSmRounded }),
   (theme: ThemeObject) => ({
     primary: { backgroundColor: theme.primary },
     accent: { backgroundColor: theme.accent },
@@ -65,9 +63,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   return (
     <View style={containerStyle}>
-      <View
-        style={[styles.progress, progressStyles, progressWidth]}
-      />
+      <View style={[styles.progress, progressStyles, progressWidth]} />
     </View>
   );
 };

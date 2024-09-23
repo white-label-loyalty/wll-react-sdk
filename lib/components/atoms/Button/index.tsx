@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Variant } from '../../../types/theme';
 import { useResponsiveScale } from '../../../utils/responsiveScaling';
@@ -33,23 +28,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const useButtonStyles = createVariantSystem(
-  styles.button,
-  (theme) => ({
-    primary: {
-      backgroundColor: theme.primary,
-    },
-    accent: {
-      backgroundColor: theme.accent,
-    },
-    positive: {
-      backgroundColor: theme.positive,
-    },
-    negative: {
-      backgroundColor: theme.negative,
-    },
-  })
-);
+const useButtonStyles = createVariantSystem(styles.button, (theme) => ({
+  primary: {
+    backgroundColor: theme.primary,
+  },
+  accent: {
+    backgroundColor: theme.accent,
+  },
+  positive: {
+    backgroundColor: theme.positive,
+  },
+  negative: {
+    backgroundColor: theme.negative,
+  },
+}));
 
 const useTextStyles = createVariantSystem(styles.text, (theme) => ({
   primary: {
@@ -66,11 +58,7 @@ const useTextStyles = createVariantSystem(styles.text, (theme) => ({
   },
 }));
 
-const Button: React.FC<ButtonProps> = ({
-  title,
-  onPress,
-  variant,
-}) => {
+const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
   const { theme } = useWllSdk();
   const { fs } = useResponsiveScale();
   const buttonStyle = useButtonStyles(theme, variant);
@@ -78,10 +66,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableOpacity
-      style={[
-        buttonStyle,
-        { borderRadius: theme.sizes.borderRadiusButton },
-      ]}
+      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
       onPress={onPress}
     >
       <View style={styles.buttonInner}>

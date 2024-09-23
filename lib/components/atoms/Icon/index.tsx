@@ -16,6 +16,7 @@ const Icon: React.FC<IconProps> = ({
   color = 'black',
   size = 24,
   strokeWidth = 2,
+  ...props
 }) => {
   const LucideIcon = LucideIcons[name] as React.ElementType;
 
@@ -25,12 +26,8 @@ const Icon: React.FC<IconProps> = ({
   }
 
   return (
-    <View>
-      <LucideIcon
-        color={color}
-        size={size}
-        strokeWidth={strokeWidth}
-      />
+    <View {...props}>
+      <LucideIcon color={color} size={size} strokeWidth={strokeWidth} />
     </View>
   );
 };

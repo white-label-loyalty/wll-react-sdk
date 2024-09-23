@@ -1,7 +1,8 @@
 import { BaseThemeObject } from "../types/theme";
 
 export const sizes = {
-  borderRadius: 15,
+  borderRadiusSm: 15,
+  borderRadiusLg: 20,
   borderRadiusButton: 9,
   borderRadiusRounded: 9999,
   sm: 6,

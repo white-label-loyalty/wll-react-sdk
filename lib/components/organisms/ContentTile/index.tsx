@@ -1,56 +1,39 @@
 import * as React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
-import { ContentTileConfig } from '../../../types/tile';
+import { StyleSheet, View } from 'react-native';
+import { Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Text, Tile } from '../../atoms';
+import BaseTile from '../../atoms/BaseTile';
 
-import { useSectionContext } from '../Section';
 type ContentTileProps = {
-  configuration: ContentTileConfig;
+  tile: Tile;
+  children?: React.ReactNode;
 };
 
-const ContentTile: React.FC<ContentTileProps> = ({
-  configuration,
-}) => {
-  const { loading } = useSectionContext();
-  if (!configuration) return null;
-  const { title, subtitle, imageUrl } = configuration;
-  const responsiveStyles = {
-    title: createResponsiveStyle({
-      marginBottom: [4, 8, 12],
-    }),
-  };
+const ContentTile: React.FC<ContentTileProps> = ({ tile }) => {
   return (
-    <Tile>
+    <BaseTile tile={tile}>
+      <BaseTile.Image style={styles.image} />
       <View style={styles.textContainer}>
-        <Text variant="title" style={responsiveStyles.title}>
-          {title}
-        </Text>
-        <Text variant="body">{subtitle}</Text>
+        <BaseTile.Title />
+        <BaseTile.Body />
       </View>
-      {imageUrl && (
-        <Image
-          source={{ uri: imageUrl }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      )}
-    </Tile>
+    </BaseTile>
   );
 };
 
 const styles = StyleSheet.create({
-  textContainer: {
+  textContainer: createResponsiveStyle({
+    paddingHorizontal: [8, 8, 12],
+  }),
+  image: createResponsiveStyle({
     width: '100%',
-    position: 'relative',
-    zIndex: 10,
-    paddingHorizontal: 8,
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
+  }),
+  row: createResponsiveStyle({
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: [4, 4, 8],
+    justifyContent: 'space-between',
+  }),
 });
 
 export default ContentTile;

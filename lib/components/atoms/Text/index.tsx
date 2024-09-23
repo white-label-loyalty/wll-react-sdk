@@ -32,16 +32,20 @@ export const Text: React.FC<TextProps> = ({
 
   const getVariantStyle = (variant: TextVariant): TextStyle => {
     const baseStyle = {
-      color: theme.text,
+      color: theme.surfaceText,
     };
     switch (variant) {
       case 'eyebrow':
         return createResponsiveStyle({
           ...baseStyle,
+          fontSize: [12, 12, 14],
+          marginBottom: [4, 4, 8],
         });
       case 'title':
         return createResponsiveStyle({
           ...baseStyle,
+          fontSize: [14, 14, 24],
+          fontWeight: 'bold',
         });
       case 'subtitle':
         return createResponsiveStyle({
@@ -49,11 +53,15 @@ export const Text: React.FC<TextProps> = ({
         });
       case 'body':
         return createResponsiveStyle({
-          ...baseStyle,
+          color: theme.derivedSurfaceText[20],
+          fontSize: [10, 10, 14],
         });
       case 'caption':
         return createResponsiveStyle({
           ...baseStyle,
+          fontWeight: 'bold',
+          fontSize: [18, 18, 24],
+          color: theme.primary,
         });
       case 'label':
         return createResponsiveStyle({
@@ -68,9 +76,7 @@ export const Text: React.FC<TextProps> = ({
 
   const variantStyle = getVariantStyle(variant);
 
-  return (
-    <RNText style={[styles.base, variantStyle, style]} {...props} />
-  );
+  return <RNText style={[styles.base, variantStyle, style]} {...props} />;
 };
 
 const styles = StyleSheet.create({

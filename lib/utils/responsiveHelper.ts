@@ -1,10 +1,10 @@
-import { Dimensions } from "react-native";
+import { Dimensions } from 'react-native';
 
 // Define breakpoints
 const BREAKPOINTS = {
   MOBILE: 0,
-  TABLET: 600,
-  DESKTOP: 1024,
+  TABLET: 767,
+  DESKTOP: 768,
 };
 
 type ResponsiveStyle<T> = {
@@ -14,7 +14,7 @@ type ResponsiveStyle<T> = {
 export const createResponsiveStyle = <T extends object>(
   style: ResponsiveStyle<T>
 ): T => {
-  const windowWidth = Dimensions.get("window").width;
+  const windowWidth = Dimensions.get('window').width;
 
   const responsiveStyle = Object.entries(style).reduce((acc, [key, value]) => {
     if (Array.isArray(value)) {

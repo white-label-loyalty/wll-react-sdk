@@ -1,126 +1,118 @@
 // @ts-nocheck
 // TODO: Fix this file
+
 import React from 'react';
-import { View } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { TierTileConfig, TierTileType } from '../../../types/tile';
-import { useResponsiveScale } from '../../../utils/responsiveScaling';
-import { Text, Tile } from '../../atoms';
-import { ProgressIndicator } from '../../molecules';
+import { Image, StyleSheet, View } from 'react-native';
+import { useTheme } from '../../../context/ThemeContext';
+import { TierTileConfig, Tile, TileHeight } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { BaseTile, ProgressBar, Text } from '../../atoms';
+import { useTileContext } from '../../atoms/BaseTile';
 
 type TierTileProps = {
-  configuration: TierTileConfig;
+  tile: Tile;
 };
 
-const TierTile: React.FC<TierTileProps> = ({ configuration }) => {
-  if (!configuration?.tier) return null;
+const TierTileBase: React.FC<TierTileProps> & {
+  Name: typeof TierTileName;
+  Count: typeof TierTileCount;
+  Image: typeof TierTileImage;
+  Progress: typeof TierTileProgress;
+  Description: typeof TierTileDescription;
+} = ({ tile }) => {
+  const { theme } = useTheme();
+  const isFullSize = tile.tileHeight === TileHeight.Full;
 
-  const renderTierTileContent = () => {
-    switch (configuration.type) {
-      case TierTileType.Next:
-        return <NextTierTile configuration={configuration} />;
-      case TierTileType.Current:
-        return <CurrentTierTile configuration={configuration} />;
-      case TierTileType.Specific:
-      default:
-        return <SpecificTierTile configuration={configuration} />;
-    }
-  };
-
-  return <Tile>{renderTierTileContent()}</Tile>;
+  const styles = StyleSheet.create({
+    container: createResponsiveStyle({
+      paddingHorizontal: [8, 8, 12],
+      borderRadius: theme.sizes.borderRadiusSm,
+      width: '100%',
+      flexDirection: isFullSize ? 'row' : 'row-reverse',
+      alignItems: isFullSize ? 'flex-start' : 'center',
+      justifyContent: 'space-between',
+    }),
+    contentContainer: {
+      flexDirection: 'column',
+      width: isFullSize ? '100%' : 'auto',
+    },
+  });
+  return (
+    <BaseTile tile={tile}>
+      {isFullSize && <TierTileImage isFullSize={isFullSize} />}
+    </BaseTile>
+  );
 };
 
-const SpecificTierTile: React.FC<TierTileProps> = ({
-  configuration,
-}) => {
-  const { ms, ps } = useResponsiveScale();
-  const { tier } = configuration;
-  const { theme } = useWllSdk();
+type TierTileImageProps = {
+  isFullSize: boolean;
+};
+
+const TierTileImage: React.FC<TierTileImageProps> = ({ isFullSize }) => {
+  const { theme } = useTheme();
+  const { configuration } = useTileContext();
+  const { tier } = configuration as TierTileConfig;
+
+  const styles = StyleSheet.create({
+    imageContainer: createResponsiveStyle({
+      width: isFullSize ? '100%' : 57,
+      height: isFullSize ? '50%' : 57,
+      marginBottom: isFullSize ? [8, 8, 12] : 0,
+      backgroundColor: isFullSize
+        ? theme.alphaDerivedPrimary[20]
+        : theme.surface,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }),
+    image: {
+      width: '80%',
+      height: '80%',
+      resizeMode: 'contain',
+    },
+  });
+
+  if (!tier) return null;
 
   return (
-    <View style={{ paddingHorizontal: ps(8), width: '100%' }}>
-      <View style={{ marginBottom: ms(2) }}>
-        <Text
-          style={{
-            color: theme.derivedSurfaceText[20],
-          }}
-        >
-          Hello World
-        </Text>
-        <Text variant="eyebrow">Tier</Text>
-        <Text variant="title">{tier.name}</Text>
-      </View>
-      <ProgressIndicator
-        currentPoints={
-          tier.attained ? tier.pointsRequirement : tier.earnedPoints
-        }
-        maxPoints={tier.pointsRequirement}
-        variant="primary"
-      />
-      <View style={{ marginTop: ms(2) }}>
-        <Text variant="caption">
-          {tier.earnedPoints} / {tier.pointsRequirement}pts
-        </Text>
-        {tier.attained && (
-          <Text variant="label" style={{ marginTop: ms(1) }}>
-            You reached {tier.name}!
-          </Text>
-        )}
-      </View>
+    <View style={styles.imageContainer}>
+      <Image source={{ uri: tier.artworkUrl }} style={styles.image} />
     </View>
   );
 };
 
-const NextTierTile: React.FC<TierTileProps> = ({ configuration }) => {
-  const { ms } = useResponsiveScale();
-  const { tier } = configuration;
+const TierTileName: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { tier } = configuration as TierTileConfig;
+  return <Text variant="title">{tier?.name}</Text>;
+};
 
+const TierTileCount: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { tier } = configuration as TierTileConfig;
+  return <Text>{`${tier?.earnedPoints}/${tier?.pointsRequirement}`}</Text>;
+};
+
+const TierTileProgress: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { tier } = configuration as TierTileConfig;
+  if (!tier) return null;
   return (
-    <>
-      <View style={{ marginBottom: ms(2) }}>
-        <Text variant="eyebrow">Next Tier</Text>
-        <Text variant="title">{tier.name}</Text>
-      </View>
-      <ProgressIndicator
-        currentPoints={tier.earnedPoints}
-        maxPoints={tier.pointsRequirement}
-        variant="primary"
-      />
-      <View style={{ marginTop: ms(2) }}>
-        <Text variant="caption">
-          {tier.earnedPoints} / {tier.pointsRequirement}pts
-        </Text>
-      </View>
-    </>
+    <ProgressBar percentage={tier?.earnedPoints / tier?.pointsRequirement} />
   );
 };
 
-const CurrentTierTile: React.FC<TierTileProps> = ({
-  configuration,
-}) => {
-  const { ms } = useResponsiveScale();
-  const { tier } = configuration;
-
-  console.log(configuration, 'configuration');
-
-  return (
-    <>
-      <View style={{ marginBottom: ms(2) }}>
-        <Text variant="eyebrow">Current Tier</Text>
-        <Text variant="title">{tier.name}</Text>
-      </View>
-      <ProgressIndicator
-        currentPoints={tier.earnedPoints}
-        maxPoints={tier.pointsRequirement}
-        variant="primary"
-      />
-      <View style={{ marginTop: ms(2) }}>
-        <Text variant="caption">
-          {tier.earnedPoints} / {tier.pointsRequirement}pts
-        </Text>
-      </View>
-    </>
-  );
+const TierTileDescription: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { tier } = configuration as TierTileConfig;
+  return <Text variant="body">{tier?.description}</Text>;
 };
+
+TierTileBase.Name = TierTileName;
+TierTileBase.Count = TierTileCount;
+TierTileBase.Image = TierTileImage;
+TierTileBase.Progress = TierTileProgress;
+TierTileBase.Description = TierTileDescription;
+
+const TierTile = TierTileBase;
 
 export default TierTile;

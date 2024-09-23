@@ -1,3 +1,5 @@
+import { Badge, Reward, RewardCategory, TierType } from './wll';
+
 export enum CtaAction {
   sameWindow = 'SAME_WINDOW',
   newWindow = 'NEW_WINDOW',
@@ -28,82 +30,6 @@ export enum TileHeight {
   Half = 'HALF',
   Full = 'FULL',
 }
-type Badge = {
-  id: string | null;
-  name: string | null;
-  description: string | null;
-  artworkUrl: string | null;
-  createdAt: string | null;
-  updatedAt: string | null;
-};
-export class RewardCategory {
-  name?: string | null;
-  priority?: number;
-  type?: string | null;
-  id?: string | null;
-  createdAt?: string | null;
-  updatedAt?: string | null;
-  description?: string | null;
-  metadata?: string | null;
-  pictureUrl?: string | null;
-  rewards?: Reward[];
-  parent?: string | null;
-}
-
-export class Reward {
-  id?: string | null;
-  createdAt?: string | null;
-  updatedAt?: string | null;
-  name?: string | null;
-  pictureUrl?: string | null;
-  description?: string | null;
-  value?: number | null;
-  price?: number;
-  priority?: number;
-  discounts?: any[] | null;
-  redemptionChannels?: string[] | null;
-  venues?: any[] | null;
-  purchasableForAudiences?: string[] | null;
-  category?: string | null;
-  terms?: string | null;
-  availability?: Availability;
-  purchasable?: boolean;
-  tier?: string | null;
-  summary?: string | null;
-  redemptionMessage?: string | null;
-  visibilityCriteria?: string | null;
-  logoUrl?: string | null;
-  type?: string | null;
-  codeType?: string | null;
-  code?: string | null;
-  purchaseExpiration?: string | null;
-  hideCode?: boolean;
-  notificationConfig?: string | null;
-}
-type Availability = {
-  start: string | null;
-  end: string | null;
-};
-type Effectivity = {
-  start: string | null;
-  end: string | null;
-};
-
-export type TierType = {
-  id: string | null;
-  name: string | null;
-  description: string | null;
-  artworkUrl: string | null;
-  priority: number;
-  pointsRequirement: number;
-  calculation: string | null;
-  accumulationPeriod: string | null;
-  effectivity: Effectivity;
-  createdAt: string | null;
-  updatedAt: string | null;
-  earnedPoints: number;
-  attained: boolean;
-};
 
 export class BannerTileConfig {
   imageUrl?: string | null;
@@ -184,6 +110,4 @@ const getConfigForTileType = (tileType: TileType) => {
   }
 };
 
-export type TileConfig = InstanceType<
-  ReturnType<typeof getConfigForTileType>
->;
+export type TileConfig = InstanceType<ReturnType<typeof getConfigForTileType>>;

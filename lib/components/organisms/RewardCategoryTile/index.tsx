@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardCategoryTileConfig } from '../../../types/tile';
+
+//TODO: fix this to use BaseTile
 import { Tile } from '../../atoms';
 
 type RewardCategoryTileProps = {
@@ -12,8 +14,7 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
   configuration,
 }) => {
   const { theme } = useWllSdk();
-  const { allowDecorationOverlay, rewardCategory } =
-    configuration || {};
+  const { allowDecorationOverlay, rewardCategory } = configuration || {};
   const { name, pictureUrl } = rewardCategory || {};
 
   if (!rewardCategory) return null;
@@ -21,15 +22,10 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
   return (
     <Tile>
       {allowDecorationOverlay && (
-        <View
-          style={[styles.overlay, { backgroundColor: theme.primary }]}
-        >
+        <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
           {name && (
             <Text
-              style={[
-                styles.overlayText,
-                { color: theme.primaryText },
-              ]}
+              style={[styles.overlayText, { color: theme.primaryText }]}
               ellipsizeMode="tail"
               numberOfLines={1}
             >
@@ -43,9 +39,7 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
           source={{ uri: pictureUrl }}
           style={styles.image}
           resizeMode="cover"
-          onError={(error) =>
-            console.error('Image loading error:', error)
-          }
+          onError={(error) => console.error('Image loading error:', error)}
         />
       )}
     </Tile>

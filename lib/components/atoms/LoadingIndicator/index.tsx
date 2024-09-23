@@ -1,9 +1,10 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { Tile } from '../../../types/tile';
 
 type LoadingIndicatorProps = {
-  // Define your props here
+  tile: Tile;
 };
 
 const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
@@ -14,8 +15,7 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
       style={[
         styles.container,
         {
-          backgroundColor: theme.surface,
-          borderRadius: theme.sizes.borderRadius,
+          borderRadius: theme.sizes.borderRadiusSm,
           padding: theme.sizes.md,
         },
       ]}
