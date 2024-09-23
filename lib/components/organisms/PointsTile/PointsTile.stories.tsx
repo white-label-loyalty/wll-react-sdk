@@ -1,10 +1,11 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import pointsImage from '../../../assets/points.png';
-import pointsFull from '../../../assets/pointsFull.png';
 import { TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 import PointsTile from './index';
+
+const pointsImage = '../../../assets/points.png';
+const pointsFull = '../../../assets/pointsFull.png';
 
 export default {
   title: 'components/organisms/PointsTile',

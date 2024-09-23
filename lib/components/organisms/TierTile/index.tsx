@@ -3,7 +3,8 @@
 
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
+
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { TierTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, ProgressBar, Text } from '../../atoms';
@@ -20,7 +21,7 @@ const TierTileBase: React.FC<TierTileProps> & {
   Progress: typeof TierTileProgress;
   Description: typeof TierTileDescription;
 } = ({ tile }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const isFullSize = tile.tileHeight === TileHeight.Full;
 
   const styles = StyleSheet.create({
@@ -49,7 +50,7 @@ type TierTileImageProps = {
 };
 
 const TierTileImage: React.FC<TierTileImageProps> = ({ isFullSize }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
 

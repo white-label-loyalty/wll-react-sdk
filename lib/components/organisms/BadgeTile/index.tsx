@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { Tile, TileConfig } from '../../../types/tile';
 import { Badge } from '../../../types/wll';
@@ -19,7 +19,7 @@ type BadgeTileComponent = FC<BadgeTileProps> & {
 };
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   return (
     <BaseTile tile={tile}>
       <BadgeTile.Image style={styles.image} />

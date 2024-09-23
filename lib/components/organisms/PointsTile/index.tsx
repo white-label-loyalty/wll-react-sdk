@@ -1,6 +1,6 @@
-import { useWllSdk } from 'context/WllSdkContext';
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { PointsTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';

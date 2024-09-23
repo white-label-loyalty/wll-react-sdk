@@ -1,6 +1,6 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
 import { FlexStyle, Image, StyleSheet, View, ViewStyle } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { Tile, TileConfig, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
@@ -36,7 +36,7 @@ type LayoutProps = FlexStyle & {
 
 const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
   const { loading: isLoading } = useSectionContext();
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   const layout: LayoutProps = {
     flexDirection: 'column',
@@ -77,7 +77,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
 
 const TileTitle: FC = () => {
   const tile = useTileContext();
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { title, imageUrl, linkURL } = tile.configuration as TileConfig & {
     title?: string;
     linkURL?: string;
