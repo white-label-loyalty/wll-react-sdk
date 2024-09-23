@@ -1,9 +1,12 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import TierTile from '.';
-import goldImage from '../../../assets/gold.png';
 import { TierTileType, TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
+
+// Placeholder imports for images
+const goldImage = '../../../assets/gold.png';
+const silverImage = '../../../assets/silver.png';
 
 export default {
   title: 'components/organisms/TierTile',
@@ -24,23 +27,25 @@ CurrentTierHalf.args = {
   tile: {
     id: '1',
     type: TileType.Tier,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    tenantId: 'XXXXXXX',
-    visibilityCriteria: 'all',
+    createdAt: '',
+    updatedAt: '',
     tileHeight: TileHeight.Half,
+    active: true,
     configuration: {
+      progressType: 'POINTS',
       type: TierTileType.currentTier,
-      tierId: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
       tier: {
         id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
         name: 'Gold',
-        description: null,
+        description: undefined,
         artworkUrl: goldImage,
         pointsRequirement: 10,
         earnedPoints: 100,
         attained: false,
+        priority: 0,
       },
+      targetTier: undefined,
+      targetTierAttainingPeriod: new Date('2024-12-31'),
     },
   },
 };
@@ -49,14 +54,13 @@ CurrentTierFull.args = {
   tile: {
     id: '1',
     type: TileType.Tier,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    tenantId: 'XXXXXXX',
-    visibilityCriteria: 'all',
+    createdAt: '',
+    updatedAt: '',
+    active: true,
     tileHeight: TileHeight.Half,
     configuration: {
       type: TierTileType.currentTier,
-      tierId: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+      progressType: 'POINTS',
       tier: {
         id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
         name: 'Gold',
@@ -66,7 +70,86 @@ CurrentTierFull.args = {
         pointsRequirement: 10,
         earnedPoints: 100,
         attained: false,
+        priority: 0,
       },
+      targetTier: undefined,
+      targetTierAttainingPeriod: new Date('2024-12-31'),
+    },
+  },
+};
+
+const CurrentTargetNextTier = Template.bind({});
+CurrentTargetNextTier.args = {
+  tile: {
+    id: '2',
+    type: TileType.Tier,
+    createdAt: '',
+    updatedAt: '',
+    active: true,
+    tileHeight: TileHeight.Full,
+    configuration: {
+      type: TierTileType.currentTargetNext,
+      progressType: 'POINTS',
+      pointsMultiplier: 1,
+      pointsPrefix: '$',
+      pointsSuffix: ' spent',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Silver',
+        artworkUrl: silverImage,
+        pointsRequirement: 500,
+        earnedPoints: 300,
+        attained: true,
+        priority: 0,
+      },
+      targetTier: {
+        id: '93642bc2-78cb-4d7e-ade3-e0f28f09e90g',
+        name: 'Gold',
+        artworkUrl: goldImage,
+        pointsRequirement: 1000,
+        earnedPoints: 300,
+        attained: false,
+        priority: 1,
+      },
+      targetTierAttainingPeriod: new Date('2024-12-31'),
+    },
+  },
+};
+
+const CurrentTargetSpecificTier = Template.bind({});
+CurrentTargetSpecificTier.args = {
+  tile: {
+    id: '3',
+    type: TileType.Tier,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    active: true,
+    configuration: {
+      type: TierTileType.currentTargetSpecific,
+      progressType: 'POINTS',
+      pointsMultiplier: 1,
+      pointsPrefix: '',
+      pointsSuffix: ' points',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Bronze',
+        artworkUrl: goldImage,
+        pointsRequirement: 100,
+        earnedPoints: 50,
+        attained: true,
+        priority: 0,
+      },
+      targetTier: {
+        id: '93642bc2-78cb-4d7e-ade3-e0f28f09e90g',
+        name: 'Silver',
+        artworkUrl: silverImage,
+        pointsRequirement: 5000,
+        earnedPoints: 50,
+        attained: false,
+        priority: 0,
+      },
+      targetTierAttainingPeriod: new Date('2024-12-31'),
     },
   },
 };

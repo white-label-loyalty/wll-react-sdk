@@ -48,15 +48,15 @@ type Effectivity = {
 export type TierType = {
   id: string;
   name: string;
-  description: string;
-  artworkUrl: string;
+  description?: string;
+  artworkUrl?: string;
   priority: number;
-  pointsRequirement: number;
-  calculation: string;
-  accumulationPeriod: string;
-  effectivity: Effectivity;
-  createdAt: string;
-  updatedAt: string;
-  earnedPoints: number;
-  attained: boolean;
+  pointsRequirement?: number;
+  calculation?: string;
+  accumulationPeriod?: string;
+  effectivity?: Effectivity;
+  createdAt?: string;
+  updatedAt?: string;
+  earnedPoints?: number;
+  attained?: boolean;
 };

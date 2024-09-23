@@ -12,8 +12,8 @@ export enum BadgeTileType {
 
 export enum TierTileType {
   currentTier = 'CURRENT_TIER',
-  nextTier = 'NEXT_TIER',
-  specificTier = 'SPECIFIC_TIER',
+  currentTargetNext = 'CURRENT_TARGET_NEXT',
+  currentTargetSpecific = 'CURRENT_TARGET_SPECIFIC',
 }
 
 export enum TileType {
@@ -30,6 +30,8 @@ export enum TileHeight {
   Half = 'HALF',
   Full = 'FULL',
 }
+
+export type ProgessType = 'NAME' | 'POINTS';
 
 export class BannerTileConfig {
   imageUrl?: string | null;
@@ -73,9 +75,14 @@ export class RewardCategoryTileConfig {
 }
 
 export class TierTileConfig {
-  tierId?: string | null;
+  progressType: 'NAME' | 'POINTS' = 'NAME';
+  pointsMultiplier?: number;
+  pointsPrefix?: string;
+  pointsSuffix?: string;
   tier?: TierType;
+  targetTier?: TierType | undefined;
   type?: TierTileType;
+  targetTierAttainingPeriod?: Date | null;
 }
 
 export type Tile = {
@@ -84,7 +91,6 @@ export type Tile = {
   active: boolean;
   createdAt: string | null;
   updatedAt: string | null;
-  visibilityCriteria: object | null;
   tileHeight: TileHeight;
   configuration: TileConfig;
 };

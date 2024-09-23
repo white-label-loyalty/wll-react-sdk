@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { Section } from '../types/section';
-import {
-  BaseThemeObject,
-  ThemeContextType,
-  ThemeObject,
-} from '../types/theme';
+import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
 import { Tile } from '../types/tile';
 import { defaultTheme, sizes } from '../utils/styling';
 import {
+  getAlphaDerivedColors,
   getDerivedColor,
   getDerivedColorPercentages,
   getReadableTextColor,
@@ -35,13 +32,11 @@ type WllSdkProviderProps = {
   config: SDKConfig;
 };
 
-export const WllSdkContext = React.createContext<
-  WllSdkContextType | undefined
->(undefined);
+export const WllSdkContext = React.createContext<WllSdkContextType | undefined>(
+  undefined
+);
 
-const createTheme = (
-  baseTheme: Partial<BaseThemeObject> = {}
-): ThemeObject => {
+const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
   const mergedTheme = {
     ...defaultTheme,
     ...baseTheme,
@@ -65,6 +60,7 @@ const createTheme = (
     negativeText: getReadableTextColor(negative),
     derivedSurface: getDerivedColorPercentages(surface),
     derivedSurfaceText: getDerivedColorPercentages(surfaceText),
+    alphaDerivedPrimary: getAlphaDerivedColors(primary),
   };
 };
 
@@ -88,8 +84,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
     if (apiKey) headers.set('X-Api-Key', apiKey);
 
     const response = await fetch(url, { ...options, headers });
-    if (!response.ok)
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return response.json();
   };
 
@@ -105,8 +100,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
             active: true,
             type: 'REWARD_CATEGORY',
             configuration: {
-              rewardCategoryId:
-                'e946921f-cd35-4163-bfad-43057e097ac9',
+              rewardCategoryId: 'e946921f-cd35-4163-bfad-43057e097ac9',
               allowDecorationOverlay: true,
               rewardCategory: {
                 name: 'Sports',
@@ -244,8 +238,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
             active: true,
             type: 'REWARD_CATEGORY',
             configuration: {
-              rewardCategoryId:
-                'b8cd84ee-ff9e-4244-b4d9-91436e6a6e80',
+              rewardCategoryId: 'b8cd84ee-ff9e-4244-b4d9-91436e6a6e80',
               allowDecorationOverlay: true,
               rewardCategory: {
                 name: 'Sports',
@@ -290,8 +283,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
             active: true,
             type: 'REWARD_CATEGORY',
             configuration: {
-              rewardCategoryId:
-                'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
+              rewardCategoryId: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
               allowDecorationOverlay: false,
               rewardCategory: {
                 name: 'Sports',
