@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
@@ -6,10 +6,10 @@ import BaseTile from '../../atoms/BaseTile';
 
 type ContentTileProps = {
   tile: Tile;
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const ContentTile: FC<ContentTileProps> = ({ tile }) => {
+const ContentTile: React.FC<ContentTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
       <BaseTile.Image style={styles.image} />

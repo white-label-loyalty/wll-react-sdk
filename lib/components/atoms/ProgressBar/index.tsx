@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { Size, ThemeObject, Variant } from "../../../types/theme";
-import { createVariantSystem } from "../../../utils/variant";
+import React from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { Size, ThemeObject, Variant } from '../../../types/theme';
+import { createVariantSystem } from '../../../utils/variant';
 
 export type ProgressBarProps = {
   percentage: number;
@@ -13,13 +13,13 @@ export type ProgressBarProps = {
 const useStyles = (theme: ThemeObject) => {
   return StyleSheet.create({
     container: {
-      width: "100%",
-      borderRadius: theme.sizes.borderRadiusSmRounded,
-      overflow: "hidden",
+      width: '100%',
+      borderRadius: theme.sizes.borderRadiusRounded,
+      overflow: 'hidden',
     },
     progress: {
-      borderRadius: theme.sizes.borderRadiusSmRounded,
-      height: "100%",
+      borderRadius: theme.sizes.borderRadiusRounded,
+      height: '100%',
     },
   });
 };
@@ -43,10 +43,10 @@ const useProgressStyles = createVariantSystem(
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   percentage,
-  variant = "primary",
-  height = "sm",
+  variant = 'primary',
+  height = 'sm',
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const styles = useStyles(theme);
   const containerStyles = useContainerStyles(theme);
   const progressStyles = useProgressStyles(theme, variant);

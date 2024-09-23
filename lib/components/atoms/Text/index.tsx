@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TextStyle,
 } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 
 type TextVariant =
@@ -28,7 +28,7 @@ export const Text: React.FC<TextProps> = ({
   isSurface = false,
   ...props
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
 
   const getVariantStyle = (variant: TextVariant): TextStyle => {
     const baseStyle = {

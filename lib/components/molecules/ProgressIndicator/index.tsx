@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { useTheme } from "../../../context/ThemeContext";
-import { Size, Variant } from "../../../types/theme";
-import { Icon, ProgressBar } from "../../atoms";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { Size, Variant } from '../../../types/theme';
+import { Icon, ProgressBar } from '../../atoms';
 
 export type ProgressIndicatorProps = {
   currentPoints: number;
@@ -15,19 +15,21 @@ export type ProgressIndicatorProps = {
 export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   currentPoints,
   maxPoints,
-  variant = "primary",
-  height = "sm",
+  variant = 'primary',
+  height = 'sm',
   attained = false,
 }) => {
-  const { theme } = useTheme();
-  const percentage = attained ? 100 : (currentPoints / maxPoints) * 100;
+  const { theme } = useWllSdk();
+  const percentage = attained
+    ? 100
+    : (currentPoints / maxPoints) * 100;
   const isComplete = percentage >= 100 || attained;
   let progressVariant: Variant = variant;
 
   if (isComplete) {
-    progressVariant = "primary";
+    progressVariant = 'primary';
   } else if (percentage < 50) {
-    progressVariant = "accent";
+    progressVariant = 'accent';
   }
 
   return (
@@ -43,7 +45,9 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
             styles.circle,
             {
               borderColor: theme.derivedSurface[20],
-              backgroundColor: isComplete ? theme.primary : theme.surface,
+              backgroundColor: isComplete
+                ? theme.primary
+                : theme.surface,
               borderWidth: isComplete ? 0 : 4,
             },
           ]}
@@ -59,22 +63,22 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   circleContainer: {
-    position: "absolute",
+    position: 'absolute',
     right: 0,
   },
   circle: {
     width: 21,
     height: 21,
     borderRadius: 9999,
-    backgroundColor: "red",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

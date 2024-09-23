@@ -1,5 +1,5 @@
 import * as LucideIcons from 'lucide-react';
-import React from 'react';
+import * as React from 'react';
 import { View } from 'react-native';
 
 type IconName = keyof typeof LucideIcons;
@@ -18,7 +18,7 @@ const Icon: React.FC<IconProps> = ({
   strokeWidth = 2,
   ...props
 }) => {
-  const LucideIcon = LucideIcons[name];
+  const LucideIcon = LucideIcons[name] as React.ElementType;
 
   if (!LucideIcon) {
     console.warn(`Icon "${name}" not found in Lucide icons`);
@@ -27,7 +27,6 @@ const Icon: React.FC<IconProps> = ({
 
   return (
     <View {...props}>
-      {/* @ts-ignore */}
       <LucideIcon color={color} size={size} strokeWidth={strokeWidth} />
     </View>
   );

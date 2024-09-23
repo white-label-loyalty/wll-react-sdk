@@ -1,4 +1,4 @@
-import { Badge, RewardCategory, TierType } from './wll';
+import { Badge, Reward, RewardCategory, TierType } from './wll';
 
 export enum CtaAction {
   sameWindow = 'SAME_WINDOW',
@@ -32,116 +32,59 @@ export enum TileHeight {
 }
 
 export class BannerTileConfig {
-  imageUrl?: string;
-  title?: string;
-  description?: string;
-  ctaText?: string;
-  ctaLink?: string;
+  imageUrl?: string | null;
+  title?: string | null;
+  description?: string | null;
+  ctaText?: string | null;
+  ctaLink?: string | null;
   ctaAction?: CtaAction;
-  constructor(
-    imageUrl?: string,
-    title?: string,
-    description?: string,
-    ctaText?: string,
-    ctaLink?: string,
-    ctaAction?: CtaAction
-  ) {
-    this.imageUrl = imageUrl;
-    this.title = title;
-    this.description = description;
-    this.ctaText = ctaText;
-    this.ctaLink = ctaLink;
-    this.ctaAction = ctaAction;
-  }
 }
 
 export class PointsTileConfig {
-  title?: string;
+  title?: string | null;
   multiplier?: number;
-  prefix?: string;
-  suffix?: string;
-  imageUrl?: string;
+  prefix?: string | null;
+  suffix?: string | null;
+  imageUrl?: string | null;
   points?: number;
-  constructor(
-    title?: string,
-    multiplier?: number,
-    prefix?: string,
-    suffix?: string,
-    imageUrl?: string
-  ) {
-    this.title = title;
-    this.multiplier = multiplier;
-    this.prefix = prefix;
-    this.suffix = suffix;
-    this.imageUrl = imageUrl;
-  }
 }
 
 export class ContentTileConfig {
-  title?: string;
-  subtitle?: string;
-  imageUrl?: string;
-  linkURL?: string;
-  constructor(
-    title?: string,
-    subtitle?: string,
-    imageUrl?: string,
-    linkURL?: string
-  ) {
-    this.title = title;
-    this.subtitle = subtitle;
-    this.imageUrl = imageUrl;
-    this.linkURL = linkURL;
-  }
+  title?: string | null;
+  subtitle?: string | null;
+  imageUrl?: string | null;
 }
 
 export class RewardTileConfig {
-  rewardId?: string;
+  reward?: Reward;
   showPrice?: boolean;
-  constructor(rewardId?: string, showPrice?: boolean) {
-    this.rewardId = rewardId;
-    this.showPrice = showPrice;
-  }
 }
 
 export class BadgeTileConfig {
   badgeTileType?: BadgeTileType;
-  badgeId?: string;
+  badgeId?: string | null;
   badge?: Badge;
-  constructor(badgeTileType?: BadgeTileType, badgeId?: string) {
-    this.badgeTileType = badgeTileType;
-    this.badgeId = badgeId;
-  }
 }
 
 export class RewardCategoryTileConfig {
-  categoryId?: string;
+  categoryId?: string | null;
   allowDecorationOverlay?: boolean;
   rewardCategory?: RewardCategory;
-  constructor(categoryId?: string, allowDecorationOverlay?: boolean) {
-    this.categoryId = categoryId;
-    this.allowDecorationOverlay = allowDecorationOverlay;
-  }
 }
 
 export class TierTileConfig {
-  tierTileType?: TierTileType;
   tierId?: string | null;
   tier?: TierType;
-  constructor(tierTileType?: TierTileType, tierId?: string | null) {
-    this.tierTileType = tierTileType;
-    this.tierId = tierId;
-  }
+  type?: TierTileType;
 }
 
 export type Tile = {
-  id: string;
+  id: string | null;
   type: TileType;
   active: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  tenantId: string;
-  visibilityCriteria: string;
+  createdAt: string | null;
+  updatedAt: string | null;
+  visibilityCriteria: object | null;
   tileHeight: TileHeight;
   configuration: TileConfig;
 };

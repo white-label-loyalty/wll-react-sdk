@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/reactnative,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=reactnative,react
-
+# Built files
+/dist/*
+build/
 ### react ###
 .DS_*
 *.log

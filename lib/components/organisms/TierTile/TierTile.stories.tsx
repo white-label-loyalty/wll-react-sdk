@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import * as React from 'react';
 import TierTile from '.';
 import goldImage from '../../../assets/gold.png';
 import { TierTileType, TileHeight, TileType } from '../../../types/tile';

@@ -8,14 +8,15 @@ export enum SectionType {
 export type Section = {
   id: string;
   type: SectionType;
-  createdAt: Date;
-  updatedAt: Date;
-  tenantId: string;
-  visibilityCriteria: string;
+  createdAt: string;
+  updatedAt: string;
+  visibilityCriteria: object | null;
   title?: string;
   description?: string;
   tiles: Tile[];
   pointsMultiplier?: number;
-  pointsPrefix?: string;
-  pointsSuffix?: string;
+  pointsPrefix?: string | null;
+  pointsSuffix?: string | null;
+  priority: number;
+  active: boolean;
 };

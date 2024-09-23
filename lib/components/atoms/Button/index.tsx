@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { Variant } from '../../../types/theme';
 import { useResponsiveScale } from '../../../utils/responsiveScaling';
 import { createVariantSystem } from '../../../utils/variant';
@@ -59,7 +59,7 @@ const useTextStyles = createVariantSystem(styles.text, (theme) => ({
 }));
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { fs } = useResponsiveScale();
   const buttonStyle = useButtonStyles(theme, variant);
   const textStyle = useTextStyles(theme, variant);

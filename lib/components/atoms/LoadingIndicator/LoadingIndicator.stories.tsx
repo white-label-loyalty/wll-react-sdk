@@ -1,8 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
 import { TileHeight } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 
+import * as React from 'react';
 import LoadingIndicator from './index';
 
 export default {
