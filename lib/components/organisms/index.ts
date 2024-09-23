@@ -17,4 +17,3 @@ export {
   Section,
   TierTile,
 };
-import TierTileNew from './TierTileNew';

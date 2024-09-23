@@ -3,10 +3,10 @@ import * as React from 'react';
 import TierTile from '.';
 import { TierTileType, TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
-
-// Placeholder imports for images
-const goldImage = '../../../assets/gold.png';
-const silverImage = '../../../assets/silver.png';
+// @ts-ignore
+import goldImage from '../../../assets/gold.png';
+// @ts-ignore
+import silverImage from '../../../assets/silver.png';
 
 export default {
   title: 'components/organisms/TierTile',
@@ -22,7 +22,7 @@ const Template: StoryFn<typeof TierTile> = (args) => (
   </TileWrapper>
 );
 
-const CurrentTierHalf = Template.bind({});
+export const CurrentTierHalf = Template.bind({});
 CurrentTierHalf.args = {
   tile: {
     id: '1',
@@ -49,7 +49,8 @@ CurrentTierHalf.args = {
     },
   },
 };
-const CurrentTierFull = Template.bind({});
+
+export const CurrentTierFull = Template.bind({});
 CurrentTierFull.args = {
   tile: {
     id: '1',
@@ -57,7 +58,7 @@ CurrentTierFull.args = {
     createdAt: '',
     updatedAt: '',
     active: true,
-    tileHeight: TileHeight.Half,
+    tileHeight: TileHeight.Full,
     configuration: {
       type: TierTileType.currentTier,
       progressType: 'POINTS',
@@ -78,8 +79,46 @@ CurrentTierFull.args = {
   },
 };
 
-const CurrentTargetNextTier = Template.bind({});
-CurrentTargetNextTier.args = {
+export const CurrentTargetNextTierHalf = Template.bind({});
+CurrentTargetNextTierHalf.args = {
+  tile: {
+    id: '2',
+    type: TileType.Tier,
+    createdAt: '',
+    updatedAt: '',
+    active: true,
+    tileHeight: TileHeight.Half,
+    configuration: {
+      type: TierTileType.currentTargetNext,
+      progressType: 'POINTS',
+      pointsMultiplier: 1,
+      pointsPrefix: '$',
+      pointsSuffix: ' spent',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Silver',
+        artworkUrl: silverImage,
+        pointsRequirement: 500,
+        earnedPoints: 300,
+        attained: true,
+        priority: 0,
+      },
+      targetTier: {
+        id: '93642bc2-78cb-4d7e-ade3-e0f28f09e90g',
+        name: 'Gold',
+        artworkUrl: goldImage,
+        pointsRequirement: 1000,
+        earnedPoints: 300,
+        attained: false,
+        priority: 1,
+      },
+      targetTierAttainingPeriod: new Date('2024-12-31'),
+    },
+  },
+};
+
+export const CurrentTargetNextTierFull = Template.bind({});
+CurrentTargetNextTierFull.args = {
   tile: {
     id: '2',
     type: TileType.Tier,
@@ -116,8 +155,8 @@ CurrentTargetNextTier.args = {
   },
 };
 
-const CurrentTargetSpecificTier = Template.bind({});
-CurrentTargetSpecificTier.args = {
+export const CurrentTargetSpecificTierHalf = Template.bind({});
+CurrentTargetSpecificTierHalf.args = {
   tile: {
     id: '3',
     type: TileType.Tier,
@@ -142,7 +181,44 @@ CurrentTargetSpecificTier.args = {
       },
       targetTier: {
         id: '93642bc2-78cb-4d7e-ade3-e0f28f09e90g',
-        name: 'Silver',
+        name: 'Platinum',
+        artworkUrl: silverImage,
+        pointsRequirement: 5000,
+        earnedPoints: 50,
+        attained: false,
+        priority: 0,
+      },
+      targetTierAttainingPeriod: new Date('2024-12-31'),
+    },
+  },
+};
+export const CurrentTargetSpecificTierFull = Template.bind({});
+CurrentTargetSpecificTierFull.args = {
+  tile: {
+    id: '3',
+    type: TileType.Tier,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    active: true,
+    configuration: {
+      type: TierTileType.currentTargetSpecific,
+      progressType: 'POINTS',
+      pointsMultiplier: 1,
+      pointsPrefix: '',
+      pointsSuffix: ' points',
+      tier: {
+        id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
+        name: 'Bronze',
+        artworkUrl: goldImage,
+        pointsRequirement: 100,
+        earnedPoints: 50,
+        attained: true,
+        priority: 0,
+      },
+      targetTier: {
+        id: '93642bc2-78cb-4d7e-ade3-e0f28f09e90g',
+        name: 'Platinum',
         artworkUrl: silverImage,
         pointsRequirement: 5000,
         earnedPoints: 50,

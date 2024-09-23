@@ -1,11 +1,13 @@
-// @ts-nocheck
-// TODO: Fix this file
-
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { TierTileConfig, Tile, TileHeight } from '../../../types/tile';
+import {
+  TierTileConfig,
+  TierTileType,
+  Tile,
+  TileHeight,
+} from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, ProgressBar, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -14,22 +16,25 @@ type TierTileProps = {
   tile: Tile;
 };
 
-const TierTileBase: React.FC<TierTileProps> & {
-  Name: typeof TierTileName;
-  Count: typeof TierTileCount;
+const TierTile: React.FC<TierTileProps> & {
+  Name: typeof Name;
+  Count: typeof Count;
   Image: typeof TierTileImage;
-  Progress: typeof TierTileProgress;
-  Description: typeof TierTileDescription;
+  Progress: typeof Progress;
+  Description: typeof Description;
+  NextName?: typeof NextName;
+  NextCount?: typeof NextCount;
 } = ({ tile }) => {
   const { theme } = useWllSdk();
   const isFullSize = tile.tileHeight === TileHeight.Full;
+  const configuration = tile.configuration as TierTileConfig;
 
   const styles = StyleSheet.create({
     container: createResponsiveStyle({
       paddingHorizontal: [8, 8, 12],
       borderRadius: theme.sizes.borderRadiusSm,
       width: '100%',
-      flexDirection: isFullSize ? 'row' : 'row-reverse',
+      flexDirection: isFullSize ? 'column' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
       justifyContent: 'space-between',
     }),
@@ -38,11 +43,54 @@ const TierTileBase: React.FC<TierTileProps> & {
       width: isFullSize ? '100%' : 'auto',
     },
   });
-  return (
-    <BaseTile tile={tile}>
-      {isFullSize && <TierTileImage isFullSize={isFullSize} />}
-    </BaseTile>
-  );
+
+  const renderTileContent = () => {
+    switch (configuration.type) {
+      case TierTileType.currentTier:
+        return (
+          <View style={styles.container}>
+            <TierTile.Image isFullSize={isFullSize} />
+            <View>
+              <Text>Your Tier</Text>
+              <TierTile.Name />
+            </View>
+            {isFullSize && <TierTile.Description />}
+          </View>
+        );
+      case TierTileType.currentTargetNext:
+        return (
+          <>
+            <TierTile.Image isFullSize={isFullSize} />
+            <TierTile.Description />
+            <View style={styles.container}>
+              <View style={styles.contentContainer}>
+                <TierTile.Name />
+                <TierTile.Count />
+              </View>
+              <TierTile.Progress />
+            </View>
+          </>
+        );
+      case TierTileType.currentTargetSpecific:
+        return (
+          <>
+            <TierTile.Image isFullSize={isFullSize} />
+            <TierTile.Description />
+            <View style={styles.container}>
+              <View style={styles.contentContainer}>
+                <TierTile.Name />
+                <TierTile.Count />
+              </View>
+              <TierTile.Progress />
+            </View>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return <BaseTile tile={tile}>{renderTileContent()}</BaseTile>;
 };
 
 type TierTileImageProps = {
@@ -81,19 +129,33 @@ const TierTileImage: React.FC<TierTileImageProps> = ({ isFullSize }) => {
   );
 };
 
-const TierTileName: React.FC = () => {
+const Name: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
   return <Text variant="title">{tier?.name}</Text>;
 };
 
-const TierTileCount: React.FC = () => {
+const NextName: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { targetTier } = configuration as TierTileConfig;
+  return <Text variant="title">{targetTier?.name}</Text>;
+};
+
+const Count: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
   return <Text>{`${tier?.earnedPoints}/${tier?.pointsRequirement}`}</Text>;
 };
 
-const TierTileProgress: React.FC = () => {
+const NextCount: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { targetTier } = configuration as TierTileConfig;
+  return (
+    <Text>{`${targetTier?.earnedPoints}/${targetTier?.pointsRequirement}`}</Text>
+  );
+};
+
+const Progress: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
   if (!tier) return null;
@@ -102,18 +164,18 @@ const TierTileProgress: React.FC = () => {
   );
 };
 
-const TierTileDescription: React.FC = () => {
+const Description: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
   return <Text variant="body">{tier?.description}</Text>;
 };
 
-TierTileBase.Name = TierTileName;
-TierTileBase.Count = TierTileCount;
-TierTileBase.Image = TierTileImage;
-TierTileBase.Progress = TierTileProgress;
-TierTileBase.Description = TierTileDescription;
-
-const TierTile = TierTileBase;
+TierTile.Name = Name;
+TierTile.Count = Count;
+TierTile.Image = TierTileImage;
+TierTile.Progress = Progress;
+TierTile.Description = Description;
+TierTile.NextName = NextName;
+TierTile.NextCount = NextCount;
 
 export default TierTile;
