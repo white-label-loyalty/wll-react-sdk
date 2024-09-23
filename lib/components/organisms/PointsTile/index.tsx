@@ -1,6 +1,6 @@
-import React from 'react';
+import { useWllSdk } from 'context/WllSdkContext';
+import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { useTheme } from '../../../context/ThemeContext';
 import { PointsTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';
@@ -16,7 +16,7 @@ const PointsTile: React.FC<PointsTileProps> & {
   Points: typeof PointsTilePoints;
   Image: typeof PointsTileImage;
 } = ({ tile }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const isFullSize = tile.tileHeight === TileHeight.Full;
 
   const styles = StyleSheet.create({
@@ -56,7 +56,7 @@ const PointsTileTitle: React.FC = () => {
 };
 
 const PointsTilePoints: React.FC = () => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { sectionData } = useSectionContext();
   const { configuration } = useTileContext();
   const {
@@ -102,7 +102,7 @@ type PointTileImageProps = {
 };
 
 const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
-  const { theme } = useTheme();
+  const { theme } = useWllSdk();
   const { configuration } = useTileContext();
   const { imageUrl } = configuration as PointsTileConfig;
 
