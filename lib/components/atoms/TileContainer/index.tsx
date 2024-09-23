@@ -1,24 +1,6 @@
-import {
-  BadgeTileConfig,
-  BannerTileConfig,
-  ContentTileConfig,
-  PointsTileConfig,
-  RewardCategoryTileConfig,
-  RewardTileConfig,
-  TierTileConfig,
-  Tile,
-  TileType,
-} from '../../../types/tile';
-import { useResponsiveScale } from '../../../utils/responsiveScaling';
-import {
-  BadgeTile,
-  BannerTile,
-  ContentTile,
-  PointsTile,
-  RewardCategoryTile,
-  RewardTile,
-  TierTile,
-} from '../../organisms';
+import { Tile, TileType } from '../../../types/tile';
+
+import { BadgeTile, ContentTile } from '../../organisms';
 
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -28,8 +10,6 @@ type TileContainerProps = {
 };
 
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
-  const { ms } = useResponsiveScale();
-
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
       case TileType.Content: {
@@ -49,7 +29,8 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
           style={[
             styles.tileContainer,
             {
-              marginBottom: index === tiles.length - 1 ? 0 : ms(15),
+              // TODO: Replace this with new responsive method
+              marginBottom: 15,
             },
           ]}
         >

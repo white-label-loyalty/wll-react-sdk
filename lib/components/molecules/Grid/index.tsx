@@ -1,17 +1,15 @@
-import React from "react";
-import { StyleSheet, useWindowDimensions, View } from "react-native";
-import { Section as SectionData } from "../../../types/section";
-import { Tile, TileHeight, TileType } from "../../../types/tile";
-import { useResponsiveScale } from "../../../utils/responsiveScaling";
-import { TileContainer } from "../../atoms";
-import { SectionHeader } from "../../molecules";
+import React from 'react';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Section as SectionData } from '../../../types/section';
+import { Tile, TileHeight, TileType } from '../../../types/tile';
+import { TileContainer } from '../../atoms';
+import { SectionHeader } from '../../molecules';
 
 type GridProps = {
   section: SectionData;
 };
 
 const Grid: React.FC<GridProps> = ({ section }) => {
-  const { ps } = useResponsiveScale();
   const { width } = useWindowDimensions();
   const isDesktop = width >= 700;
   const columnsPerRow = isDesktop ? 4 : 2;
@@ -33,7 +31,8 @@ const Grid: React.FC<GridProps> = ({ section }) => {
         tileContainers.push(
           <View
             key={`container-${index}`}
-            style={{ width: `${100 / columnsPerRow}%`, padding: ps(8) }}
+            // TODO: Replace with new responsive method
+            style={{ width: `${100 / columnsPerRow}%`, padding: 8 }}
           >
             <TileContainer tiles={currentTiles} />
           </View>
@@ -54,8 +53,8 @@ const Grid: React.FC<GridProps> = ({ section }) => {
 
 const styles = StyleSheet.create({
   grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 });
 
