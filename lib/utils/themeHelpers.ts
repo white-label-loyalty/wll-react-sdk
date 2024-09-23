@@ -25,46 +25,37 @@ export type DerivedColors = {
   [K in PercentageKey]: string;
 };
 
-export const getDerivedColorPercentages = (color: string): DerivedColors => {
+const percentages: PercentageKey[] = [
+  5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95,
+];
+
+const generateDerivedColors = (
+  color: string,
+  derivationFunction: (baseColor: Color, percentage: PercentageKey) => Color
+): DerivedColors => {
   const baseColor = Color(color);
-  const isDark = baseColor.isDark();
-  const percentages: PercentageKey[] = [
-    5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95,
-  ];
   const result = {} as DerivedColors;
 
   percentages.forEach((percentage) => {
-    let derivedColor: Color;
-    if (isDark) {
-      // For dark colors, set lightness directly
-      derivedColor = baseColor.lightness(percentage);
-    } else {
-      // For light colors, invert the percentage
-      derivedColor = baseColor.lightness(100 - percentage);
-    }
+    const derivedColor = derivationFunction(baseColor, percentage);
     result[percentage] = derivedColor.hex();
   });
 
   return result;
 };
 
-type AlphaPercentageKey = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
-export type AlphaDerivedColors = {
-  [key in AlphaPercentageKey]: string;
+export const getDerivedColorPercentages = (color: string): DerivedColors => {
+  const isDark = Color(color).isDark();
+
+  return generateDerivedColors(color, (baseColor, percentage) =>
+    isDark
+      ? baseColor.lightness(percentage)
+      : baseColor.lightness(100 - percentage)
+  );
 };
 
-export const getAlphaDerivedColors = (color: string): AlphaDerivedColors => {
-  const baseColor = Color(color);
-  const percentages: AlphaPercentageKey[] = [
-    10, 20, 30, 40, 50, 60, 70, 80, 90,
-  ];
-  const result = {} as AlphaDerivedColors;
-
-  percentages.forEach((percentage) => {
-    const alphaValue = percentage / 100;
-    const derivedColor = baseColor.alpha(alphaValue);
-    result[percentage] = derivedColor.rgb().string();
-  });
-
-  return result;
+export const getAlphaDerivedColors = (color: string): DerivedColors => {
+  return generateDerivedColors(color, (baseColor, percentage) =>
+    baseColor.alpha(percentage / 100)
+  );
 };
