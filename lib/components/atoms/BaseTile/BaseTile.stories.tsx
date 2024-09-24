@@ -18,6 +18,10 @@ const Template: StoryFn<typeof BaseTile> = (args) => (
 export const FullHeight = Template.bind({});
 FullHeight.args = {
   tile: {
+    id: '1',
+    active: true,
+    createdAt: '',
+    updatedAt: '',
     tileHeight: TileHeight.Full,
     configuration: {
       imageUrl: 'https://picsum.photos/200/300',
@@ -27,6 +31,10 @@ FullHeight.args = {
 export const HalfHeight = Template.bind({});
 HalfHeight.args = {
   tile: {
+    id: '2',
+    active: true,
+    createdAt: '',
+    updatedAt: '',
     tileHeight: TileHeight.Half,
     configuration: {
       imageUrl: 'https://picsum.photos/200/300',
