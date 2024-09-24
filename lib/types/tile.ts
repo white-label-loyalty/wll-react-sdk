@@ -87,7 +87,7 @@ export class TierTileConfig {
 
 export type Tile = {
   id: string | null;
-  type: TileType;
+  type?: TileType;
   active: boolean;
   createdAt: string | null;
   updatedAt: string | null;
