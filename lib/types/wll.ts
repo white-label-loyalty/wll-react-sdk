@@ -27,7 +27,9 @@ export class Reward {
   updatedAt?: string;
   name?: string;
   pictureUrl?: string;
+  description?: string;
   price?: number;
+  value?: number;
   priority?: number;
   availability?: Availability;
   purchasable?: boolean;
@@ -37,12 +39,12 @@ export class Reward {
   visibilityCriteria?: string;
 }
 type Availability = {
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
 };
 type Effectivity = {
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
 };
 
 export type TierType = {

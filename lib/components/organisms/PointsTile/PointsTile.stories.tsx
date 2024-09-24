@@ -3,9 +3,10 @@ import React from 'react';
 import { TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 import PointsTile from './index';
-
-const pointsImage = '../../../assets/points.png';
-const pointsFull = '../../../assets/pointsFull.png';
+// @ts-ignore
+import pointsImage from '../../../assets/points.png';
+// @ts-ignore
+import pointsFull from '../../../assets/pointsFull.png';
 
 export default {
   title: 'components/organisms/PointsTile',

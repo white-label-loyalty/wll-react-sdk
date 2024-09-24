@@ -32,7 +32,6 @@ const TierTile: React.FC<TierTileProps> & {
   const styles = StyleSheet.create({
     container: createResponsiveStyle({
       paddingHorizontal: [8, 8, 12],
-      borderRadius: theme.sizes.borderRadiusSm,
       width: '100%',
       flexDirection: isFullSize ? 'column' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
@@ -48,14 +47,16 @@ const TierTile: React.FC<TierTileProps> & {
     switch (configuration.type) {
       case TierTileType.currentTier:
         return (
-          <View style={styles.container}>
-            <TierTile.Image isFullSize={isFullSize} />
-            <View>
-              <Text>Your Tier</Text>
-              <TierTile.Name />
+          <>
+            <View style={styles.container}>
+              <TierTile.Image isFullSize={isFullSize} />
+              <View>
+                <Text>Your Tier</Text>
+                <TierTile.Name />
+              </View>
+              {isFullSize && <TierTile.Description />}
             </View>
-            {isFullSize && <TierTile.Description />}
-          </View>
+          </>
         );
       case TierTileType.currentTargetNext:
         return (

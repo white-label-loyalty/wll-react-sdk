@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
-import { Tile, TileConfig } from '../../../types/tile';
-import { Badge } from '../../../types/wll';
+import { BadgeTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Icon, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -36,14 +35,14 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
 
 const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
-  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  const { badge } = tile.configuration as BadgeTileConfig;
   if (!badge?.artworkUrl) return null;
   return <Image {...props} source={{ uri: badge.artworkUrl }} />;
 };
 
 const BadgeTileTitle: FC = (props) => {
   const tile = useTileContext();
-  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  const { badge } = tile.configuration as BadgeTileConfig;
   if (!badge?.name) return null;
   return (
     <Text variant="title" {...props}>
@@ -54,7 +53,7 @@ const BadgeTileTitle: FC = (props) => {
 
 const BadgeTileBody: FC = (props) => {
   const tile = useTileContext();
-  const { badge } = tile.configuration as TileConfig & { badge?: Badge };
+  const { badge } = tile.configuration as BadgeTileConfig;
   if (!badge?.description) return null;
   return (
     <Text variant="body" {...props}>

@@ -5,8 +5,6 @@ import { ImagePropsNoSource } from '../../../types/common';
 import { Tile, TileConfig, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon, Text } from '../../atoms';
-import { useSectionContext } from '../../organisms/Section';
-import LoadingIndicator from '../LoadingIndicator';
 
 const TileContext = createContext<Tile | null>(null);
 
@@ -35,15 +33,12 @@ type LayoutProps = FlexStyle & {
 };
 
 const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
-  const { loading: isLoading } = useSectionContext();
   const { theme } = useWllSdk();
 
   const layout: LayoutProps = {
     flexDirection: 'column',
     justifyContent:
-      tile.tileHeight === TileHeight.Half || !tile.configuration.imageUrl
-        ? 'center'
-        : 'flex-start',
+      tile.tileHeight === TileHeight.Half ? 'center' : 'flex-start',
     alignItems: 'stretch',
   };
   const responsiveStyles = createResponsiveStyle({
@@ -53,6 +48,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
       theme.sizes.borderRadiusLg,
     ],
     maxWidth: [175, 175, 258],
+    backgroundColor: tile.tileHeight === 'FULL' ? 'red' : 'blue',
   });
 
   return (
@@ -69,7 +65,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
           style,
         ]}
       >
-        {isLoading ? <LoadingIndicator /> : children}
+        {children}
       </View>
     </TileContext.Provider>
   );
