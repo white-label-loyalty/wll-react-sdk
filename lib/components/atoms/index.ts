@@ -17,3 +17,4 @@ export {
   BaseTile,
   TileContainer,
 };
+import BaseBanner from './BaseBanner';

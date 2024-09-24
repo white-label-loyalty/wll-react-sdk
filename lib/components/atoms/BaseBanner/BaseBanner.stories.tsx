@@ -1,18 +1,24 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
-import BannerTile from '.';
-import { CtaAction } from '../../../types/tile';
+import * as React from 'react';
+import { CtaAction, TileHeight, TileType } from '../../../types/tile';
+import BaseBanner from './index';
 
 export default {
-  title: 'components/organisms/BannerTile',
-  component: BannerTile,
+  title: 'components/atoms/BaseBanner',
+  component: BaseBanner,
 } as Meta;
 
-const Template: StoryFn<typeof BannerTile> = (args) => <BannerTile {...args} />;
+const Template: StoryFn<typeof BaseBanner> = (args) => <BaseBanner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   tile: {
+    id: 'banner-1',
+    type: TileType.Banner,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
     configuration: {
       imageUrl:
         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',

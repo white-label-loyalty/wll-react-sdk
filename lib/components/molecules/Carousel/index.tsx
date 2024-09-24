@@ -9,11 +9,7 @@ import {
 } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Section } from '../../../types/section';
-import {
-  BannerTileConfig,
-  Tile,
-  TileType,
-} from '../../../types/tile';
+import { Tile, TileType } from '../../../types/tile';
 import { Icon } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 import { BannerTile } from '../../organisms';
@@ -32,9 +28,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     (tile: Tile) => tile.type === TileType.Banner
   );
 
-  const handleScroll = (
-    event: NativeSyntheticEvent<NativeScrollEvent>
-  ) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const newIndex = Math.round(contentOffsetX / slideWidth);
     if (newIndex !== currentIndex) {
@@ -42,9 +36,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     }
   };
 
-  const handleScrollEnd = (
-    event: NativeSyntheticEvent<NativeScrollEvent>
-  ) => {
+  const handleScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const newIndex = Math.round(contentOffsetX / slideWidth);
     setCurrentIndex(newIndex);
@@ -60,10 +52,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   };
 
   const handleNext = () => {
-    const newIndex = Math.min(
-      bannerTiles.length - 1,
-      currentIndex + 1
-    );
+    const newIndex = Math.min(bannerTiles.length - 1, currentIndex + 1);
     setCurrentIndex(newIndex);
     scrollViewRef.current?.scrollTo({
       x: newIndex * slideWidth,
@@ -75,10 +64,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
 
   return (
     <>
-      <SectionHeader
-        title={section.title}
-        description={section.description}
-      />
+      <SectionHeader title={section.title} description={section.description} />
       <View style={styles.container}>
         <View style={styles.carouselContainer}>
           {displayControls && (
@@ -90,11 +76,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
               ]}
               onPress={handlePrev}
             >
-              <Icon
-                name="ArrowLeft"
-                size={20}
-                color={theme.primary}
-              />
+              <Icon name="ArrowLeft" size={20} color={theme.primary} />
             </TouchableOpacity>
           )}
           <ScrollView
@@ -114,8 +96,6 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             snapToAlignment="start"
           >
             {bannerTiles.map((tile: Tile, index: number) => {
-              const configuration =
-                tile.configuration as BannerTileConfig;
               return (
                 <View
                   key={index}
@@ -125,7 +105,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
                     },
                   ]}
                 >
-                  <BannerTile configuration={configuration} />
+                  <BannerTile tile={tile} />
                 </View>
               );
             })}
@@ -139,11 +119,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
               ]}
               onPress={handleNext}
             >
-              <Icon
-                name="ArrowRight"
-                size={20}
-                color={theme.primary}
-              />
+              <Icon name="ArrowRight" size={20} color={theme.primary} />
             </TouchableOpacity>
           )}
         </View>
