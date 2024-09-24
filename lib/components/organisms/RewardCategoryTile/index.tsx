@@ -1,48 +1,67 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { RewardCategoryTileConfig } from '../../../types/tile';
-
-//TODO: fix this to use BaseTile
-import { Tile } from '../../atoms';
+import { RewardCategoryTileConfig, Tile } from '../../../types/tile';
+import { BaseTile, Text } from '../../atoms';
+import { useTileContext } from '../../atoms/BaseTile';
 
 type RewardCategoryTileProps = {
-  configuration: RewardCategoryTileConfig;
+  tile: Tile;
 };
 
-const RewardCategoryTile: React.FC<RewardCategoryTileProps> = ({
-  configuration,
-}) => {
-  const { theme } = useWllSdk();
-  const { allowDecorationOverlay, rewardCategory } = configuration || {};
-  const { name, pictureUrl } = rewardCategory || {};
+const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
+  Overlay: typeof RewardCategoryTileOverlay;
+  Image: typeof RewardCategoryTileImage;
+} = ({ tile }) => {
+  const { configuration } = tile;
+  const { rewardCategory } = configuration as RewardCategoryTileConfig;
 
   if (!rewardCategory) return null;
 
   return (
-    <Tile>
-      {allowDecorationOverlay && (
-        <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
-          {name && (
-            <Text
-              style={[styles.overlayText, { color: theme.primaryText }]}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-            >
-              {name}
-            </Text>
-          )}
-        </View>
-      )}
-      {pictureUrl && (
-        <Image
-          source={{ uri: pictureUrl }}
-          style={styles.image}
-          resizeMode="cover"
-          onError={(error) => console.error('Image loading error:', error)}
-        />
-      )}
-    </Tile>
+    <BaseTile tile={tile}>
+      <RewardCategoryTileOverlay />
+      <RewardCategoryTileImage />
+    </BaseTile>
+  );
+};
+
+const RewardCategoryTileOverlay: React.FC = () => {
+  const { theme } = useWllSdk();
+  const { configuration } = useTileContext();
+  const { allowDecorationOverlay, rewardCategory } =
+    configuration as RewardCategoryTileConfig;
+  const { name } = rewardCategory || {};
+
+  if (!allowDecorationOverlay || !name) return null;
+
+  return (
+    <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
+      <Text
+        style={[styles.overlayText, { color: theme.primaryText }]}
+        ellipsizeMode="tail"
+        numberOfLines={1}
+      >
+        {name}
+      </Text>
+    </View>
+  );
+};
+
+const RewardCategoryTileImage: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { rewardCategory } = configuration as RewardCategoryTileConfig;
+  const { pictureUrl } = rewardCategory || {};
+
+  if (!pictureUrl) return null;
+
+  return (
+    <Image
+      source={{ uri: pictureUrl }}
+      style={styles.image}
+      resizeMode="cover"
+      onError={(error) => console.error('Image loading error:', error)}
+    />
   );
 };
 
@@ -68,5 +87,8 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
   },
 });
+
+RewardCategoryTile.Overlay = RewardCategoryTileOverlay;
+RewardCategoryTile.Image = RewardCategoryTileImage;
 
 export default RewardCategoryTile;
