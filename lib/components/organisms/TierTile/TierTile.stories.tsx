@@ -1,7 +1,12 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import TierTile from '.';
-import { TierTileType, TileHeight, TileType } from '../../../types/tile';
+import {
+  ProgressType,
+  TierTileType,
+  TileHeight,
+  TileType,
+} from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 // @ts-ignore
 import goldImage from '../../../assets/gold.png';
@@ -32,7 +37,7 @@ CurrentTierHalf.args = {
     tileHeight: TileHeight.Half,
     active: true,
     configuration: {
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       type: TierTileType.currentTier,
       tier: {
         id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
@@ -61,7 +66,7 @@ CurrentTierFull.args = {
     tileHeight: TileHeight.Full,
     configuration: {
       type: TierTileType.currentTier,
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       tier: {
         id: '83642bc2-78cb-4d7e-ade3-e0f28f09e90f',
         name: 'Gold',
@@ -90,7 +95,7 @@ CurrentTargetNextTierHalf.args = {
     tileHeight: TileHeight.Half,
     configuration: {
       type: TierTileType.currentTargetNext,
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       pointsMultiplier: 1,
       pointsPrefix: '$',
       pointsSuffix: ' spent',
@@ -128,7 +133,7 @@ CurrentTargetNextTierFull.args = {
     tileHeight: TileHeight.Full,
     configuration: {
       type: TierTileType.currentTargetNext,
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       pointsMultiplier: 1,
       pointsPrefix: '$',
       pointsSuffix: ' spent',
@@ -166,7 +171,7 @@ CurrentTargetSpecificTierHalf.args = {
     active: true,
     configuration: {
       type: TierTileType.currentTargetSpecific,
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       pointsMultiplier: 1,
       pointsPrefix: '',
       pointsSuffix: ' points',
@@ -203,7 +208,7 @@ CurrentTargetSpecificTierFull.args = {
     active: true,
     configuration: {
       type: TierTileType.currentTargetSpecific,
-      progressType: 'POINTS',
+      progressType: ProgressType.Points,
       pointsMultiplier: 1,
       pointsPrefix: '',
       pointsSuffix: ' points',
