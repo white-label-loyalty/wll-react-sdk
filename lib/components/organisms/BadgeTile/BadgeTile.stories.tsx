@@ -1,7 +1,7 @@
+import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
-import BadgeTile from './index';
 import { TileHeight, TileType } from '../../../types/tile';
+import BadgeTile from './index';
 
 export default {
   title: 'components/organisms/BadgeTile',
@@ -15,10 +15,9 @@ Default.args = {
   tile: {
     id: '1',
     type: TileType.Badge,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    tenantId: 'tenant1',
-    visibilityCriteria: 'all',
+    createdAt: '',
+    updatedAt: '',
+    active: true,
     tileHeight: TileHeight.Full,
     configuration: {
       badgeId: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
