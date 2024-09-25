@@ -161,6 +161,7 @@ const Progress: React.FC = () => {
   const { tier } = configuration as TierTileConfig;
   if (!tier) return null;
   return (
+    // @ts-ignore
     <ProgressBar percentage={tier?.earnedPoints / tier?.pointsRequirement} />
   );
 };

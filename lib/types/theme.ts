@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { sizes } from '../utils/styling';
-import { AlphaDerivedColors, DerivedColors } from '../utils/themeHelpers';
+import { DerivedColors } from '../utils/themeHelpers';
 
 export type BaseThemeObject = {
   accent: string;
@@ -24,7 +24,7 @@ export type DerivedProperties = {
   negativeText: string;
   derivedSurfaceText: DerivedColors;
   derivedSurface: DerivedColors;
-  alphaDerivedPrimary: AlphaDerivedColors;
+  alphaDerivedPrimary: DerivedColors;
 };
 
 export type ThemeObject = BaseThemeObject &
