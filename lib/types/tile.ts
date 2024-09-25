@@ -16,6 +16,11 @@ export enum TierTileType {
   currentTargetSpecific = 'CURRENT_TARGET_SPECIFIC',
 }
 
+export enum ProgressType {
+  Name = 'NAME',
+  Points = 'POINTS',
+}
+
 export enum TileType {
   Banner = 'BANNER',
   Points = 'POINTS',
@@ -75,7 +80,7 @@ export class RewardCategoryTileConfig {
 }
 
 export class TierTileConfig {
-  progressType: 'NAME' | 'POINTS' = 'NAME';
+  progressType: ProgressType = ProgressType.Name;
   pointsMultiplier?: number;
   pointsPrefix?: string;
   pointsSuffix?: string;

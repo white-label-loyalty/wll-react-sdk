@@ -10,7 +10,6 @@ export type Section = {
   type: SectionType;
   createdAt: string;
   updatedAt: string;
-  visibilityCriteria: object | null;
   title?: string;
   description?: string;
   tiles: Tile[];
