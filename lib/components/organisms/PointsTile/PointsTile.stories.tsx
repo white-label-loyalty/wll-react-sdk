@@ -25,7 +25,6 @@ HalfTile.args = {
     tileHeight: TileHeight.Half,
     active: true,
     type: TileType.Points,
-    tenantId: 'tenant1',
     configuration: {
       title: 'Points Balance',
       imageUrl: pointsImage,
@@ -35,9 +34,8 @@ HalfTile.args = {
       suffix: undefined,
     },
     id: '405a6844-f472-4d9e-84b9-20fb55dbd399',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    visibilityCriteria: 'all',
+    createdAt: '',
+    updatedAt: '',
   },
 };
 export const FullTile = Template.bind({});
@@ -46,7 +44,6 @@ FullTile.args = {
     tileHeight: TileHeight.Full,
     active: true,
     type: TileType.Points,
-    tenantId: 'tenant1',
     configuration: {
       title: 'Points Balance',
       imageUrl: pointsFull,
@@ -56,8 +53,7 @@ FullTile.args = {
       suffix: undefined,
     },
     id: '405a6844-f472-4d9e-84b9-20fb55dbd399',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    visibilityCriteria: 'all',
+    createdAt: '',
+    updatedAt: '',
   },
 };

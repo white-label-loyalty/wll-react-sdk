@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
+import { TileHeight } from 'types/tile';
 import RewardCategoryTile from './index';
 
 export default {
@@ -14,6 +15,11 @@ const Template: StoryFn<typeof RewardCategoryTile> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   tile: {
+    id: '1',
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
     configuration: {
       allowDecorationOverlay: true,
       rewardCategory: {
@@ -28,6 +34,11 @@ Default.args = {
 export const LongCategoryName = Template.bind({});
 LongCategoryName.args = {
   tile: {
+    id: '1',
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
     configuration: {
       allowDecorationOverlay: true,
       rewardCategory: {
@@ -42,6 +53,11 @@ LongCategoryName.args = {
 export const NoDecorationOverlay = Template.bind({});
 NoDecorationOverlay.args = {
   tile: {
+    id: '1',
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
     configuration: {
       allowDecorationOverlay: false,
       rewardCategory: {
