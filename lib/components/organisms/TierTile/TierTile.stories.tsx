@@ -105,7 +105,7 @@ CurrentTargetNextTierHalf.args = {
         artworkUrl: silverImage,
         pointsRequirement: 500,
         earnedPoints: 300,
-        attained: true,
+        attained: false,
         priority: 0,
       },
       targetTier: {
@@ -143,7 +143,7 @@ CurrentTargetNextTierFull.args = {
         artworkUrl: silverImage,
         pointsRequirement: 500,
         earnedPoints: 300,
-        attained: true,
+        attained: false,
         priority: 0,
       },
       targetTier: {
@@ -181,7 +181,7 @@ CurrentTargetSpecificTierHalf.args = {
         artworkUrl: goldImage,
         pointsRequirement: 100,
         earnedPoints: 50,
-        attained: true,
+        attained: false,
         priority: 0,
       },
       targetTier: {

@@ -9,8 +9,9 @@ import {
   TileHeight,
 } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, ProgressBar, Text } from '../../atoms';
+import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { ProgressIndicator } from '../../molecules';
 
 type TierTileProps = {
   tile: Tile;
@@ -169,12 +170,13 @@ const Progress: React.FC = () => {
     return null;
   }
 
-  const percentage =
-    tier.pointsRequirement > 0
-      ? (tier.earnedPoints / tier.pointsRequirement) * 100
-      : 0;
-
-  return <ProgressBar percentage={percentage} />;
+  return (
+    <ProgressIndicator
+      currentPoints={tier.earnedPoints}
+      maxPoints={tier.pointsRequirement}
+      attained={tier.attained}
+    />
+  );
 };
 
 const Description: React.FC = () => {

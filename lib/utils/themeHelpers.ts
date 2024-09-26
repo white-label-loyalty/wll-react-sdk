@@ -38,7 +38,7 @@ const generateDerivedColors = (
 
   percentages.forEach((percentage) => {
     const derivedColor = derivationFunction(baseColor, percentage);
-    result[percentage] = derivedColor.hex();
+    result[percentage] = derivedColor.toString();
   });
 
   return result;
