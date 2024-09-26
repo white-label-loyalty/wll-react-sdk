@@ -1,6 +1,13 @@
 import { Tile, TileType } from '../../../types/tile';
 
-import { BadgeTile, ContentTile } from '../../organisms';
+import {
+  BadgeTile,
+  ContentTile,
+  PointsTile,
+  RewardCategoryTile,
+  RewardTile,
+  TierTile,
+} from '../../organisms';
 
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -17,6 +24,18 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       }
       case TileType.Badge: {
         return <BadgeTile tile={tile} />;
+      }
+      case TileType.Tier: {
+        return <TierTile tile={tile} />;
+      }
+      case TileType.Points: {
+        return <PointsTile tile={tile} />;
+      }
+      case TileType.Reward: {
+        return <RewardTile tile={tile} />;
+      }
+      case TileType.RewardCategory: {
+        return <RewardCategoryTile tile={tile} />;
       }
     }
   };
