@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Variant } from '../../../types/theme';

@@ -2,7 +2,7 @@ import { Tile, TileType } from '../../../types/tile';
 
 import { BadgeTile, ContentTile } from '../../organisms';
 
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 type TileContainerProps = {

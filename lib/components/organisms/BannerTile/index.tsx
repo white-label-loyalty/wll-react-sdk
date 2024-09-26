@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, Linking, StyleSheet, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { BannerTileConfig, Tile } from '../../../types/tile';
@@ -12,7 +12,6 @@ type BannerTileProps = {
 
 const BannerTile: React.FC<BannerTileProps> & {
   Image: typeof BannerTileImage;
-  Content: typeof BannerTileContent;
   Title: typeof BannerTileTitle;
   Description: typeof BannerTileDescription;
   CTA: typeof BannerTileCTA;
@@ -20,11 +19,11 @@ const BannerTile: React.FC<BannerTileProps> & {
   return (
     <BaseBanner tile={tile}>
       <BannerTile.Image />
-      <BannerTile.Content>
+      <View style={styles.slideContent}>
         <BannerTile.Title />
         <BannerTile.Description />
         <BannerTile.CTA />
-      </BannerTile.Content>
+      </View>
     </BaseBanner>
   );
 };
@@ -45,10 +44,6 @@ const BannerTileImage: React.FC = () => {
     </View>
   );
 };
-
-const BannerTileContent: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => <View style={styles.slideContent}>{children}</View>;
 
 const BannerTileTitle: React.FC = () => {
   const { configuration } = useBannerContext();
@@ -130,7 +125,6 @@ const styles = StyleSheet.create({
 });
 
 BannerTile.Image = BannerTileImage;
-BannerTile.Content = BannerTileContent;
 BannerTile.Title = BannerTileTitle;
 BannerTile.Description = BannerTileDescription;
 BannerTile.CTA = BannerTileCTA;

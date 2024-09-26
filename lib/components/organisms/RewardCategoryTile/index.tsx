@@ -20,8 +20,8 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
 
   return (
     <BaseTile tile={tile}>
-      <RewardCategoryTileOverlay />
-      <RewardCategoryTileImage />
+      <RewardCategoryTile.Overlay />
+      <RewardCategoryTile.Image />
     </BaseTile>
   );
 };

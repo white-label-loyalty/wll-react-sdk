@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Section as SectionData } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';

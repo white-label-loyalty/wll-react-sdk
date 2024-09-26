@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import React from 'react';
+import * as React from 'react';
 import { TileHeight, TileType } from '../../../types/tile';
 import BadgeTile from './index';
 

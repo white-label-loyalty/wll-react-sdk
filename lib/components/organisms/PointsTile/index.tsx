@@ -36,12 +36,12 @@ const PointsTile: React.FC<PointsTileProps> & {
 
   return (
     <BaseTile tile={tile}>
-      {isFullSize && <PointsTileImage isFullSize={isFullSize} />}
+      {isFullSize && <PointsTile.Image isFullSize={isFullSize} />}
       <View style={styles.container}>
-        {!isFullSize && <PointsTileImage isFullSize={isFullSize} />}
+        {!isFullSize && <PointsTile.Image isFullSize={isFullSize} />}
         <View style={styles.contentContainer}>
-          <PointsTileTitle />
-          <PointsTilePoints />
+          <PointsTile.Title />
+          <PointsTile.Points />
         </View>
       </View>
     </BaseTile>

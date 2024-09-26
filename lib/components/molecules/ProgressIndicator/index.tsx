@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Size, Variant } from '../../../types/theme';
@@ -20,9 +20,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   attained = false,
 }) => {
   const { theme } = useWllSdk();
-  const percentage = attained
-    ? 100
-    : (currentPoints / maxPoints) * 100;
+  const percentage = attained ? 100 : (currentPoints / maxPoints) * 100;
   const isComplete = percentage >= 100 || attained;
   let progressVariant: Variant = variant;
 
@@ -45,9 +43,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
             styles.circle,
             {
               borderColor: theme.derivedSurface[20],
-              backgroundColor: isComplete
-                ? theme.primary
-                : theme.surface,
+              backgroundColor: isComplete ? theme.primary : theme.surface,
               borderWidth: isComplete ? 0 : 4,
             },
           ]}

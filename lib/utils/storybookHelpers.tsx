@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, ViewStyle } from 'react-native';
 
 export const TileWrapper: React.FC<{

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,

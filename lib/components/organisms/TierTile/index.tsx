@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { useWllSdk } from '../../../context/WllSdkContext';
@@ -25,7 +25,6 @@ const TierTile: React.FC<TierTileProps> & {
   NextName?: typeof NextName;
   NextCount?: typeof NextCount;
 } = ({ tile }) => {
-  const { theme } = useWllSdk();
   const isFullSize = tile.tileHeight === TileHeight.Full;
   const configuration = tile.configuration as TierTileConfig;
 
@@ -145,25 +144,37 @@ const NextName: React.FC = () => {
 const Count: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
-  return <Text>{`${tier?.earnedPoints}/${tier?.pointsRequirement}`}</Text>;
+  return (
+    <Text variant="caption">{`${tier?.earnedPoints}/${tier?.pointsRequirement}`}</Text>
+  );
 };
 
 const NextCount: React.FC = () => {
   const { configuration } = useTileContext();
   const { targetTier } = configuration as TierTileConfig;
   return (
-    <Text>{`${targetTier?.earnedPoints}/${targetTier?.pointsRequirement}`}</Text>
+    <Text variant="caption">{`${targetTier?.earnedPoints}/${targetTier?.pointsRequirement}`}</Text>
   );
 };
 
 const Progress: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
-  if (!tier) return null;
-  return (
-    // @ts-ignore
-    <ProgressBar percentage={tier?.earnedPoints / tier?.pointsRequirement} />
-  );
+
+  if (
+    !tier ||
+    tier.earnedPoints === undefined ||
+    tier.pointsRequirement === undefined
+  ) {
+    return null;
+  }
+
+  const percentage =
+    tier.pointsRequirement > 0
+      ? (tier.earnedPoints / tier.pointsRequirement) * 100
+      : 0;
+
+  return <ProgressBar percentage={percentage} />;
 };
 
 const Description: React.FC = () => {

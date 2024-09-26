@@ -6,7 +6,6 @@ import BaseTile from '../../atoms/BaseTile';
 
 type ContentTileProps = {
   tile: Tile;
-  children?: React.ReactNode;
 };
 
 const ContentTile: React.FC<ContentTileProps> = ({ tile }) => {
