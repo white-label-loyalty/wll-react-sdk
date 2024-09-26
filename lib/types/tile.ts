@@ -60,6 +60,7 @@ export class ContentTileConfig {
   title?: string | null;
   subtitle?: string | null;
   imageUrl?: string | null;
+  linkURL?: string | null;
 }
 
 export class RewardTileConfig {

@@ -2,7 +2,7 @@ import React, { createContext, FC, ReactNode, useContext } from 'react';
 import { FlexStyle, Image, StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
-import { Tile, TileConfig, TileHeight } from '../../../types/tile';
+import { ContentTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon, Text } from '../../atoms';
 
@@ -74,11 +74,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
 const TileTitle: FC = () => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
-  const { title, imageUrl, linkURL } = tile.configuration as TileConfig & {
-    title?: string;
-    linkURL?: string;
-    imageUrl?: string;
-  };
+  const { title, imageUrl, linkURL } = tile.configuration as ContentTileConfig;
 
   const titleContainerStyle = createResponsiveStyle({
     marginTop: [8, 8, 12],
@@ -108,7 +104,7 @@ const TileTitle: FC = () => {
 
 const TileBody: FC = (props) => {
   const tile = useTileContext();
-  const { subtitle } = tile.configuration as TileConfig & { subtitle?: string };
+  const { subtitle } = tile.configuration as ContentTileConfig;
   return subtitle ? (
     <Text variant="body" {...props} accessibilityLabel={subtitle}>
       {subtitle}
@@ -118,11 +114,7 @@ const TileBody: FC = (props) => {
 
 const TileImage: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
-  const { imageUrl, title, subtitle } = tile.configuration as TileConfig & {
-    imageUrl?: string;
-    title?: string;
-    subtitle?: string;
-  };
+  const { imageUrl, title, subtitle } = tile.configuration as ContentTileConfig;
   if (!imageUrl) return null;
   const hasTitle = !!title;
   const hasSubtitle = !!subtitle;
