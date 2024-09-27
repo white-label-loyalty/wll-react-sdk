@@ -1,6 +1,6 @@
 import { Badge, Reward, RewardCategory, TierType } from './wll';
 
-export enum CtaAction {
+export enum UrlTarget {
   sameWindow = 'SAME_WINDOW',
   newWindow = 'NEW_WINDOW',
 }
@@ -42,9 +42,9 @@ export class BannerTileConfig {
   imageUrl?: string | null;
   title?: string | null;
   description?: string | null;
-  ctaText?: string | null;
-  ctaLink?: string | null;
-  ctaAction?: CtaAction;
+  buttonText?: string | null;
+  url?: string | null;
+  urlTarget?: UrlTarget;
 }
 
 export class PointsTileConfig {
@@ -72,6 +72,7 @@ export class BadgeTileConfig {
   badgeTileType?: BadgeTileType;
   badgeId?: string | null;
   badge?: Badge;
+  count: number = 0;
 }
 
 export class RewardCategoryTileConfig {

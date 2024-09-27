@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Section } from '../types/section';
 import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
 import { Tile } from '../types/tile';
@@ -32,10 +32,6 @@ type WllSdkProviderProps = {
   config: SDKConfig;
 };
 
-export const WllSdkContext = React.createContext<WllSdkContextType | undefined>(
-  undefined
-);
-
 const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
   const mergedTheme = {
     ...defaultTheme,
@@ -64,14 +60,22 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
   };
 };
 
+const WllSdkContext = React.createContext<WllSdkContextType | undefined>(
+  undefined
+);
+
 export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
   children,
   theme: providedTheme,
   config,
 }) => {
-  const [theme, setTheme] = React.useState<ThemeObject>(() =>
+  const [theme, setThemeState] = React.useState(() =>
     createTheme(providedTheme || {})
   );
+
+  const setTheme = React.useCallback((newTheme: Partial<BaseThemeObject>) => {
+    setThemeState((prevTheme) => createTheme({ ...prevTheme, ...newTheme }));
+  }, []);
 
   // Mocked API calls
   const makeRequest = async (
@@ -520,15 +524,15 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
     // return makeRequest(`/tile-management/tile/${id}`);
   };
 
-  const contextValue: WllSdkContextType = {
-    theme,
-    setTheme: (newTheme: Partial<BaseThemeObject>) => {
-      setTheme(createTheme(newTheme));
-    },
-    getSectionByID,
-    getTileByID,
-  };
-
+  const contextValue = React.useMemo(
+    () => ({
+      theme,
+      setTheme,
+      getSectionByID,
+      getTileByID,
+    }),
+    [theme, setTheme, getSectionByID, getTileByID]
+  );
   return (
     <WllSdkContext.Provider value={contextValue}>
       {children}

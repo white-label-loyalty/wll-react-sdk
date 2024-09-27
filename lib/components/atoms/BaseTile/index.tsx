@@ -34,13 +34,16 @@ type LayoutProps = FlexStyle & {
 
 const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
   const { theme } = useWllSdk();
-
+  const { imageUrl } = tile.configuration as ContentTileConfig;
   const layout: LayoutProps = {
     flexDirection: 'column',
     justifyContent:
-      tile.tileHeight === TileHeight.Half ? 'center' : 'flex-start',
+      tile.tileHeight === TileHeight.Half || !imageUrl
+        ? 'center'
+        : 'flex-start',
     alignItems: 'stretch',
   };
+
   const responsiveStyles = createResponsiveStyle({
     borderRadius: [
       theme.sizes.borderRadiusSm,
