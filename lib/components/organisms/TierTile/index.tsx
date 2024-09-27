@@ -42,6 +42,11 @@ const TierTile: React.FC<TierTileProps> & {
       flexDirection: 'column',
       width: isFullSize ? '100%' : 'auto',
     },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
   });
 
   const renderTileContent = () => {
@@ -80,9 +85,15 @@ const TierTile: React.FC<TierTileProps> & {
             <View style={{ padding: 12 }}>
               <TierTile.Progress />
               <TierTile.Description />
-              <View style={styles.container}>
-                <TierTile.Name />
-                <TierTile.Count />
+              <View style={styles.row}>
+                <View>
+                  <TierTile.Name />
+                  <TierTile.Count />
+                </View>
+                <View>
+                  <TierTile.NextName />
+                  <TierTile.NextCount />
+                </View>
               </View>
             </View>
           </>
@@ -152,7 +163,7 @@ const Count: React.FC = () => {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
       }}
     >
       <Text variant="tier-earned">{`${tier?.earnedPoints}/`}</Text>
@@ -165,7 +176,16 @@ const NextCount: React.FC = () => {
   const { configuration } = useTileContext();
   const { targetTier } = configuration as TierTileConfig;
   return (
-    <Text variant="caption">{`${targetTier?.earnedPoints}/${targetTier?.pointsRequirement}`}</Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}
+    >
+      <Text variant="tier-earned">{`${targetTier?.earnedPoints}/`}</Text>
+      <Text variant="tier-requirement">{targetTier?.pointsRequirement}</Text>
+    </View>
   );
 };
 
