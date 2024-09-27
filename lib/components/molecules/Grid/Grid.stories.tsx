@@ -284,6 +284,7 @@ Default.args = {
         type: TileType.Badge,
         configuration: {
           badgeId: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
+          count: 0,
           badge: {
             id: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
             name: 'Top Shopper',
