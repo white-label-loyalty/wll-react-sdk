@@ -14,7 +14,9 @@ type TextVariant =
   | 'subtitle'
   | 'body'
   | 'caption'
-  | 'label';
+  | 'label'
+  | 'tier-requirement'
+  | 'tier-earned';
 
 type TextProps = RNTextProps & {
   variant?: TextVariant;
@@ -66,6 +68,18 @@ export const Text: React.FC<TextProps> = ({
       case 'label':
         return createResponsiveStyle({
           ...baseStyle,
+        });
+      case 'tier-earned':
+        return createResponsiveStyle({
+          ...baseStyle,
+          fontSize: [14, 14, 20],
+          fontWeight: 'bold',
+        });
+      case 'tier-requirement':
+        return createResponsiveStyle({
+          ...baseStyle,
+          fontSize: [12, 12, 18],
+          fontWeight: 'bold',
         });
       default:
         return createResponsiveStyle({

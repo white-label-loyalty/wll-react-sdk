@@ -36,6 +36,7 @@ const TierTile: React.FC<TierTileProps> & {
       flexDirection: isFullSize ? 'column' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
       justifyContent: 'space-between',
+      marginTop: isFullSize ? 20 : null,
     }),
     contentContainer: {
       flexDirection: 'column',
@@ -48,8 +49,9 @@ const TierTile: React.FC<TierTileProps> & {
       case TierTileType.currentTier:
         return (
           <>
+            {isFullSize ? <TierTile.Image isFullSize={isFullSize} /> : null}
             <View style={styles.container}>
-              <TierTile.Image isFullSize={isFullSize} />
+              {!isFullSize && <TierTile.Image isFullSize={isFullSize} />}
               <View>
                 <Text>Your Tier</Text>
                 <TierTile.Name />
@@ -62,13 +64,12 @@ const TierTile: React.FC<TierTileProps> & {
         return (
           <>
             <TierTile.Image isFullSize={isFullSize} />
-            <TierTile.Description />
-            <View style={styles.container}>
-              <View style={styles.contentContainer}>
-                <TierTile.Name />
-                <TierTile.Count />
-              </View>
+            <View style={{ padding: 12 }}>
               <TierTile.Progress />
+              <View style={styles.container}>
+                <TierTile.Count />
+                <TierTile.Description />
+              </View>
             </View>
           </>
         );
@@ -76,13 +77,13 @@ const TierTile: React.FC<TierTileProps> & {
         return (
           <>
             <TierTile.Image isFullSize={isFullSize} />
-            <TierTile.Description />
-            <View style={styles.container}>
-              <View style={styles.contentContainer}>
+            <View style={{ padding: 12 }}>
+              <TierTile.Progress />
+              <TierTile.Description />
+              <View style={styles.container}>
                 <TierTile.Name />
                 <TierTile.Count />
               </View>
-              <TierTile.Progress />
             </View>
           </>
         );
@@ -106,13 +107,14 @@ const TierTileImage: React.FC<TierTileImageProps> = ({ isFullSize }) => {
   const styles = StyleSheet.create({
     imageContainer: createResponsiveStyle({
       width: isFullSize ? '100%' : 57,
-      height: isFullSize ? '50%' : 57,
+      height: isFullSize ? '100%' : 57,
       marginBottom: isFullSize ? [8, 8, 12] : 0,
       backgroundColor: isFullSize
         ? theme.alphaDerivedPrimary[20]
         : theme.surface,
       justifyContent: 'center',
       alignItems: 'center',
+      flexBasis: isFullSize ? '50%' : null,
     }),
     image: {
       width: '80%',
@@ -146,7 +148,16 @@ const Count: React.FC = () => {
   const { configuration } = useTileContext();
   const { tier } = configuration as TierTileConfig;
   return (
-    <Text variant="caption">{`${tier?.earnedPoints}/${tier?.pointsRequirement}`}</Text>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text variant="tier-earned">{`${tier?.earnedPoints}/`}</Text>
+      <Text variant="tier-requirement">{tier?.pointsRequirement}</Text>
+    </View>
   );
 };
 
