@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
+import { TierTile } from '..';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import {
   TierTileConfig,
@@ -23,8 +24,8 @@ const TierTile: React.FC<TierTileProps> & {
   Image: typeof TierTileImage;
   Progress: typeof Progress;
   Description: typeof Description;
-  NextName?: typeof NextName;
-  NextCount?: typeof NextCount;
+  NextName: typeof NextName;
+  NextCount: typeof NextCount;
 } = ({ tile }) => {
   const isFullSize = tile.tileHeight === TileHeight.Full;
   const configuration = tile.configuration as TierTileConfig;
