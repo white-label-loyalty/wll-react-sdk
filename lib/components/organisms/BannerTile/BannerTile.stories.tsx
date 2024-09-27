@@ -34,9 +34,19 @@ Default.args = {
 export const WithoutButton = Template.bind({});
 WithoutButton.args = {
   tile: {
-    ...Default.args.tile,
+    id: '2',
+    type: TileType.Banner,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
     configuration: {
-      ...Default.args.tile.configuration,
+      imageUrl:
+        'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
+      title: 'Summer Sale',
+      description: 'Get up to 50% off on selected items!',
+      url: 'https://www.example.com',
+      urlTarget: UrlTarget.sameWindow,
       buttonText: '',
     },
   },
