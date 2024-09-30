@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-import { TierTile } from '..';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import {
   TierTileConfig,
