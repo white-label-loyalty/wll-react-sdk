@@ -17,6 +17,6 @@ jobs:
           node-version: 18.20.4
       - run: yarn
       - run: yarn build:all
-      - run: yarn publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
