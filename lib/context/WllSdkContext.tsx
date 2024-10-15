@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section } from '../types/section';
+import { TSection } from '../types/section';
 import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
 import { Tile } from '../types/tile';
 import { defaultTheme, sizes } from '../utils/styling';
@@ -22,7 +22,7 @@ type APIResponse<T> = {
 };
 
 type WllSdkContextType = ThemeContextType & {
-  getSectionByID: (id: string) => Promise<APIResponse<Section>>;
+  getSectionByID: (id: string) => Promise<APIResponse<TSection>>;
   getTileByID: (id: string) => Promise<APIResponse<Tile>>;
 };
 
@@ -81,7 +81,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
   const makeRequest = async (
     endpoint: string,
     options: RequestInit = {}
-  ): Promise<Tile | Section> => {
+  ): Promise<Tile | TSection> => {
     const { proxyEndpoint, baseUrl, apiKey } = config;
     const url = `${proxyEndpoint || baseUrl}${endpoint}`;
     const headers = new Headers(options.headers);
