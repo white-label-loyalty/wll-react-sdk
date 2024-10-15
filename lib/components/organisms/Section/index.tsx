@@ -1,17 +1,9 @@
 import { useWllSdk } from '../../../context/WllSdkContext';
-import {
-  Section as SectionData,
-  SectionType,
-} from '../../../types/section';
+import { TSection as SectionData, SectionType } from '../../../types/section';
 import { Icon } from '../../atoms';
 import { Carousel, Grid } from '../../molecules';
 
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 type SectionContextType = {
@@ -20,9 +12,9 @@ type SectionContextType = {
   error: Error | null;
 };
 
-export const SectionContext = createContext<
-  SectionContextType | undefined
->(undefined);
+export const SectionContext = createContext<SectionContextType | undefined>(
+  undefined
+);
 
 type SectionProviderProps = {
   sectionId: string;
@@ -33,9 +25,7 @@ export const SectionProvider: React.FC<SectionProviderProps> = ({
   sectionId,
   children,
 }) => {
-  const [sectionData, setSectionData] = useState<SectionData | null>(
-    null
-  );
+  const [sectionData, setSectionData] = useState<SectionData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const { getSectionByID } = useWllSdk();
@@ -60,9 +50,7 @@ export const SectionProvider: React.FC<SectionProviderProps> = ({
         }
       } catch (err) {
         setError(
-          err instanceof Error
-            ? err
-            : new Error('An unknown error occurred')
+          err instanceof Error ? err : new Error('An unknown error occurred')
         );
       } finally {
         setLoading(false);
@@ -81,9 +69,7 @@ export const SectionProvider: React.FC<SectionProviderProps> = ({
 export const useSectionContext = () => {
   const context = useContext(SectionContext);
   if (context === undefined) {
-    throw new Error(
-      'useSectionContext must be used within a SectionProvider'
-    );
+    throw new Error('useSectionContext must be used within a SectionProvider');
   }
   return context;
 };
@@ -101,9 +87,7 @@ const SectionContent: React.FC = () => {
         ]}
       >
         <Icon name="AlertTriangle" size={24} color="#967132" />
-        <Text style={styles.sectionContentText}>
-          Error: {error.message}
-        </Text>
+        <Text style={styles.sectionContentText}>Error: {error.message}</Text>
       </View>
     );
 
