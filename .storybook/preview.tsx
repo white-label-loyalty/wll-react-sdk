@@ -17,9 +17,7 @@ interface MockSectionProviderProps {
   error?: Error | null;
 }
 
-export const MockSectionProvider: React.FC<
-  MockSectionProviderProps
-> = ({
+export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
   children,
   sectionData = {
     type: 'GRID',
@@ -118,8 +116,8 @@ export const MockSectionProvider: React.FC<
         type: 'CONTENT',
         configuration: {
           title: 'Welcome Nick! ',
-          imageUrl: null,
-          subtitle:
+          artworkUrl: null,
+          description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         },
         id: '863df8df-0182-428b-bb35-d5117050b860',
@@ -133,8 +131,8 @@ export const MockSectionProvider: React.FC<
         type: 'CONTENT',
         configuration: {
           title: 'Test Content Title',
-          imageUrl: 'https://picsum.photos/200/300',
-          subtitle: 'Test content subtitle',
+          artworkUrl: 'https://picsum.photos/200/300',
+          description: 'Test content description',
         },
         id: 'f563f4ac-6f79-4b59-b0e9-1b6ae25b1a94',
         createdAt: '2024-08-22T08:28:51.065Z',
@@ -321,7 +319,7 @@ export const MockSectionProvider: React.FC<
         type: 'POINTS',
         configuration: {
           title: 'Points',
-          imageUrl: 'https://picsum.photos/200/200',
+          artworkUrl: 'https://picsum.photos/200/200',
           multiplier: null,
           points: 100,
           prefix: null,

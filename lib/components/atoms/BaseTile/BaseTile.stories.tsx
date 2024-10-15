@@ -24,7 +24,7 @@ FullHeight.args = {
     updatedAt: '',
     tileHeight: TileHeight.Full,
     configuration: {
-      imageUrl: 'https://picsum.photos/200/300',
+      artworkUrl: 'https://picsum.photos/200/300',
     },
   },
 };
@@ -37,7 +37,7 @@ HalfHeight.args = {
     updatedAt: '',
     tileHeight: TileHeight.Half,
     configuration: {
-      imageUrl: 'https://picsum.photos/200/300',
+      artworkUrl: 'https://picsum.photos/200/300',
     },
   },
 };

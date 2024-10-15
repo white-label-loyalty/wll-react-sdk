@@ -39,7 +39,7 @@ export enum TileHeight {
 export type ProgessType = 'NAME' | 'POINTS';
 
 export class BannerTileConfig {
-  imageUrl?: string | null;
+  artworkUrl?: string | null;
   title?: string | null;
   description?: string | null;
   buttonText?: string | null;
@@ -52,14 +52,14 @@ export class PointsTileConfig {
   multiplier?: number;
   prefix?: string | null;
   suffix?: string | null;
-  imageUrl?: string | null;
+  artworkUrl?: string | null;
   points?: number;
 }
 
 export class ContentTileConfig {
   title?: string | null;
-  subtitle?: string | null;
-  imageUrl?: string | null;
+  description?: string | null;
+  artworkUrl?: string | null;
   linkURL?: string | null;
 }
 

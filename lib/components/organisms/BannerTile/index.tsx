@@ -30,13 +30,13 @@ const BannerTile: React.FC<BannerTileProps> & {
 
 const BannerTileImage: React.FC = () => {
   const { configuration } = useBannerContext();
-  const { imageUrl } = configuration as BannerTileConfig;
+  const { artworkUrl } = configuration as BannerTileConfig;
 
-  if (!imageUrl) return null;
+  if (!artworkUrl) return null;
   return (
     <View style={styles.imageContainer}>
       <Image
-        source={{ uri: imageUrl }}
+        source={{ uri: artworkUrl }}
         style={styles.image}
         resizeMode="cover"
         onError={(error) => console.error('Image loading error:', error)}

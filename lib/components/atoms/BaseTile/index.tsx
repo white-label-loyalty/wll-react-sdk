@@ -34,11 +34,11 @@ type LayoutProps = FlexStyle & {
 
 const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
   const { theme } = useWllSdk();
-  const { imageUrl } = tile.configuration as ContentTileConfig;
+  const { artworkUrl } = tile.configuration as ContentTileConfig;
   const layout: LayoutProps = {
     flexDirection: 'column',
     justifyContent:
-      tile.tileHeight === TileHeight.Half || !imageUrl
+      tile.tileHeight === TileHeight.Half || !artworkUrl
         ? 'center'
         : 'flex-start',
     alignItems: 'stretch',
@@ -77,7 +77,8 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
 const TileTitle: FC = () => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
-  const { title, imageUrl, linkURL } = tile.configuration as ContentTileConfig;
+  const { title, artworkUrl, linkURL } =
+    tile.configuration as ContentTileConfig;
 
   const titleContainerStyle = createResponsiveStyle({
     marginTop: [8, 8, 12],
@@ -90,7 +91,7 @@ const TileTitle: FC = () => {
       style={[
         styles.titleContainer,
         {
-          marginTop: imageUrl ? titleContainerStyle.marginTop : undefined,
+          marginTop: artworkUrl ? titleContainerStyle.marginTop : undefined,
         },
       ]}
       accessibilityRole="header"
@@ -107,28 +108,29 @@ const TileTitle: FC = () => {
 
 const TileBody: FC = (props) => {
   const tile = useTileContext();
-  const { subtitle } = tile.configuration as ContentTileConfig;
-  return subtitle ? (
-    <Text variant="body" {...props} accessibilityLabel={subtitle}>
-      {subtitle}
+  const { description } = tile.configuration as ContentTileConfig;
+  return description ? (
+    <Text variant="body" {...props} accessibilityLabel={description}>
+      {description}
     </Text>
   ) : null;
 };
 
 const TileImage: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
-  const { imageUrl, title, subtitle } = tile.configuration as ContentTileConfig;
-  if (!imageUrl) return null;
+  const { artworkUrl, title, description } =
+    tile.configuration as ContentTileConfig;
+  if (!artworkUrl) return null;
   const hasTitle = !!title;
-  const hasSubtitle = !!subtitle;
+  const hasdescription = !!description;
   return (
     <Image
       {...props}
-      source={{ uri: imageUrl }}
+      source={{ uri: artworkUrl }}
       style={[
         props.style,
         {
-          flexBasis: hasTitle && hasSubtitle ? '50%' : '100%',
+          flexBasis: hasTitle && hasdescription ? '50%' : '100%',
         },
       ]}
     />

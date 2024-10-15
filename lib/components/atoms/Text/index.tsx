@@ -11,7 +11,7 @@ import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 type TextVariant =
   | 'eyebrow'
   | 'title'
-  | 'subtitle'
+  | 'description'
   | 'body'
   | 'caption'
   | 'label'
@@ -49,7 +49,7 @@ export const Text: React.FC<TextProps> = ({
           fontSize: [14, 14, 24],
           fontWeight: 'bold',
         });
-      case 'subtitle':
+      case 'description':
         return createResponsiveStyle({
           ...baseStyle,
         });

@@ -28,7 +28,7 @@ const createMockTile = (config: Partial<BannerTileConfig>): Tile => ({
   active: true,
   tileHeight: TileHeight.Full,
   configuration: {
-    imageUrl: config.imageUrl,
+    artworkUrl: config.artworkUrl,
     title: config.title,
     description: config.description,
     buttonText: config.buttonText,
@@ -61,7 +61,7 @@ Default.args = {
     [
       createMockTile({
         title: 'Refer a friend',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Click here to share your unique referral link with friends!',
@@ -70,7 +70,7 @@ Default.args = {
       }),
       createMockTile({
         title: 'Summer Sale',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Enjoy up to 50% off on selected items. Limited time offer!',
@@ -80,7 +80,7 @@ Default.args = {
       }),
       createMockTile({
         title: 'New Collection',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description: 'Check out our latest arrivals for this season.',
         buttonText: 'EXPLORE',
@@ -101,7 +101,7 @@ SingleItem.args = {
         title: 'Special Offer',
         description: 'Get a free gift with any purchase over $50.',
         buttonText: 'CLAIM NOW',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         urlTarget: UrlTarget.sameWindow,
         url: 'https://www.example.com',
@@ -120,7 +120,7 @@ ManyItems.args = {
       .map((_, index) =>
         createMockTile({
           title: `Offer ${index + 1}`,
-          imageUrl:
+          artworkUrl:
             'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
           description: `This is the description for offer number ${index + 1}.`,
           buttonText: `ACTION ${index + 1}`,

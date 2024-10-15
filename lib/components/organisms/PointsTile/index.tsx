@@ -104,7 +104,7 @@ type PointTileImageProps = {
 const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
-  const { imageUrl } = configuration as PointsTileConfig;
+  const { artworkUrl } = configuration as PointsTileConfig;
 
   const styles = StyleSheet.create({
     imageContainer: createResponsiveStyle({
@@ -124,11 +124,11 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
     },
   });
 
-  if (!imageUrl) return null;
+  if (!artworkUrl) return null;
 
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: imageUrl }} style={styles.image} />
+      <Image source={{ uri: artworkUrl }} style={styles.image} />
     </View>
   );
 };

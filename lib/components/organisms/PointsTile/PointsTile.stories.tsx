@@ -27,7 +27,7 @@ HalfTile.args = {
     type: TileType.Points,
     configuration: {
       title: 'Points Balance',
-      imageUrl: pointsImage,
+      artworkUrl: pointsImage,
       multiplier: undefined,
       points: 100,
       prefix: undefined,
@@ -46,7 +46,7 @@ FullTile.args = {
     type: TileType.Points,
     configuration: {
       title: 'Points Balance',
-      imageUrl: pointsFull,
+      artworkUrl: pointsFull,
       multiplier: undefined,
       points: 100,
       prefix: undefined,
