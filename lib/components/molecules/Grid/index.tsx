@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
-import { Section as SectionData } from '../../../types/section';
+import { TSection as SectionData } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { TileContainer } from '../../atoms';
 import { SectionHeader } from '../../molecules';

@@ -5,7 +5,7 @@ export enum SectionType {
   Banner = 'BANNER',
 }
 
-export type Section = {
+export type TSection = {
   id: string;
   type: SectionType;
   createdAt: string;

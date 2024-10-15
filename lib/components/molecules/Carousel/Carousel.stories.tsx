@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { Section, SectionType } from '../../../types/section';
+import { SectionType, TSection } from '../../../types/section';
 import {
   BannerTileConfig,
   Tile,
@@ -41,7 +41,7 @@ const createMockSection = (
   title: string,
   description: string,
   tiles: Tile[]
-): Section => ({
+): TSection => ({
   id: Math.random().toString(36).substr(2, 9),
   title,
   type: SectionType.Banner,

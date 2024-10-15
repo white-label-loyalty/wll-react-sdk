@@ -8,14 +8,14 @@ import {
   View,
 } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { Section } from '../../../types/section';
+import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
 import { Icon } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 import { BannerTile } from '../../organisms';
 
 type CarouselProps = {
-  section: Section;
+  section: TSection;
 };
 
 const Carousel: React.FC<CarouselProps> = ({ section }) => {
