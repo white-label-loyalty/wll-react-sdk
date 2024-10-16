@@ -14,7 +14,7 @@ export type TSection = {
   title?: string;
   description?: string;
   tiles: Tile[];
-  pointsMultiplier?: string | number;
+  pointsMultiplier?: number;
   pointsPrefix?: string | null;
   pointsSuffix?: string | null;
   priority: number;

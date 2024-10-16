@@ -20,7 +20,7 @@ type MockSectionProviderProps = {
   children: React.ReactNode;
   sectionData?: TSection;
   loading?: boolean;
-  error?: Error | undefined;
+  error?: Error | null;
 };
 
 export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
