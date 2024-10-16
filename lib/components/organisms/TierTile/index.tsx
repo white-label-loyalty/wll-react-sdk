@@ -138,7 +138,9 @@ const TierTileImage: React.FC<TierTileImageProps> = ({ isFullSize }) => {
 
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: tier.artworkUrl }} style={styles.image} />
+      {tier.artworkUrl && (
+        <Image source={{ uri: tier.artworkUrl }} style={styles.image} />
+      )}
     </View>
   );
 };
