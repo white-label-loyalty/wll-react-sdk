@@ -24,6 +24,7 @@ FullSizeImageAndText.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description: 'Lorem ipsum dolor sit amet',
@@ -42,6 +43,7 @@ FullSizeImageOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
@@ -58,6 +60,7 @@ FullSizeTextOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -73,6 +76,7 @@ FullSizeTextOnlyLongBody.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description:
@@ -90,6 +94,7 @@ HalfSizeImageOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
@@ -106,6 +111,7 @@ HalfSizeTextOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description: 'Lorem ipsum dolor sit amet',
@@ -122,6 +128,7 @@ HalfSizeTextOnlyWithLink.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description: 'Lorem ipsum dolor sit amet',

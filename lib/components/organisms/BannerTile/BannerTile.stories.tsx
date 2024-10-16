@@ -19,6 +19,7 @@ Default.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       artworkUrl:
         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
@@ -40,6 +41,7 @@ WithoutButton.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       artworkUrl:
         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',

@@ -120,6 +120,7 @@ ManyItems.args = {
   section: createMockSection(
     'All Promotions',
     'Browse through our extensive list of current promotions.',
+    'section',
     Array(10)
       .fill(null)
       .map((_, index) =>
