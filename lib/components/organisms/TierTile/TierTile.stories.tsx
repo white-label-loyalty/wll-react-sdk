@@ -35,6 +35,7 @@ CurrentTierHalf.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     active: true,
     configuration: {
       progressType: ProgressType.Points,
@@ -64,6 +65,7 @@ CurrentTierFull.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTier,
       progressType: ProgressType.Points,
@@ -93,6 +95,7 @@ CurrentTargetNextTierHalf.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetNext,
       progressType: ProgressType.Points,
@@ -131,6 +134,7 @@ CurrentTargetNextTierFull.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetNext,
       progressType: ProgressType.Points,
@@ -169,6 +173,7 @@ CurrentTargetSpecificTierHalf.args = {
     updatedAt: '',
     tileHeight: TileHeight.Full,
     active: true,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetSpecific,
       progressType: ProgressType.Points,
@@ -206,6 +211,7 @@ CurrentTargetSpecificTierFull.args = {
     updatedAt: '',
     tileHeight: TileHeight.Full,
     active: true,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetSpecific,
       progressType: ProgressType.Points,

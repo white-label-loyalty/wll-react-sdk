@@ -20,6 +20,7 @@ Default.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       allowDecorationOverlay: true,
       rewardCategory: {
@@ -39,6 +40,7 @@ LongCategoryName.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       allowDecorationOverlay: true,
       rewardCategory: {
@@ -58,6 +60,7 @@ NoDecorationOverlay.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       allowDecorationOverlay: false,
       rewardCategory: {

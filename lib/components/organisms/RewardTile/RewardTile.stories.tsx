@@ -18,6 +18,7 @@ Default.args = {
     tileHeight: TileHeight.Full,
     active: true,
     type: TileType.Reward,
+    priority: 1,
     configuration: {
       showPrice: false,
       reward: {
@@ -50,6 +51,7 @@ DefaultWithPoints.args = {
     tileHeight: TileHeight.Full,
     active: true,
     type: TileType.Reward,
+    priority: 1,
     configuration: {
       showPrice: false,
       reward: {
