@@ -1,6 +1,7 @@
 import BadgeTile from './BadgeTile';
 import BannerTile from './BannerTile';
 import ContentTile from './ContentTile';
+import Group from './Group';
 import PointsTile from './PointsTile';
 import RewardCategoryTile from './RewardCategoryTile';
 import RewardTile from './RewardTile';
@@ -11,6 +12,7 @@ export {
   BadgeTile,
   BannerTile,
   ContentTile,
+  Group,
   PointsTile,
   RewardCategoryTile,
   RewardTile,
