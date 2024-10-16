@@ -12,7 +12,9 @@ type SectionProps = {
   section: TSection;
 };
 
-const SectionContext = createContext<SectionContextType | undefined>(undefined);
+export const SectionContext = createContext<SectionContextType | undefined>(
+  undefined
+);
 
 export const useSectionContext = () => {
   const context = useContext(SectionContext);

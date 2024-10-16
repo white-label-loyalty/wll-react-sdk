@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import * as React from 'react';
 import { SectionContext } from '../lib/components/organisms/Section';
 import { WllSdkProvider } from '../lib/context/WllSdkContext';
-import { Section } from '../lib/types/section';
+import { TSection } from '../lib/types/section';
 import { defaultTheme } from '../lib/utils/styling';
 
 const sdkConfig = {
@@ -12,7 +12,7 @@ const sdkConfig = {
 
 interface MockSectionProviderProps {
   children: React.ReactNode;
-  sectionData?: Section;
+  sectionData?: TSection;
   loading?: boolean;
   error?: Error | null;
 }
@@ -410,16 +410,10 @@ export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
     pointsPrefix: null,
     pointsSuffix: 'pts',
   },
-  loading = false,
-  error = null,
 }) => {
   return (
     <SectionContext.Provider
-      value={{
-        sectionData: sectionData as Section,
-        loading,
-        error,
-      }}
+     value={{ sectionData, }}>
     >
       {children}
     </SectionContext.Provider>
