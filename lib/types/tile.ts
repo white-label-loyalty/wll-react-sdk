@@ -87,6 +87,7 @@ export class TierTileConfig {
   pointsPrefix?: string;
   pointsSuffix?: string;
   tier?: TierType;
+  tierId?: string;
   targetTier?: TierType | undefined;
   type?: TierTileType;
   targetTierAttainingPeriod?: Date | null;
@@ -100,6 +101,7 @@ export type Tile = {
   updatedAt: string | null;
   tileHeight: TileHeight;
   configuration: TileConfig;
+  priority: number;
 };
 
 const getConfigForTileType = (tileType: TileType) => {

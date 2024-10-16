@@ -7,6 +7,7 @@ export enum SectionType {
 
 export type TSection = {
   id: string;
+  name: string;
   type: SectionType;
   createdAt: string;
   updatedAt: string;

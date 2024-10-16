@@ -50,8 +50,8 @@ type Effectivity = {
 export type TierType = {
   id: string;
   name: string;
-  description?: string;
-  artworkUrl?: string;
+  description?: string | null;
+  artworkUrl?: string | null;
   priority: number;
   pointsRequirement?: number;
   calculation?: string;
