@@ -23,6 +23,7 @@ FullHeight.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       artworkUrl: 'https://picsum.photos/200/300',
     },
@@ -36,6 +37,7 @@ HalfHeight.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 2,
     configuration: {
       artworkUrl: 'https://picsum.photos/200/300',
     },

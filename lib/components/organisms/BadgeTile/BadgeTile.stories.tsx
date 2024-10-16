@@ -21,6 +21,7 @@ Default.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       badgeId: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
       count: 10,
@@ -46,6 +47,7 @@ Locked.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       badgeId: 'a7a3e1f2-be70-4e5a-a4b7-0d9870c56f0d',
       count: 0,

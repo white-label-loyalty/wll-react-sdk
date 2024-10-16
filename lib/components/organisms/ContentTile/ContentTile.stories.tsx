@@ -139,6 +139,7 @@ FullSizeWithLink.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
       description: 'Click here to learn more',

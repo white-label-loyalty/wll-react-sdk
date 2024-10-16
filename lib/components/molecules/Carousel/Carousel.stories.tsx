@@ -27,6 +27,7 @@ const createMockTile = (config: Partial<BannerTileConfig>): Tile => ({
   updatedAt: 'test-date',
   active: true,
   tileHeight: TileHeight.Full,
+  priority: 1,
   configuration: {
     artworkUrl: config.artworkUrl,
     title: config.title,
@@ -40,10 +41,12 @@ const createMockTile = (config: Partial<BannerTileConfig>): Tile => ({
 const createMockSection = (
   title: string,
   description: string,
+  name: string,
   tiles: Tile[]
 ): TSection => ({
   id: Math.random().toString(36).substr(2, 9),
   title,
+  name,
   type: SectionType.Banner,
   active: true,
   priority: 0,
@@ -58,6 +61,7 @@ Default.args = {
   section: createMockSection(
     'Featured Offers',
     'Check out our latest promotions and deals!',
+    'section',
     [
       createMockTile({
         title: 'Refer a friend',
@@ -96,6 +100,7 @@ SingleItem.args = {
   section: createMockSection(
     'Special Promotion',
     "Don't miss out on this exclusive offer!",
+    'section',
     [
       createMockTile({
         title: 'Special Offer',
