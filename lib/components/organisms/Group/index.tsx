@@ -48,7 +48,6 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     <View>
       {groupData && (
         <>
-          <Text>{groupData.name}</Text>
           {groupData.sections.map((section) => (
             <Section key={section.id} section={section} />
           ))}
