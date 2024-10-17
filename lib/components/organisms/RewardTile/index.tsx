@@ -5,7 +5,6 @@ import { RewardTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Icon, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { useSectionContext } from '../Section';
 
 type RewardTileProps = {
   tile: Tile;
@@ -35,60 +34,67 @@ const RewardTile: React.FC<RewardTileProps> & {
 
 const RewardTileImage: React.FC = () => {
   const { configuration } = useTileContext();
-  const { reward } = configuration as RewardTileConfig;
+  const reward = configuration as RewardTileConfig;
 
   if (!reward?.pictureUrl) return null;
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: reward?.pictureUrl }} style={styles.image} />
+      <Image source={{ uri: reward.pictureUrl }} style={styles.image} />
     </View>
   );
 };
 
 const RewardTileTitle: React.FC = () => {
   const { configuration } = useTileContext();
-  const { reward } = configuration as RewardTileConfig;
+  const reward = configuration as RewardTileConfig;
 
   if (!reward?.name) return null;
   return (
     <Text variant="title" ellipsizeMode="tail" numberOfLines={1}>
-      {reward?.name}
+      {reward.name}
     </Text>
   );
 };
 
 const RewardTileDescription: React.FC = () => {
   const { configuration } = useTileContext();
-  const { reward } = configuration as RewardTileConfig;
+  const reward = configuration as RewardTileConfig;
 
-  if (!reward?.description) return null;
-  return <Text variant="body">{reward?.description}</Text>;
+  if (!reward?.summary) return null;
+  return <Text variant="body">{reward.summary}</Text>;
 };
 
 const RewardTilePoints: React.FC = () => {
-  const { sectionData } = useSectionContext();
   const { configuration } = useTileContext();
   const { theme } = useWllSdk();
-  const { reward } = configuration as RewardTileConfig;
+  const reward = configuration as RewardTileConfig;
 
-  const effectiveMultiplier = sectionData?.pointsMultiplier ?? 1;
-  const effectivePrefix = sectionData?.pointsPrefix ?? '';
-  const effectiveSuffix = sectionData?.pointsSuffix ?? 'pts';
   const calculatedPoints =
-    reward?.price !== undefined ? reward.price * effectiveMultiplier : null;
-  if (reward?.price === 0) return null;
+    reward?.price !== undefined
+      ? reward.price * Number(reward.pointsMultiplier)
+      : null;
+
+  const styles = StyleSheet.create({
+    suffix: createResponsiveStyle({
+      fontSize: [14, 14, 18],
+      color: theme.primary,
+    }),
+    pointsWithSuffix: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+
+  if (reward?.price === 0 || !reward.showPrice || calculatedPoints === null)
+    return null;
   return (
-    <Text
-      style={[
-        styles.points,
-        {
-          color: theme.primary,
-        },
-      ]}
-    >
-      {effectivePrefix}
-      {calculatedPoints}
-      {effectiveSuffix}
+    <Text variant="caption">
+      {reward.pointsPrefix}
+      <View style={styles.pointsWithSuffix}>
+        {calculatedPoints}
+        <Text style={styles.suffix}>{reward.pointsSuffix}</Text>
+      </View>
     </Text>
   );
 };

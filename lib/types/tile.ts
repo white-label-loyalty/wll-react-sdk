@@ -1,4 +1,4 @@
-import { Reward, RewardCategory, TierType } from './wll';
+import { Availability, RewardCategory, TierType } from './wll';
 
 export enum UrlTarget {
   sameWindow = 'SAME_WINDOW',
@@ -63,10 +63,38 @@ export class ContentTileConfig {
   linkURL?: string | null;
 }
 
-export class RewardTileConfig {
-  reward?: Reward;
-  showPrice?: boolean;
-}
+export type RewardTileConfig = {
+  rewardId: string;
+  showPrice: boolean;
+  showArtwork?: boolean;
+  showDetails?: boolean;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  pictureUrl: string;
+  value: number;
+  price: number;
+  priority: number;
+  availability: Availability;
+  purchasable: boolean;
+  tier: string | null;
+  category: RewardCategory;
+  discounts: any[];
+  summary: string | null;
+  redemptionMessage: string | null;
+  visibilityCriteria: string | null;
+  type: 'VOUCHER';
+  codeType: 'HUMAN' | 'OTP';
+  code: string | null;
+  purchaseExpiration: string | null;
+  hideCode: boolean;
+  notificationConfig: any | null;
+  artworkUrl: string;
+  pointsMultiplier: string;
+  pointsPrefix: string | null;
+  pointsSuffix: string | null;
+};
 
 export enum BadgeTileType {
   SPECIFIC = 'SPECIFIC',

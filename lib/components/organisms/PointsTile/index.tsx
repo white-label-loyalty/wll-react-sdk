@@ -5,7 +5,6 @@ import { PointsTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { useSectionContext } from '../Section';
 
 type PointsTileProps = {
   tile: Tile;
@@ -57,22 +56,12 @@ const PointsTileTitle: React.FC = () => {
 
 const PointsTilePoints: React.FC = () => {
   const { theme } = useWllSdk();
-  const { sectionData } = useSectionContext();
   const { configuration } = useTileContext();
-  const {
-    multiplier: tileMultiplier,
-    prefix: tilePrefix,
-    suffix: tileSuffix,
-    points,
-  } = configuration as PointsTileConfig;
+  const { multiplier, prefix, suffix, points } =
+    configuration as PointsTileConfig;
 
-  const effectiveMultiplier =
-    tileMultiplier ?? sectionData?.pointsMultiplier ?? 1;
-  const effectivePrefix = tilePrefix ?? sectionData?.pointsPrefix ?? '';
-  const effectiveSuffix = tileSuffix ?? sectionData?.pointsSuffix ?? 'pts';
   const calculatedPoints =
-    points !== undefined ? points * effectiveMultiplier : null;
-
+    points !== undefined ? points * (multiplier ?? 1) : null;
   const styles = StyleSheet.create({
     suffix: createResponsiveStyle({
       fontSize: [14, 14, 18],
@@ -88,10 +77,10 @@ const PointsTilePoints: React.FC = () => {
   if (calculatedPoints === null) return null;
   return (
     <Text variant="caption">
-      {effectivePrefix}
+      {prefix ?? ''}
       <View style={styles.pointsWithSuffix}>
         {calculatedPoints}
-        <Text style={styles.suffix}>{effectiveSuffix}</Text>
+        <Text style={styles.suffix}>{suffix ?? 'pts'}</Text>
       </View>
     </Text>
   );

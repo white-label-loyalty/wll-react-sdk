@@ -1,6 +1,6 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Text } from "../../atoms";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Text } from '../../atoms';
 
 type SectionHeaderProps = {
   title?: string;
@@ -34,16 +34,16 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 const styles = StyleSheet.create({
   sectionHeader: {
     marginBottom: 20,
-    paddingHorizontal: 15,
+    paddingHorizontal: 8,
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 32,
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   sectionDescription: {
-    fontSize: 16,
-    color: "#666",
+    fontSize: 24,
+    color: '#666',
   },
 });
 
