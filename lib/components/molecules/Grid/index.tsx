@@ -46,7 +46,7 @@ const Grid: React.FC<GridProps> = ({ section }) => {
   return (
     <>
       <SectionHeader title={section.title} description={section.description} />
-      <View style={styles.grid}>{renderGrid()}</View>;
+      <View style={styles.grid}>{renderGrid()}</View>
     </>
   );
 };

@@ -22,13 +22,15 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
   const { theme } = useWllSdk();
   return (
     <BaseTile tile={tile}>
-      <BadgeTile.Image style={styles.image} />
-      <View style={styles.textContainer}>
-        <View style={styles.row}>
-          <BadgeTile.Title />
-          <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
+      <View style={styles.contentContainer}>
+        <BadgeTile.Image />
+        <View style={styles.textContainer}>
+          <View style={styles.row}>
+            <BadgeTile.Title />
+            <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
+          </View>
+          <BadgeTile.Body />
         </View>
-        <BadgeTile.Body />
       </View>
     </BaseTile>
   );
@@ -38,8 +40,8 @@ const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { badge } = configuration;
-  if (!badge?.artworkUrl) return null;
+  const badgeDetails = configuration.details?.[0];
+  if (!badgeDetails?.artworkUrl) return null;
   return (
     <View
       style={[
@@ -52,8 +54,8 @@ const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
       {configuration.count === 0 && <Locked />}
       <Image
         {...props}
-        source={{ uri: badge.artworkUrl }}
-        resizeMode="cover"
+        source={{ uri: badgeDetails.artworkUrl }}
+        resizeMode="contain"
         style={styles.image}
       />
     </View>
@@ -62,22 +64,24 @@ const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
 
 const BadgeTileTitle: FC = (props) => {
   const tile = useTileContext();
-  const { badge } = tile.configuration as BadgeTileConfig;
-  if (!badge?.name) return null;
+  const { configuration } = tile as { configuration: BadgeTileConfig };
+  const badgeDetails = configuration.details?.[0];
+  if (!badgeDetails?.name) return null;
   return (
-    <Text variant="title" {...props}>
-      {badge.name}
+    <Text variant="title" {...props} numberOfLines={1} ellipsizeMode="tail">
+      {badgeDetails.name}
     </Text>
   );
 };
 
 const BadgeTileBody: FC = (props) => {
   const tile = useTileContext();
-  const { badge } = tile.configuration as BadgeTileConfig;
-  if (!badge?.description) return null;
+  const { configuration } = tile as { configuration: BadgeTileConfig };
+  const badgeDetails = configuration.details?.[0];
+  if (!badgeDetails?.description) return null;
   return (
     <Text variant="body" {...props}>
-      {badge.description}
+      {badgeDetails.description}
     </Text>
   );
 };
@@ -95,15 +99,20 @@ BadgeTile.Title = BadgeTileTitle;
 BadgeTile.Body = BadgeTileBody;
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    flexDirection: 'column',
+    height: '100%',
+  },
   textContainer: createResponsiveStyle({
     paddingHorizontal: [8, 8, 12],
     flex: 1,
   }),
   imageContainer: createResponsiveStyle({
     width: '100%',
-    flexBasis: '50%',
+    aspectRatio: 2 / 1,
     marginBottom: [8, 8, 12],
     position: 'relative',
+    overflow: 'hidden',
   }),
   row: createResponsiveStyle({
     flexDirection: 'row',
@@ -113,19 +122,16 @@ const styles = StyleSheet.create({
   }),
   lockOverlay: {
     backgroundColor: 'rgba(0,0,0,0.6)',
-    width: '100%',
     position: 'absolute',
     zIndex: 999,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
     height: '100%',
   },
   image: {
-    position: 'absolute',
     width: '100%',
     height: '100%',
-    top: 0,
-    left: 0,
   },
 });
 

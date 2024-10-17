@@ -1,4 +1,4 @@
-import { Badge, Reward, RewardCategory, TierType } from './wll';
+import { Reward, RewardCategory, TierType } from './wll';
 
 export enum UrlTarget {
   sameWindow = 'SAME_WINDOW',
@@ -68,12 +68,34 @@ export class RewardTileConfig {
   showPrice?: boolean;
 }
 
+export enum BadgeTileType {
+  SPECIFIC = 'SPECIFIC',
+  LATEST_EARNED = 'LATEST_EARNED',
+}
+
 export class BadgeTileConfig {
-  badgeTileType?: BadgeTileType;
-  badgeId?: string | null;
-  badge?: Badge;
+  type: BadgeTileType = BadgeTileType.SPECIFIC;
+  badgeId: string = '';
+  internalName?: string;
+  priority: number = 0;
+  internalDescription?: string | null;
+  status?: string;
+  id: string = '';
+  createdAt: string = '';
+  updatedAt: string = '';
+  details?: BadgeDetail[] = [];
   count: number = 0;
 }
+
+export type BadgeDetail = {
+  name: string;
+  locale: string;
+  description: string;
+  artworkUrl: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export class RewardCategoryTileConfig {
   categoryId?: string | null;

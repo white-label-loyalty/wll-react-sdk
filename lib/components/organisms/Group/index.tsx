@@ -48,9 +48,11 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     <View>
       {groupData && (
         <>
-          {groupData.sections.map((section) => (
-            <Section key={section.id} section={section} />
-          ))}
+          {groupData.sections
+            .sort((a, b) => a.priority - b.priority)
+            .map((section) => (
+              <Section key={section.id} section={section} />
+            ))}
         </>
       )}
     </View>
