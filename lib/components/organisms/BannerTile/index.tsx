@@ -71,7 +71,7 @@ const BannerTileDescription: React.FC = () => {
 
 const BannerTileCTA: React.FC = () => {
   const { configuration } = useBannerContext();
-  const { buttonText, url } = configuration as BannerTileConfig;
+  const { ctaText, ctaLink } = configuration as BannerTileConfig;
 
   const handleLinkPress = async (url: string) => {
     if (!url) return;
@@ -80,12 +80,12 @@ const BannerTileCTA: React.FC = () => {
     }
   };
 
-  if (!buttonText) return null;
+  if (!ctaText) return null;
   return (
     <Button
-      title={buttonText}
+      title={ctaText}
       variant="accent"
-      onPress={() => handleLinkPress(url as string)}
+      onPress={() => handleLinkPress(ctaLink as string)}
     />
   );
 };

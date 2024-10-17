@@ -2,6 +2,7 @@ import React, { createContext, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { SectionType, TSection } from '../../../types/section';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Carousel, Grid } from '../../molecules';
 
 type SectionContextType = {
@@ -41,21 +42,18 @@ const Section: React.FC<SectionProps> = ({ section }) => {
 
   return (
     <SectionContext.Provider value={{ sectionData: section }}>
-      <View
-        style={[styles.section, { borderRadius: theme.sizes.borderRadiusSm }]}
-      >
-        {renderSectionContent()}
-      </View>
+      <View style={styles.section}>{renderSectionContent()}</View>
     </SectionContext.Provider>
   );
 };
 
 const styles = StyleSheet.create({
-  section: {
+  section: createResponsiveStyle({
     width: '100%',
     maxWidth: 1080,
     marginHorizontal: 'auto',
-  },
+    marginBottom: [24, 24, 44],
+  }),
 });
 
 export default Section;

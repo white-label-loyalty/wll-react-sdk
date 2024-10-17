@@ -47,6 +47,7 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     negative,
     surfaceText,
     surface,
+    text,
   } = mergedTheme;
   return {
     ...mergedTheme,
@@ -59,6 +60,7 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     derivedSurface: getDerivedColorPercentages(surface),
     derivedSurfaceText: getDerivedColorPercentages(surfaceText),
     alphaDerivedPrimary: getAlphaDerivedColors(primary),
+    alphaDerivedText: getAlphaDerivedColors(text),
   };
 };
 

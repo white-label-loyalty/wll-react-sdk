@@ -50,8 +50,6 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
       theme.sizes.borderRadiusSm,
       theme.sizes.borderRadiusLg,
     ],
-    maxWidth: [175, 175, 258],
-    backgroundColor: tile.tileHeight === 'FULL' ? 'red' : 'blue',
   });
 
   return (
@@ -62,7 +60,6 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
           {
             backgroundColor: theme.surface,
             borderRadius: responsiveStyles.borderRadius,
-            maxWidth: responsiveStyles.maxWidth,
           },
           layout,
           style,

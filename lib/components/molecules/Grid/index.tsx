@@ -13,6 +13,7 @@ const Grid: React.FC<GridProps> = ({ section }) => {
   const { width } = useWindowDimensions();
   const isDesktop = width >= 700;
   const columnsPerRow = isDesktop ? 4 : 2;
+  const gap = 16; // Gap size in pixels
 
   const renderGrid = () => {
     const tileContainers: JSX.Element[] = [];
@@ -31,8 +32,12 @@ const Grid: React.FC<GridProps> = ({ section }) => {
         tileContainers.push(
           <View
             key={`container-${index}`}
-            // TODO: Replace with new responsive method
-            style={{ width: `${100 / columnsPerRow}%`, padding: 8 }}
+            // @ts-ignore
+            style={{
+              width: `calc(${100 / columnsPerRow}% - ${((columnsPerRow - 1) * gap) / columnsPerRow}px)`,
+              marginRight: (index + 1) % columnsPerRow !== 0 ? gap : 0,
+              marginBottom: gap,
+            }}
           >
             <TileContainer tiles={currentTiles} />
           </View>

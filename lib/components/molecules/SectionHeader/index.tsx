@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text } from '../../atoms';
+import { StyleSheet, Text, View } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 
 type SectionHeaderProps = {
   title?: string;
@@ -11,17 +12,32 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,
 }) => {
+  const { theme } = useWllSdk();
   return (
     <View style={styles.sectionHeader}>
       {title || description ? (
         <>
           {title && (
-            <Text variant="title" style={styles.sectionTitle}>
+            <Text
+              style={[
+                styles.sectionTitle,
+                {
+                  fontWeight: '700',
+                },
+              ]}
+            >
               {title}
             </Text>
           )}
           {description && (
-            <Text variant="body" style={styles.sectionDescription}>
+            <Text
+              style={[
+                styles.sectionDescription,
+                {
+                  color: theme.alphaDerivedText[20],
+                },
+              ]}
+            >
               {description}
             </Text>
           )}
@@ -32,19 +48,16 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 };
 
 const styles = StyleSheet.create({
-  sectionHeader: {
-    marginBottom: 20,
-    paddingHorizontal: 8,
-  },
-  sectionTitle: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  sectionDescription: {
-    fontSize: 24,
-    color: '#666',
-  },
+  sectionHeader: createResponsiveStyle({
+    marginBottom: [8, 8, 16],
+  }),
+  sectionTitle: createResponsiveStyle({
+    fontSize: [18, 18, 32],
+    marginBottom: [4, 4, 8],
+  }),
+  sectionDescription: createResponsiveStyle({
+    fontSize: [14, 14, 24],
+  }),
 });
 
 export default SectionHeader;

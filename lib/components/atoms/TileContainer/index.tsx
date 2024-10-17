@@ -1,5 +1,6 @@
+import * as React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Tile, TileType } from '../../../types/tile';
-
 import {
   BadgeTile,
   ContentTile,
@@ -9,9 +10,6 @@ import {
   TierTile,
 } from '../../organisms';
 
-import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-
 type TileContainerProps = {
   tiles: Tile[];
 };
@@ -19,24 +17,18 @@ type TileContainerProps = {
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
-      case TileType.Content: {
+      case TileType.Content:
         return <ContentTile tile={tile} />;
-      }
-      case TileType.Badge: {
+      case TileType.Badge:
         return <BadgeTile tile={tile} />;
-      }
-      case TileType.Tier: {
+      case TileType.Tier:
         return <TierTile tile={tile} />;
-      }
-      case TileType.Points: {
+      case TileType.Points:
         return <PointsTile tile={tile} />;
-      }
-      case TileType.Reward: {
+      case TileType.Reward:
         return <RewardTile tile={tile} />;
-      }
-      case TileType.RewardCategory: {
+      case TileType.RewardCategory:
         return <RewardCategoryTile tile={tile} />;
-      }
     }
   };
 
@@ -47,10 +39,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
           key={tile.id}
           style={[
             styles.tileContainer,
-            {
-              // TODO: Replace this with new responsive method
-              marginBottom: 15,
-            },
+            index > 0 && { marginTop: 16 }, // Add gap between vertically stacked tiles
           ]}
         >
           {renderTile(tile)}
