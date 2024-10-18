@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     aspectRatio: 1,
+    marginBottom: GRID_GAP,
   },
   tileContainer: {
     flex: 1,

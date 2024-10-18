@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
-import { TSection as SectionData } from '../../../types/section';
+import { TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { TileContainer } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 
 type GridProps = {
-  section: SectionData;
+  section: TSection;
 };
 
 const Grid: React.FC<GridProps> = ({ section }) => {

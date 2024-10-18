@@ -42,6 +42,7 @@ const TierTile: React.FC<TierTileProps> & {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      width: '100%',
     },
   });
 
@@ -67,17 +68,12 @@ const TierTile: React.FC<TierTileProps> & {
             <View style={styles.container}>
               <View style={styles.row}>
                 <View>
-                  <Text variant="caption">Current Tier</Text>
+                  <Text variant="body">Current Tier</Text>
                   <TierTile.Name />
                 </View>
                 <View>
-                  <Text variant="caption">Next Tier</Text>
                   <TierTile.NextName />
                 </View>
-              </View>
-              <View style={styles.row}>
-                <TierTile.Count />
-                <TierTile.NextCount />
               </View>
             </View>
           </>
@@ -152,6 +148,12 @@ const NextName: React.FC = () => {
   const { configuration } = useTileContext();
   const { targetTier } = configuration as TierTileConfig;
   return <Text variant="title">{targetTier?.name}</Text>;
+};
+
+const NextPointsCount: React.FC = () => {
+  const { configuration } = useTileContext();
+  const { targetTier } = configuration as TierTileConfig;
+  return <Text>400 pts away</Text>;
 };
 
 const Count: React.FC = () => {

@@ -189,9 +189,10 @@ export type BadgeDetail = {
 };
 
 export class RewardCategoryTileConfig {
-  categoryId?: string | null;
-  allowDecorationOverlay?: boolean;
-  rewardCategory?: RewardCategory;
+  showName: boolean = true;
+  rewardCategoryId: string = '';
+  artworkUrl: string = '';
+  name: string = '';
 }
 
 export class TierTileConfig {

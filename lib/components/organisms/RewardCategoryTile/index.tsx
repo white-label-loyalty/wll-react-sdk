@@ -13,10 +13,7 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
   Overlay: typeof RewardCategoryTileOverlay;
   Image: typeof RewardCategoryTileImage;
 } = ({ tile }) => {
-  const { configuration } = tile;
-  const { rewardCategory } = configuration as RewardCategoryTileConfig;
-
-  if (!rewardCategory) return null;
+  if (!tile) return null;
 
   return (
     <BaseTile tile={tile}>
@@ -29,11 +26,9 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
 const RewardCategoryTileOverlay: React.FC = () => {
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
-  const { allowDecorationOverlay, rewardCategory } =
-    configuration as RewardCategoryTileConfig;
-  const { name } = rewardCategory || {};
+  const { showName, name } = configuration as RewardCategoryTileConfig;
 
-  if (!allowDecorationOverlay || !name) return null;
+  if (!showName || !name) return null;
 
   return (
     <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
@@ -50,14 +45,13 @@ const RewardCategoryTileOverlay: React.FC = () => {
 
 const RewardCategoryTileImage: React.FC = () => {
   const { configuration } = useTileContext();
-  const { rewardCategory } = configuration as RewardCategoryTileConfig;
-  const { pictureUrl } = rewardCategory || {};
+  const { artworkUrl } = configuration as RewardCategoryTileConfig;
 
-  if (!pictureUrl) return null;
+  if (!artworkUrl) return null;
 
   return (
     <Image
-      source={{ uri: pictureUrl }}
+      source={{ uri: artworkUrl }}
       style={styles.image}
       resizeMode="cover"
       onError={(error) => console.error('Image loading error:', error)}
