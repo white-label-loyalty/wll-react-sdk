@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
+  Animated,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
@@ -28,19 +29,25 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     (tile: Tile) => tile.type === TileType.Banner
   );
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.round(contentOffsetX / slideWidth);
-    if (newIndex !== currentIndex) {
-      setCurrentIndex(newIndex);
-    }
-  };
+  const animatedIndex = useRef(new Animated.Value(0)).current;
 
-  const handleScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.round(contentOffsetX / slideWidth);
-    setCurrentIndex(newIndex);
-  };
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const contentOffsetX = event.nativeEvent.contentOffset.x;
+      const newIndex = contentOffsetX / slideWidth;
+      animatedIndex.setValue(newIndex);
+    },
+    [slideWidth, animatedIndex]
+  );
+
+  const handleScrollEnd = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const contentOffsetX = event.nativeEvent.contentOffset.x;
+      const newIndex = Math.round(contentOffsetX / slideWidth);
+      setCurrentIndex(newIndex);
+    },
+    [slideWidth]
+  );
 
   const handlePrev = () => {
     const newIndex = Math.max(0, currentIndex - 1);
@@ -125,19 +132,25 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
         </View>
         {displayControls && (
           <View style={styles.indicators}>
-            {bannerTiles.map((_: Tile, index: number) => (
-              <View
-                key={index}
-                style={[
-                  styles.indicator,
-                  { backgroundColor: theme.derivedBackground },
-                  index === currentIndex && [
-                    styles.activeIndicator,
-                    { backgroundColor: theme.primary },
-                  ],
-                ]}
-              />
-            ))}
+            {bannerTiles.map((_, index) => {
+              const width = animatedIndex.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [8, 30, 8],
+                extrapolate: 'clamp',
+              });
+              return (
+                <Animated.View
+                  key={index}
+                  style={[
+                    styles.indicator,
+                    { backgroundColor: theme.derivedBackground, width },
+                    index === currentIndex && {
+                      backgroundColor: theme.primary,
+                    },
+                  ]}
+                />
+              );
+            })}
           </View>
         )}
       </View>

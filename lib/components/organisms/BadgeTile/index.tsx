@@ -1,6 +1,6 @@
 import { LockKeyholeIcon } from 'lucide-react';
 import React, { FC } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { BadgeTileConfig, Tile } from '../../../types/tile';
@@ -86,11 +86,16 @@ const BadgeTileBody: FC = (props) => {
   );
 };
 
-const Locked = () => (
-  <View style={styles.lockOverlay}>
-    <LockKeyholeIcon color="#FFF" size={50} />
-  </View>
-);
+const Locked = () => {
+  const { width } = Dimensions.get('window');
+  const iconSize = Math.min(width * 0.1, 50);
+
+  return (
+    <View style={styles.lockOverlay}>
+      <LockKeyholeIcon color="#FFF" size={iconSize} />
+    </View>
+  );
+};
 
 export const BadgeTile = BadgeTileInner as BadgeTileComponent;
 

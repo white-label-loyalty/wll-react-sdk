@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Image, Linking, StyleSheet, View } from 'react-native';
+import { Image, Linking, StyleSheet, Text, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Button, Text } from '../../atoms';
+import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
 type BannerTileProps = {
@@ -50,20 +51,24 @@ const BannerTileTitle: React.FC = () => {
   const { title } = configuration as BannerTileConfig;
 
   if (!title) return null;
-  return (
-    <Text variant="title" style={styles.title} isSurface={true}>
-      {title}
-    </Text>
-  );
+  return <Text style={styles.title}>{title}</Text>;
 };
 
 const BannerTileDescription: React.FC = () => {
   const { configuration } = useBannerContext();
+  const { theme } = useWllSdk();
   const { description } = configuration as BannerTileConfig;
 
   if (!description) return null;
   return (
-    <Text variant="body" style={styles.description} isSurface={true}>
+    <Text
+      style={[
+        styles.description,
+        {
+          color: theme.derivedSurfaceText[20],
+        },
+      ]}
+    >
       {description}
     </Text>
   );
@@ -117,9 +122,12 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
   },
   title: createResponsiveStyle({
+    fontSize: [14, 14, 32],
     marginBottom: [8, 8, 10],
+    fontWeight: '700',
   }),
   description: createResponsiveStyle({
+    fontSize: [10, 10, 18],
     marginBottom: [16, 16, 20],
   }),
 });

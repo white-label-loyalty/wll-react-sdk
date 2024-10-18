@@ -1,8 +1,9 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
 import { FlexStyle, Image, StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
-import { ContentTileConfig, Tile, TileHeight } from '../../../types/tile';
+import { ContentTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon, Text } from '../../atoms';
 
@@ -34,13 +35,11 @@ type LayoutProps = FlexStyle & {
 
 const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
   const { theme } = useWllSdk();
+  const { isHalfSize } = useTileSize(tile);
   const { artworkUrl } = tile.configuration as ContentTileConfig;
   const layout: LayoutProps = {
     flexDirection: 'column',
-    justifyContent:
-      tile.tileHeight === TileHeight.Half || !artworkUrl
-        ? 'center'
-        : 'flex-start',
+    justifyContent: isHalfSize || !artworkUrl ? 'center' : 'flex-start',
     alignItems: 'stretch',
   };
 
@@ -60,6 +59,7 @@ const BaseTileInner: FC<BaseTileProps> = ({ tile, children, style }) => {
           {
             backgroundColor: theme.surface,
             borderRadius: responsiveStyles.borderRadius,
+            aspectRatio: isHalfSize ? undefined : 1,
           },
           layout,
           style,
@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     height: '100%',
     overflow: 'hidden',
     position: 'relative',
-    aspectRatio: 1,
   },
   titleContainer: createResponsiveStyle({
     flexDirection: 'row',

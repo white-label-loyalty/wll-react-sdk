@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { GRID_GAP } from '../../../constants/grid';
 import { TSection as SectionData } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { TileContainer } from '../../atoms';
@@ -13,7 +14,7 @@ const Grid: React.FC<GridProps> = ({ section }) => {
   const { width } = useWindowDimensions();
   const isDesktop = width >= 700;
   const columnsPerRow = isDesktop ? 4 : 2;
-  const gap = 16; // Gap size in pixels
+  const gap = GRID_GAP;
 
   const renderGrid = () => {
     const tileContainers: JSX.Element[] = [];
@@ -22,6 +23,7 @@ const Grid: React.FC<GridProps> = ({ section }) => {
     const gridTiles = section.tiles.filter(
       (tile) => tile.type !== TileType.Banner
     );
+
     gridTiles.forEach((tile, index) => {
       currentTiles.push(tile);
       if (
@@ -36,7 +38,6 @@ const Grid: React.FC<GridProps> = ({ section }) => {
             style={{
               width: `calc(${100 / columnsPerRow}% - ${((columnsPerRow - 1) * gap) / columnsPerRow}px)`,
               marginRight: (index + 1) % columnsPerRow !== 0 ? gap : 0,
-              marginBottom: gap,
             }}
           >
             <TileContainer tiles={currentTiles} />
@@ -49,10 +50,10 @@ const Grid: React.FC<GridProps> = ({ section }) => {
   };
 
   return (
-    <>
+    <View>
       <SectionHeader title={section.title} description={section.description} />
       <View style={styles.grid}>{renderGrid()}</View>
-    </>
+    </View>
   );
 };
 

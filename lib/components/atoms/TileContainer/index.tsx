@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { GRID_GAP } from '../../../constants/grid';
 import { Tile, TileType } from '../../../types/tile';
 import {
   BadgeTile,
@@ -37,10 +38,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       {tiles.map((tile, index) => (
         <View
           key={tile.id}
-          style={[
-            styles.tileContainer,
-            index > 0 && { marginTop: 16 }, // Add gap between vertically stacked tiles
-          ]}
+          style={[styles.tileContainer, index > 0 && { marginTop: GRID_GAP }]}
         >
           {renderTile(tile)}
         </View>

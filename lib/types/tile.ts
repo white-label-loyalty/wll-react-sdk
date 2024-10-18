@@ -11,9 +11,9 @@ export enum BadgeTileType {
 }
 
 export enum TierTileType {
-  currentTier = 'CURRENT_TIER',
-  currentTargetNext = 'CURRENT_TARGET_NEXT',
-  currentTargetSpecific = 'CURRENT_TARGET_SPECIFIC',
+  currentTier = 'CURRENT',
+  currentTargetNext = 'NEXT',
+  currentTargetSpecific = 'SPECIFIC',
 }
 
 export enum ProgressType {

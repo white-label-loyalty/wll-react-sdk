@@ -1,6 +1,5 @@
 import React, { createContext, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
 import { SectionType, TSection } from '../../../types/section';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Carousel, Grid } from '../../molecules';
@@ -26,8 +25,6 @@ export const useSectionContext = () => {
 };
 
 const Section: React.FC<SectionProps> = ({ section }) => {
-  const { theme } = useWllSdk();
-
   const renderSectionContent = () => {
     switch (section.type) {
       case SectionType.Banner:
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 1080,
     marginHorizontal: 'auto',
-    marginBottom: [24, 24, 44],
+    marginBottom: [40, 40, 60],
   }),
 });
 

@@ -13,36 +13,37 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   description,
 }) => {
   const { theme } = useWllSdk();
+
+  if (!title && !description) {
+    return null;
+  }
+
   return (
     <View style={styles.sectionHeader}>
-      {title || description ? (
-        <>
-          {title && (
-            <Text
-              style={[
-                styles.sectionTitle,
-                {
-                  fontWeight: '700',
-                },
-              ]}
-            >
-              {title}
-            </Text>
-          )}
-          {description && (
-            <Text
-              style={[
-                styles.sectionDescription,
-                {
-                  color: theme.alphaDerivedText[20],
-                },
-              ]}
-            >
-              {description}
-            </Text>
-          )}
-        </>
-      ) : null}
+      {title && (
+        <Text
+          style={[
+            styles.sectionTitle,
+            {
+              fontWeight: '700',
+            },
+          ]}
+        >
+          {title}
+        </Text>
+      )}
+      {description && (
+        <Text
+          style={[
+            styles.sectionDescription,
+            {
+              color: theme.alphaDerivedText[20],
+            },
+          ]}
+        >
+          {description}
+        </Text>
+      )}
     </View>
   );
 };

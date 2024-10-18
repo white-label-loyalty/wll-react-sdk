@@ -27,12 +27,6 @@ const styles = StyleSheet.create({
   image: createResponsiveStyle({
     width: '100%',
   }),
-  row: createResponsiveStyle({
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: [4, 4, 8],
-    justifyContent: 'space-between',
-  }),
 });
 
 export default ContentTile;

@@ -2,12 +2,8 @@ import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { useWllSdk } from '../../../context/WllSdkContext';
-import {
-  TierTileConfig,
-  TierTileType,
-  Tile,
-  TileHeight,
-} from '../../../types/tile';
+import { useTileSize } from '../../../hooks/useTileSize';
+import { TierTileConfig, TierTileType, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -26,7 +22,7 @@ const TierTile: React.FC<TierTileProps> & {
   NextName: typeof NextName;
   NextCount: typeof NextCount;
 } = ({ tile }) => {
-  const isFullSize = tile.tileHeight === TileHeight.Full;
+  const { isFullSize } = useTileSize(tile);
   const configuration = tile.configuration as TierTileConfig;
 
   const styles = StyleSheet.create({
@@ -54,14 +50,35 @@ const TierTile: React.FC<TierTileProps> & {
       case TierTileType.currentTier:
         return (
           <>
-            {isFullSize ? <TierTile.Image isFullSize={isFullSize} /> : null}
+            <TierTile.Image isFullSize={isFullSize} />
             <View style={styles.container}>
-              {!isFullSize && <TierTile.Image isFullSize={isFullSize} />}
-              <View>
-                <Text>Your Tier</Text>
+              <Text variant="caption">Current Tier</Text>
+              <View style={styles.row}>
                 <TierTile.Name />
+                <TierTile.Count />
               </View>
-              {isFullSize && <TierTile.Description />}
+            </View>
+          </>
+        );
+      case TierTileType.currentTargetSpecific:
+        return (
+          <>
+            <TierTile.Progress />
+            <View style={styles.container}>
+              <View style={styles.row}>
+                <View>
+                  <Text variant="caption">Current Tier</Text>
+                  <TierTile.Name />
+                </View>
+                <View>
+                  <Text variant="caption">Next Tier</Text>
+                  <TierTile.NextName />
+                </View>
+              </View>
+              <View style={styles.row}>
+                <TierTile.Count />
+                <TierTile.NextCount />
+              </View>
             </View>
           </>
         );
@@ -74,26 +91,6 @@ const TierTile: React.FC<TierTileProps> & {
               <View style={styles.container}>
                 <TierTile.Count />
                 <TierTile.Description />
-              </View>
-            </View>
-          </>
-        );
-      case TierTileType.currentTargetSpecific:
-        return (
-          <>
-            <TierTile.Image isFullSize={isFullSize} />
-            <View style={{ padding: 12 }}>
-              <TierTile.Progress />
-              <TierTile.Description />
-              <View style={styles.row}>
-                <View>
-                  <TierTile.Name />
-                  <TierTile.Count />
-                </View>
-                <View>
-                  <TierTile.NextName />
-                  <TierTile.NextCount />
-                </View>
               </View>
             </View>
           </>
