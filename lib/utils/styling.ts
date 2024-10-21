@@ -1,4 +1,4 @@
-import { BaseThemeObject } from "../types/theme";
+import { BaseThemeObject } from '../types/theme';
 
 export const sizes = {
   borderRadiusSm: 15,
@@ -11,15 +11,15 @@ export const sizes = {
 };
 
 export const defaultTheme: BaseThemeObject = {
-  background: "#F0F0F0",
-  text: "#000000",
-  primary: "#392ed7",
-  accent: "#ff6a3d",
-  surface: "#f8f7fc",
-  surfaceText: "#000000",
-  pageButtonBackground: "#392ed7",
-  pageButtonText: "#ffffff",
-  errorPrimary: "#000000",
-  positive: "#008000",
-  negative: "#ff0000",
+  background: '#F0F0F0',
+  text: '#000000',
+  primary: '#392ed7',
+  accent: '#ff6a3d',
+  surface: '#f8f7fc',
+  surfaceText: '#000000',
+  pageButtonBackground: '#392ed7',
+  pageButtonText: '#ffffff',
+  errorPrimary: '#000000',
+  positive: '#008000',
+  negative: '#ff0000',
 };

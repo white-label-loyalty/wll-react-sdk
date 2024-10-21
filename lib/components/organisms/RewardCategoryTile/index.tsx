@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardCategoryTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Text } from '../../atoms';
+import { BaseTile, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type RewardCategoryTileProps = {
@@ -49,14 +49,7 @@ const RewardCategoryTileImage: React.FC = () => {
 
   if (!artworkUrl) return null;
 
-  return (
-    <Image
-      source={{ uri: artworkUrl }}
-      style={styles.image}
-      resizeMode="cover"
-      onError={(error) => console.error('Image loading error:', error)}
-    />
-  );
+  return <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />;
 };
 
 const styles = StyleSheet.create({

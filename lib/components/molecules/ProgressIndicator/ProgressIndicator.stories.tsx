@@ -1,20 +1,20 @@
-import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
-import ProgressIndicator, { ProgressIndicatorProps } from ".";
+import { Meta, StoryFn } from '@storybook/react';
+import React from 'react';
+import ProgressIndicator, { ProgressIndicatorProps } from '.';
 
 export default {
-  title: "components/molecules/ProgressIndicator",
+  title: 'components/molecules/ProgressIndicator',
   component: ProgressIndicator,
   argTypes: {
-    currentPoints: { control: { type: "number", min: 0, max: 100 } },
-    maxPoints: { control: { type: "number", min: 1, max: 100 } },
+    currentPoints: { control: { type: 'number', min: 0, max: 100 } },
+    maxPoints: { control: { type: 'number', min: 1, max: 100 } },
     variant: {
-      control: "select",
-      options: ["primary", "secondary", "accent"],
+      control: 'select',
+      options: ['primary', 'secondary', 'accent'],
     },
     height: {
-      control: "select",
-      options: ["sm", "md", "lg"],
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
     },
   },
 } as Meta<typeof ProgressIndicator>;
@@ -27,54 +27,30 @@ export const Default = Template.bind({});
 Default.args = {
   currentPoints: 50,
   maxPoints: 100,
-  variant: "primary",
-  height: "md",
+  variant: 'primary',
+  height: 'sm',
 };
 
 export const Incomplete = Template.bind({});
 Incomplete.args = {
   currentPoints: 30,
   maxPoints: 100,
-  variant: "primary",
-  height: "md",
+  variant: 'primary',
+  height: 'sm',
 };
 
 export const AlmostComplete = Template.bind({});
 AlmostComplete.args = {
   currentPoints: 90,
   maxPoints: 100,
-  variant: "primary",
-  height: "md",
+  variant: 'primary',
+  height: 'sm',
 };
 
 export const Complete = Template.bind({});
 Complete.args = {
   currentPoints: 100,
   maxPoints: 100,
-  variant: "primary",
-  height: "md",
-};
-
-export const AccentVariant = Template.bind({});
-AccentVariant.args = {
-  currentPoints: 40,
-  maxPoints: 100,
-  variant: "accent",
-  height: "md",
-};
-
-export const SmallHeight = Template.bind({});
-SmallHeight.args = {
-  currentPoints: 70,
-  maxPoints: 100,
-  variant: "primary",
-  height: "sm",
-};
-
-export const LargeHeight = Template.bind({});
-LargeHeight.args = {
-  currentPoints: 80,
-  maxPoints: 100,
-  variant: "primary",
-  height: "lg",
+  variant: 'primary',
+  height: 'sm',
 };

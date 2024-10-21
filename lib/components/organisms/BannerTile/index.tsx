@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Image, Linking, StyleSheet, Text, View } from 'react-native';
+import { Linking, StyleSheet, Text, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Button } from '../../atoms';
+import { Button, ProgressiveImage } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
 type BannerTileProps = {
@@ -36,12 +36,7 @@ const BannerTileImage: React.FC = () => {
   if (!artworkUrl) return null;
   return (
     <View style={styles.imageContainer}>
-      <Image
-        source={{ uri: artworkUrl }}
-        style={styles.image}
-        resizeMode="cover"
-        onError={(error) => console.error('Image loading error:', error)}
-      />
+      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
     </View>
   );
 };

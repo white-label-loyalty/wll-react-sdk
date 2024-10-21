@@ -6,6 +6,7 @@ export const TileWrapper: React.FC<{
   children: React.ReactNode;
 }> = ({ isHalfTile, children }) => {
   const wrapperStyle: ViewStyle = {
+    maxWidth: 275,
     height: isHalfTile ? 125 : '100%',
     padding: 8,
   };

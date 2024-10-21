@@ -1,11 +1,11 @@
 import { LockKeyholeIcon } from 'lucide-react';
 import React, { FC } from 'react';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { BadgeTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, Icon, Text } from '../../atoms';
+import { BaseTile, Icon, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type BadgeTileProps = {
@@ -52,7 +52,7 @@ const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
       ]}
     >
       {configuration.count === 0 && <Locked />}
-      <Image
+      <ProgressiveImage
         {...props}
         source={{ uri: badgeDetails.artworkUrl }}
         resizeMode="contain"

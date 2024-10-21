@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, Icon, Text } from '../../atoms';
+import { BaseTile, Icon, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type RewardTileProps = {
@@ -39,7 +39,10 @@ const RewardTileImage: React.FC = () => {
   if (!reward?.pictureUrl) return null;
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: reward.pictureUrl }} style={styles.image} />
+      <ProgressiveImage
+        source={{ uri: reward.pictureUrl }}
+        style={styles.image}
+      />
     </View>
   );
 };

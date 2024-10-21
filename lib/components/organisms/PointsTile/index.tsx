@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { PointsTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, Text } from '../../atoms';
+import { BaseTile, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type PointsTileProps = {
@@ -108,9 +108,9 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
       alignItems: 'center',
     }),
     image: {
-      width: '80%',
-      height: '80%',
-      resizeMode: 'contain',
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
     },
   });
 
@@ -118,7 +118,11 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
 
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: artworkUrl }} style={styles.image} />
+      <ProgressiveImage
+        source={{ uri: artworkUrl }}
+        style={styles.image}
+        resizeMode="cover"
+      />
     </View>
   );
 };

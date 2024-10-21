@@ -1,11 +1,11 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
-import { FlexStyle, Image, StyleSheet, View, ViewStyle } from 'react-native';
+import { FlexStyle, StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Icon, Text } from '../../atoms';
+import { Icon, ProgressiveImage, Text } from '../../atoms';
 
 const TileContext = createContext<Tile | null>(null);
 
@@ -121,7 +121,7 @@ const TileImage: FC<ImagePropsNoSource> = (props) => {
   const hasTitle = !!title;
   const hasdescription = !!description;
   return (
-    <Image
+    <ProgressiveImage
       {...props}
       source={{ uri: artworkUrl }}
       style={[
