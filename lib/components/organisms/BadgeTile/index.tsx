@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
-import { BadgeTileConfig, Tile } from '../../../types/tile';
+import { BadgeTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Icon, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -20,6 +20,9 @@ type BadgeTileComponent = FC<BadgeTileProps> & {
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
   const { theme } = useWllSdk();
+  if (tile.tileHeight === TileHeight.Half) {
+    return null;
+  }
   return (
     <BaseTile tile={tile}>
       <View style={styles.contentContainer}>

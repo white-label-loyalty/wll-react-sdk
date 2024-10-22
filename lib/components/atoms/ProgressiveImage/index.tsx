@@ -12,6 +12,7 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 type ProgressiveImageProps = {
   source: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
+  isDesaturated?: boolean;
   [key: string]: any;
 };
 
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   source,
   style,
+  isDesaturated = false,
   ...props
 }) => {
   const imageAnimated = useRef(new Animated.Value(0)).current;
@@ -50,16 +52,38 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
         styles.container,
         style,
         {
-          backgroundColor: theme.alphaDerivedPrimary[20],
+          backgroundColor: isDesaturated
+            ? '#D7D7D7'
+            : theme.alphaDerivedPrimary[20],
         },
       ]}
     >
-      <Animated.Image
-        {...props}
-        source={source}
-        style={[styles.imageOverlay, { opacity: imageAnimated }]}
-        onLoad={onImageLoad}
-      />
+      {isDesaturated ? (
+        <>
+          <Animated.Image
+            {...props}
+            source={source}
+            style={[
+              styles.imageOverlay,
+              { opacity: imageAnimated, tintColor: '#c9c9c9' },
+            ]}
+            onLoad={onImageLoad}
+          />
+          <Animated.Image
+            {...props}
+            source={source}
+            style={[styles.imageOverlay, { opacity: 0.1 }]}
+            onLoad={onImageLoad}
+          />
+        </>
+      ) : (
+        <Animated.Image
+          {...props}
+          source={source}
+          style={[styles.imageOverlay, { opacity: imageAnimated }]}
+          onLoad={onImageLoad}
+        />
+      )}
     </View>
   );
 };

@@ -160,8 +160,8 @@ export class RewardTileConfig {
 }
 
 export enum BadgeTileType {
-  SPECIFIC = 'SPECIFIC',
-  LATEST_EARNED = 'LATEST_EARNED',
+  Specific = 'SPECIFIC',
+  Latest = 'LATEST_EARNED',
 }
 
 export class BadgeTileConfig {
