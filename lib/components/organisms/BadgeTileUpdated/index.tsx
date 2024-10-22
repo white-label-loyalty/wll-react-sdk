@@ -12,36 +12,44 @@ type BadgeTileProps = {
   tile: Tile;
 };
 
+type BadgeTileImageProps = ImagePropsNoSource & {
+  children?: React.ReactNode;
+};
+
 type BadgeTileComponent = FC<BadgeTileProps> & {
-  Image: FC<ImagePropsNoSource>;
+  Image: FC<BadgeTileImageProps>;
   Content: FC;
   Title: FC;
   Description: FC;
-  Pill: FC;
-  Indicator: FC;
+  DateEarned: FC;
+  Status: FC;
 };
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
       <View style={styles.container}>
-        <BadgeTile.Image />
+        <BadgeTile.Image>
+          <BadgeTile.Status />
+        </BadgeTile.Image>
         <View style={styles.content}>
           <View>
             <BadgeTile.Title />
             <BadgeTile.Description />
           </View>
-          <BadgeTile.Pill />
+          <BadgeTile.DateEarned />
         </View>
       </View>
     </BaseTile>
   );
 };
 
-const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
+const BadgeTileImage: FC<BadgeTileImageProps> = ({ children, ...props }) => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { type, count, details } = configuration;
+
+  if (!details || details.length === 0) return null;
   const { artworkUrl } = details[0];
 
   if (!artworkUrl) return null;
@@ -57,7 +65,7 @@ const BadgeTileImage: FC<ImagePropsNoSource> = (props) => {
         resizeMode="contain"
         isDesaturated={isDesaturated}
       />
-      {type === BadgeTileType.Specific && <BadgeTile.Indicator />}
+      {children}
     </View>
   );
 };
@@ -66,6 +74,7 @@ const BadgeTileTitle: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { details } = configuration;
+  if (!details || details.length === 0) return null;
   const { name } = details[0];
 
   if (!name) return null;
@@ -81,6 +90,7 @@ const BadgeTileDescription: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { details } = configuration;
+  if (!details || details.length === 0) return null;
   const { description } = details[0];
 
   if (!description) return null;
@@ -94,7 +104,7 @@ const BadgeTileDescription: FC = () => {
   );
 };
 
-const BadgeTilePill: FC = () => {
+const BadgeTileDateEarned: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { type, count, prefix, dateEarned } = configuration;
@@ -122,12 +132,12 @@ const BadgeTilePill: FC = () => {
   );
 };
 
-const BadgeTileIndicator: FC = () => {
+const BadgeTileStatus: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count } = configuration;
+  const { count, type } = configuration;
 
-  if (count && count === 1) {
+  if (type !== BadgeTileType.Specific || (count && count === 1)) {
     return null;
   }
 
@@ -147,8 +157,8 @@ export const BadgeTile = BadgeTileInner as BadgeTileComponent;
 BadgeTile.Image = BadgeTileImage;
 BadgeTile.Title = BadgeTileTitle;
 BadgeTile.Description = BadgeTileDescription;
-BadgeTile.Pill = BadgeTilePill;
-BadgeTile.Indicator = BadgeTileIndicator;
+BadgeTile.DateEarned = BadgeTileDateEarned;
+BadgeTile.Status = BadgeTileStatus;
 
 const styles = StyleSheet.create({
   container: {

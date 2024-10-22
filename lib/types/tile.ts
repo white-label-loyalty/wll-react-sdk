@@ -5,11 +5,6 @@ export enum UrlTarget {
   newWindow = 'NEW_WINDOW',
 }
 
-export enum BadgeTileType {
-  latestEarned = 'LATEST_EARNED',
-  specificBadge = 'SPECIFIC_BADGE',
-}
-
 export enum TierTileType {
   currentTier = 'CURRENT',
   currentTargetNext = 'NEXT',
@@ -165,7 +160,7 @@ export enum BadgeTileType {
 }
 
 export class BadgeTileConfig {
-  type: BadgeTileType = BadgeTileType.SPECIFIC;
+  type: BadgeTileType = BadgeTileType.Specific;
   badgeId: string = '';
   internalName?: string;
   priority: number = 0;
@@ -176,6 +171,8 @@ export class BadgeTileConfig {
   updatedAt: string = '';
   details?: BadgeDetail[] = [];
   count: number = 0;
+  dateEarned: string = '';
+  prefix: string = '';
 }
 
 export type BadgeDetail = {
