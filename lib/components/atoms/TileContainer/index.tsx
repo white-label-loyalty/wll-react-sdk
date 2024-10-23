@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
 import { Tile, TileType } from '../../../types/tile';
 import {
-  BadgeTile,
+  BadgeTileUpdated,
   ContentTile,
   PointsTile,
   RewardCategoryTile,
@@ -21,7 +21,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       case TileType.Content:
         return <ContentTile tile={tile} />;
       case TileType.Badge:
-        return <BadgeTile tile={tile} />;
+        return <BadgeTileUpdated tile={tile} />;
       case TileType.Tier:
         return <TierTile tile={tile} />;
       case TileType.Points:

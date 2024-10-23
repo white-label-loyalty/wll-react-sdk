@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { desaturateColor } from '../../../utils/themeHelpers';
 
 type ProgressiveImageProps = {
   source: ImageSourcePropType;
@@ -46,16 +47,15 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
     }).start();
   };
 
+  const baseColor = theme.alphaDerivedPrimary[20];
+  const desaturatedColor = desaturateColor(baseColor);
+
   return (
     <View
       style={[
         styles.container,
         style,
-        {
-          backgroundColor: isDesaturated
-            ? '#D7D7D7'
-            : theme.alphaDerivedPrimary[20],
-        },
+        { backgroundColor: isDesaturated ? desaturatedColor : baseColor },
       ]}
     >
       {isDesaturated ? (
@@ -65,7 +65,7 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
             source={source}
             style={[
               styles.imageOverlay,
-              { opacity: imageAnimated, tintColor: '#c9c9c9' },
+              { opacity: imageAnimated, tintColor: desaturatedColor },
             ]}
             onLoad={onImageLoad}
           />

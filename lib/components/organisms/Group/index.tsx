@@ -49,7 +49,16 @@ const Group: React.FC<GroupProps> = ({ id }) => {
       {groupData && (
         <>
           {groupData.sections
-            .sort((a, b) => a.priority - b.priority)
+            .sort((a, b) => {
+              // Sort by priority (higher priority first)
+              if (a.priority !== b.priority) {
+                return b.priority - a.priority;
+              }
+              // If priorities are equal, maintain original order
+              return (
+                groupData.sections.indexOf(a) - groupData.sections.indexOf(b)
+              );
+            })
             .map((section) => (
               <Section key={section.id} section={section} />
             ))}

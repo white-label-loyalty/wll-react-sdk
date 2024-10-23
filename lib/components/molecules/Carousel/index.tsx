@@ -102,8 +102,16 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             snapToInterval={slideWidth}
             snapToAlignment="start"
           >
-            {bannerTiles.map((tile: Tile, index: number) => {
-              return (
+            {bannerTiles
+              .sort((a, b) => {
+                // Sort by priority (higher priority first)
+                if (a.priority !== b.priority) {
+                  return b.priority - a.priority;
+                }
+                // If priorities are equal, maintain original order
+                return bannerTiles.indexOf(a) - bannerTiles.indexOf(b);
+              })
+              .map((tile: Tile, index: number) => (
                 <View
                   key={index}
                   style={[
@@ -114,8 +122,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
                 >
                   <BannerTile tile={tile} />
                 </View>
-              );
-            })}
+              ))}
           </ScrollView>
           {displayControls && (
             <TouchableOpacity

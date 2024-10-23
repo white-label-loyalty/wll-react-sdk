@@ -10,20 +10,20 @@ type RewardCategoryTileProps = {
 };
 
 const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
-  Overlay: typeof RewardCategoryTileOverlay;
-  Image: typeof RewardCategoryTileImage;
+  Header: typeof RewardCategoryHeader;
+  Background: typeof RewardCategoryBackground;
 } = ({ tile }) => {
   if (!tile) return null;
 
   return (
     <BaseTile tile={tile}>
-      <RewardCategoryTile.Overlay />
-      <RewardCategoryTile.Image />
+      <RewardCategoryTile.Header />
+      <RewardCategoryTile.Background />
     </BaseTile>
   );
 };
 
-const RewardCategoryTileOverlay: React.FC = () => {
+const RewardCategoryHeader: React.FC = () => {
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
   const { showName, name } = configuration as RewardCategoryTileConfig;
@@ -31,9 +31,9 @@ const RewardCategoryTileOverlay: React.FC = () => {
   if (!showName || !name) return null;
 
   return (
-    <View style={[styles.overlay, { backgroundColor: theme.primary }]}>
+    <View style={[styles.header, { backgroundColor: theme.primary }]}>
       <Text
-        style={[styles.overlayText, { color: theme.primaryText }]}
+        style={[styles.headerText, { color: theme.primaryText }]}
         ellipsizeMode="tail"
         numberOfLines={1}
       >
@@ -43,17 +43,19 @@ const RewardCategoryTileOverlay: React.FC = () => {
   );
 };
 
-const RewardCategoryTileImage: React.FC = () => {
+const RewardCategoryBackground: React.FC = () => {
   const { configuration } = useTileContext();
   const { artworkUrl } = configuration as RewardCategoryTileConfig;
 
   if (!artworkUrl) return null;
 
-  return <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />;
+  return (
+    <ProgressiveImage source={{ uri: artworkUrl }} style={styles.background} />
+  );
 };
 
 const styles = StyleSheet.create({
-  overlay: {
+  header: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -63,11 +65,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  overlayText: {
+  headerText: {
     fontSize: 16,
     paddingHorizontal: 30,
   },
-  image: {
+  background: {
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   },
 });
 
-RewardCategoryTile.Overlay = RewardCategoryTileOverlay;
-RewardCategoryTile.Image = RewardCategoryTileImage;
+RewardCategoryTile.Header = RewardCategoryHeader;
+RewardCategoryTile.Background = RewardCategoryBackground;
 
 export default RewardCategoryTile;

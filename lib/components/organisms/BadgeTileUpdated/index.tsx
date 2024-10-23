@@ -5,19 +5,20 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { BadgeTileConfig, BadgeTileType, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, ProgressiveImage, Text } from '../../atoms';
+import { getStateColor, shouldDesaturate } from '../../../utils/themeHelpers';
+import { BaseTile, Content, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type BadgeTileProps = {
   tile: Tile;
 };
 
-type BadgeTileImageProps = ImagePropsNoSource & {
+type BadgeTileMediaProps = ImagePropsNoSource & {
   children?: React.ReactNode;
 };
 
 type BadgeTileComponent = FC<BadgeTileProps> & {
-  Image: FC<BadgeTileImageProps>;
+  Media: FC<BadgeTileMediaProps>;
   Content: FC;
   Title: FC;
   Description: FC;
@@ -26,35 +27,48 @@ type BadgeTileComponent = FC<BadgeTileProps> & {
 };
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
+  if (!tile) return null;
+
   return (
     <BaseTile tile={tile}>
       <View style={styles.container}>
-        <BadgeTile.Image>
+        <BadgeTile.Media>
           <BadgeTile.Status />
-        </BadgeTile.Image>
-        <View style={styles.content}>
+        </BadgeTile.Media>
+        <Content>
           <View>
             <BadgeTile.Title />
             <BadgeTile.Description />
           </View>
           <BadgeTile.DateEarned />
-        </View>
+        </Content>
       </View>
     </BaseTile>
   );
 };
 
-const BadgeTileImage: FC<BadgeTileImageProps> = ({ children, ...props }) => {
+const BadgeTileMedia: FC<BadgeTileMediaProps> = ({ children, ...props }) => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, details } = configuration;
+  const { type, count, details, emptyBadgeArtworkUrl } = configuration;
 
-  if (!details || details.length === 0) return null;
+  if (!details || details.length === 0) {
+    if (emptyBadgeArtworkUrl) {
+      return (
+        <View style={styles.header}>
+          <ProgressiveImage
+            source={{ uri: emptyBadgeArtworkUrl }}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </View>
+      );
+    }
+    return null;
+  }
+
   const { artworkUrl } = details[0];
-
   if (!artworkUrl) return null;
-
-  const isDesaturated = type === 'SPECIFIC' && count === 0;
 
   return (
     <View style={styles.header}>
@@ -63,7 +77,7 @@ const BadgeTileImage: FC<BadgeTileImageProps> = ({ children, ...props }) => {
         source={{ uri: artworkUrl }}
         style={styles.image}
         resizeMode="contain"
-        isDesaturated={isDesaturated}
+        isDesaturated={shouldDesaturate(type, count)}
       />
       {children}
     </View>
@@ -73,10 +87,20 @@ const BadgeTileImage: FC<BadgeTileImageProps> = ({ children, ...props }) => {
 const BadgeTileTitle: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { details } = configuration;
-  if (!details || details.length === 0) return null;
-  const { name } = details[0];
+  const { details, emptyBadgeMessage } = configuration;
 
+  if (!details || details.length === 0) {
+    if (emptyBadgeMessage) {
+      return (
+        <Text variant="title" style={styles.titleText}>
+          {emptyBadgeMessage}
+        </Text>
+      );
+    }
+    return null;
+  }
+
+  const { name } = details[0];
   if (!name) return null;
 
   return (
@@ -90,6 +114,7 @@ const BadgeTileDescription: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { details } = configuration;
+
   if (!details || details.length === 0) return null;
   const { description } = details[0];
 
@@ -97,7 +122,12 @@ const BadgeTileDescription: FC = () => {
 
   return (
     <View style={styles.descriptionContainer}>
-      <Text variant="body" style={styles.descriptionText}>
+      <Text
+        variant="body"
+        style={styles.descriptionText}
+        numberOfLines={2}
+        ellipsizeMode="tail"
+      >
         {description}
       </Text>
     </View>
@@ -107,27 +137,38 @@ const BadgeTileDescription: FC = () => {
 const BadgeTileDateEarned: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, prefix, dateEarned } = configuration;
+  const { type, count, awardedDatePrefix, details, badgeNotEarnedMessage } =
+    configuration;
   const { theme } = useWllSdk();
 
-  const isDesaturated = type === 'SPECIFIC' && count === 0;
+  const hasDetails = details && details.length > 0;
+  const backgroundColor = getStateColor(
+    theme.alphaDerivedPrimary[20],
+    type,
+    count
+  );
+  const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
+
+  // No date shown for Latest type with no badges
+  if (type === BadgeTileType.Latest && !hasDetails) {
+    return null;
+  }
+
+  // Show not earned message
+  if (!hasDetails || count === 0) {
+    return (
+      <View style={containerStyle}>
+        <Text variant="label">{badgeNotEarnedMessage}</Text>
+      </View>
+    );
+  }
+
+  // Show earned date
+  const formattedDate = new Date(details[0].createdAt).toLocaleDateString();
 
   return (
-    <View
-      style={[
-        styles.pill,
-        {
-          backgroundColor: isDesaturated
-            ? '#D7D7D7'
-            : theme.alphaDerivedPrimary[20],
-        },
-      ]}
-    >
-      <Text variant="label">
-        {count === 0
-          ? 'Badge not earned yet'
-          : `${prefix} ${new Date(dateEarned).toLocaleDateString()}`}
-      </Text>
+    <View style={containerStyle}>
+      <Text variant="label">{`${awardedDatePrefix} ${formattedDate}`}</Text>
     </View>
   );
 };
@@ -154,7 +195,7 @@ const BadgeTileStatus: FC = () => {
 
 export const BadgeTile = BadgeTileInner as BadgeTileComponent;
 
-BadgeTile.Image = BadgeTileImage;
+BadgeTile.Media = BadgeTileMedia;
 BadgeTile.Title = BadgeTileTitle;
 BadgeTile.Description = BadgeTileDescription;
 BadgeTile.DateEarned = BadgeTileDateEarned;
@@ -191,31 +232,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   }),
-  content: createResponsiveStyle({
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    paddingHorizontal: [8, 8, 16],
-    paddingBottom: [8, 8, 16],
-  }),
+  emptyText: {
+    textAlign: 'center',
+  },
   titleText: createResponsiveStyle({
-    // marginBottom: [4, 4, 8],
+    marginBottom: [4, 4, 8],
   }),
   descriptionContainer: {},
   descriptionText: {},
-  pill: {
+  dateEarnedContainer: {
     alignItems: 'flex-start',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 20,
-  },
-  emptyContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  emptyText: {
-    textAlign: 'center',
   },
 });
 

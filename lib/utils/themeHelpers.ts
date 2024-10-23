@@ -7,6 +7,7 @@ export const getDerivedColor = (color: string): string => {
     : backgroundColor.darken(0.2).string();
 };
 
+// Same implimentation as Microsite
 export const getReadableTextColor = (backgroundColor: string): string => {
   const bgColor = Color(backgroundColor);
   const white = Color('#fff');
@@ -58,4 +59,21 @@ export const getAlphaDerivedColors = (color: string): DerivedColors => {
   return generateDerivedColors(color, (baseColor, percentage) =>
     baseColor.alpha(percentage / 100)
   );
+};
+
+export const shouldDesaturate = (type: string, count: number): boolean => {
+  //TODO: Add conditions if neccecerry
+  return type === 'SPECIFIC' && count === 0;
+};
+
+export const desaturateColor = (color: string): string => {
+  return Color(color).desaturate(1).toString();
+};
+
+export const getStateColor = (
+  baseColor: string,
+  type: string,
+  count: number
+): string => {
+  return shouldDesaturate(type, count) ? desaturateColor(baseColor) : baseColor;
 };

@@ -117,9 +117,10 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
             id: '84739810-37f5-4621-8433-8e0b61e09a5e',
             createdAt: '2024-10-15T13:36:00.204Z',
             updatedAt: '2024-10-15T13:36:00.204Z',
-            title: null,
-            description: null,
-            priority: 5,
+            title: 'Profile',
+            description:
+              'Welcome to WLL Explorer! Find out more about our exciting loyalty program.',
+            priority: 10,
             tiles: [
               {
                 tileHeight: 'HALF',
@@ -203,8 +204,9 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
             id: '89957c3f-ac13-4a48-a49d-14d0e61fd294',
             createdAt: '2024-10-16T09:56:51.282Z',
             updatedAt: '2024-10-16T09:56:51.282Z',
-            title: null,
-            description: null,
+            title: 'Badge Bonanza',
+            description:
+              'Collect them all, show them off - your digital trophy cabinet awaits!',
             visibilityCriteria: null,
             priority: 4,
             tiles: [
@@ -222,6 +224,11 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
                   id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
                   createdAt: '2024-08-06T08:53:24.307Z',
                   updatedAt: '2024-08-06T08:53:24.307Z',
+                  awardedDatePrefix: 'Awarded',
+                  emptyBadgeMessage: 'You haven’t earned any badges yet.',
+                  badgeNotEarnedMessage: 'Badge not earned yet',
+                  emptyBadgeArtworkUrl:
+                    'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
                   details: [
                     {
                       name: 'Epicurean Elite',
@@ -256,6 +263,11 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
                   id: 'd3a2b1fa-3963-4117-8c6f-69e5f8fea009',
                   createdAt: '2024-08-06T08:52:49.093Z',
                   updatedAt: '2024-08-06T08:52:49.093Z',
+                  awardedDatePrefix: 'Awarded',
+                  emptyBadgeMessage: 'You haven’t earned any badges yet.',
+                  badgeNotEarnedMessage: 'Badge not earned yet',
+                  emptyBadgeArtworkUrl:
+                    'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
                   details: [
                     {
                       name: 'Tasty Trailblazer',
@@ -284,11 +296,16 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
                   type: 'LATEST_EARNED',
                   badgeId: '30528c0a-30c2-44aa-9640-25647b8a594c',
                   count: 0,
+                  awardedDatePrefix: 'Awarded',
+                  emptyBadgeMessage: 'You haven’t earned any badges yet.',
+                  badgeNotEarnedMessage: 'Badge not earned yet',
+                  emptyBadgeArtworkUrl:
+                    'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
                 },
                 id: '06f6f433-31e5-40df-93be-9b780059266a',
                 createdAt: '2024-10-16T09:51:08.965Z',
                 updatedAt: '2024-10-16T09:51:08.965Z',
-                priority: 1,
+                priority: 6,
               },
               {
                 tileHeight: 'FULL',
@@ -304,6 +321,11 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
                   id: '56cc2812-0b42-41a8-8397-5a01096e3fd4',
                   createdAt: '2024-08-06T08:52:10.320Z',
                   updatedAt: '2024-08-06T08:52:10.320Z',
+                  awardedDatePrefix: 'Awarded',
+                  emptyBadgeMessage: 'You haven’t earned any badges yet.',
+                  badgeNotEarnedMessage: 'Badge not earned yet',
+                  emptyBadgeArtworkUrl:
+                    'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
                   details: [
                     {
                       name: 'Culinary Champion',

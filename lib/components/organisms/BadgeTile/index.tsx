@@ -5,7 +5,7 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { BadgeTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, Icon, ProgressiveImage, Text } from '../../atoms';
+import { BaseTile, Icon, ProgressiveImage, RowHeader, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type BadgeTileProps = {
@@ -16,6 +16,7 @@ type BadgeTileComponent = FC<BadgeTileProps> & {
   Title: FC;
   Body: FC;
   Image: FC<ImagePropsNoSource>;
+  Chevron: FC;
 };
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
@@ -28,10 +29,10 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
       <View style={styles.contentContainer}>
         <BadgeTile.Image />
         <View style={styles.textContainer}>
-          <View style={styles.row}>
+          <RowHeader>
             <BadgeTile.Title />
-            <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
-          </View>
+            <BadgeTile.Chevron />
+          </RowHeader>
           <BadgeTile.Body />
         </View>
       </View>
@@ -100,11 +101,17 @@ const Locked = () => {
   );
 };
 
+const BadgeTileChevron: React.FC = () => {
+  const { theme } = useWllSdk();
+  return <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />;
+};
+
 export const BadgeTile = BadgeTileInner as BadgeTileComponent;
 
 BadgeTile.Image = BadgeTileImage;
 BadgeTile.Title = BadgeTileTitle;
 BadgeTile.Body = BadgeTileBody;
+BadgeTile.Chevron = BadgeTileChevron;
 
 const styles = StyleSheet.create({
   contentContainer: {

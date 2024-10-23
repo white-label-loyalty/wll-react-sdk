@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { PointsTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, ProgressiveImage, Text } from '../../atoms';
+import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type PointsTileProps = {
@@ -16,13 +16,11 @@ const PointsTile: React.FC<PointsTileProps> & {
   Points: typeof PointsTilePoints;
   Image: typeof PointsTileImage;
 } = ({ tile }) => {
-  const { theme } = useWllSdk();
   const { isFullSize } = useTileSize(tile);
 
   const styles = StyleSheet.create({
     container: createResponsiveStyle({
       paddingHorizontal: [8, 8, 12],
-      borderRadius: theme.sizes.borderRadiusSm,
       width: '100%',
       flexDirection: isFullSize ? 'row' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
@@ -118,7 +116,7 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
 
   return (
     <View style={styles.imageContainer}>
-      <ProgressiveImage
+      <Image
         source={{ uri: artworkUrl }}
         style={styles.image}
         resizeMode="cover"

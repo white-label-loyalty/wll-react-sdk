@@ -171,8 +171,10 @@ export class BadgeTileConfig {
   updatedAt: string = '';
   details?: BadgeDetail[] = [];
   count: number = 0;
-  dateEarned: string = '';
-  prefix: string = '';
+  emptyBadgeMessage?: string;
+  emptyBadgeArtworkUrl?: string;
+  awardedDatePrefix?: string;
+  badgeNotEarnedMessage?: string;
 }
 
 export type BadgeDetail = {

@@ -19,25 +19,37 @@ const Grid: React.FC<GridProps> = ({ section }) => {
   const renderGrid = () => {
     const tileContainers: JSX.Element[] = [];
     let currentTiles: Tile[] = [];
-    // Filter out banner tiles
-    const gridTiles = section.tiles.filter(
-      (tile) => tile.type !== TileType.Banner
-    );
+
+    // Filter banner tiles and sort by priority
+    const gridTiles = section.tiles
+      .filter((tile) => tile.type !== TileType.Banner)
+      .sort((a, b) => {
+        // Sort by priority (higher priority first)
+        if (a.priority !== b.priority) {
+          return b.priority - a.priority;
+        }
+        // If priorities are equal, maintain original order
+        return section.tiles.indexOf(a) - section.tiles.indexOf(b);
+      });
 
     gridTiles.forEach((tile, index) => {
       currentTiles.push(tile);
-      if (
-        currentTiles.length === 2 ||
-        tile.tileHeight === TileHeight.Full ||
-        index === gridTiles.length - 1
-      ) {
+
+      const shouldCreateContainer =
+        currentTiles.length === 2 || // Container is full
+        tile.tileHeight === TileHeight.Full || // Full height tile
+        index === gridTiles.length - 1; // Last tile
+
+      if (shouldCreateContainer) {
+        const isLastInRow = (index + 1) % columnsPerRow === 0;
+
         tileContainers.push(
           <View
             key={`container-${index}`}
             // @ts-ignore
             style={{
               width: `calc(${100 / columnsPerRow}% - ${((columnsPerRow - 1) * gap) / columnsPerRow}px)`,
-              marginRight: (index + 1) % columnsPerRow !== 0 ? gap : 0,
+              marginRight: isLastInRow ? 0 : gap,
             }}
           >
             <TileContainer tiles={currentTiles} />
@@ -46,6 +58,7 @@ const Grid: React.FC<GridProps> = ({ section }) => {
         currentTiles = [];
       }
     });
+
     return tileContainers;
   };
 

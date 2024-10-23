@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { BaseTile, Icon, ProgressiveImage, Text } from '../../atoms';
+import { BaseTile, Icon, ProgressiveImage, RowHeader, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 type RewardTileProps = {
@@ -11,28 +11,29 @@ type RewardTileProps = {
 };
 
 const RewardTile: React.FC<RewardTileProps> & {
-  Image: typeof RewardTileImage;
+  Media: typeof RewardTileMedia;
   Title: typeof RewardTileTitle;
   Description: typeof RewardTileDescription;
   Points: typeof RewardTilePoints;
+  Chevron: typeof RewardTileChevron;
+  Content: typeof RewardTileContent;
 } = ({ tile }) => {
-  const { theme } = useWllSdk();
   return (
     <BaseTile tile={tile}>
-      <RewardTile.Image />
-      <View style={styles.textContainer}>
-        <View style={styles.row}>
+      <RewardTile.Media />
+      <RewardTile.Content>
+        <RowHeader>
           <RewardTile.Title />
-          <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
-        </View>
+          <RewardTile.Chevron />
+        </RowHeader>
         <RewardTile.Description />
         <RewardTile.Points />
-      </View>
+      </RewardTile.Content>
     </BaseTile>
   );
 };
 
-const RewardTileImage: React.FC = () => {
+const RewardTileMedia: React.FC = () => {
   const { configuration } = useTileContext();
   const reward = configuration as RewardTileConfig;
 
@@ -77,29 +78,30 @@ const RewardTilePoints: React.FC = () => {
       ? reward.price * Number(reward.pointsMultiplier)
       : null;
 
-  const styles = StyleSheet.create({
-    suffix: createResponsiveStyle({
-      fontSize: [14, 14, 18],
-      color: theme.primary,
-    }),
-    pointsWithSuffix: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-
-  if (reward?.price === 0 || !reward.showPrice || calculatedPoints === null)
+  if (reward?.price === 0 || !reward.showPrice || calculatedPoints === null) {
     return null;
+  }
+
   return (
-    <Text variant="caption">
+    <Text variant="caption" style={styles.footer}>
       {reward.pointsPrefix}
-      <View style={styles.pointsWithSuffix}>
+      <View style={styles.pointsContainer}>
         {calculatedPoints}
-        <Text style={styles.suffix}>{reward.pointsSuffix}</Text>
+        <Text style={[styles.suffix, { color: theme.primary }]}>
+          {reward.pointsSuffix}
+        </Text>
       </View>
     </Text>
   );
+};
+
+const RewardTileContent: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => <View style={styles.content}>{children}</View>;
+
+const RewardTileChevron: React.FC = () => {
+  const { theme } = useWllSdk();
+  return <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />;
 };
 
 const styles = StyleSheet.create({
@@ -118,26 +120,28 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
-  textContainer: createResponsiveStyle({
+  content: createResponsiveStyle({
     paddingHorizontal: [8, 8, 12],
     flex: 1,
   }),
-  row: createResponsiveStyle({
+  footer: {
+    marginTop: 8,
+  },
+  pointsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: [4, 4, 8],
-  }),
-  points: {
-    marginTop: 8,
-    fontSize: 14,
-    fontWeight: 'bold',
+    justifyContent: 'center',
   },
+  suffix: createResponsiveStyle({
+    fontSize: [14, 14, 18],
+  }),
 });
 
-RewardTile.Image = RewardTileImage;
+RewardTile.Media = RewardTileMedia;
 RewardTile.Title = RewardTileTitle;
 RewardTile.Description = RewardTileDescription;
 RewardTile.Points = RewardTilePoints;
+RewardTile.Chevron = RewardTileChevron;
+RewardTile.Content = RewardTileContent;
 
 export default RewardTile;
