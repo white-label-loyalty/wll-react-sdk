@@ -32,23 +32,49 @@ const Grid: React.FC<GridProps> = ({ section }) => {
         return section.tiles.indexOf(a) - section.tiles.indexOf(b);
       });
 
+    const shouldStartNewContainer = (
+      currentTiles: Tile[],
+      currentTile: Tile,
+      nextTile?: Tile
+    ) => {
+      if (currentTiles.length === 2) return true;
+
+      if (currentTile.tileHeight === TileHeight.Full) return true;
+
+      if (currentTile.tileHeight === TileHeight.Half) {
+        if (!nextTile) return true;
+
+        if (nextTile.tileHeight === TileHeight.Full) return true;
+
+        if (currentTiles.length === 0) return false;
+
+        if (
+          currentTiles.length === 1 &&
+          currentTiles[0].tileHeight === TileHeight.Half &&
+          nextTile.tileHeight === TileHeight.Half
+        ) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
     gridTiles.forEach((tile, index) => {
       currentTiles.push(tile);
+      const nextTile = gridTiles[index + 1];
 
-      const shouldCreateContainer =
-        currentTiles.length === 2 || // Container is full
-        tile.tileHeight === TileHeight.Full || // Full height tile
-        index === gridTiles.length - 1; // Last tile
-
-      if (shouldCreateContainer) {
-        const isLastInRow = (index + 1) % columnsPerRow === 0;
+      if (shouldStartNewContainer(currentTiles, tile, nextTile)) {
+        const isLastInRow = (tileContainers.length + 1) % columnsPerRow === 0;
 
         tileContainers.push(
           <View
             key={`container-${index}`}
             // @ts-ignore
             style={{
-              width: `calc(${100 / columnsPerRow}% - ${((columnsPerRow - 1) * gap) / columnsPerRow}px)`,
+              width: `calc(${100 / columnsPerRow}% - ${
+                ((columnsPerRow - 1) * gap) / columnsPerRow
+              }px)`,
               marginRight: isLastInRow ? 0 : gap,
             }}
           >

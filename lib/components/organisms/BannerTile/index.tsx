@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Linking, StyleSheet, Text, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Button, ProgressiveImage } from '../../atoms';
+import { Button, ProgressiveImage, Text } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
 type BannerTileProps = {
@@ -46,7 +46,11 @@ const BannerTileTitle: React.FC = () => {
   const { title } = configuration as BannerTileConfig;
 
   if (!title) return null;
-  return <Text style={styles.title}>{title}</Text>;
+  return (
+    <Text variant="title" style={styles.title}>
+      {title}
+    </Text>
+  );
 };
 
 const BannerTileDescription: React.FC = () => {
@@ -101,7 +105,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   }),
   slideContent: createResponsiveStyle({
-    padding: [16, 16, 20],
     flex: 1,
   }),
   imageContainer: createResponsiveStyle({
@@ -109,6 +112,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     position: 'relative',
     overflow: 'hidden',
+    marginRight: [8, 8, 24],
   }),
   image: {
     position: 'absolute',
@@ -118,12 +122,12 @@ const styles = StyleSheet.create({
   },
   title: createResponsiveStyle({
     fontSize: [14, 14, 32],
-    marginBottom: [8, 8, 10],
+    marginBottom: [4, 4, 12],
     fontWeight: '700',
   }),
   description: createResponsiveStyle({
     fontSize: [10, 10, 18],
-    marginBottom: [16, 16, 20],
+    marginBottom: [12, 12, 32],
   }),
 });
 

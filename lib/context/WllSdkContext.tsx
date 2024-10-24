@@ -190,7 +190,76 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
                 id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
                 createdAt: '2024-10-15T11:38:59.522Z',
                 updatedAt: '2024-10-15T11:38:59.522Z',
-                priority: 0,
+                priority: 10,
+              },
+              {
+                tileHeight: 'HALF',
+                active: true,
+                type: 'CONTENT',
+                configuration: {
+                  title: 'Welcome Graeme',
+                  description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                },
+                id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
+                createdAt: '2024-10-15T11:38:59.522Z',
+                updatedAt: '2024-10-15T11:38:59.522Z',
+                priority: 10,
+              },
+              {
+                tileHeight: 'HALF',
+                active: true,
+                type: 'CONTENT',
+                configuration: {
+                  title: 'Welcome Graeme',
+                  description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                },
+                id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
+                createdAt: '2024-10-15T11:38:59.522Z',
+                updatedAt: '2024-10-15T11:38:59.522Z',
+                priority: 10,
+              },
+              {
+                tileHeight: 'HALF',
+                active: true,
+                type: 'CONTENT',
+                configuration: {
+                  title: 'Welcome Graeme',
+                  description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                },
+                id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
+                createdAt: '2024-10-15T11:38:59.522Z',
+                updatedAt: '2024-10-15T11:38:59.522Z',
+                priority: 10,
+              },
+              {
+                tileHeight: 'HALF',
+                active: true,
+                type: 'CONTENT',
+                configuration: {
+                  title: 'Welcome Graeme',
+                  description:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                },
+                id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
+                createdAt: '2024-10-15T11:38:59.522Z',
+                updatedAt: '2024-10-15T11:38:59.522Z',
+                priority: 10,
+              },
+              {
+                tileHeight: 'HALF',
+                active: true,
+                type: 'CONTENT',
+                configuration: {
+                  artworkUrl:
+                    'https://ucarecdn.com/a486d015-b4ab-4831-bfa5-68f5bbbf63b1/',
+                },
+                id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
+                createdAt: '2024-10-15T11:38:59.522Z',
+                updatedAt: '2024-10-15T11:38:59.522Z',
+                priority: 10,
               },
             ],
           },

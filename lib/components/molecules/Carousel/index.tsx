@@ -11,6 +11,7 @@ import {
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 import { BannerTile } from '../../organisms';
@@ -193,13 +194,6 @@ const styles = StyleSheet.create({
   carouselContent: {
     overflow: 'hidden',
   },
-  slide: {
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    overflow: 'hidden',
-  },
   slideContent: {
     padding: 20,
     flex: 1,
@@ -236,19 +230,20 @@ const styles = StyleSheet.create({
   navButtonRight: {
     right: -buttonSize / 2,
   },
-  indicators: {
+  indicators: createResponsiveStyle({
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
-  },
+    marginTop: [12, 12, 24],
+  }),
   indicator: {
     width: 8,
     height: 8,
-    borderRadius: 4,
+    borderRadius: 8,
     marginHorizontal: 4,
   },
   activeIndicator: {
-    width: 30,
+    width: 24,
+    borderRadius: 8,
   },
 });
 
