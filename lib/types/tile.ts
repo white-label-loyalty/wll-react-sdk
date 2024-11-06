@@ -7,8 +7,7 @@ export enum UrlTarget {
 
 export enum TierTileType {
   currentTier = 'CURRENT',
-  currentTargetNext = 'NEXT',
-  currentTargetSpecific = 'SPECIFIC',
+  nextTier = 'NEXT',
 }
 
 export enum ProgressType {
@@ -204,6 +203,11 @@ export class TierTileConfig {
   targetTier?: TierType | undefined;
   type?: TierTileType;
   targetTierAttainingPeriod?: Date | null;
+  title: string = '';
+  emptyDescription?: string = '';
+  emptyArtworkUrl?: string = '';
+  pointsToTierPrefix?: string = '';
+  pointsToTierSuffix?: string = '';
 }
 
 export type Tile = {

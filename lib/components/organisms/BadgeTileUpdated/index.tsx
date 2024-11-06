@@ -35,7 +35,7 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
         <BadgeTile.Media>
           <BadgeTile.Status />
         </BadgeTile.Media>
-        <Content>
+        <Content justify="between" align="start">
           <View>
             <BadgeTile.Title />
             <BadgeTile.Description />
@@ -104,7 +104,7 @@ const BadgeTileTitle: FC = () => {
   if (!name) return null;
 
   return (
-    <Text variant="title" style={styles.titleText}>
+    <Text variant="title" numberOfLines={1} ellipsizeMode="tail">
       {name}
     </Text>
   );

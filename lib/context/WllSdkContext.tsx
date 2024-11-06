@@ -11,10 +11,12 @@ import {
   getReadableTextColor,
 } from '../utils/themeHelpers';
 
+type Fetcher = <T>(endpoint: string, options?: RequestInit) => Promise<T>;
+
 type SDKConfig = {
   apiKey: string;
-  baseUrl: string;
-  proxyEndpoint?: string;
+  userToken?: string;
+  fetcher?: Fetcher;
 };
 
 type APIResponse<T> = {
@@ -86,7 +88,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
     endpoint: string,
     options: RequestInit = {}
   ): Promise<Tile | TSection> => {
-    const { proxyEndpoint, baseUrl, apiKey } = config;
+    const { proxyEndpoint, apiKey } = config;
     const url = `${proxyEndpoint || baseUrl}${endpoint}`;
     const headers = new Headers(options.headers);
     if (apiKey) headers.set('X-Api-Key', apiKey);
