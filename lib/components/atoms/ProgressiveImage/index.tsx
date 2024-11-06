@@ -20,9 +20,10 @@ type ProgressiveImageProps = {
 const styles = StyleSheet.create({
   imageOverlay: {
     position: 'absolute',
-    height: '70%', // Changed from 50% to 70%
-    width: '100%', // Changed from 50% to 100% to maintain aspect ratio
-    resizeMode: 'contain', // Added to maintain aspect ratio
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
   },
   container: {
     position: 'relative',

@@ -8,7 +8,7 @@ import {
   PointsTile,
   RewardCategoryTile,
   RewardTile,
-  TierTile,
+  TierTileUpdated,
 } from '../../organisms';
 
 type TileContainerProps = {
@@ -23,7 +23,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       case TileType.Badge:
         return <BadgeTileUpdated tile={tile} />;
       case TileType.Tier:
-        return <TierTile tile={tile} />;
+        return <TierTileUpdated tile={tile} />;
       case TileType.Points:
         return <PointsTile tile={tile} />;
       case TileType.Reward:
