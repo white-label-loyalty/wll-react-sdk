@@ -12,25 +12,13 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   const { getGroupByID } = useWllSdk();
   const [groupData, setGroupData] = useState<TGroup | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchGroup = async () => {
-      try {
-        setLoading(true);
-        const { data, status } = await getGroupByID(id);
-        if (status === 'success') {
-          setGroupData(data);
-        } else {
-          throw new Error(`Unexpected response status: ${status}`);
-        }
-      } catch (err) {
-        setError(
-          err instanceof Error ? err : new Error('An unknown error occurred')
-        );
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      const response = await getGroupByID(id);
+      setGroupData(response.data);
+      setLoading(false);
     };
 
     fetchGroup();
@@ -40,30 +28,24 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     return <ActivityIndicator size="large" />;
   }
 
-  if (error) {
-    return <Text>Error: {error.message}</Text>;
+  if (!groupData) {
+    return <Text>No group data available</Text>;
   }
 
   return (
     <View>
-      {groupData && (
-        <>
-          {groupData.sections
-            .sort((a, b) => {
-              // Sort by priority (higher priority first)
-              if (a.priority !== b.priority) {
-                return b.priority - a.priority;
-              }
-              // If priorities are equal, maintain original order
-              return (
-                groupData.sections.indexOf(a) - groupData.sections.indexOf(b)
-              );
-            })
-            .map((section) => (
-              <Section key={section.id} section={section} />
-            ))}
-        </>
-      )}
+      {groupData.sections
+        .sort((a, b) => {
+          // Sort by priority (higher priority first)
+          if (a.priority !== b.priority) {
+            return b.priority - a.priority;
+          }
+          // If priorities are equal, maintain original order
+          return groupData.sections.indexOf(a) - groupData.sections.indexOf(b);
+        })
+        .map((section) => (
+          <Section key={section.id} section={section} />
+        ))}
     </View>
   );
 };
