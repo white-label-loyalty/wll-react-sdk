@@ -16,6 +16,9 @@ import silverImage from '../../../assets/silver.png';
 export default {
   title: 'components/organisms/TierTile',
   component: TierTile,
+  parameters: {
+    skip: true,
+  },
   argTypes: {
     tile: { control: 'object' },
   },

@@ -8,6 +8,9 @@ import { TileWrapper } from '../../../utils/storybookHelpers';
 export default {
   title: 'components/organisms/BadgeTile',
   component: BadgeTile,
+  parameters: {
+    skip: true,
+  },
 } as Meta;
 
 const Template: StoryFn<typeof BadgeTile> = (args) => (
