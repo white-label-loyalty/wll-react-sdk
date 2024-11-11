@@ -32,9 +32,9 @@ const createMockTile = (config: Partial<BannerTileConfig>): Tile => ({
     artworkUrl: config.artworkUrl,
     title: config.title,
     description: config.description,
-    buttonText: config.buttonText,
-    url: config.url,
-    urlTarget: config.urlTarget,
+    ctaText: config.ctaText,
+    ctaLink: config.ctaLink,
+    ctaLinkTarget: config.ctaLinkTarget,
   },
 });
 
@@ -69,8 +69,8 @@ Default.args = {
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Click here to share your unique referral link with friends!',
-        buttonText: 'REFER NOW',
-        urlTarget: UrlTarget.sameWindow,
+        ctaText: 'REFER NOW',
+        ctaLinkTarget: UrlTarget.sameWindow,
       }),
       createMockTile({
         title: 'Summer Sale',
@@ -78,18 +78,18 @@ Default.args = {
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Enjoy up to 50% off on selected items. Limited time offer!',
-        buttonText: 'SHOP NOW',
-        urlTarget: UrlTarget.newWindow,
-        url: 'https://www.example.com',
+        ctaText: 'SHOP NOW',
+        ctaLinkTarget: UrlTarget.newWindow,
+        ctaLink: 'https://www.example.com',
       }),
       createMockTile({
         title: 'New Collection',
         artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description: 'Check out our latest arrivals for this season.',
-        buttonText: 'EXPLORE',
-        urlTarget: UrlTarget.sameWindow,
-        url: 'https://www.example.com',
+        ctaText: 'EXPLORE',
+        ctaLinkTarget: UrlTarget.sameWindow,
+        ctaLink: 'https://www.example.com',
       }),
     ]
   ),
@@ -105,11 +105,11 @@ SingleItem.args = {
       createMockTile({
         title: 'Special Offer',
         description: 'Get a free gift with any purchase over $50.',
-        buttonText: 'CLAIM NOW',
+        ctaText: 'CLAIM NOW',
         artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
-        urlTarget: UrlTarget.sameWindow,
-        url: 'https://www.example.com',
+        ctaLinkTarget: UrlTarget.sameWindow,
+        ctaLink: 'https://www.example.com',
       }),
     ]
   ),
@@ -129,8 +129,8 @@ ManyItems.args = {
           artworkUrl:
             'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
           description: `This is the description for offer number ${index + 1}.`,
-          buttonText: `ACTION ${index + 1}`,
-          urlTarget:
+          ctaText: `ACTION ${index + 1}`,
+          ctaLinkTarget:
             index % 2 === 0 ? UrlTarget.sameWindow : UrlTarget.newWindow,
         })
       )

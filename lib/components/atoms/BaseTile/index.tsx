@@ -128,6 +128,7 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
         {
           marginTop:
             !isHalfSize && artworkUrl ? headerStyle.marginTop : undefined,
+          // @ts-ignore
           textAlign: isHalfSize && 'center',
         },
       ]}
