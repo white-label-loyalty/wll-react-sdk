@@ -13,7 +13,7 @@ const mockGroupData = {
   data: {
     name: 'Group2',
     active: true,
-    id: '00a2cb62-911f-49fd-8f1c-a61ddc0fbdce',
+    id: '29719640-b1ee-4b3c-b746-e563bc136769',
     createdAt: '2024-10-15T14:21:06.135Z',
     updatedAt: '2024-10-16T10:00:09.823Z',
     sections: [

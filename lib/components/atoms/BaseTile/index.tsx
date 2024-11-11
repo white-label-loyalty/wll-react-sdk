@@ -55,7 +55,8 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
 
   const layout: LayoutProps = {
     flexDirection: 'column',
-    justifyContent: isHalfSize || !artworkUrl ? 'center' : 'flex-start',
+    // Center content vertically for half tiles, start at top for full tiles
+    justifyContent: isHalfSize ? 'center' : 'flex-start',
     alignItems: 'stretch',
   };
 
@@ -74,7 +75,7 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
         {
           backgroundColor: theme.surface,
           borderRadius: responsiveStyles.borderRadius,
-          aspectRatio: isHalfSize ? undefined : 1,
+          aspectRatio: isHalfSize ? 2 : 1,
         },
         layout,
         style,
@@ -85,13 +86,36 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   );
 };
 
-const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => (
-  <View style={styles.content}>{children}</View>
-);
+const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
+  const tile = useTileContext();
+  const { artworkUrl } = tile.configuration as ContentTileConfig;
+  const { isHalfSize } = useTileSize(tile);
+
+  // For half tiles with an image, don't show other content
+  if (isHalfSize && artworkUrl) return null;
+
+  return (
+    <View
+      style={[
+        styles.content,
+        isHalfSize && {
+          justifyContent: 'center',
+          padding: 16,
+        },
+      ]}
+    >
+      {children}
+    </View>
+  );
+};
 
 const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
   const tile = useTileContext();
   const { artworkUrl } = tile.configuration as ContentTileConfig;
+  const { isHalfSize } = useTileSize(tile);
+
+  // For half tiles with an image, don't show header
+  if (isHalfSize && artworkUrl) return null;
 
   const headerStyle = createResponsiveStyle({
     marginTop: [8, 8, 12],
@@ -101,7 +125,11 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
     <View
       style={[
         styles.header,
-        { marginTop: artworkUrl ? headerStyle.marginTop : undefined },
+        {
+          marginTop:
+            !isHalfSize && artworkUrl ? headerStyle.marginTop : undefined,
+          textAlign: isHalfSize && 'center',
+        },
       ]}
       accessibilityRole="header"
     >
@@ -114,6 +142,7 @@ const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
   const { artworkUrl, title, description } =
     tile.configuration as ContentTileConfig;
+  const { isHalfSize } = useTileSize(tile);
 
   if (!artworkUrl) return null;
 
@@ -128,7 +157,8 @@ const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
         props.style,
         styles.media,
         {
-          flexBasis: hasTitle && hasDescription ? '50%' : '100%',
+          flexBasis: !isHalfSize && hasTitle && hasDescription ? '50%' : '100%',
+          height: isHalfSize ? '100%' : undefined,
         },
       ]}
     />
@@ -138,9 +168,12 @@ const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
 const BaseTileTitle: FC = () => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
-  const { title, linkURL } = tile.configuration as ContentTileConfig;
+  const { title, linkURL, artworkUrl } =
+    tile.configuration as ContentTileConfig;
+  const { isHalfSize } = useTileSize(tile);
 
-  if (!title) return null;
+  // Don't show title for half tiles with image
+  if ((isHalfSize && artworkUrl) || !title) return null;
 
   return (
     <>
@@ -156,9 +189,11 @@ const BaseTileTitle: FC = () => {
 
 const BaseTileBody: FC = (props) => {
   const tile = useTileContext();
-  const { description } = tile.configuration as ContentTileConfig;
+  const { description, artworkUrl } = tile.configuration as ContentTileConfig;
+  const { isHalfSize } = useTileSize(tile);
 
-  if (!description) return null;
+  // Don't show body for half tiles with image
+  if ((isHalfSize && artworkUrl) || !description) return null;
 
   return (
     <Text variant="body" {...props} accessibilityLabel={description}>
@@ -184,10 +219,11 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   content: {
-    flex: 1,
+    display: 'flex',
   },
   media: {
     width: '100%',
+    objectFit: 'cover',
   },
   header: createResponsiveStyle({
     flexDirection: 'row',

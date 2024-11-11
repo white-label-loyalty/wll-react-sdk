@@ -61,7 +61,7 @@ const TierTile: React.FC<TierTileProps> & {
             </View>
           </>
         );
-      case TierTileType.currentTargetSpecific:
+      case TierTileType.specificTier:
         return (
           <>
             <TierTile.Progress />

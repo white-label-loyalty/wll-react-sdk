@@ -17,6 +17,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     const fetchGroup = async () => {
       setLoading(true);
       const response = await getGroupByID(id);
+      console.log(response.data);
       setGroupData(response.data);
       setLoading(false);
     };

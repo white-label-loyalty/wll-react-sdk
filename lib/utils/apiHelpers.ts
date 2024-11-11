@@ -4,7 +4,7 @@ import { SDKConfig } from '../context/WllSdkContext';
 const baseUrl = 'https://api.staging.core.wlloyalty.net/v1';
 
 type APIResponse<T> = {
-  status: 'success' | 'error';
+  status: 'success' | 'fail' | 'error';
   data: T | null;
   error?: string;
 };
@@ -35,19 +35,18 @@ export const useMakeRequest = (config: SDKConfig) => {
     async <T>(url: string): Promise<APIResponse<T>> => {
       try {
         if (config.fetcher) {
-          // Use custom fetcher if provided
           return await config.fetcher(url, createRequestOptions());
         }
 
-        // Default fetch behavior
         const response = await fetch(url, createRequestOptions());
+        console.log('response', response);
         const json = await response.json();
-
-        if (json.status !== 'success') {
+        console.log('json', json);
+        if (json.status === 'fail') {
           return {
-            status: 'error',
+            status: 'fail',
             data: null,
-            error: json.error || 'API returned non-success status',
+            error: json.message || 'API returned non-success status',
           };
         }
 

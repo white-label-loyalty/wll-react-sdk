@@ -7,7 +7,7 @@ export enum UrlTarget {
 
 export enum TierTileType {
   currentTier = 'CURRENT',
-  nextTier = 'NEXT',
+  specificTier = 'SPECIFIC',
 }
 
 export enum ProgressType {
@@ -120,10 +120,6 @@ export class BadgeTileConfig {
   updatedAt: string = '';
   details?: BadgeDetail[] = [];
   count: number = 0;
-  emptyBadgeMessage?: string;
-  emptyBadgeArtworkUrl?: string;
-  awardedDatePrefix?: string;
-  badgeNotEarnedMessage?: string;
 }
 
 export type BadgeDetail = {
@@ -134,6 +130,10 @@ export type BadgeDetail = {
   id: string;
   createdAt: string;
   updatedAt: string;
+  emptyBadgeMessage?: string;
+  emptyBadgeArtworkUrl?: string;
+  awardedDatePrefix?: string;
+  badgeNotEarnedMessage?: string;
 };
 
 export class RewardCategoryTileConfig {

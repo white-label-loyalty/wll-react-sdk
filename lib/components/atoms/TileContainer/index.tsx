@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
-import { Tile, TileType } from '../../../types/tile';
+import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
   BadgeTileUpdated,
   ContentTile,
@@ -33,8 +33,18 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
     }
   };
 
+  // Check if all tiles are half height
+  const allHalfTiles = tiles.every(
+    (tile) => tile.tileHeight === TileHeight.Half
+  );
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        allHalfTiles ? { aspectRatio: 2 } : { aspectRatio: 1 },
+      ]}
+    >
       {tiles.map((tile, index) => (
         <View
           key={tile.id}
@@ -50,7 +60,6 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    aspectRatio: 1,
     marginBottom: GRID_GAP,
   },
   tileContainer: {
