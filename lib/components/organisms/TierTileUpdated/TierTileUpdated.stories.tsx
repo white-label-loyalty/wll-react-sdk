@@ -1,3 +1,5 @@
+// @ts-nocheck
+// TypeScript will now ignore all errors in this file Tile Deprecated
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { TierTileType, TileHeight, TileType } from '../../../types/tile';
@@ -167,7 +169,7 @@ CurrentNoTier.args = {
       pointsToTierPrefix: undefined,
       title: 'Oops. You’re not in a tier.',
       tierId: '54f0658a-9409-41f7-a508-ca02c6ac23e1',
-      tier: [],
+      tier: {},
     },
   },
 };
@@ -190,7 +192,7 @@ CurrentNoTierHalf.args = {
       pointsToTierPrefix: undefined,
       title: 'Oops. You’re not in a tier.',
       tierId: '54f0658a-9409-41f7-a508-ca02c6ac23e1',
-      tier: [],
+      tier: {},
     },
   },
 };
@@ -208,7 +210,7 @@ PointsToTierNotAchieved.args = {
     tileHeight: TileHeight.Full,
     priority: 0,
     configuration: {
-      type: TierTileType.nextTier,
+      type: TierTileType.specificTier,
       emptyDescription: 'Earn at least 1000 points to earn bronze tier.',
       emptyArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',

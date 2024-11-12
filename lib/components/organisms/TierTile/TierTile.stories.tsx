@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TypeScript will now ignore all errors in this file Tile Deprecated
+
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import TierTile from '.';

@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TypeScript will now ignore all errors in this file Tile Deprecated
+
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 

@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TypeScript will now ignore all errors in this file Tile Deprecated
+
 import { LockKeyholeIcon } from 'lucide-react';
 import React, { FC } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';

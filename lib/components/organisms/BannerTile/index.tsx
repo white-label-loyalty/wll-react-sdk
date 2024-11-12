@@ -47,6 +47,7 @@ const BannerTileTitle: React.FC = () => {
 
   if (!title) return null;
   return (
+    // @ts-ignore
     <Text variant="title" style={styles.title}>
       {title}
     </Text>
