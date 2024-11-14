@@ -1,27 +1,12 @@
-import BaseBanner from './BaseBanner';
-import BaseTile from './BaseTile';
-import Button from './Button';
-import Content from './Content';
-import Icon from './Icon';
-import Image from './Image';
-import LoadingIndicator from './LoadingIndicator';
-import ProgressBar from './ProgressBar';
-import ProgressiveImage from './ProgressiveImage';
-import RowHeader from './RowHeader';
-import Text from './Text';
-import TileContainer from './TileContainer';
+export { default as Button } from './Button';
+export { default as Content } from './Content';
+export { default as Icon } from './Icon';
+export { default as LoadingIndicator } from './LoadingIndicator';
+export { default as ProgressBar } from './ProgressBar';
+export { default as ProgressiveImage } from './ProgressiveImage';
+export { default as RowHeader } from './RowHeader';
+export { default as Text } from './Text';
 
-export {
-  BaseBanner,
-  BaseTile,
-  Button,
-  Content,
-  Icon,
-  Image,
-  LoadingIndicator,
-  ProgressBar,
-  ProgressiveImage,
-  RowHeader,
-  Text,
-  TileContainer,
-};
+export { default as BaseBanner } from './BaseBanner';
+export { default as BaseTile } from './BaseTile';
+export { default as TileContainer } from './TileContainer';
