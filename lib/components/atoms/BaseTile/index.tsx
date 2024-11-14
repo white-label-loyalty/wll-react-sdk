@@ -192,15 +192,14 @@ const BaseTileTitle: FC = () => {
 
 const BaseTileBody: FC = (props) => {
   const tile = useTileContext();
-  const { description, artworkUrl } = tile.configuration as ContentTileConfig;
+  const { body, artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
-  // Don't show body for half tiles with image
-  if ((isHalfSize && artworkUrl) || !description) return null;
+  if ((isHalfSize && artworkUrl) || !body) return null;
 
   return (
-    <Text variant="body" {...props} accessibilityLabel={description}>
-      {description}
+    <Text variant="body" {...props} accessibilityLabel={body}>
+      {body}
     </Text>
   );
 };

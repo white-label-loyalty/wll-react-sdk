@@ -75,7 +75,7 @@ const RewardTilePoints: React.FC = () => {
 
   const calculatedPoints =
     reward?.price !== undefined
-      ? reward.price * Number(reward.pointsMultiplier)
+      ? reward.price * (Number(reward.pointsMultiplier) || 1)
       : null;
 
   if (reward?.price === 0 || !reward.showPrice || calculatedPoints === null) {

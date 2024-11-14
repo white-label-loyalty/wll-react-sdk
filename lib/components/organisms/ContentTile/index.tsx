@@ -40,7 +40,11 @@ const ContentTileMedia: React.FC = () => (
 
 const ContentTileContent: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => <View style={styles.content}>{children}</View>;
+}) => (
+  <BaseTile.Content>
+    <View style={styles.content}>{children}</View>
+  </BaseTile.Content>
+);
 
 const ContentTileHeader: React.FC = () => (
   <BaseTile.Header>
@@ -54,6 +58,7 @@ const styles = StyleSheet.create({
   content: createResponsiveStyle({
     paddingHorizontal: [8, 8, 12],
     flex: 1,
+    justifyContent: 'center',
   }),
   media: createResponsiveStyle({
     width: '100%',
