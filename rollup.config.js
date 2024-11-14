@@ -1,8 +1,8 @@
-const resolve = require('@rollup/plugin-node-resolve');
-const commonjs = require('@rollup/plugin-commonjs');
-const typescript = require('@rollup/plugin-typescript');
-const babel = require('@rollup/plugin-babel');
-const { dts } = require('rollup-plugin-dts');
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
+import { dts } from 'rollup-plugin-dts';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
@@ -26,7 +26,7 @@ module.exports = [
     ...baseConfig,
     output: {
       file: 'dist/index.js',
-      format: 'esm',
+      format: 'cjs',
       sourcemap: true,
     },
     plugins: [
