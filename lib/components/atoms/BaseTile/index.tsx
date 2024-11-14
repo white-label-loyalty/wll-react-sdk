@@ -143,14 +143,13 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
 
 const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
   const tile = useTileContext();
-  const { artworkUrl, title, description } =
-    tile.configuration as ContentTileConfig;
+  const { artworkUrl, title, body } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
   if (!artworkUrl) return null;
 
   const hasTitle = !!title;
-  const hasDescription = !!description;
+  const hasDescription = !!body;
 
   return (
     <ProgressiveImage
