@@ -1,19 +1,13 @@
-import { Badge, Reward, RewardCategory, TierType } from './wll';
+import { Availability, RewardCategory, TierType } from './wll';
 
 export enum UrlTarget {
   sameWindow = 'SAME_WINDOW',
   newWindow = 'NEW_WINDOW',
 }
 
-export enum BadgeTileType {
-  latestEarned = 'LATEST_EARNED',
-  specificBadge = 'SPECIFIC_BADGE',
-}
-
 export enum TierTileType {
-  currentTier = 'CURRENT_TIER',
-  currentTargetNext = 'CURRENT_TARGET_NEXT',
-  currentTargetSpecific = 'CURRENT_TARGET_SPECIFIC',
+  currentTier = 'CURRENT',
+  specificTier = 'SPECIFIC',
 }
 
 export enum ProgressType {
@@ -39,12 +33,12 @@ export enum TileHeight {
 export type ProgessType = 'NAME' | 'POINTS';
 
 export class BannerTileConfig {
-  imageUrl?: string | null;
+  artworkUrl?: string | null;
   title?: string | null;
   description?: string | null;
-  buttonText?: string | null;
-  url?: string | null;
-  urlTarget?: UrlTarget;
+  ctaText?: string | null;
+  ctaLink?: string | null;
+  ctaLinkTarget?: UrlTarget;
 }
 
 export class PointsTileConfig {
@@ -52,33 +46,101 @@ export class PointsTileConfig {
   multiplier?: number;
   prefix?: string | null;
   suffix?: string | null;
-  imageUrl?: string | null;
+  artworkUrl?: string | null;
   points?: number;
 }
 
 export class ContentTileConfig {
   title?: string | null;
-  subtitle?: string | null;
-  imageUrl?: string | null;
+  description?: string | null;
+  artworkUrl?: string | null;
   linkURL?: string | null;
 }
 
 export class RewardTileConfig {
-  reward?: Reward;
-  showPrice?: boolean;
+  rewardId: string = '';
+  showPrice: boolean = false;
+  showArtwork?: boolean;
+  showDetails?: boolean;
+  id: string = '';
+  createdAt: string = '';
+  updatedAt: string = '';
+  name: string = '';
+  pictureUrl: string = '';
+  value: number = 0;
+  price: number = 0;
+  priority: number = 0;
+  availability: Availability = {
+    start: '',
+    end: '',
+  };
+  purchasable: boolean = false;
+  tier: string | null = null;
+  category: RewardCategory = {
+    name: '',
+    priority: 0,
+    type: '',
+    id: '',
+    createdAt: '',
+    updatedAt: '',
+    description: null,
+    metadata: null,
+    pictureUrl: '',
+  };
+  discounts: any[] = [];
+  summary: string | null = null;
+  redemptionMessage: string | null = null;
+  visibilityCriteria: string | null = null;
+  type: 'VOUCHER' = 'VOUCHER';
+  codeType: 'HUMAN' | 'OTP' = 'HUMAN';
+  code: string | null = null;
+  purchaseExpiration: string | null = null;
+  hideCode: boolean = false;
+  notificationConfig: any | null = null;
+  artworkUrl: string = '';
+  pointsMultiplier: string = '';
+  pointsPrefix: string | null = null;
+  pointsSuffix: string | null = null;
+}
+
+export enum BadgeTileType {
+  Specific = 'SPECIFIC',
+  Latest = 'LATEST_EARNED',
 }
 
 export class BadgeTileConfig {
-  badgeTileType?: BadgeTileType;
-  badgeId?: string | null;
-  badge?: Badge;
+  type: BadgeTileType = BadgeTileType.Specific;
+  badgeId: string = '';
+  internalName?: string;
+  priority: number = 0;
+  internalDescription?: string | null;
+  status?: string;
+  id: string = '';
+  createdAt: string = '';
+  updatedAt: string = '';
+  details?: BadgeDetail[] = [];
   count: number = 0;
 }
 
+export type BadgeDetail = {
+  name: string;
+  locale: string;
+  description: string;
+  artworkUrl: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  emptyBadgeMessage?: string;
+  emptyBadgeArtworkUrl?: string;
+  awardedDatePrefix?: string;
+  badgeNotEarnedMessage?: string;
+};
+
 export class RewardCategoryTileConfig {
-  categoryId?: string | null;
-  allowDecorationOverlay?: boolean;
-  rewardCategory?: RewardCategory;
+  showName: boolean = true;
+  rewardCategoryId: string = '';
+  artworkUrl: string = '';
+  name: string = '';
 }
 
 export class TierTileConfig {
@@ -87,9 +149,15 @@ export class TierTileConfig {
   pointsPrefix?: string;
   pointsSuffix?: string;
   tier?: TierType;
+  tierId?: string;
   targetTier?: TierType | undefined;
   type?: TierTileType;
   targetTierAttainingPeriod?: Date | null;
+  title: string = '';
+  emptyDescription?: string = '';
+  emptyArtworkUrl?: string = '';
+  pointsToTierPrefix?: string = '';
+  pointsToTierSuffix?: string = '';
 }
 
 export type Tile = {
@@ -100,6 +168,7 @@ export type Tile = {
   updatedAt: string | null;
   tileHeight: TileHeight;
   configuration: TileConfig;
+  priority: number;
 };
 
 const getConfigForTileType = (tileType: TileType) => {

@@ -27,23 +27,26 @@ const createMockTile = (config: Partial<BannerTileConfig>): Tile => ({
   updatedAt: 'test-date',
   active: true,
   tileHeight: TileHeight.Full,
+  priority: 1,
   configuration: {
-    imageUrl: config.imageUrl,
+    artworkUrl: config.artworkUrl,
     title: config.title,
     description: config.description,
-    buttonText: config.buttonText,
-    url: config.url,
-    urlTarget: config.urlTarget,
+    ctaText: config.ctaText,
+    ctaLink: config.ctaLink,
+    ctaLinkTarget: config.ctaLinkTarget,
   },
 });
 
 const createMockSection = (
   title: string,
   description: string,
+  name: string,
   tiles: Tile[]
 ): TSection => ({
   id: Math.random().toString(36).substr(2, 9),
   title,
+  name,
   type: SectionType.Banner,
   active: true,
   priority: 0,
@@ -58,34 +61,35 @@ Default.args = {
   section: createMockSection(
     'Featured Offers',
     'Check out our latest promotions and deals!',
+    'section',
     [
       createMockTile({
         title: 'Refer a friend',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Click here to share your unique referral link with friends!',
-        buttonText: 'REFER NOW',
-        urlTarget: UrlTarget.sameWindow,
+        ctaText: 'REFER NOW',
+        ctaLinkTarget: UrlTarget.sameWindow,
       }),
       createMockTile({
         title: 'Summer Sale',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description:
           'Enjoy up to 50% off on selected items. Limited time offer!',
-        buttonText: 'SHOP NOW',
-        urlTarget: UrlTarget.newWindow,
-        url: 'https://www.example.com',
+        ctaText: 'SHOP NOW',
+        ctaLinkTarget: UrlTarget.newWindow,
+        ctaLink: 'https://www.example.com',
       }),
       createMockTile({
         title: 'New Collection',
-        imageUrl:
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
         description: 'Check out our latest arrivals for this season.',
-        buttonText: 'EXPLORE',
-        urlTarget: UrlTarget.sameWindow,
-        url: 'https://www.example.com',
+        ctaText: 'EXPLORE',
+        ctaLinkTarget: UrlTarget.sameWindow,
+        ctaLink: 'https://www.example.com',
       }),
     ]
   ),
@@ -96,15 +100,16 @@ SingleItem.args = {
   section: createMockSection(
     'Special Promotion',
     "Don't miss out on this exclusive offer!",
+    'section',
     [
       createMockTile({
         title: 'Special Offer',
         description: 'Get a free gift with any purchase over $50.',
-        buttonText: 'CLAIM NOW',
-        imageUrl:
+        ctaText: 'CLAIM NOW',
+        artworkUrl:
           'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
-        urlTarget: UrlTarget.sameWindow,
-        url: 'https://www.example.com',
+        ctaLinkTarget: UrlTarget.sameWindow,
+        ctaLink: 'https://www.example.com',
       }),
     ]
   ),
@@ -115,16 +120,17 @@ ManyItems.args = {
   section: createMockSection(
     'All Promotions',
     'Browse through our extensive list of current promotions.',
+    'section',
     Array(10)
       .fill(null)
       .map((_, index) =>
         createMockTile({
           title: `Offer ${index + 1}`,
-          imageUrl:
+          artworkUrl:
             'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
           description: `This is the description for offer number ${index + 1}.`,
-          buttonText: `ACTION ${index + 1}`,
-          urlTarget:
+          ctaText: `ACTION ${index + 1}`,
+          ctaLinkTarget:
             index % 2 === 0 ? UrlTarget.sameWindow : UrlTarget.newWindow,
         })
       )

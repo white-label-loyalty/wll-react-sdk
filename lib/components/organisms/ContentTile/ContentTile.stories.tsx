@@ -24,10 +24,11 @@ FullSizeImageAndText.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle: 'Lorem ipsum dolor sit amet',
-      imageUrl:
+      description: 'Lorem ipsum dolor sit amet',
+      artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
     },
   },
@@ -42,8 +43,9 @@ FullSizeImageOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
-      imageUrl:
+      artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
     },
   },
@@ -58,9 +60,10 @@ FullSizeTextOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
 };
@@ -73,9 +76,10 @@ FullSizeTextOnlyLongBody.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle:
+      description:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias sequi non accusamus veniam iste? Aut assumenda explicabo, beatae, vero illum, saepe perspiciatis soluta tempora consequuntur ipsa voluptates. Placeat, libero! Omnis!',
     },
   },
@@ -90,8 +94,9 @@ HalfSizeImageOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
-      imageUrl:
+      artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
     },
   },
@@ -106,9 +111,10 @@ HalfSizeTextOnly.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet',
     },
   },
 };
@@ -122,9 +128,10 @@ HalfSizeTextOnlyWithLink.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet',
       linkURL: 'https://www.example.com',
     },
   },
@@ -139,10 +146,11 @@ FullSizeWithLink.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      subtitle: 'Click here to learn more',
-      imageUrl:
+      description: 'Click here to learn more',
+      artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
       linkURL: 'https://www.example.com',
     },

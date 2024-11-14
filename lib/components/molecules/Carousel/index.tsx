@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
+  Animated,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
@@ -10,6 +11,7 @@ import {
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 import { BannerTile } from '../../organisms';
@@ -28,19 +30,25 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     (tile: Tile) => tile.type === TileType.Banner
   );
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.round(contentOffsetX / slideWidth);
-    if (newIndex !== currentIndex) {
-      setCurrentIndex(newIndex);
-    }
-  };
+  const animatedIndex = useRef(new Animated.Value(0)).current;
 
-  const handleScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const contentOffsetX = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.round(contentOffsetX / slideWidth);
-    setCurrentIndex(newIndex);
-  };
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const contentOffsetX = event.nativeEvent.contentOffset.x;
+      const newIndex = contentOffsetX / slideWidth;
+      animatedIndex.setValue(newIndex);
+    },
+    [slideWidth, animatedIndex]
+  );
+
+  const handleScrollEnd = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const contentOffsetX = event.nativeEvent.contentOffset.x;
+      const newIndex = Math.round(contentOffsetX / slideWidth);
+      setCurrentIndex(newIndex);
+    },
+    [slideWidth]
+  );
 
   const handlePrev = () => {
     const newIndex = Math.max(0, currentIndex - 1);
@@ -95,8 +103,16 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             snapToInterval={slideWidth}
             snapToAlignment="start"
           >
-            {bannerTiles.map((tile: Tile, index: number) => {
-              return (
+            {bannerTiles
+              .sort((a, b) => {
+                // Sort by priority (higher priority first)
+                if (a.priority !== b.priority) {
+                  return b.priority - a.priority;
+                }
+                // If priorities are equal, maintain original order
+                return bannerTiles.indexOf(a) - bannerTiles.indexOf(b);
+              })
+              .map((tile: Tile, index: number) => (
                 <View
                   key={index}
                   style={[
@@ -107,8 +123,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
                 >
                   <BannerTile tile={tile} />
                 </View>
-              );
-            })}
+              ))}
           </ScrollView>
           {displayControls && (
             <TouchableOpacity
@@ -125,19 +140,25 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
         </View>
         {displayControls && (
           <View style={styles.indicators}>
-            {bannerTiles.map((_: Tile, index: number) => (
-              <View
-                key={index}
-                style={[
-                  styles.indicator,
-                  { backgroundColor: theme.derivedBackground },
-                  index === currentIndex && [
-                    styles.activeIndicator,
-                    { backgroundColor: theme.primary },
-                  ],
-                ]}
-              />
-            ))}
+            {bannerTiles.map((_, index) => {
+              const width = animatedIndex.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [8, 30, 8],
+                extrapolate: 'clamp',
+              });
+              return (
+                <Animated.View
+                  key={index}
+                  style={[
+                    styles.indicator,
+                    { backgroundColor: theme.derivedBackground, width },
+                    index === currentIndex && {
+                      backgroundColor: theme.primary,
+                    },
+                  ]}
+                />
+              );
+            })}
           </View>
         )}
       </View>
@@ -171,13 +192,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   carouselContent: {
-    overflow: 'hidden',
-  },
-  slide: {
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     overflow: 'hidden',
   },
   slideContent: {
@@ -216,19 +230,20 @@ const styles = StyleSheet.create({
   navButtonRight: {
     right: -buttonSize / 2,
   },
-  indicators: {
+  indicators: createResponsiveStyle({
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
-  },
+    marginTop: [12, 12, 24],
+  }),
   indicator: {
     width: 8,
     height: 8,
-    borderRadius: 4,
+    borderRadius: 8,
     marginHorizontal: 4,
   },
   activeIndicator: {
-    width: 30,
+    width: 24,
+    borderRadius: 8,
   },
 });
 

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Variant } from '../../../types/theme';
+import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { createVariantSystem } from '../../../utils/variant';
 
 type ButtonProps = {
@@ -11,20 +12,19 @@ type ButtonProps = {
 };
 
 const styles = StyleSheet.create({
-  button: {
+  button: createResponsiveStyle({
     justifyContent: 'center',
     alignItems: 'center',
-    maxWidth: 200,
-  },
-  buttonInner: {
-    paddingHorizontal: 14,
-    paddingVertical: 9,
-  },
-  text: {
-    fontWeight: 'bold',
+    paddingHorizontal: [12, 12, 24],
+    paddingVertical: [12, 12, 12],
+    alignSelf: 'flex-start',
+  }),
+  // @ts-ignore
+  text: createResponsiveStyle({
     textAlign: 'center',
     textTransform: 'uppercase',
-  },
+    fontSize: [12, 12, 18],
+  }),
 });
 
 const useButtonStyles = createVariantSystem(styles.button, (theme) => ({
@@ -67,9 +67,16 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
       style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
       onPress={onPress}
     >
-      <View style={styles.buttonInner}>
-        <Text style={[textStyle, { fontSize: 12 }]}>{title}</Text>
-      </View>
+      <Text
+        style={[
+          textStyle,
+          {
+            fontWeight: '700',
+          },
+        ]}
+      >
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };

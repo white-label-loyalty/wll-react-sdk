@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { Text } from ".";
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { Text } from '.';
 
 const meta: Meta<typeof Text> = {
-  title: "components/atoms/Text",
+  title: 'components/atoms/Text',
   component: Text,
   argTypes: {
     variant: {
-      control: "select",
-      options: ["eyebrow", "title", "subtitle", "body", "caption", "label"],
+      control: 'select',
+      options: ['eyebrow', 'title', 'description', 'body', 'caption', 'label'],
     },
     children: {
-      control: "text",
+      control: 'text',
     },
   },
   decorators: [(Story) => <Story />],
@@ -23,42 +23,42 @@ type Story = StoryObj<typeof Text>;
 
 export const Body: Story = {
   args: {
-    children: "Hello, World!",
-    variant: "body",
+    children: 'Hello, World!',
+    variant: 'body',
   },
 };
 
 export const Eyebrow: Story = {
   args: {
-    children: "Tier",
-    variant: "eyebrow",
+    children: 'Tier',
+    variant: 'eyebrow',
   },
 };
 
 export const Title: Story = {
   args: {
-    children: "Welcome, Nick!",
-    variant: "title",
+    children: 'Welcome, Nick!',
+    variant: 'title',
   },
 };
 
-export const Subtitle: Story = {
+export const description: Story = {
   args: {
-    children: "This is a subtitle",
-    variant: "subtitle",
+    children: 'This is a description',
+    variant: 'description',
   },
 };
 
 export const Caption: Story = {
   args: {
-    children: "4536/6000",
-    variant: "caption",
+    children: '4536/6000',
+    variant: 'caption',
   },
 };
 
 export const Label: Story = {
   args: {
-    children: "You reached Gold!",
-    variant: "label",
+    children: 'You reached Gold!',
+    variant: 'label',
   },
 };

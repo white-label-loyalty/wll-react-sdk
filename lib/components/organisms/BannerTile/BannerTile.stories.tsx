@@ -19,14 +19,15 @@ Default.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
-      imageUrl:
+      artworkUrl:
         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
       title: 'Summer Sale',
       description: 'Get up to 50% off on selected items!',
-      buttonText: 'SHOP NOW',
-      url: 'https://www.example.com',
-      urlTarget: UrlTarget.sameWindow,
+      ctaText: 'SHOP NOW',
+      ctaLink: 'https://www.example.com',
+      ctaLinkTarget: UrlTarget.sameWindow,
     },
   },
 };
@@ -40,14 +41,15 @@ WithoutButton.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
-      imageUrl:
+      artworkUrl:
         'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
       title: 'Summer Sale',
       description: 'Get up to 50% off on selected items!',
-      url: 'https://www.example.com',
-      urlTarget: UrlTarget.sameWindow,
-      buttonText: '',
+      ctaLink: 'https://www.example.com',
+      ctaLinkTarget: UrlTarget.sameWindow,
+      ctaText: '',
     },
   },
 };

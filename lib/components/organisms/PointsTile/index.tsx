@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { PointsTileConfig, Tile, TileHeight } from '../../../types/tile';
+import { useTileSize } from '../../../hooks/useTileSize';
+import { PointsTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { useSectionContext } from '../Section';
 
 type PointsTileProps = {
   tile: Tile;
@@ -16,13 +16,11 @@ const PointsTile: React.FC<PointsTileProps> & {
   Points: typeof PointsTilePoints;
   Image: typeof PointsTileImage;
 } = ({ tile }) => {
-  const { theme } = useWllSdk();
-  const isFullSize = tile.tileHeight === TileHeight.Full;
+  const { isFullSize } = useTileSize(tile);
 
   const styles = StyleSheet.create({
     container: createResponsiveStyle({
       paddingHorizontal: [8, 8, 12],
-      borderRadius: theme.sizes.borderRadiusSm,
       width: '100%',
       flexDirection: isFullSize ? 'row' : 'row-reverse',
       alignItems: isFullSize ? 'flex-start' : 'center',
@@ -57,22 +55,12 @@ const PointsTileTitle: React.FC = () => {
 
 const PointsTilePoints: React.FC = () => {
   const { theme } = useWllSdk();
-  const { sectionData } = useSectionContext();
   const { configuration } = useTileContext();
-  const {
-    multiplier: tileMultiplier,
-    prefix: tilePrefix,
-    suffix: tileSuffix,
-    points,
-  } = configuration as PointsTileConfig;
+  const { multiplier, prefix, suffix, points } =
+    configuration as PointsTileConfig;
 
-  const effectiveMultiplier =
-    tileMultiplier ?? sectionData?.pointsMultiplier ?? 1;
-  const effectivePrefix = tilePrefix ?? sectionData?.pointsPrefix ?? '';
-  const effectiveSuffix = tileSuffix ?? sectionData?.pointsSuffix ?? 'pts';
   const calculatedPoints =
-    points !== undefined ? points * effectiveMultiplier : null;
-
+    points !== undefined ? points * (multiplier ?? 1) : null;
   const styles = StyleSheet.create({
     suffix: createResponsiveStyle({
       fontSize: [14, 14, 18],
@@ -88,10 +76,10 @@ const PointsTilePoints: React.FC = () => {
   if (calculatedPoints === null) return null;
   return (
     <Text variant="caption">
-      {effectivePrefix}
+      {prefix ?? ''}
       <View style={styles.pointsWithSuffix}>
         {calculatedPoints}
-        <Text style={styles.suffix}>{effectiveSuffix}</Text>
+        <Text style={styles.suffix}>{suffix ?? 'pts'}</Text>
       </View>
     </Text>
   );
@@ -104,7 +92,7 @@ type PointTileImageProps = {
 const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
-  const { imageUrl } = configuration as PointsTileConfig;
+  const { artworkUrl } = configuration as PointsTileConfig;
 
   const styles = StyleSheet.create({
     imageContainer: createResponsiveStyle({
@@ -118,17 +106,21 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
       alignItems: 'center',
     }),
     image: {
-      width: '80%',
-      height: '80%',
-      resizeMode: 'contain',
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
     },
   });
 
-  if (!imageUrl) return null;
+  if (!artworkUrl) return null;
 
   return (
     <View style={styles.imageContainer}>
-      <Image source={{ uri: imageUrl }} style={styles.image} />
+      <Image
+        source={{ uri: artworkUrl }}
+        style={styles.image}
+        resizeMode="cover"
+      />
     </View>
   );
 };

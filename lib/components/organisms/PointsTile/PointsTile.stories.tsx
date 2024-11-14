@@ -25,9 +25,10 @@ HalfTile.args = {
     tileHeight: TileHeight.Half,
     active: true,
     type: TileType.Points,
+    priority: 1,
     configuration: {
       title: 'Points Balance',
-      imageUrl: pointsImage,
+      artworkUrl: pointsImage,
       multiplier: undefined,
       points: 100,
       prefix: undefined,
@@ -44,9 +45,10 @@ FullTile.args = {
     tileHeight: TileHeight.Full,
     active: true,
     type: TileType.Points,
+    priority: 1,
     configuration: {
       title: 'Points Balance',
-      imageUrl: pointsFull,
+      artworkUrl: pointsFull,
       multiplier: undefined,
       points: 100,
       prefix: undefined,

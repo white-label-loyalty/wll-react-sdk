@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Image, Linking, StyleSheet, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Button, Text } from '../../atoms';
+import { Button, ProgressiveImage, Text } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
 type BannerTileProps = {
@@ -30,17 +31,12 @@ const BannerTile: React.FC<BannerTileProps> & {
 
 const BannerTileImage: React.FC = () => {
   const { configuration } = useBannerContext();
-  const { imageUrl } = configuration as BannerTileConfig;
+  const { artworkUrl } = configuration as BannerTileConfig;
 
-  if (!imageUrl) return null;
+  if (!artworkUrl) return null;
   return (
     <View style={styles.imageContainer}>
-      <Image
-        source={{ uri: imageUrl }}
-        style={styles.image}
-        resizeMode="cover"
-        onError={(error) => console.error('Image loading error:', error)}
-      />
+      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
     </View>
   );
 };
@@ -51,7 +47,8 @@ const BannerTileTitle: React.FC = () => {
 
   if (!title) return null;
   return (
-    <Text variant="title" style={styles.title} isSurface={true}>
+    // @ts-ignore
+    <Text variant="title" style={styles.title}>
       {title}
     </Text>
   );
@@ -59,11 +56,19 @@ const BannerTileTitle: React.FC = () => {
 
 const BannerTileDescription: React.FC = () => {
   const { configuration } = useBannerContext();
+  const { theme } = useWllSdk();
   const { description } = configuration as BannerTileConfig;
 
   if (!description) return null;
   return (
-    <Text variant="body" style={styles.description} isSurface={true}>
+    <Text
+      style={[
+        styles.description,
+        {
+          color: theme.derivedSurfaceText[20],
+        },
+      ]}
+    >
       {description}
     </Text>
   );
@@ -71,7 +76,7 @@ const BannerTileDescription: React.FC = () => {
 
 const BannerTileCTA: React.FC = () => {
   const { configuration } = useBannerContext();
-  const { buttonText, url } = configuration as BannerTileConfig;
+  const { ctaText, ctaLink } = configuration as BannerTileConfig;
 
   const handleLinkPress = async (url: string) => {
     if (!url) return;
@@ -80,12 +85,12 @@ const BannerTileCTA: React.FC = () => {
     }
   };
 
-  if (!buttonText) return null;
+  if (!ctaText) return null;
   return (
     <Button
-      title={buttonText}
+      title={ctaText}
       variant="accent"
-      onPress={() => handleLinkPress(url as string)}
+      onPress={() => handleLinkPress(ctaLink as string)}
     />
   );
 };
@@ -101,7 +106,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   }),
   slideContent: createResponsiveStyle({
-    padding: [16, 16, 20],
     flex: 1,
   }),
   imageContainer: createResponsiveStyle({
@@ -109,6 +113,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     position: 'relative',
     overflow: 'hidden',
+    marginRight: [8, 8, 24],
   }),
   image: {
     position: 'absolute',
@@ -117,10 +122,13 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
   },
   title: createResponsiveStyle({
-    marginBottom: [8, 8, 10],
+    fontSize: [14, 14, 32],
+    marginBottom: [4, 4, 12],
+    fontWeight: '700',
   }),
   description: createResponsiveStyle({
-    marginBottom: [16, 16, 20],
+    fontSize: [10, 10, 18],
+    marginBottom: [12, 12, 32],
   }),
 });
 

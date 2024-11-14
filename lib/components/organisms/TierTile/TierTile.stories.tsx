@@ -1,3 +1,6 @@
+// @ts-nocheck
+// TypeScript will now ignore all errors in this file Tile Deprecated
+
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import TierTile from '.';
@@ -16,6 +19,9 @@ import silverImage from '../../../assets/silver.png';
 export default {
   title: 'components/organisms/TierTile',
   component: TierTile,
+  parameters: {
+    skip: true,
+  },
   argTypes: {
     tile: { control: 'object' },
   },
@@ -35,6 +41,7 @@ CurrentTierHalf.args = {
     createdAt: '',
     updatedAt: '',
     tileHeight: TileHeight.Half,
+    priority: 1,
     active: true,
     configuration: {
       progressType: ProgressType.Points,
@@ -64,6 +71,7 @@ CurrentTierFull.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTier,
       progressType: ProgressType.Points,
@@ -93,6 +101,7 @@ CurrentTargetNextTierHalf.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Half,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetNext,
       progressType: ProgressType.Points,
@@ -131,6 +140,7 @@ CurrentTargetNextTierFull.args = {
     updatedAt: '',
     active: true,
     tileHeight: TileHeight.Full,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetNext,
       progressType: ProgressType.Points,
@@ -169,6 +179,7 @@ CurrentTargetSpecificTierHalf.args = {
     updatedAt: '',
     tileHeight: TileHeight.Full,
     active: true,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetSpecific,
       progressType: ProgressType.Points,
@@ -206,6 +217,7 @@ CurrentTargetSpecificTierFull.args = {
     updatedAt: '',
     tileHeight: TileHeight.Full,
     active: true,
+    priority: 1,
     configuration: {
       type: TierTileType.currentTargetSpecific,
       progressType: ProgressType.Points,

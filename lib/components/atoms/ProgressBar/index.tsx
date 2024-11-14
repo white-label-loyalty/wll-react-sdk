@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Size, ThemeObject, Variant } from '../../../types/theme';
 import { createVariantSystem } from '../../../utils/variant';
@@ -8,6 +8,7 @@ export type ProgressBarProps = {
   percentage: number;
   variant?: Variant;
   height?: Size;
+  animationDuration?: number;
 };
 
 const useStyles = (theme: ThemeObject) => {
@@ -45,11 +46,14 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   percentage,
   variant = 'primary',
   height = 'sm',
+  animationDuration = 300,
 }) => {
   const { theme } = useWllSdk();
   const styles = useStyles(theme);
   const containerStyles = useContainerStyles(theme);
   const progressStyles = useProgressStyles(theme, variant);
+
+  const animatedWidth = React.useRef(new Animated.Value(0)).current;
 
   const containerStyle = [
     styles.container,
@@ -57,13 +61,24 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     { backgroundColor: theme.derivedSurface[20] },
   ];
 
+  React.useEffect(() => {
+    Animated.timing(animatedWidth, {
+      toValue: Math.min(Math.max(percentage, 0), 100),
+      duration: animationDuration,
+      useNativeDriver: false,
+    }).start();
+  }, [percentage, animationDuration]);
+
   const progressWidth: ViewStyle = {
-    width: `${Math.min(Math.max(percentage, 0), 100)}%`,
+    width: animatedWidth.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['0%', '100%'],
+    }),
   };
 
   return (
     <View style={containerStyle}>
-      <View style={[styles.progress, progressStyles, progressWidth]} />
+      <Animated.View style={[styles.progress, progressStyles, progressWidth]} />
     </View>
   );
 };

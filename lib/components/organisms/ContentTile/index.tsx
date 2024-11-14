@@ -8,31 +8,64 @@ type ContentTileProps = {
   tile: Tile;
 };
 
-const ContentTile: React.FC<ContentTileProps> = ({ tile }) => {
+type ContentTileComponent = React.FC<ContentTileProps> & {
+  Root: typeof ContentTileRoot;
+  Media: typeof ContentTileMedia;
+  Content: typeof ContentTileContent;
+  Header: typeof ContentTileHeader;
+  Body: typeof ContentTileBody;
+};
+
+const ContentTileInner: React.FC<ContentTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
-      <BaseTile.Image style={styles.image} />
-      <View style={styles.textContainer}>
-        <BaseTile.Title />
-        <BaseTile.Body />
-      </View>
+      <ContentTile.Root>
+        <ContentTile.Media />
+        <ContentTile.Content>
+          <ContentTile.Header />
+          <ContentTile.Body />
+        </ContentTile.Content>
+      </ContentTile.Root>
     </BaseTile>
   );
 };
 
+const ContentTileRoot: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => <BaseTile.Root>{children}</BaseTile.Root>;
+
+const ContentTileMedia: React.FC = () => (
+  <BaseTile.Media style={styles.media} />
+);
+
+const ContentTileContent: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => <View style={styles.content}>{children}</View>;
+
+const ContentTileHeader: React.FC = () => (
+  <BaseTile.Header>
+    <BaseTile.Title />
+  </BaseTile.Header>
+);
+
+const ContentTileBody: React.FC = () => <BaseTile.Body />;
+
 const styles = StyleSheet.create({
-  textContainer: createResponsiveStyle({
+  content: createResponsiveStyle({
     paddingHorizontal: [8, 8, 12],
+    flex: 1,
   }),
-  image: createResponsiveStyle({
+  media: createResponsiveStyle({
     width: '100%',
   }),
-  row: createResponsiveStyle({
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: [4, 4, 8],
-    justifyContent: 'space-between',
-  }),
 });
+
+export const ContentTile = ContentTileInner as ContentTileComponent;
+
+ContentTile.Root = ContentTileRoot;
+ContentTile.Media = ContentTileMedia;
+ContentTile.Content = ContentTileContent;
+ContentTile.Header = ContentTileHeader;
+ContentTile.Body = ContentTileBody;
 
 export default ContentTile;

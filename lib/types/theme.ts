@@ -25,6 +25,7 @@ export type DerivedProperties = {
   derivedSurfaceText: DerivedColors;
   derivedSurface: DerivedColors;
   alphaDerivedPrimary: DerivedColors;
+  alphaDerivedText: DerivedColors;
 };
 
 export type ThemeObject = BaseThemeObject &
