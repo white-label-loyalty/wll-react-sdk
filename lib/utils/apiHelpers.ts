@@ -15,11 +15,8 @@ export const useCreateRequestOptions = (config: SDKConfig) => {
       // Only create headers if we're not using a custom fetcher
       if (!config.fetcher) {
         const headers = new Headers(options.headers);
-        headers.set('x-api-key', '7Qzzp3ZwU47JLobfP4uSC9Dpc1el0mob1ysrlhYn');
-        headers.set(
-          'Authorization',
-          `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5VRTNSa1ZFUVRaRVFrRXdSalF3T0RGQk5EbERNakU1UWpOQ04wUkVRa0ZETVVFMU5rSTNRdyJ9.eyJpc3MiOiJodHRwczovL3dsbC1kZW1vLXByb3RvdHlwZS5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjM1NjVjYzYwZTk4Y2M4MDliYTA3ZWYzIiwiYXVkIjoid2xsb3lhbHR5Lm5ldCIsImlhdCI6MTczMTM0NDAzMCwiZXhwIjoxNzMxNDMwNDMwLCJndHkiOiJwYXNzd29yZCIsImF6cCI6InNZdVpVRTRMaWJrODRNb3dhMGdHZTJhaU5TZlRxZFFpIn0.KX4VMoSQ6kHWFI53xDHrmn_ExQ1nVx0SWetX0va2b9uDfbZgZ-c2uR-O2_DxBNE6MXLXSaFKQ9VYaxK02hfBq8AEEKMjSh6_hZx2FDeEQ0SFSyheISITFs0TZMHCYOl2Kc3Ns8DUQIq8uT3lByGCxOgvS6b2svE5O-j92RgwbmPqkLgO84MRQC7f0QKpigkVwNNNGd0LcOcezhpjHD9hW2HNSw5zbjbNbGUQhrXNubNVSksK9ol3UVGUihA_jnKkRiltONbZAKnQbymIskZH0gw62e0KkfedTYqAzj7fXIwKJ7RQlhFgBW5RjTIKFmqcazIHN_o6xjOwv4dfEdx1EA`
-        );
+        headers.set('x-api-key', config.apiKey);
+        headers.set('Authorization', `Bearer ${config.userToken}`);
 
         return {
           ...options,
@@ -85,7 +82,7 @@ export const createResourceGetter = (
         }
 
         // Always append locale=en
-        params.append('locale', 'en');
+        params.append('locale', config.locale || 'en');
 
         const queryString = params.toString();
         return makeRequest(

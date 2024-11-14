@@ -25,6 +25,7 @@ export type SDKConfig = {
   apiKey: string;
   userToken?: string;
   fetcher?: Fetcher;
+  locale?: string;
 };
 
 export type APIResponse<T> = {
