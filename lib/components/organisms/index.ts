@@ -1,25 +1,11 @@
-import BadgeTile from './BadgeTile';
-import BadgeTileUpdated from './BadgeTileUpdated';
-import BannerTile from './BannerTile';
-import ContentTile from './ContentTile';
-import Group from './Group';
-import PointsTile from './PointsTile';
-import RewardCategoryTile from './RewardCategoryTile';
-import RewardTile from './RewardTile';
-import Section from './Section';
-import TierTile from './TierTile';
-import TierTileUpdated from './TierTileUpdated';
-
-export {
-  BadgeTile,
-  BadgeTileUpdated,
-  BannerTile,
-  ContentTile,
-  Group,
-  PointsTile,
-  RewardCategoryTile,
-  RewardTile,
-  Section,
-  TierTile,
-  TierTileUpdated,
-};
+export { default as BadgeTile } from './BadgeTile';
+export { default as BadgeTileUpdated } from './BadgeTileUpdated';
+export { default as BannerTile } from './BannerTile';
+export { default as ContentTile } from './ContentTile';
+export { default as Group } from './Group';
+export { default as PointsTile } from './PointsTile';
+export { default as RewardCategoryTile } from './RewardCategoryTile';
+export { default as RewardTile } from './RewardTile';
+export { default as Section } from './Section';
+export { default as TierTile } from './TierTile';
+export { default as TierTileUpdated } from './TierTileUpdated';

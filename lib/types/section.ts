@@ -19,4 +19,7 @@ export type TSection = {
   pointsSuffix?: string | null;
   priority: number;
   active: boolean;
+  details?: [];
+  defaultLocale: string;
+  locale: string;
 };

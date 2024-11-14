@@ -1,6 +1,3 @@
-// @ts-nocheck
-// TypeScript will now ignore all errors in this file Tile Deprecated
-
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { BadgeTileType, TileHeight, TileType } from '../../../types/tile';
@@ -21,7 +18,7 @@ const Template: StoryFn<typeof BadgeTileUpdated> = (args) => (
 export const LatestNoBadgesEarned = Template.bind({});
 LatestNoBadgesEarned.args = {
   tile: {
-    id: 'specific-badge',
+    id: 'latest-badge-none',
     type: TileType.Badge,
     active: true,
     createdAt: '2024-08-06T08:53:24.307Z',
@@ -32,19 +29,19 @@ LatestNoBadgesEarned.args = {
       type: BadgeTileType.Latest,
       badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
       priority: 0,
-      internalDescription: null,
       status: 'ACTIVE',
-      id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       createdAt: '2024-08-06T08:53:24.307Z',
       updatedAt: '2024-08-06T08:53:24.307Z',
       awardedDatePrefix: 'Awarded',
-      emptyBadgeMessage: 'You haven’t earned any badges yet.',
+      emptyBadgeMessage: "You  haven't earned any badges yet.",
       badgeNotEarnedMessage: 'Badge not earned yet',
       emptyBadgeArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-      details: [],
-      count: 1,
+      count: 0,
     },
   },
 };
@@ -52,7 +49,7 @@ LatestNoBadgesEarned.args = {
 export const LatestEarned = Template.bind({});
 LatestEarned.args = {
   tile: {
-    id: 'latest-badge',
+    id: 'latest-badge-earned',
     type: TileType.Badge,
     active: true,
     createdAt: '2024-08-06T08:53:24.307Z',
@@ -63,29 +60,18 @@ LatestEarned.args = {
       type: BadgeTileType.Latest,
       badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
       priority: 0,
-      internalDescription: null,
       status: 'ACTIVE',
-      id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       createdAt: '2024-08-06T08:53:24.307Z',
       updatedAt: '2024-08-06T08:53:24.307Z',
       awardedDatePrefix: 'Awarded',
-      emptyBadgeMessage: 'You haven’t earned any badges yet.',
+      emptyBadgeMessage: "You  haven't earned any badges yet.",
       badgeNotEarnedMessage: 'Badge not earned yet',
       emptyBadgeArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-      details: [
-        {
-          locale: 'en',
-          name: 'Top Spender',
-          artworkUrl:
-            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-          description: 'Spent £100 on 5 Seperate transactions',
-          id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
-          createdAt: '2024-08-06T08:53:24.307Z',
-          updatedAt: '2024-08-06T08:53:24.307Z',
-        },
-      ],
       count: 1,
     },
   },
@@ -94,7 +80,7 @@ LatestEarned.args = {
 export const SpecificBadgeNotEarned = Template.bind({});
 SpecificBadgeNotEarned.args = {
   tile: {
-    id: 'specific-badge',
+    id: 'specific-badge-not-earned',
     type: TileType.Badge,
     active: true,
     createdAt: '2024-08-06T08:53:24.307Z',
@@ -105,29 +91,18 @@ SpecificBadgeNotEarned.args = {
       type: BadgeTileType.Specific,
       badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
       priority: 0,
       status: 'ACTIVE',
-      internalDescription: null,
-      id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       createdAt: '2024-08-06T08:53:24.307Z',
       updatedAt: '2024-08-06T08:53:24.307Z',
       awardedDatePrefix: 'Awarded',
-      emptyBadgeMessage: 'You haven’t earned any badges yet.',
+      emptyBadgeMessage: "You  haven't earned any badges yet.",
       badgeNotEarnedMessage: 'Badge not earned yet',
       emptyBadgeArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-      details: [
-        {
-          locale: 'en',
-          name: 'Top Spender',
-          artworkUrl:
-            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-          description: 'Spent £100 on 5 Seperate transactions',
-          id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
-          createdAt: '2024-08-06T08:53:24.307Z',
-          updatedAt: '2024-08-06T08:53:24.307Z',
-        },
-      ],
       count: 0,
     },
   },
@@ -136,7 +111,7 @@ SpecificBadgeNotEarned.args = {
 export const SpecificBadgeHighCount = Template.bind({});
 SpecificBadgeHighCount.args = {
   tile: {
-    id: 'specific-badge',
+    id: 'specific-badge-high-count',
     type: TileType.Badge,
     active: true,
     createdAt: '2024-08-06T08:53:24.307Z',
@@ -147,29 +122,18 @@ SpecificBadgeHighCount.args = {
       type: BadgeTileType.Specific,
       badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
       priority: 0,
-      internalDescription: null,
       status: 'ACTIVE',
-      id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       createdAt: '2024-08-06T08:53:24.307Z',
       updatedAt: '2024-08-06T08:53:24.307Z',
       awardedDatePrefix: 'Awarded',
-      emptyBadgeMessage: 'You haven’t earned any badges yet.',
+      emptyBadgeMessage: "You haven't earned any badges yet.",
       badgeNotEarnedMessage: 'Badge not earned yet',
       emptyBadgeArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-      details: [
-        {
-          locale: 'en',
-          name: 'Top Spender',
-          artworkUrl:
-            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-          description: 'Spent £100 on 5 Seperate transactions',
-          id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
-          createdAt: '2024-08-06T08:53:24.307Z',
-          updatedAt: '2024-08-06T08:53:24.307Z',
-        },
-      ],
       count: 3,
     },
   },
@@ -178,7 +142,7 @@ SpecificBadgeHighCount.args = {
 export const SpecificBadgeAwardedOnce = Template.bind({});
 SpecificBadgeAwardedOnce.args = {
   tile: {
-    id: 'specific-badge',
+    id: 'specific-badge-once',
     type: TileType.Badge,
     active: true,
     createdAt: '2024-08-06T08:53:24.307Z',
@@ -189,29 +153,19 @@ SpecificBadgeAwardedOnce.args = {
       type: BadgeTileType.Specific,
       badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
       internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
       priority: 0,
-      internalDescription: null,
       status: 'ACTIVE',
-      id: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+      id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
       createdAt: '2024-08-06T08:53:24.307Z',
       updatedAt: '2024-08-06T08:53:24.307Z',
       awardedDatePrefix: 'Awarded',
-      emptyBadgeMessage: 'You haven’t earned any badges yet.',
+      emptyBadgeMessage: "You haven't earned any badges yet.",
       badgeNotEarnedMessage: 'Badge not earned yet',
       emptyBadgeArtworkUrl:
         'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-      details: [
-        {
-          locale: 'en',
-          name: 'Top Spender',
-          artworkUrl:
-            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-          description: 'Spent £100 on 5 Seperate transactions',
-          id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
-          createdAt: '2024-08-06T08:53:24.307Z',
-          updatedAt: '2024-08-06T08:53:24.307Z',
-        },
-      ],
       count: 1,
     },
   },

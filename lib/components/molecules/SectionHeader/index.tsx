@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import Text from '../../atoms/Text';
 
 type SectionHeaderProps = {
   title?: string;

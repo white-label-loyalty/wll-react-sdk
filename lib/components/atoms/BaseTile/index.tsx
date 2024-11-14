@@ -5,7 +5,9 @@ import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import { Icon, ProgressiveImage, Text } from '../../atoms';
+import Icon from '../Icon';
+import ProgressiveImage from '../ProgressiveImage';
+import Text from '../Text';
 
 const TileContext = createContext<Tile | null>(null);
 

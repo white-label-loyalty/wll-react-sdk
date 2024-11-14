@@ -1,6 +1,3 @@
-// @ts-nocheck
-// TypeScript will now ignore all errors in this file Tile Deprecated
-
 import { LockKeyholeIcon } from 'lucide-react';
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -53,31 +50,16 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
 const BadgeTileMedia: FC<BadgeTileMediaProps> = ({ children, ...props }) => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, details, emptyBadgeArtworkUrl } = configuration;
+  const { type, count, artworkUrl, emptyBadgeArtworkUrl } = configuration;
 
-  if (!details || details.length === 0) {
-    if (emptyBadgeArtworkUrl) {
-      return (
-        <View style={styles.header}>
-          <ProgressiveImage
-            source={{ uri: emptyBadgeArtworkUrl }}
-            style={styles.image}
-            resizeMode="contain"
-          />
-        </View>
-      );
-    }
-    return null;
-  }
-
-  const { artworkUrl } = details[0];
-  if (!artworkUrl) return null;
+  const displayUrl = count === 0 ? emptyBadgeArtworkUrl : artworkUrl;
+  if (!displayUrl) return null;
 
   return (
     <View style={styles.header}>
       <ProgressiveImage
         {...props}
-        source={{ uri: artworkUrl }}
+        source={{ uri: displayUrl }}
         style={styles.image}
         resizeMode="contain"
         isDesaturated={shouldDesaturate(type, count)}
@@ -90,38 +72,31 @@ const BadgeTileMedia: FC<BadgeTileMediaProps> = ({ children, ...props }) => {
 const BadgeTileTitle: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { details, emptyBadgeMessage } = configuration;
+  const { count, name, emptyBadgeMessage } = configuration;
 
-  if (!details || details.length === 0) {
-    if (emptyBadgeMessage) {
-      return (
-        <Text variant="title" style={styles.titleText}>
-          {emptyBadgeMessage}
-        </Text>
-      );
-    }
-    return null;
-  }
-
-  const { name } = details[0];
-  if (!name) return null;
+  const displayText = count === 0 ? emptyBadgeMessage : name;
+  if (!displayText) return null;
 
   return (
-    <Text variant="title" numberOfLines={1} ellipsizeMode="tail">
-      {name}
-    </Text>
+    <View>
+      <Text
+        variant="title"
+        style={styles.titleText}
+        numberOfLines={2}
+        ellipsizeMode="tail"
+      >
+        {displayText}
+      </Text>
+    </View>
   );
 };
 
 const BadgeTileDescription: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { details } = configuration;
+  const { count, description } = configuration;
 
-  if (!details || details.length === 0) return null;
-  const { description } = details[0];
-
-  if (!description) return null;
+  if (count === 0 || !description) return null;
 
   return (
     <View style={styles.descriptionContainer}>
@@ -140,11 +115,10 @@ const BadgeTileDescription: FC = () => {
 const BadgeTileDateEarned: FC = () => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, awardedDatePrefix, details, badgeNotEarnedMessage } =
+  const { type, count, awardedDatePrefix, createdAt, badgeNotEarnedMessage } =
     configuration;
   const { theme } = useWllSdk();
 
-  const hasDetails = details && details.length > 0;
   const backgroundColor = getStateColor(
     theme.alphaDerivedPrimary[20],
     type,
@@ -152,13 +126,11 @@ const BadgeTileDateEarned: FC = () => {
   );
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
 
-  // No date shown for Latest type with no badges
-  if (type === BadgeTileType.Latest && !hasDetails) {
+  if (type === BadgeTileType.Latest && count === 0) {
     return null;
   }
 
-  // Show not earned message
-  if (!hasDetails || count === 0) {
+  if (count === 0) {
     return (
       <View style={containerStyle}>
         <Text variant="label">{badgeNotEarnedMessage}</Text>
@@ -166,8 +138,7 @@ const BadgeTileDateEarned: FC = () => {
     );
   }
 
-  // Show earned date
-  const formattedDate = new Date(details[0].createdAt).toLocaleDateString();
+  const formattedDate = new Date(createdAt).toLocaleDateString();
 
   return (
     <View style={containerStyle}>
@@ -181,7 +152,7 @@ const BadgeTileStatus: FC = () => {
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { count, type } = configuration;
 
-  if (type !== BadgeTileType.Specific || (count && count === 1)) {
+  if (type !== BadgeTileType.Specific || count === 1) {
     return null;
   }
 
@@ -235,9 +206,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   }),
-  emptyText: {
-    textAlign: 'center',
-  },
   titleText: createResponsiveStyle({
     marginBottom: [4, 4, 8],
   }),

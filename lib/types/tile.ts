@@ -112,6 +112,7 @@ export class BadgeTileConfig {
   type: BadgeTileType = BadgeTileType.Specific;
   badgeId: string = '';
   internalName?: string;
+  defaultLocale: string = 'en';
   priority: number = 0;
   internalDescription?: string | null;
   status?: string;
@@ -120,6 +121,14 @@ export class BadgeTileConfig {
   updatedAt: string = '';
   details?: BadgeDetail[] = [];
   count: number = 0;
+  name: string = '';
+  locale: string = 'en';
+  description: string = '';
+  artworkUrl: string = '';
+  emptyBadgeMessage?: string;
+  emptyBadgeArtworkUrl?: string;
+  awardedDatePrefix?: string;
+  badgeNotEarnedMessage?: string;
 }
 
 export type BadgeDetail = {

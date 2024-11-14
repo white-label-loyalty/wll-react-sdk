@@ -13,8 +13,8 @@ import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Icon } from '../../atoms';
-import { SectionHeader } from '../../molecules';
 import { BannerTile } from '../../organisms';
+import SectionHeader from '../SectionHeader';
 
 type CarouselProps = {
   section: TSection;
