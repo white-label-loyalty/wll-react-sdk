@@ -13,8 +13,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "rollup -c",
-    "build:types": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "build:types": "rollup -c --bundleConfigAsCjs",
     "build:all": "yarn build",
     "prepare": "yarn build:all",
     "storybook": "storybook dev -p 6006",
