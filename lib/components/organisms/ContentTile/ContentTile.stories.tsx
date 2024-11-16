@@ -131,7 +131,8 @@ HalfSizeTextOnlyWithLink.args = {
     configuration: {
       title: 'Welcome Nick!',
       body: 'Lorem ipsum dolor sit amet',
-      linkURL: 'https://www.example.com',
+      ctaLink: 'https://www.google.com',
+      ctaLinkTarget: 'SAME_FRAME',
     },
   },
 };
@@ -151,7 +152,8 @@ FullSizeWithLink.args = {
       body: 'Click here to learn more',
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
-      linkURL: 'https://www.example.com',
+      ctaLink: 'https://www.google.com',
+      ctaLinkTarget: 'NEW_WINDOW',
     },
   },
 };

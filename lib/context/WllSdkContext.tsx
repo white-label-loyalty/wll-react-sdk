@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigation } from '../hooks/useNavigationHandler';
 import { TGroup } from '../types/group';
+import { NavigationConfig } from '../types/navigation';
 import { TSection } from '../types/section';
 import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
-import { Tile } from '../types/tile';
+import { CTALinkTarget, Tile } from '../types/tile';
 import {
   useGetGroupByID,
   useGetSectionByID,
@@ -38,12 +40,14 @@ type WllSdkContextType = ThemeContextType & {
   getGroupByID: (id: string) => Promise<APIResponse<TGroup>>;
   getSectionByID: (id: string) => Promise<APIResponse<TSection>>;
   getTileByID: (id: string) => Promise<APIResponse<Tile>>;
+  handleNavigation: (link: string, target: CTALinkTarget) => void;
 };
 
 type WllSdkProviderProps = {
   children: React.ReactNode;
   theme?: Partial<BaseThemeObject>;
   config: SDKConfig;
+  navigationConfig?: NavigationConfig;
 };
 
 const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
@@ -84,6 +88,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
   children,
   theme: providedTheme,
   config,
+  navigationConfig = {},
 }) => {
   const [theme, setThemeState] = React.useState(() =>
     createTheme(providedTheme || {})
@@ -103,6 +108,8 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
     id: string
   ) => Promise<APIResponse<Tile>>;
 
+  const handleNavigation = useNavigation(navigationConfig);
+
   const contextValue = React.useMemo(
     () => ({
       theme,
@@ -110,8 +117,16 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
       getGroupByID,
       getSectionByID,
       getTileByID,
+      handleNavigation,
     }),
-    [theme, setTheme, getGroupByID, getSectionByID, getTileByID]
+    [
+      theme,
+      setTheme,
+      getGroupByID,
+      getSectionByID,
+      getTileByID,
+      handleNavigation,
+    ]
   );
   return (
     <WllSdkContext.Provider value={contextValue}>

@@ -1,9 +1,15 @@
 import React, { createContext, FC, ReactNode, useContext } from 'react';
-import { FlexStyle, StyleSheet, View, ViewStyle } from 'react-native';
+import {
+  FlexStyle,
+  Pressable,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
-import { ContentTileConfig, Tile } from '../../../types/tile';
+import { ContentTileConfig, CTALinkTarget, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import Icon from '../Icon';
 import ProgressiveImage from '../ProgressiveImage';
@@ -51,13 +57,20 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   style,
 }) => {
   const tile = useTileContext();
-  const { theme } = useWllSdk();
+  const { theme, handleNavigation } = useWllSdk();
   const { isHalfSize } = useTileSize(tile);
-  const { artworkUrl } = tile.configuration as ContentTileConfig;
+  const { ctaLink, ctaLinkTarget, title } =
+    tile.configuration as ContentTileConfig;
+
+  const handlePress = () => {
+    if (ctaLink) {
+      const target = (ctaLinkTarget as CTALinkTarget) || 'SAME_FRAME';
+      handleNavigation(ctaLink, target);
+    }
+  };
 
   const layout: LayoutProps = {
     flexDirection: 'column',
-    // Center content vertically for half tiles, start at top for full tiles
     justifyContent: isHalfSize ? 'center' : 'flex-start',
     alignItems: 'stretch',
   };
@@ -71,20 +84,26 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   });
 
   return (
-    <View
-      style={[
+    <Pressable
+      style={({ pressed }) => [
         styles.container,
         {
           backgroundColor: theme.surface,
           borderRadius: responsiveStyles.borderRadius,
           aspectRatio: isHalfSize ? 2 : 1,
+          opacity: pressed ? 0.7 : 1,
         },
         layout,
         style,
       ]}
+      onPress={handlePress}
+      disabled={!ctaLink}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
     >
       {children}
-    </View>
+    </Pressable>
   );
 };
 
@@ -170,7 +189,7 @@ const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
 const BaseTileTitle: FC = () => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
-  const { title, linkURL, artworkUrl } =
+  const { title, ctaLink, artworkUrl } =
     tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
@@ -182,7 +201,7 @@ const BaseTileTitle: FC = () => {
       <Text variant="title" accessibilityLabel={title}>
         {title}
       </Text>
-      {linkURL && (
+      {ctaLink && (
         <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
       )}
     </>
