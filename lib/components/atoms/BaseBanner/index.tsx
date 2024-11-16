@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { Tile } from '../../../types/tile';
+import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
+import { BannerTileConfig, Tile } from '../../../types/tile';
 
 const BannerContext = React.createContext<Tile | null>(null);
 
@@ -20,19 +21,30 @@ type BaseBannerProps = {
 
 const BaseBanner: React.FC<BaseBannerProps> = ({ tile, children }) => {
   const { theme } = useWllSdk();
+  const { ctaLink, ctaLinkTarget, title } =
+    tile.configuration as BannerTileConfig;
+
+  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
+
   return (
     <BannerContext.Provider value={tile}>
-      <View
-        style={[
+      <Pressable
+        style={({ pressed }) => [
           styles.container,
           {
             backgroundColor: theme.surface,
             borderRadius: theme.sizes.borderRadiusLg,
+            opacity: pressed ? 0.7 : 1,
           },
         ]}
+        onPress={handlePress}
+        disabled={!ctaLink}
+        accessible={true}
+        accessibilityRole="button"
+        accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
       >
         {children}
-      </View>
+      </Pressable>
     </BannerContext.Provider>
   );
 };

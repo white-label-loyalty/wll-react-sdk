@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { SectionType } from '../../../types/section';
-import { TileHeight, TileType, UrlTarget } from '../../../types/tile';
+import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 import Carousel from './index';
 
 export default {
@@ -34,7 +34,7 @@ Default.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'New iPhone 15 Pro',
           ctaLink: '/products/iphone15pro',
@@ -56,7 +56,7 @@ Default.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'Unlock Your Rewards',
           ctaLink: '#member-card',
@@ -78,7 +78,7 @@ Default.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'TechCon 2024',
           ctaLink: 'https://techcon2024.com/register',
@@ -121,7 +121,7 @@ SingleItem.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'TechCon 2024',
           ctaLink: 'https://techcon2024.com/register',
@@ -164,7 +164,7 @@ ManyItems.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'New iPhone 15 Pro',
           ctaLink: '/products/iphone15pro',
@@ -186,7 +186,7 @@ ManyItems.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'Unlock Your Rewards',
           ctaLink: '#member-card',
@@ -208,7 +208,7 @@ ManyItems.args = {
         configuration: {
           defaultLocale: 'en',
           details: [],
-          ctaLinkTarget: UrlTarget.sameWindow,
+          ctaLinkTarget: CTALinkTarget.sameWindow,
           locale: 'en',
           title: 'TechCon 2024',
           ctaLink: 'https://techcon2024.com/register',

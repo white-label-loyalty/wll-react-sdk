@@ -1,7 +1,7 @@
 import { Availability, RewardCategory, TierType } from './wll';
 
-export enum UrlTarget {
-  sameWindow = 'SAME_WINDOW',
+export enum CTALinkTarget {
+  sameWindow = 'SAME_FRAME',
   newWindow = 'NEW_WINDOW',
 }
 
@@ -38,7 +38,7 @@ export class BannerTileConfig {
   description?: string | null;
   ctaText?: string | null;
   ctaLink?: string | null;
-  ctaLinkTarget?: UrlTarget;
+  ctaLinkTarget?: CTALinkTarget;
 }
 
 export class PointsTileConfig {
@@ -54,7 +54,8 @@ export class ContentTileConfig {
   title?: string | null;
   body?: string | null;
   artworkUrl?: string | null;
-  linkURL?: string | null;
+  ctaLinkTarget?: CTALinkTarget;
+  ctaLink?: string | null;
 }
 
 export class RewardTileConfig {
