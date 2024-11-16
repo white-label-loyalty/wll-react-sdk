@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Linking, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Button, ProgressiveImage, Text } from '../../atoms';
@@ -76,23 +77,11 @@ const BannerTileDescription: React.FC = () => {
 
 const BannerTileCTA: React.FC = () => {
   const { configuration } = useBannerContext();
-  const { ctaText, ctaLink } = configuration as BannerTileConfig;
-
-  const handleLinkPress = async (url: string) => {
-    if (!url) return;
-    if (await Linking.canOpenURL(url)) {
-      Linking.openURL(url);
-    }
-  };
+  const { ctaText, ctaLink, ctaLinkTarget } = configuration as BannerTileConfig;
+  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
 
   if (!ctaText) return null;
-  return (
-    <Button
-      title={ctaText}
-      variant="accent"
-      onPress={() => handleLinkPress(ctaLink as string)}
-    />
-  );
+  return <Button title={ctaText} variant="accent" onPress={handlePress} />;
 };
 
 const styles = StyleSheet.create({

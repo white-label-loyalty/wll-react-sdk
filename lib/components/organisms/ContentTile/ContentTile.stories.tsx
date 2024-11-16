@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import ContentTile from '.';
-import { TileHeight, TileType } from '../../../types/tile';
+import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 
 export default {
@@ -132,7 +132,7 @@ HalfSizeTextOnlyWithLink.args = {
       title: 'Welcome Nick!',
       body: 'Lorem ipsum dolor sit amet',
       ctaLink: 'https://www.google.com',
-      ctaLinkTarget: 'SAME_FRAME',
+      ctaLinkTarget: CTALinkTarget.sameWindow,
     },
   },
 };
@@ -153,7 +153,7 @@ FullSizeWithLink.args = {
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
       ctaLink: 'https://www.google.com',
-      ctaLinkTarget: 'NEW_WINDOW',
+      ctaLinkTarget: CTALinkTarget.newWindow,
     },
   },
 };

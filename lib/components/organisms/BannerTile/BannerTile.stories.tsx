@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import BannerTile from '.';
-import { TileHeight, TileType, UrlTarget } from '../../../types/tile';
+import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 
 export default {
   title: 'components/organisms/BannerTile',
@@ -27,7 +27,7 @@ Default.args = {
       description: 'Get up to 50% off on selected items!',
       ctaText: 'SHOP NOW',
       ctaLink: 'https://www.example.com',
-      ctaLinkTarget: UrlTarget.sameWindow,
+      ctaLinkTarget: CTALinkTarget.sameWindow,
     },
   },
 };
@@ -48,7 +48,7 @@ WithoutButton.args = {
       title: 'Summer Sale',
       description: 'Get up to 50% off on selected items!',
       ctaLink: 'https://www.example.com',
-      ctaLinkTarget: UrlTarget.sameWindow,
+      ctaLinkTarget: CTALinkTarget.sameWindow,
       ctaText: '',
     },
   },

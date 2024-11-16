@@ -1,6 +1,9 @@
 import { Availability, RewardCategory, TierType } from './wll';
 
-export type CTALinkTarget = 'SAME_FRAME' | 'NEW_WINDOW';
+export enum CTALinkTarget {
+  sameWindow = 'SAME_FRAME',
+  newWindow = 'NEW_WINDOW',
+}
 
 export enum TierTileType {
   currentTier = 'CURRENT',

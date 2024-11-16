@@ -7,9 +7,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
-import { ContentTileConfig, CTALinkTarget, Tile } from '../../../types/tile';
+import { ContentTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import Icon from '../Icon';
 import ProgressiveImage from '../ProgressiveImage';
@@ -57,17 +58,11 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   style,
 }) => {
   const tile = useTileContext();
-  const { theme, handleNavigation } = useWllSdk();
+  const { theme } = useWllSdk();
   const { isHalfSize } = useTileSize(tile);
   const { ctaLink, ctaLinkTarget, title } =
     tile.configuration as ContentTileConfig;
-
-  const handlePress = () => {
-    if (ctaLink) {
-      const target = (ctaLinkTarget as CTALinkTarget) || 'SAME_FRAME';
-      handleNavigation(ctaLink, target);
-    }
-  };
+  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
 
   const layout: LayoutProps = {
     flexDirection: 'column',
