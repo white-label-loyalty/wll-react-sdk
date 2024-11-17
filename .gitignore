@@ -275,3 +275,8 @@ chromatic.log
 
 # Explicitly include the dist directory
 !dist/
+
+
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
