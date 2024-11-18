@@ -13,7 +13,7 @@
 - 🔌 **Platform Agnostic** - Bring your own navigation and network layer to integrate with any React application
 - 📱 **Mobile First** - Responsive components optimized for both mobile and desktop experiences
 - 🔒 **Secure by Design** - Built-in support for custom API integration through your own backend proxy
-- ⚡ **Easy Integration** - Simple setup with customizable configuration for navigation, theming, and API handling
+- ⚡ **Easy Integration** - Simple setup with customisable configuration for navigation, theming, and API handling
 
 ## 📚 Documentation
 

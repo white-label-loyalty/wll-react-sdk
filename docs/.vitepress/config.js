@@ -2,7 +2,7 @@ export default {
   base: '/',
   title: 'Loyalty Tiles SDK',
   description:
-    'A flexible component library for building customizable loyalty program interfaces',
+    'A flexible component library for building customisable loyalty program interfaces',
   themeConfig: {
     socialLinks: [
       {

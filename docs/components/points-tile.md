@@ -1,6 +1,6 @@
 # Points Tile
 
-Displays points balance with customizable title, artwork, and points formatting. Supports both full and half-height layouts.
+Displays points balance with customisable title, artwork, and points formatting. Supports both full and half-height layouts.
 
 > ⚠️ **Important**: This component provides flexible height options with different layouts for full (`tileHeight: 'FULL'`) and half (`tileHeight: 'HALF'`) configurations.
 

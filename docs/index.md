@@ -3,7 +3,7 @@ layout: home
 hero:
   name: Loyalty Tiles SDK
   text: Loyalty Program Components
-  tagline: A React SDK for building customizable loyalty experiences with configurable tiles, themes, and navigation
+  tagline: A React SDK for building customisable loyalty experiences with configurable tiles, themes, and navigation
   actions:
     - theme: brand
       text: Get Started
@@ -31,5 +31,5 @@ features:
     details: Built-in support for custom API integration through your own backend proxy
 
   - title: ⚡ Easy Integration
-    details: Simple setup with customizable configuration for navigation, theming, and API handling
+    details: Simple setup with customisable configuration for navigation, theming, and API handling
 ---
