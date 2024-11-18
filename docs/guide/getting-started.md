@@ -167,9 +167,3 @@ function App() {
   )
 }
 ```
-
-## Next Steps
-
-1. Explore our [component library](/components)
-2. Learn about [theming](/guide/theming)
-3. [Platfrom Integration](/platform-integration)
