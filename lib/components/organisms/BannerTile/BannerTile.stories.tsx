@@ -32,8 +32,8 @@ Default.args = {
   },
 };
 
-export const WithoutButton = Template.bind({});
-WithoutButton.args = {
+export const WithoutCTA = Template.bind({});
+WithoutCTA.args = {
   tile: {
     id: '2',
     type: TileType.Banner,
