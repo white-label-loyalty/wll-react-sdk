@@ -1,5 +1,5 @@
 export default {
-  base: '/wll-react-sdk/',
+  base: '/',
   title: 'Loyalty Tiles SDK',
   description:
     'A flexible component library for building customizable loyalty program interfaces',
