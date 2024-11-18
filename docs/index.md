@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: WLL React SDK
+  name: Loyalty Tiles SDK
   text: Loyalty Program Components
   tagline: A React SDK for building customizable loyalty experiences with configurable tiles, themes, and navigation
   actions:
