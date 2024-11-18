@@ -1,13 +1,28 @@
 export default {
+  base: '/wll-react-sdk/',
   title: 'Loyalty Tiles SDK',
   description:
     'A flexible component library for building customizable loyalty program interfaces',
   themeConfig: {
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/white-label-loyalty/wll-react-sdk',
+      },
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024 White Label Loyalty',
+    },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Components', link: '/components' },
       { text: 'Platform Integration', link: '/platform-integration' },
+      {
+        text: 'Storybook',
+        link: 'https://66c36701bb14ec551f38279c-ueompbfvfq.chromatic.com/',
+      },
     ],
     sidebar: {
       '/guide/': [
@@ -46,6 +61,12 @@ export default {
             { text: 'Reward Tile', link: '/components/reward-tile' },
             { text: 'Tier Tile', link: '/components/tier-tile' },
           ],
+        },
+      ],
+      '/platform-integration/': [
+        {
+          text: 'Platform Integration',
+          items: [{ text: 'Overview', link: '/platform-integration/' }],
         },
       ],
     },

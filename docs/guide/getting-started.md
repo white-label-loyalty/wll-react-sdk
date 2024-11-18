@@ -62,7 +62,7 @@ function MyComponent() {
 }
 ```
 
-## Customization Options
+## customisation Options
 
 ### Custom Theme
 

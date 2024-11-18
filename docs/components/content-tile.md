@@ -89,7 +89,7 @@ function MyComponent() {
 - Proper role assignments
 - Image alt text support
 - CTA link labels
-- Screen reader optimizations
+- Screen reader optimisations
 
 ## Example Configurations
 

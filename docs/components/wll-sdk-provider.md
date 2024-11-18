@@ -1,6 +1,6 @@
 # WllSdkProvider
 
-The `WllSdkProvider` is the root component of the Loyalty Tiles SDK. It initializes the SDK configuration, manages theming, and provides essential context to all child components.
+The `WllSdkProvider` is the root component of the Loyalty Tiles SDK. It initialises the SDK configuration, manages theming, and provides essential context to all child components.
 
 ## Overview
 

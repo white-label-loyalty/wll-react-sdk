@@ -2,7 +2,7 @@
 
 ## Custom Navigation
 
-The SDK provides a flexible navigation system that can be integrated with any routing solution (Next.js, React Router, etc.).
+The SDK provides a flexible navigation system that can be integrated with any routing solution (Next.js, React Router, React Navigation etc.).
 
 ```typescript
 type NavigationHandlers = {
@@ -164,7 +164,7 @@ function App() {
 
 ## Theming
 
-The SDK's theming system allows deep customization of visual elements.
+The SDK's theming system allows deep customisation of visual elements.
 
 ```typescript
 type BaseThemeObject = {
@@ -232,4 +232,4 @@ type DerivedProperties = {
 }
 ```
 
-> 📘 For complete theme customization options and color utilities, see our [theming guide](/guide/theming).
+> 📘 For complete theme customisation options and color utilities, see our [theming guide](/guide/theming).

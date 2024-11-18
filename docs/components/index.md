@@ -31,7 +31,7 @@ import { WllSdkProvider, Group, Section, PointsTile } from '@wlloyalty/wll-react
 function App() {
   return (
     <WllSdkProvider config={sdkConfig}>
-      <Group resourceId="main-dashboard">
+      <Group id="32697712-8dc0-4717-9775-e1f3502acc48">
         <Section>
           <PointsTile />
         </Section>
