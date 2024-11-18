@@ -51,7 +51,7 @@ function MyComponent() {
 
 ## Composition
 
-- `BannerTile.Image` - Banner image display
+- `BannerTile.Media` - Banner image display
 - `BannerTile.Title` - Banner headline
 - `BannerTile.Description` - Banner description text
 - `BannerTile.CTA` - Call-to-action button
