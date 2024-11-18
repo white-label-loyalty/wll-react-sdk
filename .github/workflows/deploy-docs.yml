@@ -1,0 +1,40 @@
+name: Deploy VitePress to Vercel
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run docs:build
+
+      - name: Get Vercel Project ID
+        id: get-vercel-project-id
+        run: echo "::set-output name=VERCEL_PROJECT_ID::$(npx vercel env pull --yes 2>/dev/null | grep -oP '(?<=VERCEL_PROJECT_ID=)[^\\r\\n]*')"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ steps.get-vercel-project-id.outputs.VERCEL_PROJECT_ID }}
+          working-directory: docs/.vitepress/dist
+          vercel-args: '--prod'

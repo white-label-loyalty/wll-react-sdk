@@ -21,7 +21,10 @@
     "test-storybook": "test-storybook",
     "chromatic": "npx chromatic",
     "type-check": "tsc --noEmit",
-    "commit": "cz"
+    "commit": "cz",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -90,6 +93,7 @@
     "ts-loader": "^9.5.1",
     "tsc-files": "^1.1.4",
     "typescript": "^5.2.2",
+    "vitepress": "^1.5.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
