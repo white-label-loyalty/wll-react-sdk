@@ -1,6 +1,6 @@
-# WLL React SDK
+# Loyalty Tiles SDK
 
-> A powerful React SDK for building customizable loyalty experiences with configurable tiles, themes, and navigation
+> A React SDK for building customisable loyalty experiences with configurable tiles, themes, and navigation
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![React Support](https://img.shields.io/badge/React-18.0.0+-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
