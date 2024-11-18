@@ -17,8 +17,8 @@
 
 ## 📚 Documentation
 
-- [Getting Started Guide](/guide/getting-started)
-- [Component Library](/components/)
+- [Getting Started Guide](https://wll-react-sdk.vercel.app/guide/getting-started)
+- [Component Library](https://wll-react-sdk.vercel.app/components/)
 - [Live Storybook Demo](https://66c36701bb14ec551f38279c-ueompbfvfq.chromatic.com/)
 
 ## 🚀 Quick Start
@@ -87,9 +87,15 @@ yarn prepare
 
 ## 📄 License
 
-[License Type] - See [LICENSE](LICENSE) for more information.
+MIT License - See [LICENSE](LICENSE) for more information.
+
+Copyright (c) 2024 WLL
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 ## 🆘 Support
 
-- [Documentation](link-to-docs)
+- [Documentation](https://wll-react-sdk.vercel.app/)
 - [Issues](https://github.com/white-label-loyalty/wll-react-sdk/issues)
