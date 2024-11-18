@@ -13,14 +13,14 @@ type BannerTileProps = {
 };
 
 const BannerTile: React.FC<BannerTileProps> & {
-  Image: typeof BannerTileImage;
+  Media: typeof BannerTileMedia;
   Title: typeof BannerTileTitle;
   Description: typeof BannerTileDescription;
   CTA: typeof BannerTileCTA;
 } = ({ tile }) => {
   return (
     <BaseBanner tile={tile}>
-      <BannerTile.Image />
+      <BannerTile.Media />
       <View style={styles.slideContent}>
         <BannerTile.Title />
         <BannerTile.Description />
@@ -30,14 +30,14 @@ const BannerTile: React.FC<BannerTileProps> & {
   );
 };
 
-const BannerTileImage: React.FC = () => {
+const BannerTileMedia: React.FC = () => {
   const { configuration } = useBannerContext();
   const { artworkUrl } = configuration as BannerTileConfig;
 
   if (!artworkUrl) return null;
   return (
-    <View style={styles.imageContainer}>
-      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
+    <View style={styles.mediaContainer}>
+      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.media} />
     </View>
   );
 };
@@ -97,14 +97,14 @@ const styles = StyleSheet.create({
   slideContent: createResponsiveStyle({
     flex: 1,
   }),
-  imageContainer: createResponsiveStyle({
+  mediaContainer: createResponsiveStyle({
     width: '20%',
     aspectRatio: 1,
     position: 'relative',
     overflow: 'hidden',
     marginRight: [8, 8, 24],
   }),
-  image: {
+  media: {
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   }),
 });
 
-BannerTile.Image = BannerTileImage;
+BannerTile.Media = BannerTileMedia;
 BannerTile.Title = BannerTileTitle;
 BannerTile.Description = BannerTileDescription;
 BannerTile.CTA = BannerTileCTA;
