@@ -56,7 +56,7 @@ const ContentTileBody: React.FC = () => <BaseTile.Body />;
 
 const styles = StyleSheet.create({
   content: createResponsiveStyle({
-    paddingHorizontal: [8, 8, 12],
+    paddingHorizontal: [8, 8, 16],
     flex: 1,
     justifyContent: 'center',
   }),
