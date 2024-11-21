@@ -17,8 +17,8 @@
 
 ## 📚 Documentation
 
-- [Getting Started Guide](https://wll-react-sdk.vercel.app/guide/getting-started)
-- [Component Library](https://wll-react-sdk.vercel.app/components/)
+- [Getting Started Guide](https://react-sdk.whitelabel-loyalty.com/guide/getting-started)
+- [Component Library](https://react-sdk.whitelabel-loyalty.com/components/)
 - [Live Storybook Demo](https://66c36701bb14ec551f38279c-ueompbfvfq.chromatic.com/)
 
 ## 🚀 Quick Start
@@ -97,5 +97,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 ## 🆘 Support
 
-- [Documentation](https://wll-react-sdk.vercel.app/)
+- [Documentation](https://react-sdk.whitelabel-loyalty.com/)
 - [Issues](https://github.com/white-label-loyalty/wll-react-sdk/issues)
