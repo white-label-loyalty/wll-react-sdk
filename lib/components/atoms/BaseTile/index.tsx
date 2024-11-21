@@ -116,7 +116,6 @@ const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
         styles.content,
         isHalfSize && {
           justifyContent: 'center',
-          padding: 16,
         },
       ]}
     >
