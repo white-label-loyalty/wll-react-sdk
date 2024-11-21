@@ -52,7 +52,7 @@ export class PointsTileConfig {
 
 export class ContentTileConfig {
   title?: string | null;
-  description?: string | null;
+  body?: string | null;
   artworkUrl?: string | null;
   ctaLinkTarget?: CTALinkTarget;
   ctaLink?: string | null;
