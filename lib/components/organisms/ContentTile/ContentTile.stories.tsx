@@ -27,7 +27,7 @@ FullSizeImageAndText.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet',
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
     },
@@ -63,7 +63,7 @@ FullSizeTextOnly.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
 };
@@ -79,7 +79,8 @@ FullSizeTextOnlyLongBody.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias sequi non accusamus veniam iste? Aut assumenda explicabo, beatae, vero illum, saepe perspiciatis soluta tempora consequuntur ipsa voluptates. Placeat, libero! Omnis!',
+      description:
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias sequi non accusamus veniam iste? Aut assumenda explicabo, beatae, vero illum, saepe perspiciatis soluta tempora consequuntur ipsa voluptates. Placeat, libero! Omnis!',
     },
   },
 };
@@ -113,7 +114,7 @@ HalfSizeTextOnly.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet',
     },
   },
 };
@@ -130,7 +131,7 @@ HalfSizeTextOnlyWithLink.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Lorem ipsum dolor sit amet',
+      description: 'Lorem ipsum dolor sit amet',
       ctaLink: 'https://www.google.com',
       ctaLinkTarget: CTALinkTarget.sameWindow,
     },
@@ -149,7 +150,7 @@ FullSizeWithLink.args = {
     priority: 1,
     configuration: {
       title: 'Welcome Nick!',
-      body: 'Click here to learn more',
+      description: 'Click here to learn more',
       artworkUrl:
         'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
       ctaLink: 'https://www.google.com',
