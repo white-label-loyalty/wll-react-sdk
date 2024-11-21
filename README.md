@@ -25,15 +25,16 @@
 
 ```bash
 # npm
-npm install @wll/react-sdk
+npm install @wlloyalty/wll-react-sdk
 
 # yarn
-yarn add @wll/react-sdk
+yarn add @wlloyalty/wll-react-sdk
 ```
 
 ## 💻 System Requirements
 
 The SDK is compatible with:
+
 - React: ^18.0.0
 - React Native: >=0.70.0 <0.73.0
 
@@ -54,25 +55,27 @@ type(scope?): subject
 ```
 
 ### Types
-| Type | Description |
-|------|-------------|
-| `feat` | New features (e.g., `feat(auth): add Google OAuth login`) |
-| `fix` | Bug fixes (e.g., `fix(api): correct rate limiting logic`) |
-| `hotfix` | Critical bug fixes requiring immediate deployment |
-| `docs` | Documentation changes |
-| `style` | Code style changes (formatting, etc) |
-| `refactor` | Code changes that neither fix bugs nor add features |
-| `perf` | Performance improvements |
-| `test` | Adding or updating tests |
-| `build` | Changes to build system or dependencies |
-| `ci` | Changes to CI configuration |
-| `chore` | Other changes that don't modify src or test files |
-| `revert` | Reverting previous changes |
-| `wip` | Work in progress |
+
+| Type       | Description                                               |
+| ---------- | --------------------------------------------------------- |
+| `feat`     | New features (e.g., `feat(auth): add Google OAuth login`) |
+| `fix`      | Bug fixes (e.g., `fix(api): correct rate limiting logic`) |
+| `hotfix`   | Critical bug fixes requiring immediate deployment         |
+| `docs`     | Documentation changes                                     |
+| `style`    | Code style changes (formatting, etc)                      |
+| `refactor` | Code changes that neither fix bugs nor add features       |
+| `perf`     | Performance improvements                                  |
+| `test`     | Adding or updating tests                                  |
+| `build`    | Changes to build system or dependencies                   |
+| `ci`       | Changes to CI configuration                               |
+| `chore`    | Other changes that don't modify src or test files         |
+| `revert`   | Reverting previous changes                                |
+| `wip`      | Work in progress                                          |
 
 ### Development Workflow
 
 We use several tools to maintain code quality:
+
 - **Commitlint**: Validates commit message format
 - **Commitizen**: Interactive commit message formatter
 - **Husky**: Git hooks for enforcing conventions
