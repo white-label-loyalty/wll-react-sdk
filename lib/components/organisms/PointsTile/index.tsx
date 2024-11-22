@@ -104,11 +104,13 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
         : theme.surface,
       justifyContent: 'center',
       alignItems: 'center',
+      overflow: 'hidden',
     }),
     image: {
       width: '100%',
       height: '100%',
       position: 'absolute',
+      resizeMode: 'contain',
     },
   });
 
@@ -119,7 +121,7 @@ const PointsTileImage: React.FC<PointTileImageProps> = ({ isFullSize }) => {
       <Image
         source={{ uri: artworkUrl }}
         style={styles.image}
-        resizeMode="cover"
+        resizeMode="contain"
       />
     </View>
   );

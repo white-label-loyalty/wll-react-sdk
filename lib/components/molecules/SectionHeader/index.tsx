@@ -27,6 +27,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             styles.sectionTitle,
             {
               fontWeight: '700',
+              color: theme.text,
             },
           ]}
         >
@@ -38,7 +39,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           style={[
             styles.sectionDescription,
             {
-              color: theme.alphaDerivedText[20],
+              color: theme.alphaDerivedText[80],
             },
           ]}
         >

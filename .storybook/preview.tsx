@@ -4,12 +4,14 @@ import { SectionContext } from '../lib/components/organisms/Section';
 import { WllSdkProvider } from '../lib/context/WllSdkContext';
 import { SectionType, TSection } from '../lib/types/section';
 import {
+  CTALinkTarget,
   ProgressType,
   TierTileType,
   TileHeight,
   TileType,
 } from '../lib/types/tile';
 import { defaultTheme } from '../lib/utils/styling';
+import { ThemeName, themes } from '../lib/utils/themeHelpers';
 
 const sdkConfig = {
   apiKey: 'test',
@@ -26,146 +28,123 @@ type MockSectionProviderProps = {
 export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
   children,
   sectionData = {
-    name: 'Section2',
+    details: [],
+    defaultLocale: 'en',
+    name: 'Misc Tiles',
     type: SectionType.Grid,
     active: true,
-    pointsMultiplier: 1,
-    pointsPrefix: undefined,
-    pointsSuffix: undefined,
-    id: '84739810-37f5-4621-8433-8e0b61e09a5e',
-    createdAt: '2024-10-15T13:36:00.204Z',
-    updatedAt: '2024-10-15T13:36:00.204Z',
-    title: undefined,
-    description: undefined,
-    priority: 2,
+    id: 'cc1bf03b-42fd-4276-b543-84ec7a1cc527',
+    createdAt: '2024-11-14T19:00:31.894Z',
+    updatedAt: '2024-11-15T09:48:37.232Z',
+    priority: 5,
     tiles: [
       {
         tileHeight: TileHeight.Half,
         active: true,
-        type: TileType.Tier,
-        priority: 0,
+        type: TileType.Content,
         configuration: {
-          type: TierTileType.currentTier,
-          tierId: '54f0658a-9409-41f7-a508-ca02c6ac23e1',
-          progressType: ProgressType.Name,
-          tier: {
-            priority: 0,
-            id: '11ff96d2-c87b-4c89-bf5c-996604fc4d28',
-            name: 'Bronze',
-            description: undefined,
-            artworkUrl: undefined,
-            pointsRequirement: 100,
-          },
-          pointsMultiplier: 1,
-          pointsPrefix: undefined,
-          pointsSuffix: undefined,
+          defaultLocale: 'en',
+          details: [],
+          ctaLinkTarget: CTALinkTarget.newWindow,
+          locale: 'en',
+          title: 'Welcome Graeme',
+          body: 'Your culinary adventure awaits, tuck in and start earning!',
+          ctaLink: 'https://www.google.com',
         },
-        id: '89255d20-737a-4aa9-af12-9266b4b1dedf',
-        createdAt: '2024-10-15T13:24:28.991Z',
-        updatedAt: '2024-10-15T13:24:28.991Z',
+        id: 'fb42e341-c477-4b84-a8cf-02aa1f76a351',
+        createdAt: '2024-11-14T17:58:13.107Z',
+        updatedAt: '2024-11-21T21:44:41.237Z',
+        priority: 8,
       },
       {
         tileHeight: TileHeight.Half,
         active: true,
         type: TileType.Tier,
-        priority: 0,
         configuration: {
-          type: TierTileType.currentTargetSpecific,
-          tierId: '95a6405a-36d9-471e-9ccb-75088c6f2ba6',
-          progressType: ProgressType.Points,
+          type: TierTileType.currentTier,
+          tierId: '54f0658a-9409-41f7-a508-ca02c6ac23e1',
+          progressType: ProgressType.Name,
           tier: {
+            id: '5607df63-8e18-4a5c-ab71-06330368c1b3',
+            name: 'Platinum',
+            description: null,
+            artworkUrl: null,
+            pointsRequirement: 10000,
             priority: 0,
-            id: '11ff96d2-c87b-4c89-bf5c-996604fc4d28',
-            name: 'Bronze',
-            description: undefined,
-            artworkUrl: undefined,
-            pointsRequirement: 100,
           },
-          targetTier: {
-            id: '95a6405a-36d9-471e-9ccb-75088c6f2ba6',
-            name: 'Silver',
-            pointsRequirement: 2000,
-            attained: false,
-            artworkUrl: undefined,
-            earnedPoints: 300,
-            priority: 1,
-          },
-          pointsMultiplier: 1,
-          pointsPrefix: undefined,
-          pointsSuffix: undefined,
+          locale: 'en',
+          title: 'Your Tier',
+          pointsSuffix: 'points',
+          emptyArtworkUrl:
+            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+          emptyDescription: 'Oops. You’re not in a tier.',
+          pointsToTierPrefix: 'Earn',
+          pointsToTierSuffix: 'to achieve this tier.',
         },
-        id: '11ac9b70-f025-4184-8372-7acbf0ac08cd',
-        createdAt: '2024-10-15T13:21:40.133Z',
-        updatedAt: '2024-10-15T13:21:40.133Z',
+        id: 'bcd700c0-1288-4117-9ff0-fe2a72913e77',
+        createdAt: '2024-11-14T18:06:25.686Z',
+        updatedAt: '2024-11-14T18:06:25.686Z',
+        priority: 7,
+      },
+      {
+        tileHeight: TileHeight.Half,
+        active: true,
+        type: 'POINTS',
+        configuration: {
+          defaultLocale: 'en',
+          details: [],
+          points: 5600,
+          locale: 'en',
+          title: 'Points balance',
+          artworkUrl:
+            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+          pointsPrefix: '',
+          pointsSuffix: 'pts',
+          pointsMultiplier: 1,
+        },
+        id: '7530fc60-6352-47bc-86a1-8d54e9848fcc',
+        createdAt: '2024-11-14T18:07:37.939Z',
+        updatedAt: '2024-11-14T18:07:37.939Z',
+        priority: 6,
       },
       {
         tileHeight: TileHeight.Half,
         active: true,
         type: TileType.Content,
         configuration: {
-          title: 'Welcome Graeme',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          defaultLocale: 'en',
+          details: [],
+          ctaLinkTarget: CTALinkTarget.newWindow,
+          locale: 'en',
+          title: '',
+          body: 'Every bite brings you closer to rewards! Earn 1 point for every $1 spent!',
+          artworkUrl: null,
+          ctaLink: 'https://google.co.uk',
         },
-        id: '95d0cf59-198b-48b2-9f42-931cd28bee6e',
-        createdAt: '2024-10-15T11:38:59.522Z',
-        updatedAt: '2024-10-15T11:38:59.522Z',
-        priority: 0,
+        id: '288c9873-729e-4766-83fc-1e15cafde6ba',
+        createdAt: '2024-11-14T18:44:18.897Z',
+        updatedAt: '2024-11-14T18:44:18.897Z',
+        priority: 5,
       },
     ],
+    title: 'Profile',
+    locale: 'en',
+    description:
+      'Welcome to WLL Explorer! Find out more about our exciting loyalty program.',
   },
 }) => {
   return (
+    // @ts-ignore
     <SectionContext.Provider value={{ sectionData }}>
       {children}
     </SectionContext.Provider>
   );
 };
 
-const darkTheme = {
-  ...defaultTheme,
-  background: '#1a1a1a',
-  text: '#ffffff',
-  surface: '#2c2c2c',
-  surfaceText: '#ffffff',
-  primary: '#FFD23C',
-};
-
-const clientATheme = {
-  ...defaultTheme,
-  primary: '#e63946',
-  accent: '#a8dadc',
-  surface: '#fff',
-};
-
-const clientBTheme = {
-  ...defaultTheme,
-  primary: '#2E8840',
-  accent: '#2E8840',
-  background: '#ECE3D7',
-  surface: '#fff',
-};
-
-const themes = {
-  default: defaultTheme,
-  dark: darkTheme,
-  clientA: clientATheme,
-  clientB: clientBTheme,
-};
-const styleTag = `
-  <style>
-    #storybook-root {
-      padding: 0 !important;
-    }
-    .sb-show-main {
-      margin: 0 !important;
-    }
-  </style>
-`;
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      const selectedTheme = context.globals.theme;
+      const selectedTheme = context.globals.theme as ThemeName;
       const theme = themes[selectedTheme] || defaultTheme;
 
       return (
@@ -187,11 +166,12 @@ const preview: Preview = {
   ],
   parameters: {
     layout: 'fullscreen',
-    backgrounds: { disable: true }, // Disable the backgrounds addon
+    backgrounds: { disable: true },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i,
+        date: /Date$/,
       },
     },
   },
@@ -205,8 +185,10 @@ const preview: Preview = {
         items: [
           { value: 'default', title: 'Default' },
           { value: 'dark', title: 'Dark' },
-          { value: 'clientA', title: 'Red' },
-          { value: 'clientB', title: 'Green' },
+          { value: 'modern', title: 'Modern' },
+          { value: 'warm', title: 'Warm' },
+          { value: 'forest', title: 'Forest' },
+          { value: 'sunset', title: 'Sunset' },
         ],
       },
     },
