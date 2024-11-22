@@ -1,0 +1,114 @@
+import * as React from 'react';
+import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
+import { GRID_GAP } from '../../../constants/grid';
+import { useWllSdk } from '../../../context/WllSdkContext';
+
+interface SkeletonProps {
+  width?: number | `${number}%`;
+  height?: number | `${number}%`;
+  borderRadius?: number;
+  style?: ViewStyle;
+  numberOfSquares?: number;
+}
+
+const Skeleton: React.FC<SkeletonProps> = ({ style, numberOfSquares = 4 }) => {
+  const { theme } = useWllSdk();
+  const animatedValue = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    const pulseAnimation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(animatedValue, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(animatedValue, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ])
+    );
+
+    pulseAnimation.start();
+
+    return () => pulseAnimation.stop();
+  }, [animatedValue]);
+
+  const opacity = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.3, 0.7],
+  });
+
+  const sharedSkeletonStyle = {
+    opacity,
+    backgroundColor: theme.alphaDerivedText[20],
+    borderRadius: theme.sizes.borderRadiusLg,
+  };
+
+  return (
+    <View>
+      <Animated.View
+        style={[
+          styles.skeleton,
+          styles.title,
+          {
+            opacity,
+            backgroundColor: theme.alphaDerivedText[20],
+            borderRadius: 6,
+          },
+        ]}
+      />
+      <Animated.View
+        style={[
+          styles.skeleton,
+          styles.body,
+          {
+            opacity,
+            backgroundColor: theme.alphaDerivedText[20],
+            borderRadius: 6,
+          },
+        ]}
+      />
+      <Animated.View style={[styles.container, style]}>
+        {Array.from({ length: numberOfSquares }).map((_, index) => (
+          <Animated.View
+            key={index}
+            style={[styles.skeleton, styles.square, sharedSkeletonStyle]}
+          />
+        ))}
+      </Animated.View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: GRID_GAP,
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: 1080,
+  },
+  title: {
+    height: 40,
+    marginBottom: 10,
+    width: 300,
+  },
+  body: {
+    height: 25,
+    width: '85%',
+    marginBottom: 24,
+  },
+  skeleton: {
+    overflow: 'hidden',
+  },
+  square: {
+    width: 1000 / 4,
+    aspectRatio: 1,
+  },
+});
+
+export default Skeleton;

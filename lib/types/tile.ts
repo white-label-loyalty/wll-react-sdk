@@ -168,6 +168,7 @@ export class TierTileConfig {
   emptyArtworkUrl?: string = '';
   pointsToTierPrefix?: string = '';
   pointsToTierSuffix?: string = '';
+  locale: string = 'en';
 }
 
 export type Tile = {

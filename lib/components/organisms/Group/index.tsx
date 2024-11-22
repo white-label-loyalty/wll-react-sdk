@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
+import { Skeleton } from '../../atoms';
 import Section from '../Section';
 
 type GroupProps = {
@@ -17,7 +18,6 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     const fetchGroup = async () => {
       setLoading(true);
       const response = await getGroupByID(id);
-      console.log(response.data);
       setGroupData(response.data);
       setLoading(false);
     };
@@ -26,11 +26,27 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   }, [id, getGroupByID]);
 
   if (loading) {
-    return <ActivityIndicator size="large" />;
+    return (
+      <View style={styles.emptyConatiner}>
+        <Skeleton />
+      </View>
+    );
   }
 
   if (!groupData) {
-    return <Text>No group data available</Text>;
+    return (
+      <View style={styles.emptyConatiner}>
+        <Text>No group data available</Text>
+      </View>
+    );
+  }
+
+  if (!groupData.sections || groupData.sections.length === 0) {
+    return (
+      <View style={styles.emptyConatiner}>
+        <Text>No sections available</Text>;
+      </View>
+    );
   }
 
   return (
@@ -50,5 +66,13 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  emptyConatiner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default Group;

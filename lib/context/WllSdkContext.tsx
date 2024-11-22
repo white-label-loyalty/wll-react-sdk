@@ -94,6 +94,10 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
     createTheme(providedTheme || {})
   );
 
+  React.useEffect(() => {
+    setThemeState(createTheme(providedTheme || {}));
+  }, [providedTheme]);
+
   const setTheme = React.useCallback((newTheme: Partial<BaseThemeObject>) => {
     setThemeState((prevTheme) => createTheme({ ...prevTheme, ...newTheme }));
   }, []);
