@@ -1,8 +1,10 @@
 import type { Preview } from '@storybook/react';
 import * as React from 'react';
+import { Indicator } from '../lib/components/atoms';
 import { SectionContext } from '../lib/components/organisms/Section';
 import { WllSdkProvider } from '../lib/context/WllSdkContext';
 import { SectionType, TSection } from '../lib/types/section';
+
 import {
   CTALinkTarget,
   ProgressType,
@@ -158,6 +160,8 @@ const preview: Preview = {
           >
             <MockSectionProvider>
               <Story />
+
+              <Indicator />
             </MockSectionProvider>
           </div>
         </WllSdkProvider>

@@ -1,0 +1,38 @@
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useResponsive } from '../../../hooks/useResponsive';
+
+const Indicator = () => {
+  const { isDesktop, isTablet, isMobile } = useResponsive();
+
+  const getCurrentLayout = () => {
+    if (isDesktop) return 'Desktop Layout';
+    if (isTablet) return 'Tablet Layout';
+    return 'Mobile Layout';
+  };
+
+  return (
+    <View style={styles.indicator}>
+      <Text style={styles.indicatorText}>{getCurrentLayout()}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  indicator: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    backgroundColor: 'red',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 4,
+  },
+  indicatorText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+});
+
+export default Indicator;

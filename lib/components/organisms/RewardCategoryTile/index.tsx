@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useResponsive } from '../../../hooks/useResponsive';
 import { RewardCategoryTileConfig, Tile } from '../../../types/tile';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import { BaseTile, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
@@ -27,13 +29,21 @@ const RewardCategoryHeader: React.FC = () => {
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
   const { showName, name } = configuration as RewardCategoryTileConfig;
+  const { isDesktop, isTablet } = useResponsive();
 
   if (!showName || !name) return null;
+
+  const dynamicStyles = StyleSheet.create({
+    headerText: {
+      fontSize: getResponsiveValue(16, 12, isDesktop, isTablet),
+      paddingHorizontal: getResponsiveValue(40, 20, isDesktop, isTablet),
+    },
+  });
 
   return (
     <View style={[styles.header, { backgroundColor: theme.primary }]}>
       <Text
-        style={[styles.headerText, { color: theme.primaryText }]}
+        style={[dynamicStyles.headerText, { color: theme.primaryText }]}
         ellipsizeMode="tail"
         numberOfLines={1}
       >
@@ -64,10 +74,6 @@ const styles = StyleSheet.create({
     height: 35,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  headerText: {
-    fontSize: 16,
-    paddingHorizontal: 30,
   },
   background: {
     position: 'absolute',
