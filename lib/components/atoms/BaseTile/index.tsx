@@ -114,8 +114,9 @@ const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
     <View
       style={[
         styles.content,
-        isHalfSize && {
+        {
           justifyContent: 'center',
+          height: !artworkUrl ? '100%' : undefined,
         },
       ]}
     >

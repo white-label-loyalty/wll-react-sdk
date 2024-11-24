@@ -4,6 +4,7 @@ import { GRID_GAP } from '../../../constants/grid';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
+import { sortByPriority } from '../../../utils/transforms';
 import { TileContainer } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 
@@ -57,9 +58,11 @@ const Grid: React.FC<GridProps> = ({ section }) => {
       return tileContainers;
     }
 
-    gridTiles.forEach((tile, index) => {
+    const sortedTiles = sortByPriority(gridTiles);
+
+    sortedTiles.forEach((tile, index) => {
       currentTiles.push(tile);
-      const nextTile = gridTiles[index + 1];
+      const nextTile = sortedTiles[index + 1];
 
       const shouldStartNewContainer = (
         currentTiles: Tile[],

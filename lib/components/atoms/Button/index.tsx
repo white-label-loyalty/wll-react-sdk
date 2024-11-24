@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useResponsive } from '../../../hooks/useResponsive';
 import { Variant } from '../../../types/theme';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import { createVariantSystem } from '../../../utils/variant';
 
 type ButtonProps = {
@@ -11,23 +12,7 @@ type ButtonProps = {
   variant: Variant;
 };
 
-const styles = StyleSheet.create({
-  button: createResponsiveStyle({
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: [12, 12, 24],
-    paddingVertical: [12, 12, 12],
-    alignSelf: 'flex-start',
-  }),
-  // @ts-ignore
-  text: createResponsiveStyle({
-    textAlign: 'center',
-    textTransform: 'uppercase',
-    fontSize: [12, 12, 18],
-  }),
-});
-
-const useButtonStyles = createVariantSystem(styles.button, (theme) => ({
+const useButtonStyles = createVariantSystem({}, (theme) => ({
   primary: {
     backgroundColor: theme.primary,
   },
@@ -42,7 +27,7 @@ const useButtonStyles = createVariantSystem(styles.button, (theme) => ({
   },
 }));
 
-const useTextStyles = createVariantSystem(styles.text, (theme) => ({
+const useTextStyles = createVariantSystem({}, (theme) => ({
   primary: {
     color: theme.primaryText,
   },
@@ -59,24 +44,36 @@ const useTextStyles = createVariantSystem(styles.text, (theme) => ({
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
   const { theme } = useWllSdk();
+  const { isDesktop, isTablet } = useResponsive();
   const buttonStyle = useButtonStyles(theme, variant);
   const textStyle = useTextStyles(theme, variant);
 
+  const dynamicStyles = StyleSheet.create({
+    button: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: getResponsiveValue(24, 12, isDesktop, isTablet),
+      paddingVertical: 12,
+      alignSelf: 'flex-start',
+    },
+    text: {
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      fontSize: getResponsiveValue(18, 12, isDesktop, isTablet),
+      fontWeight: '700',
+    },
+  });
+
   return (
     <TouchableOpacity
-      style={[buttonStyle, { borderRadius: theme.sizes.borderRadiusButton }]}
+      style={[
+        dynamicStyles.button,
+        buttonStyle,
+        { borderRadius: theme.sizes.borderRadiusButton },
+      ]}
       onPress={onPress}
     >
-      <Text
-        style={[
-          textStyle,
-          {
-            fontWeight: '700',
-          },
-        ]}
-      >
-        {title}
-      </Text>
+      <Text style={[dynamicStyles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };

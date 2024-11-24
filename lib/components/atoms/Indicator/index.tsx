@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
 
 const Indicator = () => {
-  const { isDesktop, isTablet, isMobile } = useResponsive();
+  const { isDesktop, isTablet } = useResponsive();
 
   const getCurrentLayout = () => {
     if (isDesktop) return 'Desktop Layout';
@@ -21,7 +21,7 @@ const Indicator = () => {
 const styles = StyleSheet.create({
   indicator: {
     position: 'absolute',
-    bottom: 10,
+    top: 10,
     right: 10,
     backgroundColor: 'red',
     paddingHorizontal: 12,

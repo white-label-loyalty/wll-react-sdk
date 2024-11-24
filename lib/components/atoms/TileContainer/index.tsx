@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
+import { useResponsive } from '../../../hooks/useResponsive';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
   BadgeTileUpdated,
@@ -16,6 +17,8 @@ type TileContainerProps = {
 };
 
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
+  const { isDesktop } = useResponsive();
+
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
       case TileType.Content:
@@ -42,7 +45,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
     <View
       style={[
         styles.container,
-        allHalfTiles ? { aspectRatio: 2 } : { aspectRatio: 1 },
+        isDesktop && allHalfTiles ? { aspectRatio: 2 } : { aspectRatio: 1 },
       ]}
     >
       {tiles.map((tile, index) => (
