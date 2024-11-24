@@ -17,6 +17,7 @@ import {
   getDerivedColorPercentages,
   getReadableTextColor,
 } from '../utils/themeHelpers';
+import { ResponsiveProvider } from './ResponsiveContext';
 
 type Fetcher = <T>(
   endpoint: string,
@@ -134,7 +135,7 @@ export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
   );
   return (
     <WllSdkContext.Provider value={contextValue}>
-      {children}
+      <ResponsiveProvider>{children}</ResponsiveProvider>
     </WllSdkContext.Provider>
   );
 };
