@@ -12,6 +12,7 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { sortByPriority } from '../../../utils/transforms';
 import { Icon } from '../../atoms';
 import { BannerTile } from '../../organisms';
 import SectionHeader from '../SectionHeader';
@@ -29,6 +30,8 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const bannerTiles = section.tiles.filter(
     (tile: Tile) => tile.type === TileType.Banner
   );
+
+  const sortedTiles = sortByPriority(bannerTiles);
 
   const animatedIndex = useRef(new Animated.Value(0)).current;
 
@@ -60,7 +63,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   };
 
   const handleNext = () => {
-    const newIndex = Math.min(bannerTiles.length - 1, currentIndex + 1);
+    const newIndex = Math.min(sortedTiles.length - 1, currentIndex + 1);
     setCurrentIndex(newIndex);
     scrollViewRef.current?.scrollTo({
       x: newIndex * slideWidth,
@@ -68,7 +71,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     });
   };
 
-  const displayControls = bannerTiles.length > 1;
+  const displayControls = sortedTiles.length > 1;
 
   return (
     <>
@@ -97,33 +100,24 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             scrollEventThrottle={16}
             style={[styles.carouselContent, { width: slideWidth }]}
             contentContainerStyle={{
-              width: slideWidth * bannerTiles.length,
+              width: slideWidth * sortedTiles.length,
             }}
             decelerationRate="fast"
             snapToInterval={slideWidth}
             snapToAlignment="start"
           >
-            {bannerTiles
-              .sort((a, b) => {
-                // Sort by priority (higher priority first)
-                if (a.priority !== b.priority) {
-                  return b.priority - a.priority;
-                }
-                // If priorities are equal, maintain original order
-                return bannerTiles.indexOf(a) - bannerTiles.indexOf(b);
-              })
-              .map((tile: Tile, index: number) => (
-                <View
-                  key={index}
-                  style={[
-                    {
-                      width: slideWidth,
-                    },
-                  ]}
-                >
-                  <BannerTile tile={tile} />
-                </View>
-              ))}
+            {sortedTiles.map((tile: Tile, index: number) => (
+              <View
+                key={index}
+                style={[
+                  {
+                    width: slideWidth,
+                  },
+                ]}
+              >
+                <BannerTile tile={tile} />
+              </View>
+            ))}
           </ScrollView>
           {displayControls && (
             <TouchableOpacity
@@ -140,7 +134,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
         </View>
         {displayControls && (
           <View style={styles.indicators}>
-            {bannerTiles.map((_, index) => {
+            {sortedTiles.map((_, index) => {
               const width = animatedIndex.interpolate({
                 inputRange: [index - 1, index, index + 1],
                 outputRange: [8, 30, 8],
@@ -165,7 +159,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     </>
   );
 };
-const buttonSize = 30;
+const buttonSize = 42;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -193,22 +187,6 @@ const styles = StyleSheet.create({
   },
   carouselContent: {
     overflow: 'hidden',
-  },
-  slideContent: {
-    padding: 20,
-    flex: 1,
-  },
-  imageContainer: {
-    width: '20%',
-    aspectRatio: 1,
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  image: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
   },
   navButton: {
     padding: 10,

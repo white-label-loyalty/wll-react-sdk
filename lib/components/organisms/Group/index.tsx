@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
+import { sortByPriority } from '../../../utils/transforms';
 import { Skeleton } from '../../atoms';
 import Section from '../Section';
 
@@ -44,25 +45,17 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   if (!groupData.sections || groupData.sections.length === 0) {
     return (
       <View style={styles.emptyConatiner}>
-        <Text>No sections available</Text>;
+        <Text>No sections available</Text>
       </View>
     );
   }
 
+  const sortedSections = sortByPriority(groupData.sections);
   return (
     <View>
-      {groupData.sections
-        .sort((a, b) => {
-          // Sort by priority (higher priority first)
-          if (a.priority !== b.priority) {
-            return b.priority - a.priority;
-          }
-          // If priorities are equal, maintain original order
-          return groupData.sections.indexOf(a) - groupData.sections.indexOf(b);
-        })
-        .map((section) => (
-          <Section key={section.id} section={section} />
-        ))}
+      {sortedSections.map((section) => (
+        <Section key={section.id} section={section} />
+      ))}
     </View>
   );
 };

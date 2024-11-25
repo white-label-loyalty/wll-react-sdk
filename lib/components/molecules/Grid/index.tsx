@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
+import { useResponsive } from '../../../context/ResponsiveContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
+import { sortByPriority } from '../../../utils/transforms';
 import { TileContainer } from '../../atoms';
 import { SectionHeader } from '../../molecules';
 
@@ -11,10 +13,8 @@ type GridProps = {
 };
 
 const Grid: React.FC<GridProps> = ({ section }) => {
-  const { width } = useWindowDimensions();
-  const isDesktop = width >= 700;
+  const { isDesktop } = useResponsive();
   const columnsPerRow = isDesktop ? 4 : 2;
-  const gap = GRID_GAP;
 
   const renderGrid = () => {
     const tileContainers: JSX.Element[] = [];
@@ -33,21 +33,23 @@ const Grid: React.FC<GridProps> = ({ section }) => {
       (tile) => tile.tileHeight === TileHeight.Half
     );
 
+    const getTileWidth = (columns: number) => ({
+      width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
+      marginBottom: GRID_GAP,
+      height: 'auto',
+    });
+
     if (isDesktop && allHalfTiles) {
       gridTiles.forEach((tile, index) => {
         const isLastInRow = (index + 1) % columnsPerRow === 0;
         tileContainers.push(
           <View
             key={`container-${index}`}
-            // @ts-ignore
-            style={{
-              width: `calc(${100 / columnsPerRow}% - ${
-                ((columnsPerRow - 1) * gap) / columnsPerRow
-              }px)`,
-              marginRight: isLastInRow ? 0 : gap,
-              marginBottom: gap,
-              height: 'auto',
-            }}
+            style={[
+              // @ts-ignore
+              getTileWidth(columnsPerRow),
+              !isLastInRow && { marginRight: GRID_GAP },
+            ]}
           >
             <TileContainer tiles={[tile]} />
           </View>
@@ -56,9 +58,11 @@ const Grid: React.FC<GridProps> = ({ section }) => {
       return tileContainers;
     }
 
-    gridTiles.forEach((tile, index) => {
+    const sortedTiles = sortByPriority(gridTiles);
+
+    sortedTiles.forEach((tile, index) => {
       currentTiles.push(tile);
-      const nextTile = gridTiles[index + 1];
+      const nextTile = sortedTiles[index + 1];
 
       const shouldStartNewContainer = (
         currentTiles: Tile[],
@@ -88,14 +92,11 @@ const Grid: React.FC<GridProps> = ({ section }) => {
         tileContainers.push(
           <View
             key={`container-${index}`}
-            // @ts-ignore
-            style={{
-              width: `calc(${100 / columnsPerRow}% - ${
-                ((columnsPerRow - 1) * gap) / columnsPerRow
-              }px)`,
-              marginRight: isLastInRow ? 0 : gap,
-              marginBottom: gap,
-            }}
+            style={[
+              // @ts-ignore
+              getTileWidth(columnsPerRow),
+              !isLastInRow && { marginRight: GRID_GAP },
+            ]}
           >
             <TileContainer tiles={currentTiles} />
           </View>
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    height: 'auto',
+    width: '100%',
   },
 });
 

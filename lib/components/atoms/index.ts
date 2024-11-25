@@ -9,5 +9,6 @@ export { default as Text } from './Text';
 
 export { default as BaseBanner } from './BaseBanner';
 export { default as BaseTile } from './BaseTile';
+export { default as Indicator } from './Indicator';
 export { default as Skeleton } from './Skeleton';
 export { default as TileContainer } from './TileContainer';

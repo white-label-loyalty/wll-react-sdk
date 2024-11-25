@@ -98,11 +98,12 @@ const styles = StyleSheet.create({
     flex: 1,
   }),
   mediaContainer: createResponsiveStyle({
-    width: '20%',
+    width: '30%',
     aspectRatio: 1,
     position: 'relative',
     overflow: 'hidden',
     marginRight: [8, 8, 24],
+    height: 320,
   }),
   media: {
     position: 'absolute',

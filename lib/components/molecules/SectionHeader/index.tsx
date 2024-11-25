@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../hooks/useResponsive';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import Text from '../../atoms/Text';
 
 type SectionHeaderProps = {
@@ -14,17 +15,31 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   description,
 }) => {
   const { theme } = useWllSdk();
+  const { isDesktop, isTablet } = useResponsive();
 
   if (!title && !description) {
     return null;
   }
 
+  const dynamicStyles = StyleSheet.create({
+    sectionHeader: {
+      marginBottom: getResponsiveValue(16, 8, isDesktop, isTablet),
+    },
+    sectionTitle: {
+      fontSize: getResponsiveValue(32, 18, isDesktop, isTablet),
+      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+    },
+    sectionDescription: {
+      fontSize: getResponsiveValue(24, 14, isDesktop, isTablet),
+    },
+  });
+
   return (
-    <View style={styles.sectionHeader}>
+    <View style={dynamicStyles.sectionHeader}>
       {title && (
         <Text
           style={[
-            styles.sectionTitle,
+            dynamicStyles.sectionTitle,
             {
               fontWeight: '700',
               color: theme.text,
@@ -37,7 +52,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       {description && (
         <Text
           style={[
-            styles.sectionDescription,
+            dynamicStyles.sectionDescription,
             {
               color: theme.alphaDerivedText[80],
             },
@@ -49,18 +64,5 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionHeader: createResponsiveStyle({
-    marginBottom: [8, 8, 16],
-  }),
-  sectionTitle: createResponsiveStyle({
-    fontSize: [18, 18, 32],
-    marginBottom: [4, 4, 8],
-  }),
-  sectionDescription: createResponsiveStyle({
-    fontSize: [14, 14, 24],
-  }),
-});
 
 export default SectionHeader;

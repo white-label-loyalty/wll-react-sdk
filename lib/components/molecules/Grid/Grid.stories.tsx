@@ -12,7 +12,7 @@ export default {
     (Story) => (
       <View
         style={{
-          width: 1080,
+          maxWidth: 1080,
           height: '100%',
           alignContent: 'center',
           justifyContent: 'center',

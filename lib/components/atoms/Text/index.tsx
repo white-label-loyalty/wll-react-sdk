@@ -5,8 +5,9 @@ import {
   StyleSheet,
   TextStyle,
 } from 'react-native';
+import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 
 type TextVariant =
   | 'eyebrow'
@@ -31,60 +32,57 @@ export const Text: React.FC<TextProps> = ({
   ...props
 }) => {
   const { theme } = useWllSdk();
+  const { isDesktop, isTablet } = useResponsive();
 
   const getVariantStyle = (variant: TextVariant): TextStyle => {
     const baseStyle = {
       color: theme.surfaceText,
     };
+
     switch (variant) {
       case 'eyebrow':
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
-          fontSize: [12, 12, 14],
-          marginBottom: [4, 4, 8],
-        });
+          fontSize: getResponsiveValue(14, 12, isDesktop, isTablet),
+          marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+        };
       case 'title':
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
-          fontSize: [14, 14, 24],
+          fontSize: getResponsiveValue(24, 14, isDesktop, isTablet),
           fontWeight: 'bold',
-        });
-      case 'description':
-        return createResponsiveStyle({
-          ...baseStyle,
-        });
+        };
       case 'body':
-        return createResponsiveStyle({
+        return {
           color: theme.derivedSurfaceText[20],
-          fontSize: [10, 10, 14],
-        });
+          fontSize: getResponsiveValue(14, 10, isDesktop, isTablet),
+        };
       case 'caption':
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
           fontWeight: 'bold',
-          fontSize: [18, 18, 24],
+          fontSize: getResponsiveValue(24, 18, isDesktop, isTablet),
           color: theme.primary,
-        });
-      case 'label':
-        return createResponsiveStyle({
-          ...baseStyle,
-        });
+        };
       case 'tier-earned':
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
-          fontSize: [14, 14, 20],
+          fontSize: getResponsiveValue(20, 14, isDesktop, isTablet),
           fontWeight: 'bold',
-        });
+        };
       case 'tier-requirement':
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
-          fontSize: [12, 12, 18],
+          fontSize: getResponsiveValue(18, 12, isDesktop, isTablet),
           fontWeight: 'bold',
-        });
+        };
+      case 'description':
+      case 'label':
       default:
-        return createResponsiveStyle({
+        return {
           ...baseStyle,
-        });
+          fontSize: getResponsiveValue(12, 10, isDesktop, isTablet),
+        };
     }
   };
 
