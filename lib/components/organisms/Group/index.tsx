@@ -45,7 +45,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   if (!groupData.sections || groupData.sections.length === 0) {
     return (
       <View style={styles.emptyConatiner}>
-        <Text>No sections available</Text>;
+        <Text>No sections available</Text>
       </View>
     );
   }
