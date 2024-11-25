@@ -161,7 +161,7 @@ const preview: Preview = {
             <MockSectionProvider>
               <Story />
 
-              <Indicator />
+              {process.env.NODE_ENV === 'development' && <Indicator />}
             </MockSectionProvider>
           </div>
         </WllSdkProvider>
