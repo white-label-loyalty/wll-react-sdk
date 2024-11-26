@@ -8,10 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import { sortByPriority } from '../../../utils/transforms';
 import { Icon } from '../../atoms';
 import { BannerTile } from '../../organisms';
@@ -23,6 +24,7 @@ type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const { theme } = useWllSdk();
+  const { isDesktop, isTablet } = useResponsive();
   const scrollViewRef = useRef<ScrollView>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideWidth = 1080;
@@ -72,6 +74,66 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   };
 
   const displayControls = sortedTiles.length > 1;
+
+  const dynamicStyles = StyleSheet.create({
+    indicators: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: getResponsiveValue(24, 12, isDesktop, isTablet),
+    },
+  });
+
+  const buttonSize = 42;
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    sectionTitle: {
+      fontSize: 31,
+      marginBottom: 10,
+    },
+    sectionDescription: {
+      marginBottom: 21,
+    },
+    title: {
+      marginBottom: 10,
+    },
+    description: {
+      marginBottom: 20,
+    },
+    carouselContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    carouselContent: {
+      overflow: 'hidden',
+    },
+    navButton: {
+      position: 'absolute',
+      top: '50%',
+      transform: [{ translateY: -buttonSize / 2 }],
+      width: buttonSize,
+      height: buttonSize,
+      borderRadius: buttonSize / 2,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 1,
+    },
+    navButtonLeft: {
+      left: -buttonSize / 2,
+    },
+    navButtonRight: {
+      right: -buttonSize / 2,
+    },
+    indicator: {
+      width: 8,
+      height: 8,
+      borderRadius: 8,
+      marginHorizontal: 4,
+    },
+  });
 
   return (
     <>
@@ -133,7 +195,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
           )}
         </View>
         {displayControls && (
-          <View style={styles.indicators}>
+          <View style={dynamicStyles.indicators}>
             {sortedTiles.map((_, index) => {
               const width = animatedIndex.interpolate({
                 inputRange: [index - 1, index, index + 1],
@@ -159,70 +221,5 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     </>
   );
 };
-const buttonSize = 42;
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    maxWidth: 1080,
-    alignSelf: 'center',
-    position: 'relative',
-  },
-  sectionTitle: {
-    fontSize: 31,
-    marginBottom: 10,
-  },
-  sectionDescription: {
-    marginBottom: 21,
-  },
-  title: {
-    marginBottom: 10,
-  },
-  description: {
-    marginBottom: 20,
-  },
-  carouselContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  carouselContent: {
-    overflow: 'hidden',
-  },
-  navButton: {
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 9999,
-    width: buttonSize,
-    height: buttonSize,
-    position: 'absolute',
-    zIndex: 100,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-  },
-  navButtonLeft: {
-    left: -buttonSize / 2,
-  },
-  navButtonRight: {
-    right: -buttonSize / 2,
-  },
-  indicators: createResponsiveStyle({
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: [12, 12, 24],
-  }),
-  indicator: {
-    width: 8,
-    height: 8,
-    borderRadius: 8,
-    marginHorizontal: 4,
-  },
-  activeIndicator: {
-    width: 24,
-    borderRadius: 8,
-  },
-});
 
 export default Carousel;

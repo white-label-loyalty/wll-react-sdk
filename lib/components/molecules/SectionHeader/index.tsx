@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
+import { useResponsive } from '../../../context/ResponsiveContext';
 import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import Text from '../../atoms/Text';
 
@@ -17,7 +17,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
 
-  if (!title && !description) {
+  if (!title) {
     return null;
   }
 

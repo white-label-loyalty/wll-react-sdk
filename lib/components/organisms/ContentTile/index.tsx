@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Tile } from '../../../types/tile';
+import { ContentTileConfig, Tile } from '../../../types/tile';
 import { createResponsiveStyle } from '../../../utils/responsiveHelper';
-import BaseTile from '../../atoms/BaseTile';
+import BaseTile, { useTileContext } from '../../atoms/BaseTile';
 
 type ContentTileProps = {
   tile: Tile;
@@ -46,11 +46,18 @@ const ContentTileContent: React.FC<{ children: React.ReactNode }> = ({
   </BaseTile.Content>
 );
 
-const ContentTileHeader: React.FC = () => (
-  <BaseTile.Header>
-    <BaseTile.Title />
-  </BaseTile.Header>
-);
+const ContentTileHeader: React.FC = () => {
+  const tile = useTileContext();
+  const { title } = tile.configuration as ContentTileConfig;
+
+  if (!title) return null;
+
+  return (
+    <BaseTile.Header>
+      <BaseTile.Title />
+    </BaseTile.Header>
+  );
+};
 
 const ContentTileBody: React.FC = () => <BaseTile.Body />;
 

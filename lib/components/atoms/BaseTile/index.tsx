@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
+import { useResponsive } from '../../../hooks/useResponsive';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig, Tile } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import Icon from '../Icon';
 import ProgressiveImage from '../ProgressiveImage';
 import Text from '../Text';
@@ -63,6 +64,7 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   const { ctaLink, ctaLinkTarget, title } =
     tile.configuration as ContentTileConfig;
   const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
+  const { isDesktop, isTablet } = useResponsive();
 
   const layout: LayoutProps = {
     flexDirection: 'column',
@@ -70,12 +72,18 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
     alignItems: 'stretch',
   };
 
-  const responsiveStyles = createResponsiveStyle({
-    borderRadius: [
-      theme.sizes.borderRadiusSm,
-      theme.sizes.borderRadiusSm,
-      theme.sizes.borderRadiusLg,
-    ],
+  const dynamicStyles = StyleSheet.create({
+    container: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      aspectRatio: isHalfSize ? 2 : 1,
+      borderRadius: getResponsiveValue(
+        theme.sizes.borderRadiusLg,
+        theme.sizes.borderRadiusSm,
+        isDesktop,
+        isTablet
+      ),
+    },
   });
 
   return (
@@ -84,10 +92,9 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
         styles.container,
         {
           backgroundColor: theme.surface,
-          borderRadius: responsiveStyles.borderRadius,
-          aspectRatio: isHalfSize ? 2 : 1,
           opacity: pressed ? 0.7 : 1,
         },
+        dynamicStyles.container,
         layout,
         style,
       ]}
@@ -129,21 +136,30 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
   const tile = useTileContext();
   const { artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
+  const { isDesktop, isTablet } = useResponsive();
 
   // For half tiles with an image, don't show header
   if (isHalfSize && artworkUrl) return null;
 
-  const headerStyle = createResponsiveStyle({
-    marginTop: [8, 8, 12],
+  const dynamicStyles = StyleSheet.create({
+    header: {
+      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginTop: getResponsiveValue(12, 8, isDesktop, isTablet),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
   });
 
   return (
     <View
       style={[
-        styles.header,
+        dynamicStyles.header,
         {
           marginTop:
-            !isHalfSize && artworkUrl ? headerStyle.marginTop : undefined,
+            !isHalfSize && artworkUrl
+              ? dynamicStyles.header.marginTop
+              : undefined,
           // @ts-ignore
           textAlign: isHalfSize && 'center',
         },
@@ -240,12 +256,6 @@ const styles = StyleSheet.create({
     width: '100%',
     objectFit: 'cover',
   },
-  header: createResponsiveStyle({
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: [4, 4, 8],
-  }),
 });
 
 export default BaseTile;

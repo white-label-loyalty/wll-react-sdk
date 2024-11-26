@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../hooks/useResponsive';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 
 type Justify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 type Align = 'start' | 'end' | 'center' | 'stretch';
@@ -37,30 +38,19 @@ const Column: React.FC<ColumnProps> = ({
   align = 'stretch',
   direction = 'column',
   style = {},
-}) => (
-  <View
-    style={[
-      styles.column,
-      {
-        justifyContent: justifyMap[justify],
-        alignItems: alignMap[align],
-        flexDirection: direction,
-      },
-      style,
-    ]}
-  >
-    {children}
-  </View>
-);
-
-const styles = StyleSheet.create({
-  column: {
-    flex: 1,
-    ...createResponsiveStyle({
-      paddingHorizontal: [8, 8, 16],
-      paddingBottom: [8, 8, 16],
-    }),
-  },
-});
+}) => {
+  const { isDesktop, isTablet } = useResponsive();
+  const dynamicStyles = StyleSheet.create({
+    column: {
+      flex: 1,
+      paddingHorizontal: getResponsiveValue(8, 8, isDesktop, isTablet),
+      paddingBottom: getResponsiveValue(8, 8, isDesktop, isTablet),
+      justifyContent: justifyMap[justify],
+      alignItems: alignMap[align],
+      flexDirection: direction,
+    },
+  });
+  return <View style={[dynamicStyles.column, style]}>{children}</View>;
+};
 
 export default Column;
