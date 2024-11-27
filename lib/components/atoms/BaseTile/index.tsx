@@ -156,10 +156,7 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
       style={[
         dynamicStyles.header,
         {
-          marginTop:
-            !isHalfSize && artworkUrl
-              ? dynamicStyles.header.marginTop
-              : undefined,
+          marginTop: isHalfSize ? 0 : dynamicStyles.header.marginTop,
           // @ts-ignore
           textAlign: isHalfSize && 'center',
         },
