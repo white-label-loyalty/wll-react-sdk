@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { BUTTON_SIZE, SLIDE_WIDTH } from '../../../constants';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
@@ -23,12 +24,9 @@ type CarouselProps = {
   section: TSection;
 };
 
-const SLIDE_WIDTH = 1080;
-const BUTTON_SIZE = 42;
-
 const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const styles = useCarouselStyles(BUTTON_SIZE, SLIDE_WIDTH);
-
+  const animatedIndex = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const scrollViewRef = useRef<ScrollView>(null);
@@ -37,10 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const bannerTiles = section.tiles.filter(
     (tile: Tile) => tile.type === TileType.Banner
   );
-
   const sortedTiles = sortByPriority(bannerTiles);
-
-  const animatedIndex = useRef(new Animated.Value(0)).current;
 
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {

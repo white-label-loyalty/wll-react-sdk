@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { getResponsiveValue } from '../../../utils/responsiveHelper';
@@ -10,6 +11,7 @@ export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
   return StyleSheet.create({
     container: {
       flex: 1,
+      maxWidth: MAX_WIDTH,
     },
     sectionTitle: {
       fontSize: 31,

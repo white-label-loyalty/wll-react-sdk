@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { View } from 'react-native';
+import { MAX_WIDTH } from '../../../constants';
 import { SectionType } from '../../../types/section';
 import { BadgeTileType, TileHeight, TileType } from '../../../types/tile';
 import Grid from './index';
@@ -12,7 +13,7 @@ export default {
     (Story) => (
       <View
         style={{
-          maxWidth: 1080,
+          maxWidth: MAX_WIDTH,
           height: '100%',
           alignContent: 'center',
           justifyContent: 'center',
