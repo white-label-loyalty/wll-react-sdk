@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Button, ProgressiveImage, Text } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
+import { useBannerTileStyles } from './styles';
 
 type BannerTileProps = {
   tile: Tile;
@@ -18,6 +18,7 @@ const BannerTile: React.FC<BannerTileProps> & {
   Description: typeof BannerTileDescription;
   CTA: typeof BannerTileCTA;
 } = ({ tile }) => {
+  const styles = useBannerTileStyles();
   return (
     <BaseBanner tile={tile}>
       <BannerTile.Media />
@@ -31,6 +32,7 @@ const BannerTile: React.FC<BannerTileProps> & {
 };
 
 const BannerTileMedia: React.FC = () => {
+  const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
   const { artworkUrl } = configuration as BannerTileConfig;
 
@@ -43,12 +45,12 @@ const BannerTileMedia: React.FC = () => {
 };
 
 const BannerTileTitle: React.FC = () => {
+  const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
   const { title } = configuration as BannerTileConfig;
 
   if (!title) return null;
   return (
-    // @ts-ignore
     <Text variant="title" style={styles.title}>
       {title}
     </Text>
@@ -56,9 +58,10 @@ const BannerTileTitle: React.FC = () => {
 };
 
 const BannerTileDescription: React.FC = () => {
+  const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
-  const { theme } = useWllSdk();
   const { description } = configuration as BannerTileConfig;
+  const { theme } = useWllSdk();
 
   if (!description) return null;
   return (
@@ -83,44 +86,6 @@ const BannerTileCTA: React.FC = () => {
   if (!ctaText) return null;
   return <Button title={ctaText} variant="accent" onPress={handlePress} />;
 };
-
-const styles = StyleSheet.create({
-  slide: createResponsiveStyle({
-    width: '100%',
-    maxWidth: 1080,
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    overflow: 'hidden',
-  }),
-  slideContent: createResponsiveStyle({
-    flex: 1,
-  }),
-  mediaContainer: createResponsiveStyle({
-    width: '30%',
-    aspectRatio: 1,
-    position: 'relative',
-    overflow: 'hidden',
-    marginRight: [8, 8, 24],
-    height: 320,
-  }),
-  media: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  title: createResponsiveStyle({
-    fontSize: [14, 14, 32],
-    marginBottom: [4, 4, 12],
-    fontWeight: '700',
-  }),
-  description: createResponsiveStyle({
-    fontSize: [10, 10, 18],
-    marginBottom: [12, 12, 32],
-  }),
-});
 
 BannerTile.Media = BannerTileMedia;
 BannerTile.Title = BannerTileTitle;

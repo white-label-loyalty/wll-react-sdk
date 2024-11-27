@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { SectionType, TSection } from '../../../types/section';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { Carousel, Grid } from '../../molecules';
+import { useSectionStyles } from './styles';
 
 type SectionContextType = {
   sectionData: TSection;
@@ -25,6 +25,8 @@ export const useSectionContext = () => {
 };
 
 const Section: React.FC<SectionProps> = ({ section }) => {
+  const styles = useSectionStyles();
+
   const renderSectionContent = () => {
     switch (section.type) {
       case SectionType.Banner:
@@ -43,14 +45,5 @@ const Section: React.FC<SectionProps> = ({ section }) => {
     </SectionContext.Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  section: createResponsiveStyle({
-    width: '100%',
-    maxWidth: 1080,
-    marginHorizontal: 'auto',
-    marginBottom: [40, 40, 60],
-  }),
-});
 
 export default Section;

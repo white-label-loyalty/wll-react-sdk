@@ -1,13 +1,13 @@
 import { LockKeyholeIcon } from 'lucide-react';
 import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { ImagePropsNoSource } from '../../../types/common';
 import { BadgeTileConfig, BadgeTileType, Tile } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { getStateColor, shouldDesaturate } from '../../../utils/themeHelpers';
 import { BaseTile, Content, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { useBadgeTileStyles } from './styles';
 
 type BadgeTileProps = {
   tile: Tile;
@@ -27,6 +27,7 @@ type BadgeTileComponent = FC<BadgeTileProps> & {
 };
 
 const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
+  const styles = useBadgeTileStyles();
   if (!tile) return null;
 
   return (
@@ -48,6 +49,7 @@ const BadgeTileInner: FC<BadgeTileProps> = ({ tile }) => {
 };
 
 const BadgeTileMedia: FC<BadgeTileMediaProps> = ({ children, ...props }) => {
+  const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { type, count, artworkUrl, emptyBadgeArtworkUrl } = configuration;
@@ -70,6 +72,7 @@ const BadgeTileMedia: FC<BadgeTileMediaProps> = ({ children, ...props }) => {
 };
 
 const BadgeTileTitle: FC = () => {
+  const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { count, name, emptyBadgeMessage } = configuration;
@@ -99,20 +102,14 @@ const BadgeTileDescription: FC = () => {
   if (count === 0 || !description) return null;
 
   return (
-    <View style={styles.descriptionContainer}>
-      <Text
-        variant="body"
-        style={styles.descriptionText}
-        numberOfLines={2}
-        ellipsizeMode="tail"
-      >
-        {description}
-      </Text>
-    </View>
+    <Text variant="body" numberOfLines={2} ellipsizeMode="tail">
+      {description}
+    </Text>
   );
 };
 
 const BadgeTileDateEarned: FC = () => {
+  const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { type, count, awardedDatePrefix, createdAt, badgeNotEarnedMessage } =
@@ -148,6 +145,7 @@ const BadgeTileDateEarned: FC = () => {
 };
 
 const BadgeTileStatus: FC = () => {
+  const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
   const { count, type } = configuration;
@@ -174,49 +172,5 @@ BadgeTile.Title = BadgeTileTitle;
 BadgeTile.Description = BadgeTileDescription;
 BadgeTile.DateEarned = BadgeTileDateEarned;
 BadgeTile.Status = BadgeTileStatus;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  indicatorContainer: createResponsiveStyle({
-    position: 'absolute',
-    bottom: [8, 8, 16],
-    right: [8, 8, 16],
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    borderRadius: 40,
-    width: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 40,
-  }),
-  countText: {
-    color: '#FFF',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  header: createResponsiveStyle({
-    flexBasis: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    marginBottom: [8, 8, 16],
-  }),
-  image: createResponsiveStyle({
-    width: '100%',
-    height: '100%',
-  }),
-  titleText: createResponsiveStyle({
-    marginBottom: [4, 4, 8],
-  }),
-  descriptionContainer: {},
-  descriptionText: {},
-  dateEarnedContainer: {
-    alignItems: 'flex-start',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 20,
-  },
-});
 
 export default BadgeTile;

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
 import { RewardCategoryTileConfig, Tile } from '../../../types/tile';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
 import { BaseTile, ProgressiveImage, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { useRewardCategoryTileStyles } from './styles';
 
 type RewardCategoryTileProps = {
   tile: Tile;
@@ -26,24 +25,17 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
 };
 
 const RewardCategoryHeader: React.FC = () => {
+  const styles = useRewardCategoryTileStyles();
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();
   const { showName, name } = configuration as RewardCategoryTileConfig;
-  const { isDesktop, isTablet } = useResponsive();
 
   if (!showName || !name) return null;
-
-  const dynamicStyles = StyleSheet.create({
-    headerText: {
-      fontSize: getResponsiveValue(16, 12, isDesktop, isTablet),
-      paddingHorizontal: getResponsiveValue(40, 20, isDesktop, isTablet),
-    },
-  });
 
   return (
     <View style={[styles.header, { backgroundColor: theme.primary }]}>
       <Text
-        style={[dynamicStyles.headerText, { color: theme.primaryText }]}
+        style={[styles.headerText, { color: theme.primaryText }]}
         ellipsizeMode="tail"
         numberOfLines={1}
       >
@@ -54,6 +46,7 @@ const RewardCategoryHeader: React.FC = () => {
 };
 
 const RewardCategoryBackground: React.FC = () => {
+  const styles = useRewardCategoryTileStyles();
   const { configuration } = useTileContext();
   const { artworkUrl } = configuration as RewardCategoryTileConfig;
 
@@ -63,25 +56,6 @@ const RewardCategoryBackground: React.FC = () => {
     <ProgressiveImage source={{ uri: artworkUrl }} style={styles.background} />
   );
 };
-
-const styles = StyleSheet.create({
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-    height: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  background: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-});
 
 RewardCategoryTile.Header = RewardCategoryHeader;
 RewardCategoryTile.Background = RewardCategoryBackground;

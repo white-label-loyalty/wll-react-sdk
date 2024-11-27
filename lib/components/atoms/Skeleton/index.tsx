@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
+import { MAX_WIDTH } from '../../../constants';
 import { GRID_GAP } from '../../../constants/grid';
 import { useWllSdk } from '../../../context/WllSdkContext';
 
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     gap: GRID_GAP,
     justifyContent: 'space-between',
     width: '100%',
-    maxWidth: 1080,
+    maxWidth: MAX_WIDTH,
   },
   title: {
     height: 40,

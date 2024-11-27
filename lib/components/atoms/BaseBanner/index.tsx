@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
+import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
@@ -52,7 +53,7 @@ const BaseBanner: React.FC<BaseBannerProps> = ({ tile, children }) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    maxWidth: 1080,
+    maxWidth: MAX_WIDTH,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

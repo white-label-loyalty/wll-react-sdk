@@ -63,7 +63,6 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    marginBottom: GRID_GAP,
   },
   tileContainer: {
     flex: 1,
