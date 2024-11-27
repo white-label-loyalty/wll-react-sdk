@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { ContentTileConfig, Tile } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import BaseTile, { useTileContext } from '../../atoms/BaseTile';
+import { useContentTileStyles } from './styles';
 
 type ContentTileProps = {
   tile: Tile;
@@ -34,17 +34,21 @@ const ContentTileRoot: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => <BaseTile.Root>{children}</BaseTile.Root>;
 
-const ContentTileMedia: React.FC = () => (
-  <BaseTile.Media style={styles.media} />
-);
+const ContentTileMedia: React.FC = () => {
+  const styles = useContentTileStyles();
+  return <BaseTile.Media style={styles.media} />;
+};
 
 const ContentTileContent: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => (
-  <BaseTile.Content>
-    <View style={styles.content}>{children}</View>
-  </BaseTile.Content>
-);
+}) => {
+  const styles = useContentTileStyles();
+  return (
+    <BaseTile.Content>
+      <View style={styles.content}>{children}</View>
+    </BaseTile.Content>
+  );
+};
 
 const ContentTileHeader: React.FC = () => {
   const tile = useTileContext();
@@ -60,17 +64,6 @@ const ContentTileHeader: React.FC = () => {
 };
 
 const ContentTileBody: React.FC = () => <BaseTile.Body />;
-
-const styles = StyleSheet.create({
-  content: createResponsiveStyle({
-    paddingHorizontal: [8, 8, 12],
-    flex: 1,
-    justifyContent: 'center',
-  }),
-  media: createResponsiveStyle({
-    width: '100%',
-  }),
-});
 
 export const ContentTile = ContentTileInner as ContentTileComponent;
 

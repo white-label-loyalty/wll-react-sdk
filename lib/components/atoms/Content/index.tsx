@@ -43,8 +43,8 @@ const Column: React.FC<ColumnProps> = ({
   const dynamicStyles = StyleSheet.create({
     column: {
       flex: 1,
-      paddingHorizontal: getResponsiveValue(8, 8, isDesktop, isTablet),
-      paddingBottom: getResponsiveValue(8, 8, isDesktop, isTablet),
+      paddingHorizontal: getResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
       justifyContent: justifyMap[justify],
       alignItems: alignMap[align],
       flexDirection: direction,

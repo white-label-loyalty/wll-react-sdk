@@ -12,3 +12,6 @@ export { default as BaseTile } from './BaseTile';
 export { default as Indicator } from './Indicator';
 export { default as Skeleton } from './Skeleton';
 export { default as TileContainer } from './TileContainer';
+
+export { Column, Row, Stack } from './Primatives';
+export type { LayoutProps } from './Primatives';

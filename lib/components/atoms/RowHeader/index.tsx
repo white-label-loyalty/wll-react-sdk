@@ -1,25 +1,30 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../hooks/useResponsive';
+import { getResponsiveValue } from '../../../utils/responsiveHelper';
 
 type RowHeaderProps = {
   children: React.ReactNode;
   className?: string;
 } & React.ComponentProps<typeof View>;
 
-const RowHeader: React.FC<RowHeaderProps> = ({ children, style, ...props }) => (
-  <View style={[styles.header, style]} {...props}>
-    {children}
-  </View>
-);
+const RowHeader: React.FC<RowHeaderProps> = ({ children, style, ...props }) => {
+  const { isDesktop, isTablet } = useResponsive();
 
-const styles = StyleSheet.create({
-  header: createResponsiveStyle({
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: [4, 4, 8],
-  }),
-});
+  const dynamicStyles = StyleSheet.create({
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+    },
+  });
+
+  return (
+    <View style={[dynamicStyles.header, style]} {...props}>
+      {children}
+    </View>
+  );
+};
 
 export default RowHeader;

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardTileConfig, Tile } from '../../../types/tile';
-import { createResponsiveStyle } from '../../../utils/responsiveHelper';
 import { BaseTile, Icon, ProgressiveImage, RowHeader, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { useRewardTileStyles } from './styles';
 
 type RewardTileProps = {
   tile: Tile;
@@ -34,6 +34,7 @@ const RewardTile: React.FC<RewardTileProps> & {
 };
 
 const RewardTileMedia: React.FC = () => {
+  const styles = useRewardTileStyles();
   const { configuration } = useTileContext();
   const reward = configuration as RewardTileConfig;
 
@@ -69,6 +70,7 @@ const RewardTileDescription: React.FC = () => {
 };
 
 const RewardTilePoints: React.FC = () => {
+  const styles = useRewardTileStyles();
   const { configuration } = useTileContext();
   const { theme } = useWllSdk();
   const reward = configuration as RewardTileConfig;
@@ -97,45 +99,16 @@ const RewardTilePoints: React.FC = () => {
 
 const RewardTileContent: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => <View style={styles.content}>{children}</View>;
+}) => {
+  const styles = useRewardTileStyles();
+
+  return <View style={styles.content}>{children}</View>;
+};
 
 const RewardTileChevron: React.FC = () => {
   const { theme } = useWllSdk();
   return <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />;
 };
-
-const styles = StyleSheet.create({
-  imageContainer: createResponsiveStyle({
-    width: '100%',
-    flexBasis: '50%',
-    marginBottom: [8, 8, 12],
-  }),
-  image: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
-  content: createResponsiveStyle({
-    paddingHorizontal: [8, 8, 12],
-    flex: 1,
-  }),
-  footer: {
-    marginTop: 8,
-  },
-  pointsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  suffix: createResponsiveStyle({
-    fontSize: [14, 14, 18],
-  }),
-});
 
 RewardTile.Media = RewardTileMedia;
 RewardTile.Title = RewardTileTitle;
