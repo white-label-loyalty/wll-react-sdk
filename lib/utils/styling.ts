@@ -1,37 +1,21 @@
 import { BaseThemeObject } from '../types/theme';
 
-const scale = {
-  4: 4,
-  6: 6,
-  8: 8,
-  10: 10,
-  12: 12,
-  14: 14,
-  16: 16,
-  18: 18,
-  20: 20,
-  24: 24,
-  32: 32,
-  40: 40,
-  60: 60,
-} as const;
-
 export const sizes = {
   borderRadiusSm: 15,
   borderRadiusLg: 20,
   borderRadiusButton: 9,
   borderRadiusRounded: 9999,
-  xxxs: scale[4],
-  xxs: scale[8],
-  xs: scale[10],
-  sm: scale[12],
-  md: scale[14],
-  lg: scale[16],
-  xl: scale[18],
-  xxl: scale[24],
-  xxxl: scale[32],
-  xxxxl: scale[40],
-  xxxxxl: scale[60],
+  xxxs: 4,
+  xxs: 8,
+  xs: 10,
+  sm: 12,
+  md: 14,
+  lg: 16,
+  xl: 18,
+  xxl: 24,
+  xxxl: 32,
+  xxxxl: 40,
+  xxxxxl: 60,
 } as const;
 
 export const defaultTheme: BaseThemeObject = {
