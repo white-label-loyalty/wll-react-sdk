@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 type Justify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 type Align = 'start' | 'end' | 'center' | 'stretch';
@@ -43,8 +43,8 @@ const Column: React.FC<ColumnProps> = ({
   const dynamicStyles = StyleSheet.create({
     column: {
       flex: 1,
-      paddingHorizontal: getResponsiveValue(12, 8, isDesktop, isTablet),
-      paddingBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingHorizontal: useResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
       justifyContent: justifyMap[justify],
       alignItems: alignMap[align],
       flexDirection: direction,

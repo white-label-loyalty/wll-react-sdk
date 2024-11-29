@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useRewardTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
@@ -9,7 +9,7 @@ export const useRewardTileStyles = () => {
     imageContainer: {
       width: '100%',
       flexBasis: '50%',
-      marginBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
     },
     image: {
       position: 'absolute',
@@ -22,7 +22,7 @@ export const useRewardTileStyles = () => {
       resizeMode: 'cover',
     },
     content: {
-      paddingHorizontal: getResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingHorizontal: useResponsiveValue(12, 8, isDesktop, isTablet),
       flex: 1,
     },
     footer: {
@@ -34,7 +34,7 @@ export const useRewardTileStyles = () => {
       justifyContent: 'center',
     },
     suffix: {
-      fontSize: getResponsiveValue(18, 14, isDesktop, isTablet),
+      fontSize: useResponsiveValue(18, 14, isDesktop, isTablet),
     },
   });
 };

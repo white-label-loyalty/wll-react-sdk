@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useTierTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
@@ -10,10 +10,10 @@ export const useTierTileStyles = () => {
       flexBasis: '50%',
       width: '100%',
       overflow: 'hidden',
-      marginBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
     },
     title: {
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(8, 4, isDesktop, isTablet),
     },
     smallImageContainer: {
       width: 48,

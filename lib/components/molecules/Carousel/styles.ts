@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
   const { isDesktop, isTablet } = useResponsive();
@@ -60,7 +60,7 @@ export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
     indicators: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: getResponsiveValue(24, 12, isDesktop, isTablet),
+      marginTop: useResponsiveValue(24, 12, isDesktop, isTablet),
     },
     indicator: {
       width: 8,

@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { LayoutProps, alignMap, justifyMap } from '.';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const Column: React.FC<LayoutProps> = ({
   children,
@@ -19,8 +19,8 @@ export const Column: React.FC<LayoutProps> = ({
           flexDirection: 'column',
           justifyContent: justifyMap[justify],
           alignItems: alignMap[align],
-          paddingHorizontal: getResponsiveValue(12, 8, isDesktop, isTablet),
-          paddingBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
+          paddingHorizontal: useResponsiveValue(12, 8, isDesktop, isTablet),
+          paddingBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
         },
         style,
       ]}

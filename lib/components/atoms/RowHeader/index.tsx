@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 type RowHeaderProps = {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ const RowHeader: React.FC<RowHeaderProps> = ({ children, style, ...props }) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(8, 4, isDesktop, isTablet),
     },
   });
 
