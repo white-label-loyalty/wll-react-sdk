@@ -45,50 +45,49 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   const { theme } = useWllSdk();
 
   const onImageLoad = (): void => {
-    Animated.timing(imageAnimated, {
-      toValue: 1,
-      useNativeDriver: true,
-      duration: 500,
-    }).start();
+    requestAnimationFrame(() => {
+      Animated.timing(imageAnimated, {
+        toValue: 1,
+        useNativeDriver: true,
+        duration: 300,
+      }).start();
+    });
   };
 
   const baseColor = theme.alphaDerivedPrimary[20];
   const desaturatedColor = desaturateColor(baseColor);
+  const backgroundColor = isDesaturated ? desaturatedColor : baseColor;
 
   return (
-    <View
-      style={[
-        styles.container,
-        style,
-        { backgroundColor: isDesaturated ? desaturatedColor : baseColor },
-      ]}
-    >
-      {isDesaturated ? (
-        <>
-          <Animated.Image
-            {...props}
-            source={source}
-            style={[
-              styles.imageOverlay,
-              { opacity: imageAnimated, tintColor: desaturatedColor },
-            ]}
-            onLoad={onImageLoad}
-          />
-          <Animated.Image
-            {...props}
-            source={source}
-            style={[styles.imageOverlay, { opacity: 0.1 }]}
-            onLoad={onImageLoad}
-          />
-        </>
-      ) : (
-        <Animated.Image
-          {...props}
-          source={source}
-          style={[styles.imageOverlay, { opacity: imageAnimated }]}
-          onLoad={onImageLoad}
-        />
-      )}
+    <View style={[styles.container, style, { backgroundColor }]}>
+      {/* Placeholder that fades out as the main image loads */}
+      <Animated.View
+        style={[
+          styles.imageOverlay,
+          {
+            backgroundColor,
+            opacity: imageAnimated.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1, 0],
+            }),
+          },
+        ]}
+      />
+
+      <Animated.Image
+        {...props}
+        source={source}
+        style={[
+          styles.imageOverlay,
+          {
+            opacity: imageAnimated,
+            ...(isDesaturated && {
+              filter: `saturate(${0 * 100}%)`,
+            }),
+          },
+        ]}
+        onLoad={onImageLoad}
+      />
     </View>
   );
 };
