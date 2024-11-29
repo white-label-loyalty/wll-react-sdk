@@ -52,14 +52,24 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
     button: {
       justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: useResponsiveValue(24, 12, isDesktop, isTablet),
-      paddingVertical: 12,
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
+      paddingVertical: theme.sizes.sm,
       alignSelf: 'flex-start',
     },
     text: {
       textAlign: 'center',
       textTransform: 'uppercase',
-      fontSize: useResponsiveValue(18, 12, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
       fontWeight: '700',
     },
   });

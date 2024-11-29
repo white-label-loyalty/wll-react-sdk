@@ -134,6 +134,7 @@ const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
 
 const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
   const tile = useTileContext();
+  const { theme } = useWllSdk();
   const { artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
   const { isDesktop, isTablet } = useResponsive();
@@ -143,8 +144,18 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
 
   const dynamicStyles = StyleSheet.create({
     header: {
-      marginBottom: useResponsiveValue(8, 4, isDesktop, isTablet),
-      marginTop: useResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
+      marginTop: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',

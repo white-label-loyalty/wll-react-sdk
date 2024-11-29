@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
@@ -39,12 +40,23 @@ const Column: React.FC<ColumnProps> = ({
   direction = 'column',
   style = {},
 }) => {
+  const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const dynamicStyles = StyleSheet.create({
     column: {
       flex: 1,
-      paddingHorizontal: useResponsiveValue(12, 8, isDesktop, isTablet),
-      paddingBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
+      paddingBottom: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       justifyContent: justifyMap[justify],
       alignItems: alignMap[align],
       flexDirection: direction,

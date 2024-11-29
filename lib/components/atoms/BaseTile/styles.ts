@@ -36,10 +36,20 @@ export const useBaseTileStyles = () => {
       height: !artworkUrl ? '100%' : undefined,
     },
     header: {
-      marginBottom: useResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
       marginTop:
         !isHalfSize && artworkUrl
-          ? useResponsiveValue(12, 8, isDesktop, isTablet)
+          ? useResponsiveValue(
+              theme.sizes.sm,
+              theme.sizes.xxs,
+              isDesktop,
+              isTablet
+            )
           : undefined,
       flexDirection: 'row',
       alignItems: 'center',

@@ -16,7 +16,12 @@ export const useBannerTileStyles = () => {
       aspectRatio: 1,
       position: 'relative',
       overflow: 'hidden',
-      marginRight: useResponsiveValue(24, 8, isDesktop, isTablet),
+      marginRight: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       height: 320,
     },
     media: {
@@ -26,13 +31,33 @@ export const useBannerTileStyles = () => {
       objectFit: 'cover',
     },
     title: {
-      fontSize: useResponsiveValue(32, 14, isDesktop, isTablet),
-      marginBottom: useResponsiveValue(12, 4, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xxxl,
+        theme.sizes.md,
+        isDesktop,
+        isTablet
+      ),
+      marginBottom: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
       fontWeight: '700',
     },
     description: {
-      fontSize: useResponsiveValue(18, 10, isDesktop, isTablet),
-      marginBottom: useResponsiveValue(32, 12, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xl,
+        theme.sizes.xs,
+        isDesktop,
+        isTablet
+      ),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxxl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
       color: theme.derivedSurfaceText[20],
     },
   });

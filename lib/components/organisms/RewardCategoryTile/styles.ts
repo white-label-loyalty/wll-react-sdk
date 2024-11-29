@@ -20,8 +20,18 @@ export const useRewardCategoryTileStyles = () => {
       backgroundColor: theme.primary,
     },
     headerText: {
-      fontSize: useResponsiveValue(16, 12, isDesktop, isTablet),
-      paddingHorizontal: useResponsiveValue(40, 20, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.xxxxl,
+        20,
+        isDesktop,
+        isTablet
+      ),
       color: theme.primaryText,
     },
     background: {

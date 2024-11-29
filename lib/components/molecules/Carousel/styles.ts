@@ -60,7 +60,12 @@ export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
     indicators: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: useResponsiveValue(24, 12, isDesktop, isTablet),
+      marginTop: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
     },
     indicator: {
       width: 8,

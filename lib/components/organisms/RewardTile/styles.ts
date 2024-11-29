@@ -1,15 +1,22 @@
 import { StyleSheet } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useRewardTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
+  const { theme } = useWllSdk();
 
   return StyleSheet.create({
     imageContainer: {
       width: '100%',
       flexBasis: '50%',
-      marginBottom: useResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
     },
     image: {
       position: 'absolute',
@@ -22,7 +29,12 @@ export const useRewardTileStyles = () => {
       resizeMode: 'cover',
     },
     content: {
-      paddingHorizontal: useResponsiveValue(12, 8, isDesktop, isTablet),
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       flex: 1,
     },
     footer: {
@@ -34,7 +46,12 @@ export const useRewardTileStyles = () => {
       justifyContent: 'center',
     },
     suffix: {
-      fontSize: useResponsiveValue(18, 14, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xl,
+        theme.sizes.md,
+        isDesktop,
+        isTablet
+      ),
     },
   });
 };

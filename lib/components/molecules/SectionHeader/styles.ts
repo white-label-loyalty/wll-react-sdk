@@ -9,16 +9,36 @@ export const useSectionHeaderStyles = () => {
 
   return StyleSheet.create({
     sectionHeader: {
-      marginBottom: useResponsiveValue(16, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
     },
     sectionTitle: {
-      fontSize: useResponsiveValue(32, 18, isDesktop, isTablet),
-      marginBottom: useResponsiveValue(8, 4, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xxxl,
+        theme.sizes.xl,
+        isDesktop,
+        isTablet
+      ),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
       fontWeight: '700',
       color: theme.text,
     },
     sectionDescription: {
-      fontSize: useResponsiveValue(24, 14, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.md,
+        isDesktop,
+        isTablet
+      ),
       color: theme.alphaDerivedText[80],
     },
   });
