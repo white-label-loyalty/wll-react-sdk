@@ -5,10 +5,18 @@ export const sizes = {
   borderRadiusLg: 20,
   borderRadiusButton: 9,
   borderRadiusRounded: 9999,
-  sm: 6,
-  md: 10,
+  xxxs: 4,
+  xxs: 8,
+  xs: 10,
+  sm: 12,
+  md: 14,
   lg: 16,
-};
+  xl: 18,
+  xxl: 24,
+  xxxl: 32,
+  xxxxl: 40,
+  xxxxxl: 60,
+} as const;
 
 export const defaultTheme: BaseThemeObject = {
   background: '#F0F0F0',

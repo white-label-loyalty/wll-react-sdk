@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useSectionHeaderStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
@@ -9,16 +9,36 @@ export const useSectionHeaderStyles = () => {
 
   return StyleSheet.create({
     sectionHeader: {
-      marginBottom: getResponsiveValue(16, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
     },
     sectionTitle: {
-      fontSize: getResponsiveValue(32, 18, isDesktop, isTablet),
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xxxl,
+        theme.sizes.xl,
+        isDesktop,
+        isTablet
+      ),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
       fontWeight: '700',
       color: theme.text,
     },
     sectionDescription: {
-      fontSize: getResponsiveValue(24, 14, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.md,
+        isDesktop,
+        isTablet
+      ),
       color: theme.alphaDerivedText[80],
     },
   });

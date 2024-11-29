@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useRewardCategoryTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
@@ -20,8 +20,18 @@ export const useRewardCategoryTileStyles = () => {
       backgroundColor: theme.primary,
     },
     headerText: {
-      fontSize: getResponsiveValue(16, 12, isDesktop, isTablet),
-      paddingHorizontal: getResponsiveValue(40, 20, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.xxxxl,
+        20,
+        isDesktop,
+        isTablet
+      ),
       color: theme.primaryText,
     },
     background: {

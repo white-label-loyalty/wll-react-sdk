@@ -12,7 +12,7 @@ import { useResponsive } from '../../../hooks/useResponsive';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig, Tile } from '../../../types/tile';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import Icon from '../Icon';
 import ProgressiveImage from '../ProgressiveImage';
 import Text from '../Text';
@@ -77,7 +77,7 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
       justifyContent: 'center',
       alignItems: 'center',
       aspectRatio: isHalfSize ? 2 : 1,
-      borderRadius: getResponsiveValue(
+      borderRadius: useResponsiveValue(
         theme.sizes.borderRadiusLg,
         theme.sizes.borderRadiusSm,
         isDesktop,
@@ -134,6 +134,7 @@ const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
 
 const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
   const tile = useTileContext();
+  const { theme } = useWllSdk();
   const { artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
   const { isDesktop, isTablet } = useResponsive();
@@ -143,8 +144,18 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
 
   const dynamicStyles = StyleSheet.create({
     header: {
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
-      marginTop: getResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
+      marginTop: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',

@@ -1,19 +1,30 @@
 import { StyleSheet } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useTierTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
-
+  const { theme } = useWllSdk();
   return StyleSheet.create({
     header: {
       flexBasis: '50%',
       width: '100%',
       overflow: 'hidden',
-      marginBottom: getResponsiveValue(12, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.sm,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
     },
     title: {
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
     },
     smallImageContainer: {
       width: 48,

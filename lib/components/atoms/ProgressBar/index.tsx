@@ -26,9 +26,9 @@ const useStyles = (theme: ThemeObject) => {
 };
 
 const useContainerStyles = (theme: ThemeObject) => ({
-  sm: { height: theme.sizes.sm },
-  md: { height: theme.sizes.md },
-  lg: { height: theme.sizes.lg },
+  sm: { height: theme.sizes.xxs },
+  md: { height: theme.sizes.xs },
+  lg: { height: theme.sizes.sm },
 });
 
 const useProgressStyles = createVariantSystem(

@@ -4,7 +4,7 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ContentTileConfig } from '../../../types/tile';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useBaseTileStyles = () => {
   const tile = useTileContext();
@@ -21,7 +21,7 @@ export const useBaseTileStyles = () => {
       position: 'relative',
       backgroundColor: theme.surface,
       aspectRatio: isHalfSize ? 2 : 1,
-      borderRadius: getResponsiveValue(
+      borderRadius: useResponsiveValue(
         theme.sizes.borderRadiusLg,
         theme.sizes.borderRadiusSm,
         isDesktop,
@@ -36,10 +36,20 @@ export const useBaseTileStyles = () => {
       height: !artworkUrl ? '100%' : undefined,
     },
     header: {
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
       marginTop:
         !isHalfSize && artworkUrl
-          ? getResponsiveValue(12, 8, isDesktop, isTablet)
+          ? useResponsiveValue(
+              theme.sizes.sm,
+              theme.sizes.xxs,
+              isDesktop,
+              isTablet
+            )
           : undefined,
       flexDirection: 'row',
       alignItems: 'center',

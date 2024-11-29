@@ -13,7 +13,7 @@ import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { sortByPriority } from '../../../utils/transforms';
 import { Icon } from '../../atoms';
 import { BannerTile } from '../../organisms';
@@ -79,7 +79,12 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     indicators: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: getResponsiveValue(24, 12, isDesktop, isTablet),
+      marginTop: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
     },
   });
 

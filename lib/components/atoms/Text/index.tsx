@@ -2,12 +2,11 @@ import * as React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,
-  StyleSheet,
   TextStyle,
 } from 'react-native';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 type TextVariant =
   | 'eyebrow'
@@ -43,56 +42,70 @@ export const Text: React.FC<TextProps> = ({
       case 'eyebrow':
         return {
           ...baseStyle,
-          fontSize: getResponsiveValue(14, 12, isDesktop, isTablet),
-          marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+          fontSize: useResponsiveValue(
+            theme.sizes.md,
+            theme.sizes.sm,
+            isDesktop,
+            isTablet
+          ),
+          marginBottom: useResponsiveValue(
+            theme.sizes.xxs,
+            theme.sizes.xxxs,
+            isDesktop,
+            isTablet
+          ),
         };
       case 'title':
         return {
           ...baseStyle,
-          fontSize: getResponsiveValue(24, 14, isDesktop, isTablet),
+          fontSize: useResponsiveValue(
+            theme.sizes.xxl,
+            theme.sizes.md,
+            isDesktop,
+            isTablet
+          ),
           fontWeight: 'bold',
         };
       case 'body':
         return {
           color: theme.derivedSurfaceText[20],
-          fontSize: getResponsiveValue(14, 10, isDesktop, isTablet),
+          fontSize: useResponsiveValue(
+            theme.sizes.md,
+            theme.sizes.xs,
+            isDesktop,
+            isTablet
+          ),
         };
       case 'caption':
         return {
           ...baseStyle,
           fontWeight: 'bold',
-          fontSize: getResponsiveValue(24, 18, isDesktop, isTablet),
+          fontSize: useResponsiveValue(
+            theme.sizes.xxl,
+            theme.sizes.xl,
+            isDesktop,
+            isTablet
+          ),
           color: theme.primary,
-        };
-      case 'tier-earned':
-        return {
-          ...baseStyle,
-          fontSize: getResponsiveValue(20, 14, isDesktop, isTablet),
-          fontWeight: 'bold',
-        };
-      case 'tier-requirement':
-        return {
-          ...baseStyle,
-          fontSize: getResponsiveValue(18, 12, isDesktop, isTablet),
-          fontWeight: 'bold',
         };
       case 'description':
       case 'label':
       default:
         return {
           ...baseStyle,
-          fontSize: getResponsiveValue(12, 10, isDesktop, isTablet),
+          fontSize: useResponsiveValue(
+            theme.sizes.sm,
+            theme.sizes.xs,
+            isDesktop,
+            isTablet
+          ),
         };
     }
   };
 
   const variantStyle = getVariantStyle(variant);
 
-  return <RNText style={[styles.base, variantStyle, style]} {...props} />;
+  return <RNText style={[variantStyle, style]} {...props} />;
 };
-
-const styles = StyleSheet.create({
-  base: {},
-});
 
 export default Text;

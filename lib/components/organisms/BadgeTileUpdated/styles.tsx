@@ -1,18 +1,29 @@
 import { StyleSheet } from 'react-native';
+import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const useBadgeTileStyles = () => {
   const { isDesktop, isTablet } = useResponsive();
-
+  const { theme } = useWllSdk();
   return StyleSheet.create({
     container: {
       flex: 1,
     },
     indicatorContainer: {
       position: 'absolute',
-      bottom: getResponsiveValue(16, 8, isDesktop, isTablet),
-      right: getResponsiveValue(16, 8, isDesktop, isTablet),
+      bottom: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
+      right: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
       backgroundColor: 'rgba(0,0,0,0.6)',
       borderRadius: 40,
       width: 40,
@@ -30,14 +41,24 @@ export const useBadgeTileStyles = () => {
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
-      marginBottom: getResponsiveValue(16, 8, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.lg,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
+      ),
     },
     image: {
       width: '100%',
       height: '100%',
     },
     titleText: {
-      marginBottom: getResponsiveValue(8, 4, isDesktop, isTablet),
+      marginBottom: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
     },
     dateEarnedContainer: {
       alignItems: 'flex-start',

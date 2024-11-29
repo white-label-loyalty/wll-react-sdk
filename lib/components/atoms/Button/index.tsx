@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { Variant } from '../../../types/theme';
-import { getResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { createVariantSystem } from '../../../utils/variant';
 
 type ButtonProps = {
@@ -52,14 +52,24 @@ const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
     button: {
       justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: getResponsiveValue(24, 12, isDesktop, isTablet),
-      paddingVertical: 12,
+      paddingHorizontal: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
+      paddingVertical: theme.sizes.sm,
       alignSelf: 'flex-start',
     },
     text: {
       textAlign: 'center',
       textTransform: 'uppercase',
-      fontSize: getResponsiveValue(18, 12, isDesktop, isTablet),
+      fontSize: useResponsiveValue(
+        theme.sizes.xl,
+        theme.sizes.sm,
+        isDesktop,
+        isTablet
+      ),
       fontWeight: '700',
     },
   });
