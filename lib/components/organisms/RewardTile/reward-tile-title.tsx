@@ -5,12 +5,13 @@ import { useTileContext } from '../../atoms/BaseTile';
 
 export const RewardTileTitle: FC = () => {
   const { configuration } = useTileContext();
-  const reward = configuration as RewardTileConfig;
+  const { name } = configuration as RewardTileConfig;
 
-  if (!reward?.name) return null;
+  if (!name) return null;
+
   return (
     <Text variant="title" ellipsizeMode="tail" numberOfLines={1}>
-      {reward.name}
+      {name}
     </Text>
   );
 };

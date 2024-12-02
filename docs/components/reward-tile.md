@@ -42,7 +42,7 @@ function MyComponent() {
 |-----------|-------------|
 | `RewardTile.Media` | Displays reward image |
 | `RewardTile.Title` | Shows reward name |
-| `RewardTile.Description` | Renders reward summary |
+| `RewardTile.Summary` | Renders reward summary |
 | `RewardTile.Points` | Shows calculated points with prefix/suffix |
 | `RewardTile.Chevron` | Navigation indicator |
 | `RewardTile.Content` | Content wrapper with padding |

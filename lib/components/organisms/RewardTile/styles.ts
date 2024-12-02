@@ -10,7 +10,6 @@ export const useRewardTileStyles = () => {
   return StyleSheet.create({
     imageContainer: {
       width: '100%',
-      flexBasis: '50%',
       marginBottom: useResponsiveValue(
         theme.sizes.sm,
         theme.sizes.xxs,
@@ -46,6 +45,7 @@ export const useRewardTileStyles = () => {
       justifyContent: 'center',
     },
     suffix: {
+      color: theme.primary,
       fontSize: useResponsiveValue(
         theme.sizes.xl,
         theme.sizes.md,
