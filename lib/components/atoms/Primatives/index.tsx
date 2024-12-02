@@ -36,4 +36,5 @@ export const alignMap = {
 
 export { Column } from './Column';
 export { Row } from './Row';
+export { FlexBox } from './FlexBox';
 export { Stack } from './Stack';
