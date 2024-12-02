@@ -4,7 +4,7 @@ import { GRID_GAP } from '../../../constants/grid';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
-  BadgeTileUpdated,
+  BadgeTile,
   ContentTile,
   PointsTile,
   RewardCategoryTile,
@@ -24,7 +24,7 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
       case TileType.Content:
         return <ContentTile tile={tile} />;
       case TileType.Badge:
-        return <BadgeTileUpdated tile={tile} />;
+        return <BadgeTile tile={tile} />;
       case TileType.Tier:
         return <TierTileUpdated tile={tile} />;
       case TileType.Points:
