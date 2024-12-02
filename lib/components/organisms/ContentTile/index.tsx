@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import { Tile } from '../../../types/tile';
 import BaseTile from '../../atoms/BaseTile';
 
@@ -12,7 +12,7 @@ type ContentTileProps = {
   tile: Tile;
 };
 
-type ContentTileComponent = React.FC<ContentTileProps> & {
+type ContentTileComponent = FC<ContentTileProps> & {
   Root: typeof ContentTileRoot;
   Media: typeof ContentTileMedia;
   Content: typeof ContentTileContent;
@@ -20,7 +20,7 @@ type ContentTileComponent = React.FC<ContentTileProps> & {
   Body: typeof ContentTileBody;
 };
 
-const ContentTileMain: React.FC<ContentTileProps> = ({ tile }) => {
+const ContentTileMain: FC<ContentTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
       <ContentTile.Root>
