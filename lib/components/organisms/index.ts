@@ -1,4 +1,4 @@
-export { default as BadgeTileUpdated } from './BadgeTileUpdated';
+export { default as BadgeTile } from './BadgeTile';
 export { default as BannerTile } from './BannerTile';
 export { default as ContentTile } from './ContentTile';
 export { default as Group } from './Group';

@@ -12,7 +12,6 @@ export const useBannerTileStyles = () => {
       flex: 1,
     },
     mediaContainer: {
-      width: '30%',
       aspectRatio: 1,
       position: 'relative',
       overflow: 'hidden',

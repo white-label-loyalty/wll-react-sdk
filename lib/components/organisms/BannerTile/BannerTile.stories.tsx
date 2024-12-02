@@ -53,3 +53,25 @@ WithoutCTA.args = {
     },
   },
 };
+
+export const ArtworkOnly = Template.bind({});
+ArtworkOnly.args = {
+  tile: {
+    id: '3',
+    type: TileType.Banner,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    priority: 1,
+    configuration: {
+      artworkUrl:
+        'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
+      title: '',
+      description: '',
+      ctaText: '',
+      ctaLink: '',
+      ctaLinkTarget: CTALinkTarget.sameWindow,
+    },
+  },
+};

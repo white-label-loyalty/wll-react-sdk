@@ -8,7 +8,7 @@ export type Justify =
   | 'between'
   | 'around'
   | 'evenly';
-export type Align = 'start' | 'end' | 'center' | 'stretch';
+export type Align = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -32,8 +32,10 @@ export const alignMap = {
   end: 'flex-end',
   center: 'center',
   stretch: 'stretch',
+  baseline: 'baseline',
 } as const;
 
 export { Column } from './Column';
 export { Row } from './Row';
+export { FlexBox } from './FlexBox';
 export { Stack } from './Stack';

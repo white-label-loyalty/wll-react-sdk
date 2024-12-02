@@ -1,14 +1,18 @@
-import * as React from 'react';
-import { View } from 'react-native';
-import { ContentTileConfig, Tile } from '../../../types/tile';
-import BaseTile, { useTileContext } from '../../atoms/BaseTile';
-import { useContentTileStyles } from './styles';
+import React, { FC } from 'react';
+import { Tile } from '../../../types/tile';
+import BaseTile from '../../atoms/BaseTile';
+
+import { ContentTileBody } from './content-tile-body';
+import { ContentTileContent } from './content-tile-content';
+import { ContentTileHeader } from './content-tile-header';
+import { ContentTileMedia } from './content-tile-media';
+import { ContentTileRoot } from './content-tile-root';
 
 type ContentTileProps = {
   tile: Tile;
 };
 
-type ContentTileComponent = React.FC<ContentTileProps> & {
+type ContentTileComponent = FC<ContentTileProps> & {
   Root: typeof ContentTileRoot;
   Media: typeof ContentTileMedia;
   Content: typeof ContentTileContent;
@@ -16,7 +20,7 @@ type ContentTileComponent = React.FC<ContentTileProps> & {
   Body: typeof ContentTileBody;
 };
 
-const ContentTileInner: React.FC<ContentTileProps> = ({ tile }) => {
+const ContentTileMain: FC<ContentTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
       <ContentTile.Root>
@@ -30,42 +34,7 @@ const ContentTileInner: React.FC<ContentTileProps> = ({ tile }) => {
   );
 };
 
-const ContentTileRoot: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => <BaseTile.Root>{children}</BaseTile.Root>;
-
-const ContentTileMedia: React.FC = () => {
-  const styles = useContentTileStyles();
-  return <BaseTile.Media style={styles.media} />;
-};
-
-const ContentTileContent: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const styles = useContentTileStyles();
-  return (
-    <BaseTile.Content>
-      <View style={styles.content}>{children}</View>
-    </BaseTile.Content>
-  );
-};
-
-const ContentTileHeader: React.FC = () => {
-  const tile = useTileContext();
-  const { title } = tile.configuration as ContentTileConfig;
-
-  if (!title) return null;
-
-  return (
-    <BaseTile.Header>
-      <BaseTile.Title />
-    </BaseTile.Header>
-  );
-};
-
-const ContentTileBody: React.FC = () => <BaseTile.Body />;
-
-export const ContentTile = ContentTileInner as ContentTileComponent;
+export const ContentTile = ContentTileMain as ContentTileComponent;
 
 ContentTile.Root = ContentTileRoot;
 ContentTile.Media = ContentTileMedia;

@@ -1,10 +1,11 @@
 import { View } from 'react-native';
+import React, { FC } from 'react';
 import { LayoutProps, alignMap, justifyMap } from '.';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const Column: React.FC<LayoutProps> = ({
+export const Column: FC<LayoutProps> = ({
   children,
   justify = 'start',
   align = 'stretch',

@@ -1,7 +1,8 @@
+import React, { FC } from 'react';
 import { View } from 'react-native';
 import { LayoutProps, alignMap, justifyMap } from '.';
 
-export const Row: React.FC<LayoutProps> = ({
+export const Row: FC<LayoutProps> = ({
   children,
   justify = 'start',
   align = 'center',

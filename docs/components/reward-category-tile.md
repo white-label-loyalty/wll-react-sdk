@@ -47,5 +47,5 @@ function MyComponent() {
 
 ## Composition
 
-- `RewardCategoryTile.Image` - Category image display
-- `RewardCategoryTile.Name` - Category name overlay (when showName is true)
+- `RewardCategoryTile.Media` - Category image display
+- `RewardCategoryTile.Header` - Category name overlay (when showName is true)

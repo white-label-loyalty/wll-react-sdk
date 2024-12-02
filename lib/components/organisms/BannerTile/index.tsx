@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
-import { Button, ProgressiveImage, Text } from '../../atoms';
-import { useBannerContext } from '../../atoms/BaseBanner';
+import { BannerTileCTA } from './banner-tile-cta';
+import { BannerTileDescription } from './banner-tile-description';
+import { BannerTileMedia } from './banner-tile-media';
+import { BannerTileTitle } from './banner-tile-title';
 import { useBannerTileStyles } from './styles';
 
 type BannerTileProps = {
@@ -19,9 +19,17 @@ const BannerTile: React.FC<BannerTileProps> & {
   CTA: typeof BannerTileCTA;
 } = ({ tile }) => {
   const styles = useBannerTileStyles();
+
+  const { configuration } = tile as { configuration: BannerTileConfig };
+
+  const isArtworkOnly =
+    !configuration.title &&
+    !configuration.description &&
+    !configuration.ctaText;
+
   return (
     <BaseBanner tile={tile}>
-      <BannerTile.Media />
+      <BannerTile.Media isArtworkOnly={isArtworkOnly} />
       <View style={styles.slideContent}>
         <BannerTile.Title />
         <BannerTile.Description />
@@ -29,62 +37,6 @@ const BannerTile: React.FC<BannerTileProps> & {
       </View>
     </BaseBanner>
   );
-};
-
-const BannerTileMedia: React.FC = () => {
-  const styles = useBannerTileStyles();
-  const { configuration } = useBannerContext();
-  const { artworkUrl } = configuration as BannerTileConfig;
-
-  if (!artworkUrl) return null;
-  return (
-    <View style={styles.mediaContainer}>
-      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.media} />
-    </View>
-  );
-};
-
-const BannerTileTitle: React.FC = () => {
-  const styles = useBannerTileStyles();
-  const { configuration } = useBannerContext();
-  const { title } = configuration as BannerTileConfig;
-
-  if (!title) return null;
-  return (
-    <Text variant="title" style={styles.title}>
-      {title}
-    </Text>
-  );
-};
-
-const BannerTileDescription: React.FC = () => {
-  const styles = useBannerTileStyles();
-  const { configuration } = useBannerContext();
-  const { description } = configuration as BannerTileConfig;
-  const { theme } = useWllSdk();
-
-  if (!description) return null;
-  return (
-    <Text
-      style={[
-        styles.description,
-        {
-          color: theme.derivedSurfaceText[20],
-        },
-      ]}
-    >
-      {description}
-    </Text>
-  );
-};
-
-const BannerTileCTA: React.FC = () => {
-  const { configuration } = useBannerContext();
-  const { ctaText, ctaLink, ctaLinkTarget } = configuration as BannerTileConfig;
-  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
-
-  if (!ctaText) return null;
-  return <Button title={ctaText} variant="accent" onPress={handlePress} />;
 };
 
 BannerTile.Media = BannerTileMedia;

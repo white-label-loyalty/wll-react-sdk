@@ -1,120 +1,46 @@
-import * as React from 'react';
-import { View } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
+import React, { FC } from 'react';
 import { RewardTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Icon, ProgressiveImage, RowHeader, Text } from '../../atoms';
-import { useTileContext } from '../../atoms/BaseTile';
-import { useRewardTileStyles } from './styles';
+import { BaseTile, Row, Column } from '../../atoms';
+
+import { RewardTileChevron } from './reward-tile-chevron';
+import { RewardTileSummary } from './reward-tile-summary';
+import { RewardTileMedia } from './reward-tile-media';
+import { RewardTilePoints } from './reward-tile-points';
+import { RewardTileTitle } from './reward-tile-title';
 
 type RewardTileProps = {
   tile: Tile;
 };
 
-const RewardTile: React.FC<RewardTileProps> & {
+const RewardTile: FC<RewardTileProps> & {
   Media: typeof RewardTileMedia;
   Title: typeof RewardTileTitle;
-  Description: typeof RewardTileDescription;
+  Summary: typeof RewardTileSummary;
   Points: typeof RewardTilePoints;
   Chevron: typeof RewardTileChevron;
-  Content: typeof RewardTileContent;
 } = ({ tile }) => {
+  const { configuration } = tile;
+  const { showDetails } = configuration as RewardTileConfig;
   return (
     <BaseTile tile={tile}>
-      <RewardTile.Media />
-      <RewardTile.Content>
-        <RowHeader>
+      <RewardTile.Media isArtworkOnly={!showDetails} />
+
+      <Column>
+        <Row justify="between" align="center">
           <RewardTile.Title />
           <RewardTile.Chevron />
-        </RowHeader>
-        <RewardTile.Description />
+        </Row>
+        <RewardTile.Summary />
         <RewardTile.Points />
-      </RewardTile.Content>
+      </Column>
     </BaseTile>
   );
 };
 
-const RewardTileMedia: React.FC = () => {
-  const styles = useRewardTileStyles();
-  const { configuration } = useTileContext();
-  const reward = configuration as RewardTileConfig;
-
-  if (!reward?.pictureUrl) return null;
-  return (
-    <View style={styles.imageContainer}>
-      <ProgressiveImage
-        source={{ uri: reward.pictureUrl }}
-        style={styles.image}
-      />
-    </View>
-  );
-};
-
-const RewardTileTitle: React.FC = () => {
-  const { configuration } = useTileContext();
-  const reward = configuration as RewardTileConfig;
-
-  if (!reward?.name) return null;
-  return (
-    <Text variant="title" ellipsizeMode="tail" numberOfLines={1}>
-      {reward.name}
-    </Text>
-  );
-};
-
-const RewardTileDescription: React.FC = () => {
-  const { configuration } = useTileContext();
-  const reward = configuration as RewardTileConfig;
-
-  if (!reward?.summary) return null;
-  return <Text variant="body">{reward.summary}</Text>;
-};
-
-const RewardTilePoints: React.FC = () => {
-  const styles = useRewardTileStyles();
-  const { configuration } = useTileContext();
-  const { theme } = useWllSdk();
-  const reward = configuration as RewardTileConfig;
-
-  const calculatedPoints =
-    reward?.price !== undefined
-      ? reward.price * (Number(reward.pointsMultiplier) || 1)
-      : null;
-
-  if (reward?.price === 0 || !reward.showPrice || calculatedPoints === null) {
-    return null;
-  }
-
-  return (
-    <Text variant="caption" style={styles.footer}>
-      {reward.pointsPrefix}
-      <View style={styles.pointsContainer}>
-        {calculatedPoints}
-        <Text style={[styles.suffix, { color: theme.primary }]}>
-          {reward.pointsSuffix}
-        </Text>
-      </View>
-    </Text>
-  );
-};
-
-const RewardTileContent: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const styles = useRewardTileStyles();
-
-  return <View style={styles.content}>{children}</View>;
-};
-
-const RewardTileChevron: React.FC = () => {
-  const { theme } = useWllSdk();
-  return <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />;
-};
-
 RewardTile.Media = RewardTileMedia;
 RewardTile.Title = RewardTileTitle;
-RewardTile.Description = RewardTileDescription;
+RewardTile.Summary = RewardTileSummary;
 RewardTile.Points = RewardTilePoints;
 RewardTile.Chevron = RewardTileChevron;
-RewardTile.Content = RewardTileContent;
 
 export default RewardTile;

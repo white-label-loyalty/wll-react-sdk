@@ -2,16 +2,16 @@ import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { BadgeTileType, TileHeight, TileType } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
-import BadgeTileUpdated from './index';
+import BadgeTile from './index';
 
 export default {
-  title: 'components/organisms/BadgeTileUpdated',
-  component: BadgeTileUpdated,
+  title: 'components/organisms/BadgeTile',
+  component: BadgeTile,
 } as Meta;
 
-const Template: StoryFn<typeof BadgeTileUpdated> = (args) => (
+const Template: StoryFn<typeof BadgeTile> = (args) => (
   <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
-    <BadgeTileUpdated {...args} />
+    <BadgeTile {...args} />
   </TileWrapper>
 );
 
