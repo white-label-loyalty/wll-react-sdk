@@ -23,7 +23,7 @@ export const RewardTileMedia: FC<RewardTileMediaProps> = ({
   };
 
   return (
-    // @ts-ignore
+    // @ts-ignore: We are using percentage values for flexBasis, which is valid in React Native but TypeScript expects a number.
     <View style={[styles.imageContainer, containerStyle]}>
       <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
     </View>
