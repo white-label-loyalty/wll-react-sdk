@@ -6,8 +6,12 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
+  "bin": {
+    "create-component": "./bin/create-component"
+  },
   "engines": {
     "node": ">=20"
   },
@@ -24,7 +28,8 @@
     "commit": "cz",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "create-component": "node ./bin/create-component"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -39,6 +44,7 @@
   "dependencies": {
     "@types/color": "^3.0.6",
     "color": "^4.2.3",
+    "commander": "^11.1.0",
     "lucide-react": "^0.427.0",
     "zod": "^3.23.8"
   },

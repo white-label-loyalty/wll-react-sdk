@@ -79,6 +79,7 @@ We use several tools to maintain code quality:
 - **Commitlint**: Validates commit message format
 - **Commitizen**: Interactive commit message formatter
 - **Husky**: Git hooks for enforcing conventions
+- **Create Component CLI**: Quickly scaffold new components with proper structure
 
 ```bash
 # Make a commit using the interactive tool
@@ -86,6 +87,45 @@ yarn commit
 
 # Reinstall git hooks if needed
 yarn prepare
+
+# Create a new component
+yarn create-component my-component --type atoms
+```
+
+### Component Generator
+
+The SDK includes a CLI tool to generate new components with the proper file structure and boilerplate code. You can use it in two ways:
+
+1. During development (within this repo):
+```bash
+yarn create-component component-name --type atoms
+```
+
+2. When using the SDK as a dependency:
+```bash
+npx @wlloyalty/wll-react-sdk create-component component-name --type atoms
+```
+
+Options:
+- `<name>` (Required): Name of your component (e.g., Button, UserCard)
+- `--type`, `-t` (Optional): Component type (atoms/molecules/organisms/particles/templates), defaults to 'atoms'
+- `--dir`, `-d` (Optional): Base components directory, defaults to './components'
+
+The tool will create:
+- Component file (index.tsx) with TypeScript types and React Native support
+- Storybook story file (ComponentName.stories.tsx)
+- Automatic index.ts updates for component exports
+
+Example usage:
+```bash
+# Create an atomic component
+yarn create-component button --type atoms
+
+# Create a complex component
+yarn create-component user-profile --type organisms
+
+# Create a page template
+yarn create-component dashboard-layout --type templates
 ```
 
 ## 📄 License
