@@ -35,7 +35,7 @@ export const alignMap = {
   baseline: 'baseline',
 } as const;
 
-export { Column } from './Column';
-export { Row } from './Row';
-export { FlexBox } from './FlexBox';
-export { Stack } from './Stack';
+export { Column } from './column';
+export { FlexBox } from './flex-box';
+export { Row } from './row';
+export { Stack } from './stack';

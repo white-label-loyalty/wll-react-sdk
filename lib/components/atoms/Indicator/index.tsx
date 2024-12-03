@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useResponsive } from '../../../hooks/useResponsive';
+import { useResponsive } from '../../../context/responsive-context';
 
 const Indicator = () => {
   const { isDesktop, isTablet } = useResponsive();

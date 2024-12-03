@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SectionHeader } from '..';
 import { GRID_GAP } from '../../../constants/grid';
-import { useResponsive } from '../../../context/ResponsiveContext';
+import { useResponsive } from '../../../context/responsive-context';
 import { TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { sortByPriority } from '../../../utils/transforms';
 import { TileContainer } from '../../atoms';
-import { SectionHeader } from '../../molecules';
 
 type GridProps = {
   section: TSection;

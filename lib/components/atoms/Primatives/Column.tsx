@@ -1,9 +1,9 @@
-import { View } from 'react-native';
 import React, { FC } from 'react';
+import { View } from 'react-native';
 import { LayoutProps, alignMap, justifyMap } from '.';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 
 export const Column: FC<LayoutProps> = ({
   children,

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { WllSdkProvider } from '../../../context/WllSdkContext';
 import { defaultTheme } from '../../../utils/styling';
 
-import { themes } from '../../../utils/themeHelpers';
+import { WllSdkProvider } from '../../../context/wll-sdk-context';
+import { themes } from '../../../utils/theme-helpers';
 import Group from './index';
 
 const mockGroupData = {

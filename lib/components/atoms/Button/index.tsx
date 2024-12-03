@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
 import { Variant } from '../../../types/theme';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 import { createVariantSystem } from '../../../utils/variant';
 
 type ButtonProps = {

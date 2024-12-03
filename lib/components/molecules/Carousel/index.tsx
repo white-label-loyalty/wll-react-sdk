@@ -9,15 +9,17 @@ import {
   View,
 } from 'react-native';
 import { BUTTON_SIZE, SLIDE_WIDTH } from '../../../constants';
-import { useResponsive } from '../../../context/ResponsiveContext';
-import { useWllSdk } from '../../../context/WllSdkContext';
+
 import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 import { sortByPriority } from '../../../utils/transforms';
 import { Icon } from '../../atoms';
 import { BannerTile } from '../../organisms';
-import SectionHeader from '../SectionHeader';
+import SectionHeader from '../section-header';
 import { useCarouselStyles } from './styles';
 
 type CarouselProps = {

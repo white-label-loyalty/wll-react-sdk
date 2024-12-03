@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 
 type Justify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 type Align = 'start' | 'end' | 'center' | 'stretch';

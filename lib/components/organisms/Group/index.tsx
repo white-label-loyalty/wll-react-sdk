@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
+import { useWllSdk } from '../../../context/wll-sdk-context';
 import { TGroup } from '../../../types/group';
 import { sortByPriority } from '../../../utils/transforms';
 import { Skeleton } from '../../atoms';
-import Section from '../Section';
+import { Section } from '../../organisms';
 
 type GroupProps = {
   id: string;

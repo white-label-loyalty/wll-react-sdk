@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { View } from 'react-native';
-import { Section } from '../../../components/organisms';
+import { Section } from '..';
 
 export default {
   title: 'components/organisms/Section',
@@ -27,6 +27,4 @@ export default {
   ],
 } as Meta;
 
-const Template: StoryFn<typeof Section> = (args) => (
-  <Section {...args} />
-);
+const Template: StoryFn<typeof Section> = (args) => <Section {...args} />;

@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 
 export const useSectionStyles = () => {
   const { isDesktop, isTablet } = useResponsive();

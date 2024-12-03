@@ -1,4 +1,4 @@
-export { default as Carousel } from './Carousel';
-export { default as Grid } from './Grid';
-export { default as ProgressIndicator } from './ProgressIndicator';
-export { default as SectionHeader } from './SectionHeader';
+export { default as Carousel } from './carousel';
+export { default as Grid } from './grid';
+export { default as ProgressIndicator } from './progress-indicator';
+export { default as SectionHeader } from './section-header';

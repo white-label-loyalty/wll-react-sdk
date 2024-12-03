@@ -3,7 +3,7 @@ export * from './components/molecules';
 export * from './components/organisms';
 
 // Export contexts
-export * from './context/WllSdkContext';
+export * from './context/wll-sdk-context';
 
 // type exports
 export * from './types/common';

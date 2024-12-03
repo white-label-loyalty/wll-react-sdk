@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { GRID_GAP } from '../../../constants/grid';
-import { useWllSdk } from '../../../context/WllSdkContext';
+import { useWllSdk } from '../../../context/wll-sdk-context';
 
 interface SkeletonProps {
   width?: number | `${number}%`;

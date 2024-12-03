@@ -4,9 +4,9 @@ import {
   TextProps as RNTextProps,
   TextStyle,
 } from 'react-native';
-import { useResponsive } from '../../../context/ResponsiveContext';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../context/responsive-context';
+import { useWllSdk } from '../../../context/wll-sdk-context';
+import { useResponsiveValue } from '../../../utils/responsive-helper';
 
 type TextVariant =
   | 'eyebrow'

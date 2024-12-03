@@ -1,10 +1,10 @@
 import type { Preview } from '@storybook/react';
 import * as React from 'react';
 import { Indicator } from '../lib/components/atoms';
-import { SectionContext } from '../lib/components/organisms/Section';
-import { WllSdkProvider } from '../lib/context/WllSdkContext';
-import { SectionType, TSection } from '../lib/types/section';
 
+import { SectionContext } from '../lib/components/organisms/section';
+import { WllSdkProvider } from '../lib/context/wll-sdk-context';
+import { SectionType, TSection } from '../lib/types/section';
 import {
   CTALinkTarget,
   ProgressType,
@@ -13,7 +13,7 @@ import {
   TileType,
 } from '../lib/types/tile';
 import { defaultTheme } from '../lib/utils/styling';
-import { ThemeName, themes } from '../lib/utils/themeHelpers';
+import { ThemeName, themes } from '../lib/utils/theme-helpers';
 
 const sdkConfig = {
   apiKey: 'test',
