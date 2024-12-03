@@ -79,7 +79,7 @@ We use several tools to maintain code quality:
 - **Commitlint**: Validates commit message format
 - **Commitizen**: Interactive commit message formatter
 - **Husky**: Git hooks for enforcing conventions
-- **Create Component CLI**: Quickly scaffold new components with proper structure
+- **Create Component CLI**: Interactive component generator with proper structure
 
 ```bash
 # Make a commit using the interactive tool
@@ -88,45 +88,51 @@ yarn commit
 # Reinstall git hooks if needed
 yarn prepare
 
-# Create a new component
-yarn create-component my-component --type atoms
+# Create a new component interactively
+yarn create-component
 ```
 
 ### Component Generator
 
-The SDK includes a CLI tool to generate new components with the proper file structure and boilerplate code. You can use it in two ways:
+The SDK includes an interactive CLI tool to generate new components with the proper file structure and boilerplate code. The tool will guide you through the process with prompts:
 
 1. During development (within this repo):
 ```bash
-yarn create-component component-name --type atoms
+yarn create-component
 ```
 
 2. When using the SDK as a dependency:
 ```bash
-npx @wlloyalty/wll-react-sdk create-component component-name --type atoms
+npx @wlloyalty/wll-react-sdk create-component
 ```
 
-Options:
-- `<name>` (Required): Name of your component (e.g., Button, UserCard)
-- `--type`, `-t` (Optional): Component type (atoms/molecules/organisms/particles/templates), defaults to 'atoms'
-- `--dir`, `-d` (Optional): Base components directory, defaults to './components'
+The tool will ask you:
+1. **Component Name**: The name of your component (will be converted to PascalCase for the component and kebab-case for files)
+2. **Component Type**: Choose from:
+   - `atoms` - Basic building blocks
+   - `molecules` - Simple combinations of atoms
+   - `organisms` - Complex combinations of molecules
+   - `particles` - Utility components
+   - `templates` - Page layouts
 
 The tool will create:
-- Component file (index.tsx) with TypeScript types and React Native support
-- Storybook story file (ComponentName.stories.tsx)
-- Automatic index.ts updates for component exports
+- Component file (`lib/components/<type>/<component-name>/index.tsx`)
+- Storybook story file (`lib/components/<type>/<component-name>/<component-name>.stories.tsx`)
+- Automatic index.ts updates with proper exports
 
-Example usage:
+Example usage and output:
 ```bash
-# Create an atomic component
-yarn create-component button --type atoms
+$ yarn create-component
+? What is the name of your component? user-profile-card
+? What type of component is this? molecules
 
-# Create a complex component
-yarn create-component user-profile --type organisms
-
-# Create a page template
-yarn create-component dashboard-layout --type templates
+✨ UserProfileCard component created successfully in lib/components/molecules/user-profile-card!
 ```
+
+Generated files will follow these conventions:
+- Component name: PascalCase (e.g., `UserProfileCard`)
+- File/directory names: kebab-case (e.g., `user-profile-card`)
+- Exports: `export { default as ComponentName } from './component-name'`
 
 ## 📄 License
 

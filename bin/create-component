@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { program } = require('commander');
+const inquirer = require('inquirer');
 
 // Helper functions for case conversion
 const toPascalCase = (str) => {
@@ -19,35 +19,49 @@ const toKebabCase = (str) => {
     .join('-');
 };
 
-// Set up command line interface
-program
-  .name('create-component')
-  .description('CLI tool to create React components with proper structure')
-  .argument('<name>', 'name of the component')
-  .option('-t, --type <type>', 'component type (atoms|molecules|organisms|particles|templates)', 'atoms')
-  .option('-d, --dir <directory>', 'base components directory', './lib/components')
-  .parse();
-
-const options = program.opts();
-const rawComponentName = program.args[0];
-const componentName = toPascalCase(rawComponentName);
-const fileName = toKebabCase(rawComponentName);
-const folderName = options.type;
-const componentsDir = options.dir;
-
-// Validate component type
 const validTypes = ['atoms', 'molecules', 'organisms', 'particles', 'templates'];
-if (!validTypes.includes(folderName)) {
-  console.error(`Error: Invalid component type. Must be one of: ${validTypes.join(', ')}`);
-  process.exit(1);
-}
 
-// Create component directory
-const componentDir = path.join(componentsDir, folderName, fileName);
-fs.mkdirSync(componentDir, { recursive: true });
+async function main() {
+  const answers = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of your component?',
+      validate: input => input.length > 0 || 'Component name is required'
+    },
+    {
+      type: 'list',
+      name: 'type',
+      message: 'What type of component is this?',
+      choices: validTypes,
+      default: 'atoms'
+    },
+    {
+      type: 'input',
+      name: 'dir',
+      message: 'What is the base components directory?',
+      default: './lib/components'
+    }
+  ]);
 
-// Create component file
-const componentContent = `import * as React from 'react';
+  const componentsDir = answers.dir;
+  const rawComponentName = answers.name;
+  const componentName = toPascalCase(rawComponentName);
+  const fileName = toKebabCase(rawComponentName);
+  const folderName = answers.type;
+
+  // Validate component type
+  if (!validTypes.includes(folderName)) {
+    console.error(`Error: Invalid component type. Must be one of: ${validTypes.join(', ')}`);
+    process.exit(1);
+  }
+
+  // Create component directory
+  const componentDir = path.join(componentsDir, folderName, fileName);
+  fs.mkdirSync(componentDir, { recursive: true });
+
+  // Create component file
+  const componentContent = `import * as React from 'react';
 import { View } from 'react-native';
 
 type ${componentName}Props = {
@@ -65,10 +79,10 @@ const ${componentName}: React.FC<${componentName}Props> = () => {
 export default ${componentName};
 `;
 
-fs.writeFileSync(path.join(componentDir, 'index.tsx'), componentContent);
+  fs.writeFileSync(path.join(componentDir, 'index.tsx'), componentContent);
 
-// Create story file
-const storyContent = `import * as React from 'react';
+  // Create story file
+  const storyContent = `import * as React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import ${componentName} from './index';
 
@@ -85,26 +99,29 @@ Default.args = {
 };
 `;
 
-fs.writeFileSync(path.join(componentDir, `${fileName}.stories.tsx`), storyContent);
+  fs.writeFileSync(path.join(componentDir, `${fileName}.stories.tsx`), storyContent);
 
-// Update index file
-const indexFile = path.join(componentsDir, folderName, 'index.ts');
-fs.mkdirSync(path.dirname(indexFile), { recursive: true });
+  // Update index file
+  const indexFile = path.join(componentsDir, folderName, 'index.ts');
+  fs.mkdirSync(path.dirname(indexFile), { recursive: true });
 
-if (!fs.existsSync(indexFile)) {
-  fs.writeFileSync(indexFile, '');
+  if (!fs.existsSync(indexFile)) {
+    fs.writeFileSync(indexFile, '');
+  }
+
+  let indexContent = fs.readFileSync(indexFile, 'utf8');
+  const lines = indexContent.split('\n').filter(Boolean);
+
+  // Add new export if it doesn't exist
+  const exportLine = `export { default as ${componentName} } from './${fileName}';`;
+  if (!lines.some(line => line.includes(`export { default as ${componentName} }`))) {
+    lines.push(exportLine);
+  }
+
+  // Write back to file
+  fs.writeFileSync(indexFile, lines.join('\n') + '\n');
+
+  console.log(`✨ ${componentName} component created successfully in ${path.relative('.', componentDir)}!`);
 }
 
-let indexContent = fs.readFileSync(indexFile, 'utf8');
-const lines = indexContent.split('\n').filter(Boolean);
-
-// Add new export if it doesn't exist
-const exportLine = `export { default as ${componentName} } from './${fileName}';`;
-if (!lines.some(line => line.includes(`export { default as ${componentName} }`))) {
-  lines.push(exportLine);
-}
-
-// Write back to file
-fs.writeFileSync(indexFile, lines.join('\n') + '\n');
-
-console.log(`✨ ${componentName} component created successfully in ${path.relative('.', componentDir)}!`);
+main().catch(console.error);
