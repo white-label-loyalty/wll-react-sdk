@@ -34,8 +34,11 @@ module.exports = [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: false,
+        declaration: true,
         sourceMap: true,
+        declarationDir: './dist',
+        include: ['lib/**/*'],
+        exclude: ['node_modules/**/*', '**/*.stories.tsx', '**/*.test.tsx']
       }),
       babel({
         babelHelpers: 'bundled',
