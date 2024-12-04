@@ -5,9 +5,10 @@ import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
 export const BannerTileCTA: FC = () => {
-  const { configuration } = useBannerContext();
-  const { ctaText, ctaLink, ctaLinkTarget } = configuration as BannerTileConfig;
-  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
+  const tile = useBannerContext();
+  const { ctaText, ctaLink, ctaLinkTarget } =
+    tile.configuration as BannerTileConfig;
+  const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
   if (!ctaText) return null;
   return <Button title={ctaText} variant="accent" onPress={handlePress} />;
