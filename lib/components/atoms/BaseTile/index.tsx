@@ -63,7 +63,7 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
   const { isHalfSize } = useTileSize(tile);
   const { ctaLink, ctaLinkTarget, title } =
     tile.configuration as ContentTileConfig;
-  const handlePress = useHandleTilePress(ctaLink, ctaLinkTarget);
+  const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
   const { isDesktop, isTablet } = useResponsive();
 
   const layout: LayoutProps = {
@@ -99,7 +99,9 @@ const BaseTileRoot: FC<{ children: ReactNode; style?: ViewStyle }> = ({
         style,
       ]}
       onPress={handlePress}
-      disabled={!ctaLink}
+      disabled={
+        tile.type !== 'REWARD' && tile.type !== 'REWARD_CATEGORY' && !ctaLink
+      }
       accessible={true}
       accessibilityRole="button"
       accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
