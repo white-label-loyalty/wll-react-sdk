@@ -9,7 +9,7 @@ import {
 } from '../types/tile';
 
 export const useHandleTilePress = (
-  tile?: Tile | null,
+  tile: Tile | undefined,
   ctaLink?: string | null,
   ctaLinkTarget?: string
 ) => {
