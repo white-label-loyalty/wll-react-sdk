@@ -1,5 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
+import { View } from 'react-native';
+import { SLIDE_WIDTH } from '../../../constants';
 import { SectionType } from '../../../types/section';
 import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 import Carousel from './index';
@@ -12,7 +14,11 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Carousel> = (args) => <Carousel {...args} />;
+const Template: StoryFn<typeof Carousel> = (args) => (
+  <View style={{ width: '100%', height: '100%', maxWidth: SLIDE_WIDTH }}>
+    <Carousel {...args} />
+  </View>
+);
 
 export const Default = Template.bind({});
 Default.args = {
