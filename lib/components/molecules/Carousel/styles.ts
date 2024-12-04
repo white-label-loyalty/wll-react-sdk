@@ -1,17 +1,16 @@
 import { StyleSheet } from 'react-native';
-import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
+export const useCarouselStyles = (buttonSize = 42) => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
 
   return StyleSheet.create({
     container: {
+      width: '100%',
       flex: 1,
-      maxWidth: MAX_WIDTH,
     },
     sectionTitle: {
       fontSize: 31,
@@ -27,13 +26,18 @@ export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
       marginBottom: 20,
     },
     carouselContainer: {
+      width: '100%',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'relative',
     },
     carouselContent: {
+      width: '100%',
       overflow: 'hidden',
-      width: slideWidth,
+    },
+    slideContainer: {
+      width: '100%',
     },
     navButton: {
       position: 'absolute',
@@ -53,9 +57,6 @@ export const useCarouselStyles = (buttonSize = 42, slideWidth: number) => {
     navButtonRight: {
       right: -buttonSize / 2,
       backgroundColor: theme.surface,
-    },
-    slideContainer: {
-      width: slideWidth,
     },
     indicators: {
       flexDirection: 'row',
