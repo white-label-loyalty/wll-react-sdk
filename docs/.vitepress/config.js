@@ -12,7 +12,7 @@ export default {
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024 White Label Loyalty',
+      copyright: 'Copyright 2024 White Label Loyalty',
     },
     nav: [
       { text: 'Home', link: '/' },
@@ -31,6 +31,7 @@ export default {
           items: [
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Theme', link: '/guide/theming' },
+            { text: 'Development', link: '/guide/development' },
           ],
         },
       ],

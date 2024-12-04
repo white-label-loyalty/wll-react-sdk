@@ -88,6 +88,26 @@ yarn commit
 yarn prepare
 ```
 
+### Creating New Components
+
+We provide an interactive component generator to help maintain consistent structure. To create a new component:
+
+```bash
+yarn create-component
+```
+
+You'll be prompted for:
+1. Component name - The name of your new component
+2. Component type - Choose from:
+   - atoms: Basic building blocks
+   - molecules: Simple combinations of atoms
+   - organisms: Complex combinations of molecules
+   - particles: Smallest UI elements
+   - templates: Page-level components
+3. Base directory - Where to create the component (defaults to ./lib/components)
+
+The script will generate a new component with the proper file structure and boilerplate code.
+
 ## 📄 License
 
 MIT License - See [LICENSE](LICENSE) for more information.
