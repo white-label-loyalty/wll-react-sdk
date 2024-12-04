@@ -19,16 +19,16 @@ export const useHandleTilePress = (
     if (tile?.type === TileType.Reward) {
       const config = tile.configuration as RewardTileConfig;
       if (config?.rewardId) {
-        const link = `/reward?id=${config.rewardId}`;
-        return handleNavigation(link, CTALinkTarget.sameWindow);
+        const url = `/reward?id=${config.rewardId}`;
+        return handleNavigation(url, CTALinkTarget.sameWindow);
       }
     }
 
     if (tile?.type === TileType.RewardCategory) {
       const config = tile.configuration as RewardCategoryTileConfig;
+      const url = `/category?id=${config.rewardCategoryId}`;
       if (config?.rewardCategoryId) {
-        const link = `/category?id=${config.rewardCategoryId}`;
-        return handleNavigation(link, CTALinkTarget.sameWindow);
+        return handleNavigation(url, CTALinkTarget.sameWindow);
       }
     }
 
