@@ -1,0 +1,144 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const inquirer = require('inquirer');
+
+// Helper functions for case conversion
+const toPascalCase = (str) => {
+  return str
+    .split(/[-_\s]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('');
+};
+
+const toKebabCase = (str) => {
+  return str
+    .split(/(?=[A-Z])|[-_\s]+/)
+    .map((word) => word.toLowerCase())
+    .join('-');
+};
+
+const validTypes = [
+  'atoms',
+  'molecules',
+  'organisms',
+  'particles',
+  'templates',
+];
+
+async function main() {
+  const answers = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of your component?',
+      validate: (input) => input.length > 0 || 'Component name is required',
+    },
+    {
+      type: 'list',
+      name: 'type',
+      message: 'What type of component is this?',
+      choices: validTypes,
+      default: 'atoms',
+    },
+    {
+      type: 'input',
+      name: 'dir',
+      message: 'What is the base components directory?',
+      default: './lib/components',
+    },
+  ]);
+
+  const componentsDir = answers.dir;
+  const rawComponentName = answers.name;
+  const componentName = toPascalCase(rawComponentName);
+  const fileName = toKebabCase(rawComponentName);
+  const folderName = answers.type;
+
+  // Validate component type
+  if (!validTypes.includes(folderName)) {
+    console.error(
+      `Error: Invalid component type. Must be one of: ${validTypes.join(', ')}`
+    );
+    process.exit(1);
+  }
+
+  // Create component directory
+  const componentDir = path.join(componentsDir, folderName, fileName);
+  fs.mkdirSync(componentDir, { recursive: true });
+
+  // Create component file
+  const componentContent = `import * as React from 'react';
+import { View } from 'react-native';
+
+type ${componentName}Props = {
+  // Define your props here
+}
+
+const ${componentName}: React.FC<${componentName}Props> = () => {
+  return (
+    <View>
+      {/* Your component code here */}
+    </View>
+  );
+};
+
+export default ${componentName};
+`;
+
+  fs.writeFileSync(path.join(componentDir, 'index.tsx'), componentContent);
+
+  // Create story file
+  const storyContent = `import * as React from 'react';
+import { StoryFn, Meta } from '@storybook/react';
+import ${componentName} from './index';
+
+export default {
+  title: 'components/${folderName}/${fileName}',
+  component: ${componentName},
+} as Meta;
+
+const Template: StoryFn<typeof ${componentName}> = (args) => <${componentName} {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  // Add default props here
+};
+`;
+
+  fs.writeFileSync(
+    path.join(componentDir, `${fileName}.stories.tsx`),
+    storyContent
+  );
+
+  // Update index file
+  const indexFile = path.join(componentsDir, folderName, 'index.ts');
+  fs.mkdirSync(path.dirname(indexFile), { recursive: true });
+
+  if (!fs.existsSync(indexFile)) {
+    fs.writeFileSync(indexFile, '');
+  }
+
+  let indexContent = fs.readFileSync(indexFile, 'utf8');
+  const lines = indexContent.split('\n').filter(Boolean);
+
+  // Add new export if it doesn't exist
+  const exportLine = `export { default as ${componentName} } from './${fileName}';`;
+  if (
+    !lines.some((line) =>
+      line.includes(`export { default as ${componentName} }`)
+    )
+  ) {
+    lines.push(exportLine);
+  }
+
+  // Write back to file
+  fs.writeFileSync(indexFile, lines.join('\n') + '\n');
+
+  console.log(
+    `✨ ${componentName} component created successfully in ${path.relative('.', componentDir)}!`
+  );
+}
+
+main().catch(console.error);
