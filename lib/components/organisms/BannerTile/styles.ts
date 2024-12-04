@@ -21,7 +21,8 @@ export const useBannerTileStyles = () => {
         isDesktop,
         isTablet
       ),
-      maxHeight: 320,
+      maxHeight: useResponsiveValue(253, 120, isDesktop, isTablet),
+      minHeight: 120,
     },
     media: {
       position: 'absolute',
