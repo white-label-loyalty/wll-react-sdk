@@ -7,8 +7,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
-import { BUTTON_SIZE, SLIDE_WIDTH } from '../../../constants';
+import { BUTTON_SIZE } from '../../../constants';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TSection } from '../../../types/section';
@@ -25,7 +26,10 @@ type CarouselProps = {
 };
 
 const Carousel: React.FC<CarouselProps> = ({ section }) => {
-  const styles = useCarouselStyles(BUTTON_SIZE, SLIDE_WIDTH);
+  const { width: windowWidth } = useWindowDimensions();
+  const containerRef = useRef<View>(null);
+  const [containerWidth, setContainerWidth] = useState(windowWidth);
+  const styles = useCarouselStyles(BUTTON_SIZE);
   const animatedIndex = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
@@ -40,26 +44,26 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const contentOffsetX = event.nativeEvent.contentOffset.x;
-      const newIndex = contentOffsetX / SLIDE_WIDTH;
+      const newIndex = contentOffsetX / containerWidth;
       animatedIndex.setValue(newIndex);
     },
-    [SLIDE_WIDTH, animatedIndex]
+    [containerWidth, animatedIndex]
   );
 
   const handleScrollEnd = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const contentOffsetX = event.nativeEvent.contentOffset.x;
-      const newIndex = Math.round(contentOffsetX / SLIDE_WIDTH);
+      const newIndex = Math.round(contentOffsetX / containerWidth);
       setCurrentIndex(newIndex);
     },
-    [SLIDE_WIDTH]
+    [containerWidth]
   );
 
   const handlePrev = () => {
     const newIndex = Math.max(0, currentIndex - 1);
     setCurrentIndex(newIndex);
     scrollViewRef.current?.scrollTo({
-      x: newIndex * SLIDE_WIDTH,
+      x: newIndex * containerWidth,
       animated: true,
     });
   };
@@ -68,7 +72,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     const newIndex = Math.min(sortedTiles.length - 1, currentIndex + 1);
     setCurrentIndex(newIndex);
     scrollViewRef.current?.scrollTo({
-      x: newIndex * SLIDE_WIDTH,
+      x: newIndex * containerWidth,
       animated: true,
     });
   };
@@ -91,7 +95,14 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   return (
     <>
       <SectionHeader title={section.title} description={section.description} />
-      <View style={styles.container}>
+      <View
+        ref={containerRef}
+        style={styles.container}
+        onLayout={(event) => {
+          const { width } = event.nativeEvent.layout;
+          setContainerWidth(width);
+        }}
+      >
         <View style={styles.carouselContainer}>
           {displayControls && (
             <TouchableOpacity
@@ -113,20 +124,21 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
             onScroll={handleScroll}
             onMomentumScrollEnd={handleScrollEnd}
             scrollEventThrottle={16}
-            style={[styles.carouselContent, { width: SLIDE_WIDTH }]}
+            style={[styles.carouselContent]}
             contentContainerStyle={{
-              width: SLIDE_WIDTH * sortedTiles.length,
+              width: containerWidth * sortedTiles.length,
             }}
             decelerationRate="fast"
-            snapToInterval={SLIDE_WIDTH}
+            snapToInterval={containerWidth}
             snapToAlignment="start"
           >
             {sortedTiles.map((tile: Tile, index: number) => (
               <View
                 key={index}
                 style={[
+                  styles.slideContainer,
                   {
-                    width: SLIDE_WIDTH,
+                    width: containerWidth,
                   },
                 ]}
               >
