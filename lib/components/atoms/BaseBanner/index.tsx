@@ -25,7 +25,7 @@ const BaseBanner: React.FC<BaseBannerProps> = ({ tile, children }) => {
   const { ctaLink, ctaLinkTarget, title } =
     tile.configuration as BannerTileConfig;
 
-  const handlePress = useHandleTilePress(undefined, ctaLink, ctaLinkTarget);
+  const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
   return (
     <BannerContext.Provider value={tile}>
