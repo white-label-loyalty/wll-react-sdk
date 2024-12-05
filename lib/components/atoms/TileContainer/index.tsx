@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
-import { useResponsive } from '../../../hooks/useResponsive';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
   BadgeTile,
@@ -17,8 +16,6 @@ type TileContainerProps = {
 };
 
 const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
-  const { isDesktop } = useResponsive();
-
   const renderTile = (tile: Tile) => {
     switch (tile.type) {
       case TileType.Content:
@@ -42,16 +39,15 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
   );
 
   return (
-    <View
-      style={[
-        styles.container,
-        isDesktop && allHalfTiles ? { aspectRatio: 2 } : { aspectRatio: 1 },
-      ]}
-    >
+    <View style={[styles.container, { aspectRatio: allHalfTiles ? 2 : 1 }]}>
       {tiles.map((tile, index) => (
         <View
           key={tile.id}
-          style={[styles.tileContainer, index > 0 && { marginTop: GRID_GAP }]}
+          style={[
+            styles.tileContainer,
+            tile.tileHeight === TileHeight.Half && styles.halfTileContainer,
+            index > 0 && { marginTop: GRID_GAP },
+          ]}
         >
           {renderTile(tile)}
         </View>
@@ -63,9 +59,13 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
+    flex: 1,
   },
   tileContainer: {
     flex: 1,
+  },
+  halfTileContainer: {
+    flex: 1, // Take up half the height of a full tile
   },
 });
 
