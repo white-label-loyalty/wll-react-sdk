@@ -1,4 +1,5 @@
-name: Version Bump
+name: Version and Release
+
 on:
   pull_request:
     types: [closed]
@@ -6,28 +7,93 @@ on:
       - main
 
 jobs:
-  version-bump:
+  version-and-release:
+    # Only run this job when the PR is merged to main
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
+      # Need write permissions for releases and contents
       contents: write
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
+          # Fetch all history for changelog generation
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: 20.18.0
+          # Configure NPM registry for publishing
+          registry-url: 'https://registry.npmjs.org'
 
-      - name: Bump version
+      - name: Install dependencies
+        run: |
+          # Install project dependencies
+          yarn install
+          # Install changelog generation tool
+          npm install -g conventional-changelog-cli
+
+      - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          npm version patch -m "Bump version to %s [skip ci]"
 
-      - name: Push changes
-        run: git push
+      - name: Bump version
+        id: version
+        run: |
+          # Bump version without creating git tag (we'll create it with the release)
+          npm --no-git-tag-version version patch
+          # Get the new version for later use
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          # Commit package.json changes
+          git add package.json
+          git commit -m "chore: bump version to ${VERSION} [skip ci]"
+          git push
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Generate changelog for the latest version
+          conventional-changelog -p angular -i CHANGELOG.md -s -r 1 > TEMP_CHANGELOG.md
+
+          # Format changelog for GitHub Actions output
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          cat TEMP_CHANGELOG.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          # Update the main CHANGELOG.md
+          conventional-changelog -p angular -i CHANGELOG.md -s
+
+          # Commit changelog updates
+          git add CHANGELOG.md
+          git commit -m "docs: update changelog [skip ci]" || echo "No changelog changes to commit"
+          git push
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: Release v${{ steps.version.outputs.version }}
+          body: |
+            Release for version ${{ steps.version.outputs.version }}
+
+            ## What's Changed
+            ${{ steps.changelog.outputs.CHANGELOG }}
+
+            For full changelog, see [CHANGELOG.md](CHANGELOG.md)
+          draft: false
+          prerelease: false
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
