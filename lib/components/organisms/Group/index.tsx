@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
 import { commonStyles } from '../../../utils/styling';
 import { sortByPriority } from '../../../utils/transforms';
-import { Skeleton } from '../../atoms';
+import { Skeleton, Text } from '../../atoms';
 import Section from '../Section';
 
 type GroupProps = {
@@ -38,7 +38,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   if (!groupData) {
     return (
       <View style={commonStyles.emptyContainer}>
-        <Text>No group data available</Text>
+        <Text variant="body">No group data available</Text>
       </View>
     );
   }
@@ -46,7 +46,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
   if (!groupData.sections || groupData.sections.length === 0) {
     return (
       <View style={commonStyles.emptyContainer}>
-        <Text>No sections available</Text>
+        <Text variant="body">No sections available</Text>
       </View>
     );
   }

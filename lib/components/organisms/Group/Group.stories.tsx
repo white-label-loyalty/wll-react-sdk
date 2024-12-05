@@ -3,8 +3,494 @@ import React from 'react';
 import { WllSdkProvider } from '../../../context/WllSdkContext';
 import { defaultTheme } from '../../../utils/styling';
 
+// @ts-ignore
+import gamified from '../../../assets/gamified.jpg';
+// @ts-ignore
+import golden from '../../../assets/golden.png';
+// @ts-ignore
+import ap from '../../../assets/ap.png';
+// @ts-ignore
+import airmiles from '../../../assets/airmiles.png';
+// @ts-ignore
+import numberOne from '../../../assets/numberOne.png';
+
 import { themes } from '../../../utils/themeHelpers';
 import Group from './index';
+
+const programData = {
+  status: 'success',
+  data: {
+    name: 'SkyRewards Elite',
+    sections: [
+      {
+        name: 'Travel Status',
+        type: 'GRID',
+        title: 'Travel Dashboard',
+        description:
+          'Track your miles, unlock premium benefits, and explore exclusive travel perks!',
+        tiles: [
+          {
+            // First Full Tile - Welcome Banner
+            tileHeight: 'FULL',
+            type: 'CONTENT',
+            configuration: {
+              artworkUrl:
+                'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              title: 'Welcome Explorer!',
+              body: 'Your journey to premium travel begins here! Earn miles on every flight and unlock exclusive benefits along the way.',
+              ctaLink: '/my-rewards',
+              ctaLinkTarget: 'NEW_TAB',
+            },
+          },
+          {
+            // First Half Tile - Miles Counter
+            tileHeight: 'HALF',
+            type: 'POINTS',
+            configuration: {
+              title: 'Available Miles',
+              points: 75000,
+              artworkUrl: airmiles,
+              pointsPrefix: '',
+              pointsSuffix: 'mi',
+              pointsMultiplier: 1,
+            },
+          },
+          {
+            // Second Half Tile - Elite Status Progress
+            tileHeight: 'HALF',
+            type: 'TIER',
+            configuration: {
+              title: 'Elite Status',
+              type: 'CURRENT',
+              tier: {
+                name: 'Platinum Voyager',
+                pointsRequirement: 100000,
+              },
+              pointsSuffix: 'miles',
+              pointsToTierPrefix: 'Earn',
+              pointsToTierSuffix: 'miles for Platinum status!',
+              emptyDescription: 'Start your journey to Elite status!',
+            },
+          },
+          {
+            // Second Full Tile - Premium Offers
+            tileHeight: 'FULL',
+            type: 'CONTENT',
+            configuration: {
+              title: '',
+              body: '',
+              artworkUrl:
+                'https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            },
+          },
+          {
+            tileHeight: 'HALF',
+            type: 'CONTENT',
+            configuration: {
+              title: '2X Miles Bonus!',
+              body: 'Book your next flight by December 31st to earn double miles! Perfect for reaching Platinum status faster.',
+              ctaLink: '/book-flight',
+            },
+          },
+          {
+            // Fourth Half Tile - Travel Benefits
+            tileHeight: 'HALF',
+            type: 'CONTENT',
+            configuration: {
+              title: 'Your Elite Benefits',
+              body: 'Access your premium travel perks: Priority Check-in, Extra Baggage, Lounge Access, and more!',
+              ctaLink: '/benefits',
+            },
+          },
+        ],
+      },
+      {
+        details: [],
+        defaultLocale: 'en',
+        name: 'Travel Reward Categories',
+        type: 'GRID',
+        active: true,
+        id: 'c7671657-8634-4b2f-8c25-49022ba4f950',
+        tiles: [
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'REWARD_CATEGORY',
+            configuration: {
+              details: [],
+              rewardCategoryId: '9d8287e0-bae9-47b4-8bf0-0115fd64336a',
+              allowDecorationOverlay: true,
+              showName: true,
+              showArtwork: true,
+              artworkUrl:
+                'https://images.pexels.com/photos/2033343/pexels-photo-2033343.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              name: 'Premium Cabin Upgrades',
+            },
+            id: 'f57f2f98-cabf-4b81-82ac-a0249172d65c',
+            priority: 4,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'REWARD_CATEGORY',
+            configuration: {
+              details: [],
+              rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
+              allowDecorationOverlay: true,
+              showName: true,
+              showArtwork: true,
+              artworkUrl:
+                'https://images.pexels.com/photos/16739115/pexels-photo-16739115/free-photo-of-a-large-circular-table-with-chairs-and-a-large-window.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              name: 'Airport Lounge Access',
+            },
+            id: 'ed598f88-cda4-4b3d-930e-3d38bf0a0fc2',
+            priority: 3,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'REWARD_CATEGORY',
+            configuration: {
+              details: [],
+              rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
+              allowDecorationOverlay: true,
+              showName: true,
+              showArtwork: true,
+              artworkUrl:
+                'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              name: 'Hotel & Resort Packages',
+            },
+            id: 'e0945f47-8d89-4d7c-bf70-9b91d41f97b6',
+            priority: 2,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'REWARD_CATEGORY',
+            configuration: {
+              details: [],
+              rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
+              allowDecorationOverlay: true,
+              showName: true,
+              showArtwork: true,
+              artworkUrl:
+                'https://images.pexels.com/photos/104826/aircraft-holiday-sun-tourism-104826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              name: 'Exclusive Experiences',
+            },
+            id: '0132a078-4398-41f2-aea9-8d32a43193ac',
+            priority: 1,
+          },
+        ],
+        title: 'Travel Rewards at a Glance',
+        locale: 'en',
+        description:
+          'Discover exceptional ways to enhance your travel experience with our curated selection of premium rewards.',
+      },
+      {
+        details: [],
+        defaultLocale: 'en',
+        name: 'Badge Tiles',
+        type: 'GRID',
+        active: true,
+        id: '60a6b9e3-14c7-4b49-a363-b6dc2f16dae0',
+        tiles: [
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+              internalName: 'Global Navigator',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
+              name: 'Global Navigator',
+              locale: 'en',
+              description:
+                'Achieved by visiting all major continents within a calendar year. A true citizen of the skies who has mastered worldwide travel.',
+              artworkUrl: airmiles,
+              count: 0,
+              awardedDatePrefix: 'World Master since',
+              emptyBadgeMessage: 'Your journey around the world awaits!',
+              emptyBadgeArtworkUrl: airmiles,
+              badgeNotEarnedMessage: 'Continue exploring to unlock',
+              createdAt: '2024-08-06T08:53:24.307Z',
+              updatedAt: '2024-08-06T08:53:24.307Z',
+            },
+            createdAt: '2024-11-11T16:17:23.784Z',
+            updatedAt: '2024-11-11T16:17:23.784Z',
+            priority: 4,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: 'd3a2b1fa-3963-4117-8c6f-69e5f8fea009',
+              internalName: 'Mile High Maven',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '79021b66-a7cf-4809-bef9-872467c0cd66',
+              name: 'Mile High Maven',
+              locale: 'en',
+              createdAt: '2024-08-06T08:53:24.307Z',
+              updatedAt: '2024-08-06T08:53:24.307Z',
+              description:
+                'Earned by completing 50 flights in premium cabins. A connoisseur of luxury travel who knows the art of flying in style.',
+              artworkUrl: airmiles,
+              count: 1,
+              awardedDatePrefix: 'Elite since',
+              emptyBadgeMessage: 'Your premium journey begins here',
+              emptyBadgeArtworkUrl: "You haven't earned any badges yet.",
+              badgeNotEarnedMessage: 'Keep flying premium to unlock',
+            },
+            createdAt: '2024-11-11T16:17:23.784Z',
+            updatedAt: '2024-11-11T16:17:23.784Z',
+            priority: 3,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '30528c0a-30c2-44aa-9640-25647b8a594c',
+              internalName: 'Dawn Traveler',
+              priority: 0,
+              status: 'ACTIVE',
+              createdAt: '2024-08-06T08:53:24.307Z',
+              updatedAt: '2024-08-06T08:53:24.307Z',
+              id: '656539e7-0b33-4952-8cff-8fbca4883621',
+              name: 'Dawn Traveler',
+              locale: 'en',
+              description:
+                'Awarded for completing 25 red-eye or early morning flights. A master of sunrise departures who makes the most of every travel day.',
+              artworkUrl: airmiles,
+              count: 1,
+              awardedDatePrefix: 'Early Bird since',
+              emptyBadgeMessage: 'Rise and fly!',
+              emptyBadgeArtworkUrl: airmiles,
+              badgeNotEarnedMessage: 'More early flights needed',
+            },
+            createdAt: '2024-11-11T16:17:23.784Z',
+            updatedAt: '2024-11-11T16:17:23.784Z',
+            priority: 2,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              createdAt: '2024-08-06T08:53:24.307Z',
+              updatedAt: '2024-08-06T08:53:24.307Z',
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '84bd0af7-bef3-4201-8541-d60431116597',
+              internalName: 'Route Pioneer',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '4570996f-5af5-4adb-a59f-67c817cc5874',
+              name: 'Route Pioneer',
+              locale: 'en',
+              description:
+                'Granted for being among the first 100 passengers on a new route launch. A trendsetter who charts new paths across the skies.',
+              artworkUrl: airmiles,
+              count: 3,
+              awardedDatePrefix: 'Pioneer since',
+              emptyBadgeMessage: 'New routes await your discovery',
+              emptyBadgeArtworkUrl: airmiles,
+              badgeNotEarnedMessage: 'Watch for new route launches',
+            },
+            priority: 1,
+            createdAt: '2024-11-11T16:17:23.784Z',
+            updatedAt: '2024-11-11T16:17:23.784Z',
+          },
+        ],
+        title: 'Flight Achievement Gallery',
+        locale: 'en',
+        description:
+          'Your aviation milestones captured in prestigious badges. Each one tells the story of your journey through the skies, from dawn flights to global adventures.',
+      },
+    ],
+  },
+};
+
+const gamifiedGroupData = {
+  status: 'success',
+  data: {
+    name: 'Adventure Quest Hub',
+    active: true,
+    id: '32697712-8dc0-4717-9775-e1f3502acc48',
+    createdAt: '2024-11-14T19:14:30.212Z',
+    updatedAt: '2024-11-14T19:14:30.212Z',
+    sections: [
+      {
+        details: [],
+        defaultLocale: 'en',
+        name: 'Player Status',
+        type: 'GRID',
+        active: true,
+        id: 'cc1bf03b-42fd-4276-b543-84ec7a1cc527',
+        createdAt: '2024-11-14T19:00:31.894Z',
+        updatedAt: '2024-11-15T09:48:37.232Z',
+        visibilityCriteria: null,
+        priority: 5,
+        tiles: [
+          {
+            tileHeight: 'HALF',
+            active: true,
+            type: 'CONTENT',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              ctaLinkTarget: 'NEW_TAB',
+              locale: 'en',
+              title: 'Welcome Explorer Graeme!',
+              body: 'Your quest for rewards begins! Complete missions and unlock treasures on your journey.',
+              ctaLink: '/quests',
+            },
+            id: 'fb42e341-c477-4b84-a8cf-02aa1f76a351',
+            createdAt: '2024-11-14T17:58:13.107Z',
+            updatedAt: '2024-11-21T21:44:41.237Z',
+            priority: 8,
+          },
+          {
+            tileHeight: 'HALF',
+            active: true,
+            type: 'TIER',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'CURRENT',
+              tierId: '54f0658a-9409-41f7-a508-ca02c6ac23e1',
+              progressType: 'NAME',
+              tier: {
+                id: '5607df63-8e18-4a5c-ab71-06330368c1b3',
+                name: 'Master Explorer',
+                description: null,
+                artworkUrl: golden,
+                pointsRequirement: 10000,
+              },
+              locale: 'en',
+              title: 'Adventure Rank',
+              pointsSuffix: 'XP',
+              emptyArtworkUrl: gamified,
+              emptyDescription:
+                'Begin your journey to become a Master Explorer!',
+              pointsToTierPrefix: 'Gain',
+              pointsToTierSuffix: 'XP to reach next rank!',
+            },
+            id: 'bcd700c0-1288-4117-9ff0-fe2a72913e77',
+            createdAt: '2024-11-14T18:06:25.686Z',
+            updatedAt: '2024-11-14T18:06:25.686Z',
+            priority: 7,
+          },
+          {
+            tileHeight: 'HALF',
+            active: true,
+            type: 'POINTS',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              points: 5600,
+              locale: 'en',
+              title: 'Adventure Points',
+              artworkUrl: ap,
+              pointsPrefix: '⚡',
+              pointsSuffix: 'AP',
+              pointsMultiplier: 1,
+            },
+            id: '7530fc60-6352-47bc-86a1-8d54e9848fcc',
+            createdAt: '2024-11-14T18:07:37.939Z',
+            updatedAt: '2024-11-14T18:07:37.939Z',
+            priority: 6,
+          },
+          {
+            tileHeight: 'HALF',
+            active: true,
+            type: 'CONTENT',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              ctaLinkTarget: 'NEW_TAB',
+              locale: 'en',
+              title: 'Daily Quest Bonus!',
+              body: 'Complete your daily missions to earn 2X AP! Every adventure brings you closer to legendary rewards!',
+              artworkUrl:
+                'https://images.pexels.com/photos/18940033/pexels-photo-18940033/free-photo-of-decorative-dice-and-pumpkin-for-halloween.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              ctaLink: '/daily-quests',
+            },
+            id: '288c9873-729e-4766-83fc-1e15cafde6ba',
+            createdAt: '2024-11-14T18:44:18.897Z',
+            updatedAt: '2024-11-14T18:44:18.897Z',
+            priority: 5,
+          },
+        ],
+        title: 'Adventure Dashboard',
+        locale: 'en',
+        description:
+          'Track your progress, unlock achievements, and embark on epic quests!',
+      },
+      {
+        details: [],
+        defaultLocale: 'en',
+        name: 'Achievement Hall',
+        type: 'GRID',
+        active: true,
+        id: '60a6b9e3-14c7-4b49-a363-b6dc2f16dae0',
+        createdAt: '2024-11-11T16:28:32.848Z',
+        updatedAt: '2024-11-11T16:28:32.848Z',
+        visibilityCriteria: null,
+        priority: 4,
+        tiles: [
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+              internalName: 'Legendary Explorer',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
+              name: 'Legendary Explorer',
+              locale: 'en',
+              description:
+                'Achieved by reaching the highest Explorer rank and completing 100 quests.',
+              artworkUrl:
+                'https://images.pexels.com/photos/17333075/pexels-photo-17333075/free-photo-of-man-with-beard-holding-dice.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              count: 0,
+              awardedDatePrefix: 'Legend status achieved',
+              emptyBadgeMessage:
+                'Your trophy case awaits its first achievement!',
+              emptyBadgeArtworkUrl: numberOne,
+              badgeNotEarnedMessage: 'Continue your journey',
+            },
+            priority: 4,
+          },
+          // [Additional achievement badges following similar pattern...]
+        ],
+        title: 'Hall of Legends',
+        locale: 'en',
+        description:
+          'Showcase your legendary achievements and epic milestones!',
+      },
+      // [Additional sections with similar gamification elements...]
+    ],
+  },
+};
 
 const mockGroupData = {
   status: 'success',
@@ -935,5 +1421,22 @@ export const FullGroup: Story = {
   },
   parameters: {
     mockData: [{ response: mockGroupData }],
+  },
+};
+
+export const GamificationFullGroup: Story = {
+  args: {
+    id: 'gamifiedfull-group-id',
+  },
+  parameters: {
+    mockData: [{ response: gamifiedGroupData }],
+  },
+};
+export const AirMilesTravelFullGroup: Story = {
+  args: {
+    id: 'air-miles-travel-group-id',
+  },
+  parameters: {
+    mockData: [{ response: programData }],
   },
 };
