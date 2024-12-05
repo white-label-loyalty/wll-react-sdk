@@ -44,8 +44,8 @@ export class BannerTileConfig {
 export class PointsTileConfig {
   title?: string | null;
   multiplier?: number;
-  prefix?: string | null;
-  suffix?: string | null;
+  pointsPrefix?: string | null;
+  pointsSuffix?: string | null;
   artworkUrl?: string | null;
   points?: number;
 }
