@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn<typeof BadgeTile> = (args) => (
-  <TileWrapper isHalfTile={args.tile.tileHeight === TileHeight.Half}>
+  <TileWrapper isHalfTile={args.tile?.tileHeight === TileHeight.Half}>
     <BadgeTile {...args} />
   </TileWrapper>
 );

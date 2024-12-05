@@ -11,8 +11,8 @@ export default {
 
 const Template: StoryFn<typeof BannerTile> = (args) => <BannerTile {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const SeasonalPromotionBanner = Template.bind({});
+SeasonalPromotionBanner.args = {
   tile: {
     id: '1',
     type: TileType.Banner,
@@ -22,19 +22,20 @@ Default.args = {
     tileHeight: TileHeight.Full,
     priority: 1,
     configuration: {
+      title: 'Summer Points Splash',
+      ctaLink: '/summer-rewards',
+      ctaText: 'Start Earning',
       artworkUrl:
-        'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
-      title: 'Summer Sale',
-      description: 'Get up to 50% off on selected items!',
-      ctaText: 'SHOP NOW',
-      ctaLink: 'https://www.example.com',
+        'https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      description:
+        'Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.',
       ctaLinkTarget: CTALinkTarget.sameWindow,
     },
   },
 };
 
-export const WithoutCTA = Template.bind({});
-WithoutCTA.args = {
+export const LoyaltyTierUpgrade = Template.bind({});
+LoyaltyTierUpgrade.args = {
   tile: {
     id: '2',
     type: TileType.Banner,
@@ -44,19 +45,20 @@ WithoutCTA.args = {
     tileHeight: TileHeight.Full,
     priority: 1,
     configuration: {
+      title: 'Welcome to Diamond Status',
+      ctaLink: '/diamond-benefits',
       artworkUrl:
-        'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
-      title: 'Summer Sale',
-      description: 'Get up to 50% off on selected items!',
-      ctaLink: 'https://www.example.com',
+        'https://images.pexels.com/photos/380337/pexels-photo-380337.jpeg',
+      description:
+        'Enjoy unlimited 5X points, concierge service, and exclusive Diamond member events.',
       ctaLinkTarget: CTALinkTarget.sameWindow,
       ctaText: '',
     },
   },
 };
 
-export const ArtworkOnly = Template.bind({});
-ArtworkOnly.args = {
+export const RewardsHighlight = Template.bind({});
+RewardsHighlight.args = {
   tile: {
     id: '3',
     type: TileType.Banner,
@@ -67,7 +69,7 @@ ArtworkOnly.args = {
     priority: 1,
     configuration: {
       artworkUrl:
-        'https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_1280.jpg',
+        'https://images.pexels.com/photos/6250883/pexels-photo-6250883.jpeg',
       title: '',
       description: '',
       ctaText: '',
