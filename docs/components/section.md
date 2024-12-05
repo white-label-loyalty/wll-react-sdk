@@ -2,9 +2,11 @@
 
 A context-providing container component that renders different types of content layouts (Grid or Banner) based on section type.
 
-> ⚠️ **Important**: This component provides section context to child components and handles responsive styling with a maximum width of 1080px.
+> ⚠️ **Important**: This component provides section context to child components and handles responsive styling that adapts to its container width.
 
 ## Usage
+
+### With Section Data
 
 ```jsx
 import { Section } from '@wlloyalty/wll-react-native-sdk'
@@ -21,11 +23,28 @@ function MyComponent() {
 }
 ```
 
+### Fetching by ID
+
+You can also fetch a section by its ID. The component will handle loading states automatically:
+
+```jsx
+import { Section } from '@wlloyalty/wll-react-native-sdk'
+
+function MyComponent() {
+  return <Section sectionId="your-section-id" />
+}
+```
+
 ## Props
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| section | `TSection` | Yes | Section configuration object containing layout type and content |
+| section | `TSection` | No | Section configuration object containing layout type and content |
+| sectionId | `string` | No | ID of the section to fetch. If provided, the component will automatically fetch the section data |
+
+::: tip Note
+Either `section` or `sectionId` must be provided, but not both.
+:::
 
 ## Section Types
 
@@ -33,6 +52,13 @@ function MyComponent() {
 |------|-----------|-------------|
 | GRID | `<Grid />` | Displays tiles in a responsive grid layout |
 | BANNER | `<Carousel />` | Shows Banner tiles in a scrollable carousel |
+
+## Loading States
+
+When fetching a section by ID, the component will display:
+- A loading skeleton during the fetch
+- An error message if the fetch fails
+- The section content once loaded successfully
 
 ## Context
 
@@ -76,9 +102,8 @@ function ChildComponent() {
 
 The component applies responsive styles with:
 - 100% width
-- Maximum width of 1080px
 - Automatic horizontal margins
-- Responsive bottom margin (40px on mobile/tablet, 60px on desktop)
+- Responsive bottom margin
 
 ## Error Handling
 
