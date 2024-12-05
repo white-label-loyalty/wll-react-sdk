@@ -19,7 +19,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "chromatic": "npx chromatic",
+    "chromatic": "npx chromatic --exit-once-uploaded",
     "type-check": "tsc --noEmit",
     "commit": "cz",
     "docs:dev": "vitepress dev docs",
