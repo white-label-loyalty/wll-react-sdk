@@ -8,18 +8,21 @@ on:
 
 jobs:
   version-and-release:
-    # Only run this job when the PR is merged to main
-    if: github.event.pull_request.merged == true
+    if: |
+      github.event.pull_request.merged == true && (
+        contains(github.event.pull_request.title, 'feat:') ||
+        contains(github.event.pull_request.title, 'fix:') ||
+        contains(github.event.pull_request.labels.*.name, 'release') ||
+        contains(github.event.pull_request.title, 'RELEASE')
+      )
     runs-on: ubuntu-latest
     permissions:
-      # Need write permissions for releases and contents
       contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Fetch all history for changelog generation
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
@@ -28,14 +31,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.18.0
-          # Configure NPM registry for publishing
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Initialize changelog
+        run: |
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog\n\nAll notable changes to this project will be documented in this file." > CHANGELOG.md
+            git add CHANGELOG.md
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git commit -m "chore: initialize changelog [skip ci]"
+            git push
+          fi
 
       - name: Install dependencies
         run: |
-          # Install project dependencies
           yarn install
-          # Install changelog generation tool
           npm install -g conventional-changelog-cli
 
       - name: Configure Git
@@ -46,12 +57,9 @@ jobs:
       - name: Bump version
         id: version
         run: |
-          # Bump version without creating git tag (we'll create it with the release)
           npm --no-git-tag-version version patch
-          # Get the new version for later use
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          # Commit package.json changes
           git add package.json
           git commit -m "chore: bump version to ${VERSION} [skip ci]"
           git push
@@ -59,16 +67,22 @@ jobs:
       - name: Generate changelog
         id: changelog
         run: |
-          # Generate changelog for the latest version
-          conventional-changelog -p angular -i CHANGELOG.md -s -r 1 > TEMP_CHANGELOG.md
+          # First time generation if changelog is empty
+          if [ ! -s CHANGELOG.md ]; then
+            conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+          else
+            # Generate changelog for the latest version
+            conventional-changelog -p angular -i CHANGELOG.md -s -r 1 > TEMP_CHANGELOG.md
+          fi
 
           # Format changelog for GitHub Actions output
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
-          cat TEMP_CHANGELOG.md >> $GITHUB_OUTPUT
+          if [ -f TEMP_CHANGELOG.md ]; then
+            cat TEMP_CHANGELOG.md >> $GITHUB_OUTPUT
+          else
+            echo "Initial release" >> $GITHUB_OUTPUT
+          fi
           echo "EOF" >> $GITHUB_OUTPUT
-
-          # Update the main CHANGELOG.md
-          conventional-changelog -p angular -i CHANGELOG.md -s
 
           # Commit changelog updates
           git add CHANGELOG.md
