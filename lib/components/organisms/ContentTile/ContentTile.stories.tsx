@@ -7,6 +7,7 @@ import { TileWrapper } from '../../../utils/storybookHelpers';
 export default {
   title: 'components/organisms/ContentTile',
   component: ContentTile,
+  tags: ['autodocs'],
 } as Meta<typeof ContentTile>;
 
 const Template: StoryFn<typeof ContentTile> = (args) => (

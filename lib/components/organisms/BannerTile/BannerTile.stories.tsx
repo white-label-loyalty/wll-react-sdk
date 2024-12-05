@@ -6,6 +6,7 @@ import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 export default {
   title: 'components/organisms/BannerTile',
   component: BannerTile,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof BannerTile> = (args) => <BannerTile {...args} />;

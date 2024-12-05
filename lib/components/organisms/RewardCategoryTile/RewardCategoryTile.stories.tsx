@@ -7,6 +7,7 @@ import RewardCategoryTile from './index';
 export default {
   title: 'components/organisms/RewardCategoryTile',
   component: RewardCategoryTile,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof RewardCategoryTile> = (args) => (

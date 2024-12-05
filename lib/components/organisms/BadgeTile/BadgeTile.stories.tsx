@@ -7,6 +7,7 @@ import BadgeTile from './index';
 export default {
   title: 'components/organisms/BadgeTile',
   component: BadgeTile,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof BadgeTile> = (args) => (

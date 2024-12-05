@@ -904,6 +904,7 @@ const meta: Meta<typeof Group> = {
   parameters: {
     mockData: [{ response: mockGroupData }],
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Group>;
 
 export default meta;

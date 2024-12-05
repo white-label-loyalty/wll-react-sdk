@@ -3,6 +3,7 @@ import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { GRID_GAP } from '../../../constants/grid';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import SkeletonTile from '../SkeletonTile';
 
 interface SkeletonProps {
   width?: number | `${number}%`;
@@ -74,10 +75,7 @@ const Skeleton: React.FC<SkeletonProps> = ({ style, numberOfSquares = 4 }) => {
       />
       <Animated.View style={[styles.container, style]}>
         {Array.from({ length: numberOfSquares }).map((_, index) => (
-          <Animated.View
-            key={index}
-            style={[styles.skeleton, styles.square, sharedSkeletonStyle]}
-          />
+          <SkeletonTile key={index} />
         ))}
       </Animated.View>
     </View>
