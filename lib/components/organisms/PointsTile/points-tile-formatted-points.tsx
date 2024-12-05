@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
+import { Row, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { usePointsTileStyles } from './styles';
-import { Text, Row } from '../../atoms';
 
 export const PointsTileFormattedPoints: React.FC = () => {
   const styles = usePointsTileStyles();
   const { configuration } = useTileContext();
-  const { multiplier, prefix, suffix, points } =
+  const { multiplier, pointsPrefix, pointsSuffix, points } =
     configuration as PointsTileConfig;
 
   const calculatedPoints =
@@ -17,10 +16,10 @@ export const PointsTileFormattedPoints: React.FC = () => {
   if (calculatedPoints === null) return null;
   return (
     <Text variant="caption">
-      {prefix ?? ''}
+      {pointsPrefix ?? ''}
       <Row>
         {calculatedPoints}
-        <Text style={styles.suffix}>{suffix ?? 'pts'}</Text>
+        <Text style={styles.suffix}>{pointsSuffix ?? 'pts'}</Text>
       </Row>
     </Text>
   );
