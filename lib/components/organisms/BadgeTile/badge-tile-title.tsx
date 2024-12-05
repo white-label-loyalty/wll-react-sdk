@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
 import { BadgeTileConfig } from '../../../types/tile';
+import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
-import { Text } from '../../atoms';
 
 export const BadgeTileTitle: FC = () => {
   const styles = useBadgeTileStyles();
@@ -19,7 +19,7 @@ export const BadgeTileTitle: FC = () => {
       <Text
         variant="title"
         style={styles.titleText}
-        numberOfLines={2}
+        numberOfLines={count === 0 ? 2 : 1}
         ellipsizeMode="tail"
       >
         {displayText}

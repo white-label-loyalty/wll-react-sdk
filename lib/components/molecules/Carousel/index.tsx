@@ -78,6 +78,9 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
   };
 
   const displayControls = sortedTiles.length > 1;
+  const showPrevButton = displayControls && currentIndex > 0;
+  const showNextButton =
+    displayControls && currentIndex < sortedTiles.length - 1;
 
   const dynamicStyles = StyleSheet.create({
     indicators: {
@@ -104,7 +107,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
         }}
       >
         <View style={styles.carouselContainer}>
-          {displayControls && (
+          {showPrevButton && (
             <TouchableOpacity
               style={[
                 styles.navButton,
@@ -146,7 +149,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
               </View>
             ))}
           </ScrollView>
-          {displayControls && (
+          {showNextButton && (
             <TouchableOpacity
               style={[
                 styles.navButton,
