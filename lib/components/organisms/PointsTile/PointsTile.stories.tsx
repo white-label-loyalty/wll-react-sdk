@@ -11,6 +11,7 @@ import pointsFull from '../../../assets/pointsFull.png';
 export default {
   title: 'components/organisms/PointsTile',
   component: PointsTile,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof PointsTile> = (args) => (

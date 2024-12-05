@@ -46,6 +46,7 @@ export default {
             { text: 'WllSdkProvider', link: '/components/wll-sdk-provider' },
             { text: 'Group', link: '/components/group' },
             { text: 'Section', link: '/components/section' },
+            { text: 'Tile', link: '/components/tile' },
           ],
         },
         {

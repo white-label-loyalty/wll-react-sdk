@@ -12,6 +12,7 @@ export default {
   argTypes: {
     section: { control: 'object' },
   },
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof Carousel> = (args) => (

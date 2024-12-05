@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { BannerTileConfig, Tile } from '../../../types/tile';
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { BannerTileCTA } from './banner-tile-cta';
 import { BannerTileDescription } from './banner-tile-description';
 import { BannerTileMedia } from './banner-tile-media';
@@ -44,4 +45,4 @@ BannerTile.Title = BannerTileTitle;
 BannerTile.Description = BannerTileDescription;
 BannerTile.CTA = BannerTileCTA;
 
-export default BannerTile;
+export default withTileFetching(BannerTile);

@@ -9,6 +9,7 @@ import { TileWrapper } from '../../../utils/storybookHelpers';
 export default {
   title: 'components/organisms/RewardTile',
   component: RewardTile,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof RewardTile> = (args) => (

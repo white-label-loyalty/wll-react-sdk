@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { BaseThemeObject } from '../types/theme';
 
 export const sizes = {
@@ -17,6 +18,14 @@ export const sizes = {
   xxxxl: 40,
   xxxxxl: 60,
 } as const;
+
+export const commonStyles = StyleSheet.create({
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export const defaultTheme: BaseThemeObject = {
   background: '#F0F0F0',

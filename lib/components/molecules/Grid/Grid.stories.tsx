@@ -23,6 +23,7 @@ export default {
       </View>
     ),
   ],
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<typeof Grid> = (args) => <Grid {...args} />;

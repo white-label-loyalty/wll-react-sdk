@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
+import { commonStyles } from '../../../utils/styling';
 import { sortByPriority } from '../../../utils/transforms';
 import { Skeleton } from '../../atoms';
 import Section from '../Section';
@@ -28,7 +29,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
 
   if (loading) {
     return (
-      <View style={styles.emptyConatiner}>
+      <View style={commonStyles.emptyContainer}>
         <Skeleton />
       </View>
     );
@@ -36,7 +37,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
 
   if (!groupData) {
     return (
-      <View style={styles.emptyConatiner}>
+      <View style={commonStyles.emptyContainer}>
         <Text>No group data available</Text>
       </View>
     );
@@ -44,7 +45,7 @@ const Group: React.FC<GroupProps> = ({ id }) => {
 
   if (!groupData.sections || groupData.sections.length === 0) {
     return (
-      <View style={styles.emptyConatiner}>
+      <View style={commonStyles.emptyContainer}>
         <Text>No sections available</Text>
       </View>
     );
@@ -59,13 +60,5 @@ const Group: React.FC<GroupProps> = ({ id }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  emptyConatiner: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default Group;
