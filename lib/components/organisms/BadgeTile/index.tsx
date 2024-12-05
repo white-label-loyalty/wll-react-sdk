@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import { ImagePropsNoSource } from '../../../types/common';
 import { Tile } from '../../../types/tile';
-import { BaseTile } from '../../atoms';
-import { Column } from '../../atoms';
+import { BaseTile, Column } from '../../atoms';
 
+import { View } from 'react-native';
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { BadgeTileDateEarned } from './badge-tile-date-earned';
 import { BadgeTileDescription } from './badge-tile-description';
 import { BadgeTileMedia } from './badge-tile-media';
 import { BadgeTileStatus } from './badge-tile-status';
 import { BadgeTileTitle } from './badge-tile-title';
-import { View } from 'react-native';
 
 type BadgeTileProps = {
   tile: Tile;
@@ -55,4 +55,4 @@ BadgeTile.Description = BadgeTileDescription;
 BadgeTile.DateEarned = BadgeTileDateEarned;
 BadgeTile.Status = BadgeTileStatus;
 
-export default BadgeTile;
+export default withTileFetching(BadgeTile);

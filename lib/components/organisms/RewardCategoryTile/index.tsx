@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Tile } from '../../../types/tile';
 import { BaseTile } from '../../atoms';
 
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardCategoryHeader } from './reward-category-header';
 import { RewardCategoryMedia } from './reward-category-media';
 
@@ -26,4 +27,4 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
 RewardCategoryTile.Header = RewardCategoryHeader;
 RewardCategoryTile.Media = RewardCategoryMedia;
 
-export default RewardCategoryTile;
+export default withTileFetching(RewardCategoryTile);

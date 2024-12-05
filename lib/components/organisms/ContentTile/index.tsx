@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Tile } from '../../../types/tile';
 import BaseTile from '../../atoms/BaseTile';
 
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { ContentTileBody } from './content-tile-body';
 import { ContentTileContent } from './content-tile-content';
 import { ContentTileHeader } from './content-tile-header';
@@ -42,4 +43,4 @@ ContentTile.Content = ContentTileContent;
 ContentTile.Header = ContentTileHeader;
 ContentTile.Body = ContentTileBody;
 
-export default ContentTile;
+export default withTileFetching(ContentTile);

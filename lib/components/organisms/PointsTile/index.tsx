@@ -5,9 +5,10 @@ import { Tile } from '../../../types/tile';
 import { BaseTile } from '../../atoms';
 import { usePointsTileStyles } from './styles';
 
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { PointsTileFormattedPoints } from './points-tile-formatted-points';
-import { PointsTileTitle } from './points-tile-title';
 import { PointsTileMedia } from './points-tile-media';
+import { PointsTileTitle } from './points-tile-title';
 
 type PointsTileProps = {
   tile: Tile;
@@ -39,4 +40,4 @@ PointsTile.Title = PointsTileTitle;
 PointsTile.Points = PointsTileFormattedPoints;
 PointsTile.Media = PointsTileMedia;
 
-export default PointsTile;
+export default withTileFetching(PointsTile);

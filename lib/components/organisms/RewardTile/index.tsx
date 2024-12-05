@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import { RewardTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Row, Column } from '../../atoms';
+import { BaseTile, Column, Row } from '../../atoms';
 
+import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardTileChevron } from './reward-tile-chevron';
-import { RewardTileSummary } from './reward-tile-summary';
 import { RewardTileMedia } from './reward-tile-media';
 import { RewardTilePoints } from './reward-tile-points';
+import { RewardTileSummary } from './reward-tile-summary';
 import { RewardTileTitle } from './reward-tile-title';
 
 type RewardTileProps = {
@@ -43,4 +44,4 @@ RewardTile.Summary = RewardTileSummary;
 RewardTile.Points = RewardTilePoints;
 RewardTile.Chevron = RewardTileChevron;
 
-export default RewardTile;
+export default withTileFetching(RewardTile);
