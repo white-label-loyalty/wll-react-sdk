@@ -175,6 +175,7 @@ const BaseTileHeader: FC<{ children?: ReactNode }> = ({ children }) => {
         },
       ]}
       accessibilityRole="header"
+      numberOfLines={1}
     >
       {children}
     </View>
@@ -219,7 +220,7 @@ const BaseTileTitle: FC = () => {
 
   return (
     <>
-      <Text variant="title" accessibilityLabel={title}>
+      <Text variant="title" accessibilityLabel={title} numberOfLines={1}>
         {title}
       </Text>
       {ctaLink && (
