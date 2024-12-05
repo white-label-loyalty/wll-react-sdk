@@ -72,6 +72,34 @@ type(scope?): subject
 | `revert`   | Reverting previous changes                                |
 | `wip`      | Work in progress                                          |
 
+### Automated Release Process
+
+We use automated versioning and release management through GitHub Actions. Here's how it works:
+
+1. **Version Bumping**:
+   - When Pull Requests are merged to `main`, our automation will increment the package version
+   - The version bump follows semantic versioning based on conventional commit types:
+     - `feat:` commits trigger new minor versions
+     - `fix:` commits trigger new patch versions
+     - Adding `BREAKING CHANGE:` in the commit body triggers major versions
+
+2. **Release Triggering**:
+   New releases are automatically created when:
+   - A PR title starts with `feat:` or `fix:`
+   - A PR has the `release` label
+   - A PR title contains `RELEASE`
+
+   Other types of changes (like `docs:`, `style:`, `chore:`) won't trigger releases.
+
+3. **Changelog Generation**:
+   - Each release automatically generates an updated CHANGELOG.md
+   - The changelog is organized by commit types (Features, Bug Fixes, etc.)
+   - Release notes are created from the consolidated changes
+
+4. **NPM Publishing**:
+   - New versions are automatically published to NPM
+   - The package is always published with public access
+
 ### Development Workflow
 
 We use several tools to maintain code quality:
