@@ -33,25 +33,24 @@ const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
     }
   };
 
-  // Check if all tiles are half height
-  const allHalfTiles = tiles.every(
-    (tile) => tile.tileHeight === TileHeight.Half
-  );
-
   return (
-    <View style={[styles.container, { aspectRatio: allHalfTiles ? 2 : 1 }]}>
-      {tiles.map((tile, index) => (
-        <View
-          key={tile.id}
-          style={[
-            styles.tileContainer,
-            tile.tileHeight === TileHeight.Half && styles.halfTileContainer,
-            index > 0 && { marginTop: GRID_GAP },
-          ]}
-        >
-          {renderTile(tile)}
-        </View>
-      ))}
+    <View style={styles.container}>
+      {tiles.map((tile, index) => {
+        const isHalfTile = tile.tileHeight === TileHeight.Half;
+
+        return (
+          <View
+            key={tile.id}
+            style={[
+              styles.tileContainer,
+              isHalfTile && styles.halfTileContainer,
+              index > 0 && { marginTop: GRID_GAP },
+            ]}
+          >
+            {renderTile(tile)}
+          </View>
+        );
+      })}
     </View>
   );
 };
@@ -60,12 +59,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1,
+    aspectRatio: 1,
   },
   tileContainer: {
     flex: 1,
+    aspectRatio: 1,
   },
   halfTileContainer: {
-    flex: 1, // Take up half the height of a full tile
+    flex: 0.5,
+    aspectRatio: 1,
   },
 });
 
