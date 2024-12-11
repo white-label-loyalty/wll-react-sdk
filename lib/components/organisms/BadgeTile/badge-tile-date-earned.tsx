@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { getStateColor } from '../../../utils/themeHelpers';
+import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
-import { Text } from '../../atoms';
 
 export const BadgeTileDateEarned: FC = () => {
   const styles = useBadgeTileStyles();

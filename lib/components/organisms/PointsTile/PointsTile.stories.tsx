@@ -6,9 +6,14 @@ import PointsTile from './index';
 // @ts-ignore
 import pointsImage from '../../../assets/points.png';
 // @ts-ignore
-import pointsFull from '../../../assets/pointsFull.png';
 // @ts-ignore
 import airmiles from '../../../assets/airmiles.png';
+// @ts-ignore
+import coins from '../../../assets/coins.png';
+// @ts-ignore
+import cashback from '../../../assets/cashback.png';
+// @ts-ignore
+import stars from '../../../assets/stars.png';
 
 export default {
   title: 'components/organisms/PointsTile',
@@ -52,7 +57,7 @@ CashbackRewards.args = {
     priority: 1,
     configuration: {
       title: 'Cashback Earned',
-      artworkUrl: pointsImage,
+      artworkUrl: cashback,
       multiplier: undefined,
       points: 125.5,
       pointsPrefix: '£',
@@ -73,7 +78,7 @@ StarRewards.args = {
     priority: 1,
     configuration: {
       title: 'Stars Balance',
-      artworkUrl: pointsFull,
+      artworkUrl: stars,
       multiplier: 2,
       points: 48,
       pointsPrefix: undefined,
@@ -115,7 +120,7 @@ CoinPoints.args = {
     priority: 1,
     configuration: {
       title: 'Your Balance',
-      artworkUrl: pointsImage,
+      artworkUrl: coins,
       multiplier: 3,
       points: 15750,
       pointsPrefix: undefined,
@@ -136,10 +141,10 @@ GamifiedCoins.args = {
     priority: 1,
     configuration: {
       title: 'Reward Coins',
-      artworkUrl: pointsFull,
+      artworkUrl: coins,
       multiplier: undefined,
       points: 1250,
-      pointsPrefix: '🪙',
+      pointsPrefix: '',
       pointsSuffix: 'coins',
     },
     id: '405a6844-f472-4d9e-84b9-20fb55dbd399',

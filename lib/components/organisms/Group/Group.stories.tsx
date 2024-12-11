@@ -13,6 +13,14 @@ import ap from '../../../assets/ap.png';
 import airmiles from '../../../assets/airmiles.png';
 // @ts-ignore
 import numberOne from '../../../assets/numberOne.png';
+// @ts-ignore
+import numberTwo from '../../../assets/numberTwo.png';
+// @ts-ignore
+import numberThree from '../../../assets/numberThree.png';
+// @ts-ignore
+import numberFour from '../../../assets/numberFour.png';
+// @ts-ignore
+import rollTheDice from '../../../assets/roll-the-dice.jpg';
 
 import { themes } from '../../../utils/themeHelpers';
 import Group from './index';
@@ -425,8 +433,8 @@ const gamifiedGroupData = {
               locale: 'en',
               title: 'Daily Quest Bonus!',
               body: 'Complete your daily missions to earn 2X AP! Every adventure brings you closer to legendary rewards!',
-              artworkUrl:
-                'https://images.pexels.com/photos/18940033/pexels-photo-18940033/free-photo-of-decorative-dice-and-pumpkin-for-halloween.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              artworkUrl: rollTheDice,
+
               ctaLink: '/daily-quests',
             },
             id: '288c9873-729e-4766-83fc-1e15cafde6ba',
@@ -476,6 +484,90 @@ const gamifiedGroupData = {
               emptyBadgeMessage:
                 'Your trophy case awaits its first achievement!',
               emptyBadgeArtworkUrl: numberOne,
+              badgeNotEarnedMessage: 'Continue your journey',
+            },
+            priority: 4,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+              internalName: 'Legendary Explorer',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
+              name: 'Legendary Explorer',
+              locale: 'en',
+              description:
+                'Achieved by reaching the highest Explorer rank and completing 100 quests.',
+              artworkUrl:
+                'https://images.pexels.com/photos/17333075/pexels-photo-17333075/free-photo-of-man-with-beard-holding-dice.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              count: 0,
+              awardedDatePrefix: 'Legend status achieved',
+              emptyBadgeMessage:
+                'Your trophy case awaits its first achievement!',
+              emptyBadgeArtworkUrl: numberTwo,
+              badgeNotEarnedMessage: 'Continue your journey',
+            },
+            priority: 4,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+              internalName: 'Legendary Explorer',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
+              name: 'Legendary Explorer',
+              locale: 'en',
+              description:
+                'Achieved by reaching the highest Explorer rank and completing 100 quests.',
+              artworkUrl:
+                'https://images.pexels.com/photos/17333075/pexels-photo-17333075/free-photo-of-man-with-beard-holding-dice.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              count: 0,
+              awardedDatePrefix: 'Legend status achieved',
+              emptyBadgeMessage:
+                'Your trophy case awaits its first achievement!',
+              emptyBadgeArtworkUrl: numberThree,
+              badgeNotEarnedMessage: 'Continue your journey',
+            },
+            priority: 4,
+          },
+          {
+            tileHeight: 'FULL',
+            active: true,
+            type: 'BADGE',
+            configuration: {
+              defaultLocale: 'en',
+              details: [],
+              type: 'SPECIFIC',
+              badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+              internalName: 'Legendary Explorer',
+              priority: 0,
+              status: 'ACTIVE',
+              id: '8962205c-e32a-4651-ac7a-4c584449d9fa',
+              name: 'Legendary Explorer',
+              locale: 'en',
+              description:
+                'Achieved by reaching the highest Explorer rank and completing 100 quests.',
+              artworkUrl:
+                'https://images.pexels.com/photos/17333075/pexels-photo-17333075/free-photo-of-man-with-beard-holding-dice.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              count: 0,
+              awardedDatePrefix: 'Legend status achieved',
+              emptyBadgeMessage:
+                'Your trophy case awaits its first achievement!',
+              emptyBadgeArtworkUrl: numberFour,
               badgeNotEarnedMessage: 'Continue your journey',
             },
             priority: 4,
@@ -1158,7 +1250,7 @@ const mockGroupData = {
               ctaLink: '/products/iphone15pro',
               ctaText: 'Shop Now',
               artworkUrl:
-                'https://www.istore.co.uk/wp-content/uploads/2023/09/iPhone_15_Pro_Blue_Titanium_PDP_Image_Position-5__GBEN-1.jpg',
+                'https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2023/09/iphone-15-pro-wallpaper-2.webp?w=1500&quality=82&strip=all&ssl=1',
               description:
                 'Experience the power of our most advanced iPhone yet. Available now with exclusive launch offers.',
               ctaLinkTarget: 'SAME_FRAME',
@@ -1277,7 +1369,7 @@ const mockGroupData = {
               ctaLink: '/products/iphone15pro',
               ctaText: 'Shop Now',
               artworkUrl:
-                'https://www.istore.co.uk/wp-content/uploads/2023/09/iPhone_15_Pro_Blue_Titanium_PDP_Image_Position-5__GBEN-1.jpg',
+                'https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2023/09/iphone-15-pro-wallpaper-2.webp?resize=1200%2C628&quality=82&strip=all&ssl=1',
               description:
                 'Experience the power of our most advanced iPhone yet. Available now with exclusive launch offers.',
             },
