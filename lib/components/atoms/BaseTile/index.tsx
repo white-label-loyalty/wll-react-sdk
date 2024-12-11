@@ -232,13 +232,19 @@ const BaseTileTitle: FC = () => {
 
 const BaseTileBody: FC = (props) => {
   const tile = useTileContext();
+  const { isDesktop, isTablet } = useResponsive();
   const { body, artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
   if ((isHalfSize && artworkUrl) || !body) return null;
 
   return (
-    <Text variant="body" {...props} accessibilityLabel={body}>
+    <Text
+      variant="body"
+      {...props}
+      accessibilityLabel={body}
+      numberOfLines={isDesktop ? 3 : isTablet ? 2 : 3}
+    >
       {body}
     </Text>
   );

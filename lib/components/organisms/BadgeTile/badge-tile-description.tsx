@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { BadgeTileConfig } from '../../../types/tile';
-import { useTileContext } from '../../atoms/BaseTile';
 import { Text } from '../../atoms';
+import { useTileContext } from '../../atoms/BaseTile';
 
 export const BadgeTileDescription: FC = () => {
   const tile = useTileContext();

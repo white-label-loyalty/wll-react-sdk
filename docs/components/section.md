@@ -53,6 +53,31 @@ Either `section` or `sectionId` must be provided, but not both.
 | GRID | `<Grid />` | Displays tiles in a responsive grid layout |
 | BANNER | `<Carousel />` | Shows Banner tiles in a scrollable carousel |
 
+## Grid Layout Behavior
+
+The Grid layout type provides a responsive layout that adapts to different screen sizes:
+
+- **Mobile**: Tiles display two-wide
+- **Desktop**: Tiles display four-wide
+
+### Tile Sizing and Stacking
+
+Each grid position can accommodate either:
+- One full-size tile
+- Two half-size tiles stacked vertically
+
+Key behaviors:
+- Tiles flow from left to right, then top to bottom
+- No pagination or "view more" functionality - all tiles are displayed
+- Half-size tiles should be placed in pairs to avoid layout gaps
+- A single half-size tile between full-size tiles will create a gap
+
+### Layout Example
+
+![Grid Example](/images/grid.png)
+
+> ⚠️ **Important**: To maintain an optimal layout, keep half-size tiles paired together. Single half-size tiles between full-size tiles will create gaps in the layout.
+
 ## Loading States
 
 When fetching a section by ID, the component will display:
