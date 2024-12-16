@@ -6,6 +6,23 @@ import { useTileSize } from '../../../hooks/useTileSize';
 import { ContentTileConfig } from '../../../types/tile';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
+export const baseStyles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  content: {
+    display: 'flex',
+  },
+  media: {
+    width: '100%',
+    objectFit: 'cover',
+  },
+});
+
+// Dynamic styles hook
 export const useBaseTileStyles = () => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
@@ -15,10 +32,7 @@ export const useBaseTileStyles = () => {
 
   return StyleSheet.create({
     container: {
-      width: '100%',
-      height: '100%',
-      overflow: 'hidden',
-      position: 'relative',
+      ...baseStyles.container,
       backgroundColor: theme.surface,
       aspectRatio: isHalfSize ? 2 : 1,
       borderRadius: useResponsiveValue(
@@ -31,7 +45,7 @@ export const useBaseTileStyles = () => {
       alignItems: 'center',
     },
     content: {
-      display: 'flex',
+      ...baseStyles.content,
       justifyContent: 'center',
       height: !artworkUrl ? '100%' : undefined,
     },
@@ -57,8 +71,7 @@ export const useBaseTileStyles = () => {
       textAlign: isHalfSize ? 'center' : undefined,
     },
     media: {
-      width: '100%',
-      objectFit: 'cover',
+      ...baseStyles.media,
       flexBasis: !isHalfSize && title && body ? '50%' : '100%',
       height: isHalfSize ? '100%' : undefined,
     },

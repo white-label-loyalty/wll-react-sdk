@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { TierTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Content, ProgressiveImage, Text } from '../../atoms';
+import { BaseTile, Column, Content, ProgressiveImage, Text } from '../../atoms';
 import { useTierTileStyles } from './styles';
 
 type TierTileProps = {
@@ -89,14 +89,14 @@ const TierTileHalf: React.FC<TierTileProps> = ({ tile }) => {
         direction="row"
         style={{ paddingTop: 16 }}
       >
-        <View>
+        <View style={{ flex: 1, flexShrink: 1 }}>
           {title && (
             <Text variant="eyebrow" style={styles.title}>
               {title}
             </Text>
           )}
           {name && (
-            <Text variant="title" style={styles.title}>
+            <Text variant="title" style={styles.name} numberOfLines={2}>
               {name}
             </Text>
           )}
@@ -131,22 +131,22 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           direction="row"
           style={{ paddingTop: 16 }}
         >
-          <View style={{ flex: 1 }}>
+          <Column style={{ flex: 1 }}>
             {title && (
               <Text variant="title" style={styles.title}>
                 {title}
               </Text>
             )}
             {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
-          </View>
+          </Column>
           {emptyArtworkUrl && (
-            <View style={styles.smallImageContainer}>
+            <Column style={styles.smallImageContainer}>
               <Image
                 source={{ uri: emptyArtworkUrl }}
                 style={styles.smallImage}
                 resizeMode="contain"
               />
-            </View>
+            </Column>
           )}
         </Content>
       </BaseTile>
@@ -165,14 +165,14 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
         </View>
       )}
       <Content align="stretch" justify="center" direction="column">
-        <View>
+        <Column>
           {title && (
             <Text variant="title" style={styles.title}>
               {title}
             </Text>
           )}
           {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
-        </View>
+        </Column>
       </Content>
     </BaseTile>
   );

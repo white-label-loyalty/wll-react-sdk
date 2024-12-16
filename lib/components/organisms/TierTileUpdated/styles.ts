@@ -46,5 +46,10 @@ export const useTierTileStyles = () => {
       height: '100%',
       resizeMode: 'cover',
     },
+    name: {
+      marginBottom: 0,
+      numberOfLines: 1,
+      ellipsizeMode: 'tail',
+    },
   });
 };

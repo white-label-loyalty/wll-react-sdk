@@ -1,5 +1,10 @@
-name: "Storybook to Chromatic"
+name: 'Storybook to Chromatic'
 on: push
+
+# Cancel in-progress runs for pull requests
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   publish-storybook:
@@ -13,15 +18,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
+
+      - name: Cache Storybook build
+        uses: actions/cache@v3
+        with:
+          path: storybook-static
+          key: storybook-static-${{ github.sha }}
+          restore-keys: |
+            storybook-static-
 
       - name: Build Storybook
-        run: yarn build-storybook
+        run: yarn build-storybook --stats-json
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: storybook-static
+          onlyChanged: true # Only run Chromatic on changed stories
