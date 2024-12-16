@@ -1,19 +1,21 @@
 name: Version and Release
 
 on:
-  pull_request:
-    types: [closed]
+  workflow_run:
+    workflows: ['Storybook to Chromatic']
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   version-and-release:
     if: |
-      github.event.pull_request.merged == true && (
-        contains(github.event.pull_request.title, 'feat:') ||
-        contains(github.event.pull_request.title, 'fix:') ||
-        contains(github.event.pull_request.labels.*.name, 'release') ||
-        contains(github.event.pull_request.title, 'RELEASE')
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main' && (
+        contains(github.event.workflow_run.head_commit.message, 'feat:') ||
+        contains(github.event.workflow_run.head_commit.message, 'fix:') ||
+        contains(github.event.workflow_run.head_commit.message, 'RELEASE')
       )
     runs-on: ubuntu-latest
     permissions:
