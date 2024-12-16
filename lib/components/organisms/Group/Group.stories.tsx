@@ -18,6 +18,9 @@ import numberThree from '../../../assets/numberThree.png';
 // @ts-ignore
 import numberFour from '../../../assets/numberFour.png';
 // @ts-ignore
+import avionPoints from '../../../assets/avion-points.png';
+
+// @ts-ignore
 
 import { themes } from '../../../utils/themeHelpers';
 import Group from './index';
@@ -68,10 +71,12 @@ const programData = {
               title: 'Elite Status',
               type: 'CURRENT',
               tier: {
-                name: 'Platinum Voyager',
+                name: 'Aviator',
                 pointsRequirement: 100000,
+                artworkUrl: avionPoints,
               },
               pointsSuffix: 'miles',
+
               pointsToTierPrefix: 'Earn',
               pointsToTierSuffix: 'miles for Platinum status!',
               emptyDescription: 'Start your journey to Elite status!',
