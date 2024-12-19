@@ -1,7 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Tile } from '../../../types/tile';
 import { BaseTile } from '../../atoms';
-
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardCategoryHeader } from './reward-category-header';
 import { RewardCategoryMedia } from './reward-category-media';
@@ -10,10 +9,14 @@ type RewardCategoryTileProps = {
   tile: Tile;
 };
 
-const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
-  Header: typeof RewardCategoryHeader;
-  Media: typeof RewardCategoryMedia;
-} = ({ tile }) => {
+/**
+ * The RewardCategoryTile component renders a tile with a header and media.
+ *
+ * @param tile - The tile data to render.
+ */
+const RewardCategoryTileRoot = ({
+  tile,
+}: RewardCategoryTileProps): JSX.Element | null => {
   if (!tile) return null;
 
   return (
@@ -24,7 +27,12 @@ const RewardCategoryTile: React.FC<RewardCategoryTileProps> & {
   );
 };
 
-RewardCategoryTile.Header = RewardCategoryHeader;
-RewardCategoryTile.Media = RewardCategoryMedia;
+/**
+ * The RewardCategoryTile component with subcomponents attached.
+ */
+export const RewardCategoryTile = Object.assign(RewardCategoryTileRoot, {
+  Header: RewardCategoryHeader,
+  Media: RewardCategoryMedia,
+});
 
 export default withTileFetching(RewardCategoryTile);

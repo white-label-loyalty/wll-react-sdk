@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Tile } from '../../../types/tile';
 import BaseTile from '../../atoms/BaseTile';
-
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { ContentTileBody } from './content-tile-body';
 import { ContentTileContent } from './content-tile-content';
@@ -13,15 +12,14 @@ type ContentTileProps = {
   tile: Tile;
 };
 
-type ContentTileComponent = FC<ContentTileProps> & {
-  Root: typeof ContentTileRoot;
-  Media: typeof ContentTileMedia;
-  Content: typeof ContentTileContent;
-  Header: typeof ContentTileHeader;
-  Body: typeof ContentTileBody;
-};
+/**
+ * The ContentTile component renders a tile with a root, media, content, header, and body.
+ *
+ * @param tile - The tile data to render.
+ */
+const ContentTileMain = ({ tile }: ContentTileProps): JSX.Element | null => {
+  if (!tile) return null;
 
-const ContentTileMain: FC<ContentTileProps> = ({ tile }) => {
   return (
     <BaseTile tile={tile}>
       <ContentTile.Root>
@@ -35,12 +33,15 @@ const ContentTileMain: FC<ContentTileProps> = ({ tile }) => {
   );
 };
 
-export const ContentTile = ContentTileMain as ContentTileComponent;
-
-ContentTile.Root = ContentTileRoot;
-ContentTile.Media = ContentTileMedia;
-ContentTile.Content = ContentTileContent;
-ContentTile.Header = ContentTileHeader;
-ContentTile.Body = ContentTileBody;
+/**
+ * The ContentTile component with subcomponents attached.
+ */
+export const ContentTile = Object.assign(ContentTileMain, {
+  Root: ContentTileRoot,
+  Media: ContentTileMedia,
+  Content: ContentTileContent,
+  Header: ContentTileHeader,
+  Body: ContentTileBody,
+});
 
 export default withTileFetching(ContentTile);

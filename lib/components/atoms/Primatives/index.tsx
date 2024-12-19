@@ -1,6 +1,10 @@
 import { ViewStyle } from 'react-native';
 
+/**
+ * Defines the possible flex directions for layout.
+ */
 export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+
 export type Justify =
   | 'start'
   | 'end'
@@ -8,6 +12,7 @@ export type Justify =
   | 'between'
   | 'around'
   | 'evenly';
+
 export type Align = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
 
 export type LayoutProps = {
@@ -18,7 +23,7 @@ export type LayoutProps = {
   style?: ViewStyle;
 };
 
-export const justifyMap = {
+export const justifyMap: Record<Justify, ViewStyle['justifyContent']> = {
   start: 'flex-start',
   end: 'flex-end',
   center: 'center',
@@ -27,7 +32,7 @@ export const justifyMap = {
   evenly: 'space-evenly',
 } as const;
 
-export const alignMap = {
+export const alignMap: Record<Align, ViewStyle['alignItems']> = {
   start: 'flex-start',
   end: 'flex-end',
   center: 'center',
@@ -36,6 +41,7 @@ export const alignMap = {
 } as const;
 
 export { Column } from './Column';
-export { Row } from './Row';
 export { FlexBox } from './FlexBox';
+export { Row } from './Row';
+export { Spacer } from './Spacer';
 export { Stack } from './Stack';
