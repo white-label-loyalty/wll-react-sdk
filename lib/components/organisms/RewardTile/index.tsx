@@ -39,7 +39,7 @@ const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
     <BaseTile tile={tile}>
       <RewardTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
 
-      <Layout direction="column">
+      <Layout>
         <Layout
           direction="row"
           justify="between"

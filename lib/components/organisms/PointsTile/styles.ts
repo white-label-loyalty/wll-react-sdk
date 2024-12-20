@@ -30,7 +30,6 @@ export const usePointsTileStyles = (
       justifyContent: 'space-between',
     },
     contentContainer: {
-      flexDirection: 'column',
       width: isFullSize ? '100%' : 'auto',
     },
     suffix: {
