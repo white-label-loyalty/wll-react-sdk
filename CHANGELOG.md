@@ -1,3 +1,19 @@
+## [1.0.44](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.43...v1.0.44) (2024-12-20)
+
+
+### Bug Fixes
+
+* (BaseTile) Fix issues with base tile and update stories ([d49e948](https://github.com/white-label-loyalty/wll-react-sdk/commit/d49e948bd084f444403ad67d13de950bcbb7d003))
+* (ci) fix deployment script ([9d55c2c](https://github.com/white-label-loyalty/wll-react-sdk/commit/9d55c2ca2514d4a2d0b4d1e00067e72c90a6b3ea))
+* cleanup remaining files ([254e933](https://github.com/white-label-loyalty/wll-react-sdk/commit/254e933be6eb7f4eb627105c9c7e44fd84b5fcc7))
+
+
+### Features
+
+* trigger release ([4c41e90](https://github.com/white-label-loyalty/wll-react-sdk/commit/4c41e902a4cb0535f78a210acf7c4019407d2956))
+
+
+
 ## [1.0.42](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.41...v1.0.42) (2024-12-06)
 
 
