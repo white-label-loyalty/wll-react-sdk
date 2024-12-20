@@ -26,7 +26,7 @@ const BadgeTileRoot = ({ tile }: BadgeTileProps): JSX.Element | null => {
         <BadgeTile.Status />
       </BadgeTile.Media>
 
-      <Layout justify="between" align="start" direction="column">
+      <Layout justify="between" align="start">
         <BadgeTile.Title />
         <BadgeTile.Description />
         <Spacer />

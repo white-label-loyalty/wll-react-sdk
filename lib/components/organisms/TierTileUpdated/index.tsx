@@ -51,11 +51,7 @@ const TierTileFull: React.FC<TierTileProps> = ({ tile }) => {
           />
         </View>
       )}
-      <Layout
-        align="stretch"
-        justify={artworkUrl ? 'start' : 'center'}
-        direction="column"
-      >
+      <Layout align="stretch" justify={artworkUrl ? 'start' : 'center'}>
         <View>
           {title && (
             <Text variant="eyebrow" style={styles.title}>
@@ -164,8 +160,8 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           />
         </View>
       )}
-      <Layout align="stretch" justify="center" direction="column">
-        <Layout direction="column">
+      <Layout align="stretch" justify="center">
+        <Layout>
           {title && (
             <Text variant="title" style={styles.title}>
               {title}
