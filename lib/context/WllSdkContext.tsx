@@ -85,12 +85,12 @@ const WllSdkContext = React.createContext<WllSdkContextType | undefined>(
   undefined
 );
 
-export const WllSdkProvider: React.FC<WllSdkProviderProps> = ({
+export const WllSdkProvider = ({
   children,
   theme: providedTheme,
   config,
   navigationConfig = {},
-}) => {
+}: WllSdkProviderProps): JSX.Element => {
   const [theme, setThemeState] = React.useState(() =>
     createTheme(providedTheme || {})
   );
