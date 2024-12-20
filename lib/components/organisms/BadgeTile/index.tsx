@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tile } from '../../../types/tile';
-import { BaseTile, Column, Spacer } from '../../atoms';
+import { BaseTile, Layout, Spacer } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { BadgeTileDateEarned } from './badge-tile-date-earned';
 import { BadgeTileDescription } from './badge-tile-description';
@@ -26,12 +26,12 @@ const BadgeTileRoot = ({ tile }: BadgeTileProps): JSX.Element | null => {
         <BadgeTile.Status />
       </BadgeTile.Media>
 
-      <Column justify="between" align="start">
+      <Layout justify="between" align="start" direction="column">
         <BadgeTile.Title />
         <BadgeTile.Description />
         <Spacer />
         <BadgeTile.DateEarned />
-      </Column>
+      </Layout>
     </BaseTile>
   );
 };
