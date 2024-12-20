@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { BaseTile } from '../../atoms';
 
-export const ContentTileBody: FC = () => <BaseTile.Body />;
+export const ContentTileBody = (): JSX.Element => <BaseTile.Body />;

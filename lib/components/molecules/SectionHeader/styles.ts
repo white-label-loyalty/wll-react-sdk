@@ -3,7 +3,9 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const useSectionHeaderStyles = () => {
+export const useSectionHeaderStyles = (): ReturnType<
+  typeof StyleSheet.create
+> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
 

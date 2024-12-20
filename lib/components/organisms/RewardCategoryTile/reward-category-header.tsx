@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardCategoryTileConfig } from '../../../types/tile';
@@ -6,7 +6,7 @@ import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardCategoryTileStyles } from './styles';
 
-export const RewardCategoryHeader: FC = () => {
+export const RewardCategoryHeader = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
   const { theme } = useWllSdk();
   const { configuration } = useTileContext();

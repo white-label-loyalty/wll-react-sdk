@@ -1,15 +1,17 @@
-import React, { FC } from 'react';
-import { View, Image } from 'react-native';
+import React from 'react';
+import { Image, View } from 'react-native';
 
-import { useTileContext } from '../../atoms/BaseTile';
 import { PointsTileConfig } from '../../../types/tile';
+import { useTileContext } from '../../atoms/BaseTile';
 import { usePointsTileStyles } from './styles';
 
 type PointsTileMediaProps = {
   isFullSize: boolean;
 };
 
-export const PointsTileMedia: FC<PointsTileMediaProps> = ({ isFullSize }) => {
+export const PointsTileMedia = ({
+  isFullSize,
+}: PointsTileMediaProps): JSX.Element | null => {
   const { configuration } = useTileContext();
   const { artworkUrl } = configuration as PointsTileConfig;
   const styles = usePointsTileStyles(isFullSize);

@@ -16,20 +16,35 @@ type SectionProps = {
   sectionId?: string;
 };
 
+/**
+ * SectionContext provides the current section data to child components.
+ */
 export const SectionContext = createContext<SectionContextType | undefined>(
   undefined
 );
 
-export const useSectionContext = () => {
+/**
+ * Custom hook to access the SectionContext.
+ */
+export const useSectionContext = (): SectionContextType => {
   const context = useContext(SectionContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useSectionContext must be used within a SectionProvider');
   }
   return context;
 };
 
-const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
-  const styles = useSectionStyles();
+/**
+ * Custom hook to fetch section data.
+ */
+const useSectionData = (
+  section?: TSection,
+  sectionId?: string
+): {
+  sectionData: TSection | null;
+  isLoading: boolean;
+  error: string | null;
+} => {
   const { getSectionByID } = useWllSdk();
   const [sectionData, setSectionData] = useState<TSection | null>(
     section || null
@@ -48,11 +63,11 @@ const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
           if (response.status === 'success' && response.data) {
             setSectionData(response.data);
           } else {
-            setError(response.error || 'Failed to fetch section');
+            setError(response.error || 'Failed to fetch section data.');
           }
         } catch (err) {
           setError(
-            err instanceof Error ? err.message : 'Failed to fetch section'
+            err instanceof Error ? err.message : 'Failed to fetch section data.'
           );
         } finally {
           setIsLoading(false);
@@ -62,7 +77,33 @@ const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
     }
   }, [section, sectionId, getSectionByID]);
 
-  const renderSectionContent = () => {
+  return { sectionData, isLoading, error };
+};
+
+/**
+ * Component to display an empty state with a message.
+ */
+const EmptyState = ({ message }: { message: string }): JSX.Element => (
+  <View style={commonStyles.emptyContainer}>
+    <Text>{message}</Text>
+  </View>
+);
+
+/**
+ * The Section component renders a section based on its type (e.g., Banner, Grid).
+ */
+const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
+  const styles = useSectionStyles();
+  const { sectionData, isLoading, error } = useSectionData(section, sectionId);
+
+  if (!section && !sectionId) {
+    console.warn(
+      'Section component requires either section or sectionId prop.'
+    );
+    return null;
+  }
+
+  const renderSectionContent = (): JSX.Element | null => {
     if (isLoading) {
       return (
         <View style={commonStyles.emptyContainer}>
@@ -72,11 +113,7 @@ const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
     }
 
     if (error || !sectionData) {
-      return (
-        <View style={commonStyles.emptyContainer}>
-          <Text>No section data available</Text>
-        </View>
-      );
+      return <EmptyState message={error || 'No section data available.'} />;
     }
 
     switch (sectionData.type) {
@@ -86,14 +123,9 @@ const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
         return <Grid section={sectionData} />;
       default:
         console.warn(`Unknown section type: ${sectionData.type}`);
-        return null;
+        return <EmptyState message="Unknown section type." />;
     }
   };
-
-  if (!section && !sectionId) {
-    console.warn('Section component requires either section or sectionId prop');
-    return null;
-  }
 
   return sectionData ? (
     <SectionContext.Provider value={{ sectionData }}>

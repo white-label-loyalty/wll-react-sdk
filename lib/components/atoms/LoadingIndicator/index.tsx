@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { Tile } from '../../../types/tile';
 
-type LoadingIndicatorProps = {
-  tile: Tile;
-};
-
-const LoadingIndicator: React.FC<LoadingIndicatorProps> = () => {
+const LoadingIndicator = (): JSX.Element => {
   const { theme } = useWllSdk();
 
   return (

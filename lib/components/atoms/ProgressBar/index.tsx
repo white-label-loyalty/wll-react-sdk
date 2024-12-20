@@ -42,12 +42,12 @@ const useProgressStyles = createVariantSystem(
   })
 );
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+const ProgressBar = ({
   percentage,
   variant = 'primary',
   height = 'sm',
   animationDuration = 300,
-}) => {
+}: ProgressBarProps): JSX.Element => {
   const { theme } = useWllSdk();
   const styles = useStyles(theme);
   const containerStyles = useContainerStyles(theme);

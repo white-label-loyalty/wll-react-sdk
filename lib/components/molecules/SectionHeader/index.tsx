@@ -9,10 +9,10 @@ type SectionHeaderProps = {
   description?: string;
 };
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({
+const SectionHeader = ({
   title,
   description,
-}) => {
+}: SectionHeaderProps): JSX.Element | null => {
   const styles = useSectionHeaderStyles();
   const { theme } = useWllSdk();
 

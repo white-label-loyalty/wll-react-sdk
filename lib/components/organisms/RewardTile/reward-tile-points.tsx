@@ -1,20 +1,26 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
 
-export const RewardTilePoints: FC = () => {
+export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
   const { configuration } = useTileContext();
-  const { showPrice, price, pointsMultiplier, pointsPrefix, pointsSuffix } =
-    configuration as RewardTileConfig;
+  const {
+    showPrice,
+    price,
+    pointsMultiplier = 1,
+    pointsPrefix = '',
+    pointsSuffix = 'pts',
+  } = configuration as RewardTileConfig;
 
-  const calculatedPoints =
-    price !== undefined ? price * (Number(pointsMultiplier) || 1) : null;
+  // Exit early if price is not shown or undefined
+  if (!showPrice || price === undefined) return null;
 
-  if (!showPrice || calculatedPoints === null) return null;
+  // Calculate points
+  const calculatedPoints = price * Number(pointsMultiplier);
 
   return (
     <Text variant="caption" style={styles.footer}>

@@ -13,7 +13,10 @@ interface SkeletonProps {
   numberOfSquares?: number;
 }
 
-const Skeleton: React.FC<SkeletonProps> = ({ style, numberOfSquares = 4 }) => {
+const Skeleton = ({
+  style,
+  numberOfSquares = 4,
+}: SkeletonProps): JSX.Element => {
   const { theme } = useWllSdk();
   const animatedValue = React.useRef(new Animated.Value(0)).current;
 

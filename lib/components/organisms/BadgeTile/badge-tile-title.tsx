@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { BadgeTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
 
-export const BadgeTileTitle: FC = () => {
+export const BadgeTileTitle = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };

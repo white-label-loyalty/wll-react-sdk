@@ -1,9 +1,18 @@
-import { StyleSheet } from 'react-native';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const usePointsTileStyles = (isFullSize?: boolean) => {
+export const usePointsTileStyles = (
+  isFullSize?: boolean
+): {
+  container: ViewStyle;
+  contentContainer: ViewStyle;
+  suffix: TextStyle;
+  pointsWithSuffix: ViewStyle;
+  imageContainer: ViewStyle;
+  image: ImageStyle;
+} => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
 
@@ -55,12 +64,12 @@ export const usePointsTileStyles = (isFullSize?: boolean) => {
       justifyContent: 'center',
       alignItems: 'center',
       overflow: 'hidden',
-    },
+    } as ViewStyle,
     image: {
       width: '100%',
       height: '100%',
       position: 'absolute',
       resizeMode: 'contain',
-    },
+    } as ImageStyle,
   });
 };

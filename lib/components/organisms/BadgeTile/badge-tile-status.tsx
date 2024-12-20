@@ -1,12 +1,12 @@
 import { LockKeyholeIcon } from 'lucide-react';
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
+import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
-import { Text } from '../../atoms';
 
-export const BadgeTileStatus: FC = () => {
+export const BadgeTileStatus = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };

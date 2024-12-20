@@ -12,13 +12,13 @@ export type ProgressIndicatorProps = {
   attained?: boolean;
 };
 
-export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
+export const ProgressIndicator = ({
   currentPoints,
   maxPoints,
   variant = 'primary',
   height = 'sm',
   attained = false,
-}) => {
+}: ProgressIndicatorProps): JSX.Element => {
   const { theme } = useWllSdk();
   const percentage = attained ? 100 : (currentPoints / maxPoints) * 100;
   const isComplete = percentage >= 100 || attained;

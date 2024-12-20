@@ -1,9 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
-import { Tile, TileHeight, TileType } from '../../../types/tile';
+import { useTileSize } from '../../../hooks/useTileSize';
+import { Tile, TileType } from '../../../types/tile';
 import {
   BadgeTile,
+  BannerTile,
   ContentTile,
   PointsTile,
   RewardCategoryTile,
@@ -15,39 +17,36 @@ type TileContainerProps = {
   tiles: Tile[];
 };
 
-const TileContainer: React.FC<TileContainerProps> = ({ tiles }) => {
-  const renderTile = (tile: Tile) => {
-    switch (tile.type) {
-      case TileType.Content:
-        return <ContentTile tile={tile} />;
-      case TileType.Badge:
-        return <BadgeTile tile={tile} />;
-      case TileType.Tier:
-        return <TierTileUpdated tile={tile} />;
-      case TileType.Points:
-        return <PointsTile tile={tile} />;
-      case TileType.Reward:
-        return <RewardTile tile={tile} />;
-      case TileType.RewardCategory:
-        return <RewardCategoryTile tile={tile} />;
-    }
-  };
+const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
+  [TileType.Content]: ContentTile,
+  [TileType.Badge]: BadgeTile,
+  [TileType.Tier]: TierTileUpdated,
+  [TileType.Points]: PointsTile,
+  [TileType.Reward]: RewardTile,
+  [TileType.RewardCategory]: RewardCategoryTile,
+  [TileType.Banner]: BannerTile,
+};
 
+/**
+ * TileContainer component to render a list of tiles with proper layout and spacing.
+ */
+const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
   return (
     <View style={styles.container}>
       {tiles.map((tile, index) => {
-        const isHalfTile = tile.tileHeight === TileHeight.Half;
+        const TileComponent = TILE_COMPONENTS[tile.type!];
+        const { isHalfSize } = useTileSize(tile);
 
         return (
           <View
             key={tile.id}
             style={[
               styles.tileContainer,
-              isHalfTile && styles.halfTileContainer,
+              isHalfSize && styles.halfTileContainer,
               index > 0 && { marginTop: GRID_GAP },
             ]}
           >
-            {renderTile(tile)}
+            {TileComponent ? <TileComponent tile={tile} /> : null}
           </View>
         );
       })}

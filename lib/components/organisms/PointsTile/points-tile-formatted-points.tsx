@@ -1,25 +1,28 @@
-import * as React from 'react';
+import React from 'react';
 import { PointsTileConfig } from '../../../types/tile';
 import { Row, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { usePointsTileStyles } from './styles';
 
-export const PointsTileFormattedPoints: React.FC = () => {
+export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
   const { configuration } = useTileContext();
-  const { multiplier, pointsPrefix, pointsSuffix, points } =
-    configuration as PointsTileConfig;
+  const {
+    multiplier = 1,
+    pointsPrefix = '',
+    pointsSuffix = 'pts',
+    points,
+  } = configuration as PointsTileConfig;
 
-  const calculatedPoints =
-    points !== undefined ? points * (multiplier ?? 1) : null;
+  if (points === undefined) return null;
+  const calculatedPoints = points * multiplier;
 
-  if (calculatedPoints === null) return null;
   return (
     <Text variant="caption">
-      {pointsPrefix ?? ''}
+      {pointsPrefix}
       <Row>
         {calculatedPoints}
-        <Text style={styles.suffix}>{pointsSuffix ?? 'pts'}</Text>
+        <Text style={styles.suffix}>{pointsSuffix}</Text>
       </Row>
     </Text>
   );

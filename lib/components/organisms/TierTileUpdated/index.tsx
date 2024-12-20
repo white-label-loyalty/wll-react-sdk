@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { TierTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Column, Content, ProgressiveImage, Text } from '../../atoms';
+import { BaseTile, Column, ProgressiveImage, Text } from '../../atoms';
+import { Layout } from '../../atoms/Primatives';
 import { useTierTileStyles } from './styles';
 
 type TierTileProps = {
@@ -51,7 +52,7 @@ const TierTileFull: React.FC<TierTileProps> = ({ tile }) => {
           />
         </View>
       )}
-      <Content
+      <Layout
         align="stretch"
         justify={artworkUrl ? 'start' : 'center'}
         direction="column"
@@ -69,7 +70,7 @@ const TierTileFull: React.FC<TierTileProps> = ({ tile }) => {
           )}
           {description && <Text variant="body">{description}</Text>}
         </View>
-      </Content>
+      </Layout>
     </BaseTile>
   );
 };
@@ -83,7 +84,7 @@ const TierTileHalf: React.FC<TierTileProps> = ({ tile }) => {
 
   return (
     <BaseTile tile={tile}>
-      <Content
+      <Layout
         align="center"
         justify="between"
         direction="row"
@@ -110,7 +111,7 @@ const TierTileHalf: React.FC<TierTileProps> = ({ tile }) => {
             />
           </View>
         )}
-      </Content>
+      </Layout>
     </BaseTile>
   );
 };
@@ -125,7 +126,7 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
   if (isHalfSize) {
     return (
       <BaseTile tile={tile}>
-        <Content
+        <Layout
           align="center"
           justify="between"
           direction="row"
@@ -148,7 +149,7 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
               />
             </Column>
           )}
-        </Content>
+        </Layout>
       </BaseTile>
     );
   }
@@ -164,7 +165,7 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           />
         </View>
       )}
-      <Content align="stretch" justify="center" direction="column">
+      <Layout align="stretch" justify="center" direction="column">
         <Column>
           {title && (
             <Text variant="title" style={styles.title}>
@@ -173,7 +174,7 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           )}
           {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
         </Column>
-      </Content>
+      </Layout>
     </BaseTile>
   );
 };

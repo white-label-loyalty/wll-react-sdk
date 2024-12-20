@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { BannerTileConfig, Tile } from '../../../types/tile';
@@ -13,24 +13,32 @@ type BannerTileProps = {
   tile: Tile;
 };
 
-const BannerTile: React.FC<BannerTileProps> & {
-  Media: typeof BannerTileMedia;
-  Title: typeof BannerTileTitle;
-  Description: typeof BannerTileDescription;
-  CTA: typeof BannerTileCTA;
-} = ({ tile }) => {
+/**
+ * Helper function to determine if the tile is artwork-only.
+ *
+ * @param configuration - The configuration object of the tile.
+ * @returns `true` if the tile has no title, description, or CTA text.
+ */
+const isArtworkOnly = (configuration: BannerTileConfig): boolean => {
+  return (
+    !configuration.title && !configuration.description && !configuration.ctaText
+  );
+};
+
+/**
+ * The main BannerTile component.
+ *
+ * This component renders a banner tile with optional media, title, description, and CTA.
+ */
+const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
+  if (!tile) return null;
+
   const styles = useBannerTileStyles();
-
   const { configuration } = tile as { configuration: BannerTileConfig };
-
-  const isArtworkOnly =
-    !configuration.title &&
-    !configuration.description &&
-    !configuration.ctaText;
 
   return (
     <BaseBanner tile={tile}>
-      <BannerTile.Media isArtworkOnly={isArtworkOnly} />
+      <BannerTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
       <View style={styles.slideContent}>
         <BannerTile.Title />
         <BannerTile.Description />
@@ -40,9 +48,14 @@ const BannerTile: React.FC<BannerTileProps> & {
   );
 };
 
-BannerTile.Media = BannerTileMedia;
-BannerTile.Title = BannerTileTitle;
-BannerTile.Description = BannerTileDescription;
-BannerTile.CTA = BannerTileCTA;
+/**
+ * The BannerTile component with subcomponents attached.
+ */
+export const BannerTile = Object.assign(BannerTileRoot, {
+  Media: BannerTileMedia,
+  Title: BannerTileTitle,
+  Description: BannerTileDescription,
+  CTA: BannerTileCTA,
+});
 
 export default withTileFetching(BannerTile);

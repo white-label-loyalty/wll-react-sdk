@@ -7,6 +7,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { desaturateColor } from '../../../utils/themeHelpers';
 
@@ -17,30 +18,12 @@ type ProgressiveImageProps = {
   [key: string]: any;
 };
 
-const styles = StyleSheet.create({
-  imageOverlay: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    top: 0,
-  },
-  container: {
-    position: 'relative',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'red',
-    width: '100%',
-    height: '100%',
-  },
-});
-
-const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
+const ProgressiveImage = ({
   source,
   style,
   isDesaturated = false,
   ...props
-}) => {
+}: ProgressiveImageProps): JSX.Element => {
   const imageAnimated = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
 
@@ -57,6 +40,15 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
   const baseColor = theme.alphaDerivedPrimary[20];
   const desaturatedColor = desaturateColor(baseColor);
   const backgroundColor = isDesaturated ? desaturatedColor : baseColor;
+
+  // Platform-specific logic for desaturation
+  const desaturationStyle = IS_WEB
+    ? {
+        filter: isDesaturated ? 'grayscale(100%)' : undefined,
+      }
+    : {
+        tintColor: isDesaturated ? desaturatedColor : undefined,
+      };
 
   return (
     <View style={[styles.container, style, { backgroundColor }]}>
@@ -81,9 +73,7 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
           styles.imageOverlay,
           {
             opacity: imageAnimated,
-            ...(isDesaturated && {
-              filter: `saturate(${0 * 100}%)`,
-            }),
+            ...desaturationStyle,
           },
         ]}
         onLoad={onImageLoad}
@@ -91,5 +81,23 @@ const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  imageOverlay: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+  },
+  container: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
+    width: '100%',
+    height: '100%',
+  },
+});
 
 export default ProgressiveImage;

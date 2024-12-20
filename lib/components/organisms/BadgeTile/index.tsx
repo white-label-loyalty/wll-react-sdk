@@ -1,9 +1,6 @@
-import React, { FC } from 'react';
-import { ImagePropsNoSource } from '../../../types/common';
+import React from 'react';
 import { Tile } from '../../../types/tile';
-import { BaseTile, Column } from '../../atoms';
-
-import { View } from 'react-native';
+import { BaseTile, Column, Spacer } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { BadgeTileDateEarned } from './badge-tile-date-earned';
 import { BadgeTileDescription } from './badge-tile-description';
@@ -15,20 +12,12 @@ type BadgeTileProps = {
   tile: Tile;
 };
 
-export type BadgeTileMediaProps = ImagePropsNoSource & {
-  children?: React.ReactNode;
-};
-
-type BadgeTileComponent = FC<BadgeTileProps> & {
-  Media: FC<BadgeTileMediaProps>;
-  Content: FC;
-  Title: FC;
-  Description: FC;
-  DateEarned: FC;
-  Status: FC;
-};
-
-const BadgeTileMain: FC<BadgeTileProps> = ({ tile }) => {
+/**
+ * The main BadgeTile component.
+ *
+ * This component renders a badge tile with optional media, status, title, description, and date earned.
+ */
+const BadgeTileRoot = ({ tile }: BadgeTileProps): JSX.Element | null => {
   if (!tile) return null;
 
   return (
@@ -36,23 +25,26 @@ const BadgeTileMain: FC<BadgeTileProps> = ({ tile }) => {
       <BadgeTile.Media>
         <BadgeTile.Status />
       </BadgeTile.Media>
+
       <Column justify="between" align="start">
-        <View>
-          <BadgeTile.Title />
-          <BadgeTile.Description />
-        </View>
+        <BadgeTile.Title />
+        <BadgeTile.Description />
+        <Spacer />
         <BadgeTile.DateEarned />
       </Column>
     </BaseTile>
   );
 };
 
-export const BadgeTile = BadgeTileMain as BadgeTileComponent;
-
-BadgeTile.Media = BadgeTileMedia;
-BadgeTile.Title = BadgeTileTitle;
-BadgeTile.Description = BadgeTileDescription;
-BadgeTile.DateEarned = BadgeTileDateEarned;
-BadgeTile.Status = BadgeTileStatus;
+/**
+ * The BadgeTile component with subcomponents attached.
+ */
+export const BadgeTile = Object.assign(BadgeTileRoot, {
+  Media: BadgeTileMedia,
+  Title: BadgeTileTitle,
+  Description: BadgeTileDescription,
+  DateEarned: BadgeTileDateEarned,
+  Status: BadgeTileStatus,
+});
 
 export default withTileFetching(BadgeTile);

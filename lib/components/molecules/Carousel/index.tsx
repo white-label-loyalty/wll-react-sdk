@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import {
   Animated,
   NativeScrollEvent,
@@ -25,16 +25,58 @@ type CarouselProps = {
   section: TSection;
 };
 
-const Carousel: React.FC<CarouselProps> = ({ section }) => {
-  const { width: windowWidth } = useWindowDimensions();
+type CarouselState = {
+  currentIndex: number;
+  containerWidth: number;
+};
+
+type CarouselAction =
+  | { type: 'SET_CONTAINER_WIDTH'; payload: number }
+  | { type: 'SET_CURRENT_INDEX'; payload: number }
+  | { type: 'PREV_SLIDE' }
+  | { type: 'NEXT_SLIDE'; maxIndex: number };
+
+const initialState: CarouselState = {
+  currentIndex: 0,
+  containerWidth: 0,
+};
+
+const carouselReducer = (
+  state: CarouselState,
+  action: CarouselAction
+): CarouselState => {
+  switch (action.type) {
+    case 'SET_CONTAINER_WIDTH':
+      return { ...state, containerWidth: action.payload };
+    case 'SET_CURRENT_INDEX':
+      return { ...state, currentIndex: action.payload };
+    case 'PREV_SLIDE':
+      return { ...state, currentIndex: Math.max(0, state.currentIndex - 1) };
+    case 'NEXT_SLIDE':
+      return {
+        ...state,
+        currentIndex: Math.min(action.maxIndex, state.currentIndex + 1),
+      };
+    default:
+      return state;
+  }
+};
+
+const Carousel = ({ section }: CarouselProps): JSX.Element => {
+  const { width: WINDOW_WIDTH } = useWindowDimensions();
   const containerRef = useRef<View>(null);
-  const [containerWidth, setContainerWidth] = useState(windowWidth);
   const styles = useCarouselStyles(BUTTON_SIZE);
   const animatedIndex = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const scrollViewRef = useRef<ScrollView>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [state, dispatch] = React.useReducer(carouselReducer, {
+    ...initialState,
+    containerWidth: WINDOW_WIDTH,
+  });
+
+  const { currentIndex, containerWidth } = state;
 
   const bannerTiles = section.tiles.filter(
     (tile: Tile) => tile.type === TileType.Banner
@@ -54,25 +96,23 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const contentOffsetX = event.nativeEvent.contentOffset.x;
       const newIndex = Math.round(contentOffsetX / containerWidth);
-      setCurrentIndex(newIndex);
+      dispatch({ type: 'SET_CURRENT_INDEX', payload: newIndex });
     },
     [containerWidth]
   );
 
   const handlePrev = () => {
-    const newIndex = Math.max(0, currentIndex - 1);
-    setCurrentIndex(newIndex);
+    dispatch({ type: 'PREV_SLIDE' });
     scrollViewRef.current?.scrollTo({
-      x: newIndex * containerWidth,
+      x: (currentIndex - 1) * containerWidth,
       animated: true,
     });
   };
 
   const handleNext = () => {
-    const newIndex = Math.min(sortedTiles.length - 1, currentIndex + 1);
-    setCurrentIndex(newIndex);
+    dispatch({ type: 'NEXT_SLIDE', maxIndex: sortedTiles.length - 1 });
     scrollViewRef.current?.scrollTo({
-      x: newIndex * containerWidth,
+      x: (currentIndex + 1) * containerWidth,
       animated: true,
     });
   };
@@ -103,7 +143,7 @@ const Carousel: React.FC<CarouselProps> = ({ section }) => {
         style={styles.container}
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout;
-          setContainerWidth(width);
+          dispatch({ type: 'SET_CONTAINER_WIDTH', payload: width });
         }}
       >
         <View style={styles.carouselContainer}>

@@ -11,13 +11,13 @@ type IconProps = {
   strokeWidth?: number;
 };
 
-const Icon: React.FC<IconProps> = ({
+const Icon = ({
   name,
   color = 'black',
   size = 24,
   strokeWidth = 2,
   ...props
-}) => {
+}: IconProps): JSX.Element | null => {
   const LucideIcon = LucideIcons[name] as React.ElementType;
 
   if (!LucideIcon) {
