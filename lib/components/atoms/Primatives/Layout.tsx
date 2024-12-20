@@ -19,13 +19,13 @@ type LayoutProps = {
   style?: ViewStyle;
 };
 
-export const Layout: React.FC<LayoutProps> = ({
+export const Layout = ({
   children,
   justify = 'start',
   align = 'stretch',
   direction = 'column',
   style = {},
-}) => {
+}: LayoutProps): JSX.Element => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const dynamicStyles = StyleSheet.create({
