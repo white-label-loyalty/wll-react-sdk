@@ -1,6 +1,6 @@
 import React from 'react';
 import { PointsTileConfig } from '../../../types/tile';
-import { Row, Text } from '../../atoms';
+import { Layout, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { usePointsTileStyles } from './styles';
 
@@ -20,10 +20,10 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   return (
     <Text variant="caption">
       {pointsPrefix}
-      <Row>
+      <Layout direction="row">
         {calculatedPoints}
         <Text style={styles.suffix}>{pointsSuffix}</Text>
-      </Row>
+      </Layout>
     </Text>
   );
 };

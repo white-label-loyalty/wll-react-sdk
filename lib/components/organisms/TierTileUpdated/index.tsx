@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { TierTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Column, ProgressiveImage, Text } from '../../atoms';
-import { Layout } from '../../atoms/Primatives';
+import { BaseTile, FlexBox, Layout, ProgressiveImage, Text } from '../../atoms';
 import { useTierTileStyles } from './styles';
 
 type TierTileProps = {
@@ -132,22 +131,22 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           direction="row"
           style={{ paddingTop: 16 }}
         >
-          <Column style={{ flex: 1 }}>
+          <FlexBox>
             {title && (
               <Text variant="title" style={styles.title}>
                 {title}
               </Text>
             )}
             {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
-          </Column>
+          </FlexBox>
           {emptyArtworkUrl && (
-            <Column style={styles.smallImageContainer}>
+            <View style={styles.smallImageContainer}>
               <Image
                 source={{ uri: emptyArtworkUrl }}
                 style={styles.smallImage}
                 resizeMode="contain"
               />
-            </Column>
+            </View>
           )}
         </Layout>
       </BaseTile>
@@ -166,14 +165,14 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
         </View>
       )}
       <Layout align="stretch" justify="center" direction="column">
-        <Column>
+        <Layout direction="column">
           {title && (
             <Text variant="title" style={styles.title}>
               {title}
             </Text>
           )}
           {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
-        </Column>
+        </Layout>
       </Layout>
     </BaseTile>
   );
