@@ -1,3 +1,12 @@
+## [1.0.45](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.44...v1.0.45) (2024-12-20)
+
+
+### Bug Fixes
+
+* remCove default props and update Points Tile ([551d813](https://github.com/white-label-loyalty/wll-react-sdk/commit/551d8139c9fbbb812732fd4daaacbd33afb9f86b))
+
+
+
 ## [1.0.44](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.43...v1.0.44) (2024-12-20)
 
 
