@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { LayoutProps, alignMap, justifyMap } from '.';
+import { alignMap, justifyMap, LayoutProps } from '../../../types/common';
 
 /**
  * A Row layout component that arranges its children in a horizontal stack.

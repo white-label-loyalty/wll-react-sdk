@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
+import { PointsTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { PointsTileConfig } from '../../../types/tile';
 
-export const PointsTileTitle: FC = () => {
+export const PointsTileTitle = (): JSX.Element | null => {
   const { configuration } = useTileContext();
   const { title } = configuration as PointsTileConfig;
 
-  return <Text variant="eyebrow">{title}</Text>;
+  return title ? <Text variant="eyebrow">{title}</Text> : null;
 };

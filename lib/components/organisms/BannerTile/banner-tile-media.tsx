@@ -9,9 +9,9 @@ type BannerTileMediaProps = {
   isArtworkOnly: boolean;
 };
 
-export const BannerTileMedia: React.FC<BannerTileMediaProps> = ({
+export const BannerTileMedia = ({
   isArtworkOnly,
-}) => {
+}: BannerTileMediaProps): JSX.Element | null => {
   const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
   const { artworkUrl } = configuration as BannerTileConfig;

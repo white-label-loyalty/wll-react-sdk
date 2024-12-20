@@ -10,7 +10,10 @@ export type BadgeTileMediaProps = {
   children?: React.ReactNode;
 } & Omit<React.ComponentProps<typeof ProgressiveImage>, 'source'>;
 
-export const BadgeTileMedia = ({ children, ...props }: BadgeTileMediaProps) => {
+export const BadgeTileMedia = ({
+  children,
+  ...props
+}: BadgeTileMediaProps): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };

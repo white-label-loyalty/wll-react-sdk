@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';
 
-const Indicator = () => {
+const Indicator = (): JSX.Element => {
   const { isDesktop, isTablet } = useResponsive();
 
   const getCurrentLayout = () => {

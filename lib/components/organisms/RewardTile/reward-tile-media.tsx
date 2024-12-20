@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
 import { ProgressiveImage } from '../../atoms';
@@ -9,9 +9,9 @@ type RewardTileMediaProps = {
   isArtworkOnly: boolean;
 };
 
-export const RewardTileMedia: FC<RewardTileMediaProps> = ({
+export const RewardTileMedia = ({
   isArtworkOnly,
-}) => {
+}: RewardTileMediaProps): JSX.Element | null => {
   const styles = useRewardTileStyles();
   const { configuration } = useTileContext();
   const { artworkUrl, showArtwork = true } = configuration as RewardTileConfig;

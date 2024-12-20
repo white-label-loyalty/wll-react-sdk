@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useCallback, useMemo } from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
+import { IS_WEB, SCREEN_WIDTH } from '../../../constants/device';
 import { GRID_GAP } from '../../../constants/grid';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { TSection } from '../../../types/section';
@@ -12,51 +13,36 @@ type GridProps = {
   section: TSection;
 };
 
-const Grid: React.FC<GridProps> = ({ section }) => {
+const Grid = ({ section }: GridProps) => {
   const { isDesktop } = useResponsive();
   const columnsPerRow = isDesktop ? 4 : 2;
 
-  const renderGrid = () => {
+  const gridTiles = useMemo(() => {
+    return sortByPriority(
+      section.tiles.filter((tile) => tile.type !== TileType.Banner)
+    );
+  }, [section.tiles]);
+
+  const getTileWidth = useCallback((columns: number) => {
+    if (IS_WEB) {
+      return {
+        width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
+        marginBottom: GRID_GAP,
+        height: 'auto',
+      };
+    } else {
+      const tileWidth = (SCREEN_WIDTH - (columns - 1) * GRID_GAP) / columns;
+      return {
+        width: tileWidth,
+        marginBottom: GRID_GAP,
+        height: 'auto',
+      };
+    }
+  }, []);
+
+  const renderTileContainers = useCallback(() => {
     const tileContainers: JSX.Element[] = [];
     let currentTiles: Tile[] = [];
-
-    const gridTiles = section.tiles
-      .filter((tile) => tile.type !== TileType.Banner)
-      .sort((a, b) => {
-        if (a.priority !== b.priority) {
-          return b.priority - a.priority;
-        }
-        return section.tiles.indexOf(a) - section.tiles.indexOf(b);
-      });
-
-    const allHalfTiles = gridTiles.every(
-      (tile) => tile.tileHeight === TileHeight.Half
-    );
-
-    const getTileWidth = (columns: number) => ({
-      width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
-      marginBottom: GRID_GAP,
-      height: 'auto',
-    });
-
-    if (isDesktop && allHalfTiles) {
-      gridTiles.forEach((tile, index) => {
-        const isLastInRow = (index + 1) % columnsPerRow === 0;
-        tileContainers.push(
-          <View
-            key={`container-${index}`}
-            style={[
-              // @ts-ignore
-              getTileWidth(columnsPerRow),
-              !isLastInRow && { marginRight: GRID_GAP },
-            ]}
-          >
-            <TileContainer tiles={[tile]} />
-          </View>
-        );
-      });
-      return tileContainers;
-    }
 
     const sortedTiles = sortByPriority(gridTiles);
 
@@ -93,8 +79,8 @@ const Grid: React.FC<GridProps> = ({ section }) => {
           <View
             key={`container-${index}`}
             style={[
-              // @ts-ignore
-              getTileWidth(columnsPerRow),
+              // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
+              getTileWidth(columnsPerRow) as ViewStyle,
               !isLastInRow && { marginRight: GRID_GAP },
             ]}
           >
@@ -106,12 +92,12 @@ const Grid: React.FC<GridProps> = ({ section }) => {
     });
 
     return tileContainers;
-  };
+  }, [gridTiles, columnsPerRow, getTileWidth]);
 
   return (
     <View>
       <SectionHeader title={section.title} description={section.description} />
-      <View style={styles.grid}>{renderGrid()}</View>
+      <View style={styles.grid}>{renderTileContainers()}</View>
     </View>
   );
 };

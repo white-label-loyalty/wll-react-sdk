@@ -8,6 +8,7 @@ import { RewardTileMedia } from './reward-tile-media';
 import { RewardTilePoints } from './reward-tile-points';
 import { RewardTileSummary } from './reward-tile-summary';
 import { RewardTileTitle } from './reward-tile-title';
+import { useRewardTileStyles } from './styles';
 
 type RewardTileProps = {
   tile: Tile;
@@ -29,6 +30,7 @@ const isArtworkOnly = (configuration: RewardTileConfig): boolean => {
  * @param tile - The tile data to render.
  */
 const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
+  const styles = useRewardTileStyles();
   if (!tile) return null;
 
   const { configuration } = tile as { configuration: RewardTileConfig };
@@ -38,7 +40,7 @@ const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
       <RewardTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
 
       <Column>
-        <Row justify="between" align="center">
+        <Row justify="between" align="center" style={styles.header}>
           <RewardTile.Title />
           <RewardTile.Chevron />
         </Row>

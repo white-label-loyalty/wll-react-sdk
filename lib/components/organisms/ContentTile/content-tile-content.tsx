@@ -1,11 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { View } from 'react-native';
 import { BaseTile } from '../../atoms';
 import { useContentTileStyles } from './styles';
 
-export const ContentTileContent: FC<{ children: ReactNode }> = ({
+export const ContentTileContent = ({
   children,
-}) => {
+}: {
+  children: ReactNode;
+}): JSX.Element => {
   const styles = useContentTileStyles();
   return (
     <BaseTile.Content>

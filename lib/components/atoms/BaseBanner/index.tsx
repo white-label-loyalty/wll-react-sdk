@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React, { createContext, useContext } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
 
-const BannerContext = React.createContext<Tile | null>(null);
+const BannerContext = createContext<Tile | null>(null);
 
 export const useBannerContext = () => {
-  const context = React.useContext(BannerContext);
+  const context = useContext(BannerContext);
   if (!context) {
     throw new Error('Tile components must be used within a BaseTile');
   }
@@ -20,7 +20,7 @@ type BaseBannerProps = {
   children: React.ReactNode;
 };
 
-const BaseBanner: React.FC<BaseBannerProps> = ({ tile, children }) => {
+const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
   const { theme } = useWllSdk();
   const { ctaLink, ctaLinkTarget, title } =
     tile.configuration as BannerTileConfig;

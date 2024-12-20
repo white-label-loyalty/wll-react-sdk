@@ -24,12 +24,12 @@ type TextProps = RNTextProps & {
   isSurface?: boolean;
 };
 
-export const Text: React.FC<TextProps> = ({
+export const Text = ({
   variant = 'body',
   style,
   isSurface = false,
   ...props
-}) => {
+}: TextProps): JSX.Element => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
 

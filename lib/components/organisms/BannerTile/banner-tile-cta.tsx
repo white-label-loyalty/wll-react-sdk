@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig } from '../../../types/tile';
 import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
-export const BannerTileCTA: FC = () => {
+export const BannerTileCTA = (): JSX.Element | null => {
   const tile = useBannerContext();
   const { ctaText, ctaLink, ctaLinkTarget } =
     tile.configuration as BannerTileConfig;

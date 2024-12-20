@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
-import { useResponsive } from '../../../hooks/useResponsive';
 import { Variant } from '../../../types/theme';
-import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { createVariantSystem } from '../../../utils/variant';
+import { useButtonDynamicStyles } from './styles';
 
 type ButtonProps = {
   title: string;
@@ -42,48 +41,22 @@ const useTextStyles = createVariantSystem({}, (theme) => ({
   },
 }));
 
-const Button: React.FC<ButtonProps> = ({ title, onPress, variant }) => {
+const Button = ({ title, onPress, variant }: ButtonProps): JSX.Element => {
   const { theme } = useWllSdk();
-  const { isDesktop, isTablet } = useResponsive();
   const buttonStyle = useButtonStyles(theme, variant);
   const textStyle = useTextStyles(theme, variant);
-
-  const dynamicStyles = StyleSheet.create({
-    button: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: useResponsiveValue(
-        theme.sizes.xxl,
-        theme.sizes.sm,
-        isDesktop,
-        isTablet
-      ),
-      paddingVertical: theme.sizes.sm,
-      alignSelf: 'flex-start',
-    },
-    text: {
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      fontSize: useResponsiveValue(
-        theme.sizes.xl,
-        theme.sizes.sm,
-        isDesktop,
-        isTablet
-      ),
-      fontWeight: '700',
-    },
-  });
+  const styles = useButtonDynamicStyles();
 
   return (
     <TouchableOpacity
       style={[
-        dynamicStyles.button,
+        styles.button,
         buttonStyle,
         { borderRadius: theme.sizes.borderRadiusButton },
       ]}
       onPress={onPress}
     >
-      <Text style={[dynamicStyles.text, textStyle]}>{title}</Text>
+      <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };

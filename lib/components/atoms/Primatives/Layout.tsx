@@ -2,12 +2,16 @@ import * as React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
+import {
+  Align,
+  alignMap,
+  FlexDirection,
+  Justify,
+  justifyMap,
+} from '../../../types/common';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-type Justify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
-type Align = 'start' | 'end' | 'center' | 'stretch';
-
-type ColumnProps = {
+type LayoutProps = {
   children: React.ReactNode;
   justify?: Justify;
   align?: Align;
@@ -15,25 +19,7 @@ type ColumnProps = {
   style?: ViewStyle;
 };
 
-type FlexDirection = 'column' | 'row' | 'column-reverse' | 'row-reverse';
-
-const justifyMap = {
-  start: 'flex-start',
-  end: 'flex-end',
-  center: 'center',
-  between: 'space-between',
-  around: 'space-around',
-  evenly: 'space-evenly',
-} as const;
-
-const alignMap = {
-  start: 'flex-start',
-  end: 'flex-end',
-  center: 'center',
-  stretch: 'stretch',
-} as const;
-
-const Column: React.FC<ColumnProps> = ({
+export const Layout: React.FC<LayoutProps> = ({
   children,
   justify = 'start',
   align = 'stretch',
@@ -64,5 +50,3 @@ const Column: React.FC<ColumnProps> = ({
   });
   return <View style={[dynamicStyles.column, style]}>{children}</View>;
 };
-
-export default Column;

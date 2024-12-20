@@ -9,7 +9,11 @@ type RowHeaderProps = {
   className?: string;
 } & React.ComponentProps<typeof View>;
 
-const RowHeader: React.FC<RowHeaderProps> = ({ children, style, ...props }) => {
+const RowHeader = ({
+  children,
+  style,
+  ...props
+}: RowHeaderProps): JSX.Element => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
   const dynamicStyles = StyleSheet.create({

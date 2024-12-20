@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { RewardTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
-export const RewardTileTitle: FC = () => {
+export const RewardTileTitle = (): JSX.Element | null => {
   const { configuration } = useTileContext();
   const { name } = configuration as RewardTileConfig;
 

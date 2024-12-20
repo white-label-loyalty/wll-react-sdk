@@ -1,13 +1,16 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
-import { getStateColor } from '../../../utils/themeHelpers';
+import {
+  getReadableTextColor,
+  getStateColor,
+} from '../../../utils/themeHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
 
-export const BadgeTileDateEarned: FC = () => {
+export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
@@ -21,6 +24,7 @@ export const BadgeTileDateEarned: FC = () => {
     count
   );
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
+  const textColor = getReadableTextColor(backgroundColor);
 
   if (type === BadgeTileType.Latest && count === 0) {
     return null;
@@ -29,7 +33,9 @@ export const BadgeTileDateEarned: FC = () => {
   if (count === 0) {
     return (
       <View style={containerStyle}>
-        <Text variant="label">{badgeNotEarnedMessage}</Text>
+        <Text variant="label" style={{ color: textColor }}>
+          {badgeNotEarnedMessage}
+        </Text>
       </View>
     );
   }
@@ -38,7 +44,10 @@ export const BadgeTileDateEarned: FC = () => {
 
   return (
     <View style={containerStyle}>
-      <Text variant="label">{`${awardedDatePrefix} ${formattedDate}`}</Text>
+      <Text
+        variant="label"
+        style={{ color: textColor }}
+      >{`${awardedDatePrefix} ${formattedDate}`}</Text>
     </View>
   );
 };

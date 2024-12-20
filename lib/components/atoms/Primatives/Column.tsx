@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
+import { Align, alignMap, Justify, justifyMap } from '../../../types/common';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
-import { Align, alignMap, Justify, justifyMap } from './index';
 
 export type FlexProps = {
   justify?: Justify;

@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { RewardCategoryTileConfig } from '../../../types/tile';
 import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardCategoryTileStyles } from './styles';
 
-export const RewardCategoryMedia: FC = () => {
+export const RewardCategoryMedia = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
   const { configuration } = useTileContext();
   const { artworkUrl } = configuration as RewardCategoryTileConfig;

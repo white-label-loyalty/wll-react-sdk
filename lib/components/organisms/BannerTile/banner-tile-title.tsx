@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { BannerTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 import { useBannerTileStyles } from './styles';
 
-export const BannerTileTitle: FC = () => {
+export const BannerTileTitle = (): JSX.Element | null => {
   const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
   const { title } = configuration as BannerTileConfig;

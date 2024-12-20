@@ -3,7 +3,7 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const useBadgeTileStyles = () => {
+export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
   return StyleSheet.create({

@@ -6,7 +6,7 @@ interface SkeletonTileProps {
   style?: ViewStyle;
 }
 
-const SkeletonTile: React.FC<SkeletonTileProps> = ({ style }) => {
+const SkeletonTile = ({ style }: SkeletonTileProps): JSX.Element => {
   const { theme } = useWllSdk();
   const animatedValue = React.useRef(new Animated.Value(0)).current;
 
