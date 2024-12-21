@@ -30,13 +30,15 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     return null;
   }
 
-  const displayText = count === 0 
-    ? badgeNotEarnedMessage 
-    : `${awardedDatePrefix} ${new Date(createdAt).toLocaleDateString()}`;
+  const displayText =
+    count === 0
+      ? badgeNotEarnedMessage
+      : `${awardedDatePrefix} ${new Date(createdAt).toLocaleDateString()}`;
 
-  const accessibilityLabel = count === 0
-    ? 'Badge not yet earned'
-    : `Badge earned on ${new Date(createdAt).toLocaleDateString()}`;
+  const accessibilityLabel =
+    count === 0
+      ? 'Badge not yet earned'
+      : `Badge earned on ${new Date(createdAt).toLocaleDateString()}`;
 
   if (!displayText) return null;
 
@@ -48,7 +50,8 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
       accessibilityLabel={accessibilityLabel}
     >
       <Text
-        style={[styles.dateEarnedText, { color: textColor }]}
+        variant="label"
+        style={{ color: textColor }}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       >
