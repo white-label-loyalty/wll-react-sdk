@@ -54,6 +54,7 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       ),
     },
     header: {
+      width: '100%',
       marginBottom: useResponsiveValue(
         theme.sizes.xxs,
         theme.sizes.xxxs,

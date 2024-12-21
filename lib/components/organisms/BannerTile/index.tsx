@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseBanner from '../../../components/atoms/BaseBanner';
 import { BannerTileConfig, Tile } from '../../../types/tile';
-import { FlexBox } from '../../atoms';
+import { FullFlex } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { BannerTileCTA } from './banner-tile-cta';
 import { BannerTileDescription } from './banner-tile-description';
@@ -37,11 +37,11 @@ const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
   return (
     <BaseBanner tile={tile}>
       <BannerTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
-      <FlexBox>
+      <FullFlex>
         <BannerTile.Title />
         <BannerTile.Description />
         <BannerTile.CTA />
-      </FlexBox>
+      </FullFlex>
     </BaseBanner>
   );
 };

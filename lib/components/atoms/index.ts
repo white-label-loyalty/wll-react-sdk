@@ -11,4 +11,4 @@ export { default as Indicator } from './Indicator';
 export { default as Skeleton } from './Skeleton';
 export { default as TileContainer } from './TileContainer';
 
-export { FlexBox, Layout, Spacer } from './Primatives';
+export { Column, FullFlex, Layout, Row, Spacer } from './Primatives';

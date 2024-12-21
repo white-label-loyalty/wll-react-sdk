@@ -1,9 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
-import { Layout, Text } from '../../atoms';
+import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { Row } from '../../atoms/Primatives';
 import { usePointsTileStyles } from './styles';
+
+const TextProps = {
+  variant: 'caption' as const,
+  accessibilityElementsHidden: true,
+  importantForAccessibility: 'no-hide-descendants' as const,
+};
 
 export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
@@ -25,27 +32,17 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
       accessibilityRole="text"
       accessibilityLabel={`Points value: ${fullPointsText}`}
     >
-      <Text
-        variant="caption"
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-      >
-        {pointsPrefix}
-        <Layout
-          direction="row"
-          accessibilityElementsHidden={true}
-          importantForAccessibility="no-hide-descendants"
-        >
+      <Row align="center" justify="start">
+        <Text {...TextProps}>
+          {pointsPrefix}
           {calculatedPoints}
-          <Text
-            style={styles.suffix}
-            accessibilityElementsHidden={true}
-            importantForAccessibility="no-hide-descendants"
-          >
+        </Text>
+        {pointsSuffix && (
+          <Text {...TextProps} style={styles.suffix}>
             {pointsSuffix}
           </Text>
-        </Layout>
-      </Text>
+        )}
+      </Row>
     </View>
   );
 };

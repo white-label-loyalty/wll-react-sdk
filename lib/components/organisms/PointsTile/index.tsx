@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { Tile } from '../../../types/tile';
-import { BaseTile, Layout } from '../../atoms';
+import { BaseTile, Column } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { PointsTileFormattedPoints } from './points-tile-formatted-points';
 import { PointsTileMedia } from './points-tile-media';
@@ -29,10 +29,10 @@ const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
       {isFullSize && <PointsTile.Media isFullSize />}
       <View style={styles.container}>
         {!isFullSize && <PointsTile.Media isFullSize={false} />}
-        <Layout style={styles.contentContainer}>
+        <Column style={styles.contentContainer}>
           <PointsTile.Title />
           <PointsTile.Points />
-        </Layout>
+        </Column>
       </View>
     </BaseTile>
   );

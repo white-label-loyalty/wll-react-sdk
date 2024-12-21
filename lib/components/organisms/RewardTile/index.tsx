@@ -1,6 +1,6 @@
 import React from 'react';
 import { RewardTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Layout } from '../../atoms';
+import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 
 import { RewardTileChevron } from './reward-tile-chevron';
@@ -40,15 +40,10 @@ const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
       <RewardTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
 
       <Layout>
-        <Layout
-          direction="row"
-          justify="between"
-          align="center"
-          style={styles.header}
-        >
+        <Row justify="between" align="center" style={styles.header}>
           <RewardTile.Title />
           <RewardTile.Chevron />
-        </Layout>
+        </Row>
         <RewardTile.Summary />
         <RewardTile.Points />
       </Layout>

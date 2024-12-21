@@ -2,7 +2,13 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { TierTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, FlexBox, Layout, ProgressiveImage, Text } from '../../atoms';
+import {
+  BaseTile,
+  FullFlex,
+  Layout,
+  ProgressiveImage,
+  Text,
+} from '../../atoms';
 import { useTierTileStyles } from './styles';
 
 type TierTileProps = {
@@ -127,14 +133,14 @@ const TierTileEmpty: React.FC<TierTileProps> = ({ tile }) => {
           direction="row"
           style={{ paddingTop: 16 }}
         >
-          <FlexBox>
+          <FullFlex>
             {title && (
               <Text variant="title" style={styles.title}>
                 {title}
               </Text>
             )}
             {emptyDescription && <Text variant="body">{emptyDescription}</Text>}
-          </FlexBox>
+          </FullFlex>
           {emptyArtworkUrl && (
             <View style={styles.smallImageContainer}>
               <Image
