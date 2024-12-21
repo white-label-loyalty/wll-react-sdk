@@ -17,19 +17,28 @@ export const BadgeTileMedia = ({
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, artworkUrl, emptyBadgeArtworkUrl } = configuration;
+  const { type, count, artworkUrl, emptyBadgeArtworkUrl, name } = configuration;
 
   const displayUrl = count === 0 ? emptyBadgeArtworkUrl : artworkUrl;
   if (!displayUrl) return null;
 
+  const imageState = count === 0 ? 'locked' : 'earned';
+  const accessibilityLabel = `Badge image for ${name || 'unnamed badge'}${count === 0 ? ' - Locked' : ' - Earned'}`;
+
   return (
-    <View style={styles.header}>
+    <View 
+      style={styles.header}
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={accessibilityLabel}
+    >
       <ProgressiveImage
         {...props}
         source={{ uri: displayUrl }}
         style={styles.image}
         resizeMode="contain"
-        isDesaturated={shouldDesaturate(type, count)}
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
       />
       {children}
     </View>

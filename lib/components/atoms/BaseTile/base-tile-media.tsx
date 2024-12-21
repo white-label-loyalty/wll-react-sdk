@@ -1,31 +1,24 @@
-import React, { FC } from 'react';
-import { useTileSize } from '../../../hooks/useTileSize';
+import React from 'react';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig } from '../../../types/tile';
 import ProgressiveImage from '../ProgressiveImage';
 import { useTileContext } from './index';
 import { baseStyles, useBaseTileStyles } from './styles';
 
-export const BaseTileMedia: FC<ImagePropsNoSource> = (props) => {
+export const BaseTileMedia = (
+  props: ImagePropsNoSource
+): JSX.Element | null => {
   const tile = useTileContext();
-  const { artworkUrl, title, body } = tile.configuration as ContentTileConfig;
-  const { isHalfSize } = useTileSize(tile);
+  const { artworkUrl } = tile.configuration as ContentTileConfig;
   const styles = useBaseTileStyles();
 
   if (!artworkUrl) return null;
-
-  const hasTitle = !!title;
-  const hasDescription = !!body;
 
   return (
     <ProgressiveImage
       {...props}
       source={{ uri: artworkUrl }}
-      style={[
-        props.style,
-        baseStyles.media,
-        styles.media,
-      ]}
+      style={[props.style, baseStyles.media, styles.media]}
     />
   );
 };

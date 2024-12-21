@@ -13,17 +13,24 @@ export const PointsTileMedia = ({
   isFullSize,
 }: PointsTileMediaProps): JSX.Element | null => {
   const { configuration } = useTileContext();
-  const { artworkUrl } = configuration as PointsTileConfig;
+  const { artworkUrl, title } = configuration as PointsTileConfig;
   const styles = usePointsTileStyles(isFullSize);
 
   if (!artworkUrl) return null;
 
   return (
-    <View style={styles.imageContainer}>
+    <View 
+      style={styles.imageContainer}
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={`Points tile image${title ? ` for ${title}` : ''}`}
+    >
       <Image
         source={{ uri: artworkUrl }}
         style={styles.image}
         resizeMode="contain"
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
       />
     </View>
   );

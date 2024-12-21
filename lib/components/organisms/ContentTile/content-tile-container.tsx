@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { BaseTile } from '../../atoms';
 
-export const ContentTileRoot = ({
+export const ContentTileContainer = ({
   children,
 }: {
   children: ReactNode;
-}): JSX.Element => <BaseTile.Root>{children}</BaseTile.Root>;
+}): JSX.Element => <BaseTile.Container>{children}</BaseTile.Container>;

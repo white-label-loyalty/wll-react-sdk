@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { BadgeTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -11,8 +12,20 @@ export const BadgeTileDescription = (): JSX.Element | null => {
   if (count === 0 || !description) return null;
 
   return (
-    <Text variant="body" numberOfLines={2} ellipsizeMode="tail">
-      {description}
-    </Text>
+    <View
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={`Badge description: ${description}`}
+    >
+      <Text 
+        variant="body" 
+        numberOfLines={2} 
+        ellipsizeMode="tail"
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
+        {description}
+      </Text>
+    </View>
   );
 };

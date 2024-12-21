@@ -21,14 +21,26 @@ export const RewardTilePoints = (): JSX.Element | null => {
 
   // Calculate points
   const calculatedPoints = price * Number(pointsMultiplier);
+  const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (
-    <Text variant="caption" style={styles.footer}>
-      {pointsPrefix}
-      <View style={styles.pointsContainer}>
-        {calculatedPoints}
-        <Text style={styles.suffix}>{pointsSuffix}</Text>
-      </View>
-    </Text>
+    <View
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={`Reward points: ${fullPointsText}`}
+    >
+      <Text 
+        variant="caption" 
+        style={styles.footer}
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
+        {pointsPrefix}
+        <View style={styles.pointsContainer}>
+          {calculatedPoints}
+          <Text style={styles.suffix}>{pointsSuffix}</Text>
+        </View>
+      </Text>
+    </View>
   );
 };

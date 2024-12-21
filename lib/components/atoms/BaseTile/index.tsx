@@ -45,9 +45,12 @@ type LayoutProps = FlexStyle & {
 };
 
 /**
- * BaseTileRoot component to handle layout and pressable behavior.
+ * BaseTileContainer component to handle layout and pressable behavior.
  */
-const BaseTileRoot = ({ children, style }: BaseTileRootProps): JSX.Element => {
+const BaseTileContainer = ({
+  children,
+  style,
+}: BaseTileRootProps): JSX.Element => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
   const { isHalfSize } = useTileSize(tile);
@@ -90,12 +93,12 @@ const BaseTileRoot = ({ children, style }: BaseTileRootProps): JSX.Element => {
 };
 
 /**
- * BaseTileInner component to provide context and render children.
+ * BaseTileRoot component to provide context and render children.
  */
-const BaseTileInner = ({ tile, children }: BaseTileProps): JSX.Element => {
+const BaseTileRoot = ({ tile, children }: BaseTileProps): JSX.Element => {
   return (
     <TileContext.Provider value={tile}>
-      <BaseTile.Root>{children}</BaseTile.Root>
+      <BaseTile.Container>{children}</BaseTile.Container>
     </TileContext.Provider>
   );
 };
@@ -103,8 +106,8 @@ const BaseTileInner = ({ tile, children }: BaseTileProps): JSX.Element => {
 /**
  * BaseTile component with subcomponents attached.
  */
-export const BaseTile = Object.assign(BaseTileInner, {
-  Root: BaseTileRoot,
+export const BaseTile = Object.assign(BaseTileRoot, {
+  Container: BaseTileContainer,
   Media: BaseTileMedia,
   Content: BaseTileContent,
   Header: BaseTileHeader,

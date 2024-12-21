@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
@@ -11,6 +17,57 @@ type GroupProps = {
   id: string;
 };
 
+type GroupContextType = {
+  groupData: TGroup;
+};
+
+type GroupEmptyStateProps = {
+  message: string;
+};
+
+export const GroupContext = createContext<GroupContextType | undefined>(
+  undefined
+);
+
+export const useGroupContext = (): GroupContextType => {
+  const context = useContext(GroupContext);
+  if (!context) {
+    throw new Error('useGroupContext must be used within a GroupProvider');
+  }
+  return context;
+};
+
+// Custom Hook for Group Data
+const useGroupData = (id: string) => {
+  const { getGroupByID } = useWllSdk();
+  const [groupData, setGroupData] = useState<TGroup | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const fetchGroup = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await getGroupByID(id);
+      if (response.status === 'success' && response.data) {
+        setGroupData(response.data);
+      } else {
+        setError(response.error || 'Failed to fetch group data.');
+      }
+    } catch (err) {
+      setError('Failed to fetch group data. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [id, getGroupByID]);
+
+  useEffect(() => {
+    fetchGroup();
+  }, [fetchGroup]);
+
+  return { groupData, isLoading, error };
+};
+
 /**
  * A page-level component that represents a Group view in the application.
  *
@@ -21,29 +78,13 @@ type GroupProps = {
  *
  * @param id - The unique identifier of the group to fetch and display.
  */
+
 const Group = ({ id }: GroupProps): JSX.Element | null => {
   if (!id) return null;
 
-  const { getGroupByID } = useWllSdk();
-  const [groupData, setGroupData] = useState<TGroup | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { groupData, isLoading, error } = useGroupData(id);
 
-  const fetchGroup = useCallback(async () => {
-    try {
-      setError(null);
-      const response = await getGroupByID(id);
-      setGroupData(response.data);
-    } catch (err) {
-      setError('Failed to fetch group data. Please try again later.');
-    }
-  }, [id, getGroupByID]);
-
-  useEffect(() => {
-    fetchGroup();
-  }, [fetchGroup]);
-
-  // Handle loading state
-  if (!groupData && !error) {
+  if (isLoading) {
     return (
       <View style={commonStyles.emptyContainer}>
         <Skeleton />
@@ -51,31 +92,26 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
     );
   }
 
-  // Handle error state
-  if (error) {
-    return (
-      <View style={commonStyles.emptyContainer}>
-        <Text variant="body">{error}</Text>
-      </View>
-    );
+  if (error || !groupData) {
+    return <GroupEmptyState message={error || 'No group data available'} />;
   }
 
-  // Handle empty group data
-  if (!groupData) {
-    return (
-      <View style={commonStyles.emptyContainer}>
-        <Text variant="body">No group data available</Text>
+  return (
+    <GroupContext.Provider value={{ groupData }}>
+      <View>
+        <GroupSections />
       </View>
-    );
-  }
+    </GroupContext.Provider>
+  );
+};
 
-  // Handle empty sections
+export default Group;
+
+export const GroupSections = (): JSX.Element => {
+  const { groupData } = useGroupContext();
+
   if (!groupData.sections || groupData.sections.length === 0) {
-    return (
-      <View style={commonStyles.emptyContainer}>
-        <Text variant="body">No sections available</Text>
-      </View>
-    );
+    return <GroupEmptyState message={"This group doesn't have any sections"} />;
   }
 
   const sortedSections = sortByPriority(groupData.sections);
@@ -89,4 +125,10 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
   );
 };
 
-export default Group;
+export const GroupEmptyState = ({
+  message,
+}: GroupEmptyStateProps): JSX.Element => (
+  <View style={commonStyles.emptyContainer}>
+    <Text variant="body">{message}</Text>
+  </View>
+);

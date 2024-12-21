@@ -7,7 +7,6 @@ import { BannerTileCTA } from './banner-tile-cta';
 import { BannerTileDescription } from './banner-tile-description';
 import { BannerTileMedia } from './banner-tile-media';
 import { BannerTileTitle } from './banner-tile-title';
-import { useBannerTileStyles } from './styles';
 
 type BannerTileProps = {
   tile: Tile;
@@ -33,7 +32,6 @@ const isArtworkOnly = (configuration: BannerTileConfig): boolean => {
 const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
   if (!tile) return null;
 
-  const styles = useBannerTileStyles();
   const { configuration } = tile as { configuration: BannerTileConfig };
 
   return (

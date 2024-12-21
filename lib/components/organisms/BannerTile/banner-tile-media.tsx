@@ -14,7 +14,7 @@ export const BannerTileMedia = ({
 }: BannerTileMediaProps): JSX.Element | null => {
   const styles = useBannerTileStyles();
   const { configuration } = useBannerContext();
-  const { artworkUrl } = configuration as BannerTileConfig;
+  const { artworkUrl, title } = configuration as BannerTileConfig;
 
   if (!artworkUrl) return null;
 
@@ -23,9 +23,19 @@ export const BannerTileMedia = ({
   };
 
   return (
-    // @ts-ignore: We are using percentage values for width, which is valid in React Native but TypeScript expects a number.
-    <View style={[styles.mediaContainer, containerStyle]}>
-      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.media} />
+    <View 
+      // @ts-ignore: We are using percentage values for width, which is valid in React Native but TypeScript expects a number.
+      style={[styles.mediaContainer, containerStyle]}
+      accessible
+      accessibilityRole="image"
+      accessibilityLabel={`Banner image${title ? ` for ${title}` : ''}`}
+    >
+      <ProgressiveImage 
+        source={{ uri: artworkUrl }} 
+        style={styles.media}
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      />
     </View>
   );
 };

@@ -20,7 +20,7 @@ type BaseTileBodyProps = Omit<TextProps, 'style'> & {
   style?: TextStyle;
 };
 
-export const BaseTileBody = (props: BaseTileBodyProps) => {
+export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
   const tile = useTileContext();
   const { isDesktop, isTablet } = useResponsive();
   const { body, artworkUrl } = tile.configuration as ContentTileConfig;

@@ -84,8 +84,18 @@ const useSectionData = (
  * Component to display an empty state with a message.
  */
 const EmptyState = ({ message }: { message: string }): JSX.Element => (
-  <View style={commonStyles.emptyContainer}>
-    <Text>{message}</Text>
+  <View
+    style={commonStyles.emptyContainer}
+    accessible
+    accessibilityRole="text"
+    accessibilityLabel={`Empty state: ${message}`}
+  >
+    <Text
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no-hide-descendants"
+    >
+      {message}
+    </Text>
   </View>
 );
 
@@ -106,7 +116,13 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
   const renderSectionContent = (): JSX.Element | null => {
     if (isLoading) {
       return (
-        <View style={commonStyles.emptyContainer}>
+        <View
+          style={commonStyles.emptyContainer}
+          accessible
+          accessibilityRole="none"
+          accessibilityLabel="Loading section content"
+          accessibilityState={{ busy: true }}
+        >
           <Skeleton />
         </View>
       );
@@ -129,7 +145,15 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
 
   return sectionData ? (
     <SectionContext.Provider value={{ sectionData }}>
-      <View style={styles.section}>{renderSectionContent()}</View>
+      <View
+        style={styles.section}
+        accessible
+        accessibilityRole="none"
+        accessibilityLabel={`Section: ${sectionData.title || 'Untitled section'}`}
+        accessibilityHint={sectionData.description || undefined}
+      >
+        {renderSectionContent()}
+      </View>
     </SectionContext.Provider>
   ) : null;
 };

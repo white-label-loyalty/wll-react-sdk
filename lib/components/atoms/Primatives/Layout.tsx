@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import {
@@ -17,7 +17,7 @@ type LayoutProps = {
   align?: Align;
   direction?: FlexDirection;
   style?: ViewStyle;
-};
+} & Omit<ViewProps, 'style'>;
 
 export const Layout = ({
   children,
@@ -25,6 +25,7 @@ export const Layout = ({
   align = 'stretch',
   direction = 'column',
   style = {},
+  ...rest
 }: LayoutProps): JSX.Element => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
@@ -48,5 +49,9 @@ export const Layout = ({
       flexDirection: direction,
     },
   });
-  return <View style={[dynamicStyles.column, style]}>{children}</View>;
+  return (
+    <View style={[dynamicStyles.column, style]} {...rest}>
+      {children}
+    </View>
+  );
 };
