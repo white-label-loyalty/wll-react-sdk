@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewProps } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import {
@@ -13,23 +13,33 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 type LayoutProps = {
   children: React.ReactNode;
+  direction?: FlexDirection;
   justify?: Justify;
   align?: Align;
-  direction?: FlexDirection;
-  style?: ViewStyle;
-};
+  style?: ViewProps['style'];
+} & Omit<ViewProps, 'style'>;
 
+/**
+ * A primitive Layout component that provides flexible layout options.
+ * @param direction - The direction of the layout (column or row)
+ * @param justify - The justify content of the layout
+ * @param align - The align items of the layout
+ * @param style - Additional styles to apply to the layout
+ * @param children - The child components to render inside the layout
+ * @returns The rendered Layout component with special paddings
+ */
 export const Layout = ({
   children,
-  justify = 'start',
-  align = 'stretch',
   direction = 'column',
+  justify = 'start',
+  align = 'start',
   style = {},
+  ...rest
 }: LayoutProps): JSX.Element => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const dynamicStyles = StyleSheet.create({
-    column: {
+    container: {
       flex: 1,
       paddingHorizontal: useResponsiveValue(
         theme.sizes.sm,
@@ -48,5 +58,9 @@ export const Layout = ({
       flexDirection: direction,
     },
   });
-  return <View style={[dynamicStyles.column, style]}>{children}</View>;
+  return (
+    <View style={[dynamicStyles.container, style]} {...rest}>
+      {children}
+    </View>
+  );
 };

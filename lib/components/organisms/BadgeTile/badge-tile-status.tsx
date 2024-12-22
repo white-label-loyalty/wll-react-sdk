@@ -1,9 +1,9 @@
-import { LockKeyholeIcon } from 'lucide-react';
 import React from 'react';
 import { View } from 'react-native';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import Icon from '../../atoms/Icon';
 import { useBadgeTileStyles } from './styles';
 
 export const BadgeTileStatus = (): JSX.Element | null => {
@@ -16,12 +16,31 @@ export const BadgeTileStatus = (): JSX.Element | null => {
     return null;
   }
 
+  const isLocked = count === 0;
+  const statusLabel = isLocked ? 'Badge locked' : `Earned ${count} times`;
+
   return (
-    <View style={styles.indicatorContainer}>
-      {count === 0 ? (
-        <LockKeyholeIcon color="#FFF" size={20} />
+    <View
+      style={styles.indicatorContainer}
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={statusLabel}
+    >
+      {isLocked ? (
+        <Icon
+          name="LockKeyhole"
+          color="#FFF"
+          size={20}
+          accessibilityElementsHidden={true}
+        />
       ) : (
-        <Text style={styles.countText}>{count}x</Text>
+        <Text
+          style={styles.countText}
+          accessibilityElementsHidden={true}
+          importantForAccessibility="no-hide-descendants"
+        >
+          {count}x
+        </Text>
       )}
     </View>
   );

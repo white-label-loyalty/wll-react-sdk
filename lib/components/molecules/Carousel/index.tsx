@@ -78,10 +78,9 @@ const Carousel = ({ section }: CarouselProps): JSX.Element => {
 
   const { currentIndex, containerWidth } = state;
 
-  const bannerTiles = section.tiles.filter(
-    (tile: Tile) => tile.type === TileType.Banner
+  const sortedTiles = sortByPriority(
+    section.tiles.filter((tile: Tile) => tile.type === TileType.Banner)
   );
-  const sortedTiles = sortByPriority(bannerTiles);
 
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {

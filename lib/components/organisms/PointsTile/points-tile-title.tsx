@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -7,5 +8,21 @@ export const PointsTileTitle = (): JSX.Element | null => {
   const { configuration } = useTileContext();
   const { title } = configuration as PointsTileConfig;
 
-  return title ? <Text variant="eyebrow">{title}</Text> : null;
+  if (!title) return null;
+
+  return (
+    <View
+      accessible
+      accessibilityRole="header"
+      accessibilityLabel={title}
+    >
+      <Text 
+        variant="eyebrow"
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
+        {title}
+      </Text>
+    </View>
+  );
 };

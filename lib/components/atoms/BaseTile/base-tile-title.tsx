@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ContentTileConfig } from '../../../types/tile';
@@ -6,7 +6,7 @@ import Icon from '../Icon';
 import Text from '../Text';
 import { useTileContext } from './index';
 
-export const BaseTileTitle: FC = () => {
+export const BaseTileTitle = (): JSX.Element | null => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
   const { title, ctaLink, artworkUrl } =

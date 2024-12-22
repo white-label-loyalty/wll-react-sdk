@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -9,5 +10,19 @@ export const RewardTileSummary = (): JSX.Element | null => {
 
   if (!summary) return null;
 
-  return <Text variant="body">{summary}</Text>;
+  return (
+    <View
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={summary}
+    >
+      <Text 
+        variant="body"
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
+        {summary}
+      </Text>
+    </View>
+  );
 };

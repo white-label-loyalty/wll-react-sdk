@@ -9,6 +9,10 @@ type ButtonProps = {
   title: string;
   onPress: () => void;
   variant: Variant;
+  disabled?: boolean;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+  testID?: string;
 };
 
 const useButtonStyles = createVariantSystem({}, (theme) => ({
@@ -41,7 +45,15 @@ const useTextStyles = createVariantSystem({}, (theme) => ({
   },
 }));
 
-const Button = ({ title, onPress, variant }: ButtonProps): JSX.Element => {
+const Button = ({
+  title,
+  onPress,
+  variant,
+  disabled = false,
+  accessibilityLabel,
+  accessibilityHint,
+  testID,
+}: ButtonProps): JSX.Element => {
   const { theme } = useWllSdk();
   const buttonStyle = useButtonStyles(theme, variant);
   const textStyle = useTextStyles(theme, variant);
@@ -53,8 +65,16 @@ const Button = ({ title, onPress, variant }: ButtonProps): JSX.Element => {
         styles.button,
         buttonStyle,
         { borderRadius: theme.sizes.borderRadiusButton },
+        disabled && { opacity: 0.5 },
       ]}
       onPress={onPress}
+      disabled={disabled}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel || title}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled }}
+      testID={testID}
     >
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>

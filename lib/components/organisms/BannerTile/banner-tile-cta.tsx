@@ -11,5 +11,18 @@ export const BannerTileCTA = (): JSX.Element | null => {
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
   if (!ctaText) return null;
-  return <Button title={ctaText} variant="accent" onPress={handlePress} />;
+
+  const hint =
+    ctaLinkTarget === 'NEW_WINDOW'
+      ? `Opens ${ctaLink} in a new window`
+      : `Takes you to ${ctaLink}`;
+
+  return (
+    <Button
+      title={ctaText}
+      variant="accent"
+      onPress={handlePress}
+      accessibilityHint={hint}
+    />
+  );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View, ViewProps, ViewStyle } from 'react-native';
 
 /**
  * Props for the Spacer component.
@@ -8,7 +8,7 @@ import { View, ViewStyle } from 'react-native';
  */
 type SpacerProps = {
   style?: ViewStyle;
-};
+} & Omit<ViewProps, 'style'>;
 
 /**
  * A simple Spacer component that creates flexible space in layouts.
@@ -16,6 +16,6 @@ type SpacerProps = {
  * The Spacer is commonly used in flexbox layouts to create adjustable empty space
  * between child elements, avoiding the need for explicit margins or padding.
  */
-export const Spacer = ({ style }: SpacerProps): JSX.Element => {
-  return <View style={[{ flex: 1 }, style]} />;
+export const Spacer = ({ style, ...rest }: SpacerProps): JSX.Element => {
+  return <View style={[{ flex: 1 }, style]} {...rest} />;
 };

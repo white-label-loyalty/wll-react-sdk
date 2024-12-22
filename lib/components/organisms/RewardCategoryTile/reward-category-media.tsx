@@ -7,11 +7,15 @@ import { useRewardCategoryTileStyles } from './styles';
 export const RewardCategoryMedia = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
   const { configuration } = useTileContext();
-  const { artworkUrl } = configuration as RewardCategoryTileConfig;
+  const { artworkUrl, name } = configuration as RewardCategoryTileConfig;
 
   if (!artworkUrl) return null;
 
   return (
-    <ProgressiveImage source={{ uri: artworkUrl }} style={styles.background} />
+    <ProgressiveImage
+      source={{ uri: artworkUrl }}
+      style={styles.background}
+      alt={name}
+    />
   );
 };

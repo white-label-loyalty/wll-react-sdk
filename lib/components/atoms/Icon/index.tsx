@@ -1,6 +1,6 @@
 import * as LucideIcons from 'lucide-react';
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
 type IconName = keyof typeof LucideIcons;
 
@@ -9,7 +9,7 @@ type IconProps = {
   color?: string;
   size?: number;
   strokeWidth?: number;
-};
+} & Omit<ViewProps, 'style'>;
 
 const Icon = ({
   name,

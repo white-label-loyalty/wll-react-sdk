@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BannerTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
@@ -13,15 +14,23 @@ export const BannerTileDescription = (): JSX.Element | null => {
 
   if (!description) return null;
   return (
-    <Text
-      style={[
-        styles.description,
-        {
-          color: theme.derivedSurfaceText[20],
-        },
-      ]}
+    <View
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={description}
     >
-      {description}
-    </Text>
+      <Text
+        style={[
+          styles.description,
+          {
+            color: theme.derivedSurfaceText[20],
+          },
+        ]}
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
+        {description}
+      </Text>
+    </View>
   );
 };

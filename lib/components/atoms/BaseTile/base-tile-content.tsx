@@ -1,11 +1,15 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { View } from 'react-native';
 import { useTileContext } from '.';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { ContentTileConfig } from '../../../types/tile';
 import { baseStyles } from './styles';
 
-export const BaseTileContent: FC<{ children: ReactNode }> = ({ children }) => {
+export const BaseTileContent = ({
+  children,
+}: {
+  children: ReactNode;
+}): JSX.Element | null => {
   const tile = useTileContext();
   const { artworkUrl } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);

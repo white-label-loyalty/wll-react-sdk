@@ -10,7 +10,7 @@ const BannerContext = createContext<Tile | null>(null);
 export const useBannerContext = () => {
   const context = useContext(BannerContext);
   if (!context) {
-    throw new Error('Tile components must be used within a BaseTile');
+    throw new Error('Banner components must be used within a BaseBanner');
   }
   return context;
 };
