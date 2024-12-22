@@ -1,3 +1,20 @@
+## [1.0.46](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.45...v1.0.46) (2024-12-22)
+
+
+### Bug Fixes
+
+* (Stories) fix issue with date on story ([5d7bc79](https://github.com/white-label-loyalty/wll-react-sdk/commit/5d7bc7994d8a7a648c7bc514760d135e6f8a4938))
+* (Tiles) various fixes to the layout of tiles ([f4e54e7](https://github.com/white-label-loyalty/wll-react-sdk/commit/f4e54e79b4a477f2b8967cfeb2da6b56c18f8737))
+* fix issue with desaturation ([af2a883](https://github.com/white-label-loyalty/wll-react-sdk/commit/af2a883850ff677034fd79fcd01628c4b441b30e))
+* fix style issue tih earned date text ([97f0532](https://github.com/white-label-loyalty/wll-react-sdk/commit/97f053277f5b8d48a7ddec639b7926e63db56548))
+
+
+### Features
+
+* trigger release build ([d0c8b24](https://github.com/white-label-loyalty/wll-react-sdk/commit/d0c8b24bbab83438d9167b73c083293eb916e3aa))
+
+
+
 ## [1.0.45](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.44...v1.0.45) (2024-12-20)
 
 
