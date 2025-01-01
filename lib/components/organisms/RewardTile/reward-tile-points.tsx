@@ -20,7 +20,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   if (!showPrice || price === undefined) return null;
 
   // Calculate points
-  const calculatedPoints = price * Number(pointsMultiplier);
+  const calculatedPoints = price * Number(pointsMultiplier ?? 1);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (
