@@ -37,7 +37,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
       >
         {pointsPrefix}
         <View style={styles.pointsContainer}>
-          <Text>{calculatedPoints}</Text>
+          <Text variant="caption">{calculatedPoints}</Text>
           <Text style={styles.suffix}>{pointsSuffix}</Text>
         </View>
       </Text>
