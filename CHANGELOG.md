@@ -1,3 +1,12 @@
+## [1.0.49](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.48...v1.0.49) (2025-01-01)
+
+
+### Bug Fixes
+
+* make sure view isnt being rendered inside text ([e573537](https://github.com/white-label-loyalty/wll-react-sdk/commit/e5735371777cc7c968251b17d44d8c4cfbd5f76d))
+
+
+
 ## [1.0.48](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.47...v1.0.48) (2025-01-01)
 
 
