@@ -1,3 +1,12 @@
+## [1.0.47](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.46...v1.0.47) (2025-01-01)
+
+
+### Features
+
+* trigger release ([1ff6ea7](https://github.com/white-label-loyalty/wll-react-sdk/commit/1ff6ea78f205f0a6028f71223c0d9377bc49437a))
+
+
+
 ## [1.0.46](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.45...v1.0.46) (2024-12-22)
 
 
