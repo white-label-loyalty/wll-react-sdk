@@ -23,7 +23,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   } = configuration as PointsTileConfig;
 
   if (points === undefined) return null;
-  const calculatedPoints = points * multiplier;
+  const calculatedPoints = points * Number(multiplier ?? 1);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (

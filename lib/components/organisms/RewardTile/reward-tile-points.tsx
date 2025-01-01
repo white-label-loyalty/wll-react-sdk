@@ -20,7 +20,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   if (!showPrice || price === undefined) return null;
 
   // Calculate points
-  const calculatedPoints = price * Number(pointsMultiplier);
+  const calculatedPoints = price * Number(pointsMultiplier ?? 1);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (
@@ -29,15 +29,15 @@ export const RewardTilePoints = (): JSX.Element | null => {
       accessibilityRole="text"
       accessibilityLabel={`Reward points: ${fullPointsText}`}
     >
-      <Text 
-        variant="caption" 
+      <Text
+        variant="caption"
         style={styles.footer}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       >
         {pointsPrefix}
         <View style={styles.pointsContainer}>
-          {calculatedPoints}
+          <Text variant="caption">{calculatedPoints}</Text>
           <Text style={styles.suffix}>{pointsSuffix}</Text>
         </View>
       </Text>
