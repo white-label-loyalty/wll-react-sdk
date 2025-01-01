@@ -62,7 +62,7 @@ function MyComponent() {
 
 - `PointsTile.Title` - Displays the tile heading
 - `PointsTile.Points` - Shows formatted points value with optional prefix/suffix
-- `PointsTile.Image` - Handles artwork display with responsive sizing
+- `PointsTile.Media` - Handles artwork display with responsive sizing
 
 ## States
 
