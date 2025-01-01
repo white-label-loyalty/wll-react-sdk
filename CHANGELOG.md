@@ -1,3 +1,14 @@
+## [1.0.48](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.47...v1.0.48) (2025-01-01)
+
+
+### Bug Fixes
+
+* (RewardTile) fixes issue in react native mobile with strings being rendered in a text component ([5fa09d3](https://github.com/white-label-loyalty/wll-react-sdk/commit/5fa09d321a2cee15fd2952edd79051b5f10b6646))
+* (RewardTile) make sure styling applied to decendant ([1bb5aca](https://github.com/white-label-loyalty/wll-react-sdk/commit/1bb5acacb219b9f249031a3a98ac985eac7186f2))
+* improve points multiplier handling in tile components ([66ad21f](https://github.com/white-label-loyalty/wll-react-sdk/commit/66ad21fce799e4f8ab4257af955e34b750861562))
+
+
+
 ## [1.0.47](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.46...v1.0.47) (2025-01-01)
 
 
