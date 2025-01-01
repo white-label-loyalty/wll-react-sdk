@@ -29,15 +29,15 @@ export const RewardTilePoints = (): JSX.Element | null => {
       accessibilityRole="text"
       accessibilityLabel={`Reward points: ${fullPointsText}`}
     >
-      <Text 
-        variant="caption" 
+      <Text
+        variant="caption"
         style={styles.footer}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       >
         {pointsPrefix}
         <View style={styles.pointsContainer}>
-          {calculatedPoints}
+          <Text>{calculatedPoints}</Text>
           <Text style={styles.suffix}>{pointsSuffix}</Text>
         </View>
       </Text>
