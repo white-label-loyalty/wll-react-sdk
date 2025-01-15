@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
+import { calculatePoints } from '../../../utils/pointsHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { Row } from '../../atoms/Primatives';
@@ -16,14 +17,14 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
   const { configuration } = useTileContext();
   const {
-    multiplier = 1,
+    pointsMultiplier = 1,
     pointsPrefix = '',
     pointsSuffix = 'pts',
     points,
   } = configuration as PointsTileConfig;
 
   if (points === undefined) return null;
-  const calculatedPoints = points * Number(multiplier ?? 1);
+  const calculatedPoints = calculatePoints(points, pointsMultiplier);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (

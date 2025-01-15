@@ -37,7 +37,7 @@ StandardPointsBalance.args = {
     configuration: {
       title: 'Available Points',
       artworkUrl: pointsImage,
-      multiplier: undefined,
+      pointsMultiplier: undefined,
       points: 2750,
       pointsPrefix: undefined,
       pointsSuffix: 'points',
@@ -58,7 +58,7 @@ CashbackRewards.args = {
     configuration: {
       title: 'Cashback Earned',
       artworkUrl: cashback,
-      multiplier: undefined,
+      pointsMultiplier: undefined,
       points: 125.5,
       pointsPrefix: '£',
       pointsSuffix: '',
@@ -79,7 +79,7 @@ StarRewards.args = {
     configuration: {
       title: 'Stars Balance',
       artworkUrl: stars,
-      multiplier: 2,
+      pointsMultiplier: 2,
       points: 48,
       pointsPrefix: undefined,
       pointsSuffix: 'stars',
@@ -100,7 +100,7 @@ MileageProgram.args = {
     configuration: {
       title: 'Air Miles Balance',
       artworkUrl: airmiles,
-      multiplier: undefined,
+      pointsMultiplier: undefined,
       points: 25840,
       pointsPrefix: undefined,
       pointsSuffix: 'miles',
@@ -121,7 +121,7 @@ CoinPoints.args = {
     configuration: {
       title: 'Your Balance',
       artworkUrl: coins,
-      multiplier: 3,
+      pointsMultiplier: 3,
       points: 15750,
       pointsPrefix: undefined,
       pointsSuffix: 'coins',
@@ -142,7 +142,7 @@ GamifiedCoins.args = {
     configuration: {
       title: 'Reward Coins',
       artworkUrl: coins,
-      multiplier: undefined,
+      pointsMultiplier: undefined,
       points: 1250,
       pointsPrefix: '',
       pointsSuffix: 'coins',
@@ -163,7 +163,7 @@ HotelPoints.args = {
     configuration: {
       title: 'Elite Points',
       artworkUrl: pointsImage,
-      multiplier: 5,
+      pointsMultiplier: 5,
       points: 50000,
       pointsPrefix: undefined,
       pointsSuffix: 'pts',
@@ -171,5 +171,54 @@ HotelPoints.args = {
     id: '405a6844-f472-4d9e-84b9-20fb55dbd399',
     createdAt: '',
     updatedAt: '',
+  },
+};
+
+export const HalfWithMultiplier = Template.bind({});
+HalfWithMultiplier.args = {
+  tile: {
+    tileHeight: TileHeight.Half,
+    active: true,
+    type: TileType.Points,
+    configuration: {
+      defaultLocale: 'en',
+      details: [],
+      points: 100,
+      locale: 'en',
+      title: 'Points Balance',
+      artworkUrl:
+        'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      pointsPrefix: '$',
+      pointsSuffix: ' ',
+      pointsMultiplier: 1000,
+    },
+    id: '02d84ed8-4dbd-4ef5-bd5a-606de29d8cd9',
+    createdAt: '2025-01-15T06:28:38.029Z',
+    updatedAt: '2025-01-15T06:32:33.968Z',
+    priority: 1,
+  },
+};
+export const FullWithMultiplier = Template.bind({});
+FullWithMultiplier.args = {
+  tile: {
+    tileHeight: TileHeight.Full,
+    active: true,
+    type: TileType.Points,
+    configuration: {
+      defaultLocale: 'en',
+      details: [],
+      points: 100,
+      locale: 'en',
+      title: 'Points Balance',
+      artworkUrl:
+        'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      pointsPrefix: '$',
+      pointsSuffix: ' ',
+      pointsMultiplier: 1000,
+    },
+    id: '02d84ed8-4dbd-4ef5-bd5a-606de29d8cd9',
+    createdAt: '2025-01-15T06:28:38.029Z',
+    updatedAt: '2025-01-15T06:32:33.968Z',
+    priority: 1,
   },
 };

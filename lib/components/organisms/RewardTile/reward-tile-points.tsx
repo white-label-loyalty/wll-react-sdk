@@ -4,6 +4,7 @@ import { RewardTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
+import { calculatePoints } from '../../../utils/pointsHelpers';
 
 export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
@@ -20,7 +21,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   if (!showPrice || price === undefined) return null;
 
   // Calculate points
-  const calculatedPoints = price * Number(pointsMultiplier ?? 1);
+  const calculatedPoints = calculatePoints(price, pointsMultiplier);
 
   return (
     <View
