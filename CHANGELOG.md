@@ -1,3 +1,12 @@
+## [1.0.51](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.50...v1.0.51) (2025-01-15)
+
+
+### Bug Fixes
+
+* (PointsTile) make image cover image container if full size ([e45c88e](https://github.com/white-label-loyalty/wll-react-sdk/commit/e45c88e6a186bdb8e64ce451b510dda6a14b1f38))
+
+
+
 ## [1.0.50](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.49...v1.0.50) (2025-01-15)
 
 
