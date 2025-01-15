@@ -9,7 +9,7 @@ import { useTileContext } from './index';
 export const BaseTileTitle = (): JSX.Element | null => {
   const tile = useTileContext();
   const { theme } = useWllSdk();
-  const { title, ctaLink, artworkUrl } =
+  const { title, ctaLink, artworkUrl, body } =
     tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
@@ -18,7 +18,11 @@ export const BaseTileTitle = (): JSX.Element | null => {
 
   return (
     <>
-      <Text variant="title" accessibilityLabel={title} numberOfLines={1}>
+      <Text 
+        variant="title" 
+        accessibilityLabel={title} 
+        numberOfLines={body ? 2 : undefined}
+      >
         {title}
       </Text>
       {ctaLink && (

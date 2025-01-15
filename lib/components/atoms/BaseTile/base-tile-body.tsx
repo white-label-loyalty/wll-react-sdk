@@ -23,14 +23,20 @@ type BaseTileBodyProps = Omit<TextProps, 'style'> & {
 export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
   const tile = useTileContext();
   const { isDesktop, isTablet } = useResponsive();
-  const { body, artworkUrl } = tile.configuration as ContentTileConfig;
+  const { body, artworkUrl, title } = tile.configuration as ContentTileConfig;
   const { isHalfSize } = useTileSize(tile);
 
   if ((isHalfSize && artworkUrl) || !body) return null;
 
   // Helper function to determine the number of lines
   const getNumberOfLines = (): number | undefined => {
+    // If no artwork and not half size, allow text to fill available space
     if (!isHalfSize && !artworkUrl) return undefined;
+
+    // If no title, allow body to fill available space
+    if (!title) return undefined;
+
+    // Otherwise use responsive line limits
     return isDesktop ? 3 : isTablet ? 4 : 3;
   };
 

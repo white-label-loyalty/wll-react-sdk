@@ -64,6 +64,12 @@ function MyComponent() {
 - Image-only or text-only display
 - Centered content alignment
 
+### Text Truncation
+- When only title is present: Title text will fill available space
+- When only body is present: Body text will fill available space
+- When both title and body are present: Title uses 2 lines, body fills remaining space
+- Text behavior adapts to tile size and image presence
+
 ## States
 
 1. **Full Size with Image and Text**
@@ -113,4 +119,3 @@ function MyComponent() {
     artworkUrl: 'https://example.com/image.jpg'
   }
 }
-```
