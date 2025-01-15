@@ -160,3 +160,56 @@ FullSizePartnerRewards.args = {
     },
   },
 };
+
+export const TitleAndBody = Template.bind({});
+TitleAndBody.args = {
+  tile: {
+    id: '8',
+    type: TileType.Content,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    priority: 1,
+    configuration: {
+      title:
+        'This is a long title that should now wrap to exactly two lines when body text is present below it',
+      body: 'This body text should fill the remaining space after the title takes its two lines. It demonstrates how the text naturally flows in the available space while maintaining proper spacing and layout.',
+      artworkUrl:
+        'https://images.pexels.com/photos/7236026/pexels-photo-7236026.jpeg',
+    },
+  },
+};
+export const BodyOnly = Template.bind({});
+BodyOnly.args = {
+  tile: {
+    id: '7',
+    type: TileType.Content,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    priority: 1,
+    configuration: {
+      body: 'This is a long body text that should fill the available space when no title is present. It can contain multiple paragraphs and should demonstrate how the text flows naturally without artificial line limits. This helps us verify that the body text properly expands to use all available space in the tile.',
+      artworkUrl: undefined,
+    },
+  },
+};
+export const TitleOnly = Template.bind({});
+TitleOnly.args = {
+  tile: {
+    id: '6',
+    type: TileType.Content,
+    active: true,
+    createdAt: '',
+    updatedAt: '',
+    tileHeight: TileHeight.Full,
+    priority: 1,
+    configuration: {
+      title:
+        'This is a very long title that should now be able to wrap to multiple lines when there is no body text present. It demonstrates how the title can fill the available space.',
+      artworkUrl: undefined,
+    },
+  },
+};
