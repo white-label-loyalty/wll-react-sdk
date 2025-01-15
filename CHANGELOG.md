@@ -1,3 +1,12 @@
+## [1.0.50](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.49...v1.0.50) (2025-01-15)
+
+
+### Bug Fixes
+
+* (PointsTile) issue with points multiplier, wrong key, also refactored into a helper method ([f930ee7](https://github.com/white-label-loyalty/wll-react-sdk/commit/f930ee7f82ad1d61b4285f93c55e3fb7fe54ec77))
+
+
+
 ## [1.0.49](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.48...v1.0.49) (2025-01-01)
 
 
