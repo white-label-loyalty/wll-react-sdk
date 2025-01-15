@@ -19,7 +19,7 @@ export const PointsTileMedia = ({
   if (!artworkUrl) return null;
 
   return (
-    <View 
+    <View
       style={styles.imageContainer}
       accessible
       accessibilityRole="image"
@@ -28,7 +28,7 @@ export const PointsTileMedia = ({
       <Image
         source={{ uri: artworkUrl }}
         style={styles.image}
-        resizeMode="contain"
+        resizeMode={isFullSize ? 'cover' : 'contain'}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       />
