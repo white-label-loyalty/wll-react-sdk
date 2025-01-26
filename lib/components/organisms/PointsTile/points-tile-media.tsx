@@ -20,10 +20,11 @@ export const PointsTileMedia = ({
 
   return (
     <View
-      style={styles.imageContainer}
+      testID="points-tile-media"
       accessible
-      accessibilityRole="image"
-      accessibilityLabel={`Points tile image${title ? ` for ${title}` : ''}`}
+      role="img"
+      accessibilityLabel={`Points tile image for ${title}`}
+      style={styles.imageContainer}
     >
       <Image
         source={{ uri: artworkUrl }}

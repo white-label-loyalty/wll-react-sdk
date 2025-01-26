@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
+import { calculatePoints } from '../../../utils/pointsHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
-import { calculatePoints } from '../../../utils/pointsHelpers';
 
 export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
@@ -26,7 +26,6 @@ export const RewardTilePoints = (): JSX.Element | null => {
   return (
     <View
       accessible
-      accessibilityRole="text"
       accessibilityLabel={`Reward points: ${pointsPrefix}${calculatedPoints} ${pointsSuffix}`}
     >
       <Text variant="caption" style={styles.footer}>

@@ -87,7 +87,6 @@ const EmptyState = ({ message }: { message: string }): JSX.Element => (
   <View
     style={commonStyles.emptyContainer}
     accessible
-    accessibilityRole="text"
     accessibilityLabel={`Empty state: ${message}`}
   >
     <Text
@@ -119,7 +118,7 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
         <View
           style={commonStyles.emptyContainer}
           accessible
-          accessibilityRole="none"
+          role="none"
           accessibilityLabel="Loading section content"
           accessibilityState={{ busy: true }}
         >
@@ -148,7 +147,7 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
       <View
         style={styles.section}
         accessible
-        accessibilityRole="none"
+        role="none"
         accessibilityLabel={`Section: ${sectionData.title || 'Untitled section'}`}
         accessibilityHint={sectionData.description || undefined}
       >

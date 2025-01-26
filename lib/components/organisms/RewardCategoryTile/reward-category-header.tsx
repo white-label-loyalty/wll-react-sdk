@@ -15,18 +15,15 @@ export const RewardCategoryHeader = (): JSX.Element | null => {
   if (!showName || !name) return null;
 
   return (
-    <View 
+    <View
       style={[styles.header, { backgroundColor: theme.primary }]}
       accessible
-      accessibilityRole="header"
       accessibilityLabel={`Reward category: ${name}`}
     >
       <Text
         style={[styles.headerText, { color: theme.primaryText }]}
         ellipsizeMode="tail"
         numberOfLines={1}
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
       >
         {name}
       </Text>

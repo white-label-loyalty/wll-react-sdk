@@ -11,12 +11,8 @@ export const PointsTileTitle = (): JSX.Element | null => {
   if (!title) return null;
 
   return (
-    <View
-      accessible
-      accessibilityRole="header"
-      accessibilityLabel={title}
-    >
-      <Text 
+    <View testID="points-tile-title" accessible accessibilityLabel={title}>
+      <Text
         variant="eyebrow"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

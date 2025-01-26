@@ -11,12 +11,8 @@ export const RewardTileSummary = (): JSX.Element | null => {
   if (!summary) return null;
 
   return (
-    <View
-      accessible
-      accessibilityRole="text"
-      accessibilityLabel={summary}
-    >
-      <Text 
+    <View accessible accessibilityLabel={summary}>
+      <Text
         variant="body"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

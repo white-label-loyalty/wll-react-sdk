@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsTile renders and matches snapshot 1`] = `
+<div>
+  <button
+    aria-disabled="true"
+    aria-label="Available Points"
+    class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    disabled=""
+    role="button"
+    style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
+    tabindex="-1"
+    type="button"
+  >
+    <div
+      aria-label="Points tile image for Available Points"
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
+      data-testid="points-tile-media"
+      role="img"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-height-1pi2tsx r-position-u8s1d r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-backgroundColor-1niwhzg r-backgroundPosition-vvn4in r-backgroundRepeat-u6sd8q r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw r-backgroundSize-4gszlv"
+          style="background-image: url(https://example.com/points.png);"
+        />
+        <img
+          alt=""
+          class="css-accessibilityImage-9pa8cd"
+          draggable="false"
+          src="https://example.com/points.png"
+        />
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingInline-3o4zer r-width-13qz1uu"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-width-13qz1uu"
+      >
+        <h1
+          aria-label="Available Points"
+          class="css-view-175oi2r"
+          data-testid="points-tile-title"
+          role="heading"
+        >
+          <div
+            class="css-text-146c3p1"
+            dir="auto"
+            style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
+          >
+            Available Points
+          </div>
+        </h1>
+        <div
+          aria-label="Points value: 1000  pts"
+          class="css-view-175oi2r"
+          data-testid="points-tile-points"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
+          >
+            <div
+              class="css-text-146c3p1"
+              dir="auto"
+              style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
+            >
+              1000
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-10weppm r-fontSize-1i10wst"
+              dir="auto"
+              style="font-weight: bold;"
+            >
+               pts
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </button>
+</div>
+`;

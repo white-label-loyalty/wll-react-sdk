@@ -23,7 +23,6 @@ export const BadgeTileStatus = (): JSX.Element | null => {
     <View
       style={styles.indicatorContainer}
       accessible
-      accessibilityRole="text"
       accessibilityLabel={statusLabel}
     >
       {isLocked ? (

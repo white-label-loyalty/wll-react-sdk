@@ -29,7 +29,6 @@ export const BaseTileHeader = ({
           textAlign: isHalfSize && 'center',
         },
       ]}
-      accessibilityRole="header"
       numberOfLines={1}
     >
       {children}

@@ -29,8 +29,8 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
 
   return (
     <View
+      testID="points-tile-points"
       accessible
-      accessibilityRole="text"
       accessibilityLabel={`Points value: ${fullPointsText}`}
     >
       <Row align="center" justify="start">

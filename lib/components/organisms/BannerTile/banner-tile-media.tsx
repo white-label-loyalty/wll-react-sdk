@@ -23,15 +23,15 @@ export const BannerTileMedia = ({
   };
 
   return (
-    <View 
+    <View
       // @ts-ignore: We are using percentage values for width, which is valid in React Native but TypeScript expects a number.
       style={[styles.mediaContainer, containerStyle]}
       accessible
-      accessibilityRole="image"
+      role="img"
       accessibilityLabel={`Banner image${title ? ` for ${title}` : ''}`}
     >
-      <ProgressiveImage 
-        source={{ uri: artworkUrl }} 
+      <ProgressiveImage
+        source={{ uri: artworkUrl }}
         style={styles.media}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

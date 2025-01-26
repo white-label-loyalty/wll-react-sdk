@@ -41,7 +41,7 @@ const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
         onPress={handlePress}
         disabled={!ctaLink}
         accessible={true}
-        accessibilityRole="button"
+        role="button"
         accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
       >
         {children}

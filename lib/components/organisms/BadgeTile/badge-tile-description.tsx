@@ -12,14 +12,10 @@ export const BadgeTileDescription = (): JSX.Element | null => {
   if (count === 0 || !description) return null;
 
   return (
-    <View
-      accessible
-      accessibilityRole="text"
-      accessibilityLabel={`Badge description: ${description}`}
-    >
-      <Text 
-        variant="body" 
-        numberOfLines={2} 
+    <View accessible accessibilityLabel={`Badge description: ${description}`}>
+      <Text
+        variant="body"
+        numberOfLines={2}
         ellipsizeMode="tail"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

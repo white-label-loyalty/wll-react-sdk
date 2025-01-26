@@ -15,11 +15,7 @@ export const BadgeTileTitle = (): JSX.Element | null => {
   if (!displayText) return null;
 
   return (
-    <View
-      accessible
-      accessibilityRole="header"
-      accessibilityLabel={`Badge title: ${displayText}`}
-    >
+    <View accessible accessibilityLabel={`Badge title: ${displayText}`}>
       <Text
         variant="title"
         style={styles.titleText}
