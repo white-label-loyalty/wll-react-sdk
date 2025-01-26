@@ -39,11 +39,11 @@ exports[`PointsTile renders and matches snapshot 1`] = `
       <div
         class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-width-13qz1uu"
       >
-        <h1
+        <header
           aria-label="Available Points"
           class="css-view-175oi2r"
           data-testid="points-tile-title"
-          role="heading"
+          role="banner"
         >
           <div
             class="css-text-146c3p1"
@@ -52,7 +52,7 @@ exports[`PointsTile renders and matches snapshot 1`] = `
           >
             Available Points
           </div>
-        </h1>
+        </header>
         <div
           aria-label="Points value: 1000  pts"
           class="css-view-175oi2r"
