@@ -103,6 +103,36 @@ Default.args = {
     storyContent
   );
 
+  // Create spec file
+  const specContent = `import React from 'react';
+import { render } from '@testing-library/react-native';
+import ${componentName} from './index';
+
+describe('${componentName}', () => {
+  it('renders correctly', () => {
+    const { getByTestId } = render(<${componentName} />);
+    // Add your test assertions here
+  });
+
+  it('handles props correctly', () => {
+    // Add tests for your component props
+  });
+
+  it('handles user interactions', () => {
+    // Add tests for user interactions
+  });
+
+  it('handles edge cases', () => {
+    // Add tests for edge cases
+  });
+});
+`;
+
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.spec.tsx`),
+    specContent
+  );
+
   // Update index file
   const indexFile = path.join(componentsDir, folderName, 'index.ts');
   fs.mkdirSync(path.dirname(indexFile), { recursive: true });

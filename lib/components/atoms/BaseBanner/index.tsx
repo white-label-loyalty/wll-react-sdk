@@ -22,10 +22,11 @@ type BaseBannerProps = {
 
 const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
   const { theme } = useWllSdk();
-  const { ctaLink, ctaLinkTarget, title } =
+  const { ctaLink, ctaLinkTarget, title, ctaText } =
     tile.configuration as BannerTileConfig;
 
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
+  const hasCTA = Boolean(ctaText);
 
   return (
     <BannerContext.Provider value={tile}>
@@ -38,11 +39,11 @@ const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
             opacity: pressed ? 0.7 : 1,
           },
         ]}
-        onPress={handlePress}
-        disabled={!ctaLink}
+        onPress={hasCTA ? undefined : handlePress}
+        disabled={!ctaLink || hasCTA}
         accessible={true}
-        role="button"
-        accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
+        role={hasCTA ? "article" : "button"}
+        accessibilityLabel={`${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`}
       >
         {children}
       </Pressable>

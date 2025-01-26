@@ -118,9 +118,9 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
         <View
           style={commonStyles.emptyContainer}
           accessible
-          role="none"
-          accessibilityLabel="Loading section content"
-          accessibilityState={{ busy: true }}
+          role="status"
+          aria-label="Loading section content"
+          aria-busy={true}
         >
           <Skeleton />
         </View>
@@ -147,9 +147,9 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
       <View
         style={styles.section}
         accessible
-        role="none"
-        accessibilityLabel={`Section: ${sectionData.title || 'Untitled section'}`}
-        accessibilityHint={sectionData.description || undefined}
+        role="region"
+        aria-label={`Section: ${sectionData.title || 'Untitled section'}`}
+        aria-description={sectionData.description || undefined}
       >
         {renderSectionContent()}
       </View>
