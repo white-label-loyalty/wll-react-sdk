@@ -47,7 +47,7 @@ Default.args = {
           ctaLink: '/products/iphone15pro',
           ctaText: 'Shop Now',
           artworkUrl:
-            'https://www.istore.co.uk/wp-content/uploads/2023/09/iPhone_15_Pro_Blue_Titanium_PDP_Image_Position-5__GBEN-1.jpg',
+            'https://images.unsplash.com/photo-1512054502232-10a0a035d672?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           description:
             'Experience the power of our most advanced iPhone yet. Available now with exclusive launch offers.',
         },
@@ -177,7 +177,7 @@ ManyItems.args = {
           ctaLink: '/products/iphone15pro',
           ctaText: 'Shop Now',
           artworkUrl:
-            'https://www.istore.co.uk/wp-content/uploads/2023/09/iPhone_15_Pro_Blue_Titanium_PDP_Image_Position-5__GBEN-1.jpg',
+            'https://images.unsplash.com/photo-1512054502232-10a0a035d672?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           description:
             'Experience the power of our most advanced iPhone yet. Available now with exclusive launch offers.',
         },
