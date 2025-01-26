@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
-import { calculatePoints } from '../../../utils/pointsHelpers';
-import { Text } from '../../atoms';
+import { applyMultiplier, getPointsLabel } from '../../../utils/pointsHelpers';
+import { Row, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
 
@@ -18,25 +18,35 @@ export const RewardTilePoints = (): JSX.Element | null => {
   } = configuration as RewardTileConfig;
 
   // Exit early if price is not shown or undefined
-  if (!showPrice || price === undefined) return null;
+  if (!showPrice || price === undefined || price === 0) return null;
 
   // Calculate points
-  const calculatedPoints = calculatePoints(price, pointsMultiplier);
+  const calculatedPoints = applyMultiplier(price, pointsMultiplier);
+
+  const accessibilityLabel = getPointsLabel(
+    'Reward points:',
+    calculatedPoints,
+    pointsPrefix,
+    pointsSuffix
+  );
 
   return (
     <View
+      testID="reward-tile-points"
       accessible
-      accessibilityLabel={`Reward points: ${pointsPrefix}${calculatedPoints} ${pointsSuffix}`}
+      accessibilityLabel={accessibilityLabel}
     >
-      <Text variant="caption" style={styles.footer}>
-        {pointsPrefix}
-      </Text>
-      <View style={styles.pointsContainer}>
-        <Text variant="caption">{calculatedPoints}</Text>
-        <Text variant="caption" style={styles.suffix}>
-          {pointsSuffix}
+      <Row align="center" justify="start" style={{ marginTop: 8 }}>
+        {pointsPrefix ? <Text variant="caption">{pointsPrefix}</Text> : null}
+        <Text variant="caption" testID="reward-tile-points-value">
+          {calculatedPoints}
         </Text>
-      </View>
+        {pointsSuffix ? (
+          <Text variant="caption" style={styles.suffix}>
+            {pointsSuffix}
+          </Text>
+        ) : null}
+      </Row>
     </View>
   );
 };

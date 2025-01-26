@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
-import { calculatePoints } from '../../../utils/pointsHelpers';
+import { applyMultiplier } from '../../../utils/pointsHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { Row } from '../../atoms/Primatives';
@@ -24,7 +24,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   } = configuration as PointsTileConfig;
 
   if (points === undefined) return null;
-  const calculatedPoints = calculatePoints(points, pointsMultiplier);
+  const calculatedPoints = applyMultiplier(points, pointsMultiplier);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
   return (

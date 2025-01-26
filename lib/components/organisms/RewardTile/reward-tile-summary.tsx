@@ -16,6 +16,7 @@ export const RewardTileSummary = (): JSX.Element | null => {
         variant="body"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
+        testID="reward-tile-summary"
       >
         {summary}
       </Text>

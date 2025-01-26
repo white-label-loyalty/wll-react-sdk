@@ -1,9 +1,9 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import React from 'react';
-import { PointsTile } from '..';
-import { Tile, TileHeight, TileType } from '../../../../types/tile';
-import { render } from '../../../__test__/test-utils';
+import { Tile, TileHeight, TileType } from '../../../types/tile';
+import { render } from '../../__test__/test-utils';
+import { PointsTile } from './index';
 
 const tileMock: Tile = {
   id: '1',
@@ -22,7 +22,7 @@ const tileMock: Tile = {
   },
 };
 
-describe('PointsTile', () => {
+describe('<PointsTile />', () => {
   it('renders and matches snapshot', () => {
     const { container } = render(<PointsTile tile={tileMock} />);
     expect(container).toMatchSnapshot();

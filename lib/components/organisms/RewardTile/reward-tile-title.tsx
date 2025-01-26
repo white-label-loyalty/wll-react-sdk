@@ -10,7 +10,13 @@ export const RewardTileTitle = (): JSX.Element | null => {
   if (!name) return null;
 
   return (
-    <Text variant="title" ellipsizeMode="tail" numberOfLines={1}>
+    <Text
+      variant="title"
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      accessibilityLabel={`Reward title: ${name}`}
+      testID="reward-tile-title"
+    >
       {name}
     </Text>
   );

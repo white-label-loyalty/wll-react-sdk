@@ -1,5 +1,5 @@
 import React from 'react';
-import { RewardTileConfig, Tile } from '../../../types/tile';
+import { RewardTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 
@@ -11,7 +11,7 @@ import { RewardTileTitle } from './reward-tile-title';
 import { useRewardTileStyles } from './styles';
 
 type RewardTileProps = {
-  tile: Tile;
+  tile?: Tile;
 };
 
 /**
@@ -31,14 +31,13 @@ const isArtworkOnly = (configuration: RewardTileConfig): boolean => {
  */
 const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
   const styles = useRewardTileStyles();
-  if (!tile) return null;
+  if (!tile || tile.tileHeight !== TileHeight.Full) return null;
 
   const { configuration } = tile as { configuration: RewardTileConfig };
 
   return (
     <BaseTile tile={tile}>
       <RewardTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
-
       <Layout>
         <Row justify="between" align="center" style={styles.header}>
           <RewardTile.Title />
