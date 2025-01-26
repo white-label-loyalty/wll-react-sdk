@@ -1,13 +1,12 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import { WllSdkProvider } from '../../context/WllSdkContext';
+import { defaultTheme } from '../../utils/styling';
 
 const defaultConfig = {
   apiKey: 'test-api-key',
   userToken: 'test-user-token',
 };
-
-const defaultTheme = {};
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
