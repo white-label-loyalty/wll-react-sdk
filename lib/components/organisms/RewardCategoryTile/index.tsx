@@ -6,7 +6,7 @@ import { RewardCategoryHeader } from './reward-category-header';
 import { RewardCategoryMedia } from './reward-category-media';
 
 type RewardCategoryTileProps = {
-  tile: Tile;
+  tile?: Tile;
 };
 
 /**
@@ -17,7 +17,7 @@ type RewardCategoryTileProps = {
 const RewardCategoryTileRoot = ({
   tile,
 }: RewardCategoryTileProps): JSX.Element | null => {
-  if (!tile) return null;
+  if (!tile || !tile.active) return null;
 
   return (
     <BaseTile tile={tile}>

@@ -19,6 +19,7 @@ export const RewardCategoryHeader = (): JSX.Element | null => {
       style={[styles.header, { backgroundColor: theme.primary }]}
       accessible
       accessibilityLabel={`Reward category: ${name}`}
+      testID="reward-category-header"
     >
       <Text
         style={[styles.headerText, { color: theme.primaryText }]}
