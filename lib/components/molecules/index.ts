@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export { default as Carousel } from './Carousel';
 export { default as Grid } from './Grid';
 export { default as ProgressIndicator } from './ProgressIndicator';

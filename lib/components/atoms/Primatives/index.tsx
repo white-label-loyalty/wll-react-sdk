@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export { Column } from './Column';
 export { FullFlex } from './FullFlex';
 export { Layout } from './Layout';

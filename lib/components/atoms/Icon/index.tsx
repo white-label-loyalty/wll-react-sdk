@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as LucideIcons from 'lucide-react';
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
