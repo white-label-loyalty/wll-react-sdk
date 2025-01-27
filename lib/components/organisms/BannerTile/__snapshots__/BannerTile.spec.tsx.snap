@@ -6,6 +6,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
     aria-disabled="true"
     aria-label="Summer Points Splash"
     class="css-view-175oi2r r-pointerEvents-12vffkv r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
+    data-testid="banner-tile"
     role="article"
     style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; opacity: 1;"
     tabindex="-1"

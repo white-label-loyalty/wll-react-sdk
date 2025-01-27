@@ -1,5 +1,11 @@
 import React, { createContext, useContext } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
@@ -18,9 +24,20 @@ export const useBannerContext = () => {
 type BaseBannerProps = {
   tile: Tile;
   children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
+  testID?: string;
+  disabled?: boolean;
+  accessibilityLabel?: string;
 };
 
-const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
+const BaseBanner: React.FC<BaseBannerProps> = ({
+  tile,
+  children,
+  style,
+  testID,
+  accessibilityLabel,
+}): JSX.Element => {
   const { theme } = useWllSdk();
   const { ctaLink, ctaLinkTarget, title, ctaText } =
     tile.configuration as BannerTileConfig;
@@ -31,8 +48,10 @@ const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
   return (
     <BannerContext.Provider value={tile}>
       <Pressable
+        testID={testID || 'banner-tile'}
         style={({ pressed }) => [
           styles.container,
+          style,
           {
             backgroundColor: theme.surface,
             borderRadius: theme.sizes.borderRadiusLg,
@@ -42,10 +61,13 @@ const BaseBanner = ({ tile, children }: BaseBannerProps): JSX.Element => {
         onPress={hasCTA ? undefined : handlePress}
         disabled={!ctaLink || hasCTA}
         accessible={true}
-        role={hasCTA ? "article" : "button"}
-        accessibilityLabel={`${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`}
+        role={hasCTA ? 'article' : 'button'}
+        accessibilityLabel={
+          accessibilityLabel ||
+          `${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`
+        }
       >
-        {children}
+        <View style={styles.contentContainer}>{children}</View>
       </Pressable>
     </BannerContext.Provider>
   );
@@ -59,6 +81,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden',
+  },
+  contentContainer: {
+    // Add styles for content container if needed
   },
 });
 
