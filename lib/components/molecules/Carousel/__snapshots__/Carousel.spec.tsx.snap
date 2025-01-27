@@ -52,7 +52,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 type="button"
               >
                 <div
-                  class="css-view-175oi2r"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
                 >
                   <div
                     class="css-view-175oi2r"
@@ -108,7 +108,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 type="button"
               >
                 <div
-                  class="css-view-175oi2r"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
                 >
                   <div
                     class="css-view-175oi2r"
