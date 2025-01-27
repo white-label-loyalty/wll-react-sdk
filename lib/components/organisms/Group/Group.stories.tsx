@@ -1302,6 +1302,7 @@ const mockGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BANNER',
+            active: true,
             configuration: {
               title: 'Redeem Your Dining Points',
               ctaLink: '#rewards',
@@ -1316,6 +1317,7 @@ const mockGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BANNER',
+            active: true,
             configuration: {
               title: 'Culinary Masterclass 2024',
               ctaLink: '/masterclass',
