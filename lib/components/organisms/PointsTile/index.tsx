@@ -19,7 +19,7 @@ type PointsTileProps = {
  * @param tile - The tile data to render.
  */
 const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
-  if (!tile) return null;
+  if (!tile || !tile.active) return null;
 
   const { isFullSize } = useTileSize(tile);
   const styles = usePointsTileStyles(isFullSize);

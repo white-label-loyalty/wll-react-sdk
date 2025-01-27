@@ -31,7 +31,7 @@ const isArtworkOnly = (configuration: RewardTileConfig): boolean => {
  */
 const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
   const styles = useRewardTileStyles();
-  if (!tile || tile.tileHeight !== TileHeight.Full) return null;
+  if (!tile || tile.tileHeight !== TileHeight.Full || !tile.active) return null;
 
   const { configuration } = tile as { configuration: RewardTileConfig };
 
