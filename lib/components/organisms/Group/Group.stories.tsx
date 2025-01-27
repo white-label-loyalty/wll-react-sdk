@@ -420,6 +420,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: '9d8287e0-bae9-47b4-8bf0-0115fd64336a',
               allowDecorationOverlay: true,
@@ -433,6 +434,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
               allowDecorationOverlay: true,
@@ -446,6 +448,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
               allowDecorationOverlay: true,
@@ -459,6 +462,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
               allowDecorationOverlay: true,
