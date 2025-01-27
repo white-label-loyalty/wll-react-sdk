@@ -1,10 +1,10 @@
-import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import SectionHeader from '.';
 import { render } from '../../__test__/test-utils';
 
-describe('SectionHeader', () => {
+describe('<SectionHeader />', () => {
   it('matches snapshot', () => {
     const { container } = render(
       <SectionHeader title="Test" description="This is a test" />
