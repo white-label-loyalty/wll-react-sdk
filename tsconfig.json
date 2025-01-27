@@ -12,8 +12,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["lib"],
+  "include": ["lib", "test-setup.ts"],
   "exclude": ["node_modules", "dist"]
 }

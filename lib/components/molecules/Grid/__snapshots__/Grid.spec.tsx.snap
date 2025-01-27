@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> matches snapshot 1`] = `
+<div>
+  <div
+    class="css-view-175oi2r"
+  >
+    <div
+      class="css-view-175oi2r r-marginBottom-1ifxtd0"
+    >
+      <div
+        class="css-text-146c3p1 r-fontSize-1ui5ee8 r-marginBottom-5oul0u"
+        dir="auto"
+        style="font-weight: 700; color: rgb(0, 0, 0);"
+      >
+        Profile
+      </div>
+      <div
+        class="css-text-146c3p1 r-fontSize-1x35g6"
+        dir="auto"
+        style="color: rgba(0, 0, 0, 0.8);"
+      >
+        Welcome to WLL Explorer! Find out more about our exciting loyalty program.
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-width-13qz1uu"
+    >
+      <div
+        class="css-view-175oi2r"
+        style="width: calc(50% - 8px); margin-bottom: 16px; height: auto; margin-right: 16px;"
+      >
+        <div
+          class="css-view-175oi2r r-aspectRatio-1ujkv8a r-flex-13awgt0 r-flexDirection-eqz5dr"
+          data-testid="tile-container"
+        >
+          <div
+            class="css-view-175oi2r r-aspectRatio-1ujkv8a r-flex-13awgt0"
+          >
+            <button
+              aria-disabled="true"
+              aria-label="undefined"
+              class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+              disabled=""
+              role="button"
+              style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
+              tabindex="-1"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
+              >
+                <div
+                  aria-label="Badge title: Badge Title"
+                  class="css-view-175oi2r"
+                  data-testid="badge-tile-title"
+                >
+                  <div
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-marginBottom-5oul0u"
+                    dir="auto"
+                    style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+                  >
+                    Badge Title
+                  </div>
+                </div>
+                <div
+                  aria-label="Badge description: Badge Description"
+                  class="css-view-175oi2r"
+                  data-testid="badge-tile-description"
+                >
+                  <div
+                    class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
+                    dir="auto"
+                    style="color: rgb(51, 51, 51); font-size: 14px;"
+                  >
+                    Badge Description
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r"
+                  style="flex: 1;"
+                />
+                <div
+                  aria-label="Badge earned on Invalid Date"
+                  class="css-view-175oi2r r-alignItems-1habvwh r-borderRadius-y47klf r-paddingBlock-cnw61z r-paddingInline-is05cd"
+                  data-testid="badge-tile-date-earned"
+                  style="background-color: rgba(57, 46, 215, 0.2);"
+                >
+                  <div
+                    class="css-text-146c3p1"
+                    dir="auto"
+                    style="font-size: 12px; color: rgb(255, 255, 255);"
+                  >
+                    undefined Invalid Date
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

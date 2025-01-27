@@ -3,7 +3,7 @@ import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IS_WEB, SCREEN_WIDTH } from '../../../constants/device';
 import { GRID_GAP } from '../../../constants/grid';
 import { useResponsive } from '../../../context/ResponsiveContext';
-import { TSection } from '../../../types/section';
+import { SectionType, TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { sortByPriority } from '../../../utils/transforms';
 import { TileContainer } from '../../atoms';
@@ -14,6 +14,10 @@ type GridProps = {
 };
 
 const Grid = ({ section }: GridProps) => {
+  if (section.type !== SectionType.Grid) {
+    return null;
+  }
+
   const { isDesktop } = useResponsive();
   const columnsPerRow = isDesktop ? 4 : 2;
 
