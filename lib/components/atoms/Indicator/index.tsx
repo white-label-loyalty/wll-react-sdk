@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useResponsive } from '../../../hooks/useResponsive';

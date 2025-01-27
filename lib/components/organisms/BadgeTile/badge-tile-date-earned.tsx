@@ -46,8 +46,8 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     <View
       style={containerStyle}
       accessible
-      accessibilityRole="text"
       accessibilityLabel={accessibilityLabel}
+      testID="badge-tile-date-earned"
     >
       <Text
         variant="label"

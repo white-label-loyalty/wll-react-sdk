@@ -19,6 +19,7 @@ export const BannerTileCTA = (): JSX.Element | null => {
 
   return (
     <Button
+      testID="banner-tile-cta"
       title={ctaText}
       variant="accent"
       onPress={handlePress}

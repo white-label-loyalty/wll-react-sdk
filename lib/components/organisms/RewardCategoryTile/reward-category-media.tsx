@@ -13,6 +13,7 @@ export const RewardCategoryMedia = (): JSX.Element | null => {
 
   return (
     <ProgressiveImage
+      testID="reward-category-media"
       source={{ uri: artworkUrl }}
       style={styles.background}
       alt={name}

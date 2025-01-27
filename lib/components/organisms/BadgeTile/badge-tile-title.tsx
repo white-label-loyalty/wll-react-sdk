@@ -17,8 +17,8 @@ export const BadgeTileTitle = (): JSX.Element | null => {
   return (
     <View
       accessible
-      accessibilityRole="header"
       accessibilityLabel={`Badge title: ${displayText}`}
+      testID="badge-tile-title"
     >
       <Text
         variant="title"

@@ -23,8 +23,11 @@ export const RewardTileMedia = ({
   };
 
   return (
-    // @ts-ignore: We are using percentage values for flexBasis, which is valid in React Native but TypeScript expects a number.
-    <View style={[styles.imageContainer, containerStyle]}>
+    <View
+      // @ts-ignore: We are using percentage values for flexBasis, which is valid in React Native but TypeScript expects a number.
+      style={[styles.imageContainer, containerStyle]}
+      testID="reward-tile-media"
+    >
       <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
     </View>
   );

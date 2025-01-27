@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BannerTile  /> renders and matches snapshot 1`] = `
+<div>
+  <article
+    aria-disabled="true"
+    aria-label="Summer Points Splash"
+    class="css-view-175oi2r r-pointerEvents-12vffkv r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
+    data-testid="banner-tile"
+    role="article"
+    style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; opacity: 1;"
+    tabindex="-1"
+  >
+    <div
+      aria-label="Banner image for Summer Points Splash"
+      class="css-view-175oi2r r-aspectRatio-1ujkv8a r-marginRight-mbgqwd r-maxHeight-16aopbr r-minHeight-1rd2zbf r-overflow-1udh08x r-position-bnwqim"
+      data-testid="banner-tile-media"
+      role="img"
+      style="width: 30%;"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-height-1pi2tsx r-objectFit-1t7uo4s r-position-u8s1d r-width-13qz1uu"
+        style="background-color: rgba(57, 46, 215, 0.2);"
+      >
+        <div
+          class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          style="background-color: rgba(57, 46, 215, 0.2); opacity: 1;"
+        />
+        <div
+          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          style="opacity: 0;"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-1niwhzg r-backgroundPosition-vvn4in r-backgroundRepeat-u6sd8q r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw r-backgroundSize-4gszlv"
+            style="background-image: url(https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"
+          />
+          <img
+            alt=""
+            class="css-accessibilityImage-9pa8cd"
+            draggable="false"
+            src="https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r"
+      style="flex: 1;"
+    >
+      <div
+        aria-label="Summer Points Splash"
+        class="css-view-175oi2r"
+      >
+        <div
+          class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+          data-testid="banner-tile-title"
+          dir="auto"
+          style="color: rgb(0, 0, 0);"
+        >
+          Summer Points Splash
+        </div>
+      </div>
+      <div
+        aria-label="Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more."
+        class="css-view-175oi2r"
+        data-testid="banner-tile-description"
+      >
+        <div
+          class="css-text-146c3p1 r-fontSize-1i10wst r-marginBottom-zd98yo"
+          dir="auto"
+          style="color: rgb(51, 51, 51);"
+        >
+          Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.
+        </div>
+      </div>
+      <button
+        aria-label="Start Earning"
+        class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-alignSelf-k200y r-justifyContent-1777fci r-paddingBlock-1mmae3n r-paddingInline-cxgwc0"
+        data-testid="banner-tile-cta"
+        role="button"
+        style="background-color: rgb(255, 106, 61); border-top-left-radius: 9px; border-top-right-radius: 9px; border-bottom-right-radius: 9px; border-bottom-left-radius: 9px;"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-text-146c3p1 r-fontSize-1i10wst r-fontWeight-b88u0q r-textAlign-q4m81j r-textTransform-tsynxw"
+          dir="auto"
+          style="color: rgb(255, 255, 255);"
+        >
+          Start Earning
+        </div>
+      </button>
+    </div>
+  </article>
+</div>
+`;

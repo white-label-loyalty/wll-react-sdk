@@ -18,7 +18,7 @@ type ContentTileProps = {
  * @param tile - The tile data to render.
  */
 const ContentTileRoot = ({ tile }: ContentTileProps): JSX.Element | null => {
-  if (!tile) return null;
+  if (!tile || !tile.active) return null;
 
   return (
     <BaseTile tile={tile}>

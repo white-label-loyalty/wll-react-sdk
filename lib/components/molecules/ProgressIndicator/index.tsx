@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';

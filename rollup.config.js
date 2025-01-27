@@ -21,12 +21,12 @@ const baseConfig = {
   external,
 };
 
-module.exports = [
+export default [
   {
     ...baseConfig,
     output: {
       file: 'dist/index.js',
-      format: 'cjs',
+      format: 'esm',
       sourcemap: true,
     },
     plugins: [
@@ -34,12 +34,14 @@ module.exports = [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: false,
-        sourceMap: true,
+        declaration: true,
+        declarationDir: './dist',
       }),
       babel({
-        babelHelpers: 'bundled',
         extensions,
+        babelHelpers: 'bundled',
+        configFile: './babel.config.rollup.js',
+        include: ['lib/**/*'],
         exclude: 'node_modules/**',
       }),
     ],

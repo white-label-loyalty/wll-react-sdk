@@ -9,7 +9,7 @@ import { BannerTileMedia } from './banner-tile-media';
 import { BannerTileTitle } from './banner-tile-title';
 
 type BannerTileProps = {
-  tile: Tile;
+  tile?: Tile;
 };
 
 /**
@@ -30,7 +30,7 @@ const isArtworkOnly = (configuration: BannerTileConfig): boolean => {
  * This component renders a banner tile with optional media, title, description, and CTA.
  */
 const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
-  if (!tile) return null;
+  if (!tile || !tile.active) return null;
 
   const { configuration } = tile as { configuration: BannerTileConfig };
 

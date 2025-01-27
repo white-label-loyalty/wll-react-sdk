@@ -60,6 +60,7 @@ export class ContentTileConfig {
 
 export class RewardTileConfig {
   rewardId: string = '';
+  defaultLocale: string = 'en';
   showPrice: boolean = false;
   showArtwork?: boolean;
   showDetails?: boolean;

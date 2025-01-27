@@ -14,12 +14,12 @@ export const BadgeTileDescription = (): JSX.Element | null => {
   return (
     <View
       accessible
-      accessibilityRole="text"
       accessibilityLabel={`Badge description: ${description}`}
+      testID="badge-tile-description"
     >
-      <Text 
-        variant="body" 
-        numberOfLines={2} 
+      <Text
+        variant="body"
+        numberOfLines={2}
         ellipsizeMode="tail"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

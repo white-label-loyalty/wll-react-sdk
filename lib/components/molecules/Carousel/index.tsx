@@ -5,8 +5,8 @@ import {
   NativeSyntheticEvent,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   View,
+  Pressable,
   useWindowDimensions,
 } from 'react-native';
 import { BUTTON_SIZE } from '../../../constants';
@@ -22,7 +22,7 @@ import SectionHeader from '../SectionHeader';
 import { useCarouselStyles } from './styles';
 
 type CarouselProps = {
-  section: TSection;
+  section?: TSection;
 };
 
 type CarouselState = {
@@ -62,7 +62,8 @@ const carouselReducer = (
   }
 };
 
-const Carousel = ({ section }: CarouselProps): JSX.Element => {
+const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
+  if (!section) return null;
   const { width: WINDOW_WIDTH } = useWindowDimensions();
   const containerRef = useRef<View>(null);
   const styles = useCarouselStyles(BUTTON_SIZE);
@@ -147,16 +148,18 @@ const Carousel = ({ section }: CarouselProps): JSX.Element => {
       >
         <View style={styles.carouselContainer}>
           {showPrevButton && (
-            <TouchableOpacity
+            <Pressable
               style={[
                 styles.navButton,
                 styles.navButtonLeft,
                 { backgroundColor: theme.background },
               ]}
               onPress={handlePrev}
+              accessibilityLabel="Previous slide"
+              role="button"
             >
               <Icon name="ArrowLeft" size={20} color={theme.primary} />
-            </TouchableOpacity>
+            </Pressable>
           )}
           <ScrollView
             ref={scrollViewRef}
@@ -189,16 +192,18 @@ const Carousel = ({ section }: CarouselProps): JSX.Element => {
             ))}
           </ScrollView>
           {showNextButton && (
-            <TouchableOpacity
+            <Pressable
               style={[
                 styles.navButton,
                 styles.navButtonRight,
-                { backgroundColor: theme.surface },
+                { backgroundColor: theme.background },
               ]}
               onPress={handleNext}
+              accessibilityLabel="Next slide"
+              role="button"
             >
               <Icon name="ArrowRight" size={20} color={theme.primary} />
-            </TouchableOpacity>
+            </Pressable>
           )}
         </View>
         {displayControls && (

@@ -12,13 +12,10 @@ export const BannerTileTitle = (): JSX.Element | null => {
 
   if (!title) return null;
   return (
-    <View
-      accessible
-      accessibilityRole="header"
-      accessibilityLabel={title}
-    >
-      <Text 
-        variant="title" 
+    <View accessible accessibilityLabel={title}>
+      <Text
+        variant="title"
+        testID="banner-tile-title"
         style={styles.title}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"

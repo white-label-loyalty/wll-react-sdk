@@ -114,7 +114,9 @@ export const GroupSections = (): JSX.Element => {
     return <GroupEmptyState message={"This group doesn't have any sections"} />;
   }
 
-  const sortedSections = sortByPriority(groupData.sections);
+  // Filter out inactive sections before sorting
+  const activeSections = groupData.sections.filter((section) => section.active);
+  const sortedSections = sortByPriority(activeSections);
 
   return (
     <View>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Variant } from '../../../types/theme';
 import { createVariantSystem } from '../../../utils/variant';
@@ -60,24 +60,25 @@ const Button = ({
   const styles = useButtonDynamicStyles();
 
   return (
-    <TouchableOpacity
-      style={[
+    <Pressable
+      style={({ pressed }) => [
         styles.button,
         buttonStyle,
         { borderRadius: theme.sizes.borderRadiusButton },
         disabled && { opacity: 0.5 },
+        pressed && { opacity: 0.7 },
       ]}
       onPress={onPress}
       disabled={disabled}
       accessible={true}
-      accessibilityRole="button"
+      role="button"
       accessibilityLabel={accessibilityLabel || title}
       accessibilityHint={accessibilityHint}
       accessibilityState={{ disabled }}
       testID={testID}
     >
       <Text style={[styles.text, textStyle]}>{title}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

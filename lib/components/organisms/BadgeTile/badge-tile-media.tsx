@@ -23,7 +23,7 @@ export const BadgeTileMedia = ({
   if (!displayUrl) return null;
 
   return (
-    <View style={styles.header}>
+    <View style={styles.header} testID="badge-tile-media">
       <ProgressiveImage
         {...props}
         source={{ uri: displayUrl }}

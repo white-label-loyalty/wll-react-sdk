@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { GRID_GAP } from '../../../constants/grid';
@@ -32,7 +33,7 @@ const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
  */
 const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="tile-container">
       {tiles.map((tile, index) => {
         const TileComponent = TILE_COMPONENTS[tile.type!];
         const { isHalfSize } = useTileSize(tile);

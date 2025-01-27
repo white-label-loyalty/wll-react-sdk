@@ -84,7 +84,7 @@ const BaseTileContainer = ({
         tile.type !== 'REWARD' && tile.type !== 'REWARD_CATEGORY' && !ctaLink
       }
       accessible
-      accessibilityRole="button"
+      role="button"
       accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
     >
       {children}
