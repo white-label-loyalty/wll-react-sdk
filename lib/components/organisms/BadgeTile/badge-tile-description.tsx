@@ -12,7 +12,11 @@ export const BadgeTileDescription = (): JSX.Element | null => {
   if (count === 0 || !description) return null;
 
   return (
-    <View accessible accessibilityLabel={`Badge description: ${description}`}>
+    <View
+      accessible
+      accessibilityLabel={`Badge description: ${description}`}
+      testID="badge-tile-description"
+    >
       <Text
         variant="body"
         numberOfLines={2}

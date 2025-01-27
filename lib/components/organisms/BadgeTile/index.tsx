@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tile } from '../../../types/tile';
+import { Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Spacer } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { BadgeTileDateEarned } from './badge-tile-date-earned';
@@ -9,7 +9,7 @@ import { BadgeTileStatus } from './badge-tile-status';
 import { BadgeTileTitle } from './badge-tile-title';
 
 type BadgeTileProps = {
-  tile: Tile;
+  tile?: Tile;
 };
 
 /**
@@ -18,7 +18,7 @@ type BadgeTileProps = {
  * This component renders a badge tile with optional media, status, title, description, and date earned.
  */
 const BadgeTileRoot = ({ tile }: BadgeTileProps): JSX.Element | null => {
-  if (!tile) return null;
+  if (!tile || tile.tileHeight !== TileHeight.Full) return null;
 
   return (
     <BaseTile tile={tile}>

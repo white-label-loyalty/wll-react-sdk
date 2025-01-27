@@ -24,10 +24,12 @@ export const BadgeTileStatus = (): JSX.Element | null => {
       style={styles.indicatorContainer}
       accessible
       accessibilityLabel={statusLabel}
+      testID="badge-tile-status"
     >
       {isLocked ? (
         <Icon
           name="LockKeyhole"
+          testID="badge-tile-status-locked"
           color="#FFF"
           size={20}
           accessibilityElementsHidden={true}
