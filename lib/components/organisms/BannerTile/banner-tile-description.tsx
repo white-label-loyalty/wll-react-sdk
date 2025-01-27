@@ -14,7 +14,11 @@ export const BannerTileDescription = (): JSX.Element | null => {
 
   if (!description) return null;
   return (
-    <View accessible accessibilityLabel={description}>
+    <View
+      accessible
+      accessibilityLabel={description}
+      testID="banner-tile-description"
+    >
       <Text
         style={[
           styles.description,

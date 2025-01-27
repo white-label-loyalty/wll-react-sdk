@@ -29,6 +29,7 @@ export const BannerTileMedia = ({
       accessible
       role="img"
       accessibilityLabel={`Banner image${title ? ` for ${title}` : ''}`}
+      testID="banner-tile-media"
     >
       <ProgressiveImage
         source={{ uri: artworkUrl }}

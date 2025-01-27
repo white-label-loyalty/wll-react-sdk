@@ -15,6 +15,7 @@ export const BannerTileTitle = (): JSX.Element | null => {
     <View accessible accessibilityLabel={title}>
       <Text
         variant="title"
+        testID="banner-tile-title"
         style={styles.title}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
