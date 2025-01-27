@@ -41,7 +41,7 @@ describe('<BadgeTile />', () => {
 
   describe('Rendering States', () => {
     it('returns null when tile prop is not provided', () => {
-      const { container } = render(<BadgeTile tile={undefined} />);
+      const { container } = render(<BadgeTile />);
       expect(container).toBeEmptyDOMElement();
     });
 
