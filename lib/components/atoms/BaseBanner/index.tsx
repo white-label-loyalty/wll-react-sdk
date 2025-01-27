@@ -4,7 +4,6 @@ import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
-import { Row } from '../Primatives';
 
 const BannerContext = createContext<Tile | null>(null);
 
@@ -62,9 +61,7 @@ const BaseBanner: React.FC<BaseBannerProps> = ({
           `${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`
         }
       >
-        <Row align="center" justify="start">
-          {children}
-        </Row>
+        {children}
       </Pressable>
     </BannerContext.Provider>
   );
