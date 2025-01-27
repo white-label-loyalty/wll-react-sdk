@@ -115,15 +115,7 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
   const renderSectionContent = (): JSX.Element | null => {
     if (isLoading) {
       return (
-        <View
-          style={commonStyles.emptyContainer}
-          accessible
-          role="status"
-          aria-label="Loading section content"
-          aria-busy={true}
-        >
-          <Skeleton />
-        </View>
+        <Skeleton aria-label="Loading section content" numberOfSquares={4} />
       );
     }
 
@@ -131,11 +123,15 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
       return <EmptyState message={error || 'No section data available.'} />;
     }
 
+    // Filter out inactive tiles before passing to child components
+    const activeTiles = sectionData.tiles.filter((tile) => tile.active);
+    const sectionWithActiveTiles = { ...sectionData, tiles: activeTiles };
+
     switch (sectionData.type) {
       case SectionType.Banner:
-        return <Carousel section={sectionData} />;
+        return <Carousel section={sectionWithActiveTiles} />;
       case SectionType.Grid:
-        return <Grid section={sectionData} />;
+        return <Grid section={sectionWithActiveTiles} />;
       default:
         console.warn(`Unknown section type: ${sectionData.type}`);
         return <EmptyState message="Unknown section type." />;

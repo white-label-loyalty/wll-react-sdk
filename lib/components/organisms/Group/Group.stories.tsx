@@ -33,12 +33,13 @@ const programData = {
       {
         name: 'Travel Status',
         type: 'GRID',
+        active: true,
         title: 'Travel Dashboard',
         description:
           'Track your miles, unlock premium benefits, and explore exclusive travel perks!',
         tiles: [
           {
-            // First Full Tile - Welcome Banner
+            active: true,
             tileHeight: 'FULL',
             type: 'CONTENT',
             configuration: {
@@ -51,9 +52,9 @@ const programData = {
             },
           },
           {
-            // First Half Tile - Miles Counter
             tileHeight: 'HALF',
             type: 'POINTS',
+            active: true,
             configuration: {
               title: 'Available Miles',
               points: 75000,
@@ -64,9 +65,9 @@ const programData = {
             },
           },
           {
-            // Second Half Tile - Elite Status Progress
             tileHeight: 'HALF',
             type: 'TIER',
+            active: true,
             configuration: {
               title: 'Elite Status',
               type: 'CURRENT',
@@ -83,8 +84,8 @@ const programData = {
             },
           },
           {
-            // Second Full Tile - Premium Offers
             tileHeight: 'FULL',
+            active: true,
             type: 'CONTENT',
             configuration: {
               title: '',
@@ -95,6 +96,7 @@ const programData = {
           },
           {
             tileHeight: 'HALF',
+            active: true,
             type: 'CONTENT',
             configuration: {
               title: '2X Miles Bonus!',
@@ -103,8 +105,8 @@ const programData = {
             },
           },
           {
-            // Fourth Half Tile - Travel Benefits
             tileHeight: 'HALF',
+            active: true,
             type: 'CONTENT',
             configuration: {
               title: 'Your Elite Benefits',
@@ -125,6 +127,7 @@ const programData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               details: [],
               rewardCategoryId: '9d8287e0-bae9-47b4-8bf0-0115fd64336a',
@@ -141,6 +144,7 @@ const programData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
               allowDecorationOverlay: true,
@@ -156,6 +160,7 @@ const programData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
               allowDecorationOverlay: true,
@@ -171,6 +176,7 @@ const programData = {
           {
             tileHeight: 'FULL',
             type: 'REWARD_CATEGORY',
+            active: true,
             configuration: {
               rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
               allowDecorationOverlay: true,
@@ -334,6 +340,7 @@ const gamifiedGroupData = {
       {
         name: 'Adventure Status',
         type: 'GRID',
+        active: true,
         title: 'Quest Dashboard',
         description:
           'Track your experience points, unlock legendary abilities, and discover epic quests!',
@@ -341,6 +348,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'CONTENT',
+            active: true,
             configuration: {
               artworkUrl:
                 'https://images.pexels.com/photos/17333075/pexels-photo-17333075/free-photo-of-man-with-beard-holding-dice.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -353,6 +361,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'HALF',
             type: 'POINTS',
+            active: true,
             configuration: {
               title: 'Experience Points',
               points: 5600,
@@ -365,6 +374,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'HALF',
             type: 'TIER',
+            active: true,
             configuration: {
               title: 'Character Level',
               type: 'CURRENT',
@@ -381,6 +391,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'CONTENT',
+            active: true,
             configuration: {
               artworkUrl:
                 'https://images.pexels.com/photos/5477775/pexels-photo-5477775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -393,6 +404,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'HALF',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: '2X XP Event!',
               body: 'The stars align! Complete quests by Winter Solstice to earn double experience points! Perfect for reaching Master rank faster.',
@@ -402,6 +414,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'HALF',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: 'Your Class Abilities',
               body: 'Access your special powers: Fast Travel, Extra Inventory Space, Legendary Item Crafting, and more!',
@@ -413,6 +426,7 @@ const gamifiedGroupData = {
       {
         name: 'Quest Categories',
         type: 'GRID',
+        active: true,
         title: 'Available Adventures',
         description:
           'Embark on epic quests across magical realms and earn legendary rewards!',
@@ -478,6 +492,7 @@ const gamifiedGroupData = {
       {
         name: 'Achievement Badges',
         type: 'GRID',
+        active: true,
         title: 'Hall of Legends',
         description:
           'Your heroic deeds immortalized in legendary badges. Each one tells the tale of your epic adventures across the realms.',
@@ -485,6 +500,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BADGE',
+            active: true,
             configuration: {
               type: 'SPECIFIC',
               badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
@@ -504,6 +520,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BADGE',
+            active: true,
             configuration: {
               type: 'SPECIFIC',
               badgeId: 'd3a2b1fa-3963-4117-8c6f-69e5f8fea009',
@@ -523,6 +540,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BADGE',
+            active: true,
             configuration: {
               type: 'SPECIFIC',
               badgeId: '30528c0a-30c2-44aa-9640-25647b8a594c',
@@ -542,6 +560,7 @@ const gamifiedGroupData = {
           {
             tileHeight: 'FULL',
             type: 'BADGE',
+            active: true,
             configuration: {
               type: 'SPECIFIC',
               badgeId: '84bd0af7-bef3-4201-8541-d60431116597',
@@ -588,6 +607,7 @@ const mockGroupData = {
           {
             tileHeight: 'HALF',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: 'Welcome Graeme!',
               body: 'Your culinary adventure begins here! Earn points on every dish and unlock exclusive dining perks.',
@@ -598,6 +618,7 @@ const mockGroupData = {
           {
             tileHeight: 'HALF',
             type: 'POINTS',
+            active: true,
             configuration: {
               title: 'Dining Points',
               points: 5600,
@@ -611,6 +632,7 @@ const mockGroupData = {
           {
             tileHeight: 'HALF',
             type: 'TIER',
+            active: true,
             configuration: {
               title: 'Gourmet Status',
               type: 'CURRENT',
@@ -627,6 +649,7 @@ const mockGroupData = {
           {
             tileHeight: 'HALF',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: 'Double Points!',
               body: 'Dine at our featured restaurants this week to earn 2X points! Perfect for reaching Master Chef status faster.',
@@ -636,6 +659,7 @@ const mockGroupData = {
           {
             tileHeight: 'FULL',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: "Chef's Table!",
               body: "Join our exclusive wine and dine experiences! From chef's table events to cooking masterclasses!",
@@ -648,6 +672,7 @@ const mockGroupData = {
           {
             tileHeight: 'FULL',
             type: 'CONTENT',
+            active: true,
             configuration: {
               title: 'Foodie Benefits',
               body: 'Enjoy premium perks with your current status: Priority Reservations and more!',

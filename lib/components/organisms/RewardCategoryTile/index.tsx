@@ -17,7 +17,7 @@ type RewardCategoryTileProps = {
 const RewardCategoryTileRoot = ({
   tile,
 }: RewardCategoryTileProps): JSX.Element | null => {
-  if (!tile || !tile.active) return null;
+  if (!tile) return null;
 
   return (
     <BaseTile tile={tile}>
