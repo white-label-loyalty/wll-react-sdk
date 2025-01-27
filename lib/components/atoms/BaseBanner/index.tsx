@@ -1,15 +1,10 @@
 import React, { createContext, useContext } from 'react';
-import {
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, Tile } from '../../../types/tile';
+import { Row } from '../Primatives';
 
 const BannerContext = createContext<Tile | null>(null);
 
@@ -67,7 +62,9 @@ const BaseBanner: React.FC<BaseBannerProps> = ({
           `${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`
         }
       >
-        <View style={styles.contentContainer}>{children}</View>
+        <Row align="center" justify="start">
+          {children}
+        </Row>
       </Pressable>
     </BannerContext.Provider>
   );
@@ -81,9 +78,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden',
-  },
-  contentContainer: {
-    // Add styles for content container if needed
   },
 });
 
