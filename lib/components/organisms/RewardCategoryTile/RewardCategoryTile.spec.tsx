@@ -5,7 +5,7 @@ import { TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { RewardCategoryTile } from './index';
 
-const RewardCategoryTileMock = {
+export const RewardCategoryTileMock = {
   tileHeight: TileHeight.Full,
   active: true,
   type: TileType.RewardCategory,

@@ -3,7 +3,7 @@ import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { ContentTile } from './index';
 
-const ContentTileMock: Tile = {
+export const ContentTileMock: Tile = {
   id: '1',
   type: TileType.Content,
   active: true,

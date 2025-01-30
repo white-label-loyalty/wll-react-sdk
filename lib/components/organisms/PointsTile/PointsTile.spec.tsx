@@ -5,7 +5,7 @@ import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { PointsTile } from './index';
 
-const PointsTileMock: Tile = {
+export const PointsTileMock: Tile = {
   id: '1',
   type: TileType.Points,
   active: true,

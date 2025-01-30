@@ -3,7 +3,8 @@ import React from 'react';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { RewardTile } from './index';
-const RewardTileMock: Tile = {
+
+export const RewardTileMock: Tile = {
   tileHeight: TileHeight.Full,
   active: true,
   type: TileType.Reward,
