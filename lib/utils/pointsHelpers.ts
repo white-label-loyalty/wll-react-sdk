@@ -1,4 +1,13 @@
 /**
+ * Cleans up a number by removing any whitespace and ensuring it's a valid number
+ * @param value The number to clean up
+ * @returns A cleaned up number as a number
+ */
+const cleanNumber = (value: number): number => {
+  return Number(value.toString().trim().replace(/\s+/g, ''));
+};
+
+/**
  * Applies a multiplier to a base value. Handles string multipliers by converting them to numbers.
  * If the multiplier is invalid (NaN, null, undefined), defaults to 1.
  *
@@ -10,8 +19,12 @@ export const applyMultiplier = (
   baseValue: number,
   pointsMultiplier?: string | number | null
 ): number => {
+  if (typeof baseValue !== 'number' || isNaN(baseValue)) {
+    return 0;
+  }
   const multiplier = Number(pointsMultiplier ?? 1);
-  return baseValue * (isNaN(multiplier) ? 1 : multiplier);
+  const result = baseValue * (isNaN(multiplier) ? 1 : multiplier);
+  return cleanNumber(result);
 };
 
 /**
@@ -30,5 +43,11 @@ export const getPointsLabel = (
   points: number = 0,
   prefix?: string | null,
   suffix?: string | null
-) =>
-  points === 0 ? '' : [label, prefix, points, suffix].filter(Boolean).join(' ');
+) => {
+  if (typeof points !== 'number' || isNaN(points) || points === 0) {
+    return '';
+  }
+  return [label, prefix, points, suffix]
+    .filter((item) => item !== null && item !== undefined && item !== '')
+    .join(' ');
+};

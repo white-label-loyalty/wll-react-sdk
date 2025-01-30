@@ -9,7 +9,7 @@ import { BannerTileMedia } from './banner-tile-media';
 import { BannerTileTitle } from './banner-tile-title';
 
 type BannerTileProps = {
-  tile?: Tile;
+  tile: Tile;
 };
 
 /**

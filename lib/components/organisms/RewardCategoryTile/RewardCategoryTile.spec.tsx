@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import { TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
@@ -21,13 +22,6 @@ const RewardCategoryTileMock = {
   priority: 8,
 };
 
-describe('<RewardCategoryTile /> Rendering States', () => {
-  it('returns null when tile prop is not provided', () => {
-    const { container } = render(<RewardCategoryTile tile={undefined} />);
-    expect(container.firstChild).toBeNull();
-  });
-});
-
 describe('<RewardCategoryTile />', () => {
   it('renders and matches snapshot', () => {
     const { container } = render(
@@ -39,10 +33,9 @@ describe('<RewardCategoryTile />', () => {
 
 describe('<RewardCategoryTile /> Content', () => {
   it('renders category name when showName is true', () => {
-    const { getByText } = render(
-      <RewardCategoryTile tile={RewardCategoryTileMock} />
-    );
-    expect(getByText('Restaurant Rewards')).toBeInTheDocument();
+    render(<RewardCategoryTile tile={RewardCategoryTileMock} />);
+    const rewardCategoryHeader = screen.getByTestId('reward-category-header');
+    expect(rewardCategoryHeader.textContent).toBe('Restaurant Rewards');
   });
 
   it('does not render category name when showName is false', () => {
@@ -53,10 +46,11 @@ describe('<RewardCategoryTile /> Content', () => {
         showName: false,
       },
     };
-    const { queryByText } = render(
+    const { queryByTestId } = render(
       <RewardCategoryTile tile={mockWithoutName} />
     );
-    expect(queryByText('Restaurant Rewards')).not.toBeInTheDocument();
+    const rewardCategoryHeader = queryByTestId('reward-category-header');
+    expect(rewardCategoryHeader).not.toBeInTheDocument();
   });
 });
 
@@ -92,10 +86,10 @@ describe('<RewardCategoryTile /> Edge Cases', () => {
         name: undefined,
       },
     };
-    const { queryByText } = render(
+    const { queryByTestId } = render(
       <RewardCategoryTile tile={mockWithoutName} />
     );
-    expect(queryByText('Restaurant Rewards')).not.toBeInTheDocument();
+    expect(queryByTestId('reward-category-header')).not.toBeInTheDocument();
   });
 
   it('handles inactive tile gracefully', () => {

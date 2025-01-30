@@ -18,7 +18,12 @@ export const BaseTileTitle = (): JSX.Element | null => {
 
   return (
     <>
-      <Text variant="title" accessibilityLabel={title} numberOfLines={1}>
+      <Text
+        variant="title"
+        accessibilityLabel={title}
+        numberOfLines={1}
+        testID="tile-title"
+      >
         {title}
       </Text>
       {ctaLink && (

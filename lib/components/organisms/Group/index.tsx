@@ -98,7 +98,7 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
 
   return (
     <GroupContext.Provider value={{ groupData }}>
-      <View>
+      <View data-testid="group-container">
         <GroupSections />
       </View>
     </GroupContext.Provider>

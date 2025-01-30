@@ -6,7 +6,7 @@ import { RewardCategoryHeader } from './reward-category-header';
 import { RewardCategoryMedia } from './reward-category-media';
 
 type RewardCategoryTileProps = {
-  tile?: Tile;
+  tile: Tile;
 };
 
 /**
