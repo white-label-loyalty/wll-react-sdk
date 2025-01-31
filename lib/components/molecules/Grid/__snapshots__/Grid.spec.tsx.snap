@@ -87,7 +87,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                   style="background-color: rgba(57, 46, 215, 0.2);"
                 >
                   <div
-                    class="css-text-146c3p1"
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
                     dir="auto"
                     style="font-size: 12px; color: rgb(255, 255, 255);"
                   >
