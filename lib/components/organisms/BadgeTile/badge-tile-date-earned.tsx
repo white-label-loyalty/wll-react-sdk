@@ -14,9 +14,23 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, awardedDatePrefix, createdAt, badgeNotEarnedMessage } =
+  const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
     configuration;
   const { theme } = useWllSdk();
+
+  // Don't show for Latest type with count=0
+  if (type === BadgeTileType.Latest && count === 0) {
+    return null;
+  }
+
+  // For Specific type, only show if count > 0 or badgeNotEarnedMessage exists
+  if (
+    type === BadgeTileType.Specific &&
+    count === 0 &&
+    !badgeNotEarnedMessage
+  ) {
+    return null;
+  }
 
   const backgroundColor = getStateColor(
     theme.alphaDerivedPrimary[20],
@@ -25,10 +39,6 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   );
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
-
-  if (type === BadgeTileType.Latest && count === 0) {
-    return null;
-  }
 
   const displayText =
     count === 0
@@ -40,8 +50,6 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
       ? 'Badge not yet earned'
       : `Badge earned on ${new Date(createdAt).toLocaleDateString()}`;
 
-  if (!displayText) return null;
-
   return (
     <View
       style={containerStyle}
@@ -51,7 +59,9 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     >
       <Text
         variant="label"
-        style={{ color: textColor }}
+        style={[styles.dateEarnedText, { color: textColor }]}
+        numberOfLines={1}
+        ellipsizeMode="tail"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       >

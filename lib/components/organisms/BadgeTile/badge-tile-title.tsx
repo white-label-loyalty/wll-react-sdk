@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { BadgeTileConfig } from '../../../types/tile';
+import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
@@ -9,9 +9,15 @@ export const BadgeTileTitle = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, name, emptyBadgeMessage } = configuration;
+  const { count, name, emptyBadgeMessage, type } = configuration;
 
-  const displayText = count === 0 ? emptyBadgeMessage : name;
+  const displayText =
+    type === BadgeTileType.Specific
+      ? name
+      : count === 0
+        ? emptyBadgeMessage
+        : name;
+
   if (!displayText) return null;
 
   return (

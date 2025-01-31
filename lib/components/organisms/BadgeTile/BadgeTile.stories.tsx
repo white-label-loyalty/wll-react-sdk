@@ -171,3 +171,31 @@ SpecificBadgeAwardedOnce.args = {
     },
   },
 };
+
+export const SpecificBadgeNotEarnedNoEmpty = Template.bind({});
+SpecificBadgeNotEarnedNoEmpty.args = {
+  tile: {
+    id: 'specific-badge-not-earned-no-empty',
+    type: TileType.Badge,
+    active: true,
+    createdAt: '2024-08-06T08:53:24.307Z',
+    updatedAt: '2024-08-06T08:53:24.307Z',
+    tileHeight: TileHeight.Full,
+    priority: 0,
+    configuration: {
+      type: BadgeTileType.Specific,
+      badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
+      internalName: 'Top Spender',
+      name: 'Top Spender',
+      description: 'Spent £100 on 5 Separate transactions',
+      artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+      priority: 0,
+      status: 'ACTIVE',
+      createdAt: '2024-08-06T08:53:24.307Z',
+      updatedAt: '2024-08-06T08:53:24.307Z',
+      awardedDatePrefix: 'Awarded',
+      badgeNotEarnedMessage: 'Complete 5 top-ups to earn this',
+      count: 0,
+    },
+  },
+};
