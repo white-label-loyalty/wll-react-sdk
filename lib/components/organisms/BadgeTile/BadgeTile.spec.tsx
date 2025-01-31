@@ -97,8 +97,36 @@ describe('<BadgeTile />', () => {
       };
       render(<BadgeTile tile={specificBadge} />);
       expect(
+        screen.getByText(specificBadge.configuration.name)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(specificBadge.configuration.description)
+      ).toBeInTheDocument();
+      expect(
         screen.getByText(specificBadge.configuration.badgeNotEarnedMessage)
       ).toBeInTheDocument();
+    });
+
+    it('does not show earned/not earned chip when badgeNotEarnedMessage is not provided', () => {
+      const specificBadge = {
+        ...BadgeTileMock,
+        configuration: {
+          ...BadgeTileMock.configuration,
+          type: BadgeTileType.Specific,
+          count: 0,
+          badgeNotEarnedMessage: undefined,
+        },
+      };
+      render(<BadgeTile tile={specificBadge} />);
+      expect(
+        screen.getByText(specificBadge.configuration.name)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(specificBadge.configuration.description)
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByTestId('badge-tile-date-earned')
+      ).not.toBeInTheDocument();
     });
 
     it('renders specific badge type correctly when earned once', () => {
@@ -157,25 +185,30 @@ describe('<BadgeTile />', () => {
   describe('Badge Media', () => {
     it('renders badge artwork when provided', () => {
       render(<BadgeTile tile={BadgeTileMock} />);
-      expect(screen.getByTestId('badge-tile-media')).toBeInTheDocument();
+      const media = screen.getByTestId('badge-tile-media');
+      expect(media).toBeInTheDocument();
+      const progressiveImage = media.querySelector('[src]');
+      expect(progressiveImage).toHaveAttribute(
+        'src',
+        BadgeTileMock.configuration.artworkUrl
+      );
     });
 
-    it('renders empty badge artwork when no badges earned', () => {
-      const emptyBadge = {
+    it('always uses main artworkUrl regardless of earned state', () => {
+      const unearned = {
         ...BadgeTileMock,
         configuration: {
           ...BadgeTileMock.configuration,
           count: 0,
         },
       };
-      render(<BadgeTile tile={emptyBadge} />);
+      render(<BadgeTile tile={unearned} />);
       const media = screen.getByTestId('badge-tile-media');
       expect(media).toBeInTheDocument();
-
       const progressiveImage = media.querySelector('[src]');
       expect(progressiveImage).toHaveAttribute(
         'src',
-        emptyBadge.configuration.emptyBadgeArtworkUrl
+        unearned.configuration.artworkUrl
       );
     });
   });
