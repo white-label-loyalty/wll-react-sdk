@@ -13,7 +13,7 @@ export const BadgeTileDescription = (): JSX.Element | null => {
 
   // For Latest type, hide description when count = 0
   // For Specific type, always show description
-  if (count === 0 && type !== BadgeTileType.Specific) return null;
+  if (count === 0 && type === BadgeTileType.Latest) return null;
 
   return (
     <View
