@@ -1,9 +1,10 @@
+import { screen } from '@testing-library/react';
 import React from 'react';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { RewardTile } from './index';
 
-const RewardTileMock: Tile = {
+export const RewardTileMock: Tile = {
   tileHeight: TileHeight.Full,
   active: true,
   type: TileType.Reward,
@@ -66,16 +67,9 @@ describe('<RewardTile />', () => {
 });
 
 describe('<RewardTile /> Rendering States', () => {
-  it('returns null when tile prop is not provided', () => {
-    const { container } = render(<RewardTile tile={undefined} />);
-    expect(container.firstChild).toBeNull();
-  });
-
   describe('Size-based rendering', () => {
     it('renders correctly in full size mode', () => {
-      const { getByTestId, getAllByTestId } = render(
-        <RewardTile tile={RewardTileMock} />
-      );
+      const { getByTestId } = render(<RewardTile tile={RewardTileMock} />);
 
       expect(getByTestId('reward-tile-media')).toBeInTheDocument();
       expect(getByTestId('reward-tile-title')).toBeInTheDocument();
@@ -113,7 +107,7 @@ describe('<RewardTile /> Media', () => {
     expect(queryByTestId('reward-tile-media')).not.toBeInTheDocument();
   });
 
-  it('does not render when artworkUrl is missing', () => {
+  it('does not render media when artworkUrl is missing', () => {
     const tileWithoutArtwork = {
       ...RewardTileMock,
       configuration: {
@@ -177,6 +171,8 @@ describe('<RewardTile /> Points', () => {
     };
     const { getByTestId } = render(<RewardTile tile={tileWithCustomLabels} />);
     const pointsElement = getByTestId('reward-tile-points');
+    const pointsValue = screen.getByTestId('reward-tile-points-value');
+    expect(pointsValue.textContent).toBe('10');
     expect(pointsElement).toHaveAccessibleName('Reward points: $ 10 Dollars');
   });
 
@@ -184,5 +180,14 @@ describe('<RewardTile /> Points', () => {
     const { getByTestId } = render(<RewardTile tile={RewardTileMock} />);
     const pointsElement = getByTestId('reward-tile-points');
     expect(pointsElement).toHaveAccessibleName('Reward points: 10');
+  });
+
+  it('handles inactive tile gracefully', () => {
+    const mockInactiveTile = {
+      ...RewardTileMock,
+      active: false,
+    };
+    const { container } = render(<RewardTile tile={mockInactiveTile} />);
+    expect(container.firstChild).toBeNull();
   });
 });

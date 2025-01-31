@@ -11,7 +11,7 @@ import { RewardTileTitle } from './reward-tile-title';
 import { useRewardTileStyles } from './styles';
 
 type RewardTileProps = {
-  tile?: Tile;
+  tile: Tile;
 };
 
 /**

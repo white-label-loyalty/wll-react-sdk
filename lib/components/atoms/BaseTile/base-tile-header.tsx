@@ -30,6 +30,7 @@ export const BaseTileHeader = ({
         },
       ]}
       numberOfLines={1}
+      testID="tile-header"
     >
       {children}
     </View>

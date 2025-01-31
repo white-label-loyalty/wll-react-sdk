@@ -47,14 +47,8 @@ const Skeleton = ({
     outputRange: [0.3, 0.7],
   });
 
-  const sharedSkeletonStyle = {
-    opacity,
-    backgroundColor: theme.alphaDerivedText[20],
-    borderRadius: theme.sizes.borderRadiusLg,
-  };
-
   return (
-    <View>
+    <View testID="loading-skeleton">
       <Animated.View
         style={[
           styles.skeleton,

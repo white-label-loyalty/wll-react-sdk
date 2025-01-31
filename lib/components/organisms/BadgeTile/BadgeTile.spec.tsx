@@ -40,8 +40,12 @@ describe('<BadgeTile />', () => {
   });
 
   describe('Rendering States', () => {
-    it('returns null when tile prop is not provided', () => {
-      const { container } = render(<BadgeTile />);
+    it('returns null when tile is not active', () => {
+      const inactiveTile = {
+        ...BadgeTileMock,
+        active: false,
+      };
+      const { container } = render(<BadgeTile tile={inactiveTile} />);
       expect(container).toBeEmptyDOMElement();
     });
 

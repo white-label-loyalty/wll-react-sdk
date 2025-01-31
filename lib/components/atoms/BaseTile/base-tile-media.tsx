@@ -17,6 +17,7 @@ export const BaseTileMedia = (
   return (
     <ProgressiveImage
       {...props}
+      testID="tile-media"
       source={{ uri: artworkUrl }}
       style={[props.style, baseStyles.media, styles.media]}
     />

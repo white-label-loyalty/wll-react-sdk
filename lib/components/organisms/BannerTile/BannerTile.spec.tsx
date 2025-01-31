@@ -45,9 +45,13 @@ describe('<BannerTile  />', () => {
 });
 
 describe('<BannerTile /> Rendering States', () => {
-  it('returns null when tile prop is not provided', () => {
-    const { container } = render(<BannerTile tile={undefined} />);
-    expect(container.firstChild).toBeNull();
+  it('returns null when tile is not active', () => {
+    const inactiveTile = {
+      ...BannerTileMock,
+      active: false,
+    };
+    const { container } = render(<BannerTile tile={inactiveTile} />);
+    expect(container).toBeEmptyDOMElement();
   });
 });
 

@@ -10,7 +10,7 @@ import { PointsTileTitle } from './points-tile-title';
 import { usePointsTileStyles } from './styles';
 
 type PointsTileProps = {
-  tile?: Tile;
+  tile: Tile;
 };
 
 /**

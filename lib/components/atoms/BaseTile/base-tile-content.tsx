@@ -19,6 +19,7 @@ export const BaseTileContent = ({
 
   return (
     <View
+      testID="tile-content"
       style={[
         baseStyles.content,
         {

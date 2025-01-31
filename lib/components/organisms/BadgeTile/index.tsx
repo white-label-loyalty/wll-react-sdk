@@ -9,7 +9,7 @@ import { BadgeTileStatus } from './badge-tile-status';
 import { BadgeTileTitle } from './badge-tile-title';
 
 type BadgeTileProps = {
-  tile?: Tile;
+  tile: Tile;
 };
 
 /**

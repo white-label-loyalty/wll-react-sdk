@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RewardTile /> renders and matches snapshot 1`] = `
+<div>
+  <button
+    aria-disabled="true"
+    aria-label="Gold Tier Unlocked!"
+    class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    disabled=""
+    role="button"
+    style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
+    tabindex="-1"
+    type="button"
+  >
+    <button
+      aria-disabled="true"
+      aria-label="Gold Tier Unlocked!"
+      class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+      disabled=""
+      role="button"
+      style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
+      tabindex="-1"
+      type="button"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-justifyContent-1777fci r-position-bnwqim r-flexBasis-1t2qqvi r-objectFit-1t7uo4s r-width-13qz1uu"
+        style="background-color: rgba(57, 46, 215, 0.2);"
+      >
+        <div
+          class="css-view-175oi2r r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          style="background-color: rgba(57, 46, 215, 0.2); opacity: 1;"
+        />
+        <div
+          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          data-testid="tile-media"
+          style="opacity: 0;"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-1niwhzg r-backgroundPosition-vvn4in r-backgroundRepeat-u6sd8q r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw r-backgroundSize-4gszlv"
+            style="background-image: url(https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg);"
+          />
+          <img
+            alt=""
+            class="css-accessibilityImage-9pa8cd"
+            draggable="false"
+            src="https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-175oi2r r-display-6koalj"
+        data-testid="tile-content"
+        style="justify-content: center;"
+      >
+        <div
+          class="css-view-175oi2r r-flex-13awgt0 r-justifyContent-1777fci r-paddingInline-3o4zer"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u"
+            data-testid="tile-header"
+            style="margin-top: 12px;"
+          >
+            <div
+              aria-label="Gold Tier Unlocked!"
+              class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+              data-testid="tile-title"
+              dir="auto"
+              style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+            >
+              Gold Tier Unlocked!
+            </div>
+          </div>
+          <div
+            aria-label="You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access."
+            class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
+            data-testid="tile-body"
+            dir="auto"
+            style="color: rgb(51, 51, 51); font-size: 14px;"
+          >
+            You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access.
+          </div>
+        </div>
+      </div>
+    </button>
+  </button>
+</div>
+`;

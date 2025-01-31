@@ -23,7 +23,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
     points,
   } = configuration as PointsTileConfig;
 
-  if (points === undefined) return null;
+  if (points === undefined || points === 0) return null;
   const calculatedPoints = applyMultiplier(points, pointsMultiplier);
   const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
 
@@ -34,15 +34,23 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
       accessibilityLabel={`Points value: ${fullPointsText}`}
     >
       <Row align="center" justify="start">
-        <Text {...TextProps}>
-          {pointsPrefix}
+        {pointsPrefix ? (
+          <Text variant="caption" testID="points-tile-prefix">
+            {pointsPrefix}
+          </Text>
+        ) : null}
+        <Text variant="caption" testID="points-tile-value">
           {calculatedPoints}
         </Text>
-        {pointsSuffix && (
-          <Text {...TextProps} style={styles.suffix}>
+        {pointsSuffix ? (
+          <Text
+            variant="caption"
+            style={styles.suffix}
+            testID="points-tile-suffix"
+          >
             {pointsSuffix}
           </Text>
-        )}
+        ) : null}
       </Row>
     </View>
   );
