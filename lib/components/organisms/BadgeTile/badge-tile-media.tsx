@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { BadgeTileConfig } from '../../../types/tile';
+import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { shouldDesaturate } from '../../../utils/themeHelpers';
 import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -17,9 +17,15 @@ export const BadgeTileMedia = ({
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { type, count, artworkUrl, emptyBadgeArtworkUrl } = configuration;
+  const { count, artworkUrl, emptyBadgeArtworkUrl, type } = configuration;
 
-  const displayUrl = count === 0 ? emptyBadgeArtworkUrl : artworkUrl;
+  const displayUrl =
+    type === BadgeTileType.Specific
+      ? artworkUrl
+      : count === 0
+        ? emptyBadgeArtworkUrl
+        : artworkUrl;
+
   if (!displayUrl) return null;
 
   return (
