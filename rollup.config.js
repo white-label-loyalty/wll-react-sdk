@@ -26,8 +26,9 @@ export default [
     ...baseConfig,
     output: {
       file: 'dist/index.js',
-      format: 'esm',
+      format: 'cjs',
       sourcemap: true,
+      exports: 'named',
     },
     plugins: [
       resolve({ extensions }),
