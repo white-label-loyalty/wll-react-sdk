@@ -1,6 +1,12 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', { targets: { node: 'current' } }],
+    [
+      '@babel/preset-env',
+      {
+        targets: { node: 'current' },
+        modules: false, // Keep ES modules for Rollup
+      },
+    ],
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
@@ -12,6 +18,17 @@ module.exports = {
   env: {
     production: {
       plugins: ['transform-remove-console'],
+    },
+    test: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: { node: 'current' },
+            modules: 'commonjs', // Use CommonJS for Jest tests
+          },
+        ],
+      ],
     },
   },
 };
