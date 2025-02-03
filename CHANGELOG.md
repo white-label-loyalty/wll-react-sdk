@@ -1,3 +1,12 @@
+## [1.0.53](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.52...v1.0.53) (2025-02-03)
+
+
+### Bug Fixes
+
+* issues with esmodules ([6c087c6](https://github.com/white-label-loyalty/wll-react-sdk/commit/6c087c65b11a12fb01571c8db5489e334722c687))
+
+
+
 ## [1.0.52](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.51...v1.0.52) (2025-02-03)
 
 
