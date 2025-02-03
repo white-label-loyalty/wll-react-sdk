@@ -1,3 +1,26 @@
+## [1.0.52](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.51...v1.0.52) (2025-02-03)
+
+
+### Bug Fixes
+
+* (BadgeTile) fix issues surrounding specific badge not earned ([fe8aefe](https://github.com/white-label-loyalty/wll-react-sdk/commit/fe8aefe577088aef347328a4e1ab184a05b02f79))
+* (TestUtils) use correct import ([3466a9d](https://github.com/white-label-loyalty/wll-react-sdk/commit/3466a9d5b93c6f57d7a506e34e4bbfba920f2027))
+* filter out inactive sections and tiles before render ([23b2f2e](https://github.com/white-label-loyalty/wll-react-sdk/commit/23b2f2e9f966c59689914920c742933c66ae9242))
+* guard against inactive tiles ([0dd8d95](https://github.com/white-label-loyalty/wll-react-sdk/commit/0dd8d9527afc394c89d70d9cb80ed0d0a8044253))
+* issue with BaseBanner tile ([fb4ad65](https://github.com/white-label-loyalty/wll-react-sdk/commit/fb4ad65bea9ced239aa3c2435898067521aeed3e))
+* make Latest badge description visibility explicit ([2d73d8c](https://github.com/white-label-loyalty/wll-react-sdk/commit/2d73d8ca486eeba5710dc8aad0a1ddf77f8ed771))
+* mock banner data ([e3f8ca7](https://github.com/white-label-loyalty/wll-react-sdk/commit/e3f8ca727b9e5cae838e558b793502281ece4f00))
+* styling issue with base banner ([59bc60d](https://github.com/white-label-loyalty/wll-react-sdk/commit/59bc60db374dd144cfdd4e597bcda099f7a0805f))
+* update test ([ec91aca](https://github.com/white-label-loyalty/wll-react-sdk/commit/ec91aca9d63f06d2b46237bd3c7b9211c316eab3))
+* update test name ([d6953bd](https://github.com/white-label-loyalty/wll-react-sdk/commit/d6953bd3cfa6830409eba33b3c6b580a754b5619))
+
+
+### Features
+
+* trigger new release ([23d6748](https://github.com/white-label-loyalty/wll-react-sdk/commit/23d6748b8b9d9e3da3fef1cd2d9a9336850e8f45))
+
+
+
 ## [1.0.51](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.50...v1.0.51) (2025-01-15)
 
 
