@@ -1,3 +1,12 @@
+## [1.0.54](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.53...v1.0.54) (2025-02-03)
+
+
+### Bug Fixes
+
+* cjs rollup config ([faf7ef7](https://github.com/white-label-loyalty/wll-react-sdk/commit/faf7ef7805471b07713d87b84711fdd31841f810))
+
+
+
 ## [1.0.53](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.52...v1.0.53) (2025-02-03)
 
 
