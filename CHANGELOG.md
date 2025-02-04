@@ -1,3 +1,12 @@
+## [1.0.55](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.54...v1.0.55) (2025-02-04)
+
+
+### Bug Fixes
+
+* babel in react native, web tags transform to mobile equivalents ([40d5cfb](https://github.com/white-label-loyalty/wll-react-sdk/commit/40d5cfbd49a81ced589a9b6253683b4bce95a8b7))
+
+
+
 ## [1.0.54](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.53...v1.0.54) (2025-02-03)
 
 
