@@ -1,37 +1,13 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import React from 'react';
-import { BadgeTileType, TileHeight, TileType } from '../../../types/tile';
+import { BadgeTileType, TileHeight } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { BadgeTile } from './index';
 
-const BadgeTileMock = {
-  id: 'latest-badge-none',
-  type: TileType.Badge,
-  active: true,
-  createdAt: '2024-08-06T08:53:24.307Z',
-  updatedAt: '2024-08-06T08:53:24.307Z',
-  tileHeight: TileHeight.Full,
-  priority: 0,
-  configuration: {
-    type: BadgeTileType.Latest,
-    badgeId: '900a2477-95c4-4c42-ae2d-3795e7f0f5f2',
-    internalName: 'Top Spender',
-    name: 'Top Spender',
-    description: 'Spent £100 on 5 Separate transactions',
-    artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-    priority: 0,
-    status: 'ACTIVE',
-    createdAt: '2024-08-06T08:53:24.307Z',
-    updatedAt: '2024-08-06T08:53:24.307Z',
-    awardedDatePrefix: 'Awarded',
-    emptyBadgeMessage: "You haven't earned any badges yet.",
-    badgeNotEarnedMessage: 'Badge not earned yet',
-    emptyBadgeArtworkUrl:
-      'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-    count: 0,
-  },
-};
+import { createBadgeTileMock } from '../../../mocks/badgeTile';
+
+const BadgeTileMock = createBadgeTileMock();
 
 describe('<BadgeTile />', () => {
   it('matches snapshot', () => {
@@ -41,19 +17,17 @@ describe('<BadgeTile />', () => {
 
   describe('Rendering States', () => {
     it('returns null when tile is not active', () => {
-      const inactiveTile = {
-        ...BadgeTileMock,
+      const inactiveTile = createBadgeTileMock({
         active: false,
-      };
+      });
       const { container } = render(<BadgeTile tile={inactiveTile} />);
       expect(container).toBeEmptyDOMElement();
     });
 
     it('returns null when tile height is not full', () => {
-      const halfHeightTile = {
-        ...BadgeTileMock,
+      const halfHeightTile = createBadgeTileMock({
         tileHeight: TileHeight.Half,
-      };
+      });
       const { container } = render(<BadgeTile tile={halfHeightTile} />);
       expect(container).toBeEmptyDOMElement();
     });
@@ -67,13 +41,9 @@ describe('<BadgeTile />', () => {
     });
 
     it('renders correctly for Latest badge type with badges earned', () => {
-      const earnedBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          count: 1,
-        },
-      };
+      const earnedBadge = createBadgeTileMock({
+        count: 1,
+      });
       render(<BadgeTile tile={earnedBadge} />);
       expect(
         screen.getByText(earnedBadge.configuration.name)
@@ -87,36 +57,29 @@ describe('<BadgeTile />', () => {
 
   describe('Badge Types', () => {
     it('renders specific badge type correctly when not earned', () => {
-      const specificBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          type: BadgeTileType.Specific,
-          count: 0,
-        },
-      };
-      render(<BadgeTile tile={specificBadge} />);
+      const notEarnedBadge = createBadgeTileMock({
+        type: BadgeTileType.Specific,
+        count: 0,
+      });
+
+      render(<BadgeTile tile={notEarnedBadge} />);
       expect(
-        screen.getByText(specificBadge.configuration.name)
+        screen.getByText(notEarnedBadge.configuration.name)
       ).toBeInTheDocument();
       expect(
-        screen.getByText(specificBadge.configuration.description)
+        screen.getByText(notEarnedBadge.configuration.description)
       ).toBeInTheDocument();
-      expect(
-        screen.getByText(specificBadge.configuration.badgeNotEarnedMessage)
-      ).toBeInTheDocument();
+      const message = notEarnedBadge.configuration.badgeNotEarnedMessage;
+      expect(message).toBeDefined();
+      expect(screen.getByText(message!)).toBeInTheDocument();
     });
 
     it('does not show earned/not earned chip when badgeNotEarnedMessage is not provided', () => {
-      const specificBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          type: BadgeTileType.Specific,
-          count: 0,
-          badgeNotEarnedMessage: undefined,
-        },
-      };
+      const specificBadge = createBadgeTileMock({
+        type: BadgeTileType.Specific,
+        count: 0,
+        badgeNotEarnedMessage: undefined,
+      });
       render(<BadgeTile tile={specificBadge} />);
       expect(
         screen.getByText(specificBadge.configuration.name)
@@ -130,14 +93,10 @@ describe('<BadgeTile />', () => {
     });
 
     it('renders specific badge type correctly when earned once', () => {
-      const specificBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          type: BadgeTileType.Specific,
-          count: 1,
-        },
-      };
+      const specificBadge = createBadgeTileMock({
+        type: BadgeTileType.Specific,
+        count: 1,
+      });
       render(<BadgeTile tile={specificBadge} />);
       expect(
         screen.getByText(specificBadge.configuration.name)
@@ -148,32 +107,24 @@ describe('<BadgeTile />', () => {
     });
 
     it('renders Lock icon when not earned', () => {
-      const specificBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          type: BadgeTileType.Specific,
-          count: 0,
-        },
-      };
+      const specificBadge = createBadgeTileMock({
+        type: BadgeTileType.Specific,
+        count: 0,
+      });
       render(<BadgeTile tile={specificBadge} />);
-      expect(
-        screen.getByText(specificBadge.configuration.badgeNotEarnedMessage)
-      ).toBeInTheDocument();
+      const message = specificBadge.configuration.badgeNotEarnedMessage;
+      expect(message).toBeDefined();
+      expect(screen.getByText(message!)).toBeInTheDocument();
       expect(
         screen.getByTestId('badge-tile-status-locked')
       ).toBeInTheDocument();
     });
 
     it('renders specific badge type correctly with multiple earned', () => {
-      const specificBadge = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          type: BadgeTileType.Specific,
-          count: 3,
-        },
-      };
+      const specificBadge = createBadgeTileMock({
+        type: BadgeTileType.Specific,
+        count: 3,
+      });
       render(<BadgeTile tile={specificBadge} />);
       expect(
         screen.getByText(specificBadge.configuration.name)
@@ -195,13 +146,9 @@ describe('<BadgeTile />', () => {
     });
 
     it('always uses main artworkUrl regardless of earned state', () => {
-      const unearned = {
-        ...BadgeTileMock,
-        configuration: {
-          ...BadgeTileMock.configuration,
-          count: 0,
-        },
-      };
+      const unearned = createBadgeTileMock({
+        count: 0,
+      });
       render(<BadgeTile tile={unearned} />);
       const media = screen.getByTestId('badge-tile-media');
       expect(media).toBeInTheDocument();
