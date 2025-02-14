@@ -10,7 +10,7 @@ export type BadgeTileMockConfig = Partial<BadgeTileConfig> & {
   tileHeight?: TileHeight;
 };
 
-export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
+export const createBadgeTileMock = (config?: BadgeTileMockConfig) => {
   const {
     id = 'badge-tile',
     active = true,
@@ -22,7 +22,7 @@ export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
     description = 'Spent £100 on 5 Separate transactions',
     artworkUrl = 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
     emptyBadgeArtworkUrl = 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-    badgeNotEarnedMessage = 'badgeNotEarnedMessage' in config
+    badgeNotEarnedMessage = config && config.badgeNotEarnedMessage
       ? config.badgeNotEarnedMessage
       : type === BadgeTileType.Specific
         ? 'Badge not earned yet'
@@ -34,7 +34,7 @@ export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
     locale = 'en',
     createdAt = '2024-08-06T08:53:24.307Z',
     updatedAt = '2024-08-06T08:53:24.307Z',
-  } = config;
+  } = config || {};
 
   return {
     id,

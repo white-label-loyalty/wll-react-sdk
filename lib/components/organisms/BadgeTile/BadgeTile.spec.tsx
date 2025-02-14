@@ -87,9 +87,9 @@ describe('<BadgeTile />', () => {
       expect(
         screen.getByText(specificBadge.configuration.description)
       ).toBeInTheDocument();
-      expect(
-        screen.queryByTestId('badge-tile-date-earned')
-      ).not.toBeInTheDocument();
+
+      const badgeEarnedChip = screen.queryByTestId('badge-tile-earned-chip');
+      expect(badgeEarnedChip).toBe(null);
     });
 
     it('renders specific badge type correctly when earned once', () => {
