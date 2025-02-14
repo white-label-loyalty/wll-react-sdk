@@ -1,13 +1,4 @@
-import { TileHeight, TileType } from '../types/tile';
-
-export type PointsTileConfig = {
-  title: string;
-  points: number;
-  pointsPrefix?: string;
-  pointsSuffix?: string;
-  artworkUrl: string;
-  pointsMultiplier?: number;
-};
+import { PointsTileConfig, TileHeight, TileType } from '../types/tile';
 
 export type PointsTileMockConfig = Partial<PointsTileConfig> & {
   active?: boolean;
