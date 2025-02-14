@@ -1,18 +1,13 @@
-import { BadgeTileType, TileHeight, TileType } from '../types/tile';
+import {
+  BadgeTileConfig,
+  BadgeTileType,
+  TileHeight,
+  TileType,
+} from '../types/tile';
 
-export type BadgeTileMockConfig = {
-  id?: string;
+export type BadgeTileMockConfig = Partial<BadgeTileConfig> & {
   active?: boolean;
   tileHeight?: TileHeight;
-  type?: BadgeTileType;
-  badgeId?: string;
-  internalName?: string;
-  name?: string;
-  description?: string;
-  artworkUrl?: string;
-  emptyBadgeArtworkUrl?: string;
-  badgeNotEarnedMessage?: string;
-  count?: number;
 };
 
 export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
@@ -27,8 +22,18 @@ export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
     description = 'Spent £100 on 5 Separate transactions',
     artworkUrl = 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
     emptyBadgeArtworkUrl = 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
-    badgeNotEarnedMessage,
+    badgeNotEarnedMessage = 'badgeNotEarnedMessage' in config
+      ? config.badgeNotEarnedMessage
+      : type === BadgeTileType.Specific
+        ? 'Badge not earned yet'
+        : undefined,
     count = 0,
+    priority = 0,
+    status = 'ACTIVE',
+    defaultLocale = 'en',
+    locale = 'en',
+    createdAt = '2024-08-06T08:53:24.307Z',
+    updatedAt = '2024-08-06T08:53:24.307Z',
   } = config;
 
   return {
@@ -46,16 +51,15 @@ export const createBadgeTileMock = (config: BadgeTileMockConfig = {}) => {
       name,
       description,
       artworkUrl,
-      priority: 0,
-      status: 'ACTIVE',
-      createdAt: '2024-08-06T08:53:24.307Z',
-      updatedAt: '2024-08-06T08:53:24.307Z',
+      priority,
+      status,
+      defaultLocale,
+      locale,
+      createdAt,
+      updatedAt,
       awardedDatePrefix: 'Awarded',
       emptyBadgeMessage: "You haven't earned any badges yet.",
-      badgeNotEarnedMessage:
-        'badgeNotEarnedMessage' in config
-          ? badgeNotEarnedMessage
-          : 'Badge not earned yet',
+      badgeNotEarnedMessage,
       emptyBadgeArtworkUrl,
       count,
     },
