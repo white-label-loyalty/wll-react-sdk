@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import BannerTile from '.';
-import { createBannerTileMock } from '../../../mocks/bannerTile';
+import { createBannerTileMock } from '../../../mocks/tiles/bannerTile';
 
 export default {
   title: 'components/organisms/BannerTile',

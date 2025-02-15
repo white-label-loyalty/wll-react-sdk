@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import ContentTile from '.';
-import { createContentTileMock } from '../../../mocks/contentTile';
+import { createContentTileMock } from '../../../mocks/tiles/contentTile';
 import { CTALinkTarget, TileHeight } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 
