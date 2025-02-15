@@ -89,25 +89,6 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
           Fresh Lobster Noodles with a spicy chilli sauce
         </div>
       </div>
-      <div
-        aria-label="Reward points: 10"
-        class="css-view-175oi2r"
-        data-testid="reward-tile-points"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
-          style="margin-top: 8px;"
-        >
-          <div
-            class="css-text-146c3p1"
-            data-testid="reward-tile-points-value"
-            dir="auto"
-            style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
-          >
-            10
-          </div>
-        </div>
-      </div>
     </div>
   </button>
 </div>

@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { SectionType, TSection } from '../../../types/section';
 import { commonStyles } from '../../../utils/styling';
+import { sortByPriority } from '../../../utils/transforms';
 import { Skeleton } from '../../atoms';
 import { Carousel, Grid } from '../../molecules';
 import { useSectionStyles } from './styles';
@@ -124,7 +125,9 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
     }
 
     // Filter out inactive tiles before passing to child components
-    const activeTiles = sectionData.tiles.filter((tile) => tile.active);
+    const activeTiles = sortByPriority(
+      sectionData.tiles.filter((tile) => tile.active)
+    );
     const sectionWithActiveTiles = { ...sectionData, tiles: activeTiles };
 
     switch (sectionData.type) {

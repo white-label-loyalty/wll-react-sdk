@@ -1,41 +1,20 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { CTALinkTarget, Tile, TileHeight, TileType } from '../../../types/tile';
+import { createBannerTileMock } from '../../../mocks/tiles/bannerTile';
 import { render } from '../../__test__/test-utils';
 import { BannerTile } from './index';
 
-const BannerImageOnlyMock: Tile = {
-  id: '3',
-  type: TileType.Banner,
-  active: true,
-  createdAt: '',
-  updatedAt: '',
-  tileHeight: TileHeight.Full,
-  priority: 1,
-  configuration: {
-    artworkUrl:
-      'https://images.pexels.com/photos/6250883/pexels-photo-6250883.jpeg',
-    title: '',
-    description: '',
-    ctaText: '',
-    ctaLink: '',
-    ctaLinkTarget: CTALinkTarget.sameWindow,
-  },
-};
+const BannerImageOnlyMock = createBannerTileMock();
 
-const BannerTileMock = {
-  ...BannerImageOnlyMock,
-  configuration: {
-    title: 'Summer Points Splash',
-    ctaLink: '/summer-rewards',
-    ctaText: 'Start Earning',
-    artworkUrl:
-      'https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description:
-      'Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.',
-    ctaLinkTarget: CTALinkTarget.sameWindow,
-  },
-};
+const BannerTileMock = createBannerTileMock({
+  title: 'Summer Points Splash',
+  ctaLink: '/summer-rewards',
+  ctaText: 'Start Earning',
+  artworkUrl:
+    'https://images.pexels.com/photos/1209611/pexels-photo-1209611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  description:
+    'Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.',
+});
 
 describe('<BannerTile  />', () => {
   it('renders and matches snapshot', () => {
@@ -46,10 +25,7 @@ describe('<BannerTile  />', () => {
 
 describe('<BannerTile /> Rendering States', () => {
   it('returns null when tile is not active', () => {
-    const inactiveTile = {
-      ...BannerTileMock,
-      active: false,
-    };
+    const inactiveTile = createBannerTileMock({ active: false });
     const { container } = render(<BannerTile tile={inactiveTile} />);
     expect(container).toBeEmptyDOMElement();
   });
@@ -99,13 +75,9 @@ describe('<BannerTile /> Content', () => {
 });
 
 describe('<BannerTile /> Edge Cases', () => {
-  const emptyBannerMock = {
-    ...BannerImageOnlyMock,
-    configuration: {
-      ...BannerImageOnlyMock.configuration,
-      artworkUrl: '',
-    },
-  };
+  const emptyBannerMock = createBannerTileMock({
+    artworkUrl: '',
+  });
 
   it('handles missing artworkUrl gracefully', () => {
     const { queryByTestId } = render(<BannerTile tile={emptyBannerMock} />);
@@ -113,15 +85,11 @@ describe('<BannerTile /> Edge Cases', () => {
   });
 
   it('handles missing optional props gracefully', () => {
-    const partialBannerMock = {
-      ...BannerTileMock,
-      configuration: {
-        ...BannerTileMock.configuration,
-        description: undefined,
-        ctaText: undefined,
-        ctaLink: undefined,
-      },
-    };
+    const partialBannerMock = createBannerTileMock({
+      description: undefined,
+      ctaText: undefined,
+      ctaLink: undefined,
+    });
     const { queryByTestId } = render(<BannerTile tile={partialBannerMock} />);
     expect(queryByTestId('banner-tile-description')).not.toBeInTheDocument();
     expect(queryByTestId('banner-tile-cta')).not.toBeInTheDocument();
