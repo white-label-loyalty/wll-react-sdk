@@ -1,4 +1,4 @@
-import { RewardTileConfig, Tile, TileHeight, TileType } from '../types/tile';
+import { RewardTileConfig, Tile, TileHeight, TileType } from '../../types/tile';
 
 export type RewardTileMockConfig = Partial<RewardTileConfig> & {
   active?: boolean;

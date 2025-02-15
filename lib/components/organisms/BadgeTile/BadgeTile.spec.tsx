@@ -5,7 +5,7 @@ import { BadgeTileType, TileHeight } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { BadgeTile } from './index';
 
-import { createBadgeTileMock } from '../../../mocks/badgeTile';
+import { createBadgeTileMock } from '../../../mocks/tiles/badgeTile';
 
 const BadgeTileMock = createBadgeTileMock();
 

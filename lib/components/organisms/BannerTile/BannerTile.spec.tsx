@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom';
 import React from 'react';
+import { createBannerTileMock } from '../../../mocks/tiles/bannerTile';
 import { render } from '../../__test__/test-utils';
 import { BannerTile } from './index';
-
-import { createBannerTileMock } from '../../../mocks/bannerTile';
 
 const BannerImageOnlyMock = createBannerTileMock();
 

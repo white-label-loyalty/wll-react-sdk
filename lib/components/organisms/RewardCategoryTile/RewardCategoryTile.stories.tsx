@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { createRewardCategoryTileMock } from '../../../mocks/rewardCategoryTile';
+import { createRewardCategoryTileMock } from '../../../mocks/tiles/rewardCategoryTile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 import RewardCategoryTile from './index';
 

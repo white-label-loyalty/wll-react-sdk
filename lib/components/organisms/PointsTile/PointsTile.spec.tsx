@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import React from 'react';
-import { createPointsTileMock } from '../../../mocks/pointsTile';
+import { createPointsTileMock } from '../../../mocks/tiles/pointsTile';
 import { TileHeight } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { PointsTile } from './index';

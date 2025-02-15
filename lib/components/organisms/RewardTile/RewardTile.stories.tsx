@@ -1,9 +1,9 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { createRewardTileMock } from '../../../mocks/rewardTile';
 import RewardTile from './index';
 // @ts-ignore
 import rewardImage from '../../../assets/reward.png';
+import { createRewardTileMock } from '../../../mocks/tiles/rewardTile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 
 export default {

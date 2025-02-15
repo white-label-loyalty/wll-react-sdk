@@ -1,4 +1,9 @@
-import { ContentTileConfig, Tile, TileHeight, TileType } from '../types/tile';
+import {
+  ContentTileConfig,
+  Tile,
+  TileHeight,
+  TileType,
+} from '../../types/tile';
 
 export type ContentTileMockConfig = Partial<ContentTileConfig> & {
   tileHeight?: TileHeight;
@@ -8,7 +13,8 @@ export type ContentTileMockConfig = Partial<ContentTileConfig> & {
 const defaultConfig: ContentTileConfig = {
   title: 'Gold Tier Unlocked!',
   body: "You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access.",
-  artworkUrl: 'https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg',
+  artworkUrl:
+    'https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg',
 };
 
 export const createContentTileMock = (config?: ContentTileMockConfig): Tile => {

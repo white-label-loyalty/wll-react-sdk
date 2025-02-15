@@ -3,7 +3,7 @@ import {
   BadgeTileType,
   TileHeight,
   TileType,
-} from '../types/tile';
+} from '../../types/tile';
 
 export type BadgeTileMockConfig = Partial<BadgeTileConfig> & {
   active?: boolean;

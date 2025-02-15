@@ -1,5 +1,5 @@
 import React from 'react';
-import { createContentTileMock } from '../../../mocks/contentTile';
+import { createContentTileMock } from '../../../mocks/tiles';
 import { TileHeight } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { ContentTile } from './index';

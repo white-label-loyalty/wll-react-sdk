@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import React from 'react';
-import { createRewardCategoryTileMock } from '../../../mocks/rewardCategoryTile';
+import { createRewardCategoryTileMock } from '../../../mocks/tiles/rewardCategoryTile';
 import { render } from '../../__test__/test-utils';
 import { RewardCategoryTile } from './index';
 

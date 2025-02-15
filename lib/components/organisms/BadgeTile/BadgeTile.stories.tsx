@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { createBadgeTileMock } from '../../../mocks/badgeTile';
+import { createBadgeTileMock } from '../../../mocks/tiles/badgeTile';
 import { BadgeTileType, TileHeight } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 import BadgeTile from './index';

@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import React from 'react';
-import { createRewardTileMock } from '../../../mocks/rewardTile';
+import { createRewardTileMock } from '../../../mocks/tiles/rewardTile';
 import { TileHeight } from '../../../types/tile';
 import { render } from '../../__test__/test-utils';
 import { RewardTile } from './index';

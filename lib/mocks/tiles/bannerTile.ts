@@ -3,7 +3,7 @@ import {
   CTALinkTarget,
   TileHeight,
   TileType,
-} from '../types/tile';
+} from '../../types/tile';
 
 export type BannerTileMockConfig = Partial<BannerTileConfig> & {
   active?: boolean;
