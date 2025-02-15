@@ -99,8 +99,8 @@ export class RewardTileConfig {
   purchaseExpiration: string | null = null;
   hideCode: boolean = false;
   notificationConfig: any | null = null;
-  artworkUrl: string = '';
-  pointsMultiplier: string = '';
+  artworkUrl: string | undefined = undefined;
+  pointsMultiplier: number = 1;
   pointsPrefix: string | null = null;
   pointsSuffix: string | null = null;
 }
