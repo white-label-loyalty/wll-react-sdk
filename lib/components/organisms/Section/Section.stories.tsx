@@ -42,7 +42,7 @@ TravelRewardsSection.args = {
         body: 'Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here.',
         artworkUrl:
           'https://ucarecdn.com/b129c5c2-08fd-4962-83b1-5c35301148c1/',
-        priority: 7,
+        priority: 10,
       }),
       createTileMock(TileType.Content, {
         tileHeight: TileHeight.Full,
@@ -64,6 +64,9 @@ TravelRewardsSection.args = {
         pointsMultiplier: 1,
         priority: 4,
       }),
+      createTileMock(TileType.Tier, {
+        tileHeight: TileHeight.Half,
+      }),
       createTileMock(TileType.Reward, {
         tileHeight: TileHeight.Full,
         name: 'Mile High Drinks',
@@ -72,11 +75,12 @@ TravelRewardsSection.args = {
         showDetails: true,
         price: 10,
         value: 1000,
+        pointsSuffix: 'pts',
         type: 'VOUCHER',
         summary: 'Limited Time Offer for all you elite members',
         artworkUrl:
           'https://images.pexels.com/photos/6858660/pexels-photo-6858660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        priority: 3,
+        priority: 0,
       }),
     ],
   }),

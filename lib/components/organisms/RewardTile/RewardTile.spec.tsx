@@ -62,7 +62,13 @@ describe('<RewardTile /> Media', () => {
 
 describe('<RewardTile /> Points', () => {
   it('renders points when showPrice is true', () => {
-    const { getByTestId } = render(<RewardTile tile={RewardTileMock} />);
+    const RewardTileMockWithPoints = createRewardTileMock({
+      price: 10,
+      showPrice: true,
+    });
+    const { getByTestId } = render(
+      <RewardTile tile={RewardTileMockWithPoints} />
+    );
     expect(getByTestId('reward-tile-points')).toBeInTheDocument();
   });
 
@@ -75,13 +81,17 @@ describe('<RewardTile /> Points', () => {
   });
 
   it('calculates points correctly with default multiplier', () => {
-    const { getByTestId } = render(<RewardTile tile={RewardTileMock} />);
+    const defaultMultiplier = createRewardTileMock({
+      price: 10,
+    });
+    const { getByTestId } = render(<RewardTile tile={defaultMultiplier} />);
     const pointsElement = getByTestId('reward-tile-points');
     expect(pointsElement).toHaveAccessibleName('Reward points: 10');
   });
 
   it('calculates points correctly with custom multiplier', () => {
     const tileWithMultiplier = createRewardTileMock({
+      price: 10,
       pointsMultiplier: 200,
       pointsPrefix: '',
       pointsSuffix: 'pts',
@@ -105,7 +115,12 @@ describe('<RewardTile /> Points', () => {
   });
 
   it('handles empty prefix and suffix correctly', () => {
-    const { getByTestId } = render(<RewardTile tile={RewardTileMock} />);
+    const tileWithEmptyLabels = createRewardTileMock({
+      price: 10,
+      pointsPrefix: '',
+      pointsSuffix: '',
+    });
+    const { getByTestId } = render(<RewardTile tile={tileWithEmptyLabels} />);
     const pointsElement = getByTestId('reward-tile-points');
     expect(pointsElement).toHaveAccessibleName('Reward points: 10');
   });
