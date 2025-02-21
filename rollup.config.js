@@ -16,41 +16,54 @@ const external = [
   'zod',
 ];
 
-const baseConfig = {
+const createConfig = (platform) => ({
   input: 'lib/index.ts',
   external,
-};
+  output: {
+    file: `dist/${platform}/index.js`,
+    format: 'cjs',
+    sourcemap: true,
+    exports: 'named',
+  },
+  plugins: [
+    resolve({ extensions }),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.json',
+      declaration: platform === 'web',
+      declarationDir: platform === 'web' ? './dist/web' : undefined,
+    }),
+    babel({
+      extensions,
+      babelHelpers: 'bundled',
+      plugins: [
+        [
+          'module-resolver',
+          {
+            root: ['.'],
+            alias: {
+              '^react-native$': platform === 'web' ? 'react-native-web' : 'react-native',
+            },
+          },
+        ],
+      ],
+      include: ['lib/**/*'],
+      exclude: 'node_modules/**',
+    }),
+  ],
+});
 
 export default [
+  // Web build
+  createConfig('web'),
+  // React Native build
+  createConfig('native'),
+  // Types
   {
-    ...baseConfig,
+    input: 'lib/index.ts',
+    external,
     output: {
-      file: 'dist/index.js',
-      format: 'cjs',
-      sourcemap: true,
-      exports: 'named',
-    },
-    plugins: [
-      resolve({ extensions }),
-      commonjs(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: './dist',
-      }),
-      babel({
-        extensions,
-        babelHelpers: 'bundled',
-        configFile: './babel.config.rollup.js',
-        include: ['lib/**/*'],
-        exclude: 'node_modules/**',
-      }),
-    ],
-  },
-  {
-    ...baseConfig,
-    output: {
-      file: 'dist/index.d.ts',
+      file: 'dist/web/index.d.ts',
       format: 'esm',
     },
     plugins: [dts()],

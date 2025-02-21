@@ -2,21 +2,23 @@ module.exports = (api) => {
   const isTest = api.env('test');
 
   return {
-    presets: [['module:metro-react-native-babel-preset', { modules: false }]],
+    presets: [
+      ['@babel/preset-env', { modules: false }],
+      '@babel/preset-typescript',
+      ['@babel/preset-react', { runtime: 'automatic' }]
+    ],
     plugins: [
       [
         'module-resolver',
         {
-          alias: {
-            '^react-native$': 'react-native',
-            '^react-dom$': 'react-native',
-            '^react-native-web$': 'react-native',
-          },
+          root: ['.'],
           extensions: [
             '.ios.js',
             '.android.js',
             '.native.js',
+            '.web.js',
             '.js',
+            '.jsx',
             '.ts',
             '.tsx',
           ],
