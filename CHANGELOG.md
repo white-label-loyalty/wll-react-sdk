@@ -1,3 +1,12 @@
+## [1.0.57](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.56...v1.0.57) (2025-02-21)
+
+
+### Bug Fixes
+
+* issues with bundling in react naitve ([1bc0ad9](https://github.com/white-label-loyalty/wll-react-sdk/commit/1bc0ad959f08db4e70285cf856165e524e3f5e98))
+
+
+
 ## [1.0.56](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.55...v1.0.56) (2025-02-21)
 
 
