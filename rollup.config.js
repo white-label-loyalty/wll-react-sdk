@@ -21,11 +21,32 @@ const baseConfig = {
   external,
 };
 
+const getBabelConfig = (isWeb) => ({
+  extensions,
+  babelHelpers: 'bundled',
+  include: ['lib/**/*'],
+  exclude: 'node_modules/**',
+  plugins: [
+    [
+      'module-resolver',
+      {
+        alias: isWeb
+          ? {
+              'react-native': 'react-native-web',
+            }
+          : {},
+        extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
+      },
+    ],
+  ],
+});
+
 export default [
+  // Native bundle
   {
     ...baseConfig,
     output: {
-      file: 'dist/index.js',
+      file: 'dist/native.js',
       format: 'cjs',
       sourcemap: true,
       exports: 'named',
@@ -35,18 +56,35 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: './dist',
+        declaration: false,
       }),
       babel({
-        extensions,
-        babelHelpers: 'bundled',
-        configFile: './babel.config.rollup.js',
-        include: ['lib/**/*'],
-        exclude: 'node_modules/**',
+        ...getBabelConfig(false),
       }),
     ],
   },
+  // Web bundle
+  {
+    ...baseConfig,
+    output: {
+      file: 'dist/web.js',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named',
+    },
+    plugins: [
+      resolve({ extensions }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: false,
+      }),
+      babel({
+        ...getBabelConfig(true),
+      }),
+    ],
+  },
+  // Types bundle
   {
     ...baseConfig,
     output: {

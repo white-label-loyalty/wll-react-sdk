@@ -1,9 +1,11 @@
 {
   "name": "@wlloyalty/wll-react-sdk",
   "version": "1.0.56",
-  "license": "UNLICENSED",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+"license": "UNLICENSED",
+  "main": "dist/native.js",
+  "browser": "dist/web.js",
+  "react-native": "dist/native.js",
+  "module": "dist/native.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
