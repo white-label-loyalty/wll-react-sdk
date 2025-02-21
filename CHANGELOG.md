@@ -1,3 +1,14 @@
+## [1.0.56](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.55...v1.0.56) (2025-02-21)
+
+
+### Bug Fixes
+
+* add alt text to tiles ([ceea46a](https://github.com/white-label-loyalty/wll-react-sdk/commit/ceea46ac953b852a5f211645e57696e522f75ff9))
+* import issues ([1f26fb4](https://github.com/white-label-loyalty/wll-react-sdk/commit/1f26fb4b0d0a00599502f8c681be2a6c1aa0eac3))
+* mock factory default was incorrect - updated so tests pass and visual regression fix ([1e79f53](https://github.com/white-label-loyalty/wll-react-sdk/commit/1e79f53a08d2721576135bc13928473b5ae4026c))
+
+
+
 ## [1.0.55](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.54...v1.0.55) (2025-02-04)
 
 
