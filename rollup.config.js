@@ -5,7 +5,6 @@ import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-
 const external = [
   'react',
   'react-dom',
@@ -20,26 +19,6 @@ const baseConfig = {
   input: 'lib/index.ts',
   external,
 };
-
-const getBabelConfig = (isWeb) => ({
-  extensions,
-  babelHelpers: 'bundled',
-  include: ['lib/**/*'],
-  exclude: 'node_modules/**',
-  plugins: [
-    [
-      'module-resolver',
-      {
-        alias: isWeb
-          ? {
-              'react-native': 'react-native-web',
-            }
-          : {},
-        extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
-      },
-    ],
-  ],
-});
 
 export default [
   // Native bundle
@@ -59,7 +38,11 @@ export default [
         declaration: false,
       }),
       babel({
-        ...getBabelConfig(false),
+        extensions,
+        babelHelpers: 'bundled',
+        configFile: './babel.config.rollup.js',
+        include: ['lib/**/*'],
+        exclude: 'node_modules/**',
       }),
     ],
   },
@@ -80,7 +63,11 @@ export default [
         declaration: false,
       }),
       babel({
-        ...getBabelConfig(true),
+        extensions,
+        babelHelpers: 'bundled',
+        configFile: './babel.config.web.rollup.js',
+        include: ['lib/**/*'],
+        exclude: 'node_modules/**',
       }),
     ],
   },
