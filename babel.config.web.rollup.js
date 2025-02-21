@@ -8,6 +8,9 @@ module.exports = {
     [
       'module-resolver',
       {
+        alias: {
+          'react-native': 'react-native-web',
+        },
         extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
       },
     ],

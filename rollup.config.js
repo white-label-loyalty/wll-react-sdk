@@ -5,7 +5,6 @@ import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-
 const external = [
   'react',
   'react-dom',
@@ -22,10 +21,11 @@ const baseConfig = {
 };
 
 export default [
+  // Native bundle
   {
     ...baseConfig,
     output: {
-      file: 'dist/index.js',
+      file: 'dist/native.js',
       format: 'cjs',
       sourcemap: true,
       exports: 'named',
@@ -36,7 +36,7 @@ export default [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
-        declarationDir: './dist',
+        declarationDir: './dist/types',
       }),
       babel({
         extensions,
@@ -47,8 +47,36 @@ export default [
       }),
     ],
   },
+  // Web bundle
   {
     ...baseConfig,
+    output: {
+      file: 'dist/web.js',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named',
+    },
+    plugins: [
+      resolve({ extensions }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: './dist/types',
+      }),
+      babel({
+        extensions,
+        babelHelpers: 'bundled',
+        configFile: './babel.config.web.rollup.js',
+        include: ['lib/**/*'],
+        exclude: 'node_modules/**',
+      }),
+    ],
+  },
+  // Types bundle
+  {
+    ...baseConfig,
+    input: './dist/types/index.d.ts', // Read from the generated declarations
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
