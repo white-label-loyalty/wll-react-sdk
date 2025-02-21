@@ -17,7 +17,7 @@ export const BadgeTileMedia = ({
   const styles = useBadgeTileStyles();
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, artworkUrl, emptyBadgeArtworkUrl, type } = configuration;
+  const { count, artworkUrl, emptyBadgeArtworkUrl, type, name } = configuration;
 
   const displayUrl =
     type === BadgeTileType.Specific
@@ -36,6 +36,7 @@ export const BadgeTileMedia = ({
         style={styles.image}
         resizeMode="contain"
         isDesaturated={shouldDesaturate(type, count)}
+        alt={`Badge ${name}${type === BadgeTileType.Latest && count === 0 ? ' (not earned)' : ''}`}
       />
       {children}
     </View>

@@ -34,6 +34,7 @@ export const BannerTileMedia = ({
       <ProgressiveImage
         source={{ uri: artworkUrl }}
         style={styles.media}
+        alt={`Banner image${title ? ` for ${title}` : ''}`}
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
       />

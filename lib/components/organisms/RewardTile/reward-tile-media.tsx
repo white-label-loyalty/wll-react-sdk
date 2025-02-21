@@ -14,7 +14,11 @@ export const RewardTileMedia = ({
 }: RewardTileMediaProps): JSX.Element | null => {
   const styles = useRewardTileStyles();
   const { configuration } = useTileContext();
-  const { artworkUrl, showArtwork = true } = configuration as RewardTileConfig;
+  const {
+    artworkUrl,
+    showArtwork = true,
+    name,
+  } = configuration as RewardTileConfig;
 
   if (!artworkUrl || !showArtwork) return null;
 
@@ -28,7 +32,11 @@ export const RewardTileMedia = ({
       style={[styles.imageContainer, containerStyle]}
       testID="reward-tile-media"
     >
-      <ProgressiveImage source={{ uri: artworkUrl }} style={styles.image} />
+      <ProgressiveImage
+        source={{ uri: artworkUrl }}
+        style={styles.image}
+        alt={`Reward image for ${name}`}
+      />
     </View>
   );
 };
