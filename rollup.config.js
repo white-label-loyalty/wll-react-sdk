@@ -35,7 +35,8 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: false,
+        declaration: true,
+        declarationDir: './dist/types',
       }),
       babel({
         extensions,
@@ -60,7 +61,8 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: false,
+        declaration: true,
+        declarationDir: './dist/types',
       }),
       babel({
         extensions,
@@ -74,6 +76,7 @@ export default [
   // Types bundle
   {
     ...baseConfig,
+    input: './dist/types/index.d.ts', // Read from the generated declarations
     output: {
       file: 'dist/index.d.ts',
       format: 'esm',
