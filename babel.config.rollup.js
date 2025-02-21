@@ -7,8 +7,10 @@ module.exports = {
   plugins: [
     ['module-resolver', {
       alias: {
-        '^react-native$': 'react-native-web'
-      }
-    }]
-  ]
+        // This will ensure react-native imports work in both environments
+        '^react-native$': 'react-native-web',
+      },
+      extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
+    }],
+  ],
 };
