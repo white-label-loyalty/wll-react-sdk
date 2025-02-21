@@ -1,3 +1,18 @@
+## [1.0.58](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.57...v1.0.58) (2025-02-21)
+
+
+### Bug Fixes
+
+* add declerations after warning ([3d47472](https://github.com/white-label-loyalty/wll-react-sdk/commit/3d47472282c93c0229a0046ece9c0d39eefef54e))
+
+
+### Features
+
+* add web and native specific bundles ([8f22111](https://github.com/white-label-loyalty/wll-react-sdk/commit/8f221117a65dd48b878a988d89891896a69f5396))
+* create platform-specific bundles for web and native ([d533e40](https://github.com/white-label-loyalty/wll-react-sdk/commit/d533e4004d9328003ebad4e1f9c0026b5401085c))
+
+
+
 ## [1.0.57](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.56...v1.0.57) (2025-02-21)
 
 
