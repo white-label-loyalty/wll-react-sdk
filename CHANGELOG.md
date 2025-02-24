@@ -1,3 +1,12 @@
+## [1.0.61](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.60...v1.0.61) (2025-02-24)
+
+
+### Bug Fixes
+
+* add alt text for points tile ([67c83c0](https://github.com/white-label-loyalty/wll-react-sdk/commit/67c83c0eb28066695527b752ea373e8fbec0ce9c))
+
+
+
 ## [1.0.60](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.59...v1.0.60) (2025-02-24)
 
 
