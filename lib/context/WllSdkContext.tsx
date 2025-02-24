@@ -1,4 +1,12 @@
-import React from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useNavigation } from '../hooks/useNavigationHandler';
 import { TGroup } from '../types/group';
 import { NavigationConfig } from '../types/navigation';
@@ -16,6 +24,7 @@ import {
   getDerivedColor,
   getDerivedColorPercentages,
   getReadableTextColor,
+  validateTheme,
 } from '../utils/themeHelpers';
 import { ResponsiveProvider } from './ResponsiveContext';
 
@@ -41,11 +50,13 @@ type WllSdkContextType = ThemeContextType & {
   getGroupByID: (id: string) => Promise<APIResponse<TGroup>>;
   getSectionByID: (id: string) => Promise<APIResponse<TSection>>;
   getTileByID: (id: string) => Promise<APIResponse<Tile>>;
-  handleNavigation: (link: string, target: CTALinkTarget) => void;
-};
+  handleNavigation: (link: string, target: CTALinkTarget) => Promise<void>;
+} & Readonly<{
+    readonly config: SDKConfig;
+  }>;
 
 type WllSdkProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   theme?: Partial<BaseThemeObject>;
   config: SDKConfig;
   navigationConfig?: NavigationConfig;
@@ -56,34 +67,23 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     ...defaultTheme,
     ...baseTheme,
   } as BaseThemeObject;
-  const {
-    background,
-    primary,
-    accent,
-    positive,
-    negative,
-    surfaceText,
-    surface,
-    text,
-  } = mergedTheme;
+
   return {
     ...mergedTheme,
     sizes,
-    derivedBackground: getDerivedColor(background),
-    primaryText: getReadableTextColor(primary),
-    accentText: getReadableTextColor(accent),
-    positiveText: getReadableTextColor(positive),
-    negativeText: getReadableTextColor(negative),
-    derivedSurface: getDerivedColorPercentages(surface),
-    derivedSurfaceText: getDerivedColorPercentages(surfaceText),
-    alphaDerivedPrimary: getAlphaDerivedColors(primary),
-    alphaDerivedText: getAlphaDerivedColors(text),
+    derivedBackground: getDerivedColor(mergedTheme.background),
+    primaryText: getReadableTextColor(mergedTheme.primary),
+    accentText: getReadableTextColor(mergedTheme.accent),
+    positiveText: getReadableTextColor(mergedTheme.positive),
+    negativeText: getReadableTextColor(mergedTheme.negative),
+    derivedSurface: getDerivedColorPercentages(mergedTheme.surface),
+    derivedSurfaceText: getDerivedColorPercentages(mergedTheme.surfaceText),
+    alphaDerivedPrimary: getAlphaDerivedColors(mergedTheme.primary),
+    alphaDerivedText: getAlphaDerivedColors(mergedTheme.text),
   };
 };
 
-const WllSdkContext = React.createContext<WllSdkContextType | undefined>(
-  undefined
-);
+const WllSdkContext = createContext<WllSdkContextType | undefined>(undefined);
 
 export const WllSdkProvider = ({
   children,
@@ -91,15 +91,34 @@ export const WllSdkProvider = ({
   config,
   navigationConfig = {},
 }: WllSdkProviderProps): JSX.Element => {
-  const [theme, setThemeState] = React.useState(() =>
-    createTheme(providedTheme || {})
-  );
+  validateConfig(config);
 
-  React.useEffect(() => {
-    setThemeState(createTheme(providedTheme || {}));
+  const [theme, setThemeState] = useState(() => {
+    const themeToUse = providedTheme || {};
+    if (!validateTheme(themeToUse)) {
+      console.warn(
+        'Invalid theme provided. Some required colors are missing or invalid.'
+      );
+    }
+    return createTheme(themeToUse);
+  });
+
+  useEffect(() => {
+    const themeToUse = providedTheme || {};
+    if (!validateTheme(themeToUse)) {
+      console.warn(
+        'Invalid theme provided. Some required colors are missing or invalid.'
+      );
+    }
+    setThemeState(createTheme(themeToUse));
   }, [providedTheme]);
 
-  const setTheme = React.useCallback((newTheme: Partial<BaseThemeObject>) => {
+  const setTheme = useCallback((newTheme: Partial<BaseThemeObject>) => {
+    if (!validateTheme(newTheme)) {
+      console.warn(
+        'Invalid theme provided. Some required colors are missing or invalid.'
+      );
+    }
     setThemeState((prevTheme) => createTheme({ ...prevTheme, ...newTheme }));
   }, []);
 
@@ -115,7 +134,7 @@ export const WllSdkProvider = ({
 
   const handleNavigation = useNavigation(navigationConfig);
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({
       theme,
       setTheme,
@@ -123,6 +142,7 @@ export const WllSdkProvider = ({
       getSectionByID,
       getTileByID,
       handleNavigation,
+      config,
     }),
     [
       theme,
@@ -131,6 +151,7 @@ export const WllSdkProvider = ({
       getSectionByID,
       getTileByID,
       handleNavigation,
+      config,
     ]
   );
   return (
@@ -141,9 +162,27 @@ export const WllSdkProvider = ({
 };
 
 export const useWllSdk = (): WllSdkContextType => {
-  const context = React.useContext(WllSdkContext);
+  const context = useContext(WllSdkContext);
   if (context === undefined) {
     throw new Error('useWllSdk must be used within a WllSdkProvider');
   }
   return context;
+};
+
+/**
+ * Validates the SDK configuration object
+ * @param config - The configuration object to validate
+ * @throws {Error} If apiKey is missing
+ * @throws {Error} If locale is provided but not in ISO 639-1 format (e.g. 'en')
+ */
+const validateConfig = (config: SDKConfig): void => {
+  if (!config.apiKey) {
+    throw new Error('API key is required');
+  }
+
+  if (config.locale && !/^[a-z]{2}$/.test(config.locale)) {
+    throw new Error(
+      'Invalid locale format. Expected ISO 639-1 language code (e.g. "en")'
+    );
+  }
 };

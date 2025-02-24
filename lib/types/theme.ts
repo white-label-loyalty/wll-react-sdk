@@ -1,6 +1,13 @@
 import { ReactNode } from 'react';
 import { sizes } from '../utils/styling';
-import { DerivedColors } from '../utils/themeHelpers';
+
+export type PercentageKey = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 95;
+export type DerivedColors = {
+  [K in PercentageKey]: string;
+};
+
+// TODO: Add more types when needed
+export type DesaturationType = 'SPECIFIC';
 
 export type BaseThemeObject = {
   accent: string;
