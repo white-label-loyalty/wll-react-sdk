@@ -1,3 +1,12 @@
+## [1.0.60](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.59...v1.0.60) (2025-02-24)
+
+
+### Bug Fixes
+
+* for alt tags not being passed down ([a62cead](https://github.com/white-label-loyalty/wll-react-sdk/commit/a62cead3f235eb5dd8589f3180d7793144a18b91))
+
+
+
 ## [1.0.59](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.58...v1.0.59) (2025-02-24)
 
 
