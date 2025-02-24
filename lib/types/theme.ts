@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { sizes } from '../utils/styling';
+import { BadgeTileType } from './tile';
 
 export type PercentageKey = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 95;
 export type DerivedColors = {
@@ -7,7 +8,7 @@ export type DerivedColors = {
 };
 
 // TODO: Add more types when needed
-export type DesaturationType = 'SPECIFIC';
+export type DesaturationType = BadgeTileType.Specific | BadgeTileType.Latest;
 
 export type BaseThemeObject = {
   accent: string;
