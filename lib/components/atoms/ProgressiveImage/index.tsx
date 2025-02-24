@@ -16,6 +16,7 @@ type ProgressiveImageProps = {
   source: ImageSourcePropType;
   style?: StyleProp<ViewStyle>;
   isDesaturated?: boolean;
+  alt?: string;
   [key: string]: any;
 };
 
@@ -23,6 +24,7 @@ const ProgressiveImage = ({
   source,
   style,
   isDesaturated = false,
+  alt,
   ...props
 }: ProgressiveImageProps): JSX.Element => {
   const imageAnimated = useRef(new Animated.Value(0)).current;
@@ -78,6 +80,7 @@ const ProgressiveImage = ({
           },
         ]}
         onLoad={onImageLoad}
+        accessibilityLabel={alt}
       />
     </View>
   );

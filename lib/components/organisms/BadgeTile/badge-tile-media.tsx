@@ -8,10 +8,12 @@ import { useBadgeTileStyles } from './styles';
 
 export type BadgeTileMediaProps = {
   children?: React.ReactNode;
-} & Omit<React.ComponentProps<typeof ProgressiveImage>, 'source'>;
+  alt?: string;
+} & Omit<React.ComponentProps<typeof ProgressiveImage>, 'source' | 'alt'>;
 
 export const BadgeTileMedia = ({
   children,
+  alt,
   ...props
 }: BadgeTileMediaProps): JSX.Element | null => {
   const styles = useBadgeTileStyles();
@@ -36,7 +38,10 @@ export const BadgeTileMedia = ({
         style={styles.image}
         resizeMode="contain"
         isDesaturated={shouldDesaturate(type, count)}
-        alt={`Badge ${name}${type === BadgeTileType.Latest && count === 0 ? ' (not earned)' : ''}`}
+        alt={
+          alt ??
+          `Badge ${name}${type === BadgeTileType.Latest && count === 0 ? ' (not earned)' : ''}`
+        }
       />
       {children}
     </View>

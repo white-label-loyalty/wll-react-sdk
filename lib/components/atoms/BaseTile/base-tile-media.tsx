@@ -9,7 +9,7 @@ export const BaseTileMedia = (
   props: ImagePropsNoSource
 ): JSX.Element | null => {
   const tile = useTileContext();
-  const { artworkUrl } = tile.configuration as ContentTileConfig;
+  const { artworkUrl, title } = tile.configuration as ContentTileConfig;
   const styles = useBaseTileStyles();
 
   if (!artworkUrl) return null;
@@ -17,9 +17,12 @@ export const BaseTileMedia = (
   return (
     <ProgressiveImage
       {...props}
-      testID="tile-media"
       source={{ uri: artworkUrl }}
+      testID="tile-media"
       style={[props.style, baseStyles.media, styles.media]}
+      alt={`Content image${title ? ` for ${title}` : ''}`}
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no-hide-descendants"
     />
   );
 };

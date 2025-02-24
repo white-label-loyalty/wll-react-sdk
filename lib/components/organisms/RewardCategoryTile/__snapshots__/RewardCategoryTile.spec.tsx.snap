@@ -33,6 +33,7 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
         style="background-color: rgba(57, 46, 215, 0.2); opacity: 1;"
       />
       <div
+        aria-label="Reward category image for Restaurant Rewards"
         class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
         data-testid="reward-category-media"
         style="opacity: 0;"
@@ -42,7 +43,7 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
           style="background-image: url(https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"
         />
         <img
-          alt=""
+          alt="Reward category image for Restaurant Rewards"
           class="css-accessibilityImage-9pa8cd"
           draggable="false"
           src="https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

@@ -25,6 +25,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
           style="background-color: rgba(57, 46, 215, 0.2); opacity: 1;"
         />
         <div
+          aria-label="Badge Top Spender (not earned)"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
           style="opacity: 0;"
         >
@@ -33,7 +34,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
             style="background-image: url(https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/);"
           />
           <img
-            alt=""
+            alt="Badge Top Spender (not earned)"
             class="css-accessibilityImage-9pa8cd"
             draggable="false"
             src="https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/"

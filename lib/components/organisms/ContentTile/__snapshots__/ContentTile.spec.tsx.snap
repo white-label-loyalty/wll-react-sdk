@@ -31,6 +31,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
           style="background-color: rgba(57, 46, 215, 0.2); opacity: 1;"
         />
         <div
+          aria-label="Content image for Gold Tier Unlocked!"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
           data-testid="tile-media"
           style="opacity: 0;"
@@ -40,7 +41,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
             style="background-image: url(https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg);"
           />
           <img
-            alt=""
+            alt="Content image for Gold Tier Unlocked!"
             class="css-accessibilityImage-9pa8cd"
             draggable="false"
             src="https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg"
