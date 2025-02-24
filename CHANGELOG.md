@@ -1,3 +1,12 @@
+## [1.0.59](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.58...v1.0.59) (2025-02-24)
+
+
+### Bug Fixes
+
+* use badge tile types ([43b4f04](https://github.com/white-label-loyalty/wll-react-sdk/commit/43b4f044bf92e8b8060a89b8121f3b889d0816c9))
+
+
+
 ## [1.0.58](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.57...v1.0.58) (2025-02-21)
 
 
