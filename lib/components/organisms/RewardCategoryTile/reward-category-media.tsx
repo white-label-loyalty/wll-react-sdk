@@ -16,7 +16,9 @@ export const RewardCategoryMedia = (): JSX.Element | null => {
       testID="reward-category-media"
       source={{ uri: artworkUrl }}
       style={styles.background}
-      alt={name}
+      alt={`Reward category image for ${name}`}
+      accessibilityElementsHidden={true}
+      importantForAccessibility="no-hide-descendants"
     />
   );
 };
