@@ -13,12 +13,12 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
     type="button"
   >
     <div
-      aria-label="Points tile image for Available Points"
       class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
       data-testid="points-tile-media"
       role="img"
     >
       <div
+        aria-label="Points tile image for Available Points"
         class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-height-1pi2tsx r-position-u8s1d r-width-13qz1uu"
       >
         <div
@@ -26,7 +26,7 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
           style="background-image: url(https://example.com/points.png);"
         />
         <img
-          alt=""
+          alt="Points tile image for Available Points"
           class="css-accessibilityImage-9pa8cd"
           draggable="false"
           src="https://example.com/points.png"

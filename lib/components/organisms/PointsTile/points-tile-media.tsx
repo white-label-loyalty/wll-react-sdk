@@ -23,7 +23,6 @@ export const PointsTileMedia = ({
       testID="points-tile-media"
       accessible
       role="img"
-      accessibilityLabel={`Points tile image for ${title}`}
       style={styles.imageContainer}
     >
       <Image
@@ -31,6 +30,7 @@ export const PointsTileMedia = ({
         style={styles.image}
         resizeMode={isFullSize ? 'cover' : 'contain'}
         accessibilityElementsHidden={true}
+        accessibilityLabel={`Points tile image for ${title}`}
         importantForAccessibility="no-hide-descendants"
       />
     </View>
