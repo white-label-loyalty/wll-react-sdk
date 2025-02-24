@@ -27,14 +27,29 @@ const navigationConfig = {
       // Handle external links (https://...)
       window.open(target, windowTarget)
     },
-    modal: (action) => {
+    modal: ({ target }) => {
       // Handle modal triggers (#modal-name)
+      // The SDK is agnostic about modal implementation
+      // You can use any modal library or custom implementation
+      // Example: showModal(target)
     }
   }
 }
 ```
 
-## React Native Implimentaion
+### Modal Navigation
+
+The SDK's modal navigation system is designed to be implementation-agnostic. When a link starting with '#' is encountered (e.g., '#terms-modal'), the SDK will:
+1. Strip the '#' prefix from the link
+2. Pass the remaining string as the `target` parameter to your modal handler
+3. Call your provided modal handler with both the `target` and `windowTarget` parameters
+
+This design allows you to:
+- Use any modal library of your choice (Material UI, Chakra UI, custom modals, etc.)
+- Implement modals in a way that best fits your application's needs
+- Handle modal state management according to your preferred patterns
+
+## React Native Implementation
 
 ```typescript
 import { Linking } from 'react-native';
