@@ -7,9 +7,12 @@ type NavigationHandlerParams = {
 
 export type NavigationConfig = {
   navigationHandlers?: {
-    external?: (params: NavigationHandlerParams) => void;
-    internal?: (params: NavigationHandlerParams) => void;
-    modal?: (params: NavigationHandlerParams) => void;
+    external?: (params: NavigationHandlerParams) => Promise<void>;
+    internal?: (params: NavigationHandlerParams) => Promise<void>;
+    modal?: (params: NavigationHandlerParams) => Promise<void>;
   };
+  external?: (params: NavigationHandlerParams) => Promise<void>;
+  internal?: (params: NavigationHandlerParams) => Promise<void>;
+  modal?: (params: NavigationHandlerParams) => Promise<void>;
   baseUrl?: string;
 };

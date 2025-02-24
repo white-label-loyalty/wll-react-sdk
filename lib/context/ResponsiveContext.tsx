@@ -1,4 +1,12 @@
-import React, { createContext, PropsWithChildren, useContext } from 'react';
+import React, {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Dimensions } from 'react-native';
 import { DIMENSION_MODES } from '../constants/responsive';
 import { getDimensionMode } from '../hooks/useResponsive';
@@ -9,28 +17,27 @@ const ResponsiveContext = createContext<ResponsiveContextType | undefined>(
 );
 
 export function ResponsiveProvider({ children }: PropsWithChildren) {
-  const [state, setState] = React.useState(() => {
-    const window = Dimensions.get('window');
+  const getDerivedState = useCallback((window: any) => {
     const dimensionMode = getDimensionMode(window);
-
     return {
       dimensionMode,
       isDesktop: dimensionMode === DIMENSION_MODES.DESKTOP,
       isTablet: dimensionMode === DIMENSION_MODES.TABLET,
       isMobile: dimensionMode === DIMENSION_MODES.MOBILE,
     };
+  }, []);
+
+  const [state, setState] = useState(() => {
+    const window = Dimensions.get('window');
+    return getDerivedState(window);
   });
 
-  React.useEffect(() => {
+  const value = useMemo(() => state, [state]);
+
+  useEffect(() => {
     const subscription = Dimensions.addEventListener('change', ({ window }) => {
       if (window) {
-        const dimensionMode = getDimensionMode(window);
-        setState({
-          dimensionMode,
-          isDesktop: dimensionMode === DIMENSION_MODES.DESKTOP,
-          isTablet: dimensionMode === DIMENSION_MODES.TABLET,
-          isMobile: dimensionMode === DIMENSION_MODES.MOBILE,
-        });
+        setState(getDerivedState(window));
       }
     });
 
@@ -39,10 +46,10 @@ export function ResponsiveProvider({ children }: PropsWithChildren) {
         subscription.remove();
       }
     };
-  }, []);
+  }, [getDerivedState]);
 
   return (
-    <ResponsiveContext.Provider value={state}>
+    <ResponsiveContext.Provider value={value}>
       {children}
     </ResponsiveContext.Provider>
   );
