@@ -12,6 +12,7 @@ type BannerTileMediaProps = {
 type ResponsiveViewStyle = StyleProp<ViewStyle> & {
   width?: string | number;
 };
+
 /**
  * Renders the media of a Banner Tile.
  *
