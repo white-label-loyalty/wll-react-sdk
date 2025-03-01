@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
-import { BannerTileConfig } from '../../../types/tile';
+import { BannerTileConfig, CTALinkTarget } from '../../../types/tile';
 import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
@@ -27,7 +27,7 @@ export const BannerTileCTA = (): JSX.Element | null => {
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
   const hint = ctaLink
-    ? ctaLinkTarget === 'NEW_WINDOW'
+    ? ctaLinkTarget === CTALinkTarget.newWindow
       ? `Opens ${ctaLink} in a new window`
       : `Takes you to ${ctaLink}`
     : '';
