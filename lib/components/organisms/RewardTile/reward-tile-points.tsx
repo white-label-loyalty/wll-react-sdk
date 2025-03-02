@@ -6,21 +6,27 @@ import { Row, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
 
+/**
+ * Renders the points value of a Reward Tile.
+ *
+ * @returns JSX.Element or null if price should not be shown or is zero/undefined
+ */
 export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
-  const { configuration } = useTileContext();
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
   const {
-    showPrice,
-    price,
+    showPrice = true,
+    price = 0,
     pointsMultiplier = 1,
     pointsPrefix = '',
     pointsSuffix = 'pts',
-  } = configuration as RewardTileConfig;
+  } = tileContext.configuration as RewardTileConfig;
 
-  // Exit early if price is not shown or undefined
   if (!showPrice || price === undefined || price === 0) return null;
 
-  // Calculate points
   const calculatedPoints = applyMultiplier(price, pointsMultiplier);
 
   const accessibilityLabel = getPointsLabel(
@@ -33,7 +39,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   return (
     <View
       testID="reward-tile-points"
-      accessible
+      accessibilityRole="text"
       accessibilityLabel={accessibilityLabel}
     >
       <Row align="center" justify="start" style={{ marginTop: 8 }}>
