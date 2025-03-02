@@ -2,10 +2,9 @@
 
 exports[`<Section/> matches snapshot 1`] = `
 <div>
-  <section
+  <div
     aria-label="Section: Elite Member Benefits"
     class="css-view-175oi2r r-marginBottom-1c6w074 r-marginInline-f8sm7e r-maxWidth-q90dru r-width-13qz1uu"
-    role="region"
   >
     <div
       class="css-view-175oi2r"
@@ -122,6 +121,6 @@ exports[`<Section/> matches snapshot 1`] = `
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>
 `;

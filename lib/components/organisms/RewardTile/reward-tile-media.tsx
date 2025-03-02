@@ -19,7 +19,7 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
  * Renders the media for a Reward Tile.
  *
  * @param props {RewardTileMediaProps} - Component props
- * @param isArtworkOnly {boolean} - Whether the media should be rendered as an artwork only component
+ * @param props.isArtworkOnly {boolean} - Whether the media should be rendered as an artwork only component
  * @returns JSX.Element or null if no artwork URL is present or artwork should not be shown
  */
 export const RewardTileMedia = ({
