@@ -4,10 +4,19 @@ import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardCategoryTileStyles } from './styles';
 
+/**
+ * Renders the background media for a Reward Category Tile.
+ *
+ * @returns JSX.Element or null if no artwork URL is present
+ */
 export const RewardCategoryMedia = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
-  const { configuration } = useTileContext();
-  const { artworkUrl, name } = configuration as RewardCategoryTileConfig;
+  const tileContext = useTileContext();
+
+  if (!tileContext.configuration) return null;
+
+  const { artworkUrl, name = 'Reward' } =
+    tileContext.configuration as RewardCategoryTileConfig;
 
   if (!artworkUrl) return null;
 
@@ -17,8 +26,7 @@ export const RewardCategoryMedia = (): JSX.Element | null => {
       source={{ uri: artworkUrl }}
       style={styles.background}
       alt={`Reward category image for ${name}`}
-      accessibilityElementsHidden={true}
-      importantForAccessibility="no-hide-descendants"
+      accessibilityRole="image"
     />
   );
 };
