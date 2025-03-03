@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImagePropsNoSource } from '../../../types/common';
 import { ContentTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import ProgressiveImage from '../ProgressiveImage';
 import { useTileContext } from './index';
 import { baseStyles, useBaseTileStyles } from './styles';
@@ -16,7 +17,7 @@ export const BaseTileMedia = (
 ): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { artworkUrl, title = '' } =
     tileContext.configuration as ContentTileConfig;

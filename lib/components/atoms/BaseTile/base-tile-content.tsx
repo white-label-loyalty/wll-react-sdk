@@ -5,6 +5,7 @@ import { useTileContext } from '.';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { WithChildren } from '../../../types/helpers';
 import { ContentTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { baseStyles } from './styles';
 
 type BaseTileContentProps = WithChildren;
@@ -21,7 +22,7 @@ export const BaseTileContent = ({
 }: BaseTileContentProps): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { artworkUrl } = tileContext.configuration as ContentTileConfig;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { applyMultiplier, getPointsLabel } from '../../../utils/pointsHelpers';
 import { Row, Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -15,7 +16,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const {
     showPrice = true,

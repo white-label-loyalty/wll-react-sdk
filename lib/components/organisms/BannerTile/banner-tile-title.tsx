@@ -1,5 +1,6 @@
 import React from 'react';
 import { BannerTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 import { useBannerTileStyles } from './styles';
@@ -13,7 +14,7 @@ export const BannerTileTitle = (): JSX.Element | null => {
   const styles = useBannerTileStyles();
   const bannerContext = useBannerContext();
 
-  if (!bannerContext || !bannerContext.configuration) return null;
+  if (!isContextValid(bannerContext)) return null;
 
   const { title } = bannerContext.configuration as BannerTileConfig;
 
