@@ -11,9 +11,10 @@ import { useRewardCategoryTileStyles } from './styles';
  */
 export const RewardCategoryMedia = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
+
   const tileContext = useTileContext();
 
-  if (!tileContext.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
   const { artworkUrl, name = 'Reward' } =
     tileContext.configuration as RewardCategoryTileConfig;

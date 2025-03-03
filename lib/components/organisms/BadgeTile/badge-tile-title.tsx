@@ -12,9 +12,12 @@ import { useBadgeTileStyles } from './styles';
  */
 export const BadgeTileTitle = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
-  const tile = useTileContext();
-  const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, name, emptyBadgeMessage, type } = configuration;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { count, name, emptyBadgeMessage, type } =
+    tileContext.configuration as BadgeTileConfig;
 
   const displayText =
     type === BadgeTileType.Specific

@@ -14,11 +14,12 @@ import { baseStyles, useBaseTileStyles } from './styles';
 export const BaseTileMedia = (
   props: ImagePropsNoSource
 ): JSX.Element | null => {
-  const tile = useTileContext();
+  const tileContext = useTileContext();
 
-  if (!tile || !tile.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
-  const { artworkUrl, title = '' } = tile.configuration as ContentTileConfig;
+  const { artworkUrl, title = '' } =
+    tileContext.configuration as ContentTileConfig;
   const styles = useBaseTileStyles();
 
   if (!artworkUrl) return null;

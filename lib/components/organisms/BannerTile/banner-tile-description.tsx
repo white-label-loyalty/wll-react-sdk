@@ -11,11 +11,11 @@ import { useBannerTileStyles } from './styles';
  */
 export const BannerTileDescription = (): JSX.Element | null => {
   const styles = useBannerTileStyles();
-  const { configuration } = useBannerContext();
+  const bannerContext = useBannerContext();
 
-  if (!configuration) return null;
+  if (!bannerContext || !bannerContext.configuration) return null;
 
-  const { description } = configuration as BannerTileConfig;
+  const { description } = bannerContext.configuration as BannerTileConfig;
 
   if (!description) return null;
 

@@ -10,9 +10,12 @@ import { useTileContext } from '../../atoms/BaseTile';
  * @returns JSX.Element or null if description is not present
  */
 export const BadgeTileDescription = (): JSX.Element | null => {
-  const tile = useTileContext();
-  const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, description, type } = configuration;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { count, description, type } =
+    tileContext.configuration as BadgeTileConfig;
 
   if (!description) return null;
 

@@ -4,8 +4,11 @@ import { BaseTile } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
 export const ContentTileHeader = (): JSX.Element | null => {
-  const tile = useTileContext();
-  const { title } = tile.configuration as ContentTileConfig;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { title } = tileContext.configuration as ContentTileConfig;
 
   if (!title) return null;
 

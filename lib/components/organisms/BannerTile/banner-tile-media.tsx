@@ -25,11 +25,11 @@ export const BannerTileMedia = ({
   isArtworkOnly,
 }: BannerTileMediaProps): JSX.Element | null => {
   const styles = useBannerTileStyles();
-  const { configuration } = useBannerContext();
+  const bannerContext = useBannerContext();
 
-  if (!configuration) return null;
+  if (!bannerContext || !bannerContext.configuration) return null;
 
-  const { artworkUrl, title } = configuration as BannerTileConfig;
+  const { artworkUrl, title } = bannerContext.configuration as BannerTileConfig;
 
   if (!artworkUrl) return null;
 

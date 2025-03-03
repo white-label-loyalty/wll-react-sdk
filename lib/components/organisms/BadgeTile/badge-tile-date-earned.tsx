@@ -17,11 +17,13 @@ import { useBadgeTileStyles } from './styles';
  */
 export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
-  const tile = useTileContext();
-  const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
-    configuration;
+  const tileContext = useTileContext();
   const { theme } = useWllSdk();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
+    tileContext.configuration as BadgeTileConfig;
 
   // Don't show for Latest type with count=0
   if (type === BadgeTileType.Latest && count === 0) {

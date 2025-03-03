@@ -19,7 +19,7 @@ export const PointsTileMedia = ({
 }: PointsTileMediaProps): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
   const { artworkUrl, title = 'Points' } =
     tileContext.configuration as PointsTileConfig;

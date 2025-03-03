@@ -19,13 +19,13 @@ type BaseTileContentProps = WithChildren;
 export const BaseTileContent = ({
   children,
 }: BaseTileContentProps): JSX.Element | null => {
-  const tile = useTileContext();
+  const tileContext = useTileContext();
 
-  if (!tile || !tile.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
-  const { artworkUrl } = tile.configuration as ContentTileConfig;
+  const { artworkUrl } = tileContext.configuration as ContentTileConfig;
 
-  const sizeInfo = useTileSize(tile);
+  const sizeInfo = useTileSize(tileContext);
 
   if (!sizeInfo) return null;
 

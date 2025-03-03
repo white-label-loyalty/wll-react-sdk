@@ -16,16 +16,16 @@ type SafeTileConfig = SafeConfig<ContentTileConfig, 'title' | 'artworkUrl'>;
  */
 
 export const BaseTileTitle = (): JSX.Element | null => {
-  const tile = useTileContext();
+  const tileContext = useTileContext();
   const sdk = useWllSdk();
 
-  if (!tile || !tile.configuration || !sdk) return null;
+  if (!tileContext || !tileContext.configuration || !sdk) return null;
 
-  const config = tile.configuration as SafeTileConfig;
+  const config = tileContext.configuration as SafeTileConfig;
 
   const { title, ctaLink = '', artworkUrl } = config;
 
-  const sizeInfo = useTileSize(tile);
+  const sizeInfo = useTileSize(tileContext);
   if (!sizeInfo) return null;
 
   const { isHalfSize } = sizeInfo;

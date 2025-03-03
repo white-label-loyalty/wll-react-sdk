@@ -27,15 +27,15 @@ type BaseTileBodyProps = Omit<TextProps, 'style'> & {
  * @returns {JSX.Element|null} The rendered body text or null if conditions for display are not met
  */
 export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
-  const tile = useTileContext();
+  const tileContext = useTileContext();
   const responsive = useResponsive();
 
-  if (!tile || !tile.configuration || !responsive) return null;
+  if (!tileContext || !tileContext.configuration || !responsive) return null;
 
   const { isDesktop, isTablet } = responsive;
-  const { body, artworkUrl } = tile.configuration as ContentTileConfig;
+  const { body, artworkUrl } = tileContext.configuration as ContentTileConfig;
 
-  const sizeInfo = useTileSize(tile);
+  const sizeInfo = useTileSize(tileContext);
   if (!sizeInfo) return null;
 
   const { isHalfSize } = sizeInfo;

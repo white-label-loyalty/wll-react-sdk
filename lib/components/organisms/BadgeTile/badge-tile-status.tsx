@@ -13,9 +13,11 @@ import { useBadgeTileStyles } from './styles';
  */
 export const BadgeTileStatus = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
-  const tile = useTileContext();
-  const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, type } = configuration;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { count, type } = tileContext.configuration as BadgeTileConfig;
 
   if (type !== BadgeTileType.Specific || count === 1) {
     return null;
