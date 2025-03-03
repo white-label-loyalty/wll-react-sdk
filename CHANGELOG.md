@@ -1,3 +1,12 @@
+## [1.0.63](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.62...v1.0.63) (2025-03-03)
+
+
+### Bug Fixes
+
+* cleanup code spacing for better readability ([35dc9c8](https://github.com/white-label-loyalty/wll-react-sdk/commit/35dc9c8b6dcea5df2b1ef6c1bf0db9b747388b15))
+
+
+
 ## [1.0.62](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.61...v1.0.62) (2025-03-03)
 
 
