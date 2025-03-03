@@ -3,6 +3,12 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
+/**
+ * Custom hook that returns the styles for the BadgeTile component.
+ * Applies responsive styling based on the current device.
+ *
+ * @returns StyleSheet styles for the BadgeTile component
+ */
 export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();

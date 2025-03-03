@@ -25,10 +25,19 @@ type GroupEmptyStateProps = {
   message: string;
 };
 
+/**
+ * Context for providing group data to child components
+ */
 export const GroupContext = createContext<GroupContextType | undefined>(
   undefined
 );
 
+/**
+ * Custom hook to access the GroupContext
+ *
+ * @returns {GroupContextType} The group context data
+ * @throws {Error} If used outside of a GroupProvider
+ */
 export const useGroupContext = (): GroupContextType => {
   const context = useContext(GroupContext);
   if (!context) {
@@ -37,35 +46,103 @@ export const useGroupContext = (): GroupContextType => {
   return context;
 };
 
-// Custom Hook for Group Data
+/**
+ * Custom hook to fetch and manage group data
+ *
+ * @param {string} id - The ID of the group to fetch
+ * @returns {Object} Object containing group data, loading state, and any error
+ */
 const useGroupData = (id: string) => {
-  const { getGroupByID } = useWllSdk();
+  const sdk = useWllSdk();
   const [groupData, setGroupData] = useState<TGroup | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchGroup = useCallback(async () => {
+    if (!id || !sdk || !sdk.getGroupByID) {
+      setError('Unable to fetch group data: invalid configuration');
+      setIsLoading(false);
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
     try {
-      const response = await getGroupByID(id);
-      if (response.status === 'success' && response.data) {
+      const response = await sdk.getGroupByID(id);
+      if (response && response.status === 'success' && response.data) {
         setGroupData(response.data);
       } else {
-        setError(response.error || 'Failed to fetch group data.');
+        setError((response && response.error) || 'Failed to fetch group data.');
       }
     } catch (err) {
       setError('Failed to fetch group data. Please try again later.');
+      console.error('Error fetching group:', err);
     } finally {
       setIsLoading(false);
     }
-  }, [id, getGroupByID]);
+  }, [id, sdk]);
 
   useEffect(() => {
     fetchGroup();
   }, [fetchGroup]);
 
   return { groupData, isLoading, error };
+};
+
+/**
+ * Component to display an empty state with a message
+ *
+ * @param {GroupEmptyStateProps} props - Component props
+ * @param {string} props.message - Message to display
+ * @returns {JSX.Element} The empty state component
+ */
+export const GroupEmptyState = ({
+  message,
+}: GroupEmptyStateProps): JSX.Element => (
+  <View
+    style={commonStyles.emptyContainer}
+    accessible
+    accessibilityLabel={`Empty state: ${message}`}
+  >
+    <Text variant="body">{message}</Text>
+  </View>
+);
+
+/**
+ * Component to render all sections in a group
+ *
+ * @returns {JSX.Element} The sections component
+ */
+export const GroupSections = (): JSX.Element => {
+  const { groupData } = useGroupContext();
+
+  if (!groupData || !groupData.sections || groupData.sections.length === 0) {
+    return <GroupEmptyState message="This group doesn't have any sections" />;
+  }
+
+  // Filter out inactive sections and null/undefined values before sorting
+  const activeSections = groupData.sections.filter(
+    (section) => section && section.active
+  );
+
+  if (activeSections.length === 0) {
+    return (
+      <GroupEmptyState message="This group doesn't have any active sections" />
+    );
+  }
+
+  const sortedSections = sortByPriority(activeSections);
+
+  return (
+    <View
+      accessible
+      accessibilityLabel={`Group: ${groupData.name || 'Unnamed group'}`}
+    >
+      {sortedSections.map((section) => (
+        <Section key={section.id} section={section} />
+      ))}
+    </View>
+  );
 };
 
 /**
@@ -76,17 +153,25 @@ const useGroupData = (id: string) => {
  * loading, errors, and empty states, providing a complete page experience for
  * viewing group content.
  *
- * @param id - The unique identifier of the group to fetch and display.
+ * @param {GroupProps} props - Component props
+ * @param {string} props.id - The unique identifier of the group to fetch and display
+ * @returns {JSX.Element|null} The rendered group or null if invalid ID
  */
-
 const Group = ({ id }: GroupProps): JSX.Element | null => {
-  if (!id) return null;
+  if (!id) {
+    console.warn('Group component requires id prop');
+    return null;
+  }
 
   const { groupData, isLoading, error } = useGroupData(id);
 
   if (isLoading) {
     return (
-      <View style={commonStyles.emptyContainer}>
+      <View
+        style={commonStyles.emptyContainer}
+        accessible
+        accessibilityLabel="Loading group data"
+      >
         <Skeleton />
       </View>
     );
@@ -106,31 +191,3 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
 };
 
 export default Group;
-
-export const GroupSections = (): JSX.Element => {
-  const { groupData } = useGroupContext();
-
-  if (!groupData.sections || groupData.sections.length === 0) {
-    return <GroupEmptyState message={"This group doesn't have any sections"} />;
-  }
-
-  // Filter out inactive sections before sorting
-  const activeSections = groupData.sections.filter((section) => section.active);
-  const sortedSections = sortByPriority(activeSections);
-
-  return (
-    <View>
-      {sortedSections.map((section) => (
-        <Section key={section.id} section={section} />
-      ))}
-    </View>
-  );
-};
-
-export const GroupEmptyState = ({
-  message,
-}: GroupEmptyStateProps): JSX.Element => (
-  <View style={commonStyles.emptyContainer}>
-    <Text variant="body">{message}</Text>
-  </View>
-);

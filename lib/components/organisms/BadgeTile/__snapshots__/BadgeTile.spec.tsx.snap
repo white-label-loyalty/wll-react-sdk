@@ -4,7 +4,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
 <div>
   <button
     aria-disabled="true"
-    aria-label="undefined"
+    aria-label="Tile"
     class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     disabled=""
     role="button"

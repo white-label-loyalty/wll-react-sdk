@@ -14,7 +14,7 @@ type BadgeTileProps = {
 
 /**
  * The main BadgeTile component.
- *
+ * @returns JSX.Element or null if tile is not active or tileHeight is not full.
  * This component renders a badge tile with optional media, status, title, description, and date earned.
  */
 const BadgeTileRoot = ({ tile }: BadgeTileProps): JSX.Element | null => {

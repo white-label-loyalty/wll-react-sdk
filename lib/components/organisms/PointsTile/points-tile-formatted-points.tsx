@@ -7,30 +7,34 @@ import { useTileContext } from '../../atoms/BaseTile';
 import { Row } from '../../atoms/Primatives';
 import { usePointsTileStyles } from './styles';
 
-const TextProps = {
-  variant: 'caption' as const,
-  accessibilityElementsHidden: true,
-  importantForAccessibility: 'no-hide-descendants' as const,
-};
-
+/**
+ * Renders formatted points value for a Points Tile.
+ *
+ * @returns JSX.Element or null if points are undefined or zero
+ */
 export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
-  const { configuration } = useTileContext();
+  const tileContext = useTileContext();
+
+  if (!tileContext.configuration) return null;
+
   const {
     pointsMultiplier = 1,
     pointsPrefix = '',
     pointsSuffix = 'pts',
-    points,
-  } = configuration as PointsTileConfig;
+    points = 0,
+  } = tileContext.configuration as PointsTileConfig;
 
   if (points === undefined || points === 0) return null;
+
   const calculatedPoints = applyMultiplier(points, pointsMultiplier);
-  const fullPointsText = `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`;
+  const fullPointsText =
+    `${pointsPrefix}${calculatedPoints} ${pointsSuffix}`.trim();
 
   return (
     <View
       testID="points-tile-points"
-      accessible
+      accessibilityRole="text"
       accessibilityLabel={`Points value: ${fullPointsText}`}
     >
       <Row align="center" justify="start">

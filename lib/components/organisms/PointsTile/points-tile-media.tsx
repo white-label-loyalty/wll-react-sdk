@@ -9,11 +9,20 @@ type PointsTileMediaProps = {
   isFullSize: boolean;
 };
 
+/**
+ * Renders the media of a Points Tile.
+ *
+ * @returns JSX.Element or null if media is not present
+ */
 export const PointsTileMedia = ({
   isFullSize,
 }: PointsTileMediaProps): JSX.Element | null => {
-  const { configuration } = useTileContext();
-  const { artworkUrl, title } = configuration as PointsTileConfig;
+  const tileContext = useTileContext();
+
+  if (!tileContext.configuration) return null;
+
+  const { artworkUrl, title = 'Points' } =
+    tileContext.configuration as PointsTileConfig;
   const styles = usePointsTileStyles(isFullSize);
 
   if (!artworkUrl) return null;
@@ -21,17 +30,14 @@ export const PointsTileMedia = ({
   return (
     <View
       testID="points-tile-media"
-      accessible
-      role="img"
       style={styles.imageContainer}
+      accessibilityRole="image"
+      accessibilityLabel={`Points tile image for ${title}`}
     >
       <Image
         source={{ uri: artworkUrl }}
         style={styles.image}
         resizeMode={isFullSize ? 'cover' : 'contain'}
-        accessibilityElementsHidden={true}
-        accessibilityLabel={`Points tile image for ${title}`}
-        importantForAccessibility="no-hide-descendants"
       />
     </View>
   );

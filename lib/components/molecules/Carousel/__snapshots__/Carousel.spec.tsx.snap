@@ -55,31 +55,23 @@ exports[`<Carousel /> matches snapshot 1`] = `
                   class="css-view-175oi2r"
                   style="flex: 1;"
                 >
-                  <div
+                  <h1
                     aria-label="Second Banner"
-                    class="css-view-175oi2r"
+                    class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    data-testid="banner-tile-title"
+                    dir="auto"
+                    role="heading"
+                    style="color: rgb(0, 0, 0);"
                   >
-                    <div
-                      class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
-                      data-testid="banner-tile-title"
-                      dir="auto"
-                      style="color: rgb(0, 0, 0);"
-                    >
-                      Second Banner
-                    </div>
-                  </div>
+                    Second Banner
+                  </h1>
                   <div
                     aria-label="Second Banner Description"
-                    class="css-view-175oi2r"
+                    class="css-text-146c3p1 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
+                    dir="auto"
                   >
-                    <div
-                      class="css-text-146c3p1 r-fontSize-1i10wst r-marginBottom-zd98yo"
-                      dir="auto"
-                      style="color: rgb(51, 51, 51);"
-                    >
-                      Second Banner Description
-                    </div>
+                    Second Banner Description
                   </div>
                 </div>
               </button>
@@ -107,31 +99,23 @@ exports[`<Carousel /> matches snapshot 1`] = `
                   class="css-view-175oi2r"
                   style="flex: 1;"
                 >
-                  <div
+                  <h1
                     aria-label="First Banner"
-                    class="css-view-175oi2r"
+                    class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    data-testid="banner-tile-title"
+                    dir="auto"
+                    role="heading"
+                    style="color: rgb(0, 0, 0);"
                   >
-                    <div
-                      class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
-                      data-testid="banner-tile-title"
-                      dir="auto"
-                      style="color: rgb(0, 0, 0);"
-                    >
-                      First Banner
-                    </div>
-                  </div>
+                    First Banner
+                  </h1>
                   <div
                     aria-label="First Banner Description"
-                    class="css-view-175oi2r"
+                    class="css-text-146c3p1 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
+                    dir="auto"
                   >
-                    <div
-                      class="css-text-146c3p1 r-fontSize-1i10wst r-marginBottom-zd98yo"
-                      dir="auto"
-                      style="color: rgb(51, 51, 51);"
-                    >
-                      First Banner Description
-                    </div>
+                    First Banner Description
                   </div>
                 </div>
               </button>

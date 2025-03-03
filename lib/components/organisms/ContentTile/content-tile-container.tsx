@@ -1,8 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import { WithChildren } from '../../../types/helpers';
 import { BaseTile } from '../../atoms';
 
 export const ContentTileContainer = ({
   children,
-}: {
-  children: ReactNode;
-}): JSX.Element => <BaseTile.Container>{children}</BaseTile.Container>;
+}: WithChildren): JSX.Element => (
+  <BaseTile.Container>{children}</BaseTile.Container>
+);

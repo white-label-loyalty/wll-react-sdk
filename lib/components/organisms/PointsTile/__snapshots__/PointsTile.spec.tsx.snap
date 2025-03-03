@@ -13,12 +13,12 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
     type="button"
   >
     <div
+      aria-label="Points tile image for Available Points"
       class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
       data-testid="points-tile-media"
       role="img"
     >
       <div
-        aria-label="Points tile image for Available Points"
         class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-height-1pi2tsx r-position-u8s1d r-width-13qz1uu"
       >
         <div
@@ -26,7 +26,7 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
           style="background-image: url(https://example.com/points.png);"
         />
         <img
-          alt="Points tile image for Available Points"
+          alt=""
           class="css-accessibilityImage-9pa8cd"
           draggable="false"
           src="https://example.com/points.png"
@@ -39,20 +39,16 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
       <div
         class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-width-13qz1uu"
       >
-        <header
+        <h1
           aria-label="Available Points"
-          class="css-view-175oi2r"
+          class="css-text-146c3p1"
           data-testid="points-tile-title"
-          role="banner"
+          dir="auto"
+          role="heading"
+          style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
         >
-          <div
-            class="css-text-146c3p1"
-            dir="auto"
-            style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
-          >
-            Available Points
-          </div>
-        </header>
+          Available Points
+        </h1>
         <div
           aria-label="Points value: 1000  pts"
           class="css-view-175oi2r"

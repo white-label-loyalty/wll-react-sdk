@@ -1,29 +1,30 @@
 import React from 'react';
-import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
+/**
+ * Renders the title of a Points Tile.
+ *
+ * @returns JSX.Element or null if no title is present
+ */
 export const PointsTileTitle = (): JSX.Element | null => {
-  const { configuration } = useTileContext();
-  const { title } = configuration as PointsTileConfig;
+  const tileContext = useTileContext();
+
+  if (!tileContext.configuration) return null;
+
+  const { title } = tileContext.configuration as PointsTileConfig;
 
   if (!title) return null;
 
   return (
-    <View
+    <Text
+      variant="eyebrow"
       testID="points-tile-title"
-      accessible
+      accessibilityRole="header"
       accessibilityLabel={title}
-      role="banner"
     >
-      <Text
-        variant="eyebrow"
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-      >
-        {title}
-      </Text>
-    </View>
+      {title}
+    </Text>
   );
 };

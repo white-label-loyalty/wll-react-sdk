@@ -3,17 +3,18 @@
 exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
 <div>
   <button
-    aria-label="undefined"
+    aria-label="Tile"
     class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="button"
     style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
     tabindex="0"
     type="button"
   >
-    <div
+    <h1
       aria-label="Reward category: Restaurant Rewards"
       class="css-view-175oi2r r-alignItems-1awozwy r-height-17sp8yy r-justifyContent-1777fci r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-mhe3cw"
       data-testid="reward-category-header"
+      role="heading"
       style="background-color: rgb(57, 46, 215);"
     >
       <div
@@ -23,7 +24,7 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
       >
         Restaurant Rewards
       </div>
-    </div>
+    </h1>
     <div
       class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-height-1pi2tsx r-objectFit-1t7uo4s r-position-u8s1d r-width-13qz1uu"
       style="background-color: rgba(57, 46, 215, 0.2);"
@@ -36,6 +37,7 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
         aria-label="Reward category image for Restaurant Rewards"
         class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
         data-testid="reward-category-media"
+        role="img"
         style="opacity: 0;"
       >
         <div

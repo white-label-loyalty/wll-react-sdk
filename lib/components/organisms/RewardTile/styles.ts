@@ -3,6 +3,12 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
+/**
+ * Custom hook that returns the styles for the RewardTile component.
+ * Applies responsive styling based on the current device.
+ *
+ * @returns StyleSheet styles for the RewardTile component
+ */
 export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();

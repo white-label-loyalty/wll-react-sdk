@@ -1,25 +1,30 @@
 import React from 'react';
-import { View } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
+/**
+ * Renders the summary of a Reward Tile.
+ *
+ * @returns JSX.Element or null if no summary is present
+ */
 export const RewardTileSummary = (): JSX.Element | null => {
-  const { configuration } = useTileContext();
-  const { summary } = configuration as RewardTileConfig;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { summary } = tileContext.configuration as RewardTileConfig;
 
   if (!summary) return null;
 
   return (
-    <View accessible accessibilityLabel={summary}>
-      <Text
-        variant="body"
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-        testID="reward-tile-summary"
-      >
-        {summary}
-      </Text>
-    </View>
+    <Text
+      variant="body"
+      accessibilityRole="text"
+      accessibilityLabel={summary}
+      testID="reward-tile-summary"
+    >
+      {summary}
+    </Text>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
-import { Tile } from '../../../types/tile';
+import { PointsTileConfig, Tile } from '../../../types/tile';
 import { BaseTile, Column } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { PointsTileFormattedPoints } from './points-tile-formatted-points';
@@ -16,10 +16,14 @@ type PointsTileProps = {
 /**
  * The PointsTile component renders a tile with media, title, and formatted points.
  *
- * @param tile - The tile data to render.
+ * @param props - Component props
+ * @returns JSX.Element or null if tile is inactive or missing required props
  */
 const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
-  if (!tile || !tile.active) return null;
+  if (!tile || !tile.active || !tile.configuration) return null;
+
+  const config = tile.configuration as PointsTileConfig;
+  if (!config) return null;
 
   const { isFullSize } = useTileSize(tile);
   const styles = usePointsTileStyles(isFullSize);

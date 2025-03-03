@@ -1,21 +1,36 @@
 import React from 'react';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
-import { BannerTileConfig } from '../../../types/tile';
+import { BannerTileConfig, CTALinkTarget } from '../../../types/tile';
 import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
+/**
+ * Renders the call to action of a Banner Tile.
+ *
+ * @returns JSX.Element or null if no text or required props are present
+ */
 export const BannerTileCTA = (): JSX.Element | null => {
   const tile = useBannerContext();
-  const { ctaText, ctaLink, ctaLinkTarget } =
-    tile.configuration as BannerTileConfig;
+
+  if (!tile) return null;
+
+  if (!tile.configuration) return null;
+
+  const {
+    ctaText = '',
+    ctaLink = '',
+    ctaLinkTarget,
+  } = tile.configuration as BannerTileConfig;
+
+  if (!ctaText || !ctaLink) return null;
+
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
-  if (!ctaText) return null;
-
-  const hint =
-    ctaLinkTarget === 'NEW_WINDOW'
+  const hint = ctaLink
+    ? ctaLinkTarget === CTALinkTarget.newWindow
       ? `Opens ${ctaLink} in a new window`
-      : `Takes you to ${ctaLink}`;
+      : `Takes you to ${ctaLink}`
+    : '';
 
   return (
     <Button

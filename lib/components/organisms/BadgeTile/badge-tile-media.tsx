@@ -10,7 +10,11 @@ export type BadgeTileMediaProps = {
   children?: React.ReactNode;
   alt?: string;
 } & Omit<React.ComponentProps<typeof ProgressiveImage>, 'source' | 'alt'>;
-
+/**
+ * Renders the media for a Badge Tile.
+ *
+ * @returns JSX.Element or null if media is not present
+ */
 export const BadgeTileMedia = ({
   children,
   alt,
