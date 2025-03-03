@@ -1,5 +1,6 @@
 import React from 'react';
 import { PointsTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
@@ -11,7 +12,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 export const PointsTileTitle = (): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { title } = tileContext.configuration as PointsTileConfig;
 

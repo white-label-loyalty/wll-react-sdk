@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
@@ -12,7 +13,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 export const BadgeTileDescription = (): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { count, description, type } =
     tileContext.configuration as BadgeTileConfig;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { BannerTileConfig, CTALinkTarget } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { Button } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 
@@ -12,7 +13,7 @@ import { useBannerContext } from '../../atoms/BaseBanner';
 export const BannerTileCTA = (): JSX.Element | null => {
   const bannerContext = useBannerContext();
 
-  if (!bannerContext || !bannerContext.configuration) return null;
+  if (!isContextValid(bannerContext)) return null;
 
   const {
     ctaText = '',

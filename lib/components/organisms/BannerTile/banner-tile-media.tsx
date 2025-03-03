@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { BannerTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { ProgressiveImage } from '../../atoms';
 import { useBannerContext } from '../../atoms/BaseBanner';
 import { useBannerTileStyles } from './styles';
@@ -27,7 +28,7 @@ export const BannerTileMedia = ({
   const styles = useBannerTileStyles();
   const bannerContext = useBannerContext();
 
-  if (!bannerContext || !bannerContext.configuration) return null;
+  if (!isContextValid(bannerContext)) return null;
 
   const { artworkUrl, title } = bannerContext.configuration as BannerTileConfig;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, View } from 'react-native';
 
 import { PointsTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { useTileContext } from '../../atoms/BaseTile';
 import { usePointsTileStyles } from './styles';
 
@@ -19,7 +20,7 @@ export const PointsTileMedia = ({
 }: PointsTileMediaProps): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { artworkUrl, title = 'Points' } =
     tileContext.configuration as PointsTileConfig;

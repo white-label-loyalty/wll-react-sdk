@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import {
   getReadableTextColor,
   getStateColor,
@@ -20,7 +21,7 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const tileContext = useTileContext();
   const { theme } = useWllSdk();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
     tileContext.configuration as BadgeTileConfig;

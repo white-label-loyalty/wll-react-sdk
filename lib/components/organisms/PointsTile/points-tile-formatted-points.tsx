@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PointsTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { applyMultiplier } from '../../../utils/pointsHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -16,7 +17,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const {
     pointsMultiplier = 1,

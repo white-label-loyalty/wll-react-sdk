@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { RewardTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardTileStyles } from './styles';
@@ -28,7 +29,7 @@ export const RewardTileMedia = ({
   const styles = useRewardTileStyles();
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const {
     artworkUrl,

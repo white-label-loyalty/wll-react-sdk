@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { RewardCategoryTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useRewardCategoryTileStyles } from './styles';
@@ -17,7 +18,7 @@ export const RewardCategoryHeader = (): JSX.Element | null => {
 
   const tileContext = useTileContext();
 
-  if (!tileContext || !tileContext.configuration) return null;
+  if (!isContextValid(tileContext)) return null;
 
   const { showName = true, name = '' } =
     tileContext.configuration as RewardCategoryTileConfig;
