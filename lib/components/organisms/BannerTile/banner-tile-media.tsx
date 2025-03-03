@@ -10,9 +10,7 @@ type BannerTileMediaProps = {
   isArtworkOnly: boolean;
 };
 
-// ResponsiveViewStyle extends React Native's ViewStyle to support percentage based widths.
-// While React Native accepts percentage strings for width values at runtime,
-// TypeScript's ViewStyle type only allows numbers by default.
+// Extends ViewStyle to support percentage strings for width values, which React Native accepts at runtime but TypeScript doesn't type correctly
 type ResponsiveViewStyle = StyleProp<ViewStyle> & {
   width?: string | number;
 };
@@ -22,6 +20,7 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
  *
  * @returns JSX.Element or null if no media is present
  */
+
 export const BannerTileMedia = ({
   isArtworkOnly,
 }: BannerTileMediaProps): JSX.Element | null => {

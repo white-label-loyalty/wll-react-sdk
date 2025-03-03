@@ -52,11 +52,12 @@ export const useGroupContext = (): GroupContextType => {
  * @param {string} id - The ID of the group to fetch
  * @returns {Object} Object containing group data, loading state, and any error
  */
+
 const useGroupData = (id: string) => {
   const sdk = useWllSdk();
   const [groupData, setGroupData] = useState<TGroup | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchGroup = useCallback(async () => {
     if (!id || !sdk || !sdk.getGroupByID) {
@@ -96,6 +97,7 @@ const useGroupData = (id: string) => {
  * @param {string} props.message - Message to display
  * @returns {JSX.Element} The empty state component
  */
+
 export const GroupEmptyState = ({
   message,
 }: GroupEmptyStateProps): JSX.Element => (
@@ -113,6 +115,7 @@ export const GroupEmptyState = ({
  *
  * @returns {JSX.Element} The sections component
  */
+
 export const GroupSections = (): JSX.Element => {
   const { groupData } = useGroupContext();
 
@@ -157,6 +160,7 @@ export const GroupSections = (): JSX.Element => {
  * @param {string} props.id - The unique identifier of the group to fetch and display
  * @returns {JSX.Element|null} The rendered group or null if invalid ID
  */
+
 const Group = ({ id }: GroupProps): JSX.Element | null => {
   if (!id) {
     console.warn('Group component requires id prop');

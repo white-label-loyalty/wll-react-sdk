@@ -9,6 +9,7 @@ import { useTileContext } from '../../atoms/BaseTile';
  *
  * @returns JSX.Element or null if no title is present
  */
+
 export const PointsTileTitle = (): JSX.Element | null => {
   const tileContext = useTileContext();
 

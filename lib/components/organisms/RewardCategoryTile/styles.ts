@@ -9,6 +9,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
  *
  * @returns StyleSheet styles for the RewardCategory component
  */
+
 export const useRewardCategoryTileStyles = (): ReturnType<
   typeof StyleSheet.create
 > => {

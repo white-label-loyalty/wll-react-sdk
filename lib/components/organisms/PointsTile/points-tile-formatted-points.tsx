@@ -13,6 +13,7 @@ import { usePointsTileStyles } from './styles';
  *
  * @returns JSX.Element or null if points are undefined or zero
  */
+
 export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
   const tileContext = useTileContext();

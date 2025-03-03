@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Animated, StyleSheet, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 
-interface SkeletonTileProps {
+type SkeletonTileProps = {
   style?: ViewStyle;
-}
+};
 
 const SkeletonTile = ({ style }: SkeletonTileProps): JSX.Element => {
   const { theme } = useWllSdk();

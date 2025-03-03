@@ -12,6 +12,7 @@ import { useRewardTileStyles } from './styles';
  *
  * @returns JSX.Element or null if price should not be shown or is zero/undefined
  */
+
 export const RewardTilePoints = (): JSX.Element | null => {
   const styles = useRewardTileStyles();
   const tileContext = useTileContext();

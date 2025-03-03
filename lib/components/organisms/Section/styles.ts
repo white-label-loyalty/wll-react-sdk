@@ -10,6 +10,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
  *
  * @returns StyleSheet styles for the Section component
  */
+
 export const useSectionStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();

@@ -4,7 +4,10 @@ import { useTileContext } from '.';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { WithChildren } from '../../../types/helpers';
 import { ContentTileConfig } from '../../../types/tile';
-import { isContextValid } from '../../../utils/contextHelpers';
+import {
+  isContextValid,
+  shouldHideContentForHalfTile,
+} from '../../../utils/contextHelpers';
 import { useBaseTileStyles } from './styles';
 
 type BaseTileHeaderProps = WithChildren;
@@ -28,17 +31,14 @@ export const BaseTileHeader = ({
   const sizeInfo = useTileSize(tileContext);
   if (!sizeInfo) return null;
 
-  const { isHalfSize } = sizeInfo;
-
-  // For half tiles with an image, don't show header
-  if (isHalfSize && artworkUrl) return null;
+  if (shouldHideContentForHalfTile(sizeInfo, artworkUrl)) return null;
 
   const dynamicStyles = useBaseTileStyles();
 
   const combinedStyle: ViewStyle = {
     ...dynamicStyles.header,
-    marginTop: isHalfSize ? 0 : dynamicStyles.header.marginTop,
-    ...(isHalfSize ? { alignItems: 'center' } : {}),
+    marginTop: sizeInfo.isHalfSize ? 0 : dynamicStyles.header.marginTop,
+    ...(sizeInfo.isHalfSize ? { alignItems: 'center' } : {}),
   };
 
   return (

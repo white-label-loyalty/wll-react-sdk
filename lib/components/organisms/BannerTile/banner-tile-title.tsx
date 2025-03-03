@@ -10,6 +10,7 @@ import { useBannerTileStyles } from './styles';
  *
  * @returns JSX.Element or null if no title is present
  */
+
 export const BannerTileTitle = (): JSX.Element | null => {
   const styles = useBannerTileStyles();
   const bannerContext = useBannerContext();

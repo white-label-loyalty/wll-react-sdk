@@ -18,6 +18,7 @@ type BannerTileProps = {
  * @param configuration - The configuration object of the tile.
  * @returns `true` if the tile has no title, description, or CTA text.
  */
+
 const isArtworkOnly = (configuration?: BannerTileConfig): boolean => {
   if (!configuration) return true;
 
@@ -34,6 +35,7 @@ const isArtworkOnly = (configuration?: BannerTileConfig): boolean => {
  * @param {BannerTileProps} props - Component props
  * @returns {JSX.Element | null} Rendered component or null if tile is inactive
  */
+
 const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
@@ -54,6 +56,7 @@ const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
 /**
  * The BannerTile component with subcomponents attached.
  */
+
 export const BannerTile = Object.assign(BannerTileRoot, {
   Media: BannerTileMedia,
   Title: BannerTileTitle,

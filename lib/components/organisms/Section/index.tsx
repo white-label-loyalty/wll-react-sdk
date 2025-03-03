@@ -20,6 +20,7 @@ type SectionProps = {
 /**
  * SectionContext provides the current section data to child components.
  */
+
 export const SectionContext = createContext<SectionContextType | undefined>(
   undefined
 );
@@ -30,6 +31,7 @@ export const SectionContext = createContext<SectionContextType | undefined>(
  * @returns {SectionContextType} The section context value
  * @throws {Error} If used outside of a SectionProvider
  */
+
 export const useSectionContext = (): SectionContextType => {
   const context = useContext(SectionContext);
   if (!context) {
@@ -45,6 +47,7 @@ export const useSectionContext = (): SectionContextType => {
  * @param {string} [sectionId] - The ID of the section to fetch
  * @returns {Object} Object containing section data, loading state, and any error
  */
+
 const useSectionData = (
   section?: TSection,
   sectionId?: string
@@ -97,6 +100,7 @@ const useSectionData = (
  * @param {string} props.message - Message to display in the empty state
  * @returns {JSX.Element} The empty state component
  */
+
 const EmptyState = ({ message }: { message: string }): JSX.Element => (
   <View
     style={commonStyles.emptyContainer}
@@ -115,6 +119,7 @@ const EmptyState = ({ message }: { message: string }): JSX.Element => (
  * @param {string} [props.sectionId] - The ID of the section to fetch
  * @returns {JSX.Element|null} The rendered section or null if invalid props
  */
+
 const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
   const styles = useSectionStyles();
   const { sectionData, isLoading, error } = useSectionData(section, sectionId);

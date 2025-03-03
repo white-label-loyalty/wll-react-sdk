@@ -16,6 +16,7 @@ type RewardCategoryTileProps = {
  * @param {Tile} props.tile - The tile data to render
  * @returns {JSX.Element|null} Rendered component or null if tile is inactive or missing configuration
  */
+
 const RewardCategoryTileRoot = ({
   tile,
 }: RewardCategoryTileProps): JSX.Element | null => {

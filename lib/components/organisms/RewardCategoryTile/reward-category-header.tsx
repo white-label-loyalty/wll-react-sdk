@@ -12,6 +12,7 @@ import { useRewardCategoryTileStyles } from './styles';
  *
  * @returns JSX.Element or null if showName is false or name is not present
  */
+
 export const RewardCategoryHeader = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
   const { theme } = useWllSdk();

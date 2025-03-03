@@ -9,6 +9,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
  *
  * @returns StyleSheet styles for the PointsTile component
  */
+
 export const usePointsTileStyles = (
   isFullSize?: boolean
 ): {

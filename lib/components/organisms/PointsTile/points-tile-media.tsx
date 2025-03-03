@@ -15,6 +15,7 @@ type PointsTileMediaProps = {
  *
  * @returns JSX.Element or null if media is not present
  */
+
 export const PointsTileMedia = ({
   isFullSize,
 }: PointsTileMediaProps): JSX.Element | null => {

@@ -10,6 +10,7 @@ import { useRewardCategoryTileStyles } from './styles';
  *
  * @returns JSX.Element or null if no artwork URL is present
  */
+
 export const RewardCategoryMedia = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
 

@@ -9,6 +9,7 @@ import { useTileContext } from '../../atoms/BaseTile';
  *
  * @returns JSX.Element or null if no name is present
  */
+
 export const RewardTileTitle = (): JSX.Element | null => {
   const tileContext = useTileContext();
 

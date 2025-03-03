@@ -9,6 +9,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
  *
  * @returns StyleSheet styles for the BannerTile component
  */
+
 export const useBannerTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
