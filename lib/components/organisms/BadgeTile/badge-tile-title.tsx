@@ -5,6 +5,11 @@ import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
 
+/**
+ * Renders the title for a Badge Tile.
+ *
+ * @returns JSX.Element or null if name is not present
+ */
 export const BadgeTileTitle = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();

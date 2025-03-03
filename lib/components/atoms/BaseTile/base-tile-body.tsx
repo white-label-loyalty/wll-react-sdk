@@ -20,15 +20,29 @@ type BaseTileBodyProps = Omit<TextProps, 'style'> & {
   style?: TextStyle;
 };
 
+/**
+ * Renders the body text of a BaseTile component.
+ *
+ * @param {BaseTileBodyProps} props - Component props including text styling options
+ * @returns {JSX.Element|null} The rendered body text or null if conditions for display are not met
+ */
 export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
   const tile = useTileContext();
-  const { isDesktop, isTablet } = useResponsive();
-  const { body, artworkUrl } = tile.configuration as ContentTileConfig;
-  const { isHalfSize } = useTileSize(tile);
+  const responsive = useResponsive();
 
+  if (!tile || !tile.configuration || !responsive) return null;
+
+  const { isDesktop, isTablet } = responsive;
+  const { body, artworkUrl } = tile.configuration as ContentTileConfig;
+
+  const sizeInfo = useTileSize(tile);
+  if (!sizeInfo) return null;
+
+  const { isHalfSize } = sizeInfo;
+
+  // Don't show body for half tiles with image
   if ((isHalfSize && artworkUrl) || !body) return null;
 
-  // Helper function to determine the number of lines
   const getNumberOfLines = (): number | undefined => {
     if (!isHalfSize && !artworkUrl) return undefined;
     return isDesktop ? 3 : isTablet ? 4 : 3;
@@ -38,6 +52,7 @@ export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
     <Text
       variant="body"
       {...props}
+      accessibilityRole="text"
       accessibilityLabel={body}
       numberOfLines={getNumberOfLines()}
       testID="tile-body"

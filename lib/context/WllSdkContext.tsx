@@ -1,6 +1,5 @@
 import React, {
   createContext,
-  ReactNode,
   useCallback,
   useContext,
   useEffect,
@@ -9,6 +8,7 @@ import React, {
 } from 'react';
 import { useNavigation } from '../hooks/useNavigationHandler';
 import { TGroup } from '../types/group';
+import { WithChildren } from '../types/helpers';
 import { NavigationConfig } from '../types/navigation';
 import { TSection } from '../types/section';
 import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
@@ -55,8 +55,7 @@ type WllSdkContextType = ThemeContextType & {
     readonly config: SDKConfig;
   }>;
 
-type WllSdkProviderProps = {
-  children: ReactNode;
+type WllSdkProviderProps = WithChildren & {
   theme?: Partial<BaseThemeObject>;
   config: SDKConfig;
   navigationConfig?: NavigationConfig;

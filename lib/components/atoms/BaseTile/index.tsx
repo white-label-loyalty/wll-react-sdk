@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { FlexStyle, Pressable, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
@@ -11,6 +11,7 @@ import { BaseTileHeader } from './base-tile-header';
 import { BaseTileMedia } from './base-tile-media';
 import { BaseTileTitle } from './base-tile-title';
 
+import { WithChildren } from '../../../types/helpers';
 import { baseStyles, useBaseTileStyles } from './styles';
 
 /**
@@ -20,6 +21,9 @@ const TileContext = createContext<Tile | null>(null);
 
 /**
  * Custom hook to access the TileContext.
+ *
+ * @returns {Tile} The current tile from context
+ * @throws {Error} If used outside of a BaseTile
  */
 export const useTileContext = (): Tile => {
   const context = useContext(TileContext);
@@ -29,14 +33,12 @@ export const useTileContext = (): Tile => {
   return context;
 };
 
-type BaseTileProps = {
+type BaseTileProps = WithChildren & {
   tile: Tile;
-  children: ReactNode;
   style?: ViewStyle;
 };
 
-type BaseTileRootProps = {
-  children: ReactNode;
+type BaseTileRootProps = WithChildren & {
   style?: ViewStyle;
 };
 
@@ -46,19 +48,30 @@ type LayoutProps = FlexStyle & {
 
 /**
  * BaseTileContainer component to handle layout and pressable behavior.
+ *
+ * @param {BaseTileRootProps} props - Component props
+ * @returns {JSX.Element} The rendered BaseTileContainer
  */
 const BaseTileContainer = ({
   children,
   style,
 }: BaseTileRootProps): JSX.Element => {
   const tile = useTileContext();
-  const { theme } = useWllSdk();
-  const { isHalfSize } = useTileSize(tile);
-  const { ctaLink, ctaLinkTarget, title } =
-    tile.configuration as ContentTileConfig;
+  const sdk = useWllSdk();
+  const sizeInfo = useTileSize(tile);
+
+  const isHalfSize = sizeInfo?.isHalfSize || false;
+
+  const {
+    ctaLink = '',
+    ctaLinkTarget,
+    title = 'Tile',
+  } = tile.configuration as ContentTileConfig;
+
+  const theme = sdk?.theme || { surface: '#ffffff' };
+
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
-  // Dynamic layout and styles
   const layout: LayoutProps = {
     flexDirection: 'column',
     justifyContent: isHalfSize ? 'center' : 'flex-start',
@@ -84,8 +97,9 @@ const BaseTileContainer = ({
         tile.type !== 'REWARD' && tile.type !== 'REWARD_CATEGORY' && !ctaLink
       }
       accessible
-      role="button"
+      accessibilityRole="button"
       accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
+      accessibilityState={{ disabled: !ctaLink }}
     >
       {children}
     </Pressable>
@@ -94,11 +108,23 @@ const BaseTileContainer = ({
 
 /**
  * BaseTileRoot component to provide context and render children.
+ *
+ * @param {BaseTileProps} props - Component props
+ * @returns {JSX.Element|null} The rendered BaseTileRoot or null if no tile is provided
  */
-const BaseTileRoot = ({ tile, children }: BaseTileProps): JSX.Element => {
+const BaseTileRoot = ({
+  tile,
+  children,
+  style,
+}: BaseTileProps): JSX.Element | null => {
+  if (!tile) {
+    console.warn('BaseTile: No tile provided');
+    return null;
+  }
+
   return (
     <TileContext.Provider value={tile}>
-      <BaseTile.Container>{children}</BaseTile.Container>
+      <BaseTile.Container style={style}>{children}</BaseTile.Container>
     </TileContext.Provider>
   );
 };

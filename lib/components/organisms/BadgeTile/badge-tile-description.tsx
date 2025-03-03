@@ -4,6 +4,11 @@ import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
+/**
+ * Renders the description for a Badge Tile.
+ *
+ * @returns JSX.Element or null if description is not present
+ */
 export const BadgeTileDescription = (): JSX.Element | null => {
   const tile = useTileContext();
   const { configuration } = tile as { configuration: BadgeTileConfig };

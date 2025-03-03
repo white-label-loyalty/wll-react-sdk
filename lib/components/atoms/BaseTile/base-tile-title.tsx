@@ -1,17 +1,34 @@
 import React from 'react';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useTileSize } from '../../../hooks/useTileSize';
+import { SafeConfig } from '../../../types/helpers';
 import { ContentTileConfig } from '../../../types/tile';
 import Icon from '../Icon';
 import Text from '../Text';
 import { useTileContext } from './index';
 
+type SafeTileConfig = SafeConfig<ContentTileConfig, 'title' | 'artworkUrl'>;
+
+/**
+ * Renders the title of a BaseTile component.
+ *
+ * @returns {JSX.Element|null} The rendered title or null if conditions for display are not met
+ */
+
 export const BaseTileTitle = (): JSX.Element | null => {
   const tile = useTileContext();
-  const { theme } = useWllSdk();
-  const { title, ctaLink, artworkUrl } =
-    tile.configuration as ContentTileConfig;
-  const { isHalfSize } = useTileSize(tile);
+  const sdk = useWllSdk();
+
+  if (!tile || !tile.configuration || !sdk) return null;
+
+  const config = tile.configuration as SafeTileConfig;
+
+  const { title, ctaLink = '', artworkUrl } = config;
+
+  const sizeInfo = useTileSize(tile);
+  if (!sizeInfo) return null;
+
+  const { isHalfSize } = sizeInfo;
 
   // Don't show title for half tiles with image
   if ((isHalfSize && artworkUrl) || !title) return null;
@@ -20,6 +37,7 @@ export const BaseTileTitle = (): JSX.Element | null => {
     <>
       <Text
         variant="title"
+        accessibilityRole="header"
         accessibilityLabel={title}
         numberOfLines={1}
         testID="tile-title"
@@ -27,7 +45,11 @@ export const BaseTileTitle = (): JSX.Element | null => {
         {title}
       </Text>
       {ctaLink && (
-        <Icon name="ChevronRight" color={theme.derivedSurfaceText[20]} />
+        <Icon
+          name="ChevronRight"
+          color={sdk.theme?.derivedSurfaceText?.[20]}
+          accessibilityLabel="View details"
+        />
       )}
     </>
   );

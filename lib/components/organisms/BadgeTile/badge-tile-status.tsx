@@ -6,6 +6,11 @@ import { useTileContext } from '../../atoms/BaseTile';
 import Icon from '../../atoms/Icon';
 import { useBadgeTileStyles } from './styles';
 
+/**
+ * Renders the status for a Badge Tile.
+ *
+ * @returns JSX.Element or null if badge is not earned or badgeNotEarnedMessage exists
+ */
 export const BadgeTileStatus = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tile = useTileContext();

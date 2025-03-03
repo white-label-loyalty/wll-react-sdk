@@ -34,6 +34,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
           aria-label="Content image for Gold Tier Unlocked!"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
           data-testid="tile-media"
+          role="img"
           style="opacity: 0;"
         >
           <div
@@ -51,26 +52,29 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
       <div
         class="css-view-175oi2r r-display-6koalj"
         data-testid="tile-content"
+        role="presentation"
         style="justify-content: center;"
       >
         <div
           class="css-view-175oi2r r-flex-13awgt0 r-justifyContent-1777fci r-paddingInline-3o4zer"
         >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u"
+          <h1
+            class="css-view-175oi2r"
             data-testid="tile-header"
-            style="margin-top: 12px;"
+            role="heading"
+            style="margin-bottom: 8px; margin-top: 12px; flex-direction: row; align-items: center; justify-content: space-between;"
           >
-            <div
+            <h1
               aria-label="Gold Tier Unlocked!"
               class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
               data-testid="tile-title"
               dir="auto"
+              role="heading"
               style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
             >
               Gold Tier Unlocked!
-            </div>
-          </div>
+            </h1>
+          </h1>
           <div
             aria-label="You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access."
             class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
