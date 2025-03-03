@@ -205,3 +205,8 @@ const getConfigForTileType = (tileType: TileType) => {
 };
 
 export type TileConfig = InstanceType<ReturnType<typeof getConfigForTileType>>;
+
+export type TileSizeInfo = {
+  isFullSize: boolean;
+  isHalfSize: boolean;
+};

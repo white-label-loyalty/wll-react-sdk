@@ -20,6 +20,7 @@ type RewardTileProps = {
  * @param configuration - The configuration object of the tile.
  * @returns `true` if the tile should display artwork only.
  */
+
 const isArtworkOnly = (configuration?: RewardTileConfig): boolean => {
   if (!configuration) return false;
   return !configuration.showDetails;
@@ -32,6 +33,7 @@ const isArtworkOnly = (configuration?: RewardTileConfig): boolean => {
  * @param {Tile} props.tile - The tile data to render
  * @returns JSX.Element or null if tile is inactive or not a full-height tile
  */
+
 const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
   const styles = useRewardTileStyles();
 
@@ -63,6 +65,7 @@ const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
 /**
  * The RewardTile component with subcomponents attached.
  */
+
 export const RewardTile = Object.assign(RewardTileRoot, {
   Media: RewardTileMedia,
   Title: RewardTileTitle,

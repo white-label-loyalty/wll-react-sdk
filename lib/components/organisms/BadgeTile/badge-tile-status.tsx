@@ -12,6 +12,7 @@ import { useBadgeTileStyles } from './styles';
  *
  * @returns JSX.Element or null if badge is not earned or badgeNotEarnedMessage exists
  */
+
 export const BadgeTileStatus = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();

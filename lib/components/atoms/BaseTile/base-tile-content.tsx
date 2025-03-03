@@ -5,7 +5,10 @@ import { useTileContext } from '.';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { WithChildren } from '../../../types/helpers';
 import { ContentTileConfig } from '../../../types/tile';
-import { isContextValid } from '../../../utils/contextHelpers';
+import {
+  isContextValid,
+  shouldHideContentForHalfTile,
+} from '../../../utils/contextHelpers';
 import { baseStyles } from './styles';
 
 type BaseTileContentProps = WithChildren;
@@ -17,6 +20,7 @@ type BaseTileContentProps = WithChildren;
  * @param {ReactNode} props.children - Child elements to render within the content area
  * @returns {JSX.Element|null} The rendered content or null if conditions for display are not met
  */
+
 export const BaseTileContent = ({
   children,
 }: BaseTileContentProps): JSX.Element | null => {
@@ -30,10 +34,7 @@ export const BaseTileContent = ({
 
   if (!sizeInfo) return null;
 
-  const { isHalfSize } = sizeInfo;
-
-  // For half tiles with an image, don't show other content
-  if (isHalfSize && artworkUrl) return null;
+  if (shouldHideContentForHalfTile(sizeInfo, artworkUrl)) return null;
 
   return (
     <View

@@ -10,6 +10,7 @@ import { useTileContext } from '../../atoms/BaseTile';
  *
  * @returns JSX.Element or null if description is not present
  */
+
 export const BadgeTileDescription = (): JSX.Element | null => {
   const tileContext = useTileContext();
 

@@ -7,6 +7,7 @@ import { Icon } from '../../atoms';
  *
  * @returns JSX.Element
  */
+
 export const RewardTileChevron = (): JSX.Element => {
   const { theme } = useWllSdk();
 

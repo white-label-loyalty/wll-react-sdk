@@ -10,6 +10,7 @@ import { useBannerContext } from '../../atoms/BaseBanner';
  *
  * @returns JSX.Element or null if no text or required props are present
  */
+
 export const BannerTileCTA = (): JSX.Element | null => {
   const bannerContext = useBannerContext();
 

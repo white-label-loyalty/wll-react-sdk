@@ -6,13 +6,13 @@ import { GRID_GAP } from '../../../constants/grid';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import SkeletonTile from '../SkeletonTile';
 
-interface SkeletonProps {
+type SkeletonProps = {
   width?: number | `${number}%`;
   height?: number | `${number}%`;
   borderRadius?: number;
   style?: ViewStyle;
   numberOfSquares?: number;
-}
+};
 
 const Skeleton = ({
   style,

@@ -11,6 +11,7 @@ import { useBadgeTileStyles } from './styles';
  *
  * @returns JSX.Element or null if name is not present
  */
+
 export const BadgeTileTitle = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();

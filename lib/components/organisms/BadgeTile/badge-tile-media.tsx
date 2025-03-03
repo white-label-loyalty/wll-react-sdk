@@ -16,6 +16,7 @@ export type BadgeTileMediaProps = {
  *
  * @returns JSX.Element or null if media is not present
  */
+
 export const BadgeTileMedia = ({
   children,
   alt,

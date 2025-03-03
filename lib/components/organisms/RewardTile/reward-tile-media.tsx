@@ -12,6 +12,7 @@ type RewardTileMediaProps = {
 
 // We are using percentage values for flexBasis, which is valid in
 // React Native but TypeScript expects a number.
+
 type ResponsiveViewStyle = StyleProp<ViewStyle> & {
   flexBasis?: string | number;
 };
@@ -23,6 +24,7 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
  * @param props.isArtworkOnly {boolean} - Whether the media should be rendered as an artwork only component
  * @returns JSX.Element or null if no artwork URL is present or artwork should not be shown
  */
+
 export const RewardTileMedia = ({
   isArtworkOnly,
 }: RewardTileMediaProps): JSX.Element | null => {

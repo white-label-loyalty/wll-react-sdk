@@ -19,6 +19,7 @@ type PointsTileProps = {
  * @param props - Component props
  * @returns JSX.Element or null if tile is inactive or missing required props
  */
+
 const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
@@ -45,6 +46,7 @@ const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
 /**
  * The PointsTile component with subcomponents attached.
  */
+
 export const PointsTile = Object.assign(PointsTileRoot, {
   Title: PointsTileTitle,
   Points: PointsTileFormattedPoints,

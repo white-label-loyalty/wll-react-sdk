@@ -9,6 +9,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
  *
  * @returns StyleSheet styles for the RewardTile component
  */
+
 export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
