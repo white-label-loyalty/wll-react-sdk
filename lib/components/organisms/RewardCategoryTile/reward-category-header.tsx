@@ -14,9 +14,10 @@ import { useRewardCategoryTileStyles } from './styles';
 export const RewardCategoryHeader = (): JSX.Element | null => {
   const styles = useRewardCategoryTileStyles();
   const { theme } = useWllSdk();
+
   const tileContext = useTileContext();
 
-  if (!tileContext.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
   const { showName = true, name = '' } =
     tileContext.configuration as RewardCategoryTileConfig;

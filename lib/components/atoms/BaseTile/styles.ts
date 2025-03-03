@@ -22,13 +22,36 @@ export const baseStyles = StyleSheet.create({
   },
 });
 
-// Dynamic styles hook
+/**
+ * Custom hook that returns the styles for the BaseTile component.
+ * Applies responsive styling based on the current device.
+ *
+ * @returns StyleSheet styles for the BaseTile component
+ */
 export const useBaseTileStyles = () => {
-  const tile = useTileContext();
+  const tileContext = useTileContext();
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
-  const { isHalfSize } = useTileSize(tile);
-  const { artworkUrl, title, body } = tile.configuration as ContentTileConfig;
+
+  if (!tileContext || !tileContext.configuration) {
+    return StyleSheet.create({
+      container: baseStyles.container,
+      content: baseStyles.content,
+      header: {
+        marginBottom: 0,
+        marginTop: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      },
+      media: baseStyles.media,
+    });
+  }
+
+  const sizeInfo = useTileSize(tileContext);
+  const isHalfSize = sizeInfo?.isHalfSize || false;
+  const { artworkUrl, title, body } =
+    tileContext.configuration as ContentTileConfig;
 
   return StyleSheet.create({
     container: {

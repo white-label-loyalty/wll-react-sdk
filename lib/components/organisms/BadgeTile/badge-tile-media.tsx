@@ -21,9 +21,12 @@ export const BadgeTileMedia = ({
   ...props
 }: BadgeTileMediaProps): JSX.Element | null => {
   const styles = useBadgeTileStyles();
-  const tile = useTileContext();
-  const { configuration } = tile as { configuration: BadgeTileConfig };
-  const { count, artworkUrl, emptyBadgeArtworkUrl, type, name } = configuration;
+  const tileContext = useTileContext();
+
+  if (!tileContext || !tileContext.configuration) return null;
+
+  const { count, artworkUrl, emptyBadgeArtworkUrl, type, name } =
+    tileContext.configuration as BadgeTileConfig;
 
   const displayUrl =
     type === BadgeTileType.Specific

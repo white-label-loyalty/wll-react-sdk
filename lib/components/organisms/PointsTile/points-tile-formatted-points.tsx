@@ -16,7 +16,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
   const styles = usePointsTileStyles();
   const tileContext = useTileContext();
 
-  if (!tileContext.configuration) return null;
+  if (!tileContext || !tileContext.configuration) return null;
 
   const {
     pointsMultiplier = 1,

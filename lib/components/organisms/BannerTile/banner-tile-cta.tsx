@@ -10,21 +10,19 @@ import { useBannerContext } from '../../atoms/BaseBanner';
  * @returns JSX.Element or null if no text or required props are present
  */
 export const BannerTileCTA = (): JSX.Element | null => {
-  const tile = useBannerContext();
+  const bannerContext = useBannerContext();
 
-  if (!tile) return null;
-
-  if (!tile.configuration) return null;
+  if (!bannerContext || !bannerContext.configuration) return null;
 
   const {
     ctaText = '',
     ctaLink = '',
     ctaLinkTarget,
-  } = tile.configuration as BannerTileConfig;
+  } = bannerContext.configuration as BannerTileConfig;
 
   if (!ctaText || !ctaLink) return null;
 
-  const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
+  const handlePress = useHandleTilePress(bannerContext, ctaLink, ctaLinkTarget);
 
   const hint = ctaLink
     ? ctaLinkTarget === CTALinkTarget.newWindow
