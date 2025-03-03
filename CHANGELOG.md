@@ -1,3 +1,18 @@
+## [1.0.62](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.61...v1.0.62) (2025-03-03)
+
+
+### Bug Fixes
+
+* make proper use of enum to determine target ([806eb9f](https://github.com/white-label-loyalty/wll-react-sdk/commit/806eb9f0b170aab657cba496c207f9958e45577e))
+* standardise context null-checking across all tile components ([709105a](https://github.com/white-label-loyalty/wll-react-sdk/commit/709105acd62e0f8dd9be689fae4bacce2b36f5f7))
+
+
+### Features
+
+* add isContextValid utility function to streamline context validation ([c2a5b8f](https://github.com/white-label-loyalty/wll-react-sdk/commit/c2a5b8f5d86d962f5f2de45a458e60519ac5cb10))
+
+
+
 ## [1.0.61](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.60...v1.0.61) (2025-02-24)
 
 
