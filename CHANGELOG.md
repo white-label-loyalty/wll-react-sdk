@@ -1,3 +1,12 @@
+## [1.0.64](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.63...v1.0.64) (2025-03-05)
+
+
+### Bug Fixes
+
+* added toFixed rounding to cleanNumber method ([614ff0d](https://github.com/white-label-loyalty/wll-react-sdk/commit/614ff0dfeea3484afe840b81bf9a50a9bb5694e5))
+
+
+
 ## [1.0.63](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.62...v1.0.63) (2025-03-03)
 
 
