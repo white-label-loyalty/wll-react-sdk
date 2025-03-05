@@ -4,7 +4,9 @@
  * @returns A cleaned up number as a number
  */
 const cleanNumber = (value: number): number => {
-  return Number(value.toString().trim().replace(/\s+/g, ''));
+  return Number(
+    Number(value.toString().trim().replace(/\s+/g, '')).toFixed(2)
+  );
 };
 
 /**
