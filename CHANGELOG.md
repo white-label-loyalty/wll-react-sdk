@@ -1,3 +1,12 @@
+## [1.0.65](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.64...v1.0.65) (2025-03-07)
+
+
+### Bug Fixes
+
+* update config for react native ([0054b11](https://github.com/white-label-loyalty/wll-react-sdk/commit/0054b11ab7f9837e790faf458f9b125253a368b2))
+
+
+
 ## [1.0.64](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.63...v1.0.64) (2025-03-05)
 
 
