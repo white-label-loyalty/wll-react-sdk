@@ -5,10 +5,29 @@ module.exports = {
     ['@babel/preset-react', { runtime: 'automatic' }],
   ],
   plugins: [
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    '@babel/plugin-proposal-export-namespace-from',
     [
       'module-resolver',
       {
-        extensions: ['.web.js', '.js', '.web.ts', '.ts', '.web.tsx', '.tsx'],
+        alias: {
+          '^react-native$': 'react-native',
+          '^react-dom$': 'react-native',
+        },
+        extensions: [
+          '.ios.js',
+          '.android.js',
+          '.native.js',
+          '.js',
+          '.ios.ts',
+          '.android.ts',
+          '.native.ts',
+          '.ts',
+          '.ios.tsx',
+          '.android.tsx',
+          '.native.tsx',
+          '.tsx',
+        ],
       },
     ],
   ],
