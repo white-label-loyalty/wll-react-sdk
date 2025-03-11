@@ -48,8 +48,6 @@ export const useTierTileStyles = () => {
     },
     name: {
       marginBottom: 0,
-      numberOfLines: 1,
-      ellipsizeMode: 'tail',
     },
   });
 };

@@ -26,14 +26,11 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
   const requiredColors = [
     'accent',
     'background',
-    'errorPrimary',
-    'negative',
-    'pageButtonBackground',
-    'pageButtonText',
-    'positive',
     'primary',
     'surface',
     'surfaceText',
+    'positive',
+    'negative',
     'text',
   ] as const;
   return requiredColors.every(
