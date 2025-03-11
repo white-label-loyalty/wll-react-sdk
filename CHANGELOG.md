@@ -1,3 +1,13 @@
+## [1.0.69](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.68...v1.0.69) (2025-03-11)
+
+
+### Bug Fixes
+
+* add react, and revert jsx in tsconfig ([630e758](https://github.com/white-label-loyalty/wll-react-sdk/commit/630e7589964e32cb9c39b2fee9c4617d5003078a))
+* give tile aspec ratio of 1 ([7328ee8](https://github.com/white-label-loyalty/wll-react-sdk/commit/7328ee88756837366bfeb8f21c2a765211ac1009))
+
+
+
 ## [1.0.68](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.67...v1.0.68) (2025-03-11)
 
 
