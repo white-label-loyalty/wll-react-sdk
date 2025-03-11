@@ -1,3 +1,12 @@
+## [1.0.68](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.67...v1.0.68) (2025-03-11)
+
+
+### Bug Fixes
+
+* remove non style properties from stylesheet, and check for the correct theme ([ac84aac](https://github.com/white-label-loyalty/wll-react-sdk/commit/ac84aac556b089ebe9c2f599d27bbe183e507e25))
+
+
+
 ## [1.0.67](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.66...v1.0.67) (2025-03-11)
 
 
