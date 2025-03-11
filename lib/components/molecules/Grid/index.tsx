@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IS_WEB, SCREEN_WIDTH } from '../../../constants/device';
 import { GRID_GAP } from '../../../constants/grid';
@@ -33,13 +33,14 @@ const Grid = ({ section }: GridProps) => {
         width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
         marginBottom: GRID_GAP,
         height: 'auto',
+        aspectRatio: 1,
       };
     } else {
       const tileWidth = (SCREEN_WIDTH - (columns - 1) * GRID_GAP) / columns;
       return {
         width: tileWidth,
         marginBottom: GRID_GAP,
-        height: 'auto',
+        aspectRatio: 1,
       };
     }
   }, []);
