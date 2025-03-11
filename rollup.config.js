@@ -31,20 +31,23 @@ export default [
       exports: 'named',
     },
     plugins: [
-      resolve({ extensions }),
+      resolve({
+        extensions,
+        mainFields: [
+          'react-native',
+          'native',
+          'module',
+          'main'
+        ]
+      }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: './dist/types',
-      }),
-      babel({
-        extensions,
-        babelHelpers: 'bundled',
-        configFile: './babel.config.rollup.js',
-        include: ['lib/**/*'],
-        exclude: 'node_modules/**',
-      }),
+        exclude: ['node_modules/**', '**/*.spec.ts'],
+        jsx: 'react-jsx',
+      })
     ],
   },
   // Web bundle
@@ -69,7 +72,7 @@ export default [
         babelHelpers: 'bundled',
         configFile: './babel.config.web.rollup.js',
         include: ['lib/**/*'],
-        exclude: 'node_modules/**',
+        exclude: ['node_modules/**', '**/*.spec.ts'],
       }),
     ],
   },
