@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IS_WEB, SCREEN_WIDTH } from '../../../constants/device';
 import { GRID_GAP } from '../../../constants/grid';
