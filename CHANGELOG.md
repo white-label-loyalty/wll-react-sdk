@@ -1,3 +1,13 @@
+## [1.0.67](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.66...v1.0.67) (2025-03-11)
+
+
+### Bug Fixes
+
+* add react-native-svg ([e3f6f73](https://github.com/white-label-loyalty/wll-react-sdk/commit/e3f6f737540b51a8cd468155f2260f736470e98c))
+* make sure we use lucide react native for react native ([69f5e81](https://github.com/white-label-loyalty/wll-react-sdk/commit/69f5e816696b9d91f59231d97b98bf7208ab9438))
+
+
+
 ## [1.0.66](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.65...v1.0.66) (2025-03-11)
 
 
