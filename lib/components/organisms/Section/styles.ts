@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
+import { GRID_GAP } from '../../../constants/grid';
+import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
@@ -25,6 +27,7 @@ export const useSectionStyles = (): ReturnType<typeof StyleSheet.create> => {
         isDesktop,
         isTablet
       ),
+      ...(IS_WEB ? {} : { paddingHorizontal: GRID_GAP }),
     },
   });
 };
