@@ -144,7 +144,7 @@ export const GroupSections = (): JSX.Element => {
     <Container
       accessible
       accessibilityLabel={`Group: ${groupData.name || 'Unnamed group'}`}
-      contentContainerStyle={!IS_WEB ? styles.container : undefined}
+      style={!IS_WEB ? styles.container : undefined}
     >
       {sortedSections.map((section) => (
         <Section key={section.id} section={section} />
