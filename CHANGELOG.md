@@ -1,3 +1,12 @@
+## [1.0.70](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.69...v1.0.70) (2025-03-13)
+
+
+### Bug Fixes
+
+* make container conditional, add GRID_GAP level padding ([6a16c83](https://github.com/white-label-loyalty/wll-react-sdk/commit/6a16c83c1be91e5f8814ac8b4f77b681c31501d3))
+
+
+
 ## [1.0.69](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.68...v1.0.69) (2025-03-11)
 
 
