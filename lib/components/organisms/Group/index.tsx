@@ -5,7 +5,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
+import { GRID_GAP } from '../../../constants/grid';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { TGroup } from '../../../types/group';
 import { commonStyles } from '../../../utils/styling';
@@ -136,15 +138,18 @@ export const GroupSections = (): JSX.Element => {
 
   const sortedSections = sortByPriority(activeSections);
 
+  const Container = IS_WEB ? View : ScrollView;
+
   return (
-    <View
+    <Container
       accessible
       accessibilityLabel={`Group: ${groupData.name || 'Unnamed group'}`}
+      style={styles.container}
     >
       {sortedSections.map((section) => (
         <Section key={section.id} section={section} />
       ))}
-    </View>
+    </Container>
   );
 };
 
@@ -193,5 +198,11 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
     </GroupContext.Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    ...(IS_WEB ? {} : { padding: GRID_GAP }),
+  },
+});
 
 export default Group;
