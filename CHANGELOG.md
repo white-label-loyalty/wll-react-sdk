@@ -1,3 +1,12 @@
+## [1.0.72](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.71...v1.0.72) (2025-03-13)
+
+
+### Bug Fixes
+
+* adjust the padding to expect GRID_GAP padding ([c5e7112](https://github.com/white-label-loyalty/wll-react-sdk/commit/c5e7112118274e7ff926af29748e7e2e39ad09a7))
+
+
+
 ## [1.0.71](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.70...v1.0.71) (2025-03-13)
 
 
