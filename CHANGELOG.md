@@ -1,3 +1,12 @@
+## [1.0.71](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.70...v1.0.71) (2025-03-13)
+
+
+### Bug Fixes
+
+* ensure the padding is applied correctly to the content inside the ScrollView ([016cfcb](https://github.com/white-label-loyalty/wll-react-sdk/commit/016cfcb50848d708877acaeae623929947a74da5))
+
+
+
 ## [1.0.70](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.69...v1.0.70) (2025-03-13)
 
 
