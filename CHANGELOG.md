@@ -1,3 +1,12 @@
+## [1.0.73](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.72...v1.0.73) (2025-03-14)
+
+
+### Bug Fixes
+
+* issue with padding on mobile devices ([9151c7d](https://github.com/white-label-loyalty/wll-react-sdk/commit/9151c7dfbf9d74abd9f063ca217294ccff544403))
+
+
+
 ## [1.0.72](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.71...v1.0.72) (2025-03-13)
 
 
