@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
-import { GRID_GAP } from '../../../constants/grid';
 import { IS_WEB } from '../../../constants/device';
+import { GRID_GAP } from '../../../constants/grid';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
@@ -19,7 +19,7 @@ export const useSectionStyles = (): ReturnType<typeof StyleSheet.create> => {
   return StyleSheet.create({
     section: {
       width: '100%',
-      maxWidth: MAX_WIDTH,
+      maxWidth: IS_WEB ? MAX_WIDTH : MAX_WIDTH - GRID_GAP * 2,
       marginHorizontal: 'auto',
       marginBottom: useResponsiveValue(
         theme.sizes.xxxxxl,
