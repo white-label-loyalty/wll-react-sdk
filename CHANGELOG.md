@@ -1,3 +1,12 @@
+## [1.0.74](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.73...v1.0.74) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) modify the width calculation logic to ensure tiles properly fill the available space ([c04a959](https://github.com/white-label-loyalty/wll-react-sdk/commit/c04a959c12179d7fb66937219001c7565daceaa3))
+
+
+
 ## [1.0.73](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.72...v1.0.73) (2025-03-14)
 
 
