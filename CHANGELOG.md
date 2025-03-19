@@ -1,3 +1,12 @@
+## [1.0.85](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.84...v1.0.85) (2025-03-19)
+
+
+### Bug Fixes
+
+* add logging to see why layout breaks mobile (native) ([ad1bc18](https://github.com/white-label-loyalty/wll-react-sdk/commit/ad1bc184ddd8e729e55bb160a66bfddb728f1ddc))
+
+
+
 ## [1.0.84](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.83...v1.0.84) (2025-03-19)
 
 
