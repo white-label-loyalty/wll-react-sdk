@@ -1,3 +1,12 @@
+## [1.0.86](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.85...v1.0.86) (2025-03-19)
+
+
+### Bug Fixes
+
+* add more debugging markers ([7202c03](https://github.com/white-label-loyalty/wll-react-sdk/commit/7202c039ab617b1a33ae1c7a9111ba07769e5685))
+
+
+
 ## [1.0.85](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.84...v1.0.85) (2025-03-19)
 
 
