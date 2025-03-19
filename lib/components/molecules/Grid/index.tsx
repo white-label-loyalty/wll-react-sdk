@@ -82,16 +82,12 @@ const Grid = ({ section }: GridProps) => {
       };
 
       if (shouldStartNewContainer(currentTiles, tile, nextTile)) {
-        const isLastInRow = (tileContainers.length + 1) % columnsPerRow === 0;
-
         tileContainers.push(
           <View
             key={`container-${index}`}
             style={[
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
-              IS_WEB && !isLastInRow && { marginRight: GRID_GAP },
-              { overflow: 'hidden' },
             ]}
           >
             <TileContainer tiles={currentTiles} />
@@ -117,7 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    justifyContent: 'space-between', // Ensure tiles are evenly spaced
+    justifyContent: 'space-between',
   },
 });
 
