@@ -1,3 +1,12 @@
+## [1.0.75](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.74...v1.0.75) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) remove the GRID_GAP as its still causing layout issues ([6100f3b](https://github.com/white-label-loyalty/wll-react-sdk/commit/6100f3b135c3247d1cd35b045f947a4cfae44d4c))
+
+
+
 ## [1.0.74](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.73...v1.0.74) (2025-03-19)
 
 
