@@ -60,15 +60,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     aspectRatio: 1,
-    width: '100%', // Ensure the container takes full width
+    width: '100%',
   },
   tileContainer: {
     flex: 1,
-    aspectRatio: 1,
-    width: '100%', // Ensure each tile takes full width of its container
+    width: '100%',
   },
   halfTileContainer: {
     flex: 0.5,
+    height: '50%',
   },
 });
 

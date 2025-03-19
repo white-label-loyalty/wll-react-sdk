@@ -32,7 +32,7 @@ exports[`<Section/> matches snapshot 1`] = `
             data-testid="tile-container"
           >
             <div
-              class="css-view-175oi2r r-aspectRatio-1ujkv8a r-flex-13awgt0 r-width-13qz1uu"
+              class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
             >
               <button
                 aria-disabled="true"
