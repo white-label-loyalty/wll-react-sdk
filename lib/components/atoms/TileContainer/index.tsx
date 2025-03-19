@@ -38,6 +38,11 @@ const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
         const TileComponent = TILE_COMPONENTS[tile.type!];
         const { isHalfSize } = useTileSize(tile);
 
+        // Log tile dimensions for debugging
+        if (!__DEV__) {
+          console.log(`Tile ${index} (${tile.id}): ${isHalfSize ? 'Half' : 'Full'} size`);
+        }
+        
         return (
           <View
             key={tile.id}
@@ -46,6 +51,15 @@ const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
               isHalfSize && styles.halfTileContainer,
               index > 0 && { marginTop: GRID_GAP },
             ]}
+            onLayout={event => {
+              if (__DEV__) {
+                const {width, height} = event.nativeEvent.layout;
+                console.log(`=== TILE ${index} LAYOUT ===`);
+                console.log(`Tile ID: ${tile.id}, Type: ${tile.type}`);
+                console.log(`Is Half Size: ${isHalfSize}`);
+                console.log(`Actual dimensions: ${width.toFixed(2)}x${height.toFixed(2)}px`);
+              }
+            }}
           >
             {TileComponent ? <TileComponent tile={tile} /> : null}
           </View>
