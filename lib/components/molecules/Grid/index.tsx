@@ -36,9 +36,12 @@ const Grid = ({ section }: GridProps) => {
         aspectRatio: 1,
       };
     } else {
+      // For mobile, we need to be very precise with our calculations
       const horizontalPadding = GRID_GAP;
       const availableWidth = SCREEN_WIDTH - horizontalPadding * 2;
-      const tileWidth = (availableWidth - (columns - 1) * GRID_GAP) / columns;
+
+      const gapSpace = (columns - 1) * GRID_GAP;
+      const tileWidth = Math.floor((availableWidth - gapSpace) / columns);
 
       return {
         width: tileWidth,
@@ -90,6 +93,7 @@ const Grid = ({ section }: GridProps) => {
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
               !isLastInRow && { marginRight: GRID_GAP },
+              { overflow: 'hidden' }, // Prevent content from overflowing
             ]}
           >
             <TileContainer tiles={currentTiles} />
@@ -115,6 +119,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
+    justifyContent: 'space-between', // Ensure tiles are evenly spaced
   },
 });
 
