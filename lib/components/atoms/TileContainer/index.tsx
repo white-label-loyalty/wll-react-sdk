@@ -59,15 +59,17 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flex: 1,
-    aspectRatio: 1,
     width: '100%',
+    height: '100%',
   },
   tileContainer: {
-    flex: 1,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: '100%',
     width: '100%',
   },
   halfTileContainer: {
-    flex: 0.5,
+    flexBasis: '50%',
     height: '50%',
   },
 });
