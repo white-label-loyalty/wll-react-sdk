@@ -1,3 +1,12 @@
+## [1.0.81](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.80...v1.0.81) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) adjust width calculations based on section padding ([58f5aab](https://github.com/white-label-loyalty/wll-react-sdk/commit/58f5aabb4ec5c19221e91956a0f1727d83882d4c))
+
+
+
 ## [1.0.80](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.79...v1.0.80) (2025-03-19)
 
 
