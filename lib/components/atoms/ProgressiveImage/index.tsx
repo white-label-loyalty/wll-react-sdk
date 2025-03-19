@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
     width: '100%',
     height: '100%',
   },

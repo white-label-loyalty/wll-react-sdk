@@ -73,9 +73,8 @@ const styles = StyleSheet.create({
     width: 21,
     height: 21,
     borderRadius: 9999,
-    backgroundColor: 'red',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

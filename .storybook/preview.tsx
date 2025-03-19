@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
 import * as React from 'react';
-import { Indicator } from '../lib/components/atoms';
 import { SectionContext } from '../lib/components/organisms/Section';
 import { WllSdkProvider } from '../lib/context/WllSdkContext';
 import { SectionType, TSection } from '../lib/types/section';
@@ -160,8 +159,6 @@ const preview: Preview = {
           >
             <MockSectionProvider>
               <Story />
-
-              {process.env.NODE_ENV === 'development' && <Indicator />}
             </MockSectionProvider>
           </div>
         </WllSdkProvider>
