@@ -1,3 +1,12 @@
+## [1.0.77](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.76...v1.0.77) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) fix spacing with tiles ([01d8adf](https://github.com/white-label-loyalty/wll-react-sdk/commit/01d8adf296ee79b59e4190332ce76e7a1d4696e4))
+
+
+
 ## [1.0.76](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.75...v1.0.76) (2025-03-19)
 
 
