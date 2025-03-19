@@ -36,10 +36,9 @@ const Grid = ({ section }: GridProps) => {
         aspectRatio: 1,
       };
     } else {
-      const horizontalPadding = GRID_GAP;
-      const availableWidth = SCREEN_WIDTH - horizontalPadding * 2;
-
+      const availableWidth = SCREEN_WIDTH - GRID_GAP * 2;
       const gapSpace = (columns - 1) * GRID_GAP;
+
       const tileWidth = Math.floor((availableWidth - gapSpace) / columns);
 
       return {
