@@ -1,3 +1,12 @@
+## [1.0.78](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.77...v1.0.78) (2025-03-19)
+
+
+### Bug Fixes
+
+* (TileContainer) remove aspect ratio on half tile ([322c412](https://github.com/white-label-loyalty/wll-react-sdk/commit/322c41239e7f56fc5db5bfee5b7b6089e6dfe11d))
+
+
+
 ## [1.0.77](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.76...v1.0.77) (2025-03-19)
 
 
