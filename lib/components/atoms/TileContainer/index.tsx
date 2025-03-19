@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
   halfTileContainer: {
     flex: 0.5,
-    aspectRatio: 1,
   },
 });
 
