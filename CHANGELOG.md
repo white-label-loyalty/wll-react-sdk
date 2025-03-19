@@ -1,3 +1,12 @@
+## [1.0.82](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.81...v1.0.82) (2025-03-19)
+
+
+### Bug Fixes
+
+* (TileConatiner) try different approach for defining flex layouts ([cdd045b](https://github.com/white-label-loyalty/wll-react-sdk/commit/cdd045bef074956dcf411157cba0199b6269f4c1))
+
+
+
 ## [1.0.81](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.80...v1.0.81) (2025-03-19)
 
 
