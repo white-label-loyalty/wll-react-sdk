@@ -37,9 +37,9 @@ const Grid = ({ section }: GridProps) => {
       };
     } else {
       const horizontalPadding = GRID_GAP;
-      const tileWidth =
-        (SCREEN_WIDTH - horizontalPadding * 2 - (columns - 1) * GRID_GAP) /
-        columns;
+      const availableWidth = SCREEN_WIDTH - horizontalPadding * 2;
+      const tileWidth = (availableWidth - (columns - 1) * GRID_GAP) / columns;
+
       return {
         width: tileWidth,
         marginBottom: GRID_GAP,
@@ -87,10 +87,9 @@ const Grid = ({ section }: GridProps) => {
           <View
             key={`container-${index}`}
             style={[
+              // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
-              index % columnsPerRow !== columnsPerRow - 1 && {
-                marginRight: GRID_GAP,
-              },
+              !isLastInRow && { marginRight: GRID_GAP },
             ]}
           >
             <TileContainer tiles={currentTiles} />
