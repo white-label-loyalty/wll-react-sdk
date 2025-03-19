@@ -1,3 +1,12 @@
+## [1.0.79](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.78...v1.0.79) (2025-03-19)
+
+
+### Bug Fixes
+
+* (HalfTile) make sure rounding is correct ([cc75c94](https://github.com/white-label-loyalty/wll-react-sdk/commit/cc75c948712e7a2f2de6036b0fe3927f5d620bae))
+
+
+
 ## [1.0.78](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.77...v1.0.78) (2025-03-19)
 
 
