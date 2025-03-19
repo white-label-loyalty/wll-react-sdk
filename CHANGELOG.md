@@ -1,3 +1,19 @@
+## [1.0.84](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.83...v1.0.84) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) remove aspect ratio ([570afef](https://github.com/white-label-loyalty/wll-react-sdk/commit/570afefcf064030fc8bf71fdcf61d1ae4b313e97))
+* (PointsTile) fix issue with image width/height on mobile ([816cec1](https://github.com/white-label-loyalty/wll-react-sdk/commit/816cec181b53f83228ad31c2b3530403a7001613))
+* (ThemeHelpers) fix desaturation so that it isnt too high ([b7d439c](https://github.com/white-label-loyalty/wll-react-sdk/commit/b7d439cd44aafbafbc38493135050403018a637a))
+
+
+### Features
+
+* trigger version bump without code changes ([322d7b6](https://github.com/white-label-loyalty/wll-react-sdk/commit/322d7b66d57e34208396fafa9261d4f28daae56e))
+
+
+
 ## [1.0.83](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.82...v1.0.83) (2025-03-19)
 
 
