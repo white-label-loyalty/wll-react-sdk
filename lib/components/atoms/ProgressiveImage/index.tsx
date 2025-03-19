@@ -49,9 +49,7 @@ const ProgressiveImage = ({
     ? {
         filter: isDesaturated ? 'grayscale(100%)' : undefined,
       }
-    : {
-        tintColor: isDesaturated ? desaturatedColor : undefined,
-      };
+    : {};
 
   return (
     <View style={[styles.container, style, { backgroundColor }]}>
