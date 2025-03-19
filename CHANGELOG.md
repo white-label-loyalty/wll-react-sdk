@@ -1,3 +1,12 @@
+## [1.0.80](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.79...v1.0.80) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) remove margin right on mobile ([9199431](https://github.com/white-label-loyalty/wll-react-sdk/commit/91994310f4e3fd07e2ad31ae4ee55960ff4f56eb))
+
+
+
 ## [1.0.79](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.78...v1.0.79) (2025-03-19)
 
 
