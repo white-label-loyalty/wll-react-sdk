@@ -28,11 +28,11 @@ exports[`<Section/> matches snapshot 1`] = `
           style="width: calc(50% - 8px); margin-bottom: 16px; height: auto; margin-right: 16px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
-            class="css-view-175oi2r r-aspectRatio-1ujkv8a r-flex-13awgt0 r-flexDirection-eqz5dr r-width-13qz1uu"
+            class="css-view-175oi2r r-flex-13awgt0 r-flexDirection-eqz5dr r-height-1pi2tsx r-width-13qz1uu"
             data-testid="tile-container"
           >
             <div
-              class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
+              class="css-view-175oi2r r-flexBasis-1fq43b1 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
             >
               <button
                 aria-disabled="true"
