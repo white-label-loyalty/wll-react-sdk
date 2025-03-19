@@ -36,7 +36,6 @@ const Grid = ({ section }: GridProps) => {
         aspectRatio: 1,
       };
     } else {
-      // For mobile, we need to be very precise with our calculations
       const horizontalPadding = GRID_GAP;
       const availableWidth = SCREEN_WIDTH - horizontalPadding * 2;
 
@@ -92,8 +91,8 @@ const Grid = ({ section }: GridProps) => {
             style={[
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
-              !isLastInRow && { marginRight: GRID_GAP },
-              { overflow: 'hidden' }, // Prevent content from overflowing
+              IS_WEB && !isLastInRow && { marginRight: GRID_GAP },
+              { overflow: 'hidden' },
             ]}
           >
             <TileContainer tiles={currentTiles} />
