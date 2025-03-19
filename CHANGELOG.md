@@ -1,3 +1,12 @@
+## [1.0.76](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.75...v1.0.76) (2025-03-19)
+
+
+### Bug Fixes
+
+* (Grid) try another solution ([b5009b1](https://github.com/white-label-loyalty/wll-react-sdk/commit/b5009b11846d23b9a58e15f2467603c6af09aa0c))
+
+
+
 ## [1.0.75](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.74...v1.0.75) (2025-03-19)
 
 
