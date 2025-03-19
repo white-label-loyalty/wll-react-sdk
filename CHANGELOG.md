@@ -1,3 +1,14 @@
+## [1.0.83](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.82...v1.0.83) (2025-03-19)
+
+
+### Bug Fixes
+
+* (ProgressiveImage) dont desaturate the image on native ([dc8f0ae](https://github.com/white-label-loyalty/wll-react-sdk/commit/dc8f0ae7b638fa826479e8fd851fbeb011441a6c))
+* (RewardTile) fix issue with chevron overflowing container ([838f7c7](https://github.com/white-label-loyalty/wll-react-sdk/commit/838f7c7fa1d86427f01ffc6a7fa871f19581b047))
+* (TileContainer) try reducing the margin ([546bb62](https://github.com/white-label-loyalty/wll-react-sdk/commit/546bb6211d36a348d8c7f312421c8455fe3572e9))
+
+
+
 ## [1.0.82](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.81...v1.0.82) (2025-03-19)
 
 
