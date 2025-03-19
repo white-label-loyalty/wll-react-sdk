@@ -40,9 +40,11 @@ const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
 
         // Log tile dimensions for debugging
         if (!__DEV__) {
-          console.log(`Tile ${index} (${tile.id}): ${isHalfSize ? 'Half' : 'Full'} size`);
+          console.log(
+            `Tile ${index} (${tile.id}): ${isHalfSize ? 'Half' : 'Full'} size`
+          );
         }
-        
+
         return (
           <View
             key={tile.id}
@@ -51,13 +53,15 @@ const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
               isHalfSize && styles.halfTileContainer,
               index > 0 && { marginTop: GRID_GAP },
             ]}
-            onLayout={event => {
+            onLayout={(event) => {
               if (__DEV__) {
-                const {width, height} = event.nativeEvent.layout;
+                const { width, height } = event.nativeEvent.layout;
                 console.log(`=== TILE ${index} LAYOUT ===`);
                 console.log(`Tile ID: ${tile.id}, Type: ${tile.type}`);
                 console.log(`Is Half Size: ${isHalfSize}`);
-                console.log(`Actual dimensions: ${width.toFixed(2)}x${height.toFixed(2)}px`);
+                console.log(
+                  `Actual dimensions: ${width.toFixed(2)}x${height.toFixed(2)}px`
+                );
               }
             }}
           >
@@ -83,8 +87,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   halfTileContainer: {
-    flexBasis: '50%',
-    height: '50%',
+    aspectRatio: 2,
+    backgroundColor: 'red',
   },
 });
 
