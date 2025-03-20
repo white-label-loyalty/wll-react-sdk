@@ -1,3 +1,20 @@
+## [1.0.87](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.86...v1.0.87) (2025-03-20)
+
+
+### Bug Fixes
+
+*  issue with saturation on React Native ([6732ba2](https://github.com/white-label-loyalty/wll-react-sdk/commit/6732ba2e0100b43d55e2becebe401f94fc16b998))
+* (ContentTile) Completly refactor content tile as old version was flakey ([a63dbba](https://github.com/white-label-loyalty/wll-react-sdk/commit/a63dbba42d57135673333b75ce9428f29e55f926))
+* change the way we calculate margins on react native ([1d05376](https://github.com/white-label-loyalty/wll-react-sdk/commit/1d05376466b9132a6c643931a9e452569b093b99))
+* issue with desaturated image react native, overlay workaround ([4b3dc8e](https://github.com/white-label-loyalty/wll-react-sdk/commit/4b3dc8e980449add3fdda19ae10ed3e1934cd2c8))
+
+
+### Features
+
+* trigger release workflow ([c60d9e7](https://github.com/white-label-loyalty/wll-react-sdk/commit/c60d9e7b870886405e0670182e60a17d6bb2abb3))
+
+
+
 ## [1.0.86](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.85...v1.0.86) (2025-03-19)
 
 
