@@ -1,10 +1,10 @@
 import React from 'react';
 import { ContentTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
-import { BaseTile } from '../../atoms';
+import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
-export const ContentTileHeader = (): JSX.Element | null => {
+export const ContentTileTitle = (): JSX.Element | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;
@@ -14,8 +14,14 @@ export const ContentTileHeader = (): JSX.Element | null => {
   if (!title) return null;
 
   return (
-    <BaseTile.Header>
-      <BaseTile.Title />
-    </BaseTile.Header>
+    <Text
+      variant="title"
+      accessibilityRole="header"
+      accessibilityLabel={title}
+      numberOfLines={1}
+      testID="content-tile-title"
+    >
+      {title}
+    </Text>
   );
 };

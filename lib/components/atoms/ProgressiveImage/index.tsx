@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import React, { useRef } from 'react';
 import {
   Animated,
@@ -44,12 +43,24 @@ const ProgressiveImage = ({
   const desaturatedColor = desaturateColor(baseColor);
   const backgroundColor = isDesaturated ? desaturatedColor : baseColor;
 
-  // Platform-specific logic for desaturation
-  const desaturationStyle = IS_WEB
-    ? {
-        filter: isDesaturated ? 'grayscale(100%)' : undefined,
-      }
-    : {};
+  // Create base animated image
+  const baseImage = (
+    <Animated.Image
+      {...props}
+      source={source}
+      style={[
+        styles.imageOverlay,
+        {
+          opacity: imageAnimated,
+          ...(IS_WEB && {
+            filter: isDesaturated ? 'grayscale(100%)' : undefined,
+          }),
+        },
+      ]}
+      onLoad={onImageLoad}
+      accessibilityLabel={alt}
+    />
+  );
 
   return (
     <View style={[styles.container, style, { backgroundColor }]}>
@@ -67,19 +78,31 @@ const ProgressiveImage = ({
         ]}
       />
 
-      <Animated.Image
-        {...props}
-        source={source}
-        style={[
-          styles.imageOverlay,
-          {
-            opacity: imageAnimated,
-            ...desaturationStyle,
-          },
-        ]}
-        onLoad={onImageLoad}
-        accessibilityLabel={alt}
-      />
+      {/* For web, just use the base image with CSS filter */}
+      {IS_WEB ? (
+        baseImage
+      ) : (
+        // For React Native, use the overlay technique
+        <>
+          {baseImage}
+          {isDesaturated && (
+            <Animated.Image
+              {...props}
+              source={source}
+              style={[
+                styles.imageOverlay,
+                {
+                  opacity: imageAnimated.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, 0.8],
+                  }),
+                  tintColor: 'gray',
+                },
+              ]}
+            />
+          )}
+        </>
+      )}
     </View>
   );
 };
