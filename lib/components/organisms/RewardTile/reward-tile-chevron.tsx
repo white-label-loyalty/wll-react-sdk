@@ -1,4 +1,5 @@
 import React from 'react';
+import { IS_MOBILE } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Icon } from '../../atoms';
 
@@ -14,6 +15,7 @@ export const RewardTileChevron = (): JSX.Element => {
   return (
     <Icon
       name="ChevronRight"
+      size={IS_MOBILE ? 16 : undefined}
       color={theme?.derivedSurfaceText?.[20] || '#000000'}
       accessibilityRole="image"
       accessibilityLabel="View reward details"
