@@ -1,3 +1,12 @@
+## [1.0.88](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.87...v1.0.88) (2025-03-20)
+
+
+### Bug Fixes
+
+* apply size limit to chevron on mobile devices ([79f8320](https://github.com/white-label-loyalty/wll-react-sdk/commit/79f83203a94e963849046db831133b55ee63c958))
+
+
+
 ## [1.0.87](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.86...v1.0.87) (2025-03-20)
 
 
