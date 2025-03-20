@@ -30,7 +30,8 @@ describe('<ContentTile /> Rendering States', () => {
     const { queryByTestId } = render(
       <ContentTile tile={fullSizeTileWithNoArtwork} />
     );
-    expect(queryByTestId('tile-content')).toBeTruthy();
+    expect(queryByTestId('content-tile-title')).toBeTruthy();
+    expect(queryByTestId('content-tile-summary')).toBeTruthy();
   });
 
   it('if half-size tile has artwork, content should be null', () => {

@@ -5,12 +5,12 @@ import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
   BadgeTile,
   BannerTile,
-  ContentTile,
   PointsTile,
   RewardCategoryTile,
   RewardTile,
   TierTileUpdated,
 } from '../../organisms';
+import ContentTile from '../../organisms/ContentTile';
 
 type TileContainerProps = {
   tiles: Tile[];

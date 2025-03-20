@@ -1,34 +1,56 @@
 import React from 'react';
-import { Tile } from '../../../types/tile';
-import BaseTile from '../../atoms/BaseTile';
+import { ContentTileConfig, Tile } from '../../../types/tile';
+import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
-import { ContentTileBody } from './content-tile-body';
-import { ContentTileContainer } from './content-tile-container';
-import { ContentTileContent } from './content-tile-content';
-import { ContentTileHeader } from './content-tile-header';
+import { ContentTileChevron } from './content-tile-chevron';
 import { ContentTileMedia } from './content-tile-media';
+import { ContentTileSummary } from './content-tile-summary';
+import { ContentTileTitle } from './content-tile-title';
+import { useContentTileStyles } from './styles';
 
 type ContentTileProps = {
   tile: Tile;
 };
 
 /**
- * The ContentTile component renders a tile with a container, media, content, header, and body.
+ * Helper function to determine if the tile should display artwork only.
  *
- * @param tile - The tile data to render.
+ * @param configuration - The configuration object of the tile.
+ * @returns `true` if the tile should display artwork only.
+ */
+const isArtworkOnly = (configuration?: ContentTileConfig): boolean => {
+  if (!configuration) return false;
+  return !configuration.title && !configuration.body;
+};
+
+/**
+ * The ContentTile component renders a tile with media, title, summary, and a chevron.
+ * This follows the same structure as RewardTile for consistent layout.
+ *
+ * @param {ContentTileProps} props - Component props
+ * @param {Tile} props.tile - The tile data to render
+ * @returns JSX.Element or null if tile is inactive
  */
 const ContentTileRoot = ({ tile }: ContentTileProps): JSX.Element | null => {
-  if (!tile || !tile.active) return null;
+  if (!tile || !tile.active || !tile.configuration) return null;
+
+  const configuration = tile.configuration as ContentTileConfig;
+  const hasArtwork = Boolean(configuration.artworkUrl);
+  const styles = useContentTileStyles(hasArtwork);
 
   return (
     <BaseTile tile={tile}>
-      <ContentTile.Container>
-        <ContentTile.Media />
-        <ContentTile.Content>
-          <ContentTile.Header />
-          <ContentTile.Body />
-        </ContentTile.Content>
-      </ContentTile.Container>
+      <ContentTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
+      <Layout
+        justify={hasArtwork ? 'start' : 'center'}
+        style={{ paddingBottom: 0, marginBottom: 0 }}
+      >
+        <Row justify="between" align="center" style={styles.header}>
+          <ContentTile.Title />
+          <ContentTile.Chevron />
+        </Row>
+        <ContentTile.Summary />
+      </Layout>
     </BaseTile>
   );
 };
@@ -37,11 +59,10 @@ const ContentTileRoot = ({ tile }: ContentTileProps): JSX.Element | null => {
  * The ContentTile component with subcomponents attached.
  */
 export const ContentTile = Object.assign(ContentTileRoot, {
-  Container: ContentTileContainer,
   Media: ContentTileMedia,
-  Content: ContentTileContent,
-  Header: ContentTileHeader,
-  Body: ContentTileBody,
+  Title: ContentTileTitle,
+  Summary: ContentTileSummary,
+  Chevron: ContentTileChevron,
 });
 
 export default withTileFetching(ContentTile);

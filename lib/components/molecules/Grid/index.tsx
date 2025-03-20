@@ -35,26 +35,10 @@ const Grid = ({ section }: GridProps) => {
         height: 'auto',
       };
     } else {
-      // Calculate available width accounting for screen width and section padding
       const availableWidth = SCREEN_WIDTH - GRID_GAP * 2;
       const gapSpace = (columns - 1) * GRID_GAP;
 
       const tileWidth = Math.floor((availableWidth - gapSpace) / columns);
-      const halfTileHeight = Math.floor(tileWidth / 2);
-
-      // Detailed logging for debugging
-      console.log('=== GRID DEBUG ===');
-      console.log(`SCREEN_WIDTH: ${SCREEN_WIDTH}px, GRID_GAP: ${GRID_GAP}px`);
-      console.log(`Columns: ${columns}, Section padding: ${GRID_GAP * 2}px`);
-      console.log(
-        `Available width: ${availableWidth}px, Gap space: ${gapSpace}px`
-      );
-      console.log(`Calculated tile width: ${tileWidth}px`);
-      console.log(`Half tile height should be: ${halfTileHeight}px`);
-      console.log(`Expected full tile: ${tileWidth}x${tileWidth}px`);
-      console.log(`Expected half tile: ${tileWidth}x${halfTileHeight}px`);
-      console.log('=== END DEBUG ===');
-
       return {
         width: tileWidth,
         marginBottom: GRID_GAP,
