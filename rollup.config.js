@@ -33,7 +33,7 @@ export default [
     plugins: [
       resolve({
         extensions,
-        mainFields: ['react-native', 'native', 'module', 'main'],
+        mainFields: ['react-native', 'main'],
       }),
       commonjs(),
       typescript({
