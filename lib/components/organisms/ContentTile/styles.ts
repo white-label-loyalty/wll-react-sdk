@@ -60,6 +60,8 @@ export const useContentTileStyles = (
     header: getHeaderStyle(hasArtwork),
     tileTitle: {
       maxWidth: '90%',
+      flex: 1,
+      marginRight: 8,
     },
   });
 };

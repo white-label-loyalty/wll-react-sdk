@@ -28,7 +28,7 @@ export const ContentTileTitle = (): JSX.Element | null => {
       accessibilityRole="header"
       accessibilityLabel={title}
       numberOfLines={1}
-      style={[{ flex: 1, marginRight: 8 }, handleTitleWidth()]}
+      style={handleTitleWidth()}
       testID="content-tile-title"
     >
       {title}

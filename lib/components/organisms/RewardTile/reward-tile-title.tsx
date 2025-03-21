@@ -36,7 +36,7 @@ export const RewardTileTitle = (): JSX.Element | null => {
       accessibilityRole="header"
       accessibilityLabel={`Reward title: ${name}`}
       testID="reward-tile-title"
-      style={[{ flex: 1, marginRight: 8 }, handleTitleWidth()]}
+      style={handleTitleWidth()}
     >
       {name}
     </Text>
