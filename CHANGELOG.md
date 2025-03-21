@@ -1,3 +1,13 @@
+## [1.0.92](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.91...v1.0.92) (2025-03-21)
+
+
+### Bug Fixes
+
+* make sure react naitve uses the react native entry point ([41a4979](https://github.com/white-label-loyalty/wll-react-sdk/commit/41a497951ed96b2554b0d8cee2b41151e36e8ce1))
+* make sure web version consumes the web bundle ([31e476c](https://github.com/white-label-loyalty/wll-react-sdk/commit/31e476cee2961071faed8240a0ded5208c403e1f))
+
+
+
 ## [1.0.91](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.90...v1.0.91) (2025-03-21)
 
 
