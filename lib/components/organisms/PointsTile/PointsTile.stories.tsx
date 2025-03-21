@@ -28,6 +28,16 @@ const Template: StoryFn<typeof PointsTile> = (args) => (
   </TileWrapper>
 );
 
+export const ZeroPointsBalance = Template.bind({});
+ZeroPointsBalance.args = {
+  tile: createPointsTileMock({
+    tileHeight: TileHeight.Half,
+    title: 'Available Points',
+    artworkUrl: pointsImage,
+    points: 0,
+    pointsSuffix: 'points',
+  }),
+};
 export const StandardPointsBalance = Template.bind({});
 StandardPointsBalance.args = {
   tile: createPointsTileMock({
