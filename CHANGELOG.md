@@ -1,3 +1,13 @@
+## [1.0.90](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.89...v1.0.90) (2025-03-21)
+
+
+### Bug Fixes
+
+* refactor button into own component and adjust size for mobile ([1e5951f](https://github.com/white-label-loyalty/wll-react-sdk/commit/1e5951f502927cc7712093389717aef6d82a7e04))
+* update imports ([461cb08](https://github.com/white-label-loyalty/wll-react-sdk/commit/461cb0855e918eaf792faa04eeb9cda983890836))
+
+
+
 ## [1.0.89](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.88...v1.0.89) (2025-03-21)
 
 
