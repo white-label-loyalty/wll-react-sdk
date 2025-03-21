@@ -69,5 +69,8 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
         isTablet
       ),
     },
+    tileTitle: {
+      maxWidth: '90%',
+    },
   });
 };
