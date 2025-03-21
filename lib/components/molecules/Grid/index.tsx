@@ -33,6 +33,7 @@ const Grid = ({ section }: GridProps) => {
         width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
         marginBottom: GRID_GAP,
         height: 'auto',
+        aspectRatio: 1,
       };
     } else {
       const availableWidth = SCREEN_WIDTH - GRID_GAP * 2;
@@ -80,12 +81,14 @@ const Grid = ({ section }: GridProps) => {
       };
 
       if (shouldStartNewContainer(currentTiles, tile, nextTile)) {
+        const isLastInRow = (tileContainers.length + 1) % columnsPerRow === 0;
         tileContainers.push(
           <View
             key={`container-${index}`}
             style={[
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
+              !isLastInRow && { marginRight: GRID_GAP },
             ]}
           >
             <TileContainer tiles={currentTiles} />
@@ -111,7 +114,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    justifyContent: 'space-between',
   },
 });
 

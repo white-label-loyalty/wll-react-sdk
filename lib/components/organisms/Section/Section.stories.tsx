@@ -85,3 +85,69 @@ TravelRewardsSection.args = {
     ],
   }),
 };
+
+export const SingleTileSection = Template.bind({});
+SingleTileSection.args = {
+  section: createSectionMock({
+    title: 'Single Tile Layout',
+    tiles: [
+      createTileMock(TileType.Content, {
+        tileHeight: TileHeight.Full,
+        title: 'One Tile Only',
+        body: 'This section contains only one tile to test single tile layout behavior.',
+        artworkUrl: 'https://ucarecdn.com/b129c5c2-08fd-4962-83b1-5c35301148c1/',
+        priority: 1,
+      }),
+    ],
+  }),
+};
+
+export const TwoTileSection = Template.bind({});
+TwoTileSection.args = {
+  section: createSectionMock({
+    title: 'Two Tile Layout',
+    tiles: [
+      createTileMock(TileType.Content, {
+        tileHeight: TileHeight.Full,
+        title: 'First Tile',
+        body: 'This is the first of two tiles in this section.',
+        artworkUrl: 'https://ucarecdn.com/4dcad562-a68f-4dde-bff1-85e320df5f60/',
+        priority: 2,
+      }),
+      createTileMock(TileType.Points, {
+        tileHeight: TileHeight.Full,
+        points: 5000,
+        title: 'Available Points',
+        pointsSuffix: ' pts',
+        priority: 1,
+      }),
+    ],
+  }),
+};
+
+export const ThreeTileSection = Template.bind({});
+ThreeTileSection.args = {
+  section: createSectionMock({
+    title: 'Three Tile Layout',
+    tiles: [
+      createTileMock(TileType.Content, {
+        tileHeight: TileHeight.Full,
+        title: 'First Tile',
+        body: 'This is the first of three tiles in this section.',
+        artworkUrl: 'https://ucarecdn.com/b129c5c2-08fd-4962-83b1-5c35301148c1/',
+        priority: 3,
+      }),
+      createTileMock(TileType.Points, {
+        tileHeight: TileHeight.Half,
+        points: 2500,
+        title: 'Half Points',
+        pointsSuffix: ' pts',
+        priority: 2,
+      }),
+      createTileMock(TileType.Tier, {
+        tileHeight: TileHeight.Half,
+        priority: 1,
+      }),
+    ],
+  }),
+};

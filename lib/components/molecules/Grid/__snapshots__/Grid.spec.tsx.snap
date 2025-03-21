@@ -24,11 +24,11 @@ exports[`<Grid /> matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-justifyContent-1wtj0ep r-width-13qz1uu"
+      class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-width-13qz1uu"
     >
       <div
         class="css-view-175oi2r"
-        style="width: calc(50% - 8px); margin-bottom: 16px; height: auto;"
+        style="width: calc(50% - 8px); margin-bottom: 16px; height: auto; margin-right: 16px;"
       >
         <div
           class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
