@@ -39,9 +39,7 @@ export const useMakeRequest = (config: SDKConfig) => {
         }
 
         const response = await fetch(url, createRequestOptions());
-        console.log('response', response);
         const json = await response.json();
-        console.log('json', json);
         if (json.status === 'fail') {
           return {
             status: 'fail',
