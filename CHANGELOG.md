@@ -1,3 +1,15 @@
+## [1.0.89](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.88...v1.0.89) (2025-03-21)
+
+
+### Bug Fixes
+
+* cleanup fragmented styles ([be481fe](https://github.com/white-label-loyalty/wll-react-sdk/commit/be481fe547e21c5e330a7ee017420445ed5cb125))
+* overflowing title on the mobile device ([760541f](https://github.com/white-label-loyalty/wll-react-sdk/commit/760541f999698c03d4d0067a1d7f115c4cb340ca))
+* remove logs from api helpers file ([111fbbb](https://github.com/white-label-loyalty/wll-react-sdk/commit/111fbbb5b1f34744c59943e3cb80ea437d7188c4))
+* update snapshot ([764dc2e](https://github.com/white-label-loyalty/wll-react-sdk/commit/764dc2e608c95d36eaf77c7a7c0b1d1e6fe722ae))
+
+
+
 ## [1.0.88](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.87...v1.0.88) (2025-03-20)
 
 
