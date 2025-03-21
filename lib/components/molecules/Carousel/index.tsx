@@ -5,10 +5,10 @@ import {
   NativeSyntheticEvent,
   ScrollView,
   StyleSheet,
-  View,
-  Pressable,
   useWindowDimensions,
+  View,
 } from 'react-native';
+import { CarouselNavButton } from '../.';
 import { BUTTON_SIZE } from '../../../constants';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
@@ -16,7 +16,6 @@ import { TSection } from '../../../types/section';
 import { Tile, TileType } from '../../../types/tile';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { sortByPriority } from '../../../utils/transforms';
-import { Icon } from '../../atoms';
 import { BannerTile } from '../../organisms';
 import SectionHeader from '../SectionHeader';
 import { useCarouselStyles } from './styles';
@@ -148,18 +147,7 @@ const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
       >
         <View style={styles.carouselContainer}>
           {showPrevButton && (
-            <Pressable
-              style={[
-                styles.navButton,
-                styles.navButtonLeft,
-                { backgroundColor: theme.background },
-              ]}
-              onPress={handlePrev}
-              accessibilityLabel="Previous slide"
-              role="button"
-            >
-              <Icon name="ArrowLeft" size={20} color={theme.primary} />
-            </Pressable>
+            <CarouselNavButton direction="left" onPress={handlePrev} />
           )}
           <ScrollView
             ref={scrollViewRef}
@@ -169,7 +157,7 @@ const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
             onScroll={handleScroll}
             onMomentumScrollEnd={handleScrollEnd}
             scrollEventThrottle={16}
-            style={[styles.carouselContent]}
+            style={styles.carouselContent}
             contentContainerStyle={{
               width: containerWidth * sortedTiles.length,
             }}
@@ -192,18 +180,7 @@ const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
             ))}
           </ScrollView>
           {showNextButton && (
-            <Pressable
-              style={[
-                styles.navButton,
-                styles.navButtonRight,
-                { backgroundColor: theme.background },
-              ]}
-              onPress={handleNext}
-              accessibilityLabel="Next slide"
-              role="button"
-            >
-              <Icon name="ArrowRight" size={20} color={theme.primary} />
-            </Pressable>
+            <CarouselNavButton direction="right" onPress={handleNext} />
           )}
         </View>
         {displayControls && (
