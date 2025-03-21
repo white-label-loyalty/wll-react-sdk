@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { CarouselNavButton } from '../.';
 import { BUTTON_SIZE } from '../../../constants';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
@@ -16,7 +17,6 @@ import { Tile, TileType } from '../../../types/tile';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { sortByPriority } from '../../../utils/transforms';
 import { BannerTile } from '../../organisms';
-import CarouselNavButton from '../CarouselNavButton';
 import SectionHeader from '../SectionHeader';
 import { useCarouselStyles } from './styles';
 
