@@ -27,7 +27,7 @@ export const PointsTileFormattedPoints = (): JSX.Element | null => {
     points = 0,
   } = tileContext.configuration as PointsTileConfig;
 
-  if (points === undefined || points === 0) return null;
+  if (points === undefined) return null;
 
   const calculatedPoints = applyMultiplier(points, pointsMultiplier);
   const fullPointsText =

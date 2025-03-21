@@ -47,6 +47,13 @@ describe('<PointsTile /> Content', () => {
     expect(titleElement.textContent).toBe('Available Points');
   });
 
+  it('displays the correct zero points value', () => {
+    const zeroPointsTile = createPointsTileMock({ points: 0 });
+    render(<PointsTile tile={zeroPointsTile} />);
+    const valueElement = screen.getByTestId('points-tile-value');
+    expect(valueElement.textContent).toBe('0');
+  });
+
   it('applies points multiplier correctly', () => {
     const multiplierTile = createPointsTileMock({
       pointsMultiplier: 2,
