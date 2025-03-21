@@ -1,8 +1,10 @@
 import React from 'react';
+import { IS_MOBILE } from '../../../constants/device';
 import { RewardTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { useRewardTileStyles } from './styles';
 
 /**
  * Renders the title of a Reward Tile.
@@ -12,12 +14,19 @@ import { useTileContext } from '../../atoms/BaseTile';
 
 export const RewardTileTitle = (): JSX.Element | null => {
   const tileContext = useTileContext();
+  const styles = useRewardTileStyles();
 
   if (!isContextValid(tileContext)) return null;
 
   const { name } = tileContext.configuration as RewardTileConfig;
 
   if (!name) return null;
+
+  const handleTitleWidth = () => {
+    if (IS_MOBILE) {
+      return styles.titleWithLink;
+    }
+  };
 
   return (
     <Text
@@ -27,7 +36,7 @@ export const RewardTileTitle = (): JSX.Element | null => {
       accessibilityRole="header"
       accessibilityLabel={`Reward title: ${name}`}
       testID="reward-tile-title"
-      style={{ flex: 1, marginRight: 8 }}
+      style={handleTitleWidth()}
     >
       {name}
     </Text>
