@@ -33,12 +33,7 @@ export default [
     plugins: [
       resolve({
         extensions,
-        mainFields: [
-          'react-native',
-          'native',
-          'module',
-          'main'
-        ]
+        mainFields: ['react-native', 'main'],
       }),
       commonjs(),
       typescript({
@@ -47,7 +42,7 @@ export default [
         declarationDir: './dist/types',
         exclude: ['node_modules/**', '**/*.spec.ts'],
         jsx: 'react-jsx',
-      })
+      }),
     ],
   },
   // Web bundle
@@ -60,7 +55,10 @@ export default [
       exports: 'named',
     },
     plugins: [
-      resolve({ extensions }),
+      resolve({
+        extensions,
+        mainFields: ['browser', 'module', 'main'],
+      }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',

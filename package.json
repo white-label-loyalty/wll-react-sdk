@@ -2,10 +2,10 @@
   "name": "@wlloyalty/wll-react-sdk",
   "version": "1.0.91",
   "license": "UNLICENSED",
-  "main": "dist/native.js",
+  "main": "dist/web.js",
   "browser": "dist/web.js",
   "react-native": "dist/native.js",
-  "module": "dist/native.js",
+  "module": "dist/web.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
