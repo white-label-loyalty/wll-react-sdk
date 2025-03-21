@@ -1,3 +1,13 @@
+## [1.0.93](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.92...v1.0.93) (2025-03-21)
+
+
+### Bug Fixes
+
+* fix issue with layout when user is logged out ([2d0eca9](https://github.com/white-label-loyalty/wll-react-sdk/commit/2d0eca9cc0b43553a1f747d9ecf329ac49e0d987))
+* update snapshots ([693dd67](https://github.com/white-label-loyalty/wll-react-sdk/commit/693dd6793b815607627aaabb2c43589468eea91e))
+
+
+
 ## [1.0.92](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.91...v1.0.92) (2025-03-21)
 
 
