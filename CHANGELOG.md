@@ -1,3 +1,12 @@
+## [1.0.91](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.90...v1.0.91) (2025-03-21)
+
+
+### Bug Fixes
+
+* display points when user has zero points ([64cb6a6](https://github.com/white-label-loyalty/wll-react-sdk/commit/64cb6a6872f23b9ca051307fc949ff0c0eb37235))
+
+
+
 ## [1.0.90](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.89...v1.0.90) (2025-03-21)
 
 
