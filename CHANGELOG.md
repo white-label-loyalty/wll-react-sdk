@@ -1,3 +1,14 @@
+## [1.0.95](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.94...v1.0.95) (2025-03-24)
+
+
+### Bug Fixes
+
+* add global type for __DEV__ ([a5df1f9](https://github.com/white-label-loyalty/wll-react-sdk/commit/a5df1f9d00abd84043d7daed3c7cecc9b8ee17f0))
+* add some logs around theme so we know its being set ([cf6babc](https://github.com/white-label-loyalty/wll-react-sdk/commit/cf6babc4e3351f6bb3ac12eb1f5bdec13d487ea9))
+* trigger version bump workflow ([729b86c](https://github.com/white-label-loyalty/wll-react-sdk/commit/729b86c327670419d5b60c39796e7f84c8f125a9))
+
+
+
 ## [1.0.94](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.93...v1.0.94) (2025-03-24)
 
 
