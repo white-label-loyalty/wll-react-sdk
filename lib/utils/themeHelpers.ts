@@ -43,17 +43,9 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
 
   // fontFamily is optional - it has a default value in defaultTheme
 
-  // Log missing or invalid colors for debugging
   const missingOrInvalidColors = requiredColors.filter(
     (color) => !theme[color] || !isValidColor(theme[color]!)
   );
-
-  if (missingOrInvalidColors.length > 0) {
-    console.warn(
-      '[WLL SDK] Missing or invalid required colors:',
-      missingOrInvalidColors
-    );
-  }
 
   return missingOrInvalidColors.length === 0;
 };
