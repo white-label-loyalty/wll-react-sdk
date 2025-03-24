@@ -1,3 +1,13 @@
+## [1.0.96](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.95...v1.0.96) (2025-03-24)
+
+
+### Bug Fixes
+
+* replace development mode checks with direct logging for theme debugging ([fe546cf](https://github.com/white-label-loyalty/wll-react-sdk/commit/fe546cfd6107e5271fa9be9de58d66416b90991a))
+* trigger version bump workflow ([2ef2bd2](https://github.com/white-label-loyalty/wll-react-sdk/commit/2ef2bd2dad0542cf0305288af484a6b687771865))
+
+
+
 ## [1.0.95](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.94...v1.0.95) (2025-03-24)
 
 
