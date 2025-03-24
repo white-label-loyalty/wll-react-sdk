@@ -1,3 +1,14 @@
+## [1.0.98](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.97...v1.0.98) (2025-03-24)
+
+
+### Bug Fixes
+
+* add note to ensure it doesnt get changed in the future ([790de1d](https://github.com/white-label-loyalty/wll-react-sdk/commit/790de1d9ef40351ca7e47265296b2b417ed6fd2c))
+* remove debug logs ([010401f](https://github.com/white-label-loyalty/wll-react-sdk/commit/010401f914ec0ef038b71070811df78017bc5bd1))
+* trigger version bump workflow ([7ed964e](https://github.com/white-label-loyalty/wll-react-sdk/commit/7ed964e509d96f66ceaa9aacab623e86ed33483b))
+
+
+
 ## [1.0.97](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.96...v1.0.97) (2025-03-24)
 
 
