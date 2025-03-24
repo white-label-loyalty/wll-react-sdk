@@ -33,6 +33,7 @@ export const useSectionHeaderStyles = (): ReturnType<
       ),
       fontWeight: '700',
       color: theme.text,
+      fontFamily: theme.fontFamily,
     },
     sectionDescription: {
       fontSize: useResponsiveValue(
@@ -42,6 +43,7 @@ export const useSectionHeaderStyles = (): ReturnType<
         isTablet
       ),
       color: theme.alphaDerivedText[80],
+      fontFamily: theme.fontFamily,
     },
   });
 };

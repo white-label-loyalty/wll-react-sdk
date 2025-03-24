@@ -29,15 +29,33 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
     'primary',
     'surface',
     'surfaceText',
-    'positive',
-    'negative',
     'text',
   ] as const;
 
+  // Optional colors with defaults
+  const optionalColors = [
+    'positive',
+    'negative',
+    'pageButtonBackground',
+    'pageButtonText',
+    'errorPrimary',
+  ] as const;
+
   // fontFamily is optional - it has a default value in defaultTheme
-  return requiredColors.every(
-    (color) => theme[color] && isValidColor(theme[color]!)
+
+  // Log missing or invalid colors for debugging
+  const missingOrInvalidColors = requiredColors.filter(
+    (color) => !theme[color] || !isValidColor(theme[color]!)
   );
+
+  if (missingOrInvalidColors.length > 0) {
+    console.warn(
+      '[WLL SDK] Missing or invalid required colors:',
+      missingOrInvalidColors
+    );
+  }
+
+  return missingOrInvalidColors.length === 0;
 };
 
 /**

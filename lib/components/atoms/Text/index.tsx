@@ -105,18 +105,11 @@ export const Text = ({
 
   const variantStyle = getVariantStyle(variant);
 
-  return (
-    <RNText
-      style={[
-        variantStyle,
-        style,
-        {
-          fontFamily: theme.fontFamily,
-        },
-      ]}
-      {...props}
-    />
-  );
+  const baseTextStyle = {
+    fontFamily: theme.fontFamily,
+  };
+
+  return <RNText style={[baseTextStyle, variantStyle, style]} {...props} />;
 };
 
 export default Text;
