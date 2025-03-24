@@ -11,6 +11,7 @@ export type DerivedColors = {
 export type DesaturationType = BadgeTileType.Specific | BadgeTileType.Latest;
 
 export type BaseThemeObject = {
+  fontFamily: string;
   accent: string;
   background: string;
   errorPrimary: string;
