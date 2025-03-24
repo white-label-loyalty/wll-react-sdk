@@ -15,7 +15,7 @@ exports[`<Section/> matches snapshot 1`] = `
         <div
           class="css-text-146c3p1 r-fontSize-1ui5ee8 r-marginBottom-5oul0u"
           dir="auto"
-          style="font-weight: 700; color: rgb(0, 0, 0);"
+          style="font-weight: 700; color: rgb(0, 0, 0); font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
         >
           Elite Member Benefits
         </div>
@@ -90,7 +90,7 @@ exports[`<Section/> matches snapshot 1`] = `
                       data-testid="content-tile-title"
                       dir="auto"
                       role="heading"
-                      style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+                      style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
                     >
                       Welcome to Platinum Status
                     </h1>
@@ -100,7 +100,7 @@ exports[`<Section/> matches snapshot 1`] = `
                     class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
                     data-testid="content-tile-summary"
                     dir="auto"
-                    style="color: rgb(51, 51, 51); font-size: 14px;"
+                    style="color: rgb(51, 51, 51); font-size: 14px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
                   >
                     Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here.
                   </div>
