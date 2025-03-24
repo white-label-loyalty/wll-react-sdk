@@ -33,6 +33,8 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
     'negative',
     'text',
   ] as const;
+
+  // fontFamily is optional - it has a default value in defaultTheme
   return requiredColors.every(
     (color) => theme[color] && isValidColor(theme[color]!)
   );
