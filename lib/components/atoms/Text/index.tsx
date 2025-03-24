@@ -108,7 +108,7 @@ export const Text = ({
   const baseTextStyle = {
     fontFamily: theme.fontFamily,
   };
-
+  // NOTE: We must apply fontFamily as base style to ensure it's always applied
   return <RNText style={[baseTextStyle, variantStyle, style]} {...props} />;
 };
 
