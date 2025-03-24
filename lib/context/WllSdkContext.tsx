@@ -67,14 +67,12 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     ...baseTheme,
   } as BaseThemeObject;
 
-  // Development mode logging for theme verification
-  if (__DEV__) {
-    console.debug('[WLL SDK] Theme created:', {
-      fontFamily: mergedTheme.fontFamily,
-      baseTheme: baseTheme?.fontFamily,
-      defaultTheme: defaultTheme.fontFamily
-    });
-  }
+  // Always log theme information to help with debugging
+  console.debug('[WLL SDK] Theme created:', {
+    fontFamily: mergedTheme.fontFamily,
+    baseTheme: baseTheme?.fontFamily,
+    defaultTheme: defaultTheme.fontFamily,
+  });
 
   return {
     ...mergedTheme,
@@ -118,18 +116,16 @@ export const WllSdkProvider = ({
         'Invalid theme provided. Some required colors are missing or invalid.'
       );
     }
-    
-    // Development mode logging for theme updates
-    if (__DEV__) {
-      console.debug('[WLL SDK] Theme update details:', {
-        'providedTheme (full)': providedTheme,
-        'themeToUse.fontFamily': themeToUse.fontFamily,
-        'providedTheme.fontFamily': providedTheme?.fontFamily,
-        'defaultTheme.fontFamily': defaultTheme.fontFamily,
-        'providedTheme keys': providedTheme ? Object.keys(providedTheme) : 'none'
-      });
-    }
-    
+
+    // Always log theme updates to help with debugging
+    console.debug('[WLL SDK] Theme update details:', {
+      'providedTheme (full)': providedTheme,
+      'themeToUse.fontFamily': themeToUse.fontFamily,
+      'providedTheme.fontFamily': providedTheme?.fontFamily,
+      'defaultTheme.fontFamily': defaultTheme.fontFamily,
+      'providedTheme keys': providedTheme ? Object.keys(providedTheme) : 'none',
+    });
+
     setThemeState(createTheme(themeToUse));
   }, [providedTheme]);
 
