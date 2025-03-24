@@ -1,3 +1,13 @@
+## [1.0.97](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.96...v1.0.97) (2025-03-24)
+
+
+### Bug Fixes
+
+* ensure consistent font family application in Text component ([853ee1e](https://github.com/white-label-loyalty/wll-react-sdk/commit/853ee1e6db5064f273f5ceb024123c3bc1fb443f))
+* update test snapshots ([4ad56df](https://github.com/white-label-loyalty/wll-react-sdk/commit/4ad56dfc71770ddeabd724615ad7cd0be273a887))
+
+
+
 ## [1.0.96](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.95...v1.0.96) (2025-03-24)
 
 
