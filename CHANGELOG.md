@@ -1,3 +1,13 @@
+## [1.0.94](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.93...v1.0.94) (2025-03-24)
+
+
+### Bug Fixes
+
+* apply font family from the theme ([162b59a](https://github.com/white-label-loyalty/wll-react-sdk/commit/162b59afc586fd237263c54e3cca33c062c7a84a))
+* update snapshot ([7045e59](https://github.com/white-label-loyalty/wll-react-sdk/commit/7045e5906fb60c50950900972d710ced1ab066d6))
+
+
+
 ## [1.0.93](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.92...v1.0.93) (2025-03-21)
 
 
