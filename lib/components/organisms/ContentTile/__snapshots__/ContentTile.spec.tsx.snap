@@ -58,7 +58,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
           data-testid="content-tile-title"
           dir="auto"
           role="heading"
-          style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+          style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
         >
           Gold Tier Unlocked!
         </h1>
@@ -68,7 +68,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
         class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
         data-testid="content-tile-summary"
         dir="auto"
-        style="color: rgb(51, 51, 51); font-size: 14px;"
+        style="color: rgb(51, 51, 51); font-size: 14px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
       >
         You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access.
       </div>
