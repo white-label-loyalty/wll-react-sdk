@@ -18,9 +18,9 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
       style="background-color: rgb(57, 46, 215);"
     >
       <div
-        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontSize-ubezar r-paddingInline-1rds9hb"
+        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-fontSize-ubezar r-paddingInline-1rds9hb"
         dir="auto"
-        style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(255, 255, 255);"
+        style="color: rgb(255, 255, 255);"
       >
         Restaurant Rewards
       </div>

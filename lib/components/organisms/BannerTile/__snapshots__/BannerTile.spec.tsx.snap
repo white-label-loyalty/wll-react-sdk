@@ -50,20 +50,19 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
     >
       <h1
         aria-label="Summer Points Splash"
-        class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
         data-testid="banner-tile-title"
         dir="auto"
         role="heading"
-        style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0);"
+        style="color: rgb(0, 0, 0);"
       >
         Summer Points Splash
       </h1>
       <div
         aria-label="Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more."
-        class="css-text-146c3p1 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
         data-testid="banner-tile-description"
         dir="auto"
-        style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
       >
         Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.
       </div>
