@@ -1,3 +1,12 @@
+## [1.0.99](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.98...v1.0.99) (2025-03-25)
+
+
+### Bug Fixes
+
+* add loggin to see why theme isnt being set proprlty in consumer ([6bc36e9](https://github.com/white-label-loyalty/wll-react-sdk/commit/6bc36e986abd908808889e6c7634aa4d638b9453))
+
+
+
 ## [1.0.98](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.97...v1.0.98) (2025-03-24)
 
 
