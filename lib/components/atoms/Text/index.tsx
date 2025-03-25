@@ -2,8 +2,10 @@ import * as React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,
+  StyleSheet,
   TextStyle,
 } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
@@ -105,11 +107,36 @@ export const Text = ({
 
   const variantStyle = getVariantStyle(variant);
 
-  const baseTextStyle = {
-    fontFamily: theme.fontFamily,
-  };
-  // NOTE: We must apply fontFamily as base style to ensure it's always applied
-  return <RNText style={[baseTextStyle, variantStyle, style]} {...props} />;
+  // NOTE: React Native Web has different style resolution rules compared to CSS.
+  // 1. We create styles using StyleSheet.create for better performance
+  // 2. Base styles set the initial fontFamily
+  // 3. variantStyle contains responsive fontSize and other variant-specific styles
+  // 4. webOverrides ensures fontFamily is correctly applied on web platform
+  //    (prevents system font stack from being incorrectly applied)
+  // 5. custom style prop has highest precedence
+  // The order matters because RN Web resolves styles by specific properties
+  // rather than last-declaration-wins like in CSS
+  // https://necolas.github.io/react-native-web/docs/styling/#how-it-works
+
+  const styles = StyleSheet.create({
+    base: {
+      fontFamily: theme.fontFamily,
+    },
+    webOverrides: IS_WEB
+      ? {
+          fontFamily: theme.fontFamily,
+        }
+      : {},
+  });
+
+  const combinedStyles = [
+    styles.base,
+    variantStyle,
+    styles.webOverrides,
+    style,
+  ];
+
+  return <RNText style={combinedStyles} {...props} />;
 };
 
 export default Text;
