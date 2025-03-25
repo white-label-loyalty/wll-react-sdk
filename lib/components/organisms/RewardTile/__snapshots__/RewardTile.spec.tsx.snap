@@ -51,11 +51,11 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
       >
         <h1
           aria-label="Reward title: Sweet Chilli Lobster Noodles"
-          class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+          class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6"
           data-testid="reward-tile-title"
           dir="auto"
           role="heading"
-          style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+          style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
         >
           Sweet Chilli Lobster Noodles
         </h1>
@@ -84,10 +84,10 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
       </div>
       <div
         aria-label="Fresh Lobster Noodles with a spicy chilli sauce"
-        class="css-text-146c3p1"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6"
         data-testid="reward-tile-summary"
         dir="auto"
-        style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(51, 51, 51); font-size: 14px;"
+        style="color: rgb(51, 51, 51); font-size: 14px;"
       >
         Fresh Lobster Noodles with a spicy chilli sauce
       </div>

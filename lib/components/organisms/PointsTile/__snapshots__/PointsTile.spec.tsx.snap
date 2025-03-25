@@ -41,11 +41,11 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
       >
         <h1
           aria-label="Available Points"
-          class="css-text-146c3p1"
+          class="css-text-146c3p1 r-fontFamily-lhg2x6"
           data-testid="points-tile-title"
           dir="auto"
           role="heading"
-          style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
+          style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
         >
           Available Points
         </h1>
@@ -58,18 +58,18 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
           >
             <div
-              class="css-text-146c3p1"
+              class="css-text-146c3p1 r-fontFamily-lhg2x6"
               data-testid="points-tile-value"
               dir="auto"
-              style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
+              style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
             >
               1000
             </div>
             <div
-              class="css-text-146c3p1 r-color-10weppm r-fontSize-1i10wst"
+              class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-1i10wst"
               data-testid="points-tile-suffix"
               dir="auto"
-              style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; font-weight: bold;"
+              style="font-weight: bold;"
             >
                pts
             </div>

@@ -57,20 +57,19 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 >
                   <h1
                     aria-label="Second Banner"
-                    class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
                     data-testid="banner-tile-title"
                     dir="auto"
                     role="heading"
-                    style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0);"
+                    style="color: rgb(0, 0, 0);"
                   >
                     Second Banner
                   </h1>
                   <div
                     aria-label="Second Banner Description"
-                    class="css-text-146c3p1 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
-                    style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
                   >
                     Second Banner Description
                   </div>
@@ -102,20 +101,19 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 >
                   <h1
                     aria-label="First Banner"
-                    class="css-text-146c3p1 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
                     data-testid="banner-tile-title"
                     dir="auto"
                     role="heading"
-                    style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0);"
+                    style="color: rgb(0, 0, 0);"
                   >
                     First Banner
                   </h1>
                   <div
                     aria-label="First Banner Description"
-                    class="css-text-146c3p1 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
-                    style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;"
                   >
                     First Banner Description
                   </div>

@@ -86,21 +86,21 @@ exports[`<Section/> matches snapshot 1`] = `
                   >
                     <h1
                       aria-label="Welcome to Platinum Status"
-                      class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a"
+                      class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6"
                       data-testid="content-tile-title"
                       dir="auto"
                       role="heading"
-                      style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+                      style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
                     >
                       Welcome to Platinum Status
                     </h1>
                   </div>
                   <div
                     aria-label="Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here."
-                    class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
+                    class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
                     data-testid="content-tile-summary"
                     dir="auto"
-                    style="font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif; color: rgb(51, 51, 51); font-size: 14px;"
+                    style="color: rgb(51, 51, 51); font-size: 14px;"
                   >
                     Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here.
                   </div>
