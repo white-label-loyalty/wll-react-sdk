@@ -1,3 +1,13 @@
+## [1.0.100](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.99...v1.0.100) (2025-03-25)
+
+
+### Bug Fixes
+
+* resolve web font inheritance issues ([3272c01](https://github.com/white-label-loyalty/wll-react-sdk/commit/3272c01616b7520639b3493e21d11d8030d6249d))
+* update snapshots ([b0767dd](https://github.com/white-label-loyalty/wll-react-sdk/commit/b0767dd790b478fe86a51afd520c019a47ba17dc))
+
+
+
 ## [1.0.99](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.98...v1.0.99) (2025-03-25)
 
 
