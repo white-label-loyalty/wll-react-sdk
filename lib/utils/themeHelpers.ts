@@ -32,20 +32,21 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
     'text',
   ] as const;
 
-  // Optional colors with defaults
-  const optionalColors = [
-    'positive',
-    'negative',
-    'pageButtonBackground',
-    'pageButtonText',
-    'errorPrimary',
-  ] as const;
-
-  // fontFamily is optional - it has a default value in defaultTheme
-
   const missingOrInvalidColors = requiredColors.filter(
     (color) => !theme[color] || !isValidColor(theme[color]!)
   );
+
+  if (missingOrInvalidColors.length > 0) {
+    console.warn(
+      'Theme validation failed. Missing or invalid colors:',
+      missingOrInvalidColors.map((color) => ({
+        color,
+        value: theme[color],
+        exists: !!theme[color],
+        isValid: theme[color] ? isValidColor(theme[color]!) : false,
+      }))
+    );
+  }
 
   return missingOrInvalidColors.length === 0;
 };
@@ -57,7 +58,11 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
  */
 const createSafeColor = (color: string): Color | null => {
   try {
-    return Color(color);
+    const colorInstance = Color(color);
+    console.log('Original color:', color);
+    console.log('Color instance toString:', colorInstance.toString());
+    console.log('Color instance hex:', colorInstance.hex());
+    return colorInstance;
   } catch (error) {
     console.error(`Invalid color value: ${color}`, error);
     return null;
