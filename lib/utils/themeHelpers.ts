@@ -59,9 +59,6 @@ export const validateTheme = (theme: Partial<BaseThemeObject>): boolean => {
 const createSafeColor = (color: string): Color | null => {
   try {
     const colorInstance = Color(color);
-    console.log('Original color:', color);
-    console.log('Color instance toString:', colorInstance.toString());
-    console.log('Color instance hex:', colorInstance.hex());
     return colorInstance;
   } catch (error) {
     console.error(`Invalid color value: ${color}`, error);

@@ -36,7 +36,21 @@ jobs:
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
+        id: chromatic
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: storybook-static
           onlyChanged: true # Only run Chromatic on changed stories
+
+      - name: Update Storybook URLs
+        if: success()
+        run: |
+          STORYBOOK_URL="${{ steps.chromatic.outputs.storybookUrl }}"
+          # Update docs/index.md
+          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md
+          # Update README.md
+          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" README.md
+          # Update docs/.vitepress/config.js
+          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/.vitepress/config.js
+          # Clean up backup files
+          rm docs/index.md.bak README.md.bak docs/.vitepress/config.js.bak

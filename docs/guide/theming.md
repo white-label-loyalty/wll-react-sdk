@@ -5,10 +5,10 @@ The SDK includes a powerful theming system that supports custom colors, derived 
 ## Basic Theme Configuration
 
 ```typescript
-import { ThemeProvider } from '@wlloyalty/wll-react-sdk'
+import { WllSdkProvider } from '@wlloyalty/wll-react-sdk'
 
 const customTheme = {
- background: '#F0F0F0',
+  background: '#F0F0F0',
   text: '#000000',
   primary: '#392ed7',
   accent: '#ff6a3d',
@@ -19,10 +19,17 @@ const customTheme = {
 }
 
 function App() {
+  const config = {
+    apiKey: 'your-api-key'
+  }
+
   return (
-    <ThemeProvider theme={customTheme}>
+    <WllSdkProvider
+      config={config}
+      theme={customTheme}
+    >
       {/* Your app content */}
-    </ThemeProvider>
+    </WllSdkProvider>
   )
 }
 ```
