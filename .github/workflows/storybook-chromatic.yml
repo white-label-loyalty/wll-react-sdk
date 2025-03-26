@@ -44,13 +44,30 @@ jobs:
 
       - name: Update Storybook URLs
         if: success()
+        env:
+          STORYBOOK_URL: ${{ steps.chromatic.outputs.storybookUrl }}
         run: |
-          STORYBOOK_URL="${{ steps.chromatic.outputs.storybookUrl }}"
-          # Update docs/index.md
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md
-          # Update README.md
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" README.md
-          # Update docs/.vitepress/config.js
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/.vitepress/config.js
-          # Clean up backup files
-          rm docs/index.md.bak README.md.bak docs/.vitepress/config.js.bak
+          # Use portable sed syntax for macOS and Linux compatibility
+          if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS sed requires backup extension
+            sed -i '' "s|https://[0-9a-f]\+\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md README.md docs/.vitepress/config.js
+          else
+            # Linux sed
+            sed -i "s|https://[0-9a-f]\+\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md README.md docs/.vitepress/config.js
+          fi
+
+          # Check if files were modified
+          if git diff --quiet docs/index.md README.md docs/.vitepress/config.js; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # Configure git and push changes
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs/index.md README.md docs/.vitepress/config.js
+          git commit -m "Update Storybook URLs to latest Chromatic deployment"
+          git push || {
+            echo "Failed to push changes"
+            exit 1
+          }
