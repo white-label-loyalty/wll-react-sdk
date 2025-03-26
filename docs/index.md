@@ -13,7 +13,7 @@ hero:
       link: /components/
     - theme: alt
       text: Storybook
-      link: 'https://66c36701bb14ec551f38279c-ueompbfvfq.chromatic.com/'
+      link: 'https://66c36701bb14ec551f38279c-rwfnkzmhqs.chromatic.com/'
 features:
   - title: 🎨 Flexible Theming
     details: Full control over visual styling with automatic color derivation and responsive design system
