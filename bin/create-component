@@ -44,8 +44,6 @@ async function main() {
   ]);
 
   const componentsDir = answers.dir;
-  const componentName = toPascalCase(answers.name);
-  const folderName = toPascalCase(answers.type);
 
   // Validate component type
   if (!validTypes.includes(answers.type)) {
@@ -56,18 +54,18 @@ async function main() {
   }
 
   // Create component directory
-  const componentDir = path.join(componentsDir, folderName, componentName);
+  const componentDir = path.join(componentsDir, answers.type, answers.name);
   fs.mkdirSync(componentDir, { recursive: true });
 
   // Create component file
   const componentContent = `import * as React from 'react';
 import { View } from 'react-native';
 
-type ${componentName}Props = {
+type ${answers.name}Props = {
   // Define your props here
 }
 
-const ${componentName}: React.FC<${componentName}Props> = () => {
+const ${answers.name}: React.FC<${answers.name}Props> = () => {
   return (
     <View>
       {/* Your component code here */}
@@ -75,7 +73,7 @@ const ${componentName}: React.FC<${componentName}Props> = () => {
   );
 };
 
-export default ${componentName};
+export default ${answers.name};
 `;
 
   fs.writeFileSync(path.join(componentDir, 'index.tsx'), componentContent);
@@ -83,14 +81,14 @@ export default ${componentName};
   // Create story file
   const storyContent = `import * as React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import ${componentName} from './index';
+import ${answers.name} from './index';
 
 export default {
-  title: 'components/${folderName}/${componentName}',
-  component: ${componentName},
+  title: 'components/${answers.type}/${answers.name}',
+  component: ${answers.name},
 } as Meta;
 
-const Template: StoryFn<typeof ${componentName}> = (args) => <${componentName} {...args} />;
+const Template: StoryFn<typeof ${answers.name}> = (args) => <${answers.name} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -99,18 +97,18 @@ Default.args = {
 `;
 
   fs.writeFileSync(
-    path.join(componentDir, `${componentName}.stories.tsx`),
+    path.join(componentDir, `${answers.name}.stories.tsx`),
     storyContent
   );
 
   // Create spec file
   const specContent = `import React from 'react';
 import { render } from '@testing-library/react-native';
-import ${componentName} from './index';
+import ${answers.name} from './index';
 
-describe('${componentName}', () => {
+describe('${answers.name}', () => {
   it('renders correctly', () => {
-    const { getByTestId } = render(<${componentName} />);
+    const { getByTestId } = render(<${answers.name} />);
     // Add your test assertions here
   });
 
@@ -129,12 +127,12 @@ describe('${componentName}', () => {
 `;
 
   fs.writeFileSync(
-    path.join(componentDir, `${componentName}.spec.tsx`),
+    path.join(componentDir, `${answers.name}.spec.tsx`),
     specContent
   );
 
   // Update index file
-  const indexFile = path.join(componentsDir, folderName, 'index.ts');
+  const indexFile = path.join(componentsDir, answers.type, 'index.ts');
   fs.mkdirSync(path.dirname(indexFile), { recursive: true });
 
   if (!fs.existsSync(indexFile)) {
@@ -145,10 +143,10 @@ describe('${componentName}', () => {
   const lines = indexContent.split('\n').filter(Boolean);
 
   // Add new export if it doesn't exist
-  const exportLine = `export { default as ${componentName} } from './${componentName}';`;
+  const exportLine = `export { default as ${answers.name} } from './${answers.name}';`;
   if (
     !lines.some((line) =>
-      line.includes(`export { default as ${componentName} }`)
+      line.includes(`export { default as ${answers.name} }`)
     )
   ) {
     lines.push(exportLine);
@@ -158,7 +156,7 @@ describe('${componentName}', () => {
   fs.writeFileSync(indexFile, lines.join('\n') + '\n');
 
   console.log(
-    `✨ ${componentName} component created successfully in ${path.relative('.', componentDir)}!`
+    `✨ ${answers.name} component created successfully in ${path.relative('.', componentDir)}!`
   );
 }
 
