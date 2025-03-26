@@ -44,13 +44,15 @@ jobs:
 
       - name: Update Storybook URLs
         if: success()
+        env:
+          STORYBOOK_URL: ${{ steps.chromatic.outputs.storybookUrl }}
         run: |
-          STORYBOOK_URL="${{ steps.chromatic.outputs.storybookUrl }}"
-          # Update docs/index.md
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md
-          # Update README.md
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" README.md
-          # Update docs/.vitepress/config.js
-          sed -i.bak "s|https://.*\.chromatic\.com/|${STORYBOOK_URL}|" docs/.vitepress/config.js
-          # Clean up backup files
-          rm docs/index.md.bak README.md.bak docs/.vitepress/config.js.bak
+          # Use more precise sed replacement
+          sed -i "s|https://[0-9a-f]\+\.chromatic\.com/|${STORYBOOK_URL}|" docs/index.md README.md docs/.vitepress/config.js
+
+          # Commit and push changes back to the repository
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs/index.md README.md docs/.vitepress/config.js
+          git commit -m "Update Storybook URLs to latest Chromatic deployment"
+          git push
