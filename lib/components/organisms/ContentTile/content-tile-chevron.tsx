@@ -12,9 +12,9 @@ export const ContentTileChevron = (): JSX.Element | null => {
 
   if (!isContextValid(tileContext)) return null;
 
-  const { ctaLink } = tileContext.configuration as ContentTileConfig;
+  const { ctaLink, title } = tileContext.configuration as ContentTileConfig;
 
-  if (!ctaLink) return null;
+  if (!ctaLink || !title) return null;
 
   return (
     <Icon
