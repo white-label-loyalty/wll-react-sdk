@@ -51,6 +51,7 @@ type WllSdkContextType = ThemeContextType & {
   getSectionByID: (id: string) => Promise<APIResponse<TSection>>;
   getTileByID: (id: string) => Promise<APIResponse<Tile>>;
   handleNavigation: (link: string, target: CTALinkTarget) => Promise<void>;
+  refreshGroup: (id: string) => Promise<APIResponse<TGroup>>;
 } & Readonly<{
     readonly config: SDKConfig;
   }>;
@@ -66,8 +67,6 @@ const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
     ...defaultTheme,
     ...baseTheme,
   } as BaseThemeObject;
-
-
 
   return {
     ...mergedTheme,
@@ -112,8 +111,6 @@ export const WllSdkProvider = ({
       );
     }
 
-
-
     setThemeState(createTheme(themeToUse));
   }, [providedTheme]);
 
@@ -138,6 +135,13 @@ export const WllSdkProvider = ({
 
   const handleNavigation = useNavigation(navigationConfig);
 
+  const refreshGroup = useCallback(
+    async (id: string) => {
+      return getGroupByID(id);
+    },
+    [getGroupByID]
+  );
+
   const contextValue = useMemo(
     () => ({
       theme,
@@ -146,6 +150,7 @@ export const WllSdkProvider = ({
       getSectionByID,
       getTileByID,
       handleNavigation,
+      refreshGroup,
       config,
     }),
     [
@@ -155,6 +160,7 @@ export const WllSdkProvider = ({
       getSectionByID,
       getTileByID,
       handleNavigation,
+      refreshGroup,
       config,
     ]
   );

@@ -32,6 +32,7 @@ export default {
             { text: 'Getting Started', link: '/guide/getting-started' },
             { text: 'Theme', link: '/guide/theming' },
             { text: 'Development', link: '/guide/development' },
+            { text: 'Helper Methods', link: '/guide/helper-methods' },
           ],
         },
       ],
