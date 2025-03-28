@@ -1,3 +1,18 @@
+## [1.0.102](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.101...v1.0.102) (2025-03-28)
+
+
+### Bug Fixes
+
+* trigger version bump workflow ([1374e2e](https://github.com/white-label-loyalty/wll-react-sdk/commit/1374e2ebd01a870a930d08162ee7a48f1afe2fc1))
+* trigger version bump workflow ([cd59c7a](https://github.com/white-label-loyalty/wll-react-sdk/commit/cd59c7a0006a63cb7cb74f8f145fbce29321108d))
+
+
+### Features
+
+* **Carousel:** add auto-rotate functionality ([486638c](https://github.com/white-label-loyalty/wll-react-sdk/commit/486638cc7574537a3180e3ba3e28395c2630aa7b))
+
+
+
 ## [1.0.101](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.100...v1.0.101) (2025-03-28)
 
 
