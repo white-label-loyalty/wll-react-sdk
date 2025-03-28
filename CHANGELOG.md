@@ -1,3 +1,17 @@
+## [1.0.101](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.100...v1.0.101) (2025-03-28)
+
+
+### Bug Fixes
+
+* trigger version bump workflow ([a8d8822](https://github.com/white-label-loyalty/wll-react-sdk/commit/a8d8822f5461d28fbc87ee440816098bf0035a06))
+
+
+### Features
+
+* **group:** add refreshGroup method to fetch updated group data ([d5bc409](https://github.com/white-label-loyalty/wll-react-sdk/commit/d5bc40982332329b69cc9d485b6eb40795dea7da))
+
+
+
 ## [1.0.100](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.99...v1.0.100) (2025-03-25)
 
 
