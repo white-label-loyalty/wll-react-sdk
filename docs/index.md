@@ -9,6 +9,9 @@ hero:
       text: Get Started
       link: /guide/getting-started
     - theme: alt
+      text: Helper Methods
+      link: /guide/helper-methods
+    - theme: alt
       text: View Components
       link: /components/
     - theme: alt

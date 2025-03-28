@@ -1,4 +1,10 @@
-# Refreshing Group Data
+
+
+# Helper Methods
+The SDK provides a set of helper methods to enhance your integration. These methods are designed to simplify common tasks and provide a consistent experience across different platforms.
+
+
+## Refresh Group Data
 
 The SDK provides functionality to refresh group data programmatically. This is useful when you need to update the group's content after certain events or actions.
 
