@@ -1,13 +1,10 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { IS_WEB } from '../../../constants/device';
-import { useWllSdk } from '../../../context/WllSdkContext';
+import {
+  registerRefreshCallback,
+  useGroupWithRefresh,
+} from '../../../hooks/useDataRefresh';
 import { TGroup } from '../../../types/group';
 import { commonStyles } from '../../../utils/styling';
 import { sortByPriority } from '../../../utils/transforms';
@@ -48,47 +45,22 @@ export const useGroupContext = (): GroupContextType => {
 };
 
 /**
- * Custom hook to fetch and manage group data
+ * Custom hook to fetch and manage group data using TanStack Query
  *
  * @param {string} id - The ID of the group to fetch
  * @returns {Object} Object containing group data, loading state, and any error
  */
-
 const useGroupData = (id: string) => {
-  const sdk = useWllSdk();
-  const [groupData, setGroupData] = useState<TGroup | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // Default refresh interval of 30 seconds
+  const { data, isLoading, error, refresh } = useGroupWithRefresh(id, 30);
 
-  const fetchGroup = useCallback(async () => {
-    if (!id || !sdk || !sdk.getGroupByID) {
-      setError('Unable to fetch group data: invalid configuration');
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await sdk.getGroupByID(id);
-      if (response && response.status === 'success' && response.data) {
-        setGroupData(response.data);
-      } else {
-        setError((response && response.error) || 'Failed to fetch group data.');
-      }
-    } catch (err) {
-      setError('Failed to fetch group data. Please try again later.');
-      console.error('Error fetching group:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [id, sdk]);
-
+  // Register this group for global refresh with silent option
   useEffect(() => {
-    fetchGroup();
-  }, [fetchGroup]);
+    const unregister = registerRefreshCallback(refresh, true);
+    return unregister;
+  }, [refresh]);
 
-  return { groupData, isLoading, error };
+  return { groupData: data, isLoading, error };
 };
 
 /**

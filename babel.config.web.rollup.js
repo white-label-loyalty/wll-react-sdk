@@ -1,6 +1,13 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', { modules: false }],
+    ['@babel/preset-env', { 
+      modules: false,
+      targets: {
+        browsers: ['> 0.25%', 'ie >= 11', 'safari >= 9']
+      },
+      useBuiltIns: 'usage',
+      corejs: 3
+    }],
     '@babel/preset-typescript',
     ['@babel/preset-react', { runtime: 'automatic' }],
   ],

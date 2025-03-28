@@ -13,6 +13,7 @@ import { NavigationConfig } from '../types/navigation';
 import { TSection } from '../types/section';
 import { BaseThemeObject, ThemeContextType, ThemeObject } from '../types/theme';
 import { CTALinkTarget, Tile } from '../types/tile';
+import { DataProvider } from './DataContext';
 import {
   useGetGroupByID,
   useGetSectionByID,
@@ -160,7 +161,9 @@ export const WllSdkProvider = ({
   );
   return (
     <WllSdkContext.Provider value={contextValue}>
-      <ResponsiveProvider>{children}</ResponsiveProvider>
+      <DataProvider>
+        <ResponsiveProvider>{children}</ResponsiveProvider>
+      </DataProvider>
     </WllSdkContext.Provider>
   );
 };
