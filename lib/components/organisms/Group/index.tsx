@@ -60,35 +60,48 @@ const useGroupData = (id: string) => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchGroup = useCallback(async () => {
-    if (!id || !sdk || !sdk.getGroupByID) {
-      setError('Unable to fetch group data: invalid configuration');
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await sdk.getGroupByID(id);
-      if (response && response.status === 'success' && response.data) {
-        setGroupData(response.data);
-      } else {
-        setError((response && response.error) || 'Failed to fetch group data.');
+  const fetchGroup = useCallback(
+    async (showLoading = true) => {
+      if (!id || !sdk || !sdk.getGroupByID) {
+        setError('Unable to fetch group data: invalid configuration');
+        setIsLoading(false);
+        return;
       }
-    } catch (err) {
-      setError('Failed to fetch group data. Please try again later.');
-      console.error('Error fetching group:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [id, sdk]);
 
-  useEffect(() => {
-    fetchGroup();
+      if (showLoading) {
+        setIsLoading(true);
+      }
+      setError(null);
+      try {
+        const response = await sdk.refreshGroup(id);
+        if (response && response.status === 'success' && response.data) {
+          setGroupData(response.data);
+        } else {
+          setError(
+            (response && response.error) || 'Failed to fetch group data.'
+          );
+        }
+      } catch (err) {
+        setError('Failed to fetch group data. Please try again later.');
+        console.error('Error fetching group:', err);
+      } finally {
+        if (showLoading) {
+          setIsLoading(false);
+        }
+      }
+    },
+    [id, sdk]
+  );
+
+  const refreshGroup = useCallback(() => {
+    return fetchGroup(false);
   }, [fetchGroup]);
 
-  return { groupData, isLoading, error };
+  useEffect(() => {
+    fetchGroup(true);
+  }, [fetchGroup]);
+
+  return { groupData, isLoading, error, refreshGroup };
 };
 
 /**
