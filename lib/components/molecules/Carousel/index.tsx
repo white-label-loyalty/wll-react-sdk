@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import {
   Animated,
   NativeScrollEvent,
@@ -22,6 +22,7 @@ import { useCarouselStyles } from './styles';
 
 type CarouselProps = {
   section?: TSection;
+  autoRotateInterval?: number;
 };
 
 type CarouselState = {
@@ -61,7 +62,10 @@ const carouselReducer = (
   }
 };
 
-const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
+const Carousel = ({
+  section,
+  autoRotateInterval = 5000,
+}: CarouselProps): JSX.Element | null => {
   if (!section) return null;
   const { width: WINDOW_WIDTH } = useWindowDimensions();
   const containerRef = useRef<View>(null);
@@ -109,12 +113,35 @@ const Carousel = ({ section }: CarouselProps): JSX.Element | null => {
   };
 
   const handleNext = () => {
+    const nextIndex = Math.min(sortedTiles.length - 1, currentIndex + 1);
     dispatch({ type: 'NEXT_SLIDE', maxIndex: sortedTiles.length - 1 });
     scrollViewRef.current?.scrollTo({
-      x: (currentIndex + 1) * containerWidth,
+      x: nextIndex * containerWidth,
       animated: true,
     });
   };
+
+  const rotateToNextSlide = useCallback(() => {
+    if (currentIndex >= sortedTiles.length - 1) {
+      dispatch({ type: 'SET_CURRENT_INDEX', payload: 0 });
+      scrollViewRef.current?.scrollTo({
+        x: 0,
+        animated: true,
+      });
+    } else {
+      handleNext();
+    }
+  }, [currentIndex, containerWidth, sortedTiles.length]);
+
+  useEffect(() => {
+    if (sortedTiles.length <= 1) return;
+
+    const rotationTimer = setInterval(() => {
+      rotateToNextSlide();
+    }, autoRotateInterval);
+
+    return () => clearInterval(rotationTimer);
+  }, [rotateToNextSlide, autoRotateInterval, sortedTiles.length]);
 
   const displayControls = sortedTiles.length > 1;
   const showPrevButton = displayControls && currentIndex > 0;
