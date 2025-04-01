@@ -1,3 +1,17 @@
+## [1.0.103](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.102...v1.0.103) (2025-04-01)
+
+
+### Bug Fixes
+
+* trigger version bump workflow ([b0b1870](https://github.com/white-label-loyalty/wll-react-sdk/commit/b0b1870190ea5d349fea48c62df2f7248755867d))
+
+
+### Features
+
+* **data-invalidation:** add event-driven data invalidation system ([2a5931b](https://github.com/white-label-loyalty/wll-react-sdk/commit/2a5931b90124b336e78a99058670cb5967745831))
+
+
+
 ## [1.0.102](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.101...v1.0.102) (2025-03-28)
 
 
