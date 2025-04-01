@@ -18,6 +18,7 @@ import {
   useGetSectionByID,
   useGetTileByID,
 } from '../utils/apiHelpers';
+import { EventTypes, sdkEventEmitter } from '../utils/eventEmitter';
 import { defaultTheme, sizes } from '../utils/styling';
 import {
   getAlphaDerivedColors,
@@ -52,6 +53,11 @@ type WllSdkContextType = ThemeContextType & {
   getTileByID: (id: string) => Promise<APIResponse<Tile>>;
   handleNavigation: (link: string, target: CTALinkTarget) => Promise<void>;
   refreshGroup: (id: string) => Promise<APIResponse<TGroup>>;
+  notifyDataChange: (eventType: EventTypes, data?: any) => void;
+  subscribeToDataChange: (
+    eventType: EventTypes,
+    callback: (data?: any) => void
+  ) => () => void;
 } & Readonly<{
     readonly config: SDKConfig;
   }>;
@@ -142,6 +148,17 @@ export const WllSdkProvider = ({
     [getGroupByID]
   );
 
+  const notifyDataChange = useCallback((eventType: EventTypes, data?: any) => {
+    sdkEventEmitter.emit(eventType, data);
+  }, []);
+
+  const subscribeToDataChange = useCallback(
+    (eventType: EventTypes, callback: (data?: any) => void) => {
+      return sdkEventEmitter.on(eventType, callback);
+    },
+    []
+  );
+
   const contextValue = useMemo(
     () => ({
       theme,
@@ -151,6 +168,8 @@ export const WllSdkProvider = ({
       getTileByID,
       handleNavigation,
       refreshGroup,
+      notifyDataChange,
+      subscribeToDataChange,
       config,
     }),
     [
@@ -161,6 +180,8 @@ export const WllSdkProvider = ({
       getTileByID,
       handleNavigation,
       refreshGroup,
+      notifyDataChange,
+      subscribeToDataChange,
       config,
     ]
   );

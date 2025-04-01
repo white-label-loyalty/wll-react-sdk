@@ -71,6 +71,15 @@ export default {
           text: 'Platform Integration',
           items: [{ text: 'Overview', link: '/platform-integration/' }],
         },
+        {
+          text: 'Data Invalidation',
+          items: [
+            {
+              text: 'Overview',
+              link: '/platform-integration/data-invalidation',
+            },
+          ],
+        },
       ],
     },
   },

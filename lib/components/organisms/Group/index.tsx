@@ -59,6 +59,7 @@ const useGroupData = (id: string) => {
   const [groupData, setGroupData] = useState<TGroup | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSilentlyRefreshing, setIsSilentlyRefreshing] = useState(false);
 
   const fetchGroup = useCallback(
     async (showLoading = true) => {
@@ -68,7 +69,7 @@ const useGroupData = (id: string) => {
         return;
       }
 
-      if (showLoading) {
+      if (showLoading && !isSilentlyRefreshing) {
         setIsLoading(true);
       }
       setError(null);
@@ -85,13 +86,19 @@ const useGroupData = (id: string) => {
         setError('Failed to fetch group data. Please try again later.');
         console.error('Error fetching group:', err);
       } finally {
-        if (showLoading) {
+        if (showLoading && !isSilentlyRefreshing) {
           setIsLoading(false);
         }
+        setIsSilentlyRefreshing(false);
       }
     },
-    [id, sdk]
+    [id, sdk, isSilentlyRefreshing]
   );
+
+  const silentRefresh = useCallback(() => {
+    setIsSilentlyRefreshing(true);
+    return fetchGroup(false);
+  }, [fetchGroup]);
 
   const refreshGroup = useCallback(() => {
     return fetchGroup(false);
@@ -99,7 +106,17 @@ const useGroupData = (id: string) => {
 
   useEffect(() => {
     fetchGroup(true);
-  }, [fetchGroup]);
+    const unsubscribeGroup = sdk.subscribeToDataChange(
+      'GROUP_DATA_CHANGED',
+      () => {
+        silentRefresh();
+      }
+    );
+
+    return () => {
+      unsubscribeGroup();
+    };
+  }, [fetchGroup, id, sdk, silentRefresh]);
 
   return { groupData, isLoading, error, refreshGroup };
 };
