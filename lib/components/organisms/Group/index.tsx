@@ -220,7 +220,7 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
 
   return (
     <GroupContext.Provider value={{ groupData }}>
-      <View data-testid="group-container">
+      <View testID="group-container">
         <GroupSections />
       </View>
     </GroupContext.Provider>
