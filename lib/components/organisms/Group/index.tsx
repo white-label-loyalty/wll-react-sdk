@@ -50,6 +50,14 @@ export const useGroupContext = (): GroupContextType => {
 /**
  * Custom hook to fetch and manage group data
  *
+ * This hook handles two distinct data fetching scenarios:
+ * 1. Initial fetch: Shows loading state while first loading data
+ * 2. Background refresh: Updates data silently without loading states
+ *
+ * The hook subscribes to GROUP_DATA_CHANGED events to refresh data
+ * when notified by the host application, ensuring UI remains responsive
+ * without showing loading indicators during refreshes.
+ *
  * @param {string} id - The ID of the group to fetch
  * @returns {Object} Object containing group data, loading state, and any error
  */
@@ -59,47 +67,70 @@ const useGroupData = (id: string) => {
   const [groupData, setGroupData] = useState<TGroup | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isInitialFetchDone, setIsInitialFetchDone] = useState(false);
 
-  const fetchGroup = useCallback(
-    async (showLoading = true) => {
-      if (!id || !sdk || !sdk.getGroupByID) {
-        setError('Unable to fetch group data: invalid configuration');
-        setIsLoading(false);
-        return;
-      }
+  const initialFetch = useCallback(async () => {
+    if (!id || !sdk || !sdk.getGroupByID) {
+      setError('Unable to fetch group data: invalid configuration');
+      setIsLoading(false);
+      setIsInitialFetchDone(true);
+      return;
+    }
 
-      if (showLoading) {
-        setIsLoading(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await sdk.refreshGroup(id);
+      if (response && response.status === 'success' && response.data) {
+        setGroupData(response.data);
+      } else {
+        setError((response && response.error) || 'Failed to fetch group data.');
       }
-      setError(null);
-      try {
-        const response = await sdk.refreshGroup(id);
-        if (response && response.status === 'success' && response.data) {
-          setGroupData(response.data);
-        } else {
-          setError(
-            (response && response.error) || 'Failed to fetch group data.'
-          );
-        }
-      } catch (err) {
-        setError('Failed to fetch group data. Please try again later.');
-        console.error('Error fetching group:', err);
-      } finally {
-        if (showLoading) {
-          setIsLoading(false);
-        }
+    } catch (err) {
+      setError('Failed to fetch group data. Please try again later.');
+      console.error('Error fetching group:', err);
+    } finally {
+      setIsLoading(false);
+      setIsInitialFetchDone(true);
+    }
+  }, [id, sdk]);
+
+  const silentRefresh = useCallback(async () => {
+    if (!id || !sdk || !sdk.getGroupByID || !isInitialFetchDone) {
+      return;
+    }
+
+    try {
+      const response = await sdk.refreshGroup(id);
+      if (response && response.status === 'success' && response.data) {
+        setGroupData(response.data);
       }
-    },
-    [id, sdk]
-  );
+    } catch (err) {
+      console.error('Error during silent refresh:', err);
+    }
+  }, [id, sdk, isInitialFetchDone]);
 
   const refreshGroup = useCallback(() => {
-    return fetchGroup(false);
-  }, [fetchGroup]);
+    return silentRefresh();
+  }, [silentRefresh]);
 
   useEffect(() => {
-    fetchGroup(true);
-  }, [fetchGroup]);
+    if (sdk) {
+      initialFetch();
+
+      const unsubscribeGroup = sdk.subscribeToDataChange(
+        'GROUP_DATA_CHANGED',
+        () => {
+          silentRefresh();
+        }
+      );
+
+      return () => {
+        unsubscribeGroup();
+      };
+    }
+  }, [initialFetch, id, sdk, silentRefresh]);
 
   return { groupData, isLoading, error, refreshGroup };
 };
@@ -203,7 +234,7 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
 
   return (
     <GroupContext.Provider value={{ groupData }}>
-      <View data-testid="group-container">
+      <View testID="group-container">
         <GroupSections />
       </View>
     </GroupContext.Provider>
