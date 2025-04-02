@@ -131,6 +131,7 @@ export class BadgeTileConfig {
   emptyBadgeArtworkUrl?: string;
   awardedDatePrefix?: string;
   badgeNotEarnedMessage?: string;
+  lastEarnedAt?: string;
 }
 
 export type BadgeDetail = {

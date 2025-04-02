@@ -7,6 +7,7 @@ import {
   getReadableTextColor,
   getStateColor,
 } from '../../../utils/themeHelpers';
+import { transformLocale } from '../../../utils/transforms';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
@@ -16,16 +17,20 @@ import { useBadgeTileStyles } from './styles';
  *
  * @returns JSX.Element or null if badge is not earned or badgeNotEarnedMessage exists
  */
-
 export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
-  const { theme } = useWllSdk();
+  const { theme, config } = useWllSdk();
 
   if (!isContextValid(tileContext)) return null;
 
-  const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
-    tileContext.configuration as BadgeTileConfig;
+  const {
+    count,
+    awardedDatePrefix,
+    lastEarnedAt,
+    badgeNotEarnedMessage,
+    type,
+  } = tileContext.configuration as BadgeTileConfig;
 
   // Don't show for Latest type with count=0
   if (type === BadgeTileType.Latest && count === 0) {
@@ -41,6 +46,8 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     return null;
   }
 
+  if (!lastEarnedAt) return null;
+
   const backgroundColor = getStateColor(
     theme.alphaDerivedPrimary[20],
     type,
@@ -49,15 +56,20 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
 
+  const handleLastEarnedDate = (date: string) => {
+    const locale = transformLocale(config.locale ?? 'en');
+    return new Date(date).toLocaleDateString(locale);
+  };
+
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${new Date(createdAt).toLocaleDateString()}`;
+      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt)}`;
 
   const accessibilityLabel =
     count === 0
       ? 'Badge not yet earned'
-      : `Badge earned on ${new Date(createdAt).toLocaleDateString()}`;
+      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt)}`;
 
   return (
     <View

@@ -17,3 +17,17 @@ export const sortByPriority = <T extends Pick<Tile, 'priority'>>(
     return tiles.indexOf(a) - tiles.indexOf(b);
   });
 };
+
+export const transformLocale = (locale: string) => {
+  const localeMapping = {
+    en: 'en-GB',
+    fr: 'fr-FR',
+    es: 'es-ES',
+    de: 'de-DE',
+    it: 'it-IT',
+    pt: 'pt-PT',
+    us: 'en-US',
+  };
+
+  return localeMapping[(locale ?? 'en') as keyof typeof localeMapping];
+};
