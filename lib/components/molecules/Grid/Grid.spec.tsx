@@ -32,6 +32,7 @@ const mockSection = {
       },
       createdAt: '2025-01-27T18:31:01Z',
       updatedAt: '2025-01-27T18:31:01Z',
+      lastEarnedAt: '2025-01-27T18:31:01Z',
     },
     {
       id: '2',
