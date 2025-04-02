@@ -49,10 +49,11 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
         >
           Available Points
         </h1>
-        <div
+        <article
           aria-label="Points value: 1000  pts"
           class="css-view-175oi2r"
           data-testid="points-tile-points"
+          role="article"
         >
           <div
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
@@ -74,7 +75,7 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
                pts
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </button>

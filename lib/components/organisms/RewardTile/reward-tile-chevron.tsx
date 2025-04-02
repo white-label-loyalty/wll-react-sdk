@@ -17,7 +17,7 @@ export const RewardTileChevron = (): JSX.Element => {
       name="ChevronRight"
       size={IS_MOBILE ? 16 : undefined}
       color={theme?.derivedSurfaceText?.[20] || '#000000'}
-      accessibilityRole="image"
+      role="img"
       accessibilityLabel="View reward details"
     />
   );

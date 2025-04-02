@@ -58,14 +58,15 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
       >
         Summer Points Splash
       </h1>
-      <div
+      <article
         aria-label="Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more."
         class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
         data-testid="banner-tile-description"
         dir="auto"
+        role="article"
       >
         Double points on all summer essentials! Plus, unlock exclusive seasonal rewards when you spend $100 or more.
-      </div>
+      </article>
       <button
         aria-label="Start Earning"
         class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-alignSelf-k200y r-justifyContent-1777fci r-paddingBlock-1mmae3n r-paddingInline-cxgwc0"

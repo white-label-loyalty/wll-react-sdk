@@ -104,7 +104,7 @@ const useSectionData = (
 const EmptyState = ({ message }: { message: string }): JSX.Element => (
   <View
     style={commonStyles.emptyContainer}
-    accessibilityRole="text"
+    role="article"
     accessibilityLabel={`Empty state: ${message}`}
   >
     <Text>{message}</Text>

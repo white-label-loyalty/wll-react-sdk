@@ -27,7 +27,7 @@ export const ContentTileSummary = (): JSX.Element | null => {
   return (
     <Text
       variant="body"
-      accessibilityRole="text"
+      role="article"
       accessibilityLabel={body}
       numberOfLines={getNumberOfLines()}
       testID="content-tile-summary"

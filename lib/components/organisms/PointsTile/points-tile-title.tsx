@@ -23,7 +23,7 @@ export const PointsTileTitle = (): JSX.Element | null => {
     <Text
       variant="eyebrow"
       testID="points-tile-title"
-      accessibilityRole="header"
+      role="heading"
       accessibilityLabel={title}
     >
       {title}

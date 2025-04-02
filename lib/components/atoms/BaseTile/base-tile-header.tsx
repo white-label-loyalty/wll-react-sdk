@@ -42,7 +42,7 @@ export const BaseTileHeader = ({
   };
 
   return (
-    <View style={combinedStyle} testID="tile-header" accessibilityRole="header">
+    <View style={combinedStyle} testID="tile-header" role="heading">
       {children}
     </View>
   );

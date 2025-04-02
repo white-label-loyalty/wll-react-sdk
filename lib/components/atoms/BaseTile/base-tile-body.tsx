@@ -52,7 +52,7 @@ export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
     <Text
       variant="body"
       {...props}
-      accessibilityRole="text"
+      role="article"
       accessibilityLabel={body}
       numberOfLines={getNumberOfLines()}
       testID="tile-body"

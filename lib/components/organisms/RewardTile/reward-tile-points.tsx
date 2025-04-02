@@ -41,7 +41,7 @@ export const RewardTilePoints = (): JSX.Element | null => {
   return (
     <View
       testID="reward-tile-points"
-      accessibilityRole="text"
+      role="article"
       accessibilityLabel={accessibilityLabel}
     >
       <Row align="center" justify="start" style={{ marginTop: 8 }}>

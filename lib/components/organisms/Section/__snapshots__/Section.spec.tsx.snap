@@ -95,15 +95,16 @@ exports[`<Section/> matches snapshot 1`] = `
                       Welcome to Platinum Status
                     </h1>
                   </div>
-                  <div
+                  <article
                     aria-label="Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here."
                     class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
                     data-testid="content-tile-summary"
                     dir="auto"
+                    role="article"
                     style="color: rgb(51, 51, 51); font-size: 14px;"
                   >
                     Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here.
-                  </div>
+                  </article>
                 </div>
               </button>
             </div>

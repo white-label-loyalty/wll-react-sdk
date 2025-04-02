@@ -29,7 +29,7 @@ export const RewardCategoryMedia = (): JSX.Element | null => {
       source={{ uri: artworkUrl }}
       style={styles.background}
       alt={`Reward category image for ${name}`}
-      accessibilityRole="image"
+      role="img"
     />
   );
 };

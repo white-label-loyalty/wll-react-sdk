@@ -37,7 +37,7 @@ export const BaseTileTitle = (): JSX.Element | null => {
     <>
       <Text
         variant="title"
-        accessibilityRole="header"
+        role="heading"
         accessibilityLabel={title}
         numberOfLines={1}
         testID="tile-title"

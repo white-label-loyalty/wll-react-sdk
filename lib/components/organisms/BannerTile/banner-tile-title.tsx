@@ -26,7 +26,7 @@ export const BannerTileTitle = (): JSX.Element | null => {
       variant="title"
       testID="banner-tile-title"
       style={styles.title}
-      accessibilityRole="header"
+      role="heading"
       accessibilityLabel={title}
     >
       {title}
