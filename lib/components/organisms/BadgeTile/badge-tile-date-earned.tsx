@@ -7,7 +7,7 @@ import {
   getReadableTextColor,
   getStateColor,
 } from '../../../utils/themeHelpers';
-import { transformLocale } from '../../../utils/transforms';
+import { handleLastEarnedDate } from '../../../utils/transforms';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
@@ -54,26 +54,15 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
 
-  const handleLastEarnedDate = (date?: string) => {
-    if (!date) return 'Date not available';
-    try {
-      const locale = transformLocale(config.locale ?? 'en');
-      return new Date(date).toLocaleDateString(locale);
-    } catch (error) {
-      console.error('Error formatting date:', error);
-      return 'Invalid date';
-    }
-  };
-
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt)}`;
+      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt, config?.locale)}`;
 
   const accessibilityLabel =
     count === 0
       ? 'Badge not yet earned'
-      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt)}`;
+      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt, config?.locale)}`;
 
   return (
     <View

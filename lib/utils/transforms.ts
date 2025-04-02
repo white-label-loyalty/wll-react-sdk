@@ -18,6 +18,11 @@ export const sortByPriority = <T extends Pick<Tile, 'priority'>>(
   });
 };
 
+/**
+ * Transforms locale to a locale that is supported by the browser
+ * @param locale Locale to transform
+ * @returns Transformed locale
+ */
 export const transformLocale = (locale: string) => {
   const localeMapping = {
     en: 'en-GB',
@@ -30,4 +35,21 @@ export const transformLocale = (locale: string) => {
   };
 
   return localeMapping[(locale ?? 'en') as keyof typeof localeMapping];
+};
+
+/**
+ * Handles the last earned date by formatting it to a locale date string
+ * @param date Date string to format
+ * @param userLocale User's locale
+ * @returns Formatted date string
+ */
+export const handleLastEarnedDate = (date?: string, userLocale?: string) => {
+  if (!date) return 'Date not available';
+  try {
+    const formattedLocale = transformLocale(userLocale ?? 'en');
+    return new Date(date).toLocaleDateString(formattedLocale);
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return 'Invalid date';
+  }
 };
