@@ -80,6 +80,20 @@ exports[`<Grid /> matches snapshot 1`] = `
                   class="css-view-175oi2r"
                   style="flex: 1;"
                 />
+                <div
+                  aria-label="Badge earned on 27/01/2025"
+                  class="css-view-175oi2r r-alignItems-1habvwh r-borderRadius-y47klf r-paddingBlock-cnw61z r-paddingInline-is05cd"
+                  data-testid="badge-tile-date-earned"
+                  style="background-color: rgba(57, 46, 215, 0.2);"
+                >
+                  <div
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6"
+                    dir="auto"
+                    style="font-size: 12px; color: rgb(255, 255, 255);"
+                  >
+                    Earned on 27/01/2025
+                  </div>
+                </div>
               </div>
             </button>
           </div>
