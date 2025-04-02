@@ -55,9 +55,14 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const textColor = getReadableTextColor(backgroundColor);
 
   const handleLastEarnedDate = (date?: string) => {
-    if (!date) return;
-    const locale = transformLocale(config.locale ?? 'en');
-    return new Date(date).toLocaleDateString(locale);
+    if (!date) return 'Date not available';
+    try {
+      const locale = transformLocale(config.locale ?? 'en');
+      return new Date(date).toLocaleDateString(locale);
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Invalid date';
+    }
   };
 
   const displayText =
