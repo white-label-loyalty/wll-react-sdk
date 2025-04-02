@@ -46,8 +46,6 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     return null;
   }
 
-  if (!lastEarnedAt) return null;
-
   const backgroundColor = getStateColor(
     theme.alphaDerivedPrimary[20],
     type,
@@ -56,7 +54,8 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
 
-  const handleLastEarnedDate = (date: string) => {
+  const handleLastEarnedDate = (date?: string) => {
+    if (!date) return;
     const locale = transformLocale(config.locale ?? 'en');
     return new Date(date).toLocaleDateString(locale);
   };

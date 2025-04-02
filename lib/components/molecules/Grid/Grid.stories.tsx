@@ -69,6 +69,7 @@ Default.args = {
           emptyBadgeArtworkUrl:
             'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
           badgeNotEarnedMessage: 'Badge not earned yet',
+          lastEarnedAt: '2024-11-11T16:17:23.784Z',
         },
         id: '902258a6-f7af-4da5-9069-43042ac1a326',
         createdAt: '2024-11-11T16:17:23.784Z',
@@ -101,6 +102,7 @@ Default.args = {
           emptyBadgeMessage: 'You haven’t earned any badges yet.',
           emptyBadgeArtworkUrl: 'You haven’t earned any badges yet.',
           badgeNotEarnedMessage: 'Badge not earned yet',
+          lastEarnedAt: '2024-11-11T16:17:23.784Z',
         },
         id: '29b1982c-2774-4ce6-9712-c8732e790dbf',
         createdAt: '2024-11-11T16:18:47.130Z',
@@ -133,6 +135,7 @@ Default.args = {
           emptyBadgeArtworkUrl:
             'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
           badgeNotEarnedMessage: 'Badge not earned yet',
+          lastEarnedAt: '2024-11-11T16:17:23.784Z',
         },
         id: '87ada9f9-5a9f-4dde-a9bc-12dec8385a7f',
         createdAt: '2024-11-11T16:21:30.457Z',
@@ -166,6 +169,7 @@ Default.args = {
           emptyBadgeArtworkUrl:
             'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
           badgeNotEarnedMessage: 'Badge not earned yet',
+          lastEarnedAt: '2024-11-11T16:17:23.784Z',
         },
         id: '9d4cd1a7-637d-4a53-8a83-69a458d86f69',
         createdAt: '2024-11-11T16:22:51.819Z',
