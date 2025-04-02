@@ -1,4 +1,8 @@
-import { sortByPriority } from '../utils/transforms';
+import {
+  handleLastEarnedDate,
+  sortByPriority,
+  transformLocale,
+} from '../utils/transforms';
 
 describe('sortByPriority', () => {
   it('sorts tiles by priority in descending order', () => {
@@ -79,5 +83,52 @@ describe('sortByPriority', () => {
     sortByPriority(tiles);
 
     expect(tiles).toEqual(originalTiles);
+  });
+});
+
+describe('transformLocale', () => {
+  it('transforms known locales correctly', () => {
+    expect(transformLocale('en')).toBe('en-GB');
+    expect(transformLocale('fr')).toBe('fr-FR');
+    expect(transformLocale('us')).toBe('en-US');
+  });
+
+  it('defaults to en-GB when locale is undefined', () => {
+    expect(transformLocale(undefined)).toBe('en-GB');
+  });
+
+  it('defaults to en-GB when locale is null', () => {
+    expect(transformLocale(null)).toBe('en-GB');
+  });
+
+  it('defaults to en-GB for unsupported locales', () => {
+    expect(transformLocale('xx')).toBe('en-GB');
+  });
+});
+
+describe('handleLastEarnedDate', () => {
+  it('formats date correctly with default locale', () => {
+    const date = '2023-12-25';
+    expect(handleLastEarnedDate(date)).toMatch(/\d{2}\/\d{2}\/\d{4}/);
+  });
+
+  it('formats date correctly with specific locale', () => {
+    const date = '2023-12-25';
+    expect(handleLastEarnedDate(date, 'fr')).toMatch(/\d{2}\/\d{2}\/\d{4}/);
+  });
+
+  it('returns "Date not available" when date is undefined', () => {
+    expect(handleLastEarnedDate(undefined)).toBe('Date not available');
+  });
+
+  it('returns "Invalid date" for invalid date string', () => {
+    expect(handleLastEarnedDate('invalid-date')).toBe('Invalid Date');
+  });
+
+  it('uses default locale when userLocale is undefined', () => {
+    const date = '2023-12-25';
+    expect(handleLastEarnedDate(date, undefined)).toMatch(
+      /\d{2}\/\d{2}\/\d{4}/
+    );
   });
 });

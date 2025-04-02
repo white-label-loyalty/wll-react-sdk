@@ -23,7 +23,7 @@ export const sortByPriority = <T extends Pick<Tile, 'priority'>>(
  * @param locale Locale to transform
  * @returns Transformed locale
  */
-export const transformLocale = (locale: string) => {
+export const transformLocale = (locale?: string | null) => {
   const localeMapping = {
     en: 'en-GB',
     fr: 'fr-FR',
@@ -34,7 +34,9 @@ export const transformLocale = (locale: string) => {
     us: 'en-US',
   };
 
-  return localeMapping[(locale ?? 'en') as keyof typeof localeMapping];
+  const mappedLocale =
+    localeMapping[(locale ?? 'en') as keyof typeof localeMapping];
+  return mappedLocale ?? 'en-GB';
 };
 
 /**
