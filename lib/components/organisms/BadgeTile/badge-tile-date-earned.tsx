@@ -20,7 +20,7 @@ import { useBadgeTileStyles } from './styles';
 export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
-  const { theme, config } = useWllSdk();
+  const { theme } = useWllSdk();
 
   if (!isContextValid(tileContext)) return null;
 
@@ -30,6 +30,7 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     lastEarnedAt,
     badgeNotEarnedMessage,
     type,
+    locale,
   } = tileContext.configuration as BadgeTileConfig;
 
   // Don't show for Latest type with count=0
@@ -51,18 +52,19 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     type,
     count
   );
+
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
 
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt, config?.locale)}`;
+      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt, locale)}`;
 
   const accessibilityLabel =
     count === 0
       ? 'Badge not yet earned'
-      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt, config?.locale)}`;
+      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt, locale)}`;
 
   return (
     <View
