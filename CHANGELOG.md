@@ -1,3 +1,20 @@
+## [1.0.104](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.103...v1.0.104) (2025-04-03)
+
+
+### Bug Fixes
+
+* **BadgeTile:** handle date formatting errors gracefully ([5f48282](https://github.com/white-label-loyalty/wll-react-sdk/commit/5f482827e959ea977efb626adf435d5af5f64c55))
+* **BadgeTile:** handle undefined date in handleLastEarnedDate ([2ec678e](https://github.com/white-label-loyalty/wll-react-sdk/commit/2ec678e2f7fc65fe6f8265be5caf4570a24e25f2))
+* **transforms:** handle null or undefined locale in transformLocale ([dc52ab6](https://github.com/white-label-loyalty/wll-react-sdk/commit/dc52ab642d92a6bcaf0a824b94e93f97d1dc1975))
+* trigger version bump workflow ([951edcb](https://github.com/white-label-loyalty/wll-react-sdk/commit/951edcbefbfc9ee89b3050cfa8d1e0d3a24bd6b8))
+
+
+### Features
+
+* **badge-tile:** add lastEarnedAt field and locale transformation ([6e79118](https://github.com/white-label-loyalty/wll-react-sdk/commit/6e791189253804e5f1197602f6f3432c4d35f011))
+
+
+
 ## [1.0.103](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.102...v1.0.103) (2025-04-01)
 
 
