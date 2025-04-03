@@ -22,7 +22,7 @@ export const RewardTileSummary = (): JSX.Element | null => {
   return (
     <Text
       variant="body"
-      accessibilityRole="text"
+      role="article"
       accessibilityLabel={summary}
       testID="reward-tile-summary"
     >

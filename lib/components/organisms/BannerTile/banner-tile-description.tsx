@@ -24,7 +24,7 @@ export const BannerTileDescription = (): JSX.Element | null => {
   return (
     <Text
       style={styles.description}
-      accessibilityRole="text"
+      role="article"
       accessibilityLabel={description}
       testID="banner-tile-description"
     >

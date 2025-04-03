@@ -25,7 +25,7 @@ export const ContentTileTitle = (): JSX.Element | null => {
   return (
     <Text
       variant="title"
-      accessibilityRole="header"
+      role="heading"
       accessibilityLabel={title}
       numberOfLines={1}
       style={handleTitleWidth()}

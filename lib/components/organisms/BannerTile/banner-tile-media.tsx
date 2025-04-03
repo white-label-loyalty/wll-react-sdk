@@ -40,7 +40,7 @@ export const BannerTileMedia = ({
   return (
     <View
       style={[styles.mediaContainer, containerStyle]}
-      accessibilityRole="image"
+      role="img"
       accessibilityLabel={`Banner image${title ? ` for ${title}` : ''}`}
       testID="banner-tile-media"
     >

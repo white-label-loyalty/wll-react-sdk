@@ -32,7 +32,7 @@ export const BaseTileMedia = (
       testID="tile-media"
       style={[props.style, baseStyles.media, styles.media]}
       alt={`Content image${title ? ` for ${title}` : ''}`}
-      accessibilityRole="image"
+      role="img"
     />
   );
 };

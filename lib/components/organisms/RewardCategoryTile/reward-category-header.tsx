@@ -30,7 +30,7 @@ export const RewardCategoryHeader = (): JSX.Element | null => {
     <View
       style={[styles.header, { backgroundColor: theme.primary }]}
       testID="reward-category-header"
-      accessibilityRole="header"
+      role="heading"
       accessibilityLabel={`Reward category: ${name}`}
     >
       <Text

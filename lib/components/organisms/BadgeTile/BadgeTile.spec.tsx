@@ -159,4 +159,64 @@ describe('<BadgeTile />', () => {
       );
     });
   });
+
+  describe('Badge Date Earned', () => {
+    it('renders the correct date format', () => {
+      const earnedDate = '2025-03-28T11:45:38.555Z';
+      const earnedBadge = createBadgeTileMock({
+        count: 1,
+        lastEarnedAt: earnedDate,
+      });
+
+      render(<BadgeTile tile={earnedBadge} />);
+
+      const dateElement = screen.getByTestId('badge-tile-date-earned');
+      expect(dateElement).toBeInTheDocument();
+
+      expect(dateElement.textContent).toContain('Awarded 28/03/2025');
+    });
+
+    it('formats date according to locale', () => {
+      const earnedDate = '2025-03-28T11:45:38.555Z';
+      const earnedBadge = createBadgeTileMock({
+        count: 1,
+        lastEarnedAt: earnedDate,
+        locale: 'us',
+      });
+
+      render(<BadgeTile tile={earnedBadge} />);
+
+      const dateElement = screen.getByTestId('badge-tile-date-earned');
+      expect(dateElement).toBeInTheDocument();
+
+      expect(dateElement.textContent).toContain('Awarded 3/28/2025');
+    });
+
+    it('shows not earned message when count is 0', () => {
+      const notEarnedBadge = createBadgeTileMock({
+        count: 0,
+        type: BadgeTileType.Specific,
+        badgeNotEarnedMessage: 'Badge not earned yet',
+      });
+
+      render(<BadgeTile tile={notEarnedBadge} />);
+
+      const dateElement = screen.getByTestId('badge-tile-date-earned');
+      expect(dateElement).toBeInTheDocument();
+      expect(dateElement.textContent).toBe('Badge not earned yet');
+    });
+
+    it('does not render date for Latest type with count=0', () => {
+      const latestBadge = createBadgeTileMock({
+        count: 0,
+        type: BadgeTileType.Latest,
+      });
+
+      render(<BadgeTile tile={latestBadge} />);
+
+      expect(
+        screen.queryByTestId('badge-tile-date-earned')
+      ).not.toBeInTheDocument();
+    });
+  });
 });

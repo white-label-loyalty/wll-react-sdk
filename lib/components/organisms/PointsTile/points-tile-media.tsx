@@ -33,7 +33,7 @@ export const PointsTileMedia = ({
     <View
       testID="points-tile-media"
       style={styles.imageContainer}
-      accessibilityRole="image"
+      role="img"
       accessibilityLabel={`Points tile image for ${title}`}
     >
       <Image

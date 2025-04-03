@@ -46,7 +46,7 @@ export const BaseTileContent = ({
           height: !artworkUrl ? '100%' : undefined,
         },
       ]}
-      accessibilityRole="none"
+      role="none"
     >
       {children}
     </View>

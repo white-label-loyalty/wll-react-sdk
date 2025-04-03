@@ -33,7 +33,7 @@ export const RewardTileTitle = (): JSX.Element | null => {
       variant="title"
       ellipsizeMode="tail"
       numberOfLines={1}
-      accessibilityRole="header"
+      role="heading"
       accessibilityLabel={`Reward title: ${name}`}
       testID="reward-tile-title"
       style={handleTitleWidth()}

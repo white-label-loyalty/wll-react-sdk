@@ -49,7 +49,7 @@ export const RewardTileMedia = ({
     <View
       style={[styles.imageContainer, containerStyle]}
       testID="reward-tile-media"
-      accessibilityRole="image"
+      role="img"
       accessibilityLabel={`Reward image for ${name}`}
     >
       <ProgressiveImage

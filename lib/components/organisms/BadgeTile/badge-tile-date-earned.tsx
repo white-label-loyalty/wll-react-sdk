@@ -7,6 +7,7 @@ import {
   getReadableTextColor,
   getStateColor,
 } from '../../../utils/themeHelpers';
+import { handleLastEarnedDate } from '../../../utils/transforms';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useBadgeTileStyles } from './styles';
@@ -16,7 +17,6 @@ import { useBadgeTileStyles } from './styles';
  *
  * @returns JSX.Element or null if badge is not earned or badgeNotEarnedMessage exists
  */
-
 export const BadgeTileDateEarned = (): JSX.Element | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
@@ -24,8 +24,14 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
 
   if (!isContextValid(tileContext)) return null;
 
-  const { count, awardedDatePrefix, createdAt, badgeNotEarnedMessage, type } =
-    tileContext.configuration as BadgeTileConfig;
+  const {
+    count,
+    awardedDatePrefix,
+    lastEarnedAt,
+    badgeNotEarnedMessage,
+    type,
+    locale,
+  } = tileContext.configuration as BadgeTileConfig;
 
   // Don't show for Latest type with count=0
   if (type === BadgeTileType.Latest && count === 0) {
@@ -46,18 +52,19 @@ export const BadgeTileDateEarned = (): JSX.Element | null => {
     type,
     count
   );
+
   const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
   const textColor = getReadableTextColor(backgroundColor);
 
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${new Date(createdAt).toLocaleDateString()}`;
+      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt, locale)}`;
 
   const accessibilityLabel =
     count === 0
       ? 'Badge not yet earned'
-      : `Badge earned on ${new Date(createdAt).toLocaleDateString()}`;
+      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt, locale)}`;
 
   return (
     <View

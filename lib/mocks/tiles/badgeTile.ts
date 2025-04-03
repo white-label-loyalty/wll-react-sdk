@@ -34,6 +34,7 @@ export const createBadgeTileMock = (config?: BadgeTileMockConfig) => {
     locale = 'en',
     createdAt = '2024-08-06T08:53:24.307Z',
     updatedAt = '2024-08-06T08:53:24.307Z',
+    lastEarnedAt = '2025-03-28T11:45:38.555Z',
   } = config || {};
 
   return {
@@ -56,6 +57,7 @@ export const createBadgeTileMock = (config?: BadgeTileMockConfig) => {
       defaultLocale,
       locale,
       createdAt,
+      lastEarnedAt,
       updatedAt,
       awardedDatePrefix: 'Awarded',
       emptyBadgeMessage: "You haven't earned any badges yet.",
