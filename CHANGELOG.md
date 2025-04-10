@@ -1,3 +1,12 @@
+## [1.0.105](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.104...v1.0.105) (2025-04-10)
+
+
+### Bug Fixes
+
+* trigger version bump workflow ([e9b4ee3](https://github.com/white-label-loyalty/wll-react-sdk/commit/e9b4ee30fe6dd88d191367d628c6fe2d1b829c5b))
+
+
+
 ## [1.0.104](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.103...v1.0.104) (2025-04-03)
 
 
