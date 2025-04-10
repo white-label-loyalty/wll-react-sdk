@@ -1,5 +1,11 @@
 import React, { createContext, useContext } from 'react';
-import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { MAX_WIDTH } from '../../../constants';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
@@ -37,34 +43,52 @@ const BaseBanner: React.FC<BaseBannerProps> = ({
     tile.configuration as BannerTileConfig;
 
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
-  const hasCTA = Boolean(ctaText);
 
-  return (
-    <BannerContext.Provider value={tile}>
-      <Pressable
-        testID={testID || 'banner-tile'}
-        style={({ pressed }) => [
-          styles.container,
-          style,
-          {
-            backgroundColor: theme.surface,
-            borderRadius: theme.sizes.borderRadiusLg,
-            opacity: pressed ? 0.7 : 1,
-          },
-        ]}
-        onPress={hasCTA ? undefined : handlePress}
-        disabled={!ctaLink || hasCTA}
-        accessible={true}
-        role={hasCTA ? 'article' : 'button'}
-        accessibilityLabel={
-          accessibilityLabel ||
-          `${title}${!hasCTA && ctaLink ? ' - Click to open' : ''}`
-        }
-      >
-        {children}
-      </Pressable>
-    </BannerContext.Provider>
-  );
+  const hasCTA = Boolean(ctaText);
+  const isInteractive = Boolean(ctaLink && !hasCTA);
+
+  const commonStyles = [
+    styles.container,
+    style,
+    {
+      backgroundColor: theme.surface,
+      borderRadius: theme.sizes.borderRadiusLg,
+    },
+  ];
+
+  if (isInteractive) {
+    return (
+      <BannerContext.Provider value={tile}>
+        <Pressable
+          testID={testID || 'banner-tile'}
+          style={({ pressed }) => [
+            ...commonStyles,
+            { opacity: pressed ? 0.7 : 1 },
+          ]}
+          onPress={handlePress}
+          accessible
+          role="button"
+          accessibilityLabel={accessibilityLabel || `${title} - Click to open`}
+        >
+          {children}
+        </Pressable>
+      </BannerContext.Provider>
+    );
+  } else {
+    return (
+      <BannerContext.Provider value={tile}>
+        <View
+          testID={testID || 'banner-tile'}
+          style={commonStyles}
+          accessible
+          role="article"
+          accessibilityLabel={accessibilityLabel || title || 'Banner'}
+        >
+          {children}
+        </View>
+      </BannerContext.Provider>
+    );
+  }
 };
 
 const styles = StyleSheet.create({

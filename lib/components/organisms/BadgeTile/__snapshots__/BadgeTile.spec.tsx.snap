@@ -2,15 +2,11 @@
 
 exports[`<BadgeTile /> matches snapshot 1`] = `
 <div>
-  <button
-    aria-disabled="true"
+  <article
     aria-label="Tile"
-    class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
-    disabled=""
-    role="button"
-    style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
-    tabindex="-1"
-    type="button"
+    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    role="article"
+    style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
       class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1t2qqvi r-justifyContent-1777fci r-marginBottom-1ifxtd0 r-position-bnwqim"
@@ -27,6 +23,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
         <div
           aria-label="Badge Top Spender (not earned)"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          role="img"
           style="opacity: 0;"
         >
           <div
@@ -50,19 +47,20 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
         class="css-view-175oi2r"
         data-testid="badge-tile-title"
       >
-        <div
+        <h1
           class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6 r-marginBottom-5oul0u"
           dir="auto"
+          role="heading"
           style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
         >
           You haven't earned any badges yet.
-        </div>
+        </h1>
       </div>
       <div
         class="css-view-175oi2r"
         style="flex: 1;"
       />
     </div>
-  </button>
+  </article>
 </div>
 `;

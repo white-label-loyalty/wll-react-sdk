@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Text as RNText,
   TextProps as RNTextProps,
+  Role,
   StyleSheet,
   TextStyle,
 } from 'react-native';
@@ -129,6 +130,30 @@ export const Text = ({
       : {},
   });
 
+  // Determine appropriate accessibility role based on variant
+  // This helps screen readers understand the semantic meaning
+  let accessibilityRole;
+
+  switch (variant) {
+    case 'title':
+      accessibilityRole = 'header';
+      break;
+    case 'caption':
+      accessibilityRole = 'text';
+      break;
+    case 'eyebrow':
+      accessibilityRole = 'text';
+      break;
+    case 'description':
+      accessibilityRole = 'paragraph';
+      break;
+    case 'label':
+      accessibilityRole = 'text';
+      break;
+    default:
+      accessibilityRole = 'text';
+  }
+
   const combinedStyles = [
     styles.base,
     variantStyle,
@@ -136,7 +161,14 @@ export const Text = ({
     style,
   ];
 
-  return <RNText style={combinedStyles} {...props} />;
+  return (
+    <RNText
+      style={combinedStyles}
+      {...props}
+      accessible
+      role={accessibilityRole as Role}
+    />
+  );
 };
 
 export default Text;

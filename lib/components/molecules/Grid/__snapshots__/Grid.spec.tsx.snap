@@ -37,15 +37,11 @@ exports[`<Grid /> matches snapshot 1`] = `
           <div
             class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
           >
-            <button
-              aria-disabled="true"
+            <article
               aria-label="Tile"
-              class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
-              disabled=""
-              role="button"
-              style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
-              tabindex="-1"
-              type="button"
+              class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+              role="article"
+              style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
             >
               <div
                 class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
@@ -55,13 +51,14 @@ exports[`<Grid /> matches snapshot 1`] = `
                   class="css-view-175oi2r"
                   data-testid="badge-tile-title"
                 >
-                  <div
+                  <h1
                     class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-marginBottom-5oul0u"
                     dir="auto"
+                    role="heading"
                     style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
                   >
                     Badge Title
-                  </div>
+                  </h1>
                 </div>
                 <div
                   aria-label="Badge description: Badge Description"
@@ -95,7 +92,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                   </div>
                 </div>
               </div>
-            </button>
+            </article>
           </div>
         </div>
       </div>

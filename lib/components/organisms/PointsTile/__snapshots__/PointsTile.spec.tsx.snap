@@ -2,15 +2,11 @@
 
 exports[`<PointsTile /> renders and matches snapshot 1`] = `
 <div>
-  <button
-    aria-disabled="true"
+  <article
     aria-label="Available Points"
-    class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
-    disabled=""
-    role="button"
-    style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
-    tabindex="-1"
-    type="button"
+    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    role="article"
+    style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
       aria-label="Points tile image for Available Points"
@@ -39,16 +35,15 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
       <div
         class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-width-13qz1uu"
       >
-        <h1
+        <div
           aria-label="Available Points"
           class="css-text-146c3p1 r-fontFamily-lhg2x6"
           data-testid="points-tile-title"
           dir="auto"
-          role="heading"
           style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
         >
           Available Points
-        </h1>
+        </div>
         <article
           aria-label="Points value: 1000  pts"
           class="css-view-175oi2r"
@@ -78,6 +73,6 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
         </article>
       </div>
     </div>
-  </button>
+  </article>
 </div>
 `;

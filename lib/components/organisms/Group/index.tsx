@@ -187,6 +187,7 @@ export const GroupSections = (): JSX.Element => {
     <Container
       accessible
       accessibilityLabel={`Group: ${groupData.name || 'Unnamed group'}`}
+      role="region"
     >
       {sortedSections.map((section) => (
         <Section key={section.id} section={section} />

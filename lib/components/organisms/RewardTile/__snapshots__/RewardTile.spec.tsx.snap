@@ -3,7 +3,7 @@
 exports[`<RewardTile /> renders and matches snapshot 1`] = `
 <div>
   <button
-    aria-label="Tile"
+    aria-label="Tile - Click to open"
     class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="button"
     style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
@@ -28,6 +28,7 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
         <div
           aria-label="Reward image for Sweet Chilli Lobster Noodles"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          role="img"
           style="opacity: 0;"
         >
           <div
@@ -82,16 +83,15 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
           </svg>
         </div>
       </div>
-      <article
+      <div
         aria-label="Fresh Lobster Noodles with a spicy chilli sauce"
         class="css-text-146c3p1 r-fontFamily-lhg2x6"
         data-testid="reward-tile-summary"
         dir="auto"
-        role="article"
         style="color: rgb(51, 51, 51); font-size: 14px;"
       >
         Fresh Lobster Noodles with a spicy chilli sauce
-      </article>
+      </div>
     </div>
   </button>
 </div>
