@@ -2,9 +2,10 @@
 
 exports[`<Section/> matches snapshot 1`] = `
 <div>
-  <div
+  <section
     aria-label="Section: Elite Member Benefits"
     class="css-view-175oi2r r-marginBottom-1c6w074 r-marginInline-f8sm7e r-maxWidth-q90dru r-width-13qz1uu"
+    role="region"
   >
     <div
       class="css-view-175oi2r"
@@ -34,15 +35,11 @@ exports[`<Section/> matches snapshot 1`] = `
             <div
               class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
             >
-              <button
-                aria-disabled="true"
+              <article
                 aria-label="Welcome to Platinum Status"
-                class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
-                disabled=""
-                role="button"
-                style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
-                tabindex="-1"
-                type="button"
+                class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+                role="article"
+                style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
               >
                 <div
                   aria-label="Image for Welcome to Platinum Status"
@@ -62,6 +59,7 @@ exports[`<Section/> matches snapshot 1`] = `
                     <div
                       aria-label="Image for Welcome to Platinum Status"
                       class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+                      role="img"
                       style="opacity: 0;"
                     >
                       <div
@@ -95,23 +93,22 @@ exports[`<Section/> matches snapshot 1`] = `
                       Welcome to Platinum Status
                     </h1>
                   </div>
-                  <article
+                  <div
                     aria-label="Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here."
                     class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
                     data-testid="content-tile-summary"
                     dir="auto"
-                    role="article"
                     style="color: rgb(51, 51, 51); font-size: 14px;"
                   >
                     Enjoy premium benefits including priority check-in, lounge access, and complimentary upgrades. Your elite journey begins here.
-                  </article>
+                  </div>
                 </div>
-              </button>
+              </article>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;

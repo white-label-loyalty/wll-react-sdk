@@ -40,16 +40,12 @@ exports[`<Carousel /> matches snapshot 1`] = `
               class="css-view-175oi2r"
               style="width: 0px;"
             >
-              <button
-                aria-disabled="true"
+              <article
                 aria-label="Second Banner"
-                class="css-view-175oi2r r-pointerEvents-12vffkv r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
                 data-testid="banner-tile"
-                disabled=""
-                role="button"
-                style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; opacity: 1;"
-                tabindex="-1"
-                type="button"
+                role="article"
+                style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;"
               >
                 <div
                   class="css-view-175oi2r"
@@ -65,17 +61,16 @@ exports[`<Carousel /> matches snapshot 1`] = `
                   >
                     Second Banner
                   </h1>
-                  <article
+                  <div
                     aria-label="Second Banner Description"
                     class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
-                    role="article"
                   >
                     Second Banner Description
-                  </article>
+                  </div>
                 </div>
-              </button>
+              </article>
             </div>
           </div>
           <div
@@ -85,16 +80,12 @@ exports[`<Carousel /> matches snapshot 1`] = `
               class="css-view-175oi2r"
               style="width: 0px;"
             >
-              <button
-                aria-disabled="true"
+              <article
                 aria-label="First Banner"
-                class="css-view-175oi2r r-pointerEvents-12vffkv r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-maxWidth-q90dru r-overflow-1udh08x r-width-13qz1uu"
                 data-testid="banner-tile"
-                disabled=""
-                role="button"
-                style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; opacity: 1;"
-                tabindex="-1"
-                type="button"
+                role="article"
+                style="background-color: rgb(248, 247, 252); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;"
               >
                 <div
                   class="css-view-175oi2r"
@@ -110,17 +101,16 @@ exports[`<Carousel /> matches snapshot 1`] = `
                   >
                     First Banner
                   </h1>
-                  <article
+                  <div
                     aria-label="First Banner Description"
                     class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
-                    role="article"
                   >
                     First Banner Description
-                  </article>
+                  </div>
                 </div>
-              </button>
+              </article>
             </div>
           </div>
         </div>

@@ -43,7 +43,6 @@ const ProgressiveImage = ({
   const desaturatedColor = desaturateColor(baseColor);
   const backgroundColor = isDesaturated ? desaturatedColor : baseColor;
 
-  // Create base animated image
   const baseImage = (
     <Animated.Image
       {...props}
@@ -59,6 +58,8 @@ const ProgressiveImage = ({
       ]}
       onLoad={onImageLoad}
       accessibilityLabel={alt}
+      accessible
+      role="img"
     />
   );
 

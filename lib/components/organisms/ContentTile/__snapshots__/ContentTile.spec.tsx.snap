@@ -2,15 +2,11 @@
 
 exports[`<ContentTile /> renders and matches snapshot 1`] = `
 <div>
-  <button
-    aria-disabled="true"
+  <article
     aria-label="Gold Tier Unlocked!"
-    class="css-view-175oi2r r-pointerEvents-12vffkv r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
-    disabled=""
-    role="button"
-    style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
-    tabindex="-1"
-    type="button"
+    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    role="article"
+    style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
       aria-label="Image for Gold Tier Unlocked!"
@@ -30,6 +26,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
         <div
           aria-label="Image for Gold Tier Unlocked!"
           class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          role="img"
           style="opacity: 0;"
         >
           <div
@@ -63,17 +60,16 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
           Gold Tier Unlocked!
         </h1>
       </div>
-      <article
+      <div
         aria-label="You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access."
         class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
         data-testid="content-tile-summary"
         dir="auto"
-        role="article"
         style="color: rgb(51, 51, 51); font-size: 14px;"
       >
         You've unlocked exclusive Gold member benefits including 2X points on every purchase, priority support, and VIP event access.
-      </article>
+      </div>
     </div>
-  </button>
+  </article>
 </div>
 `;

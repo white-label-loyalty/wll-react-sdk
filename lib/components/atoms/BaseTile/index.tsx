@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { FlexStyle, Pressable, ViewStyle } from 'react-native';
+import { FlexStyle, Pressable, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { useTileSize } from '../../../hooks/useTileSize';
@@ -47,10 +47,7 @@ type LayoutProps = FlexStyle & {
 };
 
 /**
- * BaseTileContainer component to handle layout and pressable behavior.
- *
- * @param {BaseTileRootProps} props - Component props
- * @returns {JSX.Element} The rendered BaseTileContainer
+ * BaseTileContainer component with dynamic accessibility role based on CTA link
  */
 const BaseTileContainer = ({
   children,
@@ -72,6 +69,10 @@ const BaseTileContainer = ({
 
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
+  const isInteractive = Boolean(
+    ctaLink || tile.type === 'REWARD' || tile.type === 'REWARD_CATEGORY'
+  );
+
   const layout: LayoutProps = {
     flexDirection: 'column',
     justifyContent: isHalfSize ? 'center' : 'flex-start',
@@ -80,30 +81,48 @@ const BaseTileContainer = ({
 
   const dynamicStyles = useBaseTileStyles();
 
-  return (
-    <Pressable
-      style={({ pressed }) => [
-        baseStyles.container,
-        dynamicStyles.container,
-        {
-          backgroundColor: theme.surface,
-          opacity: pressed ? 0.7 : 1,
-        },
-        layout,
-        style,
-      ]}
-      onPress={handlePress}
-      disabled={
-        tile.type !== 'REWARD' && tile.type !== 'REWARD_CATEGORY' && !ctaLink
-      }
-      accessible
-      role="button"
-      accessibilityLabel={`${title}${ctaLink ? ' - Click to open' : ''}`}
-      accessibilityState={{ disabled: !ctaLink }}
-    >
-      {children}
-    </Pressable>
-  );
+  if (isInteractive) {
+    return (
+      <Pressable
+        style={({ pressed }) => [
+          baseStyles.container,
+          dynamicStyles.container,
+          {
+            backgroundColor: theme.surface,
+            opacity: pressed ? 0.7 : 1,
+          },
+          layout,
+          style,
+        ]}
+        onPress={handlePress}
+        accessible
+        role="button"
+        accessibilityLabel={`${title} - Click to open`}
+        accessibilityState={{ disabled: !ctaLink }}
+      >
+        {children}
+      </Pressable>
+    );
+  } else {
+    return (
+      <View
+        style={[
+          baseStyles.container,
+          dynamicStyles.container,
+          {
+            backgroundColor: theme.surface,
+          },
+          layout,
+          style,
+        ]}
+        accessible
+        role="article"
+        accessibilityLabel={title || 'Tile'}
+      >
+        {children}
+      </View>
+    );
+  }
 };
 
 /**

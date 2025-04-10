@@ -176,6 +176,7 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
         accessible
         accessibilityLabel={`Section: ${sectionData.title || 'Untitled section'}`}
         accessibilityHint={sectionData.description || undefined}
+        role="region"
       >
         {renderSectionContent()}
       </View>
