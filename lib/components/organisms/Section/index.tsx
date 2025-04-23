@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { SectionType, TSection } from '../../../types/section';
 import { commonStyles } from '../../../utils/styling';
@@ -134,7 +135,10 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
   const renderSectionContent = (): JSX.Element | null => {
     if (isLoading) {
       return (
-        <Skeleton aria-label="Loading section content" numberOfSquares={4} />
+        <Skeleton
+          aria-label="Loading section content"
+          numberOfSquares={IS_WEB ? 4 : 2}
+        />
       );
     }
 

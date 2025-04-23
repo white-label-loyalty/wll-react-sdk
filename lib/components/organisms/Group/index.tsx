@@ -224,7 +224,7 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
         accessible
         accessibilityLabel="Loading group data"
       >
-        <Skeleton />
+        <Skeleton numberOfSquares={IS_WEB ? 4 : 2} />
       </View>
     );
   }
