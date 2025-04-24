@@ -1,3 +1,13 @@
+## [1.0.106](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.105...v1.0.106) (2025-04-24)
+
+
+### Bug Fixes
+
+* replace marginRight with marginEnd for RTL support in tile components ([4cb2f98](https://github.com/white-label-loyalty/wll-react-sdk/commit/4cb2f9856890be0e3826482a38b810b2e543ab19))
+* update test snapshots ([2a91ced](https://github.com/white-label-loyalty/wll-react-sdk/commit/2a91ced912834b54f9f06495930b9525e49bf467))
+
+
+
 ## [1.0.105](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.104...v1.0.105) (2025-04-10)
 
 
