@@ -88,7 +88,7 @@ const Grid = ({ section }: GridProps) => {
             style={[
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
-              !isLastInRow && { marginRight: GRID_GAP },
+              !isLastInRow && { marginEnd: GRID_GAP },
             ]}
           >
             <TileContainer tiles={currentTiles} />
