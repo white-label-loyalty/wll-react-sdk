@@ -22,7 +22,7 @@ export const useBannerTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       aspectRatio: 1,
       position: 'relative',
       overflow: 'hidden',
-      marginRight: useResponsiveValue(
+      marginEnd: useResponsiveValue(
         theme.sizes.xxl,
         theme.sizes.xxs,
         isDesktop,

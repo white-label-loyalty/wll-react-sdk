@@ -61,7 +61,7 @@ export const useContentTileStyles = (
     tileTitle: {
       maxWidth: '90%',
       flex: 1,
-      marginRight: 8,
+      marginEnd: 8,
     },
   });
 };

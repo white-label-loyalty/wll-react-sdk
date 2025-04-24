@@ -72,7 +72,7 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
     tileTitle: {
       maxWidth: '90%',
       flex: 1,
-      marginRight: 8,
+      marginEnd: 8,
     },
   });
 };
