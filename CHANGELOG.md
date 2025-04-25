@@ -1,3 +1,14 @@
+## [1.0.107](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.106...v1.0.107) (2025-04-25)
+
+
+### Bug Fixes
+
+* implement getDirectionalMargin for consistent RTL support across components ([b661d6f](https://github.com/white-label-loyalty/wll-react-sdk/commit/b661d6fa9510a1e778ed39e46d7871aebe0c650d))
+* remove commented alternative for margin-inline-end in getDirectionalMargin ([3c1dce9](https://github.com/white-label-loyalty/wll-react-sdk/commit/3c1dce9679a771c8bd192ae16c8aee18754ad27e))
+* trigger version bump workflow ([eee33ce](https://github.com/white-label-loyalty/wll-react-sdk/commit/eee33ce4c2a71b92324f66d2934c730b78ae175f))
+
+
+
 ## [1.0.106](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.105...v1.0.106) (2025-04-24)
 
 
