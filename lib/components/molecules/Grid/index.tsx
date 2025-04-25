@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { IS_WEB, SCREEN_WIDTH } from '../../../constants/device';
 import { GRID_GAP } from '../../../constants/grid';
+import { getDirectionalMargin } from '../../../utils/styling';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { SectionType, TSection } from '../../../types/section';
 import { Tile, TileHeight, TileType } from '../../../types/tile';
@@ -88,7 +89,7 @@ const Grid = ({ section }: GridProps) => {
             style={[
               // @ts-ignore Web uses CSS calc strings for responsive layouts, while ViewStyle expects numbers
               getTileWidth(columnsPerRow) as ViewStyle,
-              !isLastInRow && { marginEnd: GRID_GAP },
+              !isLastInRow && getDirectionalMargin(GRID_GAP),
             ]}
           >
             <TileContainer tiles={currentTiles} />

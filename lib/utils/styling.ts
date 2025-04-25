@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { IS_WEB } from '../constants/device';
 import { BaseThemeObject } from '../types/theme';
 
 export const sizes = {
@@ -41,4 +42,27 @@ export const defaultTheme: BaseThemeObject = {
   errorPrimary: '#000000',
   positive: '#008000',
   negative: '#ff0000',
+};
+
+/**
+ * Creates appropriate directional margin styles for both web and native platforms.
+ * Handles RTL layouts correctly across platforms by using the I18nManager.
+ *
+ * @param value - The margin value to apply
+ * @returns An object with the appropriate margin style property
+ */
+export const getDirectionalMargin = (value: number) => {
+  if (IS_WEB) {
+    // Check document direction for web
+    const isRTL =
+      typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
+
+    return isRTL ? { marginLeft: value } : { marginRight: value };
+
+    // Alternative: use margin-inline-end directly
+    // return { marginInlineEnd: value };
+  }
+
+  // For native platforms, use marginEnd which automatically handles RTL
+  return { marginEnd: value };
 };
