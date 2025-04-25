@@ -11,7 +11,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Banner image for Summer Points Splash"
-      class="css-view-175oi2r r-aspectRatio-1ujkv8a r-marginInlineEnd-12hn6y7 r-maxHeight-16aopbr r-minHeight-1rd2zbf r-overflow-1udh08x r-position-bnwqim"
+      class="css-view-175oi2r r-aspectRatio-1ujkv8a r-marginRight-mbgqwd r-maxHeight-16aopbr r-minHeight-1rd2zbf r-overflow-1udh08x r-position-bnwqim"
       data-testid="banner-tile-media"
       role="img"
       style="width: 30%;"
