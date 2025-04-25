@@ -2,6 +2,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { getDirectionalMargin } from '../../../utils/styling';
 
 /**
  * Custom hook that returns the styles for the ContentTile component.
@@ -61,7 +62,7 @@ export const useContentTileStyles = (
     tileTitle: {
       maxWidth: '90%',
       flex: 1,
-      marginEnd: 8,
+      ...getDirectionalMargin(8),
     },
   });
 };
