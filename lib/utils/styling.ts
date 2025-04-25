@@ -54,6 +54,8 @@ export const defaultTheme: BaseThemeObject = {
 export const getDirectionalMargin = (value: number) => {
   if (IS_WEB) {
     // Check document direction for web
+    // We need to use this because React Native Web does not support I18nManager
+    // and marginStart/marginEnd resolves to margin-left/margin-right and not margin-inline-start/end
     const isRTL =
       typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
 
