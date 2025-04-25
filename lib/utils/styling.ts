@@ -58,9 +58,6 @@ export const getDirectionalMargin = (value: number) => {
       typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
 
     return isRTL ? { marginLeft: value } : { marginRight: value };
-
-    // Alternative: use margin-inline-end directly
-    // return { marginInlineEnd: value };
   }
 
   // For native platforms, use marginEnd which automatically handles RTL
