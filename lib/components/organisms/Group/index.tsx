@@ -216,11 +216,15 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
   }
 
   const { groupData, isLoading, error } = useGroupData(id);
+  const { theme } = useWllSdk();
 
   if (isLoading) {
     return (
       <View
-        style={commonStyles.emptyContainer}
+        style={{
+          flex: 1,
+          padding: theme.sizes.lg,
+        }}
         accessible
         accessibilityLabel="Loading group data"
       >
