@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TextStyle,
 } from 'react-native';
-import { IS_WEB } from '../../../constants/device';
+import { IS_MOBILE, IS_WEB } from '../../../constants/device';
 import { useResponsive } from '../../../context/ResponsiveContext';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
@@ -125,8 +125,8 @@ export const Text = ({
     },
     webOverrides: IS_WEB
       ? {
-          fontFamily: theme.fontFamily,
-        }
+        fontFamily: theme.fontFamily,
+      }
       : {},
   });
 
@@ -136,22 +136,22 @@ export const Text = ({
 
   switch (variant) {
     case 'title':
-      accessibilityRole = 'header';
+      accessibilityRole = IS_MOBILE ? 'heading' : 'header';
       break;
     case 'caption':
-      accessibilityRole = 'text';
+      accessibilityRole = IS_MOBILE ? 'contentinfo' : 'text';
       break;
     case 'eyebrow':
-      accessibilityRole = 'text';
+      accessibilityRole = IS_MOBILE ? 'contentinfo' : 'text';
       break;
     case 'description':
-      accessibilityRole = 'paragraph';
+      accessibilityRole = IS_MOBILE ? 'article' : 'paragraph';
       break;
     case 'label':
-      accessibilityRole = 'text';
+      accessibilityRole = IS_MOBILE ? 'option' : 'text';
       break;
     default:
-      accessibilityRole = 'text';
+      accessibilityRole = IS_MOBILE ? 'contentinfo' : 'text';
   }
 
   const combinedStyles = [
