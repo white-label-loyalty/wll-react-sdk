@@ -1,3 +1,17 @@
+## [1.0.108](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.107...v1.0.108) (2025-04-28)
+
+
+### Bug Fixes
+
+* skeleton loading for mobile devices ([e6affb7](https://github.com/white-label-loyalty/wll-react-sdk/commit/e6affb776807f4aa02bdd7f64f3863297ff372c2))
+
+
+### Features
+
+* **Skeleton:** adjust number of squares based on device type ([e99703b](https://github.com/white-label-loyalty/wll-react-sdk/commit/e99703b1c4646a617f10c71413c1b8dc2b95786d))
+
+
+
 ## [1.0.107](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.106...v1.0.107) (2025-04-25)
 
 
