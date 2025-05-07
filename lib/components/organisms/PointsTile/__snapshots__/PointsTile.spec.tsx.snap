@@ -10,7 +10,7 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Points tile image for Available Points"
-      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-marginRight-61z16t r-overflow-1udh08x r-width-13qz1uu"
       data-testid="points-tile-media"
       role="img"
     >
@@ -33,44 +33,51 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
       class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingInline-3o4zer r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-width-13qz1uu"
       >
         <div
-          aria-label="Available Points"
-          class="css-text-146c3p1 r-fontFamily-lhg2x6"
-          data-testid="points-tile-title"
-          dir="auto"
-          style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
-        >
-          Available Points
-        </div>
-        <article
-          aria-label="Points value: 1000  pts"
-          class="css-view-175oi2r"
-          data-testid="points-tile-points"
-          role="article"
+          class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-flexGrow-16y2uox"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
+            aria-label="Available Points"
+            class="css-text-146c3p1 r-fontFamily-lhg2x6"
+            data-testid="points-tile-title"
+            dir="auto"
+            style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
+          >
+            Available Points
+          </div>
+          <article
+            aria-label="Points value: 1000  pts"
+            class="css-view-175oi2r"
+            data-testid="points-tile-points"
+            role="article"
           >
             <div
-              class="css-text-146c3p1 r-fontFamily-lhg2x6"
-              data-testid="points-tile-value"
-              dir="auto"
-              style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md"
             >
-              1000
+              <div
+                class="css-text-146c3p1 r-fontFamily-lhg2x6"
+                data-testid="points-tile-value"
+                dir="auto"
+                style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
+              >
+                1000
+              </div>
+              <div
+                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-1i10wst"
+                data-testid="points-tile-suffix"
+                dir="auto"
+                style="font-weight: bold;"
+              >
+                 pts
+              </div>
             </div>
-            <div
-              class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-1i10wst"
-              data-testid="points-tile-suffix"
-              dir="auto"
-              style="font-weight: bold;"
-            >
-               pts
-            </div>
-          </div>
-        </article>
+          </article>
+        </div>
+        <div
+          class="css-view-175oi2r r-justifyContent-1h0z5md r-alignItems-1awozwy r-flexDirection-18u37iz"
+        />
       </div>
     </div>
   </article>
