@@ -1,0 +1,34 @@
+import React from 'react';
+import { IS_MOBILE } from '../../../constants/device';
+import { useWllSdk } from '../../../context/WllSdkContext';
+import { PointsTileConfig } from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
+import { Icon } from '../../atoms';
+import { useTileContext } from '../../atoms/BaseTile';
+
+/**
+ * Renders a chevron icon for a Roundup Tile.
+ *
+ * @returns JSX.Element
+ */
+
+export const PointsTileChevron = (): JSX.Element | null => {
+    const tileContext = useTileContext();
+    const sdk = useWllSdk();
+
+    if (!isContextValid(tileContext)) return null;
+
+    const { ctaLink } = tileContext.configuration as PointsTileConfig;
+
+    if (!ctaLink) return null;
+
+    return (
+        <Icon
+            name="ChevronRight"
+            size={16}
+            color={sdk.theme?.derivedSurfaceText?.[20] || '#000000'}
+            role="img"
+            accessibilityLabel="View balance"
+        />
+    );
+};

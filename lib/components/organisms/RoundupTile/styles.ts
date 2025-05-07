@@ -35,7 +35,7 @@ export const useRoundupTileStyles = (
       ),
       width: '100%',
       flexDirection: isFullSize ? 'row' : 'row-reverse',
-      alignItems: isFullSize ? 'flex-start' : 'center',
+      alignItems: 'center',
       justifyContent: 'space-between',
     },
     contentContainer: {

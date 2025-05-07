@@ -15,6 +15,8 @@ export const createPointsTileMock = (config?: PointsTileMockConfig) => {
     pointsSuffix = ' pts',
     artworkUrl = 'https://example.com/points.png',
     pointsMultiplier,
+    ctaLink,
+    ctaLinkTarget,
   } = config || {};
 
   return {
@@ -31,6 +33,8 @@ export const createPointsTileMock = (config?: PointsTileMockConfig) => {
       pointsPrefix,
       pointsSuffix,
       artworkUrl,
+      ctaLink,
+      ctaLinkTarget,
       ...(pointsMultiplier !== undefined && { pointsMultiplier }),
     },
   };

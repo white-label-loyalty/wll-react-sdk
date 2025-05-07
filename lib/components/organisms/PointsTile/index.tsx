@@ -2,13 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { PointsTileConfig, Tile } from '../../../types/tile';
-import { BaseTile, Column } from '../../atoms';
+import { BaseTile, Column, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { PointsTileFormattedPoints } from './points-tile-formatted-points';
 import { PointsTileMedia } from './points-tile-media';
 import { PointsTileTitle } from './points-tile-title';
 import { usePointsTileStyles } from './styles';
-
+import { PointsTileChevron } from './points-tile-chevron';
 type PointsTileProps = {
   tile: Tile;
 };
@@ -33,11 +33,16 @@ const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
     <BaseTile tile={tile}>
       {isFullSize && <PointsTile.Media isFullSize />}
       <View style={styles.container}>
-        {!isFullSize && <PointsTile.Media isFullSize={false} />}
-        <Column style={styles.contentContainer}>
-          <PointsTile.Title />
-          <PointsTile.Points />
-        </Column>
+        <Row style={styles.contentContainer}>
+          <Column style={styles.contentColumn}>
+            <PointsTile.Title />
+            <PointsTile.Points />
+          </Column>
+          <Column style={styles.mediaColumn}>
+            {!isFullSize && <PointsTile.Media isFullSize={false} />}
+            <PointsTile.Chevron />
+          </Column>
+        </Row>
       </View>
     </BaseTile>
   );
@@ -51,6 +56,7 @@ export const PointsTile = Object.assign(PointsTileRoot, {
   Title: PointsTileTitle,
   Points: PointsTileFormattedPoints,
   Media: PointsTileMedia,
+  Chevron: PointsTileChevron,
 });
 
 export default withTileFetching(PointsTile);

@@ -15,6 +15,8 @@ export const usePointsTileStyles = (
 ): {
   container: ViewStyle;
   contentContainer: ViewStyle;
+  contentColumn: ViewStyle;
+  mediaColumn: ViewStyle;
   suffix: TextStyle;
   pointsWithSuffix: ViewStyle;
   imageContainer: ViewStyle;
@@ -37,7 +39,14 @@ export const usePointsTileStyles = (
       justifyContent: 'space-between',
     },
     contentContainer: {
-      width: isFullSize ? '100%' : 'auto',
+      width: '100%',
+    },
+    contentColumn: {
+      flexGrow: 1,
+    },
+    mediaColumn: {
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     suffix: {
       fontSize: useResponsiveValue(
@@ -57,6 +66,14 @@ export const usePointsTileStyles = (
       width: isFullSize ? '100%' : isDesktop ? 57 : 40,
       height: isFullSize ? '50%' : isDesktop ? 57 : 40,
       marginBottom: isFullSize
+        ? useResponsiveValue(
+            theme.sizes.sm,
+            theme.sizes.xxs,
+            isDesktop,
+            isTablet
+          )
+        : 0,
+      marginRight: !isFullSize
         ? useResponsiveValue(
             theme.sizes.sm,
             theme.sizes.xxs,

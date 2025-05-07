@@ -49,6 +49,8 @@ export class PointsTileConfig {
   pointsSuffix?: string | null;
   artworkUrl?: string | null;
   points?: number;
+  ctaLink?: string | null;
+  ctaLinkTarget?: CTALinkTarget;
 }
 
 export class RoundupTileConfig {
