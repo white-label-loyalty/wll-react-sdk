@@ -5,6 +5,8 @@ import { RoundupTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Icon } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { View } from 'lucide-react-native';
+import { useRoundupTileStyles } from './styles';
 
 /**
  * Renders a chevron icon for a Roundup Tile.
@@ -15,6 +17,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 export const RoundupTileChevron = (): JSX.Element | null => {
   const tileContext = useTileContext();
   const sdk = useWllSdk();
+  const styles = useRoundupTileStyles();
 
   if (!isContextValid(tileContext)) return null;
 
@@ -23,12 +26,14 @@ export const RoundupTileChevron = (): JSX.Element | null => {
   if (!ctaLink) return null;
 
   return (
-    <Icon
-      name="ChevronRight"
-      size={16}
-      color={sdk.theme?.derivedSurfaceText?.[20] || '#000000'}
-      role="img"
-      accessibilityLabel="View balance"
-    />
+    <View style={styles.chevronContainer}>
+      <Icon
+        name="ChevronRight"
+        size={16}
+        color={sdk.theme?.derivedSurfaceText?.[20] || '#000000'}
+        role="img"
+        accessibilityLabel="View balance"
+      />
+    </View>
   );
 };

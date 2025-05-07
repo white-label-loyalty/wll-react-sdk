@@ -10,7 +10,7 @@ exports[`<RoundupTile /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Roundup tile image for Available Points"
-      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-marginRight-61z16t r-overflow-1udh08x r-width-13qz1uu"
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
       data-testid="roundup-tile-media"
       role="img"
     >

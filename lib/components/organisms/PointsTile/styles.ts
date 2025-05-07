@@ -17,6 +17,7 @@ export const usePointsTileStyles = (
   contentContainer: ViewStyle;
   contentColumn: ViewStyle;
   mediaColumn: ViewStyle;
+  chevronContainer: ViewStyle;
   suffix: TextStyle;
   pointsWithSuffix: ViewStyle;
   imageContainer: ViewStyle;
@@ -62,10 +63,8 @@ export const usePointsTileStyles = (
       alignItems: 'center',
       justifyContent: 'center',
     },
-    imageContainer: {
-      width: isFullSize ? '100%' : isDesktop ? 57 : 40,
-      height: isFullSize ? '50%' : isDesktop ? 57 : 40,
-      marginBottom: isFullSize
+    chevronContainer: {
+      marginLeft: !isFullSize
         ? useResponsiveValue(
             theme.sizes.sm,
             theme.sizes.xxs,
@@ -73,7 +72,11 @@ export const usePointsTileStyles = (
             isTablet
           )
         : 0,
-      marginRight: !isFullSize
+    },
+    imageContainer: {
+      width: isFullSize ? '100%' : isDesktop ? 57 : 40,
+      height: isFullSize ? '50%' : isDesktop ? 57 : 40,
+      marginBottom: isFullSize
         ? useResponsiveValue(
             theme.sizes.sm,
             theme.sizes.xxs,
