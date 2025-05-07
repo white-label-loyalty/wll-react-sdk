@@ -23,6 +23,7 @@ export enum TileType {
   Badge = 'BADGE',
   RewardCategory = 'REWARD_CATEGORY',
   Tier = 'TIER',
+  Roundup = 'ROUNDUP',
 }
 
 export enum TileHeight {
@@ -48,6 +49,16 @@ export class PointsTileConfig {
   pointsSuffix?: string | null;
   artworkUrl?: string | null;
   points?: number;
+}
+
+export class RoundupTileConfig {
+  title?: string | null;
+  amountPrefix?: string | null;
+  amountSuffix?: string | null;
+  artworkUrl?: string | null;
+  amount?: number;
+  ctaLink?: string | null;
+  ctaLinkTarget?: CTALinkTarget;
 }
 
 export class ContentTileConfig {

@@ -9,8 +9,9 @@ import {
   RewardCategoryTile,
   RewardTile,
   TierTileUpdated,
+  RoundupTile,
+  ContentTile
 } from '../../organisms';
-import ContentTile from '../../organisms/ContentTile';
 
 type TileContainerProps = {
   tiles: Tile[];
@@ -24,6 +25,7 @@ const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
   [TileType.Reward]: RewardTile,
   [TileType.RewardCategory]: RewardCategoryTile,
   [TileType.Banner]: BannerTile,
+  [TileType.Roundup]: RoundupTile,
 };
 
 /**

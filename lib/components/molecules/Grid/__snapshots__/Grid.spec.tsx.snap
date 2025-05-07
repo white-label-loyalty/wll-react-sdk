@@ -78,7 +78,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                   style="flex: 1;"
                 />
                 <div
-                  aria-label="Badge earned on 27/01/2025"
+                  aria-label="Badge earned on 28/01/2025"
                   class="css-view-175oi2r r-alignItems-1habvwh r-borderRadius-y47klf r-paddingBlock-cnw61z r-paddingInline-is05cd"
                   data-testid="badge-tile-date-earned"
                   style="background-color: rgba(57, 46, 215, 0.2);"
@@ -88,7 +88,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                     dir="auto"
                     style="font-size: 12px; color: rgb(255, 255, 255);"
                   >
-                    Earned on 27/01/2025
+                    Earned on 28/01/2025
                   </div>
                 </div>
               </div>
