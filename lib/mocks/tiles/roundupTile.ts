@@ -17,10 +17,10 @@ export const createRoundupTileMock = (config?: RoundupTileMockConfig) => {
     title = 'Available Points',
     amount = 1000,
     amountPrefix = '',
-    amountSuffix = ' pts',
+    amountSuffix = '',
     artworkUrl = 'https://example.com/points.png',
-    ctaLink = 'https://example.com',
-    ctaLinkTarget = CTALinkTarget.sameWindow,
+    ctaLink,
+    ctaLinkTarget,
   } = config || {};
 
   return {

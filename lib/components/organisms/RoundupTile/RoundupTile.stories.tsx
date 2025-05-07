@@ -124,7 +124,20 @@ WithCtaLink.args = {
     title: 'Rewards Program',
     artworkUrl: pointsImage,
     amount: 7500,
-    amountSuffix: 'points',
+    amountPrefix: '$',
+    ctaLink: 'https://example.com/rewards',
+    ctaLinkTarget: CTALinkTarget.sameWindow,
+  }),
+};
+
+export const WithCtaLinkHalf = Template.bind({});
+WithCtaLinkHalf.args = {
+  tile: createRoundupTileMock({
+    tileHeight: TileHeight.Half,
+    title: 'Rewards Program',
+    amount: 7500,
+    amountPrefix: '$',
+    artworkUrl: pointsImage,
     ctaLink: 'https://example.com/rewards',
     ctaLinkTarget: CTALinkTarget.sameWindow,
   }),
