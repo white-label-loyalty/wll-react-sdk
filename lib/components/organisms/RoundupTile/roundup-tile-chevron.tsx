@@ -5,7 +5,7 @@ import { RoundupTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Icon } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { View } from 'lucide-react-native';
+import { View } from 'react-native';
 import { useRoundupTileStyles } from './styles';
 
 /**
