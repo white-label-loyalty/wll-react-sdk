@@ -23,7 +23,7 @@ export enum TileType {
   Badge = 'BADGE',
   RewardCategory = 'REWARD_CATEGORY',
   Tier = 'TIER',
-  Roundup = 'ROUNDUP',
+  Roundup = 'ROUND_UP_BALANCE',
 }
 
 export enum TileHeight {
