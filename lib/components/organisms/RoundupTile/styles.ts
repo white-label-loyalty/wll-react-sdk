@@ -4,13 +4,13 @@ import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 /**
- * Custom hook that returns the styles for the PointsTile component.
+ * Custom hook that returns the styles for the RoundupTile component.
  * Applies responsive styling based on the current device.
  *
- * @returns StyleSheet styles for the PointsTile component
+ * @returns StyleSheet styles for the RoundupTile component
  */
 
-export const usePointsTileStyles = (
+export const useRoundupTileStyles = (
   isFullSize?: boolean
 ): {
   container: ViewStyle;
@@ -36,11 +36,19 @@ export const usePointsTileStyles = (
       ),
       width: '100%',
       flexDirection: isFullSize ? 'row' : 'row-reverse',
-      alignItems: isFullSize ? 'flex-start' : 'center',
+      alignItems: 'center',
       justifyContent: 'space-between',
     },
     contentContainer: {
       width: '100%',
+      marginTop: isFullSize
+        ? useResponsiveValue(
+            theme.sizes.xxl,
+            theme.sizes.md,
+            isDesktop,
+            isTablet
+          )
+        : 0,
     },
     contentColumn: {
       flexGrow: 1,

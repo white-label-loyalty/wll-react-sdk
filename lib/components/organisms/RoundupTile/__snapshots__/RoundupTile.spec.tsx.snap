@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PointsTile /> renders and matches snapshot 1`] = `
+exports[`<RoundupTile /> renders and matches snapshot 1`] = `
 <div>
   <article
     aria-label="Available Points"
@@ -9,9 +9,9 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
-      aria-label="Points tile image for Available Points"
+      aria-label="Roundup tile image for Available Points"
       class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-16o1091 r-height-rxcuwo r-justifyContent-1777fci r-marginBottom-6gpygo r-overflow-1udh08x r-width-13qz1uu"
-      data-testid="points-tile-media"
+      data-testid="roundup-tile-media"
       role="img"
     >
       <div
@@ -30,10 +30,10 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingInline-3o4zer r-width-13qz1uu"
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingInline-3o4zer r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-marginTop-11c0sde r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-flexGrow-16y2uox"
@@ -41,16 +41,16 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
           <div
             aria-label="Available Points"
             class="css-text-146c3p1 r-fontFamily-lhg2x6"
-            data-testid="points-tile-title"
+            data-testid="roundup-tile-title"
             dir="auto"
             style="color: rgb(0, 0, 0); font-size: 14px; margin-bottom: 8px;"
           >
             Available Points
           </div>
           <article
-            aria-label="Points value: 1000  pts"
+            aria-label="Amount: 1000"
             class="css-view-175oi2r"
-            data-testid="points-tile-points"
+            data-testid="roundup-tile-amount"
             role="article"
           >
             <div
@@ -58,19 +58,11 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
             >
               <div
                 class="css-text-146c3p1 r-fontFamily-lhg2x6"
-                data-testid="points-tile-value"
+                data-testid="roundup-tile-value"
                 dir="auto"
                 style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
               >
                 1000
-              </div>
-              <div
-                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-1i10wst"
-                data-testid="points-tile-suffix"
-                dir="auto"
-                style="font-weight: bold;"
-              >
-                 pts
               </div>
             </div>
           </article>

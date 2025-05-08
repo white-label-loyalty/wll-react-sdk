@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { createPointsTileMock } from '../../../mocks/tiles/pointsTile';
-import { TileHeight } from '../../../types/tile';
+import { CTALinkTarget, TileHeight } from '../../../types/tile';
 import { TileWrapper } from '../../../utils/storybookHelpers';
 import PointsTile from './index';
 // @ts-ignore
@@ -144,5 +144,27 @@ FullWithMultiplier.args = {
     pointsPrefix: '$',
     pointsSuffix: ' ',
     pointsMultiplier: 1000,
+  }),
+};
+
+export const WithCtaLink = Template.bind({});
+WithCtaLink.args = {
+  tile: createPointsTileMock({
+    tileHeight: TileHeight.Full,
+    title: 'Points Balance',
+    artworkUrl: 'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    ctaLink: 'https://www.example.com',
+    ctaLinkTarget: CTALinkTarget.sameWindow,
+  }),
+};
+
+export const WithCtaLinkHalf = Template.bind({});
+WithCtaLinkHalf.args = {
+  tile: createPointsTileMock({
+    tileHeight: TileHeight.Half,
+    title: 'Points Balance',
+    ctaLink: 'https://www.example.com',
+    artworkUrl: pointsImage,
+    ctaLinkTarget: CTALinkTarget.sameWindow,
   }),
 };

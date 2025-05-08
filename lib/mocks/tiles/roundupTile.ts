@@ -1,27 +1,31 @@
-import { PointsTileConfig, TileHeight, TileType } from '../../types/tile';
+import {
+  CTALinkTarget,
+  RoundupTileConfig,
+  TileHeight,
+  TileType,
+} from '../../types/tile';
 
-export type PointsTileMockConfig = Partial<PointsTileConfig> & {
+export type RoundupTileMockConfig = Partial<RoundupTileConfig> & {
   active?: boolean;
   tileHeight?: TileHeight;
 };
 
-export const createPointsTileMock = (config?: PointsTileMockConfig) => {
+export const createRoundupTileMock = (config?: RoundupTileMockConfig) => {
   const {
     active = true,
     tileHeight = TileHeight.Full,
     title = 'Available Points',
-    points = 1000,
-    pointsPrefix = '',
-    pointsSuffix = ' pts',
+    amount = 1000,
+    amountPrefix = '',
+    amountSuffix = '',
     artworkUrl = 'https://example.com/points.png',
-    pointsMultiplier,
     ctaLink,
     ctaLinkTarget,
   } = config || {};
 
   return {
     id: '1',
-    type: TileType.Points,
+    type: TileType.Roundup,
     active,
     createdAt: '2025-01-26T11:13:38Z',
     updatedAt: '2025-01-26T11:13:38Z',
@@ -29,13 +33,12 @@ export const createPointsTileMock = (config?: PointsTileMockConfig) => {
     priority: 1,
     configuration: {
       title,
-      points,
-      pointsPrefix,
-      pointsSuffix,
+      amount,
+      amountPrefix,
+      amountSuffix,
       artworkUrl,
       ctaLink,
       ctaLinkTarget,
-      ...(pointsMultiplier !== undefined && { pointsMultiplier }),
     },
   };
 };
