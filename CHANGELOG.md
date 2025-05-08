@@ -1,3 +1,22 @@
+## [1.0.109](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.108...v1.0.109) (2025-05-08)
+
+
+### Bug Fixes
+
+* add chevron icon styles ([4f8fbdb](https://github.com/white-label-loyalty/wll-react-sdk/commit/4f8fbdb2a1ec5a660d3357eb7b1743e70a38abda))
+* build ([38714bf](https://github.com/white-label-loyalty/wll-react-sdk/commit/38714bf90ea5b4497d46a79fd365a8064c3577e9))
+* change the tile name to ROUND_UP_BALANCE ([ee2724a](https://github.com/white-label-loyalty/wll-react-sdk/commit/ee2724ae2392ca63a8b6dae40793dafe74d2bee9))
+* stories and tests ([55631df](https://github.com/white-label-loyalty/wll-react-sdk/commit/55631df420381c2122fcba4d2a541199913f8782))
+* update snapshots for points and roundup tiles ([bbc9407](https://github.com/white-label-loyalty/wll-react-sdk/commit/bbc9407b751dda8a01973a960f26e19bfd9d0348))
+
+
+### Features
+
+* add chevron to points tile ([e1b8565](https://github.com/white-label-loyalty/wll-react-sdk/commit/e1b85659951524d088c2261254ddd72a6ae993e2))
+* add roundup tile component ([f26f893](https://github.com/white-label-loyalty/wll-react-sdk/commit/f26f8935ff8cb3c5a64c330a8dd7a471933467b6))
+
+
+
 ## [1.0.108](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.107...v1.0.108) (2025-04-28)
 
 
