@@ -13,6 +13,7 @@ The Loyalty Tiles SDK provides a set of flexible components for building dynamic
 ### Display Components
 
 #### Tiles
+
 Tiles are the building blocks of your loyalty interface. Each tile type serves a specific purpose and can be configured to match your needs.
 
 - [`<BadgeTile>`](/components/badge-tile) - Display user achievements and badges
@@ -22,11 +23,17 @@ Tiles are the building blocks of your loyalty interface. Each tile type serves a
 - [`<RewardCategoryTile>`](/components/reward-category-tile) - Display reward categories
 - [`<ContentTile>`](/components/content-tile) - Present custom content
 - [`<BannerTile>`](/components/banner-tile) - Feature promotional content or announcements
+- [`<RoundupTile>`](/components/roundup-tile) - Display cashback roundup information
 
 ## Basic Example
 
 ```jsx
-import { WllSdkProvider, Group, Section, PointsTile } from '@wlloyalty/wll-react-sdk'
+import {
+  WllSdkProvider,
+  Group,
+  Section,
+  PointsTile,
+} from '@wlloyalty/wll-react-sdk';
 
 function App() {
   return (
@@ -37,5 +44,6 @@ function App() {
         </Section>
       </Group>
     </WllSdkProvider>
-  )
+  );
 }
+```
