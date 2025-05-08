@@ -63,6 +63,7 @@ export default {
             },
             { text: 'Reward Tile', link: '/components/reward-tile' },
             { text: 'Tier Tile', link: '/components/tier-tile' },
+            { text: 'Roundup Tile', link: '/components/roundup-tile' },
           ],
         },
       ],
