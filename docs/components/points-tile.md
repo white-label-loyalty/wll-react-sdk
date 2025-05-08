@@ -7,7 +7,7 @@ Displays points balance with customisable title, artwork, and points formatting.
 ## Usage
 
 ```jsx
-import { PointsTile } from '@wlloyalty/wll-react-sdk'
+import { PointsTile } from '@wlloyalty/wll-react-sdk';
 
 const tile = {
   type: 'POINTS',
@@ -18,41 +18,47 @@ const tile = {
     points: 100,
     prefix: '$',
     suffix: 'pts',
-    multiplier: 1
-  }
-}
+    multiplier: 1,
+    ctaLink: 'https://example.com',
+    ctaLinkTarget: 'NEW_WINDOW',
+  },
+};
 
 function MyComponent() {
-  return <PointsTile tile={tile} />
+  return <PointsTile tile={tile} />;
 }
 ```
 
 ## Props
 
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| tile | `Tile` | Yes | Points tile configuration |
+| Name | Type   | Required | Description               |
+| ---- | ------ | -------- | ------------------------- |
+| tile | `Tile` | Yes      | Points tile configuration |
 
 ## Configuration Object
 
-| Property | Type | Description |
-|----------|------|-------------|
-| title | string | Tile heading text |
-| artworkUrl | string | Points icon/image URL |
-| points | number | Points value to display |
-| prefix | string | Text before points value |
-| suffix | string | Text after points value |
-| multiplier | number | Points multiplier value |
+| Property      | Type   | Description                                                                        |
+| ------------- | ------ | ---------------------------------------------------------------------------------- |
+| title         | string | Tile heading text                                                                  |
+| artworkUrl    | string | Points icon/image URL                                                              |
+| points        | number | Points value to display                                                            |
+| prefix        | string | Text before points value                                                           |
+| suffix        | string | Text after points value                                                            |
+| multiplier    | number | Points multiplier value                                                            |
+| ctaLink       | string | URL for call-to-action link                                                        |
+| ctaLinkTarget | string | Target for opening link ('NEW_WINDOW' or 'SAME_WINDOW'). Defaults to 'SAME_WINDOW' |
 
 ## Layout Options
 
 ### Half Height (`tileHeight: 'HALF'`)
+
 - 2:1 aspect ratio
 - Compact layout
 - Centered content
 - Smaller artwork display
 
 ### Full Height (`tileHeight: 'FULL'`)
+
 - 1:1 aspect ratio
 - Expanded layout
 - Larger artwork display
@@ -63,6 +69,7 @@ function MyComponent() {
 - `PointsTile.Title` - Displays the tile heading
 - `PointsTile.Points` - Shows formatted points value with optional prefix/suffix
 - `PointsTile.Media` - Handles artwork display with responsive sizing
+- `PointsTile.Chevron` - Displays a chevron icon for tiles with CTA links
 
 ## States
 
@@ -93,7 +100,9 @@ function MyComponent() {
     prefix: '$',
     suffix: 'points',
     multiplier: 2,
-    artworkUrl: 'https://example.com/points.png'
+    artworkUrl: 'https://example.com/points.png',
+    ctaLink: 'https://example.com',
+    ctaLinkTarget: 'NEW_WINDOW'
   }
 }
 ```
@@ -101,9 +110,9 @@ function MyComponent() {
 ## Points Formatting
 
 The component handles various display formats:
+
 - Basic number: "100"
 - With prefix: "$100"
 - With suffix: "100 pts"
 - With both: "$100 pts"
 - With multiplier: Shows calculated value
-
