@@ -62,7 +62,6 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     Second Banner
                   </h1>
                   <div
-                    aria-label="Second Banner Description"
                     class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
@@ -102,7 +101,6 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     First Banner
                   </h1>
                   <div
-                    aria-label="First Banner Description"
                     class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
                     data-testid="banner-tile-description"
                     dir="auto"
