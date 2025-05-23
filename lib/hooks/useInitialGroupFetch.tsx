@@ -2,10 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useWllSdk } from '../context/WllSdkContext';
 import { TGroup } from '../types/group';
 
-export const useInitialGroupFetch = (
-  id: string,
-  setGroupData: (group: TGroup) => void
-): { isLoading: boolean; error: string | null } => {
+type UseInitialGroupFetchProps = {
+  id: string;
+  setGroupData: (group: TGroup) => void;
+};
+
+export const useInitialGroupFetch = ({
+  id,
+  setGroupData,
+}: UseInitialGroupFetchProps): { isLoading: boolean; error: string | null } => {
   const sdk = useWllSdk();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
