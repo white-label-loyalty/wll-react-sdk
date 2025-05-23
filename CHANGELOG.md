@@ -1,3 +1,12 @@
+## [1.0.110](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.109...v1.0.110) (2025-05-20)
+
+
+### Bug Fixes
+
+* remove redundant accessibilityLabel from BannerTile description text ([a3de948](https://github.com/white-label-loyalty/wll-react-sdk/commit/a3de9481b271504d1d84bff94820963d2288a6f5))
+
+
+
 ## [1.0.109](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.108...v1.0.109) (2025-05-08)
 
 

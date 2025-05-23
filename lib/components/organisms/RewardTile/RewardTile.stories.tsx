@@ -34,6 +34,17 @@ DefaultWithPoints.args = {
   }),
 };
 
+export const LongSummary = Template.bind({});
+LongSummary.args = {
+  tile: createRewardTileMock({
+    name: 'Pizza',
+    summary: 'This is a long summary designed to test text wrapping and ensure all content remains visible.',
+    price: 10,
+    pointsSuffix: 'pts',
+    artworkUrl: 'https://ucarecdn.com/cbc5895e-a193-4a94-bb0f-d514719e36a6/',
+  }),
+};
+
 export const ArtworkOnly = Template.bind({});
 ArtworkOnly.args = {
   tile: createRewardTileMock({
