@@ -69,11 +69,36 @@ const useGroupData = (id: string) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isInitialFetchDone, setIsInitialFetchDone] = useState(false);
 
+  const mountCountRef = React.useRef(0);
+  const initialFetchCountRef = React.useRef(0);
+  const silentRefreshCountRef = React.useRef(0);
+
+  useEffect(() => {
+    mountCountRef.current += 1;
+    console.log(
+      `[Group] Component mounted for id: ${id} (count: ${mountCountRef.current})`
+    );
+
+    return () => {
+      console.log(
+        `[Group] Component unmounted for id: ${id} (mount count was: ${mountCountRef.current})`
+      );
+    };
+  }, [id]);
+
   const initialFetch = useCallback(async () => {
+    initialFetchCountRef.current += 1;
+    console.log(
+      `[Group] Initial fetch started for id: ${id} (count: ${initialFetchCountRef.current})`
+    );
+
     if (!id || !sdk || !sdk.getGroupByID) {
       setError('Unable to fetch group data: invalid configuration');
       setIsLoading(false);
       setIsInitialFetchDone(true);
+      console.log(
+        `[Group] Initial fetch failed - invalid configuration for id: ${id}`
+      );
       return;
     }
 
@@ -81,10 +106,18 @@ const useGroupData = (id: string) => {
     setError(null);
 
     try {
+      console.log(
+        `[Group] Calling refreshGroup for initial fetch for id: ${id}`
+      );
       const response = await sdk.refreshGroup(id);
       if (response && response.status === 'success' && response.data) {
+        console.log(`[Group] Initial fetch succeeded for id: ${id}`);
         setGroupData(response.data);
       } else {
+        console.log(
+          `[Group] Initial fetch failed with error for id: ${id}:`,
+          response?.error
+        );
         setError((response && response.error) || 'Failed to fetch group data.');
       }
     } catch (err) {
@@ -97,17 +130,34 @@ const useGroupData = (id: string) => {
   }, [id, sdk]);
 
   const silentRefresh = useCallback(async () => {
+    silentRefreshCountRef.current += 1;
+    console.log(
+      `[Group] Silent refresh started for id: ${id} (count: ${silentRefreshCountRef.current})`
+    );
+
     if (!id || !sdk || !sdk.getGroupByID || !isInitialFetchDone) {
+      console.log(
+        `[Group] Silent refresh skipped - prerequisites not met for id: ${id}`
+      );
       return;
     }
 
     try {
+      console.log(
+        `[Group] Calling refreshGroup for silent refresh for id: ${id}`
+      );
       const response = await sdk.refreshGroup(id);
       if (response && response.status === 'success' && response.data) {
+        console.log(`[Group] Silent refresh succeeded for id: ${id}`);
         setGroupData(response.data);
+      } else {
+        console.log(
+          `[Group] Silent refresh failed with error for id: ${id}:`,
+          response?.error
+        );
       }
     } catch (err) {
-      console.error('Error during silent refresh:', err);
+      console.error(`[Group] Error during silent refresh for id: ${id}:`, err);
     }
   }, [id, sdk, isInitialFetchDone]);
 

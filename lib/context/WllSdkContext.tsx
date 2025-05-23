@@ -99,6 +99,21 @@ export const WllSdkProvider = ({
 }: WllSdkProviderProps): JSX.Element => {
   validateConfig(config);
 
+  const renderCountRef = React.useRef(0);
+
+  useEffect(() => {
+    renderCountRef.current += 1;
+    console.log(
+      `[WllSdkProvider] Mounted/Rendered (count: ${renderCountRef.current})`
+    );
+
+    return () => {
+      console.log(
+        `[WllSdkProvider] Unmounted (render count was: ${renderCountRef.current})`
+      );
+    };
+  }, []);
+
   const [theme, setThemeState] = useState(() => {
     const themeToUse = providedTheme || {};
     if (!validateTheme(themeToUse)) {
