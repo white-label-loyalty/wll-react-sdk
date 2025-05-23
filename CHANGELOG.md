@@ -1,3 +1,7 @@
+## [1.0.111](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.110...v1.0.111) (2025-05-23)
+
+
+
 ## [1.0.109](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.108...v1.0.109) (2025-05-08)
 
 
