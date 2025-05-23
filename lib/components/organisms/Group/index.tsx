@@ -180,7 +180,7 @@ const useGroupData = (id: string) => {
         unsubscribeGroup();
       };
     }
-  }, [initialFetch, id, sdk, silentRefresh]);
+  }, [id, sdk, silentRefresh]);
 
   return { groupData, isLoading, error, refreshGroup };
 };
