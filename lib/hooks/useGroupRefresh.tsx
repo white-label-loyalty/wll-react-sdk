@@ -2,11 +2,17 @@ import { useEffect } from 'react';
 import { useWllSdk } from '../context/WllSdkContext';
 import { TGroup } from '../types/group';
 
-export const useGroupRefresh = (
-  id: string,
-  enabled: boolean,
-  setGroupData: (g: TGroup) => void
-) => {
+type UseGroupRefreshProps = {
+  id: string;
+  enabled?: boolean;
+  setGroupData: (g: TGroup) => void;
+};
+
+export const useGroupRefresh = ({
+  id,
+  enabled = false,
+  setGroupData,
+}: UseGroupRefreshProps) => {
   const sdk = useWllSdk();
 
   useEffect(() => {
