@@ -1,3 +1,20 @@
+## [1.0.112](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.111...v1.0.112) (2025-05-28)
+
+
+### Bug Fixes
+
+* remove redundant isLoading check in group fetch logic ([be2914f](https://github.com/white-label-loyalty/wll-react-sdk/commit/be2914f77ec45fda5766fcfd542b41316c11aaf3))
+* remove unused dependency initialFetch from useEffect in Group component ([fb1343b](https://github.com/white-label-loyalty/wll-react-sdk/commit/fb1343bbeef12a6c130630c424109e9f94318246))
+* type useGroupRefresh  and add default to prevent accidental subscriptions ([b26dfd5](https://github.com/white-label-loyalty/wll-react-sdk/commit/b26dfd514e6ebc6dace8fe91efe543cb4de90ef7))
+* update hook params ([852fefa](https://github.com/white-label-loyalty/wll-react-sdk/commit/852fefa2693b8ef79948d3a232f8290f5babcf3b))
+
+
+### Features
+
+* add debug logging for Group component and WllSdkProvider lifecycle events ([ee5fcc4](https://github.com/white-label-loyalty/wll-react-sdk/commit/ee5fcc43f63848d8c4fbcdf10709eaa9fdb3c7aa))
+
+
+
 ## [1.0.111](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.110...v1.0.111) (2025-05-23)
 
 
