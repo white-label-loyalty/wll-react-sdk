@@ -61,8 +61,12 @@ export const useGroupContext = (): GroupContextType => {
 const useGroupData = (id: string) => {
   const [groupData, setGroupData] = useState<TGroup | null>(null);
 
-  const { isLoading, error } = useInitialGroupFetch(id, setGroupData);
-  useGroupRefresh(id, Boolean(groupData), setGroupData);
+  const { isLoading, error } = useInitialGroupFetch({ id, setGroupData });
+  useGroupRefresh({
+    id,
+    enabled: Boolean(groupData),
+    setGroupData,
+  });
 
   return { groupData, isLoading, error };
 };
