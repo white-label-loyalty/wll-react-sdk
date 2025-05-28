@@ -21,7 +21,7 @@ export const useInitialGroupFetch = ({
     let isMounted = true;
 
     const fetch = async () => {
-      if (isLoading && fetchInProgressRef.current) {
+      if (fetchInProgressRef.current) {
         return;
       }
 
