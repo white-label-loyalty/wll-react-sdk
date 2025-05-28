@@ -1,13 +1,9 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { useGroupRefresh } from '../../../hooks/useGroupRefresh';
+import { useInitialGroupFetch } from '../../../hooks/useInitialGroupFetch';
 import { TGroup } from '../../../types/group';
 import { commonStyles } from '../../../utils/styling';
 import { sortByPriority } from '../../../utils/transforms';
@@ -63,76 +59,16 @@ export const useGroupContext = (): GroupContextType => {
  */
 
 const useGroupData = (id: string) => {
-  const sdk = useWllSdk();
   const [groupData, setGroupData] = useState<TGroup | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isInitialFetchDone, setIsInitialFetchDone] = useState(false);
 
-  const initialFetch = useCallback(async () => {
-    if (!id || !sdk || !sdk.getGroupByID) {
-      setError('Unable to fetch group data: invalid configuration');
-      setIsLoading(false);
-      setIsInitialFetchDone(true);
-      return;
-    }
+  const { isLoading, error } = useInitialGroupFetch({ id, setGroupData });
+  useGroupRefresh({
+    id,
+    enabled: Boolean(groupData),
+    setGroupData,
+  });
 
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await sdk.refreshGroup(id);
-      if (response && response.status === 'success' && response.data) {
-        setGroupData(response.data);
-      } else {
-        setError((response && response.error) || 'Failed to fetch group data.');
-      }
-    } catch (err) {
-      setError('Failed to fetch group data. Please try again later.');
-      console.error('Error fetching group:', err);
-    } finally {
-      setIsLoading(false);
-      setIsInitialFetchDone(true);
-    }
-  }, [id, sdk]);
-
-  const silentRefresh = useCallback(async () => {
-    if (!id || !sdk || !sdk.getGroupByID || !isInitialFetchDone) {
-      return;
-    }
-
-    try {
-      const response = await sdk.refreshGroup(id);
-      if (response && response.status === 'success' && response.data) {
-        setGroupData(response.data);
-      }
-    } catch (err) {
-      console.error('Error during silent refresh:', err);
-    }
-  }, [id, sdk, isInitialFetchDone]);
-
-  const refreshGroup = useCallback(() => {
-    return silentRefresh();
-  }, [silentRefresh]);
-
-  useEffect(() => {
-    if (sdk) {
-      initialFetch();
-
-      const unsubscribeGroup = sdk.subscribeToDataChange(
-        'GROUP_DATA_CHANGED',
-        () => {
-          silentRefresh();
-        }
-      );
-
-      return () => {
-        unsubscribeGroup();
-      };
-    }
-  }, [initialFetch, id, sdk, silentRefresh]);
-
-  return { groupData, isLoading, error, refreshGroup };
+  return { groupData, isLoading, error };
 };
 
 /**
