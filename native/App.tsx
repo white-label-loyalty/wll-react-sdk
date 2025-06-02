@@ -1,20 +1,19 @@
+import React from 'react';
 import { LogBox, StyleSheet, Text, View } from 'react-native';
-import Constants from 'expo-constants';
+
 LogBox.ignoreAllLogs();
 
-function App() {
+const App: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
     </View>
   );
-}
+};
 
-let AppEntryPoint = App;
+let AppEntryPoint: React.FC = App;
 
-// if (Constants.expoConfig.extra.storybookEnabled === 'true') {
 AppEntryPoint = require('./.storybook').default;
-// }
 
 const styles = StyleSheet.create({
   container: {

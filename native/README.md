@@ -18,7 +18,7 @@ This template ships with the main React Native and Storybook configuration files
 
     ```shell
     # Clone the template
-    npx degit chromaui/intro-storybook-react-native-template#main taskbox
+    npx degit chromaui/intro-storybook-react-native-template#main native
     ```
 
 1.  **Install the dependencies.**
@@ -27,7 +27,7 @@ This template ships with the main React Native and Storybook configuration files
 
     ```shell
     # Navigate to the directory
-    cd taskbox/
+    cd native/
 
     # Install the dependencies
     yarn
@@ -35,7 +35,7 @@ This template ships with the main React Native and Storybook configuration files
 
 1.  **Open the source code and start editing!**
 
-    Open the `taskbox` directory in your code editor of choice and building your first component!
+    Open the `native` directory in your code editor of choice and building your first component!
 
 1.  **Browse your stories!**
 
@@ -61,7 +61,7 @@ A quick look at the top-level files and directories included with this template.
 
 3.  **`README.md`**: A text file containing useful reference information about the project.
 
-4. **`App.jsx`**: This is the entry point of your app.  
+4. **`App.jsx`**: This is the entry point of your app.
 
 5. **`app.config.js`**: This is the configuration file for Expo that allows you to customize your app.
 
