@@ -1,3 +1,15 @@
+## [1.0.113](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.112...v1.0.113) (2025-06-05)
+
+
+### Bug Fixes
+
+* adjust vertical alignment ([1206955](https://github.com/white-label-loyalty/wll-react-sdk/commit/1206955bd45cf98f118b04a6714759a76632b588))
+* continuous loading state ([8a5a081](https://github.com/white-label-loyalty/wll-react-sdk/commit/8a5a081833aaff61b0d19ca0e08bb3e94c7b5572))
+* trigger release for web loading state fix ([195a70b](https://github.com/white-label-loyalty/wll-react-sdk/commit/195a70bc783e56dd20c16e9da48e90b2c5dc1082))
+* visual regression with skeleton ([4ea5973](https://github.com/white-label-loyalty/wll-react-sdk/commit/4ea597380ed6c2170ad7d8be16cb2cde6dd5c23c))
+
+
+
 ## [1.0.112](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.111...v1.0.112) (2025-05-28)
 
 
