@@ -33,7 +33,7 @@ exports[`<RoundupTile /> renders and matches snapshot 1`] = `
       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingInline-3o4zer r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-marginTop-11c0sde r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-flexGrow-16y2uox"
