@@ -41,14 +41,6 @@ export const useRoundupTileStyles = (
     },
     contentContainer: {
       width: '100%',
-      marginTop: isFullSize
-        ? useResponsiveValue(
-            theme.sizes.xxl,
-            theme.sizes.md,
-            isDesktop,
-            isTablet
-          )
-        : 0,
     },
     contentColumn: {
       flexGrow: 1,
