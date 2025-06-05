@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { IS_WEB } from '../../../constants/device';
+import { IS_MOBILE, IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useGroupRefresh } from '../../../hooks/useGroupRefresh';
 import { useInitialGroupFetch } from '../../../hooks/useInitialGroupFetch';
@@ -159,7 +159,7 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
       <View
         style={{
           flex: 1,
-          padding: theme.sizes.lg,
+          padding: IS_MOBILE ? theme.sizes.lg : undefined,
         }}
         accessible
         accessibilityLabel="Loading group data"
