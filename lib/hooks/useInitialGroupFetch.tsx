@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useWllSdk } from '../context/WllSdkContext';
-import { TGroup } from '../types/group';
+import type { TGroup } from '../types/group';
 
 type UseInitialGroupFetchProps = {
   id: string;
@@ -15,18 +15,11 @@ export const useInitialGroupFetch = ({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchInProgressRef = useRef(false);
-
   useEffect(() => {
-    let isMounted = true;
+    let cancelled = false;
 
-    const fetch = async () => {
-      if (fetchInProgressRef.current) {
-        return;
-      }
-
-      fetchInProgressRef.current = true;
-      if (!id || !sdk || !sdk.refreshGroup) {
+    const fetchGroup = async (): Promise<void> => {
+      if (!id || !sdk?.refreshGroup) {
         setError('Unable to fetch group data: invalid configuration');
         setIsLoading(false);
         return;
@@ -37,28 +30,24 @@ export const useInitialGroupFetch = ({
 
       try {
         const response = await sdk.refreshGroup(id);
-        if (!isMounted) return;
+        if (cancelled) return;
 
         if (response?.status === 'success' && response.data) {
           setGroupData(response.data);
         } else {
           setError(response?.error ?? 'Failed to fetch group data');
         }
-      } catch (err) {
-        if (isMounted) {
-          setError('An unexpected error occurred.');
-        }
+      } catch {
+        if (!cancelled) setError('An unexpected error occurred.');
       } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+        if (!cancelled) setIsLoading(false);
       }
     };
 
-    fetch();
+    fetchGroup();
 
     return () => {
-      isMounted = false;
+      cancelled = true;
     };
   }, [id, sdk, setGroupData]);
 
