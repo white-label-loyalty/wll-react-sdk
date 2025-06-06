@@ -3,7 +3,7 @@
  * @param value The number to clean up
  * @returns A cleaned up number as a number
  */
-const cleanNumber = (value: number): number => {
+export const cleanNumber = (value: number): number => {
   return Number(
     Number(value.toString().trim().replace(/\s+/g, '')).toFixed(2)
   );
