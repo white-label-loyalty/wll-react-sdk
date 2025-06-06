@@ -48,7 +48,7 @@ describe('<RoundupTile /> Content', () => {
   });
 
   it('displays the correct zero points value', () => {
-    const zeroPointsTile = createRoundupTileMock({ amount: 0 });
+    const zeroPointsTile = createRoundupTileMock({ balance: 0 });
     render(<RoundupTile tile={zeroPointsTile} />);
     const valueElement = screen.getByTestId('roundup-tile-value');
     expect(valueElement.textContent).toBe('0');
