@@ -48,7 +48,7 @@ exports[`<RoundupTile /> renders and matches snapshot 1`] = `
             Available Points
           </div>
           <article
-            aria-label="Amount: 1000"
+            aria-label="Amount: 0"
             class="css-view-175oi2r"
             data-testid="roundup-tile-amount"
             role="article"
@@ -62,7 +62,7 @@ exports[`<RoundupTile /> renders and matches snapshot 1`] = `
                 dir="auto"
                 style="color: rgb(57, 46, 215); font-weight: bold; font-size: 24px;"
               >
-                1000
+                0
               </div>
             </div>
           </article>

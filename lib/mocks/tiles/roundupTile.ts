@@ -8,6 +8,10 @@ import {
 export type RoundupTileMockConfig = Partial<RoundupTileConfig> & {
   active?: boolean;
   tileHeight?: TileHeight;
+  defaultLocale?: string;
+  details?: any[];
+  locale?: string;
+  balance?: number;
 };
 
 export const createRoundupTileMock = (config?: RoundupTileMockConfig) => {
@@ -15,12 +19,15 @@ export const createRoundupTileMock = (config?: RoundupTileMockConfig) => {
     active = true,
     tileHeight = TileHeight.Full,
     title = 'Available Points',
-    amount = 1000,
-    amountPrefix = '',
-    amountSuffix = '',
     artworkUrl = 'https://example.com/points.png',
     ctaLink,
     ctaLinkTarget,
+    defaultLocale = 'en',
+    details = [],
+    locale = 'en',
+    balance,
+    amountPrefix,
+    amountSuffix,
   } = config || {};
 
   return {
@@ -33,12 +40,15 @@ export const createRoundupTileMock = (config?: RoundupTileMockConfig) => {
     priority: 1,
     configuration: {
       title,
-      amount,
-      amountPrefix,
-      amountSuffix,
       artworkUrl,
       ctaLink,
       ctaLinkTarget,
+      defaultLocale,
+      details,
+      locale,
+      balance,
+      amountPrefix,
+      amountSuffix,
     },
   };
 };

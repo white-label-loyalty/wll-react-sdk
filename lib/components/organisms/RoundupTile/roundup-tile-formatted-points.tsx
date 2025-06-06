@@ -5,8 +5,7 @@ import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { Row } from '../../atoms/Primatives';
-import { useRoundupTileStyles } from './styles';
-
+import { cleanNumber } from '../../../utils/pointsHelpers';
 /**
  * Renders formatted points value for a Roundup Tile.
  *
@@ -14,21 +13,19 @@ import { useRoundupTileStyles } from './styles';
  */
 
 export const RoundupTileFormattedPoints = (): JSX.Element | null => {
-  const styles = useRoundupTileStyles();
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;
 
   const {
+    balance = 0,
     amountPrefix = '',
     amountSuffix = '',
-    amount = 0,
   } = tileContext.configuration as RoundupTileConfig;
 
-  if (amount === undefined) return null;
+  if (balance === undefined) return null;
 
-  const fullPointsText =
-    `${amountPrefix}${amount} ${amountSuffix}`.trim();
+  const fullPointsText = `${amountPrefix}${cleanNumber(balance)}${amountSuffix}`.trim();
 
   return (
     <View
@@ -37,23 +34,9 @@ export const RoundupTileFormattedPoints = (): JSX.Element | null => {
       accessibilityLabel={`Amount: ${fullPointsText}`}
     >
       <Row align="center" justify="start">
-        {amountPrefix ? (
-          <Text variant="caption" testID="roundup-tile-prefix">
-            {amountPrefix}
-          </Text>
-        ) : null}
         <Text variant="caption" testID="roundup-tile-value">
-          {amount}
+          {fullPointsText}
         </Text>
-        {amountSuffix ? (
-          <Text
-            variant="caption"
-            style={styles.suffix}
-            testID="roundup-tile-suffix"
-          >
-            {amountSuffix}
-          </Text>
-        ) : null}
       </Row>
     </View>
   );

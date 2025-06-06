@@ -58,7 +58,7 @@ export class RoundupTileConfig {
   amountPrefix?: string | null;
   amountSuffix?: string | null;
   artworkUrl?: string | null;
-  amount?: number;
+  balance?: number;
   ctaLink?: string | null;
   ctaLinkTarget?: CTALinkTarget;
 }

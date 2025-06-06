@@ -33,8 +33,7 @@ ZeroBalance.args = {
     tileHeight: TileHeight.Half,
     title: 'Available Balance',
     artworkUrl: pointsImage,
-    amount: 0,
-    amountPrefix: '£',
+    balance: 0,
   }),
 };
 
@@ -44,8 +43,7 @@ StandardBalance.args = {
     tileHeight: TileHeight.Half,
     title: 'Available Balance',
     artworkUrl: pointsImage,
-    amount: 2750,
-    amountSuffix: '£',
+    balance: 2750,
   }),
 };
 
@@ -55,9 +53,7 @@ CashbackRewards.args = {
     tileHeight: TileHeight.Half,
     title: 'Cashback Earned',
     artworkUrl: cashback,
-    amount: 125,
-    amountPrefix: '',
-    amountSuffix: 'USD',
+    balance: 125,
   }),
 };
 
@@ -67,8 +63,7 @@ StarRewards.args = {
     tileHeight: TileHeight.Full,
     title: 'Stars Balance',
     artworkUrl: stars,
-    amount: 48,
-    amountSuffix: 'stars',
+    balance: 48,
   }),
 };
 
@@ -78,8 +73,7 @@ MileageProgram.args = {
     tileHeight: TileHeight.Full,
     title: 'Air Miles Balance',
     artworkUrl: airmiles,
-    amount: 25840,
-    amountSuffix: 'miles',
+    balance: 25840,
   }),
 };
 
@@ -89,8 +83,7 @@ AccountBalance.args = {
     tileHeight: TileHeight.Half,
     title: 'Your Balance',
     artworkUrl: coins,
-    amount: 15750,
-    amountSuffix: 'GBP',
+    balance: 15750,
   }),
 };
 
@@ -100,9 +93,9 @@ RewardBalance.args = {
     tileHeight: TileHeight.Full,
     title: 'Reward Balance',
     artworkUrl: coins,
-    amount: 1250,
-    amountPrefix: '',
-    amountSuffix: 'GBP',
+    balance: 1250,
+    amountPrefix: '$',
+    amountSuffix: '',
   }),
 };
 
@@ -112,8 +105,8 @@ EliteBalance.args = {
     tileHeight: TileHeight.Half,
     title: 'Elite Balance',
     artworkUrl: pointsImage,
-    amount: 50000,
-    amountSuffix: 'USD',
+    balance: 50000,
+    amountPrefix: ' €',
   }),
 };
 
@@ -123,8 +116,7 @@ WithCtaLink.args = {
     tileHeight: TileHeight.Full,
     title: 'Rewards Program',
     artworkUrl: pointsImage,
-    amount: 7500,
-    amountPrefix: '$',
+    balance: 0.32892,
     ctaLink: 'https://example.com/rewards',
     ctaLinkTarget: CTALinkTarget.sameWindow,
   }),
@@ -135,8 +127,7 @@ WithCtaLinkHalf.args = {
   tile: createRoundupTileMock({
     tileHeight: TileHeight.Half,
     title: 'Rewards Program',
-    amount: 7500,
-    amountPrefix: '$',
+    balance: 7500,
     artworkUrl: pointsImage,
     ctaLink: 'https://example.com/rewards',
     ctaLinkTarget: CTALinkTarget.sameWindow,
