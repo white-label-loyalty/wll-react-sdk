@@ -1,3 +1,20 @@
+# [1.1.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.113...v1.1.0) (2025-06-06)
+
+
+### Bug Fixes
+
+* trigger release for web loading state fix ([9e46417](https://github.com/white-label-loyalty/wll-react-sdk/commit/9e46417b4a28ee704fee9ea2e67c60002f939c89))
+* trigger release for web loading state fix ([4ba97ff](https://github.com/white-label-loyalty/wll-react-sdk/commit/4ba97ffcd57595e1c5545a676887dcc61b095f46))
+* update test to use balance instead of amount for zero points value ([a18199a](https://github.com/white-label-loyalty/wll-react-sdk/commit/a18199a6ac1438506ceba6471d7cd66ec6b879e7))
+
+
+### Features
+
+* add manual version bump workflow with patch/minor/major options ([4d8f4db](https://github.com/white-label-loyalty/wll-react-sdk/commit/4d8f4dbe570e0a902f37e6544ed58ab78a749855))
+* integrate Storybook with native app, add new stories and update configurations ([bf1767e](https://github.com/white-label-loyalty/wll-react-sdk/commit/bf1767ec77c33d394c07d422b217d89be00132bd))
+
+
+
 ## [1.0.113](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.112...v1.0.113) (2025-06-05)
 
 
