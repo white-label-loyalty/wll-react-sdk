@@ -15,8 +15,6 @@ import { cleanNumber } from '../../../utils/pointsHelpers';
 export const RoundupTileFormattedPoints = (): JSX.Element | null => {
   const tileContext = useTileContext();
 
-  console.log(tileContext, "tileContext");
-
   if (!isContextValid(tileContext)) return null;
 
   const {
