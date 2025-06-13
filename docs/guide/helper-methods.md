@@ -1,93 +1,89 @@
+---
+title: Data Invalidation & Events
+outline: deep
+---
 
+# Data Invalidation & Events
 
-# Helper Methods
-The SDK provides a set of helper methods to enhance your integration. These methods are designed to simplify common tasks and provide a consistent experience across different platforms.
+The Tiles SDK includes a built-in event system to help you keep the UI in sync after key user actions, like earning points or claiming a reward. You can trigger these updates without manually reloading the entire screen.
 
+## Overview
 
-## Refresh Group Data
+When data changes, you can notify the SDK using the `useInvalidateData` hook. Internally, the SDK uses a publish–subscribe (pub/sub) system to update any subscribed components (like Tiles).
 
-The SDK provides functionality to refresh group data programmatically. This is useful when you need to update the group's content after certain events or actions.
+---
 
-## Using refreshGroup
+## `useInvalidateData` Hook
 
-Access the `refreshGroup` function through the `useWllSdk` hook:
+The `useInvalidateData` hook exposes three methods to invalidate different types of data:
 
-```jsx
-import { useWllSdk } from '@wlloyalty/wll-react-sdk'
+- `invalidateGroupData()` – refresh all tile groups
+- `invalidateSectionData(sectionId?)` – refresh a specific section
+- `invalidateTileData(tileId?)` – refresh a specific tile
+
+### Usage
+
+```ts
+import { useInvalidateData } from '@wlloyalty/wll-react-sdk';
 
 function MyComponent() {
-  const { refreshGroup } = useWllSdk()
+  const {
+    invalidateGroupData,
+    invalidateSectionData,
+    invalidateTileData
+  } = useInvalidateData();
 
-  const handleRefresh = async (groupId) => {
-    try {
-      const response = await refreshGroup(groupId)
-      if (response.status === 'success') {
-        console.log('Group data refreshed:', response.data)
-      } else {
-        console.error('Failed to refresh group:', response.error)
-      }
-    } catch (error) {
-      console.error('Error refreshing group:', error)
-    }
-  }
-
-  return (
-    <button onClick={() => handleRefresh('your-group-id')}>
-      Refresh Group
-    </button>
-  )
+  const handleAction = () => {
+    invalidateGroupData(); // refresh all groups
+    invalidateSectionData('section-id'); // refresh one section
+    invalidateTileData('tile-id'); // refresh one tile
+  };
 }
 ```
 
-## Common Use Cases
-
-1. **After User Actions**: Refresh group data after a user completes an action that might affect the group's content.
-
-```jsx
-function RewardComponent() {
-  const { refreshGroup } = useWllSdk()
-
-  const handleRewardClaim = async (rewardId) => {
-    // Process reward claim
-    await claimReward(rewardId)
-
-    // Refresh the group to show updated content
-    await refreshGroup('group-id')
-  }
-
-  return <button onClick={() => handleRewardClaim('reward-id')}>Claim Reward</button>
-}
-```
-
-2. **Periodic Updates**: Set up periodic refreshes for time-sensitive content.
-
-```jsx
-function LiveUpdatesComponent() {
-  const { refreshGroup } = useWllSdk()
-  const groupId = 'your-group-id'
-
-  useEffect(() => {
-    const refreshInterval = setInterval(() => {
-      refreshGroup(groupId)
-    }, 60000) // Refresh every minute
-
-    return () => clearInterval(refreshInterval)
-  }, [refreshGroup])
-
-  return <div>Live Updates Content</div>
-}
-```
-
-## Response Type
-
-The `refreshGroup` function returns a Promise that resolves to an APIResponse:
+### Full Hook Implementation
 
 ```typescript
-type APIResponse<T> = {
-  status: 'success' | 'error';
-  data: T | null;
-  error?: string;
+import { useWllSdk } from "@wlloyalty/wll-react-sdk";
+
+/**
+ * Hook to invalidate SDK data
+ * @returns Methods to trigger SDK data updates
+ */
+export function useInvalidateData() {
+  const sdk = useWllSdk();
+
+  return {
+    invalidateGroupData: () => {
+      if (sdk) {
+        sdk.notifyDataChange('GROUP_DATA_CHANGED');
+      }
+    },
+    invalidateSectionData: (sectionId?: string) => {
+      if (sdk) {
+        sdk.notifyDataChange('SECTION_DATA_CHANGED', { sectionId });
+      }
+    },
+    invalidateTileData: (tileId?: string) => {
+      if (sdk) {
+        sdk.notifyDataChange('TILE_DATA_CHANGED', { tileId });
+      }
+    }
+  };
 }
 ```
 
-Where `T` is the group data type (`TGroup`).
+## How It Works: Pub/Sub System
+
+The SDK uses a lightweight event system internally. When a data change is triggered:
+
+1. An event like `TILE_DATA_CHANGED` is published.
+2. Any subscribed components (like the Tiles SDK) react automatically and update the UI.
+
+This decouples data logic from UI logic and improves modularity.
+
+## Example Flow
+
+```typescript
+await claimReward('abc123');
+invalidateGroupData(); // Triggers tile refresh in subscribed components
