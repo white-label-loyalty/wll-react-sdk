@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.1.0...v1.2.0) (2025-06-13)
+
+
+### Features
+
+* implement request deduplication for group fetching ([adc2a56](https://github.com/white-label-loyalty/wll-react-sdk/commit/adc2a562cb86f1e90acd90a57b2491b6b19338ac))
+
+
+
 # [1.1.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.0.113...v1.1.0) (2025-06-06)
 
 
