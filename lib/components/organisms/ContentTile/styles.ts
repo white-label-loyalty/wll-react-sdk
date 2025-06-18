@@ -38,15 +38,16 @@ export const useContentTileStyles = (
     imageContainer: {
       width: '100%',
       marginBottom: 0,
+      overflow: 'hidden',
     },
     image: {
       position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      width: '100%',
-      height: '100%',
+      top: -1,
+      left: -1,
+      bottom: -1,
+      right: -1,
+      width: '102%',
+      height: '102%',
       resizeMode: 'cover',
     },
     content: {
