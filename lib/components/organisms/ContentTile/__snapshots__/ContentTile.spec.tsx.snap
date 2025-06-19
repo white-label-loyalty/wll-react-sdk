@@ -10,13 +10,13 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Image for Gold Tier Unlocked!"
-      class="css-view-175oi2r r-marginBottom-p1pxzi r-width-13qz1uu"
+      class="css-view-175oi2r r-marginBottom-p1pxzi r-overflow-1udh08x r-width-13qz1uu"
       data-testid="content-tile-media"
       role="img"
       style="flex-basis: 50%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-bottom-jumn1c r-height-1dcj8od r-left-wwqw7s r-position-u8s1d r-right-dvzd6p r-top-3sxh79 r-width-7y7nrq"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
