@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.2.0...v1.2.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* prevent image edge artifacts in ContentTile by expanding image bounds ([9492dc6](https://github.com/white-label-loyalty/wll-react-sdk/commit/9492dc69baf25f607895983c4f9d5391e4ce2ec6))
+
+
+
 # [1.2.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.1.0...v1.2.0) (2025-06-13)
 
 
