@@ -954,7 +954,7 @@ const mockGroupData = {
               id: 'f7ce508f-ca52-46ff-bfb7-03e3761feb4a',
               createdAt: '2023-05-05T15:11:42.342Z',
               updatedAt: '2024-11-14T19:39:16.764Z',
-              summary: 'Should truncate at 1 line because there is points.',
+              summary: 'Should truncate at 1 line because there is',
               redemptionMessage: null,
               metadata: null,
               visibilityCriteria: null,
@@ -1567,7 +1567,7 @@ export const FullGroup: Story = {
   parameters: {
     mockData: [{ response: mockGroupData }],
     chromatic: {
-      viewports: [479, 767, 1024, 1440],
+      viewports: [430, 479, 767, 1024, 1440],
     },
   },
 };
@@ -1579,7 +1579,7 @@ export const GamificationFullGroup: Story = {
   parameters: {
     mockData: [{ response: gamifiedGroupData }],
     chromatic: {
-      viewports: [479, 767, 1024, 1440],
+      viewports: [430, 479, 767, 1024, 1440],
     },
   },
 };
@@ -1591,7 +1591,7 @@ export const AirMilesTravelFullGroup: Story = {
   parameters: {
     mockData: [{ response: programData }],
     chromatic: {
-      viewports: [479, 767, 1024, 1440],
+      viewports: [430, 479, 767, 1024, 1440],
     },
   },
 };
@@ -1603,7 +1603,7 @@ export const ContentTileGroup: Story = {
   parameters: {
     mockData: [{ response: mockContentTileGroupData }],
     chromatic: {
-      viewports: [479, 767, 1024, 1440],
+      viewports: [430, 479, 767, 1024, 1440],
     },
   },
 };
