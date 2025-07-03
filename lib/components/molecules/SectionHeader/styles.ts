@@ -20,7 +20,7 @@ export const useSectionHeaderStyles = (): ReturnType<
     },
     sectionTitle: {
       fontSize: useResponsiveValue(
-        theme.sizes.xxxl,
+        theme.sizes.xxl,
         theme.sizes.xl,
         isDesktop,
         isTablet
@@ -37,7 +37,7 @@ export const useSectionHeaderStyles = (): ReturnType<
     },
     sectionDescription: {
       fontSize: useResponsiveValue(
-        theme.sizes.xxl,
+        theme.sizes.xl,
         theme.sizes.md,
         isDesktop,
         isTablet

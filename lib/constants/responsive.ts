@@ -4,5 +4,5 @@ export const DIMENSION_MODES = {
   MOBILE: 'mobile' as const,
 };
 
-export const TABLET_SCREEN_WIDTH = 728;
-export const SMALL_SCREEN_WIDTH = 530;
+export const TABLET_SCREEN_WIDTH = 768;
+export const SMALL_SCREEN_WIDTH = 480;

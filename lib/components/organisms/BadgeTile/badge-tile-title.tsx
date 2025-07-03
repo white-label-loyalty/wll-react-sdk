@@ -39,7 +39,7 @@ export const BadgeTileTitle = (): JSX.Element | null => {
       <Text
         variant="title"
         style={styles.titleText}
-        numberOfLines={count === 0 ? 2 : 1}
+        numberOfLines={1}
         ellipsizeMode="tail"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
