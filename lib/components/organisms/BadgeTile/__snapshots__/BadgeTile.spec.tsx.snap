@@ -9,7 +9,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1t2qqvi r-justifyContent-1777fci r-marginBottom-1ifxtd0 r-position-bnwqim"
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1t2qqvi r-justifyContent-1777fci r-marginBottom-ku1wi2 r-position-bnwqim"
       data-testid="badge-tile-media"
     >
       <div
@@ -48,10 +48,10 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
         data-testid="badge-tile-title"
       >
         <h1
-          class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6 r-marginBottom-5oul0u"
+          class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-marginBottom-5oul0u"
           dir="auto"
           role="heading"
-          style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+          style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;"
         >
           You haven't earned any badges yet.
         </h1>

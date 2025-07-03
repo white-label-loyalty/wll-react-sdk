@@ -11,7 +11,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Banner image for Summer Points Splash"
-      class="css-view-175oi2r r-aspectRatio-1ujkv8a r-marginRight-mbgqwd r-maxHeight-16aopbr r-minHeight-1rd2zbf r-overflow-1udh08x r-position-bnwqim"
+      class="css-view-175oi2r r-aspectRatio-1ujkv8a r-marginRight-at4v1u r-maxHeight-fu70me r-minHeight-1rd2zbf r-overflow-1udh08x r-position-bnwqim"
       data-testid="banner-tile-media"
       role="img"
       style="width: 30%;"
@@ -49,7 +49,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
     >
       <h1
         aria-label="Summer Points Splash"
-        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1yjpyg1 r-fontWeight-b88u0q r-marginBottom-1a8r3js"
         data-testid="banner-tile-title"
         dir="auto"
         role="heading"
@@ -58,7 +58,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
         Summer Points Splash
       </h1>
       <div
-        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
         data-testid="banner-tile-description"
         dir="auto"
       >
@@ -66,7 +66,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
       </div>
       <button
         aria-label="Start Earning"
-        class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-alignSelf-k200y r-justifyContent-1777fci r-paddingBlock-1mmae3n r-paddingInline-cxgwc0"
+        class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-alignSelf-k200y r-justifyContent-1777fci r-paddingBlock-1mmae3n r-paddingInline-10tapur"
         data-testid="banner-tile-cta"
         role="button"
         style="background-color: rgb(255, 106, 61); border-top-left-radius: 9px; border-top-right-radius: 9px; border-bottom-right-radius: 9px; border-bottom-left-radius: 9px;"

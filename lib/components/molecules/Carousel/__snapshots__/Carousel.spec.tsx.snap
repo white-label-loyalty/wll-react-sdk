@@ -3,17 +3,17 @@
 exports[`<Carousel /> matches snapshot 1`] = `
 <div>
   <div
-    class="css-view-175oi2r r-marginBottom-1ifxtd0"
+    class="css-view-175oi2r r-marginBottom-ku1wi2"
   >
     <div
-      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-marginBottom-5oul0u"
+      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1x35g6 r-marginBottom-5oul0u"
       dir="auto"
       style="font-weight: 700; color: rgb(0, 0, 0);"
     >
       Featured Banners
     </div>
     <div
-      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1x35g6"
+      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1i10wst"
       dir="auto"
       style="color: rgba(0, 0, 0, 0.8);"
     >
@@ -53,7 +53,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 >
                   <h1
                     aria-label="Second Banner"
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1yjpyg1 r-fontWeight-b88u0q r-marginBottom-1a8r3js"
                     data-testid="banner-tile-title"
                     dir="auto"
                     role="heading"
@@ -62,7 +62,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     Second Banner
                   </h1>
                   <div
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
                     data-testid="banner-tile-description"
                     dir="auto"
                   >
@@ -92,7 +92,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                 >
                   <h1
                     aria-label="First Banner"
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1ui5ee8 r-fontWeight-b88u0q r-marginBottom-6gpygo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1yjpyg1 r-fontWeight-b88u0q r-marginBottom-1a8r3js"
                     data-testid="banner-tile-title"
                     dir="auto"
                     role="heading"
@@ -101,7 +101,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     First Banner
                   </h1>
                   <div
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1i10wst r-marginBottom-zd98yo"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
                     data-testid="banner-tile-description"
                     dir="auto"
                   >
@@ -147,7 +147,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
       </button>
     </div>
     <div
-      class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-11c0sde"
+      class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-81iisv"
     >
       <div
         class="css-view-175oi2r r-borderRadius-1xfd6ze r-height-3da1kt r-marginInline-1537yvj"
