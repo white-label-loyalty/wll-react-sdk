@@ -1459,7 +1459,7 @@ const mockContentTileGroupData = {
           createContentTileMock({
             tileHeight: TileHeight.Half,
             title:
-              'Limited Time Offer with a long title that should be clamped to 2 lines max!',
+              'Limited Time Offer with a long title that should be clamped to 3 lines max!',
             body: undefined,
             artworkUrl: undefined,
           }),
