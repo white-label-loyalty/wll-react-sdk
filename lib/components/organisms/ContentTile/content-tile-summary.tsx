@@ -28,7 +28,7 @@ export const ContentTileSummary = (): JSX.Element | null => {
       if (title && body) return 2;
     }
 
-    if (artworkUrl) return 2;
+    if (artworkUrl) return 3;
     if (!title) return 8;
 
     return 6;
