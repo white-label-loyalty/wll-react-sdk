@@ -954,7 +954,7 @@ const mockGroupData = {
               id: 'f7ce508f-ca52-46ff-bfb7-03e3761feb4a',
               createdAt: '2023-05-05T15:11:42.342Z',
               updatedAt: '2024-11-14T19:39:16.764Z',
-              summary: 'test',
+              summary: 'Should truncate at 1 line because there is points.',
               redemptionMessage: null,
               metadata: null,
               visibilityCriteria: null,
@@ -998,7 +998,7 @@ const mockGroupData = {
               name: 'Sesame Salmon Noodles',
               pictureUrl:
                 'https://ucarecdn.com/42216985-1225-46f5-bec6-6ff50841fc24/',
-              price: 10,
+              price: 0,
               availability: {
                 start: '2023-05-05T15:11:51.211Z',
                 end: null,
@@ -1013,7 +1013,8 @@ const mockGroupData = {
               id: 'e8d63f0b-7911-4275-9651-441840a18b18',
               createdAt: '2023-05-05T15:12:45.405Z',
               updatedAt: '2024-07-17T10:44:53.570Z',
-              summary: 'Test',
+              summary:
+                'This is a nice long summary, it should be truncated at 3 lines because there is no price.',
               redemptionMessage: null,
               metadata: null,
               visibilityCriteria: null,
@@ -1566,7 +1567,7 @@ export const FullGroup: Story = {
   parameters: {
     mockData: [{ response: mockGroupData }],
     chromatic: {
-      viewports: [480, 768, 1024, 1440],
+      viewports: [479, 767, 1024, 1440],
     },
   },
 };
@@ -1578,7 +1579,7 @@ export const GamificationFullGroup: Story = {
   parameters: {
     mockData: [{ response: gamifiedGroupData }],
     chromatic: {
-      viewports: [480, 768, 1024, 1440],
+      viewports: [479, 767, 1024, 1440],
     },
   },
 };
@@ -1590,7 +1591,7 @@ export const AirMilesTravelFullGroup: Story = {
   parameters: {
     mockData: [{ response: programData }],
     chromatic: {
-      viewports: [480, 768, 1024, 1440],
+      viewports: [479, 767, 1024, 1440],
     },
   },
 };
@@ -1602,7 +1603,7 @@ export const ContentTileGroup: Story = {
   parameters: {
     mockData: [{ response: mockContentTileGroupData }],
     chromatic: {
-      viewports: [480, 768, 1024, 1440],
+      viewports: [479, 767, 1024, 1440],
     },
   },
 };

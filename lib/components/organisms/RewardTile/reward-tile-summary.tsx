@@ -15,7 +15,16 @@ export const RewardTileSummary = (): JSX.Element | null => {
 
   if (!isContextValid(tileContext)) return null;
 
-  const { summary } = tileContext.configuration as RewardTileConfig;
+  const {
+    summary,
+    showPrice = true,
+    price,
+  } = tileContext.configuration as RewardTileConfig;
+
+  const shouldShowPrice =
+    showPrice && price !== undefined && price !== null && price !== 0;
+
+  const numberOfLines = shouldShowPrice ? 1 : 3;
 
   if (!summary) return null;
 
@@ -25,6 +34,8 @@ export const RewardTileSummary = (): JSX.Element | null => {
       role="article"
       accessibilityLabel={summary}
       testID="reward-tile-summary"
+      numberOfLines={numberOfLines}
+      ellipsizeMode="tail"
     >
       {summary}
     </Text>
