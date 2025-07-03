@@ -175,12 +175,6 @@ ResponsiveTest.args = {
   }),
 };
 
-ResponsiveTest.parameters = {
-  chromatic: {
-    viewports: [320, 768, 1024],
-  },
-};
-
 export const HalfSizeArtworkOnly = Template.bind({});
 HalfSizeArtworkOnly.args = {
   tile: createContentTileMock({

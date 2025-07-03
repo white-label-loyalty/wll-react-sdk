@@ -1556,6 +1556,9 @@ export const EmptySections: Story = {
   },
   parameters: {
     mockData: [{ response: mockEmptySectionsData }],
+    chromatic: {
+      viewports: [320, 768, 1024, 1440],
+    },
   },
 };
 
@@ -1565,6 +1568,9 @@ export const FullGroup: Story = {
   },
   parameters: {
     mockData: [{ response: mockGroupData }],
+    chromatic: {
+      viewports: [320, 768, 1024, 1440],
+    },
   },
 };
 
@@ -1574,6 +1580,9 @@ export const GamificationFullGroup: Story = {
   },
   parameters: {
     mockData: [{ response: gamifiedGroupData }],
+    chromatic: {
+      viewports: [320, 768, 1024, 1440],
+    },
   },
 };
 
@@ -1583,6 +1592,9 @@ export const AirMilesTravelFullGroup: Story = {
   },
   parameters: {
     mockData: [{ response: programData }],
+    chromatic: {
+      viewports: [320, 768, 1024, 1440],
+    },
   },
 };
 
@@ -1592,5 +1604,8 @@ export const ContentTileGroup: Story = {
   },
   parameters: {
     mockData: [{ response: mockContentTileGroupData }],
+    chromatic: {
+      viewports: [320, 768, 1024, 1440],
+    },
   },
 };

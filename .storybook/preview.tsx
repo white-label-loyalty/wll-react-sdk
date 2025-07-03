@@ -167,9 +167,6 @@ const preview: Preview = {
   ],
   parameters: {
     layout: 'fullscreen',
-    chromatic: {
-      viewports: [320, 768, 1024],
-    },
     backgrounds: { disable: true },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
