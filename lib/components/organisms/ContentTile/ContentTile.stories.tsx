@@ -166,6 +166,21 @@ HalfSizeTitleAndBody.args = {
   }),
 };
 
+export const ResponsiveTest = Template.bind({});
+ResponsiveTest.args = {
+  tile: createContentTileMock({
+    tileHeight: TileHeight.Full,
+    title: 'Responsive test',
+    body: 'Should behave differently at 320, 768, and 1024',
+  }),
+};
+
+ResponsiveTest.parameters = {
+  chromatic: {
+    viewports: [320, 768, 1024],
+  },
+};
+
 export const HalfSizeArtworkOnly = Template.bind({});
 HalfSizeArtworkOnly.args = {
   tile: createContentTileMock({
