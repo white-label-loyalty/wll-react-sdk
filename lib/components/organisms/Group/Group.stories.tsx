@@ -1229,7 +1229,7 @@ const mockGroupData = {
             type: 'REWARD_CATEGORY',
             configuration: {
               details: [],
-              rewardCategoryId: 'ea38991c-1d2b-4d89-851b-123201ca2249',
+              rewardCategoryId: 'ea38991c-1d2b-4d89-851b-124801ca2249',
               allowDecorationOverlay: true,
               showName: false,
               showArtwork: true,
@@ -1566,7 +1566,7 @@ export const FullGroup: Story = {
   parameters: {
     mockData: [{ response: mockGroupData }],
     chromatic: {
-      viewports: [320, 768, 1024, 1440],
+      viewports: [480, 768, 1024, 1440],
     },
   },
 };
@@ -1578,7 +1578,7 @@ export const GamificationFullGroup: Story = {
   parameters: {
     mockData: [{ response: gamifiedGroupData }],
     chromatic: {
-      viewports: [320, 768, 1024, 1440],
+      viewports: [480, 768, 1024, 1440],
     },
   },
 };
@@ -1590,7 +1590,7 @@ export const AirMilesTravelFullGroup: Story = {
   parameters: {
     mockData: [{ response: programData }],
     chromatic: {
-      viewports: [320, 768, 1024, 1440],
+      viewports: [480, 768, 1024, 1440],
     },
   },
 };
@@ -1602,7 +1602,7 @@ export const ContentTileGroup: Story = {
   parameters: {
     mockData: [{ response: mockContentTileGroupData }],
     chromatic: {
-      viewports: [320, 768, 1024, 1440],
+      viewports: [480, 768, 1024, 1440],
     },
   },
 };
