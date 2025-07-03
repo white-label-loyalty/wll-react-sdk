@@ -1556,9 +1556,6 @@ export const EmptySections: Story = {
   },
   parameters: {
     mockData: [{ response: mockEmptySectionsData }],
-    chromatic: {
-      viewports: [320, 768, 1024, 1440],
-    },
   },
 };
 
