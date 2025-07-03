@@ -24,6 +24,8 @@ import avionPoints from '../../../assets/avion-points.png';
 
 import { themes } from '../../../utils/themeHelpers';
 import Group from './index';
+import { createContentTileMock } from '../../../mocks/tiles';
+import { CTALinkTarget, TileHeight } from '../../../types/tile';
 
 const programData = {
   status: 'success',
@@ -1369,6 +1371,137 @@ const mockEmptySectionsData = {
   },
 };
 
+const mockContentTileGroupData = {
+  status: 'success',
+  data: {
+    name: 'SkyRewards Elite',
+    sections: [
+      {
+        name: 'Travel Status',
+        type: 'GRID',
+        active: true,
+        title: 'Travel Dashboard',
+        description:
+          'Track your miles, unlock premium benefits, and explore exclusive travel perks!',
+        tiles: [
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl:
+              'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+          }),
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl:
+              'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+          }),
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl:
+              'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+          }),
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl:
+              'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+          }),
+        ],
+      },
+      {
+        name: 'Full Tile Grid Test',
+        type: 'GRID',
+        active: true,
+        title: 'Full Tile Grid Test',
+        description:
+          'This story tests the full tile grid layout with multiple lines of text.',
+        tiles: [
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: undefined,
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            title: undefined,
+            body: `This is a standalone body text block that should be allowed to expand as much as it needs, up to the vertical limit of the tile component. We're including multiple lines of text here to simulate the edge case and ensure that nothing is getting cut off unnecessarily at smaller or intermediate viewports.`,
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            title: 'Short Title (should be clamped to 2 lines max)',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: `This body should fill the remaining space in the tile. If the title truncates correctly, this block should comfortably sit underneath and occupy the rest of the tile's vertical real estate.`,
+            artworkUrl:
+              'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+          }),
+        ],
+      },
+      {
+        name: 'Half & Full Tile Grid Test',
+        type: 'GRID',
+        active: true,
+        title: 'Half & Full Tile Grid Test',
+        description:
+          'This story tests the half and full tile grid layout with multiple lines of text.',
+        tiles: [
+          createContentTileMock({
+            tileHeight: TileHeight.Half,
+            title:
+              'Limited Time Offer with a long title that should be clamped to 2 lines max!',
+            body: undefined,
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            tileHeight: TileHeight.Half,
+            title: undefined,
+            body: 'This body should fill 4 lines of space in the tile before being truncated as there is no title, so it should handle long pieces of copy.',
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            tileHeight: TileHeight.Half,
+            title:
+              'Flash Sale with a long title that should be clamped to 1 lines max!',
+            body: 'This body should fill the remaining space 2 lines max',
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            tileHeight: TileHeight.Half,
+            title: undefined,
+            body: undefined,
+            artworkUrl:
+              'https://images.pexels.com/photos/3123915/pexels-photo-3123915.jpeg',
+          }),
+          createContentTileMock({
+            title:
+              'This is a long standalone title that should take up multiple lines if needed to test overflow and clamping behaviour',
+            body: undefined,
+            artworkUrl: undefined,
+          }),
+          createContentTileMock({
+            title: 'New Partner Rewards!',
+            body: 'Now earn points at our partner locations. Click to view participating partners.',
+            artworkUrl:
+              'https://images.pexels.com/photos/7236026/pexels-photo-7236026.jpeg',
+            ctaLink: '/partner-locations',
+            ctaLinkTarget: CTALinkTarget.newWindow,
+          }),
+        ],
+      },
+    ],
+  },
+};
+
 const meta: Meta<typeof Group> = {
   title: 'components/organisms/Group',
   component: Group,
@@ -1443,11 +1576,21 @@ export const GamificationFullGroup: Story = {
     mockData: [{ response: gamifiedGroupData }],
   },
 };
+
 export const AirMilesTravelFullGroup: Story = {
   args: {
     id: 'air-miles-travel-group-id',
   },
   parameters: {
     mockData: [{ response: programData }],
+  },
+};
+
+export const ContentTileGroup: Story = {
+  args: {
+    id: 'content-tile-group-id',
+  },
+  parameters: {
+    mockData: [{ response: mockContentTileGroupData }],
   },
 };
