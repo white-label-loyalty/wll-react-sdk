@@ -1,3 +1,22 @@
+# [1.3.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.2.1...v1.3.0) (2025-07-08)
+
+
+### Bug Fixes
+
+* add mobile/tablet snapshots to chromatic ([57fcb3a](https://github.com/white-label-loyalty/wll-react-sdk/commit/57fcb3a5816153ec5528a1429d6d0ad5e03f0630))
+* adjust no of lines back to 3 for tiles with title and artwork ([f007809](https://github.com/white-label-loyalty/wll-react-sdk/commit/f007809cfe6e57b8b45e91543b7e7646d35bd06c))
+* remove breakpoints from empty section test ([8de472d](https://github.com/white-label-loyalty/wll-react-sdk/commit/8de472ded59f389817026e3b25ca03cc354f02bb))
+
+
+### Features
+
+* add responsive test story with viewport breakpoints for ContentTile ([c6041b7](https://github.com/white-label-loyalty/wll-react-sdk/commit/c6041b7144216e20811fe6163b7913b939678446))
+* implement dynamic summary truncation based on reward price visibility ([fa98c85](https://github.com/white-label-loyalty/wll-react-sdk/commit/fa98c85f8083ac354f54fdb377ffaf45dd2575fb))
+* implement dynamic text truncation based on content tile layout variants ([06ee1ee](https://github.com/white-label-loyalty/wll-react-sdk/commit/06ee1eef997244cf840db95cab60b161b9be9c92))
+* increase title clamp limit from 2 to 3 lines in mock content tile ([b54b63d](https://github.com/white-label-loyalty/wll-react-sdk/commit/b54b63de62541deed6cb6384772f24ade189636e))
+
+
+
 ## [1.2.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.2.0...v1.2.1) (2025-06-19)
 
 
