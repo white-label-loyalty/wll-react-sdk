@@ -62,7 +62,7 @@ export const Text = ({
         return {
           ...baseStyle,
           fontSize: useResponsiveValue(
-            theme.sizes.xxl,
+            theme.sizes.xl,
             theme.sizes.md,
             isDesktop,
             isTablet
@@ -98,7 +98,7 @@ export const Text = ({
           ...baseStyle,
           fontSize: useResponsiveValue(
             theme.sizes.sm,
-            theme.sizes.xs,
+            theme.sizes.xxs,
             isDesktop,
             isTablet
           ),
@@ -125,8 +125,8 @@ export const Text = ({
     },
     webOverrides: IS_WEB
       ? {
-        fontFamily: theme.fontFamily,
-      }
+          fontFamily: theme.fontFamily,
+        }
       : {},
   });
 

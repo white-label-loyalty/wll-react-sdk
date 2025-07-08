@@ -55,7 +55,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
           data-testid="content-tile-title"
           dir="auto"
           role="heading"
-          style="color: rgb(0, 0, 0); font-size: 24px; font-weight: bold;"
+          style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;"
         >
           Gold Tier Unlocked!
         </h1>

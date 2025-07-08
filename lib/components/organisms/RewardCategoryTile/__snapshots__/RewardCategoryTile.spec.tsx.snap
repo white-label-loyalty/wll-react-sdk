@@ -18,7 +18,7 @@ exports[`<RewardCategoryTile /> renders and matches snapshot 1`] = `
       style="background-color: rgb(57, 46, 215);"
     >
       <div
-        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-fontSize-ubezar r-paddingInline-1rds9hb"
+        class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-fontSize-ubezar r-paddingInline-15zi8a"
         dir="auto"
         style="color: rgb(255, 255, 255);"
       >

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useMemo } from 'react';
+import { useWindowDimensions, View } from 'react-native';
 import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
@@ -13,6 +13,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 
 export const BadgeTileDescription = (): JSX.Element | null => {
   const tileContext = useTileContext();
+  const width = useWindowDimensions().width;
 
   if (!isContextValid(tileContext)) return null;
 
@@ -25,15 +26,26 @@ export const BadgeTileDescription = (): JSX.Element | null => {
   // For Specific type, always show description
   if (count === 0 && type === BadgeTileType.Latest) return null;
 
+  const numberOfLines = useMemo(() => {
+    if (width <= 480) return 2;
+    if (width <= 768) return 3;
+    if (width <= 1024) return 1;
+    return 2;
+  }, [width]);
+
   return (
     <View
       accessible
       accessibilityLabel={`Badge description: ${description}`}
       testID="badge-tile-description"
+      style={{
+        width: '100%',
+        overflow: 'hidden',
+      }}
     >
       <Text
         variant="body"
-        numberOfLines={2}
+        numberOfLines={numberOfLines}
         ellipsizeMode="tail"
         accessibilityElementsHidden={true}
         importantForAccessibility="no-hide-descendants"
