@@ -26,7 +26,8 @@ import { WllSdkProvider } from '@wlloyalty/wll-react-sdk'
 function App() {
   const config = {
     apiKey: 'your-api-key',
-    userToken: 'optional-user-token'
+    userToken: 'optional-user-token',
+    environment: 'PRODUCTION' // 'PRODUCTION', 'STAGING', or 'DEVELOPMENT'
   }
 
   return (
@@ -56,8 +57,19 @@ type SDKConfig = {
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
+  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
 };
 ```
+
+#### Environment Configuration
+
+The `environment` property determines which API endpoint the SDK will use for requests:
+
+- `PRODUCTION`: Uses `https://api.core.wlloyalty.net/v1`
+- `STAGING`: Uses `https://api.staging.core.wlloyalty.net/v1` (default if not specified)
+- `DEVELOPMENT`: Uses `http://localhost:8080/v1`
+
+This allows you to target different environments without changing your application code.
 
 ### Theme Configuration
 

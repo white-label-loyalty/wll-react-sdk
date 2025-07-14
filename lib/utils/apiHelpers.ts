@@ -1,7 +1,19 @@
 import { useCallback } from 'react';
 import { SDKConfig } from '../context/WllSdkContext';
 
-const baseUrl = 'https://api.staging.core.wlloyalty.net/v1';
+type Environment = 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
+
+const getBaseUrl = (environment: Environment = 'STAGING'): string => {
+  switch (environment) {
+    case 'PRODUCTION':
+      return 'https://api.core.wlloyalty.net/v1';
+    case 'DEVELOPMENT':
+      return 'https://localhost:8080/v1';
+    case 'STAGING':
+    default:
+      return 'https://api.staging.core.wlloyalty.net/v1';
+  }
+};
 
 type APIResponse<T> = {
   status: 'success' | 'fail' | 'error';
@@ -82,12 +94,16 @@ export const createResourceGetter = (
         // Always append locale=en
         params.append('locale', config.locale || 'en');
 
+        const env = config.environment || 'STAGING';
+        const baseUrl = getBaseUrl(env as Environment);
+
         const queryString = params.toString();
+
         return makeRequest(
           `${baseUrl}/tiles-management/${resource}/${id}${queryString ? `?${queryString}` : ''}`
         );
       },
-      [makeRequest]
+      [makeRequest, config.environment]
     );
   };
 };

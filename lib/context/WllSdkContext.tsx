@@ -39,6 +39,7 @@ export type SDKConfig = {
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
+  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
 };
 
 export type APIResponse<T> = {
@@ -215,5 +216,9 @@ const validateConfig = (config: SDKConfig): void => {
     throw new Error(
       'Invalid locale format. Expected ISO 639-1 language code (e.g. "en")'
     );
+  }
+
+  if (!config.environment) {
+    config.environment = 'STAGING';
   }
 };
