@@ -1,3 +1,17 @@
+## [1.3.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.3.0...v1.3.1) (2025-07-14)
+
+
+### Bug Fixes
+
+* removing debug logging ([503b722](https://github.com/white-label-loyalty/wll-react-sdk/commit/503b722d525232263a474de52250d58ec5b54e2c))
+
+
+### Features
+
+* add environment selection support with dynamic API base URL ([0cf887a](https://github.com/white-label-loyalty/wll-react-sdk/commit/0cf887abe2bf8d3ab56e1e88b700acc55fffc179))
+
+
+
 # [1.3.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.2.1...v1.3.0) (2025-07-08)
 
 
