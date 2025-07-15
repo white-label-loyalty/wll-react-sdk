@@ -15,7 +15,7 @@ const getBaseUrl = (environment: Environment = 'STAGING'): string => {
     case 'PRODUCTION-US':
       return 'https://api.core.us.wlloyalty.net/v1';
     case 'STAGING-US':
-      return 'https://api.core.wlloyalty.net/v1';
+      return 'https://api.staging.core.us.wlloyalty.net/v1';
     case 'DEVELOPMENT':
       return 'https://localhost:8080/v1';
     case 'STAGING':
