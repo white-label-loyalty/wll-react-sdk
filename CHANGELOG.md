@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.3.1...v1.4.0) (2025-07-15)
+
+
+### Features
+
+* add us core url ([1d6f942](https://github.com/white-label-loyalty/wll-react-sdk/commit/1d6f9425bb61c627ebba0b3ffaa31a3bbbbccd26))
+
+
+
 ## [1.3.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.3.0...v1.3.1) (2025-07-14)
 
 
