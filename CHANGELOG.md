@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.0...v1.4.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* update base URL for STAGING-US environment ([791f3e2](https://github.com/white-label-loyalty/wll-react-sdk/commit/791f3e28edb6aaac06587747baf5882def256543))
+
+
+
 # [1.4.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.3.1...v1.4.0) (2025-07-15)
 
 
