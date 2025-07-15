@@ -1,11 +1,20 @@
 import { useCallback } from 'react';
 import { SDKConfig } from '../context/WllSdkContext';
 
-type Environment = 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
+type Environment =
+  | 'PRODUCTION'
+  | 'STAGING'
+  | 'DEVELOPMENT'
+  | 'STAGING-US'
+  | 'PRODUCTION-US';
 
 const getBaseUrl = (environment: Environment = 'STAGING'): string => {
   switch (environment) {
     case 'PRODUCTION':
+      return 'https://api.core.wlloyalty.net/v1';
+    case 'PRODUCTION-US':
+      return 'https://api.core.us.wlloyalty.net/v1';
+    case 'STAGING-US':
       return 'https://api.core.wlloyalty.net/v1';
     case 'DEVELOPMENT':
       return 'https://localhost:8080/v1';

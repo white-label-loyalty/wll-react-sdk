@@ -27,7 +27,7 @@ function App() {
   const config = {
     apiKey: 'your-api-key',
     userToken: 'optional-user-token',
-    environment: 'PRODUCTION' // 'PRODUCTION', 'STAGING', or 'DEVELOPMENT'
+    environment: 'PRODUCTION' // 'PRODUCTION', 'STAGING', 'PRODUCTION-US', 'STAGING-US' or 'DEVELOPMENT'
   }
 
   return (
@@ -57,7 +57,7 @@ type SDKConfig = {
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
-  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
+  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT' | "PRODUCTION-US" | "STAGING-US";
 };
 ```
 
