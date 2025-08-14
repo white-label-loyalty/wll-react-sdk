@@ -44,7 +44,7 @@ export type SDKConfig = {
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
-  coreApiUrl?: AllowedCoreApiUrl;
+  coreApiUrl: AllowedCoreApiUrl;
 };
 
 type Fetcher = <T>(
