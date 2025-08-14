@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { WllSdkProvider } from '../../../context/WllSdkContext';
+import { CoreApiUrl, WllSdkProvider } from '../../../context/WllSdkContext';
 import { defaultTheme } from '../../../utils/styling';
 
 // @ts-ignore
@@ -1523,6 +1523,7 @@ const meta: Meta<typeof Group> = {
       const config = {
         apiKey: 'test-api-key',
         fetcher: async () => mockData,
+        coreApiUrl: CoreApiUrl.STAGING_EU,
       };
 
       return (

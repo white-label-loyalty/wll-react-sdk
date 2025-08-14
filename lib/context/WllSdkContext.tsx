@@ -29,18 +29,28 @@ import {
 } from '../utils/themeHelpers';
 import { ResponsiveProvider } from './ResponsiveContext';
 
-type Fetcher = <T>(
-  endpoint: string,
-  options?: RequestInit
-) => Promise<APIResponse<T>>;
+export enum CoreApiUrl {
+  PRODUCTION_EU = 'https://api.core.wlloyalty.net/v1',
+  PRODUCTION_US = 'https://api.core.us.wlloyalty.net/v1',
+  STAGING_EU = 'https://api.staging.core.wlloyalty.net/v1',
+  STAGING_US = 'https://api.staging.core.us.wlloyalty.net/v1',
+  DEVELOPMENT = 'https://localhost:8080/v1',
+}
+
+export type AllowedCoreApiUrl = `${CoreApiUrl}`;
 
 export type SDKConfig = {
   apiKey: string;
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
-  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
+  coreApiUrl: AllowedCoreApiUrl;
 };
+
+type Fetcher = <T>(
+  endpoint: string,
+  options?: RequestInit
+) => Promise<APIResponse<T>>;
 
 export type APIResponse<T> = {
   status: 'success' | 'error';
@@ -216,9 +226,5 @@ const validateConfig = (config: SDKConfig): void => {
     throw new Error(
       'Invalid locale format. Expected ISO 639-1 language code (e.g. "en")'
     );
-  }
-
-  if (!config.environment) {
-    config.environment = 'STAGING';
   }
 };
