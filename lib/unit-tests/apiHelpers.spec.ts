@@ -1,11 +1,12 @@
 import { renderHook } from '@testing-library/react';
-import { SDKConfig } from '../context/WllSdkContext';
+import { CoreApiUrl, SDKConfig } from '../context/WllSdkContext';
 import { useCreateRequestOptions, useMakeRequest } from '../utils/apiHelpers';
 
 const mockConfig: SDKConfig = {
   apiKey: 'test-api-key',
   userToken: 'test-user-token',
   locale: 'en',
+  coreApiUrl: CoreApiUrl.STAGING_EU,
 };
 
 describe('useCreateRequestOptions', () => {
