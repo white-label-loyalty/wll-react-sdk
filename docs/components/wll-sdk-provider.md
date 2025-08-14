@@ -27,7 +27,7 @@ function App() {
   const config = {
     apiKey: 'your-api-key',
     userToken: 'optional-user-token',
-    environment: 'PRODUCTION' // 'PRODUCTION', 'STAGING', 'PRODUCTION-US', 'STAGING-US' or 'DEVELOPMENT'
+    coreApiUrl: CoreApiUrl.PRODUCTION_EU
   }
 
   return (
