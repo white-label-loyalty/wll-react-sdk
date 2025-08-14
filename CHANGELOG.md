@@ -1,3 +1,13 @@
+## [1.4.2](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.1...v1.4.2) (2025-08-14)
+
+
+### Bug Fixes
+
+* define CoreApiUrl enum and update SDKConfig to use coreApiUrl ([1f6973a](https://github.com/white-label-loyalty/wll-react-sdk/commit/1f6973ad01955ba4e83d82224d7f3c6647c08e9f))
+* make coreApiUrl required in SDKConfig type ([547f99e](https://github.com/white-label-loyalty/wll-react-sdk/commit/547f99ef0d03827eb06990f93faf78d581bdc948))
+
+
+
 ## [1.4.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.0...v1.4.1) (2025-07-15)
 
 
