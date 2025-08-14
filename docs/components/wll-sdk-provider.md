@@ -52,24 +52,28 @@ function App() {
 ### SDKConfig
 
 ```typescript
+export enum CoreApiUrl {
+  PRODUCTION_EU = 'https://api.core.wlloyalty.net/v1',
+  PRODUCTION_US = 'https://api.core.us.wlloyalty.net/v1',
+  STAGING_EU = 'https://api.staging.core.wlloyalty.net/v1',
+  STAGING_US = 'https://api.staging.core.us.wlloyalty.net/v1',
+  DEVELOPMENT = 'https://localhost:8080/v1',
+}
+
+export type AllowedCoreApiUrl = `${CoreApiUrl}`;
+
 type SDKConfig = {
   apiKey: string;
   userToken?: string;
   fetcher?: Fetcher;
   locale?: string;
-  environment?: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT' | "PRODUCTION-US" | "STAGING-US";
+  coreApiUrl: AllowedCoreApiUrl;
 };
 ```
 
-#### Environment Configuration
+#### API URL Configuration
 
-The `environment` property determines which API endpoint the SDK will use for requests:
-
-- `PRODUCTION`: Uses `https://api.core.wlloyalty.net/v1`
-- `STAGING`: Uses `https://api.staging.core.wlloyalty.net/v1` (default if not specified)
-- `DEVELOPMENT`: Uses `http://localhost:8080/v1`
-
-This allows you to target different environments without changing your application code.
+The `coreApiUrl` property must be explicitly set to one of the known Core API endpoints.
 
 ### Theme Configuration
 
