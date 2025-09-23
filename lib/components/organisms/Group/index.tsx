@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { IS_MOBILE, IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useGroupRefresh } from '../../../hooks/useGroupRefresh';
@@ -120,8 +120,10 @@ export const GroupSections = (): JSX.Element => {
 
   const sortedSections = sortByPriority(activeSections);
 
+  const Container = IS_WEB ? View : ScrollView;
+
   return (
-    <View
+    <Container
       accessible
       accessibilityLabel={`Group: ${groupData.name || 'Unnamed group'}`}
       role="region"
@@ -129,7 +131,7 @@ export const GroupSections = (): JSX.Element => {
       {sortedSections.map((section) => (
         <Section key={section.id} section={section} />
       ))}
-    </View>
+    </Container>
   );
 };
 
