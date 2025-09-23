@@ -1,3 +1,17 @@
+## [1.4.4](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.3...v1.4.4) (2025-09-23)
+
+
+### Bug Fixes
+
+* add ability to refresh internally with hook ([126a9e5](https://github.com/white-label-loyalty/wll-react-sdk/commit/126a9e524ff4ad7c19a6b702c916e0349c331ce6))
+
+
+### Reverts
+
+* Revert "fix: use view instead of scrollview for group sections" ([189595e](https://github.com/white-label-loyalty/wll-react-sdk/commit/189595e94bada446cb53863077ecbe5eaf4eca39))
+
+
+
 ## [1.4.3](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.2...v1.4.3) (2025-09-23)
 
 
