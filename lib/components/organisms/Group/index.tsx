@@ -4,6 +4,7 @@ import { IS_MOBILE, IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useGroupRefresh } from '../../../hooks/useGroupRefresh';
 import { useInitialGroupFetch } from '../../../hooks/useInitialGroupFetch';
+import { usePullToRefresh } from '../../../hooks/usePullToRefresh';
 import { TGroup } from '../../../types/group';
 import { commonStyles } from '../../../utils/styling';
 import { sortByPriority } from '../../../utils/transforms';
@@ -12,6 +13,8 @@ import Section from '../Section';
 
 type GroupProps = {
   id: string;
+  enablePullToRefresh?: boolean;
+  onRefresh?: () => Promise<void>;
 };
 
 type GroupContextType = {
@@ -143,7 +146,11 @@ export const GroupSections = (): JSX.Element => {
  * @returns {JSX.Element|null} The rendered group or null if invalid ID
  */
 
-const Group = ({ id }: GroupProps): JSX.Element | null => {
+const Group = ({
+  id,
+  enablePullToRefresh = true,
+  onRefresh
+}: GroupProps): JSX.Element | null => {
   if (!id) {
     console.warn('Group component requires id prop');
     return null;
@@ -151,8 +158,12 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
 
   const { groupData, isLoading, error } = useGroupData(id);
   const { theme } = useWllSdk();
+  const { refreshControl, refreshing } = usePullToRefresh({
+    onRefresh,
+    refreshing: isLoading && !groupData
+  });
 
-  if (isLoading) {
+  if (isLoading && !groupData) {
     return (
       <View
         style={{
@@ -171,10 +182,20 @@ const Group = ({ id }: GroupProps): JSX.Element | null => {
     return <GroupEmptyState message={error || 'No group data available'} />;
   }
 
+  const Container = IS_WEB ? View : ScrollView;
+  const containerProps = IS_WEB
+    ? {}
+    : {
+      refreshControl: enablePullToRefresh ? refreshControl : undefined,
+      showsVerticalScrollIndicator: true,
+    };
+
   return (
     <GroupContext.Provider value={{ groupData }}>
       <View testID="group-container">
-        <GroupSections />
+        <Container {...containerProps}>
+          <GroupSections />
+        </Container>
       </View>
     </GroupContext.Provider>
   );
