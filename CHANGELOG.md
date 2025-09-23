@@ -1,3 +1,12 @@
+## [1.4.3](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.2...v1.4.3) (2025-09-23)
+
+
+### Bug Fixes
+
+* use view instead of scrollview for group sections ([5a97a2f](https://github.com/white-label-loyalty/wll-react-sdk/commit/5a97a2fd4c09ca4125fd483e6cd9be53826588c5))
+
+
+
 ## [1.4.2](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.1...v1.4.2) (2025-08-14)
 
 
