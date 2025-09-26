@@ -15,9 +15,9 @@ import { useBadgeTileStyles } from './styles';
 /**
  * Renders the date earned for a Badge Tile.
  *
- * @returns JSX.Element or null if badge is not earned or badgeNotEarnedMessage exists
+ * @returns React.ReactElement or null if badge is not earned or badgeNotEarnedMessage exists
  */
-export const BadgeTileDateEarned = (): JSX.Element | null => {
+export const BadgeTileDateEarned = (): React.ReactElement | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
   const { theme } = useWllSdk();

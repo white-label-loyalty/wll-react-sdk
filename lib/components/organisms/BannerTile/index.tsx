@@ -33,10 +33,10 @@ const isArtworkOnly = (configuration?: BannerTileConfig): boolean => {
  * This component renders a banner tile with optional media, title, description, and CTA.
  *
  * @param {BannerTileProps} props - Component props
- * @returns {JSX.Element | null} Rendered component or null if tile is inactive
+ * @returns {React.ReactElement | null} Rendered component or null if tile is inactive
  */
 
-const BannerTileRoot = ({ tile }: BannerTileProps): JSX.Element | null => {
+const BannerTileRoot = ({ tile }: BannerTileProps): React.ReactElement | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
   const configuration = tile.configuration as BannerTileConfig;

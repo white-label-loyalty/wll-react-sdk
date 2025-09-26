@@ -10,10 +10,10 @@ import { useRewardTileStyles } from './styles';
 /**
  * Renders the points value of a Reward Tile.
  *
- * @returns JSX.Element or null if price should not be shown or is zero/undefined
+ * @returns React.ReactElement or null if price should not be shown or is zero/undefined
  */
 
-export const RewardTilePoints = (): JSX.Element | null => {
+export const RewardTilePoints = (): React.ReactElement | null => {
   const styles = useRewardTileStyles();
   const tileContext = useTileContext();
 

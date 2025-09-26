@@ -17,11 +17,11 @@ type BaseTileHeaderProps = WithChildren;
  *
  * @param {BaseTileHeaderProps} props - Component props
  * @param {ReactNode} props.children - Child elements to render within the header
- * @returns {JSX.Element|null} The rendered header or null if conditions for display are not met
+ * @returns {React.ReactElement|null} The rendered header or null if conditions for display are not met
  */
 export const BaseTileHeader = ({
   children,
-}: BaseTileHeaderProps): JSX.Element | null => {
+}: BaseTileHeaderProps): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

@@ -13,7 +13,7 @@ type SkeletonTileProps = {
   style?: ViewStyle;
 };
 
-const SkeletonTile = ({ style }: SkeletonTileProps): JSX.Element => {
+const SkeletonTile = ({ style }: SkeletonTileProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const animatedValue = React.useRef(new Animated.Value(0)).current;
   const { width } = useWindowDimensions();

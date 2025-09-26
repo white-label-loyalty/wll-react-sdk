@@ -12,10 +12,10 @@ type SafeTileConfig = SafeConfig<ContentTileConfig, 'title' | 'artworkUrl'>;
 /**
  * Renders the title of a BaseTile component.
  *
- * @returns {JSX.Element|null} The rendered title or null if conditions for display are not met
+ * @returns {React.ReactElement|null} The rendered title or null if conditions for display are not met
  */
 
-export const BaseTileTitle = (): JSX.Element | null => {
+export const BaseTileTitle = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const sdk = useWllSdk();
 

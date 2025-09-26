@@ -9,10 +9,10 @@ import { useBadgeTileStyles } from './styles';
 /**
  * Renders the title for a Badge Tile.
  *
- * @returns JSX.Element or null if name is not present
+ * @returns React.ReactElement or null if name is not present
  */
 
-export const BadgeTileTitle = (): JSX.Element | null => {
+export const BadgeTileTitle = (): React.ReactElement | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
 

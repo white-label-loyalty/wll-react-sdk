@@ -17,7 +17,7 @@ type SkeletonProps = {
 const Skeleton = ({
   style,
   numberOfSquares = 4,
-}: SkeletonProps): JSX.Element => {
+}: SkeletonProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const animatedValue = React.useRef(new Animated.Value(0)).current;
 

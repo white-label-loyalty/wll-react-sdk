@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 
-const LoadingIndicator = (): JSX.Element => {
+const LoadingIndicator = (): React.ReactElement => {
   const { theme } = useWllSdk();
 
   return (

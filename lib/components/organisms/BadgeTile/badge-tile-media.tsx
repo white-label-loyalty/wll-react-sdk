@@ -14,14 +14,14 @@ export type BadgeTileMediaProps = {
 /**
  * Renders the media for a Badge Tile.
  *
- * @returns JSX.Element or null if media is not present
+ * @returns React.ReactElement or null if media is not present
  */
 
 export const BadgeTileMedia = ({
   children,
   alt,
   ...props
-}: BadgeTileMediaProps): JSX.Element | null => {
+}: BadgeTileMediaProps): React.ReactElement | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
 

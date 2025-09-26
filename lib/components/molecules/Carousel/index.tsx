@@ -65,7 +65,7 @@ const carouselReducer = (
 const Carousel = ({
   section,
   autoRotateInterval = 5000,
-}: CarouselProps): JSX.Element | null => {
+}: CarouselProps): React.ReactElement | null => {
   if (!section) return null;
   const { width: WINDOW_WIDTH } = useWindowDimensions();
   const containerRef = useRef<View>(null);

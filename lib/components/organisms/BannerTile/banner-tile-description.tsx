@@ -8,10 +8,10 @@ import { useBannerTileStyles } from './styles';
 /**
  * Renders the description text of a Banner Tile.
  *
- * @returns JSX.Element or null if no description is present
+ * @returns React.ReactElement or null if no description is present
  */
 
-export const BannerTileDescription = (): JSX.Element | null => {
+export const BannerTileDescription = (): React.ReactElement | null => {
   const styles = useBannerTileStyles();
   const bannerContext = useBannerContext();
 

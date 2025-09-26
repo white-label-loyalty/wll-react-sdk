@@ -10,10 +10,10 @@ import { useRewardCategoryTileStyles } from './styles';
 /**
  * Renders the header for a Reward Category Tile.
  *
- * @returns JSX.Element or null if showName is false or name is not present
+ * @returns React.ReactElement or null if showName is false or name is not present
  */
 
-export const RewardCategoryHeader = (): JSX.Element | null => {
+export const RewardCategoryHeader = (): React.ReactElement | null => {
   const styles = useRewardCategoryTileStyles();
   const { theme } = useWllSdk();
 

@@ -107,7 +107,7 @@ export const WllSdkProvider = ({
   theme: providedTheme,
   config,
   navigationConfig = {},
-}: WllSdkProviderProps): JSX.Element => {
+}: WllSdkProviderProps): React.ReactElement => {
   validateConfig(config);
 
   const [theme, setThemeState] = useState(() => {

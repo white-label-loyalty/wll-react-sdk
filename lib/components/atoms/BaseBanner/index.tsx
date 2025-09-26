@@ -37,7 +37,7 @@ const BaseBanner: React.FC<BaseBannerProps> = ({
   style,
   testID,
   accessibilityLabel,
-}): JSX.Element => {
+}): React.ReactElement => {
   const { theme } = useWllSdk();
   const { ctaLink, ctaLinkTarget, title, ctaText } =
     tile.configuration as BannerTileConfig;

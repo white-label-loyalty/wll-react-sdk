@@ -18,12 +18,12 @@ type BaseTileContentProps = WithChildren;
  *
  * @param {BaseTileContentProps} props - Component props
  * @param {ReactNode} props.children - Child elements to render within the content area
- * @returns {JSX.Element|null} The rendered content or null if conditions for display are not met
+ * @returns {React.ReactElement|null} The rendered content or null if conditions for display are not met
  */
 
 export const BaseTileContent = ({
   children,
-}: BaseTileContentProps): JSX.Element | null => {
+}: BaseTileContentProps): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

@@ -6,10 +6,10 @@ import { Icon } from '../../atoms';
 /**
  * Renders a chevron icon for a Reward Tile.
  *
- * @returns JSX.Element
+ * @returns React.ReactElement
  */
 
-export const RewardTileChevron = (): JSX.Element => {
+export const RewardTileChevron = (): React.ReactElement => {
   const { theme } = useWllSdk();
 
   return (

@@ -53,7 +53,7 @@ const Button = ({
   accessibilityLabel,
   accessibilityHint,
   testID,
-}: ButtonProps): JSX.Element => {
+}: ButtonProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const buttonStyle = useButtonStyles(theme, variant);
   const textStyle = useTextStyles(theme, variant);

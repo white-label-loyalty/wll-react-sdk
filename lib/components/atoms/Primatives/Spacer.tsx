@@ -16,6 +16,6 @@ type SpacerProps = {
  * The Spacer is commonly used in flexbox layouts to create adjustable empty space
  * between child elements, avoiding the need for explicit margins or padding.
  */
-export const Spacer = ({ style, ...rest }: SpacerProps): JSX.Element => {
+export const Spacer = ({ style, ...rest }: SpacerProps): React.ReactElement => {
   return <View style={[{ flex: 1 }, style]} {...rest} />;
 };

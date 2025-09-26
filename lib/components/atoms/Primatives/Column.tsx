@@ -28,7 +28,7 @@ export const Column = ({
   flex,
   style,
   ...rest
-}: ColumnProps): JSX.Element => {
+}: ColumnProps): React.ReactElement => {
   const styles = StyleSheet.create({
     container: {
       justifyContent: justifyMap[justify],

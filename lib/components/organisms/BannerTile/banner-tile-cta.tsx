@@ -8,10 +8,10 @@ import { useBannerContext } from '../../atoms/BaseBanner';
 /**
  * Renders the call to action of a Banner Tile.
  *
- * @returns JSX.Element or null if no text or required props are present
+ * @returns React.ReactElement or null if no text or required props are present
  */
 
-export const BannerTileCTA = (): JSX.Element | null => {
+export const BannerTileCTA = (): React.ReactElement | null => {
   const bannerContext = useBannerContext();
 
   if (!isContextValid(bannerContext)) return null;

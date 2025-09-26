@@ -29,9 +29,9 @@ const isArtworkOnly = (configuration?: ContentTileConfig): boolean => {
  *
  * @param {ContentTileProps} props - Component props
  * @param {Tile} props.tile - The tile data to render
- * @returns JSX.Element or null if tile is inactive
+ * @returns React.ReactElement or null if tile is inactive
  */
-const ContentTileRoot = ({ tile }: ContentTileProps): JSX.Element | null => {
+const ContentTileRoot = ({ tile }: ContentTileProps): React.ReactElement | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
   const configuration = tile.configuration as ContentTileConfig;

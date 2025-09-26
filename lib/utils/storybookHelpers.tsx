@@ -7,7 +7,7 @@ export const TileWrapper = ({
 }: {
   isHalfTile?: boolean;
   children: React.ReactNode;
-}): JSX.Element => {
+}): React.ReactElement => {
   const wrapperStyle: ViewStyle = {
     maxWidth: 280,
     height: isHalfTile ? 150 : '100%',

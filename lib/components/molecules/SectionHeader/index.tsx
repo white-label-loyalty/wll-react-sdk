@@ -12,7 +12,7 @@ type SectionHeaderProps = {
 const SectionHeader = ({
   title,
   description,
-}: SectionHeaderProps): JSX.Element | null => {
+}: SectionHeaderProps): React.ReactElement | null => {
   const styles = useSectionHeaderStyles();
   const { theme } = useWllSdk();
 

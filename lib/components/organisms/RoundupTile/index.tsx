@@ -17,10 +17,10 @@ type RoundupTileProps = {
  * The PointsTile component renders a tile with media, title, and formatted points.
  *
  * @param props - Component props
- * @returns JSX.Element or null if tile is inactive or missing required props
+ * @returns React.ReactElement or null if tile is inactive or missing required props
  */
 
-const RoundupTileRoot = ({ tile }: RoundupTileProps): JSX.Element | null => {
+const RoundupTileRoot = ({ tile }: RoundupTileProps): React.ReactElement | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
   const config = tile.configuration as RoundupTileConfig;

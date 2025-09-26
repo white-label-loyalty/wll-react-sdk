@@ -8,10 +8,10 @@ import { useTileContext } from '../../atoms/BaseTile';
 /**
  * Renders the description for a Badge Tile.
  *
- * @returns JSX.Element or null if description is not present
+ * @returns React.ReactElement or null if description is not present
  */
 
-export const BadgeTileDescription = (): JSX.Element | null => {
+export const BadgeTileDescription = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const width = useWindowDimensions().width;
 

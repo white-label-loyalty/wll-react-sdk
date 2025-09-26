@@ -35,7 +35,7 @@ export const Layout = ({
   align = 'start',
   style = {},
   ...rest
-}: LayoutProps): JSX.Element => {
+}: LayoutProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const dynamicStyles = StyleSheet.create({

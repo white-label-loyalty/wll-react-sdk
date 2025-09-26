@@ -7,10 +7,10 @@ import { useTileContext } from '../../atoms/BaseTile';
 /**
  * Renders the summary of a Reward Tile.
  *
- * @returns JSX.Element or null if no summary is present
+ * @returns React.ReactElement or null if no summary is present
  */
 
-export const RewardTileSummary = (): JSX.Element | null => {
+export const RewardTileSummary = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

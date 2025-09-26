@@ -17,10 +17,10 @@ type PointsTileProps = {
  * The PointsTile component renders a tile with media, title, and formatted points.
  *
  * @param props - Component props
- * @returns JSX.Element or null if tile is inactive or missing required props
+ * @returns React.ReactElement or null if tile is inactive or missing required props
  */
 
-const PointsTileRoot = ({ tile }: PointsTileProps): JSX.Element | null => {
+const PointsTileRoot = ({ tile }: PointsTileProps): React.ReactElement | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
   const config = tile.configuration as PointsTileConfig;

@@ -7,10 +7,10 @@ import { useTileContext } from '../../atoms/BaseTile';
 /**
  * Renders the title of a Roundup Tile.
  *
- * @returns JSX.Element or null if no title is present
+ * @returns React.ReactElement or null if no title is present
  */
 
-export const RoundupTileTitle = (): JSX.Element | null => {
+export const RoundupTileTitle = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

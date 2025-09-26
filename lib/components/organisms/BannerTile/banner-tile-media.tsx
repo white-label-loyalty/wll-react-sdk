@@ -18,12 +18,12 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
 /**
  * Renders the media of a Banner Tile.
  *
- * @returns JSX.Element or null if no media is present
+ * @returns React.ReactElement or null if no media is present
  */
 
 export const BannerTileMedia = ({
   isArtworkOnly,
-}: BannerTileMediaProps): JSX.Element | null => {
+}: BannerTileMediaProps): React.ReactElement | null => {
   const styles = useBannerTileStyles();
   const bannerContext = useBannerContext();
 

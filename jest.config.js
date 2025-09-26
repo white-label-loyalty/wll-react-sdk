@@ -1,8 +1,7 @@
 module.exports = {
-  preset: 'react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'd.ts'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './babel.config.js' }],
     '^.+\\.svg$': 'jest-transform-stub',
   },
   testEnvironment: 'jsdom',

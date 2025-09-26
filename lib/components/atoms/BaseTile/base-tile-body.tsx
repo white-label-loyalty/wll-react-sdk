@@ -24,9 +24,9 @@ type BaseTileBodyProps = Omit<TextProps, 'style'> & {
  * Renders the body text of a BaseTile component.
  *
  * @param {BaseTileBodyProps} props - Component props including text styling options
- * @returns {JSX.Element|null} The rendered body text or null if conditions for display are not met
+ * @returns {React.ReactElement|null} The rendered body text or null if conditions for display are not met
  */
-export const BaseTileBody = (props: BaseTileBodyProps): JSX.Element | null => {
+export const BaseTileBody = (props: BaseTileBodyProps): React.ReactElement | null => {
   const tileContext = useTileContext();
   const responsive = useResponsive();
 

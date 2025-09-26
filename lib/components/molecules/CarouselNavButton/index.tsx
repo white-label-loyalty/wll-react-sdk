@@ -12,7 +12,7 @@ type CarouselNavButtonProps = {
 export const CarouselNavButton = ({
   direction,
   onPress,
-}: CarouselNavButtonProps): JSX.Element => {
+}: CarouselNavButtonProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const isRight = direction === 'right';
   const styles = useNavButtonStyles();
