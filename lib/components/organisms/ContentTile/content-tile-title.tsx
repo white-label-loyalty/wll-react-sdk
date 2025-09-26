@@ -7,7 +7,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 import { useTileSize } from '../../../hooks/useTileSize';
 import { useContentTileStyles } from './styles';
 
-export const ContentTileTitle = (): JSX.Element | null => {
+export const ContentTileTitle = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const styles = useContentTileStyles();
   const sizeInfo = useTileSize(tileContext);

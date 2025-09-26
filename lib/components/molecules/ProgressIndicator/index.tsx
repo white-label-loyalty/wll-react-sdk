@@ -19,7 +19,7 @@ export const ProgressIndicator = ({
   variant = 'primary',
   height = 'sm',
   attained = false,
-}: ProgressIndicatorProps): JSX.Element => {
+}: ProgressIndicatorProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const percentage = attained ? 100 : (currentPoints / maxPoints) * 100;
   const isComplete = percentage >= 100 || attained;

@@ -6,7 +6,7 @@ import { isContextValid } from '../../../utils/contextHelpers';
 import { Icon } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
-export const ContentTileChevron = (): JSX.Element | null => {
+export const ContentTileChevron = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const sdk = useWllSdk();
 

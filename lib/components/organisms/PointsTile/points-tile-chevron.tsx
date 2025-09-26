@@ -10,10 +10,10 @@ import { usePointsTileStyles } from './styles';
 /**
  * Renders a chevron icon for a Roundup Tile.
  *
- * @returns JSX.Element
+ * @returns React.ReactElement
  */
 
-export const PointsTileChevron = (): JSX.Element | null => {
+export const PointsTileChevron = (): React.ReactElement | null => {
     const tileContext = useTileContext();
     const sdk = useWllSdk();
     const styles = usePointsTileStyles();

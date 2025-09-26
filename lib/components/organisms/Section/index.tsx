@@ -99,10 +99,10 @@ const useSectionData = (
  *
  * @param {Object} props - Component props
  * @param {string} props.message - Message to display in the empty state
- * @returns {JSX.Element} The empty state component
+ * @returns {React.ReactElement} The empty state component
  */
 
-const EmptyState = ({ message }: { message: string }): JSX.Element => (
+const EmptyState = ({ message }: { message: string }): React.ReactElement => (
   <View
     style={commonStyles.emptyContainer}
     role="article"
@@ -118,10 +118,12 @@ const EmptyState = ({ message }: { message: string }): JSX.Element => (
  * @param {SectionProps} props - Component props
  * @param {TSection} [props.section] - The section data
  * @param {string} [props.sectionId] - The ID of the section to fetch
- * @returns {JSX.Element|null} The rendered section or null if invalid props
+ * @returns {React.ReactElement|null} The rendered section or null if invalid props
  */
 
-const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
+
+
+const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
   const styles = useSectionStyles();
   const { sectionData, isLoading, error } = useSectionData(section, sectionId);
 
@@ -132,7 +134,7 @@ const Section = ({ section, sectionId }: SectionProps): JSX.Element | null => {
     return null;
   }
 
-  const renderSectionContent = (): JSX.Element | null => {
+  const renderSectionContent = (): React.ReactElement | null => {
     if (isLoading) {
       return (
         <Skeleton

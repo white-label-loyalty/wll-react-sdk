@@ -50,7 +50,7 @@ const Grid = ({ section }: GridProps) => {
   }, []);
 
   const renderTileContainers = useCallback(() => {
-    const tileContainers: JSX.Element[] = [];
+    const tileContainers: React.ReactElement[] = [];
     let currentTiles: Tile[] = [];
 
     const sortedTiles = sortByPriority(gridTiles);

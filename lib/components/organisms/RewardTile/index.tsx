@@ -31,10 +31,10 @@ const isArtworkOnly = (configuration?: RewardTileConfig): boolean => {
  *
  * @param {RewardTileProps} props - Component props
  * @param {Tile} props.tile - The tile data to render
- * @returns JSX.Element or null if tile is inactive or not a full-height tile
+ * @returns React.ReactElement or null if tile is inactive or not a full-height tile
  */
 
-const RewardTileRoot = ({ tile }: RewardTileProps): JSX.Element | null => {
+const RewardTileRoot = ({ tile }: RewardTileProps): React.ReactElement | null => {
   const styles = useRewardTileStyles();
 
   if (

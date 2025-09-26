@@ -5,7 +5,7 @@ import { useTileSize } from '../../../hooks/useTileSize';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 
-export const ContentTileSummary = (): JSX.Element | null => {
+export const ContentTileSummary = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const sizeInfo = useTileSize(tileContext);
 

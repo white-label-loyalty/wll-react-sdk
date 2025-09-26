@@ -7,10 +7,10 @@ import { useTileContext } from '../../atoms/BaseTile';
 /**
  * Renders the title of a Points Tile.
  *
- * @returns JSX.Element or null if no title is present
+ * @returns React.ReactElement or null if no title is present
  */
 
-export const PointsTileTitle = (): JSX.Element | null => {
+export const PointsTileTitle = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

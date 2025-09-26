@@ -30,7 +30,7 @@ const Icon = ({
   size = 24,
   strokeWidth = 2,
   ...props
-}: IconProps): JSX.Element | null => {
+}: IconProps): React.ReactElement | null => {
   // Choose the appropriate icon library based on platform
   const iconLib =
     Platform.OS === 'web' ? LucideReactIcons : LucideReactNativeIcons;

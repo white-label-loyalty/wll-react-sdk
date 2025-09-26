@@ -31,7 +31,7 @@ const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
 /**
  * TileContainer component to render a list of tiles with proper layout and spacing.
  */
-const TileContainer = ({ tiles }: TileContainerProps): JSX.Element => {
+const TileContainer = ({ tiles }: TileContainerProps): React.ReactElement => {
   const allHalfHeight =
     tiles.length > 0 &&
     tiles.every((tile) => tile.tileHeight === TileHeight.Half);

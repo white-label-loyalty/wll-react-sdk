@@ -3,6 +3,7 @@ import {
   Text as RNText,
   TextProps as RNTextProps,
   Role,
+  StyleProp,
   StyleSheet,
   TextStyle,
 } from 'react-native';
@@ -23,7 +24,7 @@ type TextVariant =
 
 type TextProps = RNTextProps & {
   variant?: TextVariant;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   isSurface?: boolean;
 };
 
@@ -32,7 +33,7 @@ export const Text = ({
   style,
   isSurface = false,
   ...props
-}: TextProps): JSX.Element => {
+}: TextProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
 

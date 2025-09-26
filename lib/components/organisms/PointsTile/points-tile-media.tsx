@@ -13,12 +13,12 @@ type PointsTileMediaProps = {
 /**
  * Renders the media of a Points Tile.
  *
- * @returns JSX.Element or null if media is not present
+ * @returns React.ReactElement or null if media is not present
  */
 
 export const PointsTileMedia = ({
   isFullSize,
-}: PointsTileMediaProps): JSX.Element | null => {
+}: PointsTileMediaProps): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

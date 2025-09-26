@@ -9,10 +9,10 @@ import { cleanNumber } from '../../../utils/pointsHelpers';
 /**
  * Renders formatted points value for a Roundup Tile.
  *
- * @returns JSX.Element or null if points are undefined or zero
+ * @returns React.ReactElement or null if points are undefined or zero
  */
 
-export const RoundupTileFormattedPoints = (): JSX.Element | null => {
+export const RoundupTileFormattedPoints = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

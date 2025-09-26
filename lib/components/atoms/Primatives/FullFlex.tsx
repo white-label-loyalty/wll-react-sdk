@@ -22,7 +22,7 @@ export const FullFlex = ({
   children,
   style,
   ...rest
-}: FullFlexProps): JSX.Element => {
+}: FullFlexProps): React.ReactElement => {
   return (
     <View style={[{ flex: 1 }, style]} {...rest}>
       {children}

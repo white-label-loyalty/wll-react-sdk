@@ -79,12 +79,12 @@ const useGroupData = (id: string) => {
  *
  * @param {GroupEmptyStateProps} props - Component props
  * @param {string} props.message - Message to display
- * @returns {JSX.Element} The empty state component
+ * @returns {React.ReactElement} The empty state component
  */
 
 export const GroupEmptyState = ({
   message,
-}: GroupEmptyStateProps): JSX.Element => (
+}: GroupEmptyStateProps): React.ReactElement => (
   <View
     style={commonStyles.emptyContainer}
     accessible
@@ -97,10 +97,10 @@ export const GroupEmptyState = ({
 /**
  * Component to render all sections in a group
  *
- * @returns {JSX.Element} The sections component
+ * @returns {React.ReactElement} The sections component
  */
 
-export const GroupSections = (): JSX.Element => {
+export const GroupSections = (): React.ReactElement => {
   const { groupData } = useGroupContext();
 
   if (!groupData || !groupData.sections || groupData.sections.length === 0) {
@@ -145,14 +145,14 @@ export const GroupSections = (): JSX.Element => {
  *
  * @param {GroupProps} props - Component props
  * @param {string} props.id - The unique identifier of the group to fetch and display
- * @returns {JSX.Element|null} The rendered group or null if invalid ID
+ * @returns {React.ReactElement|null} The rendered group or null if invalid ID
  */
 
 const Group = ({
   id,
   enablePullToRefresh = true,
   onRefresh
-}: GroupProps): JSX.Element | null => {
+}: GroupProps): React.ReactElement | null => {
   if (!id) {
     console.warn('Group component requires id prop');
     return null;

@@ -8,10 +8,10 @@ import { useRewardCategoryTileStyles } from './styles';
 /**
  * Renders the background media for a Reward Category Tile.
  *
- * @returns JSX.Element or null if no artwork URL is present
+ * @returns React.ReactElement or null if no artwork URL is present
  */
 
-export const RewardCategoryMedia = (): JSX.Element | null => {
+export const RewardCategoryMedia = (): React.ReactElement | null => {
   const styles = useRewardCategoryTileStyles();
 
   const tileContext = useTileContext();

@@ -11,10 +11,10 @@ import { usePointsTileStyles } from './styles';
 /**
  * Renders formatted points value for a Points Tile.
  *
- * @returns JSX.Element or null if points are undefined or zero
+ * @returns React.ReactElement or null if points are undefined or zero
  */
 
-export const PointsTileFormattedPoints = (): JSX.Element | null => {
+export const PointsTileFormattedPoints = (): React.ReactElement | null => {
   const styles = usePointsTileStyles();
   const tileContext = useTileContext();
 

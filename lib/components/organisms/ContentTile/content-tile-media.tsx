@@ -18,7 +18,7 @@ type ContentTileMediaProps = {
 
 export const ContentTileMedia = ({
   isArtworkOnly,
-}: ContentTileMediaProps): JSX.Element | null => {
+}: ContentTileMediaProps): React.ReactElement | null => {
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;

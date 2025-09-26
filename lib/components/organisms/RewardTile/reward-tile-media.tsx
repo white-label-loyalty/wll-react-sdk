@@ -22,12 +22,12 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
  *
  * @param props {RewardTileMediaProps} - Component props
  * @param props.isArtworkOnly {boolean} - Whether the media should be rendered as an artwork only component
- * @returns JSX.Element or null if no artwork URL is present or artwork should not be shown
+ * @returns React.ReactElement or null if no artwork URL is present or artwork should not be shown
  */
 
 export const RewardTileMedia = ({
   isArtworkOnly,
-}: RewardTileMediaProps): JSX.Element | null => {
+}: RewardTileMediaProps): React.ReactElement | null => {
   const styles = useRewardTileStyles();
   const tileContext = useTileContext();
 

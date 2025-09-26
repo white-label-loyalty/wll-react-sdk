@@ -52,7 +52,7 @@ type LayoutProps = FlexStyle & {
 const BaseTileContainer = ({
   children,
   style,
-}: BaseTileRootProps): JSX.Element => {
+}: BaseTileRootProps): React.ReactElement => {
   const tile = useTileContext();
   const sdk = useWllSdk();
   const sizeInfo = useTileSize(tile);
@@ -129,13 +129,13 @@ const BaseTileContainer = ({
  * BaseTileRoot component to provide context and render children.
  *
  * @param {BaseTileProps} props - Component props
- * @returns {JSX.Element|null} The rendered BaseTileRoot or null if no tile is provided
+ * @returns {React.ReactElement|null} The rendered BaseTileRoot or null if no tile is provided
  */
 const BaseTileRoot = ({
   tile,
   children,
   style,
-}: BaseTileProps): JSX.Element | null => {
+}: BaseTileProps): React.ReactElement | null => {
   if (!tile) {
     console.warn('BaseTile: No tile provided');
     return null;

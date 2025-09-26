@@ -9,10 +9,10 @@ import { useRewardTileStyles } from './styles';
 /**
  * Renders the title of a Reward Tile.
  *
- * @returns JSX.Element or null if no name is present
+ * @returns React.ReactElement or null if no name is present
  */
 
-export const RewardTileTitle = (): JSX.Element | null => {
+export const RewardTileTitle = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const styles = useRewardTileStyles();
 

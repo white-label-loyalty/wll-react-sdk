@@ -28,7 +28,7 @@ export const Row = ({
   flex,
   style,
   ...rest
-}: RowProps): JSX.Element => {
+}: RowProps): React.ReactElement => {
   const styles = StyleSheet.create({
     container: {
       justifyContent: justifyMap[justify],

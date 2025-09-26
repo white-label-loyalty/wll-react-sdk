@@ -25,7 +25,7 @@ const ProgressiveImage = ({
   isDesaturated = false,
   alt,
   ...props
-}: ProgressiveImageProps): JSX.Element => {
+}: ProgressiveImageProps): React.ReactElement => {
   const imageAnimated = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
 
