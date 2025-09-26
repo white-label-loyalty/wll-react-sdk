@@ -1,3 +1,14 @@
+## [1.4.5](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.4...v1.4.5) (2025-09-26)
+
+
+### Bug Fixes
+
+* bump node version ([c21170c](https://github.com/white-label-loyalty/wll-react-sdk/commit/c21170cc9194eb5726627cd92c313bacf0386e0d))
+* jest config for failing tests ([8f6c050](https://github.com/white-label-loyalty/wll-react-sdk/commit/8f6c0507355900defa921e49a2fffe4a1df0c9ad))
+* update node version and dependencies ([df133b0](https://github.com/white-label-loyalty/wll-react-sdk/commit/df133b0848f1a29a68e40a8f8cc6a8c8f636a277))
+
+
+
 ## [1.4.4](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.3...v1.4.4) (2025-09-23)
 
 
