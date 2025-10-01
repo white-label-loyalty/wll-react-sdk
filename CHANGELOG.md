@@ -1,3 +1,12 @@
+## [1.4.6](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.5...v1.4.6) (2025-10-01)
+
+
+### Features
+
+* **chip:** add new Chip component with status variants ([13b10bb](https://github.com/white-label-loyalty/wll-react-sdk/commit/13b10bb9025d6827295d64bb34c00c9e5763a26d))
+
+
+
 ## [1.4.5](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.4...v1.4.5) (2025-09-26)
 
 
