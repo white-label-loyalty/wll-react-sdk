@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import Color from 'color';
 import { screen } from '@testing-library/react';
 import React from 'react';
 import { BadgeTileType, TileHeight } from '../../../types/tile';
@@ -204,6 +205,21 @@ describe('<BadgeTile />', () => {
       const dateElement = screen.getByTestId('badge-tile-date-earned');
       expect(dateElement).toBeInTheDocument();
       expect(dateElement.textContent).toBe('Badge not earned yet');
+    });
+
+    it('uses grey chip styling when badge is not earned', () => {
+      const notEarnedBadge = createBadgeTileMock({
+        count: 0,
+        type: BadgeTileType.Specific,
+        badgeNotEarnedMessage: 'Badge not earned yet',
+      });
+
+      render(<BadgeTile tile={notEarnedBadge} />);
+
+      const dateElement = screen.getByTestId('badge-tile-date-earned');
+      const background = window.getComputedStyle(dateElement).backgroundColor;
+
+      expect(Color(background).hex().toLowerCase()).toBe('#dadde0');
     });
 
     it('does not render date for Latest type with count=0', () => {

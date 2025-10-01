@@ -1,16 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
-import { useWllSdk } from '../../../context/WllSdkContext';
-import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
-import { isContextValid } from '../../../utils/contextHelpers';
 import {
-  getReadableTextColor,
-  getStateColor,
-} from '../../../utils/themeHelpers';
+  BadgeTileConfig,
+  BadgeTileType,
+  StatusVariant,
+} from '../../../types/tile';
+import { isContextValid } from '../../../utils/contextHelpers';
 import { handleLastEarnedDate } from '../../../utils/transforms';
-import { Text } from '../../atoms';
+import { Chip } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { useBadgeTileStyles } from './styles';
 
 /**
  * Renders the date earned for a Badge Tile.
@@ -18,9 +15,7 @@ import { useBadgeTileStyles } from './styles';
  * @returns React.ReactElement or null if badge is not earned or badgeNotEarnedMessage exists
  */
 export const BadgeTileDateEarned = (): React.ReactElement | null => {
-  const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
-  const { theme } = useWllSdk();
 
   if (!isContextValid(tileContext)) return null;
 
@@ -47,42 +42,24 @@ export const BadgeTileDateEarned = (): React.ReactElement | null => {
     return null;
   }
 
-  const backgroundColor = getStateColor(
-    theme.alphaDerivedPrimary[20],
-    type,
-    count
-  );
-
-  const containerStyle = [styles.dateEarnedContainer, { backgroundColor }];
-  const textColor = getReadableTextColor(backgroundColor);
+  const formattedDate = handleLastEarnedDate(lastEarnedAt, locale);
 
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${handleLastEarnedDate(lastEarnedAt, locale)}`;
+      : `${awardedDatePrefix} ${formattedDate}`;
 
   const accessibilityLabel =
     count === 0
       ? 'Badge not yet earned'
-      : `Badge earned on ${handleLastEarnedDate(lastEarnedAt, locale)}`;
+      : `Badge earned on ${formattedDate}`;
 
   return (
-    <View
-      style={containerStyle}
-      accessible
+    <Chip
+      label={displayText}
+      variant={count === 0 ? StatusVariant.GREY : StatusVariant.PRIMARY}
       accessibilityLabel={accessibilityLabel}
       testID="badge-tile-date-earned"
-    >
-      <Text
-        variant="label"
-        style={[styles.dateEarnedText, { color: textColor }]}
-        numberOfLines={1}
-        ellipsizeMode="tail"
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-      >
-        {displayText}
-      </Text>
-    </View>
+    />
   );
 };
