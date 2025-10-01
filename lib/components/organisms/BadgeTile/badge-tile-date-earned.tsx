@@ -50,13 +50,11 @@ export const BadgeTileDateEarned = (): React.ReactElement | null => {
       : `${awardedDatePrefix} ${formattedDate}`;
 
   const accessibilityLabel =
-    count === 0
-      ? 'Badge not yet earned'
-      : `Badge earned on ${formattedDate}`;
+    count === 0 ? 'Badge not yet earned' : `Badge earned on ${formattedDate}`;
 
   return (
     <Chip
-      label={displayText}
+      label={displayText?.toString() || ''}
       variant={count === 0 ? StatusVariant.GREY : StatusVariant.PRIMARY}
       accessibilityLabel={accessibilityLabel}
       testID="badge-tile-date-earned"
