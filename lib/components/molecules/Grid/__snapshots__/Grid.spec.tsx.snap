@@ -80,14 +80,16 @@ exports[`<Grid /> matches snapshot 1`] = `
                 />
                 <div
                   aria-label="Badge earned on 27/01/2025"
-                  class="css-view-175oi2r r-alignItems-1habvwh r-borderRadius-y47klf r-paddingBlock-cnw61z r-paddingInline-is05cd"
+                  aria-live="polite"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-k200y r-borderRadius-sdzlij r-flexDirection-18u37iz r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-overflow-1udh08x r-paddingBlock-vuvdlw r-paddingInline-3o4zer"
                   data-testid="badge-tile-date-earned"
-                  style="background-color: rgba(57, 46, 215, 0.2);"
+                  role="status"
+                  style="background-color: rgba(57, 46, 215, 0.1);"
                 >
                   <div
-                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6"
+                    class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-flexShrink-1wbh5a2 r-fontFamily-lhg2x6 r-fontSize-1enofrn r-fontWeight-16dba41 r-lineHeight-1cwl3u0"
                     dir="auto"
-                    style="font-size: 12px; color: rgb(255, 255, 255);"
+                    style="color: rgb(57, 46, 215);"
                   >
                     Earned on 27/01/2025
                   </div>
