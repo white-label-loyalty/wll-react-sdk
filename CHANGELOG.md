@@ -1,3 +1,12 @@
+## [1.4.7](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.6...v1.4.7) (2025-10-01)
+
+
+### Bug Fixes
+
+* **Chip:** make label string only ([0bd9c57](https://github.com/white-label-loyalty/wll-react-sdk/commit/0bd9c57cce36bce485e2827281e166dc72ae8f8e))
+
+
+
 ## [1.4.6](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.5...v1.4.6) (2025-10-01)
 
 
