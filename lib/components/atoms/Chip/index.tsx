@@ -11,7 +11,6 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { StatusVariant } from '../../../types/tile';
 import { useChipStyles } from './styles';
 
-type ChipLabel = React.ReactNode;
 type AriaLive = 'polite' | 'assertive' | 'off';
 
 type LiveRegionMapping = {
@@ -20,7 +19,7 @@ type LiveRegionMapping = {
 };
 
 export type ChipProps = {
-  label: ChipLabel;
+  label: string;
   variant?: StatusVariant;
   role?: AccessibilityRole | 'status';
   ariaLive?: AriaLive;
@@ -82,7 +81,6 @@ const Chip = ({
     accessibilityLabel ?? (typeof label === 'string' ? label : undefined);
   const { native: accessibilityLiveRegion, web: ariaLiveValue } =
     mapLiveRegion(ariaLive);
-  const isSimpleLabel = typeof label === 'string';
   const isIndividuallyAccessible = computedAccessibilityLabel !== undefined;
 
   return (
@@ -95,19 +93,15 @@ const Chip = ({
       aria-live={ariaLiveValue}
       testID={testID}
     >
-      {isSimpleLabel ? (
-        <RNText
-          style={[styles.label, variantStyles.label, labelStyle]}
-          numberOfLines={1}
-          ellipsizeMode="tail"
-          accessible={false}
-          importantForAccessibility="no"
-        >
-          {label}
-        </RNText>
-      ) : (
-        label
-      )}
+      <RNText
+        style={[styles.label, variantStyles.label, labelStyle]}
+        numberOfLines={1}
+        ellipsizeMode="tail"
+        accessible={false}
+        importantForAccessibility="no"
+      >
+        {label}
+      </RNText>
     </View>
   );
 };
