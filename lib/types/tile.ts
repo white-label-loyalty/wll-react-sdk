@@ -33,6 +33,12 @@ export enum TileHeight {
 
 export type ProgessType = 'NAME' | 'POINTS';
 
+export enum StatusVariant {
+  PRIMARY = 'primary',
+  GREEN = 'green',
+  GREY = 'grey',
+}
+
 export class BannerTileConfig {
   artworkUrl?: string | null;
   title?: string | null;

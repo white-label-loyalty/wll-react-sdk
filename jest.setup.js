@@ -8,7 +8,9 @@ console.warn = (...args) => {
   const warningsToSuppress = [
     'accessibilityLabel',
     'aria-label',
-    'style.resizeMode is deprecated'
+    'style.resizeMode is deprecated',
+    'accessibilityLiveRegion is deprecated',
+    'accessibilityRole is deprecated'
   ];
 
   // Check if the warning message includes any of the suppressed warnings
