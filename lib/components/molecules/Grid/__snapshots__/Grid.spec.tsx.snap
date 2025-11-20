@@ -91,7 +91,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                     dir="auto"
                     style="color: rgb(57, 46, 215);"
                   >
-                    Earned on 27/01/2025
+                    Earned on27/01/2025
                   </div>
                 </div>
               </div>
