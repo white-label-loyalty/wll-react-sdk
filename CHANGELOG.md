@@ -1,3 +1,13 @@
+## [1.4.8](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.7...v1.4.8) (2025-11-20)
+
+
+### Bug Fixes
+
+* **BadgeTile:** remove space in display text formatting ([5295e55](https://github.com/white-label-loyalty/wll-react-sdk/commit/5295e55fe5dce0083d5d144d8e0b5b239b68a653))
+* update content tile titles to 20px font size ([c06162c](https://github.com/white-label-loyalty/wll-react-sdk/commit/c06162cd703a0c764d6b840c4fe1057480d2cfca))
+
+
+
 ## [1.4.7](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.6...v1.4.7) (2025-10-01)
 
 
