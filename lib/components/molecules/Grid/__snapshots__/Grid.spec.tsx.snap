@@ -16,7 +16,7 @@ exports[`<Grid /> matches snapshot 1`] = `
         Profile
       </div>
       <div
-        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1i10wst"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-adyw6z"
         dir="auto"
         style="color: rgba(0, 0, 0, 0.8);"
       >
@@ -55,7 +55,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                     class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6 r-marginBottom-5oul0u"
                     dir="auto"
                     role="heading"
-                    style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;"
+                    style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;"
                   >
                     Badge Title
                   </h1>
@@ -91,7 +91,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                     dir="auto"
                     style="color: rgb(57, 46, 215);"
                   >
-                    Earned on 27/01/2025
+                    Earned on27/01/2025
                   </div>
                 </div>
               </div>

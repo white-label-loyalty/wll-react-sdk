@@ -47,7 +47,7 @@ export const BadgeTileDateEarned = (): React.ReactElement | null => {
   const displayText =
     count === 0
       ? badgeNotEarnedMessage
-      : `${awardedDatePrefix} ${formattedDate}`;
+      : `${awardedDatePrefix}${formattedDate}`;
 
   const accessibilityLabel =
     count === 0 ? 'Badge not yet earned' : `Badge earned on ${formattedDate}`;

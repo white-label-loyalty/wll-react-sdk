@@ -65,7 +65,7 @@ exports[`<PointsTile /> renders and matches snapshot 1`] = `
                 1000
               </div>
               <div
-                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-1i10wst"
+                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-adyw6z"
                 data-testid="points-tile-suffix"
                 dir="auto"
                 style="font-weight: bold;"

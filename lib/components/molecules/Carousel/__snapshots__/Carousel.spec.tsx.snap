@@ -13,7 +13,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
       Featured Banners
     </div>
     <div
-      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-1i10wst"
+      class="css-text-146c3p1 r-fontFamily-lhg2x6 r-fontSize-adyw6z"
       dir="auto"
       style="color: rgba(0, 0, 0, 0.8);"
     >
@@ -62,7 +62,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     Second Banner
                   </h1>
                   <div
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1b6yd1w r-marginBottom-10qg9sp"
                     data-testid="banner-tile-description"
                     dir="auto"
                   >
@@ -101,7 +101,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
                     First Banner
                   </h1>
                   <div
-                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
+                    class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1b6yd1w r-marginBottom-10qg9sp"
                     data-testid="banner-tile-description"
                     dir="auto"
                   >
