@@ -25,10 +25,8 @@ export const ContentTileTitle = (): React.ReactElement | null => {
 
     if (isHalfSize) {
       if (title && !body) return 3;
-      if (title && body) return 1;
     }
 
-    if (artworkUrl) return 1;
     if (!body) return 7;
 
     return 2;

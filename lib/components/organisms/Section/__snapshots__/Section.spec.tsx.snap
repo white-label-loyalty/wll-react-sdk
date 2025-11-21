@@ -84,11 +84,11 @@ exports[`<Section/> matches snapshot 1`] = `
                   >
                     <h1
                       aria-label="Welcome to Platinum Status"
-                      class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-fontFamily-lhg2x6"
+                      class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
                       data-testid="content-tile-title"
                       dir="auto"
                       role="heading"
-                      style="color: rgb(0, 0, 0); font-size: 18px; font-weight: bold;"
+                      style="color: rgb(0, 0, 0); font-size: 20px; font-weight: bold;"
                     >
                       Welcome to Platinum Status
                     </h1>
