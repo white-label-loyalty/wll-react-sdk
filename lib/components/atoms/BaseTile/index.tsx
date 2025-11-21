@@ -70,7 +70,7 @@ const BaseTileContainer = ({
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
   const isInteractive = Boolean(
-    ctaLink || tile.type === 'REWARD' || tile.type === 'REWARD_CATEGORY'
+    ctaLink || tile.type === 'REWARD' || tile.type === 'REWARD_CATEGORY' || tile.type === 'VENUE'
   );
 
   const layout: LayoutProps = {
