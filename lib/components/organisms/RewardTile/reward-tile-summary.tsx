@@ -24,7 +24,7 @@ export const RewardTileSummary = (): React.ReactElement | null => {
   const shouldShowPrice =
     showPrice && price !== undefined && price !== null && price !== 0;
 
-  const numberOfLines = shouldShowPrice ? 1 : 3;
+  const numberOfLines = shouldShowPrice ? 2 : 3;
 
   if (!summary) return null;
 
