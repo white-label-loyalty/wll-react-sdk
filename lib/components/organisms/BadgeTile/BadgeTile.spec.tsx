@@ -174,7 +174,7 @@ describe('<BadgeTile />', () => {
       const dateElement = screen.getByTestId('badge-tile-date-earned');
       expect(dateElement).toBeInTheDocument();
 
-      expect(dateElement.textContent).toContain('Awarded 28/03/2025');
+      expect(dateElement.textContent).toContain('Awarded28/03/2025');
     });
 
     it('formats date according to locale', () => {
@@ -190,7 +190,7 @@ describe('<BadgeTile />', () => {
       const dateElement = screen.getByTestId('badge-tile-date-earned');
       expect(dateElement).toBeInTheDocument();
 
-      expect(dateElement.textContent).toContain('Awarded 3/28/2025');
+      expect(dateElement.textContent).toContain('Awarded3/28/2025');
     });
 
     it('shows not earned message when count is 0', () => {

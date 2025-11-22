@@ -24,6 +24,7 @@ export enum TileType {
   RewardCategory = 'REWARD_CATEGORY',
   Tier = 'TIER',
   Roundup = 'ROUND_UP_BALANCE',
+  Venue = 'VENUE',
 }
 
 export enum TileHeight {
@@ -124,6 +125,13 @@ export class RewardTileConfig {
   pointsSuffix: string | null = null;
 }
 
+export class VenueTileConfig {
+  venueId: string = '';
+  name: string = '';
+  artworkUrl: string = '';
+  description: string = '';
+}
+
 export enum BadgeTileType {
   Specific = 'SPECIFIC',
   Latest = 'LATEST_EARNED',
@@ -213,6 +221,8 @@ const getConfigForTileType = (tileType: TileType) => {
       return ContentTileConfig;
     case TileType.Reward:
       return RewardTileConfig;
+    case TileType.Venue:
+      return VenueTileConfig;
     case TileType.Badge:
       return BadgeTileConfig;
     case TileType.RewardCategory:
