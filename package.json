@@ -1,6 +1,6 @@
 {
   "name": "@wlloyalty/wll-react-sdk",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "license": "UNLICENSED",
   "main": "dist/web.js",
   "browser": "dist/web.js",
