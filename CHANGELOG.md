@@ -1,3 +1,16 @@
+## [1.4.9](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.8...v1.4.9) (2025-11-22)
+
+
+### Bug Fixes
+
+* add venue tile and export other utils ([1d8f38e](https://github.com/white-label-loyalty/wll-react-sdk/commit/1d8f38e7fadfca77d3d329d61e72f0a09d9b18dc))
+* badge tile test ([4153a6b](https://github.com/white-label-loyalty/wll-react-sdk/commit/4153a6b980b185251c428ee72e3339babd92bceb))
+* export other utilities ([65d57fa](https://github.com/white-label-loyalty/wll-react-sdk/commit/65d57fa6807291e7d20250d11679ca61f9ca86a3))
+* snapshot ([1c8f15f](https://github.com/white-label-loyalty/wll-react-sdk/commit/1c8f15fe2a6c4071cf0f785058760bc110459065))
+* venue tile related tests ([d793dab](https://github.com/white-label-loyalty/wll-react-sdk/commit/d793dab3eee48694a55ad793f0615ad45aab886a))
+
+
+
 ## [1.4.8](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.7...v1.4.8) (2025-11-20)
 
 
