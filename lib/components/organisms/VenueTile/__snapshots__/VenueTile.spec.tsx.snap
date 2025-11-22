@@ -86,7 +86,7 @@ exports[`<VenueTile /> renders and matches snapshot 1`] = `
       <div
         aria-label="Fresh Lobster Noodles with a spicy chilli sauce"
         class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
-        data-testid="venue-tile-summary"
+        data-testid="venue-tile-description"
         dir="auto"
         style="color: rgb(51, 51, 51); font-size: 14px;"
       >

@@ -9,10 +9,11 @@ const defaultConfig = {
   active: true,
   tileHeight: TileHeight.Full,
 
-  venueId: 'f7ce508f-ca52-46ff-bfb7-03e3761feb4a',
-  name: 'Sweet Chilli Lobster Noodles',
-  artworkUrl: 'https://ucarecdn.com/a486d015-b4ab-4831-bfa5-68f5bbbf63b1/',
-  description: 'Fresh Lobster Noodles with a spicy chilli sauce',
+  venueId: '3ae2dabe-6b28-4478-87c2-567363bb8469',
+  name: 'The Spicy Lobster House',
+  artworkUrl: 'https://ucarecdn.com/e14a2c44-d233-496a-a456-9e7fafbcfde1/',
+  description:
+    'Seafood-focused restaurant known for its signature spicy lobster dishes and modern atmosphere.',
 };
 
 export const createVenueTileMock = (config?: VenueTileMockConfig): Tile => {

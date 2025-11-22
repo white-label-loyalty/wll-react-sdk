@@ -20,7 +20,7 @@ describe('<VenueTile /> Rendering States', () => {
 
       expect(getByTestId('venue-tile-media')).toBeInTheDocument();
       expect(getByTestId('venue-tile-title')).toBeInTheDocument();
-      expect(getByTestId('venue-tile-summary')).toBeInTheDocument();
+      expect(getByTestId('venue-tile-description')).toBeInTheDocument();
     });
 
     it('should not render a half-height tile', () => {
