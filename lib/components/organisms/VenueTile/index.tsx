@@ -1,5 +1,5 @@
 import React from 'react';
-import { VenueTileConfig, Tile, TileHeight } from '../../../types/tile';
+import { Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 
@@ -34,7 +34,7 @@ const VenueTileRoot = ({ tile }: VenueTileProps): React.ReactElement | null => {
 
   return (
     <BaseTile tile={tile}>
-      <VenueTile.Media isArtworkOnly={false} />
+      <VenueTile.Media />
       <Layout>
         <Row justify="between" align="center" style={styles.header}>
           <VenueTile.Title />

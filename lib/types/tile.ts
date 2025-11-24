@@ -76,6 +76,7 @@ export class ContentTileConfig {
   artworkUrl?: string | null;
   ctaLinkTarget?: CTALinkTarget;
   ctaLink?: string | null;
+  isLocked?: boolean;
 }
 
 export class RewardTileConfig {
@@ -84,6 +85,7 @@ export class RewardTileConfig {
   showPrice: boolean = false;
   showArtwork?: boolean;
   showDetails?: boolean;
+  isLocked?: boolean;
   id: string = '';
   createdAt: string = '';
   updatedAt: string = '';
@@ -130,6 +132,7 @@ export class VenueTileConfig {
   name: string = '';
   artworkUrl: string = '';
   description: string = '';
+  isLocked?: boolean;
 }
 
 export enum BadgeTileType {

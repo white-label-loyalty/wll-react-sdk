@@ -7,7 +7,7 @@ A compound component that displays reward information with configurable media, t
 ## Usage
 
 ```jsx
-import { RewardTile } from '@wlloyalty/wll-react-native-sdk'
+import { RewardTile } from '@wlloyalty/wll-react-native-sdk';
 
 const tile = {
   type: 'REWARD',
@@ -21,49 +21,51 @@ const tile = {
     summary: 'Delicious noodles with fresh lobster',
     pointsMultiplier: '1',
     pointsPrefix: '$',
-    pointsSuffix: 'pts'
-  }
-}
+    pointsSuffix: 'pts',
+  },
+};
 
 function MyComponent() {
-  return <RewardTile tile={tile} />
+  return <RewardTile tile={tile} />;
 }
 ```
 
 ## Props
 
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| tile | `Tile` | Yes | Reward tile configuration object |
+| Name | Type   | Required | Description                      |
+| ---- | ------ | -------- | -------------------------------- |
+| tile | `Tile` | Yes      | Reward tile configuration object |
 
 ## Subcomponents
 
-| Component | Description |
-|-----------|-------------|
-| `RewardTile.Media` | Displays reward image |
-| `RewardTile.Title` | Shows reward name |
-| `RewardTile.Summary` | Renders reward summary |
-| `RewardTile.Points` | Shows calculated points with prefix/suffix |
-| `RewardTile.Chevron` | Navigation indicator |
-| `RewardTile.Content` | Content wrapper with padding |
+| Component            | Description                                |
+| -------------------- | ------------------------------------------ |
+| `RewardTile.Media`   | Displays reward image                      |
+| `RewardTile.Title`   | Shows reward name                          |
+| `RewardTile.Summary` | Renders reward summary                     |
+| `RewardTile.Points`  | Shows calculated points with prefix/suffix |
+| `RewardTile.Chevron` | Navigation indicator                       |
+| `RewardTile.Content` | Content wrapper with padding               |
 
 ## Configuration Object
 
-| Property | Type | Description |
-|----------|------|-------------|
-| name | string | Reward title |
-| pictureUrl | string | Image URL |
-| price | number | Reward price |
-| showPrice | boolean | Whether to display price |
-| showArtwork | boolean | Whether to display image |
-| summary | string | Description text |
-| pointsMultiplier | string | Points calculation multiplier |
-| pointsPrefix | string | Points display prefix |
-| pointsSuffix | string | Points display suffix |
+| Property         | Type    | Description                   |
+| ---------------- | ------- | ----------------------------- |
+| name             | string  | Reward title                  |
+| pictureUrl       | string  | Image URL                     |
+| price            | number  | Reward price                  |
+| showPrice        | boolean | Whether to display price      |
+| showArtwork      | boolean | Whether to display image      |
+| summary          | string  | Description text              |
+| pointsMultiplier | string  | Points calculation multiplier |
+| pointsPrefix     | string  | Points display prefix         |
+| pointsSuffix     | string  | Points display suffix         |
+| isLocked         | boolean | Show lock icon on the media   |
 
 ## Styling
 
 The component uses responsive styles with:
+
 - 50% flex basis for image container
 - Responsive padding and margins
 - Configurable image resize mode
@@ -80,8 +82,9 @@ The component uses responsive styles with:
 ## Points Calculation
 
 Points are calculated using:
+
 ```typescript
-calculatedPoints = price * (Number(pointsMultiplier) || 1)
+calculatedPoints = price * (Number(pointsMultiplier) || 1);
 ```
 
 ## Example Response Structure
@@ -100,7 +103,8 @@ calculatedPoints = price * (Number(pointsMultiplier) || 1)
     summary: 'Delicious noodles with fresh lobster',
     pointsMultiplier: '1',
     pointsPrefix: '$',
-    pointsSuffix: 'pts'
+    pointsSuffix: 'pts',
+    isLocked: false
   },
   priority: 3
 }

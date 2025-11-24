@@ -82,6 +82,7 @@ When the tile is clicked, it navigates to `/venue?id={venueId}` using the venueI
     name: 'The Spicy Lobster House',
     artworkUrl: 'https://ucarecdn.com/e14a2c44-d233-496a-a456-9e7fafbcfde1/',
     description: 'Seafood-focused restaurant known for its signature spicy lobster dishes and modern atmosphere.'
+    isLocked: false
   },
   priority: 10
 }

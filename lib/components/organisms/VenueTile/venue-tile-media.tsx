@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { VenueTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
-import { ProgressiveImage } from '../../atoms';
+import { Icon, ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useVenueTileStyles } from './styles';
 
 type VenueTileMediaProps = {
-  isArtworkOnly: boolean;
+  isArtworkOnly?: boolean;
 };
 
 // We are using percentage values for flexBasis, which is valid in
@@ -26,7 +26,7 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
  */
 
 export const VenueTileMedia = ({
-  isArtworkOnly,
+  isArtworkOnly = false,
 }: VenueTileMediaProps): React.ReactElement | null => {
   const styles = useVenueTileStyles();
   const tileContext = useTileContext();
@@ -36,6 +36,7 @@ export const VenueTileMedia = ({
   const {
     artworkUrl,
     name = 'Venue',
+    isLocked = false,
   } = tileContext.configuration as VenueTileConfig;
 
   if (!artworkUrl) return null;
@@ -56,6 +57,11 @@ export const VenueTileMedia = ({
         style={styles.image}
         alt={`Venue image for ${name}`}
       />
+      {isLocked && (
+        <View style={styles.lockOverlay} testID="lock-overlay">
+          <Icon name="LockKeyhole" size={48} color="white" />
+        </View>
+      )}
     </View>
   );
 };
