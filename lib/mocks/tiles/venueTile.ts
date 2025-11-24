@@ -14,12 +14,14 @@ const defaultConfig = {
   artworkUrl: 'https://ucarecdn.com/e14a2c44-d233-496a-a456-9e7fafbcfde1/',
   description:
     'Seafood-focused restaurant known for its signature spicy lobster dishes and modern atmosphere.',
+  isLocked: false,
 };
 
 export const createVenueTileMock = (config?: VenueTileMockConfig): Tile => {
   const {
     active = defaultConfig.active,
     tileHeight = defaultConfig.tileHeight,
+    isLocked = defaultConfig.isLocked,
     ...tileConfig
   } = config || {};
 
@@ -38,6 +40,7 @@ export const createVenueTileMock = (config?: VenueTileMockConfig): Tile => {
       name: mergedConfig.name,
       artworkUrl: mergedConfig.artworkUrl,
       description: mergedConfig.description,
+      isLocked,
     },
   };
 };

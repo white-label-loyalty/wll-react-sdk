@@ -38,3 +38,11 @@ WithoutDescription.args = {
     description: undefined,
   }),
 };
+
+export const Locked = Template.bind({});
+Locked.args = {
+  tile: createVenueTileMock({
+    artworkUrl: 'https://ucarecdn.com/a486d015-b4ab-4831-bfa5-68f5bbbf63b1/',
+    isLocked: true,
+  }),
+};
