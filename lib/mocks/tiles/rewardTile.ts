@@ -30,12 +30,14 @@ const defaultConfig = {
   purchasable: true,
   type: 'VOUCHER',
   codeType: 'HUMAN',
+  isLocked: false,
 };
 
 export const createRewardTileMock = (config?: RewardTileMockConfig): Tile => {
   const {
     active = defaultConfig.active,
     tileHeight = defaultConfig.tileHeight,
+    isLocked = defaultConfig.isLocked,
     ...tileConfig
   } = config || {};
 
@@ -99,6 +101,7 @@ export const createRewardTileMock = (config?: RewardTileMockConfig): Tile => {
       notificationConfig: null,
       artworkUrl,
       pointsMultiplier,
+      isLocked,
     },
   };
 };

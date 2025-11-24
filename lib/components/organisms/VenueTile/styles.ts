@@ -5,13 +5,13 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { getDirectionalMargin } from '../../../utils/styling';
 
 /**
- * Custom hook that returns the styles for the RewardTile component.
+ * Custom hook that returns the styles for the VenueTile component.
  * Applies responsive styling based on the current device.
  *
- * @returns StyleSheet styles for the RewardTile component
+ * @returns StyleSheet styles for the VenueTile component
  */
 
-export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
+export const useVenueTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
 
@@ -34,15 +34,6 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       width: '100%',
       height: '100%',
       resizeMode: 'cover',
-    },
-    lockIcon: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      width: '100%',
-      height: '100%',
     },
     content: {
       paddingHorizontal: useResponsiveValue(

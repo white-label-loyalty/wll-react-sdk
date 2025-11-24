@@ -3,7 +3,9 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
-export const useButtonDynamicStyles = (): ReturnType<typeof StyleSheet.create> => {
+export const useButtonDynamicStyles = (): ReturnType<
+  typeof StyleSheet.create
+> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
 
@@ -11,6 +13,7 @@ export const useButtonDynamicStyles = (): ReturnType<typeof StyleSheet.create> =
     button: {
       justifyContent: 'center',
       alignItems: 'center',
+      flexDirection: 'row',
       paddingHorizontal: useResponsiveValue(
         theme.sizes.xxl,
         theme.sizes.sm,

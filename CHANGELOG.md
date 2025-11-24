@@ -1,3 +1,45 @@
+# [1.5.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.10...v1.5.0) (2025-11-24)
+
+
+### Features
+
+* add ability to lock the tiles ([dd4b12e](https://github.com/white-label-loyalty/wll-react-sdk/commit/dd4b12e0155153a68e99f0aa84aecfc1677466dc))
+
+
+
+## [1.4.10](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.9...v1.4.10) (2025-11-24)
+
+
+### Bug Fixes
+
+* add icon in button and update venue documentation ([38d453b](https://github.com/white-label-loyalty/wll-react-sdk/commit/38d453bd7c588d7574280b4f6a8e903a4ff7d69e))
+* test snapshots ([f675fbf](https://github.com/white-label-loyalty/wll-react-sdk/commit/f675fbfd8443de960142a68cced47a033662c36a))
+
+
+
+## [1.4.9](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.8...v1.4.9) (2025-11-22)
+
+
+### Bug Fixes
+
+* add venue tile and export other utils ([1d8f38e](https://github.com/white-label-loyalty/wll-react-sdk/commit/1d8f38e7fadfca77d3d329d61e72f0a09d9b18dc))
+* badge tile test ([4153a6b](https://github.com/white-label-loyalty/wll-react-sdk/commit/4153a6b980b185251c428ee72e3339babd92bceb))
+* export other utilities ([65d57fa](https://github.com/white-label-loyalty/wll-react-sdk/commit/65d57fa6807291e7d20250d11679ca61f9ca86a3))
+* snapshot ([1c8f15f](https://github.com/white-label-loyalty/wll-react-sdk/commit/1c8f15fe2a6c4071cf0f785058760bc110459065))
+* venue tile related tests ([d793dab](https://github.com/white-label-loyalty/wll-react-sdk/commit/d793dab3eee48694a55ad793f0615ad45aab886a))
+
+
+
+## [1.4.8](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.7...v1.4.8) (2025-11-20)
+
+
+### Bug Fixes
+
+* **BadgeTile:** remove space in display text formatting ([5295e55](https://github.com/white-label-loyalty/wll-react-sdk/commit/5295e55fe5dce0083d5d144d8e0b5b239b68a653))
+* update content tile titles to 20px font size ([c06162c](https://github.com/white-label-loyalty/wll-react-sdk/commit/c06162cd703a0c764d6b840c4fe1057480d2cfca))
+
+
+
 ## [1.4.7](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.6...v1.4.7) (2025-10-01)
 
 
