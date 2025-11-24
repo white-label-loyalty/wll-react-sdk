@@ -1,3 +1,13 @@
+## [1.4.10](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.9...v1.4.10) (2025-11-24)
+
+
+### Bug Fixes
+
+* add icon in button and update venue documentation ([38d453b](https://github.com/white-label-loyalty/wll-react-sdk/commit/38d453bd7c588d7574280b4f6a8e903a4ff7d69e))
+* test snapshots ([f675fbf](https://github.com/white-label-loyalty/wll-react-sdk/commit/f675fbfd8443de960142a68cced47a033662c36a))
+
+
+
 ## [1.4.9](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.8...v1.4.9) (2025-11-22)
 
 
