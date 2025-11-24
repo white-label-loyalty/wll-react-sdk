@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.10...v1.5.0) (2025-11-24)
+
+
+### Features
+
+* add ability to lock the tiles ([dd4b12e](https://github.com/white-label-loyalty/wll-react-sdk/commit/dd4b12e0155153a68e99f0aa84aecfc1677466dc))
+
+
+
 ## [1.4.10](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.9...v1.4.10) (2025-11-24)
 
 
