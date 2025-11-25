@@ -66,12 +66,27 @@ export const useBaseTileStyles = () => {
   const isHalfSize = sizeInfo?.isHalfSize || false;
   const { artworkUrl, title, body } =
     tileContext.configuration as ContentTileConfig;
+  // Access showDetails safely only for Reward tiles to avoid type errors on ContentTileConfig
+  const rewardShowDetails: boolean | undefined =
+    tileContext.type === 'REWARD'
+      ? (tileContext.configuration as unknown as { showDetails?: boolean })
+          .showDetails
+      : undefined;
+
+  // In Reward tiles that show details (title, summary, points), the content height
+  // can exceed a square aspect ratio. To prevent clipping (e.g., points cut off in
+  // TwoPerRow), allow the container to naturally size and do not enforce aspectRatio.
+  const isRewardWithDetails =
+    tileContext.type === 'REWARD' && rewardShowDetails !== false;
 
   return StyleSheet.create({
     container: {
       ...baseStyles.container,
       backgroundColor: theme.surface,
-      aspectRatio: isHalfSize ? 2 : 1,
+      // Allow natural height for reward tiles with details; keep the aspect ratio otherwise
+      ...(isRewardWithDetails
+        ? { height: undefined }
+        : { aspectRatio: isHalfSize ? 2 : 1, height: '100%' as const }),
       borderRadius: useResponsiveValue(
         theme.sizes.borderRadiusLg,
         theme.sizes.borderRadiusSm,

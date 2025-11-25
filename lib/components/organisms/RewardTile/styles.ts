@@ -18,6 +18,9 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   return StyleSheet.create({
     imageContainer: {
       width: '100%',
+      // Using aspectRatio lets the image reserve vertical space based on its width.
+      // A 16:9-ish ratio provides a wide banner-like artwork area.
+      aspectRatio: 16 / 9,
       marginBottom: useResponsiveValue(
         theme.sizes.sm,
         theme.sizes.xxs,
