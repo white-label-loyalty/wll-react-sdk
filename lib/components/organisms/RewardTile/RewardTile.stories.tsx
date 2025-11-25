@@ -65,7 +65,7 @@ ArtworkOnlyLocked.args = {
   }),
 };
 
-const MobileAppTemplate: StoryFn<typeof RewardTile> = (args) => (
+const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
     <TileWrapper containerStyle={{ width: '50%' }}>
       <RewardTile {...args} />
@@ -77,5 +77,5 @@ const MobileAppTemplate: StoryFn<typeof RewardTile> = (args) => (
   </View>
 );
 
-export const MobileTwoPerRow = MobileAppTemplate.bind({});
-MobileTwoPerRow.args = DefaultWithPoints.args;
+export const TwoPerRow = TwoPerRowTemplate.bind({});
+TwoPerRow.args = DefaultWithPoints.args;
