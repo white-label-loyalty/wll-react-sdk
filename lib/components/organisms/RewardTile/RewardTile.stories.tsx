@@ -28,7 +28,7 @@ export const DefaultWithPoints = Template.bind({});
 DefaultWithPoints.args = {
   tile: createRewardTileMock({
     name: 'Pizza',
-    summary: 'Delicious pizza Delicious pizza Delicious pizza Delicious pizza Delicious pizza Delicious pizza ',
+    summary: 'Delicious pizza',
     price: 10,
     pointsSuffix: 'pts',
     artworkUrl: 'https://ucarecdn.com/cbc5895e-a193-4a94-bb0f-d514719e36a6/',
