@@ -12,6 +12,7 @@ type ButtonProps = {
   disabled?: boolean;
   accessibilityLabel?: string;
   accessibilityHint?: string;
+  icon?: React.ReactNode;
   testID?: string;
 };
 
@@ -52,6 +53,7 @@ const Button = ({
   disabled = false,
   accessibilityLabel,
   accessibilityHint,
+  icon,
   testID,
 }: ButtonProps): React.ReactElement => {
   const { theme } = useWllSdk();
@@ -77,7 +79,8 @@ const Button = ({
       accessibilityState={{ disabled }}
       testID={testID}
     >
-      <Text style={[styles.text, textStyle]}>{title}</Text>
+      {icon && icon}
+      {title && <Text style={[styles.text, textStyle]}>{title}</Text>}
     </Pressable>
   );
 };

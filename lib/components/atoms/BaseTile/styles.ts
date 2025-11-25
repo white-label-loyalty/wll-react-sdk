@@ -7,6 +7,9 @@ import { ContentTileConfig } from '../../../types/tile';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const baseStyles = StyleSheet.create({
+  imageContainer: {
+    position: 'relative',
+  },
   container: {
     width: '100%',
     height: '100%',
@@ -45,6 +48,17 @@ export const useBaseTileStyles = () => {
         justifyContent: 'space-between',
       },
       media: baseStyles.media,
+      lockOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 10,
+      },
     });
   }
 
@@ -97,6 +111,17 @@ export const useBaseTileStyles = () => {
       ...baseStyles.media,
       flexBasis: !isHalfSize && title && body ? '50%' : '100%',
       height: isHalfSize ? '100%' : undefined,
+    },
+    lockOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 10,
     },
   });
 };

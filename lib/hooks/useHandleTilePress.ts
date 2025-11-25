@@ -4,6 +4,7 @@ import {
   CTALinkTarget,
   RewardCategoryTileConfig,
   RewardTileConfig,
+  VenueTileConfig,
   Tile,
   TileType,
 } from '../types/tile';
@@ -20,6 +21,14 @@ export const useHandleTilePress = (
       const config = tile.configuration as RewardTileConfig;
       if (config?.rewardId) {
         const url = `/reward?id=${config.rewardId}`;
+        return handleNavigation(url, CTALinkTarget.sameWindow);
+      }
+    }
+
+    if (tile?.type === TileType.Venue) {
+      const config = tile.configuration as VenueTileConfig;
+      if (config?.venueId) {
+        const url = `/venue?id=${config.venueId}`;
         return handleNavigation(url, CTALinkTarget.sameWindow);
       }
     }

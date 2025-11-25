@@ -22,7 +22,6 @@ module.exports = (api) => {
           ],
         },
       ],
-      '@babel/plugin-syntax-typescript',
     ],
     env: {
       test: {
@@ -33,9 +32,6 @@ module.exports = (api) => {
           ],
           '@babel/preset-typescript',
           ['@babel/preset-react', { runtime: 'automatic' }],
-        ],
-        plugins: [
-          '@babel/plugin-syntax-typescript',
         ],
       },
       production: {

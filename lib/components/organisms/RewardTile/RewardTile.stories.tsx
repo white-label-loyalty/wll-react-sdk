@@ -44,3 +44,22 @@ ArtworkOnly.args = {
     price: 61,
   }),
 };
+
+export const Locked = Template.bind({});
+Locked.args = {
+  tile: createRewardTileMock({
+    isLocked: true,
+  }),
+};
+
+export const ArtworkOnlyLocked = Template.bind({});
+ArtworkOnlyLocked.args = {
+  tile: createRewardTileMock({
+    showDetails: false,
+    artworkUrl: rewardImage,
+    name: 'Spotify Premium',
+    summary: 'Get 1 year subscription',
+    price: 61,
+    isLocked: true,
+  }),
+};

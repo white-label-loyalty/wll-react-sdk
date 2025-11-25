@@ -12,6 +12,7 @@ import {
   RoundupTile,
   ContentTile
 } from '../../organisms';
+import VenueTile from '../../organisms/VenueTile';
 
 type TileContainerProps = {
   tiles: Tile[];
@@ -26,6 +27,7 @@ const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
   [TileType.RewardCategory]: RewardCategoryTile,
   [TileType.Banner]: BannerTile,
   [TileType.Roundup]: RoundupTile,
+  [TileType.Venue]: VenueTile,
 };
 
 /**

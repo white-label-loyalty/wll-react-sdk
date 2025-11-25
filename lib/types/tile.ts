@@ -24,6 +24,7 @@ export enum TileType {
   RewardCategory = 'REWARD_CATEGORY',
   Tier = 'TIER',
   Roundup = 'ROUND_UP_BALANCE',
+  Venue = 'VENUE',
 }
 
 export enum TileHeight {
@@ -75,6 +76,7 @@ export class ContentTileConfig {
   artworkUrl?: string | null;
   ctaLinkTarget?: CTALinkTarget;
   ctaLink?: string | null;
+  isLocked?: boolean;
 }
 
 export class RewardTileConfig {
@@ -83,6 +85,7 @@ export class RewardTileConfig {
   showPrice: boolean = false;
   showArtwork?: boolean;
   showDetails?: boolean;
+  isLocked?: boolean;
   id: string = '';
   createdAt: string = '';
   updatedAt: string = '';
@@ -122,6 +125,14 @@ export class RewardTileConfig {
   pointsMultiplier: number = 1;
   pointsPrefix: string | null = null;
   pointsSuffix: string | null = null;
+}
+
+export class VenueTileConfig {
+  venueId: string = '';
+  name: string = '';
+  artworkUrl: string = '';
+  description: string = '';
+  isLocked?: boolean;
 }
 
 export enum BadgeTileType {
@@ -213,6 +224,8 @@ const getConfigForTileType = (tileType: TileType) => {
       return ContentTileConfig;
     case TileType.Reward:
       return RewardTileConfig;
+    case TileType.Venue:
+      return VenueTileConfig;
     case TileType.Badge:
       return BadgeTileConfig;
     case TileType.RewardCategory:

@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { RewardTileConfig } from '../../../types/tile';
+import { VenueTileConfig } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Icon, ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
-import { useRewardTileStyles } from './styles';
+import { useVenueTileStyles } from './styles';
 
-type RewardTileMediaProps = {
-  isArtworkOnly: boolean;
+type VenueTileMediaProps = {
+  isArtworkOnly?: boolean;
 };
 
 // We are using percentage values for flexBasis, which is valid in
@@ -18,29 +18,28 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
 };
 
 /**
- * Renders the media for a Reward Tile.
+ * Renders the media for a Venue Tile.
  *
- * @param props {RewardTileMediaProps} - Component props
+ * @param props {VenueTileMediaProps} - Component props
  * @param props.isArtworkOnly {boolean} - Whether the media should be rendered as an artwork only component
  * @returns React.ReactElement or null if no artwork URL is present or artwork should not be shown
  */
 
-export const RewardTileMedia = ({
-  isArtworkOnly,
-}: RewardTileMediaProps): React.ReactElement | null => {
-  const styles = useRewardTileStyles();
+export const VenueTileMedia = ({
+  isArtworkOnly = false,
+}: VenueTileMediaProps): React.ReactElement | null => {
+  const styles = useVenueTileStyles();
   const tileContext = useTileContext();
 
   if (!isContextValid(tileContext)) return null;
 
   const {
     artworkUrl,
-    showArtwork = true,
-    name = 'Reward',
+    name = 'Venue',
     isLocked = false,
-  } = tileContext.configuration as RewardTileConfig;
+  } = tileContext.configuration as VenueTileConfig;
 
-  if (!artworkUrl || !showArtwork) return null;
+  if (!artworkUrl) return null;
 
   const containerStyle: ResponsiveViewStyle = {
     flexBasis: isArtworkOnly ? '100%' : '50%',
@@ -49,14 +48,14 @@ export const RewardTileMedia = ({
   return (
     <View
       style={[styles.imageContainer, containerStyle]}
-      testID="reward-tile-media"
+      testID="venue-tile-media"
       role="img"
-      accessibilityLabel={`Reward image for ${name}`}
+      accessibilityLabel={`Venue image for ${name}`}
     >
       <ProgressiveImage
         source={{ uri: artworkUrl }}
         style={styles.image}
-        alt={`Reward image for ${name}`}
+        alt={`Venue image for ${name}`}
       />
       {isLocked && (
         <View style={styles.lockOverlay} testID="lock-overlay">
