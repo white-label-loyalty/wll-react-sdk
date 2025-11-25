@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { RewardTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
@@ -55,7 +56,13 @@ const RewardTileRoot = ({ tile }: RewardTileProps): React.ReactElement | null =>
           <RewardTile.Title />
           <RewardTile.Chevron />
         </Row>
-        <RewardTile.Summary />
+        {/**
+         * Ensure text wrapping works in constrained layouts (e.g., 50% width tiles on mobile).
+         * React Native Web requires minWidth: 0 on flex children to allow shrink/wrap.
+         */}
+        <View style={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
+          <RewardTile.Summary />
+        </View>
         <RewardTile.Points />
       </Layout>
     </BaseTile>

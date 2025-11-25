@@ -3,9 +3,11 @@ import { View, ViewStyle } from 'react-native';
 
 export const TileWrapper = ({
   isHalfTile,
+  containerStyle,
   children,
 }: {
   isHalfTile?: boolean;
+  containerStyle?: ViewStyle;
   children: React.ReactNode;
 }): React.ReactElement => {
   const wrapperStyle: ViewStyle = {
@@ -14,5 +16,5 @@ export const TileWrapper = ({
     padding: 8,
   };
 
-  return <View style={wrapperStyle}>{children}</View>;
+  return <View style={{ ...wrapperStyle, ...containerStyle }}>{children}</View>;
 };
