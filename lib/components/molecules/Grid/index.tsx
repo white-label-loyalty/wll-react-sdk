@@ -33,8 +33,6 @@ const Grid = ({ section }: GridProps) => {
       return {
         width: `calc(${100 / columns}% - ${((columns - 1) * GRID_GAP) / columns}px)`,
         marginBottom: GRID_GAP,
-        height: 'auto',
-        aspectRatio: 1,
       };
     } else {
       const availableWidth = SCREEN_WIDTH - GRID_GAP * 2;
