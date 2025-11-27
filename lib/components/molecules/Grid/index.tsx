@@ -42,7 +42,6 @@ const Grid = ({ section }: GridProps) => {
       return {
         width: tileWidth,
         marginBottom: GRID_GAP,
-        aspectRatio: 1,
       };
     }
   }, []);
