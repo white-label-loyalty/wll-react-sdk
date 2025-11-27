@@ -26,7 +26,7 @@ exports[`<Section/> matches snapshot 1`] = `
       >
         <div
           class="css-view-175oi2r"
-          style="width: calc(50% - 8px); margin-bottom: 16px; height: auto; margin-right: 16px;"
+          style="width: calc(50% - 8px); margin-bottom: 16px; margin-right: 16px;"
         >
           <div
             class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
