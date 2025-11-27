@@ -58,7 +58,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
         Summer Points Splash
       </h1>
       <div
-        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1inkyih r-marginBottom-10qg9sp"
+        class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1b6yd1w r-marginBottom-10qg9sp"
         data-testid="banner-tile-description"
         dir="auto"
       >
@@ -74,7 +74,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
         type="button"
       >
         <div
-          class="css-text-146c3p1 r-fontSize-1i10wst r-fontWeight-b88u0q r-textAlign-q4m81j r-textTransform-tsynxw"
+          class="css-text-146c3p1 r-fontSize-1b6yd1w r-fontWeight-b88u0q r-textAlign-q4m81j r-textTransform-tsynxw"
           dir="auto"
           style="color: rgb(255, 255, 255);"
         >
