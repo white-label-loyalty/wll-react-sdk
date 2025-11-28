@@ -12,13 +12,13 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Reward image for Sweet Chilli Lobster Noodles"
-      class="css-view-175oi2r r-aspectRatio-1ts5s6y r-marginBottom-6gpygo r-width-13qz1uu"
+      class="css-view-175oi2r r-marginBottom-6gpygo r-minHeight-1r5jyh0 r-width-13qz1uu"
       data-testid="reward-tile-media"
       role="img"
       style="flex-basis: 50%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-position-bnwqim r-height-1pi2tsx r-objectFit-1t7uo4s r-width-13qz1uu"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
