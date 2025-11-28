@@ -7,7 +7,6 @@ import {
   StyleSheet,
   useWindowDimensions,
   View,
-  I18nManager,
 } from 'react-native';
 import { CarouselNavButton } from '../.';
 import { BUTTON_SIZE } from '../../../constants';
@@ -72,7 +71,7 @@ const Carousel = ({
   const containerRef = useRef<View>(null);
   const styles = useCarouselStyles(BUTTON_SIZE);
   const animatedIndex = useRef(new Animated.Value(0)).current;
-  const { theme, config } = useWllSdk();
+  const { theme } = useWllSdk();
   const { isDesktop, isTablet } = useResponsive();
   const scrollViewRef = useRef<ScrollView>(null);
 
@@ -86,11 +85,6 @@ const Carousel = ({
   const sortedTiles = sortByPriority(
     section.tiles.filter((tile: Tile) => tile.type === TileType.Banner)
   );
-
-  // Determine RTL: explicit dir prop takes precedence, then platform, then locale
-  const isRTL =  I18nManager.isRTL || /^ar\b/i.test(config?.locale ?? '');
-  // Order tiles based on the reading direction
-  const orderedTiles = isRTL ? [...sortedTiles].reverse() : sortedTiles;
 
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -128,7 +122,7 @@ const Carousel = ({
   };
 
   const rotateToNextSlide = useCallback(() => {
-    if (currentIndex >= orderedTiles.length - 1) {
+    if (currentIndex >= sortedTiles.length - 1) {
       dispatch({ type: 'SET_CURRENT_INDEX', payload: 0 });
       scrollViewRef.current?.scrollTo({
         x: 0,
@@ -137,22 +131,22 @@ const Carousel = ({
     } else {
       handleNext();
     }
-  }, [currentIndex, containerWidth, orderedTiles.length]);
+  }, [currentIndex, containerWidth, sortedTiles.length]);
 
   useEffect(() => {
-    if (orderedTiles.length <= 1) return;
+    if (sortedTiles.length <= 1) return;
 
     const rotationTimer = setInterval(() => {
       rotateToNextSlide();
     }, autoRotateInterval);
 
     return () => clearInterval(rotationTimer);
-  }, [rotateToNextSlide, autoRotateInterval, orderedTiles.length]);
+  }, [rotateToNextSlide, autoRotateInterval, sortedTiles.length]);
 
-  const displayControls = orderedTiles.length > 1;
+  const displayControls = sortedTiles.length > 1;
   const showPrevButton = displayControls && currentIndex > 0;
   const showNextButton =
-    displayControls && currentIndex < orderedTiles.length - 1;
+    displayControls && currentIndex < sortedTiles.length - 1;
 
   const dynamicStyles = StyleSheet.create({
     indicators: {
@@ -172,7 +166,7 @@ const Carousel = ({
       <SectionHeader title={section.title} description={section.description} />
       <View
         ref={containerRef}
-        style={[styles.container, {direction: isRTL ? 'rtl' : 'ltr'}]}
+        style={[styles.container, { direction: 'ltr' }]}
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout;
           dispatch({ type: 'SET_CONTAINER_WIDTH', payload: width });
@@ -180,8 +174,8 @@ const Carousel = ({
       >
         <View style={styles.carouselContainer}>
           {showPrevButton && (
-            <CarouselNavButton direction="left" onPress={() => isRTL ? handleNext() : handlePrev()} />
-           )}
+            <CarouselNavButton direction="left" onPress={handlePrev} />
+          )}
           <ScrollView
             ref={scrollViewRef}
             horizontal
@@ -192,13 +186,13 @@ const Carousel = ({
             scrollEventThrottle={16}
             style={styles.carouselContent}
             contentContainerStyle={{
-              width: containerWidth * orderedTiles.length,
+              width: containerWidth * sortedTiles.length,
             }}
             decelerationRate="fast"
             snapToInterval={containerWidth}
             snapToAlignment="start"
           >
-            {orderedTiles.map((tile: Tile, index: number) => (
+            {sortedTiles.map((tile: Tile, index: number) => (
               <View
                 key={index}
                 style={[
@@ -213,12 +207,12 @@ const Carousel = ({
             ))}
           </ScrollView>
           {showNextButton && (
-            <CarouselNavButton direction="right" onPress={() => isRTL ? handlePrev() : handleNext()} />
+            <CarouselNavButton direction="right" onPress={handleNext} />
           )}
         </View>
         {displayControls && (
           <View style={dynamicStyles.indicators}>
-            {orderedTiles.map((_, index) => {
+            {sortedTiles.map((_, index) => {
               const width = animatedIndex.interpolate({
                 inputRange: [index - 1, index, index + 1],
                 outputRange: [8, 30, 8],
