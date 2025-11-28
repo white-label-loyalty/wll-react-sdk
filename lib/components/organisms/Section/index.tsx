@@ -166,7 +166,7 @@ const Section: React.FC<SectionProps> = ({ section, sectionId }) => {
 
     switch (sectionData.type) {
       case SectionType.Banner:
-        return <Carousel dir={"rtl"} section={sectionWithActiveTiles} />;
+        return <Carousel section={sectionWithActiveTiles} />;
       case SectionType.Grid:
         return <Grid section={sectionWithActiveTiles} />;
       default:
