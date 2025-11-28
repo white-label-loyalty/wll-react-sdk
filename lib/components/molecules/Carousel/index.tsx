@@ -24,8 +24,6 @@ import { useCarouselStyles } from './styles';
 type CarouselProps = {
   section?: TSection;
   autoRotateInterval?: number;
-  // Optional explicit direction override. When provided, it takes precedence over locale/platform.
-  dir?: 'rtl' | 'ltr';
 };
 
 type CarouselState = {
@@ -68,7 +66,6 @@ const carouselReducer = (
 const Carousel = ({
   section,
   autoRotateInterval = 5000,
-  dir,
 }: CarouselProps): React.ReactElement | null => {
   if (!section) return null;
   const { width: WINDOW_WIDTH } = useWindowDimensions();
@@ -91,10 +88,7 @@ const Carousel = ({
   );
 
   // Determine RTL: explicit dir prop takes precedence, then platform, then locale
-  const isRTL =
-    dir === 'rtl'
-      ? true
-      : I18nManager.isRTL || /^ar\b/i.test(config?.locale ?? '');
+  const isRTL =  I18nManager.isRTL || /^ar\b/i.test(config?.locale ?? '');
   // Order tiles based on the reading direction
   const orderedTiles = isRTL ? [...sortedTiles].reverse() : sortedTiles;
 
@@ -125,8 +119,8 @@ const Carousel = ({
   };
 
   const handleNext = () => {
-    const nextIndex = Math.min(orderedTiles.length - 1, currentIndex + 1);
-    dispatch({ type: 'NEXT_SLIDE', maxIndex: orderedTiles.length - 1 });
+    const nextIndex = Math.min(sortedTiles.length - 1, currentIndex + 1);
+    dispatch({ type: 'NEXT_SLIDE', maxIndex: sortedTiles.length - 1 });
     scrollViewRef.current?.scrollTo({
       x: nextIndex * containerWidth,
       animated: true,
@@ -178,7 +172,7 @@ const Carousel = ({
       <SectionHeader title={section.title} description={section.description} />
       <View
         ref={containerRef}
-        style={styles.container}
+        style={[styles.container, {direction: isRTL ? 'rtl' : 'ltr'}]}
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout;
           dispatch({ type: 'SET_CONTAINER_WIDTH', payload: width });
