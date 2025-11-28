@@ -24,6 +24,8 @@ import { useCarouselStyles } from './styles';
 type CarouselProps = {
   section?: TSection;
   autoRotateInterval?: number;
+  // Optional explicit direction override. When provided, it takes precedence over locale/platform.
+  dir?: 'rtl' | 'ltr';
 };
 
 type CarouselState = {
@@ -66,6 +68,7 @@ const carouselReducer = (
 const Carousel = ({
   section,
   autoRotateInterval = 5000,
+  dir,
 }: CarouselProps): React.ReactElement | null => {
   if (!section) return null;
   const { width: WINDOW_WIDTH } = useWindowDimensions();
@@ -87,8 +90,11 @@ const Carousel = ({
     section.tiles.filter((tile: Tile) => tile.type === TileType.Banner)
   );
 
-  // Determine RTL (Arabic) locale
-  const isRTL = I18nManager.isRTL || /^ar\b/i.test(config?.locale ?? '');
+  // Determine RTL: explicit dir prop takes precedence, then platform, then locale
+  const isRTL =
+    dir === 'rtl'
+      ? true
+      : I18nManager.isRTL || /^ar\b/i.test(config?.locale ?? '');
   // Order tiles based on the reading direction
   const orderedTiles = isRTL ? [...sortedTiles].reverse() : sortedTiles;
 
