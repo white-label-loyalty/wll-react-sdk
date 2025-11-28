@@ -40,11 +40,12 @@ export const RewardTilePoints = (): React.ReactElement | null => {
 
   return (
     <View
+      style={{ marginTop: 'auto' }}
       testID="reward-tile-points"
       role="article"
       accessibilityLabel={accessibilityLabel}
     >
-      <Row align="center" justify="start" style={{ marginTop: 8 }}>
+      <Row align="center" justify="start">
         {pointsPrefix ? <Text variant="caption">{pointsPrefix}</Text> : null}
         <Text variant="caption" testID="reward-tile-points-value">
           {calculatedPoints}

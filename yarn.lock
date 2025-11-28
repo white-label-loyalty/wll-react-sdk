@@ -2669,7 +2669,6 @@
     globals "^11.1.0"
 
 "@babel/traverse@^7.27.1", "@babel/traverse@^7.28.0", "@babel/traverse@^7.28.3", "@babel/traverse@^7.28.4":
-  name "@babel/traverse--for-generate-function-map"
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.28.4.tgz#8d456101b96ab175d487249f60680221692b958b"
   integrity sha512-YEzuboP2qvQavAcjgQNVgsvHIDv6ZpwXvcvjmyySP2DIMuByS/6ioU5G9pYrWHM6T2YDfc7xga9iNzYOs12CFQ==
@@ -6561,9 +6560,9 @@ css-select@^4.1.3:
     nth-check "^2.0.1"
 
 css-select@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/css-select/-/css-select-5.1.0.tgz#b8ebd6554c3637ccc76688804ad3f6a6fdaea8a6"
-  integrity sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/css-select/-/css-select-5.2.2.tgz#01b6e8d163637bb2dd6c982ca4ed65863682786e"
+  integrity sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==
   dependencies:
     boolbase "^1.0.0"
     css-what "^6.1.0"
@@ -6579,10 +6578,15 @@ css-tree@^1.1.3:
     mdn-data "2.0.14"
     source-map "^0.6.1"
 
-css-what@^6.0.1, css-what@^6.1.0:
+css-what@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
+
+css-what@^6.1.0:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.2.2.tgz#cdcc8f9b6977719fdfbd1de7aec24abf756b9dea"
+  integrity sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==
 
 css.escape@^1.5.1:
   version "1.5.1"
@@ -11051,9 +11055,9 @@ react-is@^17.0.1:
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-native-svg@^15.11.2:
-  version "15.11.2"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.11.2.tgz#7540e8e1eabc4dcd3b1e35ada5a1d9f1b96d37c4"
-  integrity sha512-+YfF72IbWQUKzCIydlijV1fLuBsQNGMT6Da2kFlo1sh+LE3BIm/2Q7AR1zAAR6L0BFLi1WaQPLfFUC9bNZpOmw==
+  version "15.15.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.15.0.tgz#98538da3ca7f99a86b4b9a6336494dbdf803ab32"
+  integrity sha512-/Wx6F/IZ88B/GcF88bK8K7ZseJDYt+7WGaiggyzLvTowChQ8BM5idmcd4pK+6QJP6a6DmzL2sfOMukFUn/NArg==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
