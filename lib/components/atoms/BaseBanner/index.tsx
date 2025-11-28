@@ -56,39 +56,33 @@ const BaseBanner: React.FC<BaseBannerProps> = ({
     },
   ];
 
-  if (isInteractive) {
-    return (
-      <BannerContext.Provider value={tile}>
-        <Pressable
-          testID={testID || 'banner-tile'}
-          style={({ pressed }) => [
-            ...commonStyles,
-            { opacity: pressed ? 0.7 : 1 },
-          ]}
-          onPress={handlePress}
-          accessible
-          role="button"
-          accessibilityLabel={accessibilityLabel || `${title} - Click to open`}
-        >
-          {children}
-        </Pressable>
-      </BannerContext.Provider>
-    );
-  } else {
-    return (
-      <BannerContext.Provider value={tile}>
-        <View
-          testID={testID || 'banner-tile'}
-          style={commonStyles}
-          accessible
-          role="article"
-          accessibilityLabel={accessibilityLabel || title || 'Banner'}
-        >
-          {children}
-        </View>
-      </BannerContext.Provider>
-    );
-  }
+  return <BannerContext.Provider value={tile}>
+    {isInteractive ? (
+      <Pressable
+        testID={testID || 'banner-tile'}
+        style={({ pressed }) => [
+          ...commonStyles,
+          { opacity: pressed ? 0.7 : 1 },
+        ]}
+        onPress={handlePress}
+        accessible
+        role="button"
+        accessibilityLabel={accessibilityLabel || `${title} - Click to open`}
+      >
+        {children}
+      </Pressable>
+    ) : (
+      <View
+        testID={testID || 'banner-tile'}
+        style={commonStyles}
+        accessible
+        role="article"
+        accessibilityLabel={accessibilityLabel || title || 'Banner'}
+      >
+        {children}
+      </View>
+    )}
+  </BannerContext.Provider>
 };
 
 const styles = StyleSheet.create({

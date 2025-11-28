@@ -22,6 +22,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
   </div>
   <div
     class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
+    style="direction: ltr;"
   >
     <div
       class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1777fci r-position-bnwqim r-width-13qz1uu"
