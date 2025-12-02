@@ -12,6 +12,7 @@ export const baseStyles = StyleSheet.create({
   },
   container: {
     width: '100%',
+    height: '100%',
     overflow: 'hidden',
     position: 'relative',
   },
@@ -86,7 +87,7 @@ export const useBaseTileStyles = () => {
       ...(isRewardWithDetails
         ? { height: undefined }
         : { aspectRatio: isHalfSize ? 2 : 1, height: '100%' as const }),
-      height: '100%',
+
       borderRadius: useResponsiveValue(
         theme.sizes.borderRadiusLg,
         theme.sizes.borderRadiusSm,

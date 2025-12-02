@@ -40,7 +40,7 @@ export const Layout = ({
   const { isDesktop, isTablet } = useResponsive();
   const dynamicStyles = StyleSheet.create({
     container: {
-      flex: 1,
+      flexGrow: 1,
       paddingHorizontal: useResponsiveValue(
         theme.sizes.sm,
         theme.sizes.xxs,
