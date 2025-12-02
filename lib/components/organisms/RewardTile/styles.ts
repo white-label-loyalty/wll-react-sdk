@@ -47,7 +47,6 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
         isDesktop,
         isTablet
       ),
-      flex: 1,
     },
     footer: {
       marginTop: 8,
