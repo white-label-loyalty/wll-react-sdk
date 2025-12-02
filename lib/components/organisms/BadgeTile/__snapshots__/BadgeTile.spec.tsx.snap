@@ -13,7 +13,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
       data-testid="badge-tile-media"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-position-bnwqim r-height-1pi2tsx r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-1r5jyh0 r-position-bnwqim r-height-1pi2tsx r-width-13qz1uu"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
@@ -40,7 +40,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
+      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
     >
       <div
         aria-label="Badge title: You haven't earned any badges yet."

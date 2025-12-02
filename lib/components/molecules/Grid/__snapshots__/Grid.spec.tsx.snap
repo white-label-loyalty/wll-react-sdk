@@ -44,7 +44,7 @@ exports[`<Grid /> matches snapshot 1`] = `
               style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
+                class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
               >
                 <div
                   aria-label="Badge title: Badge Title"

@@ -16,7 +16,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
       style="flex-basis: 50%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-bottom-jumn1c r-height-1dcj8od r-left-wwqw7s r-position-u8s1d r-right-dvzd6p r-top-3sxh79 r-width-7y7nrq"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-1r5jyh0 r-bottom-jumn1c r-height-1dcj8od r-left-wwqw7s r-position-u8s1d r-right-dvzd6p r-top-3sxh79 r-width-7y7nrq"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
@@ -43,7 +43,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-paddingInline-3o4zer"
+      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingInline-3o4zer"
       style="padding-bottom: 0px; margin-bottom: 0px;"
     >
       <div

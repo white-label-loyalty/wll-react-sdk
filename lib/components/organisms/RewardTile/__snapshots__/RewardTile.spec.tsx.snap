@@ -4,7 +4,7 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
 <div>
   <button
     aria-label="Tile - Click to open"
-    class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-height-1pi2tsx r-borderRadius-y47klf r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="button"
     style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
     tabindex="0"
@@ -18,7 +18,7 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
       style="flex-basis: 50%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-position-bnwqim r-height-1pi2tsx r-objectFit-1t7uo4s r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-1r5jyh0 r-position-bnwqim r-height-1pi2tsx r-objectFit-1t7uo4s r-width-13qz1uu"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
@@ -45,7 +45,7 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
+      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
     >
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-width-13qz1uu"
