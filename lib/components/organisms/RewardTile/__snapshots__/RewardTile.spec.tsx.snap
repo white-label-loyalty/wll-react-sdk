@@ -4,7 +4,7 @@ exports[`<RewardTile /> renders and matches snapshot 1`] = `
 <div>
   <button
     aria-label="Tile - Click to open"
-    class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-height-1pi2tsx r-borderRadius-y47klf r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    class="css-view-175oi2r r-cursor-1loqt21 r-touchAction-1otgn73 r-height-1pi2tsx r-borderRadius-y47klf r-flex-13awgt0 r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="button"
     style="background-color: rgb(248, 247, 252); opacity: 1; flex-direction: column; justify-content: flex-start; align-items: stretch;"
     tabindex="0"

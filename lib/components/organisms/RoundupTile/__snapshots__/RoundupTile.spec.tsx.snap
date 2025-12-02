@@ -4,7 +4,7 @@ exports[`<RoundupTile /> renders and matches snapshot 1`] = `
 <div>
   <article
     aria-label="Available Points"
-    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-flex-13awgt0 r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="article"
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
