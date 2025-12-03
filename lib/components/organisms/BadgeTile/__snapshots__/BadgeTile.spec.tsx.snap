@@ -4,12 +4,12 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
 <div>
   <article
     aria-label="Tile"
-    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-flex-13awgt0 r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    class="css-view-175oi2r r-borderRadius-y47klf r-flex-13awgt0 r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="article"
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1t2qqvi r-justifyContent-1777fci r-marginBottom-ku1wi2 r-position-bnwqim"
+      class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-ku1wi2 r-position-bnwqim"
       data-testid="badge-tile-media"
     >
       <div
