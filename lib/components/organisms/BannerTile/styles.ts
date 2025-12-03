@@ -20,7 +20,6 @@ export const useBannerTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       flex: 1,
     },
     mediaContainer: {
-      aspectRatio: 1,
       position: 'relative',
       overflow: 'hidden',
       ...getDirectionalMargin(

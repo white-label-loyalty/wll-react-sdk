@@ -87,7 +87,7 @@ export const useBaseTileStyles = () => {
       // Allow natural height for reward tiles with details; keep the aspect ratio otherwise
       ...(isRewardWithDetails
         ? { height: undefined }
-        : { aspectRatio: isHalfSize ? 2 : 1, height: '100%' as const }),
+        : { height: '100%' as const }),
 
       borderRadius: useResponsiveValue(
         theme.sizes.borderRadiusLg,

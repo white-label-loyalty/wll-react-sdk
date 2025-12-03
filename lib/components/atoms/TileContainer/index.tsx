@@ -10,7 +10,7 @@ import {
   RewardTile,
   TierTileUpdated,
   RoundupTile,
-  ContentTile
+  ContentTile,
 } from '../../organisms';
 import VenueTile from '../../organisms/VenueTile';
 
@@ -41,10 +41,7 @@ const TileContainer = ({ tiles }: TileContainerProps): React.ReactElement => {
   const halfHeightGap = allHalfHeight ? GRID_GAP / 2 : GRID_GAP;
 
   return (
-    <View
-      style={[styles.container, allHalfHeight && styles.aspectContainer]}
-      testID="tile-container"
-    >
+    <View style={styles.container} testID="tile-container">
       {tiles.map((tile, index) => {
         const TileComponent = TILE_COMPONENTS[tile.type!];
         const isHalfHeight = tile.tileHeight === TileHeight.Half;
@@ -72,9 +69,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-  },
-  aspectContainer: {
-    aspectRatio: 1,
   },
   tileWrapper: {
     flex: 1,

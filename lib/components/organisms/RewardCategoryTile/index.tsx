@@ -4,6 +4,7 @@ import { BaseTile } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardCategoryHeader } from './reward-category-header';
 import { RewardCategoryMedia } from './reward-category-media';
+import { View } from 'react-native';
 
 type RewardCategoryTileProps = {
   tile: Tile;
@@ -24,8 +25,10 @@ const RewardCategoryTileRoot = ({
 
   return (
     <BaseTile tile={tile}>
-      <RewardCategoryTile.Header />
-      <RewardCategoryTile.Media />
+      <View style={{ aspectRatio: 1 }}>
+        <RewardCategoryTile.Header />
+        <RewardCategoryTile.Media />
+      </View>
     </BaseTile>
   );
 };

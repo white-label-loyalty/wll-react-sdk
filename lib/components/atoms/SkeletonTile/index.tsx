@@ -70,7 +70,6 @@ const SkeletonTile = ({ style }: SkeletonTileProps): React.ReactElement => {
 
 const styles = StyleSheet.create({
   container: {
-    aspectRatio: 1,
     overflow: 'hidden',
   },
 });
