@@ -31,7 +31,9 @@ const isArtworkOnly = (configuration?: ContentTileConfig): boolean => {
  * @param {Tile} props.tile - The tile data to render
  * @returns React.ReactElement or null if tile is inactive
  */
-const ContentTileRoot = ({ tile }: ContentTileProps): React.ReactElement | null => {
+const ContentTileRoot = ({
+  tile,
+}: ContentTileProps): React.ReactElement | null => {
   if (!tile || !tile.active || !tile.configuration) return null;
 
   const configuration = tile.configuration as ContentTileConfig;
@@ -41,16 +43,18 @@ const ContentTileRoot = ({ tile }: ContentTileProps): React.ReactElement | null 
   return (
     <BaseTile tile={tile}>
       <ContentTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
-      <Layout
-        justify={hasArtwork ? 'start' : 'center'}
-        style={{ paddingBottom: 0, marginBottom: 0 }}
-      >
-        <Row justify="between" align="center" style={styles.header}>
-          <ContentTile.Title />
-          <ContentTile.Chevron />
-        </Row>
-        <ContentTile.Summary />
-      </Layout>
+      {!isArtworkOnly(configuration) && (
+        <Layout
+          justify={hasArtwork ? 'start' : 'center'}
+          style={{ paddingBottom: 0, marginBottom: 0 }}
+        >
+          <Row justify="between" align="center" style={styles.header}>
+            <ContentTile.Title />
+            <ContentTile.Chevron />
+          </Row>
+          <ContentTile.Summary />
+        </Layout>
+      )}
     </BaseTile>
   );
 };
