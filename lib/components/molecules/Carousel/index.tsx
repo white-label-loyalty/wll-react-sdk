@@ -166,7 +166,7 @@ const Carousel = ({
       <SectionHeader title={section.title} description={section.description} />
       <View
         ref={containerRef}
-        style={styles.container}
+        style={[styles.container, { direction: 'ltr' }]}
         onLayout={(event) => {
           const { width } = event.nativeEvent.layout;
           dispatch({ type: 'SET_CONTAINER_WIDTH', payload: width });
