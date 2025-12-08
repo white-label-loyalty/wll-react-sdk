@@ -1,3 +1,17 @@
+## [1.5.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.0...v1.5.1) (2025-12-08)
+
+
+### Bug Fixes
+
+* adjust date formatting in BadgeTile tests ([933ab47](https://github.com/white-label-loyalty/wll-react-sdk/commit/933ab4724dd3d9787b7bf9b31b32cb623f44b282))
+* make 2 rows default ([4924a8a](https://github.com/white-label-loyalty/wll-react-sdk/commit/4924a8ad03339db9baf1314037fe41758646ac49))
+* make xl size 20px ([8d4df1d](https://github.com/white-label-loyalty/wll-react-sdk/commit/8d4df1de2e72bfda2d82719f71f3ffa1fa8d9594))
+* type for locked reward ([dace718](https://github.com/white-label-loyalty/wll-react-sdk/commit/dace7180c5fe3f2371f7ab0e5ec103e3cc2933ca))
+* update content tile titles to 20px font size ([852c663](https://github.com/white-label-loyalty/wll-react-sdk/commit/852c663d8e4fcc581a1a0de745d4a465b86e1889))
+* **VenueTile:** update title font size to 20px ([9b3151a](https://github.com/white-label-loyalty/wll-react-sdk/commit/9b3151a5c4b3ba1826ecbb20ad4bf0120f002430))
+
+
+
 # [1.5.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.10...v1.5.0) (2025-11-24)
 
 
