@@ -1,3 +1,21 @@
+# [1.6.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.1...v1.6.0) (2025-12-08)
+
+
+### Bug Fixes
+
+* **Carousel:** remove RTL handling ([7c7b95e](https://github.com/white-label-loyalty/wll-react-sdk/commit/7c7b95ece6856e80ed9941ebcb50a54506c488c5))
+* **Carousel:** revert change ([dc12220](https://github.com/white-label-loyalty/wll-react-sdk/commit/dc122202bb133910fd89136b9f806ec301ed3022))
+* **Carousel:** update style to set direction to ltr for consistency ([fba3652](https://github.com/white-label-loyalty/wll-react-sdk/commit/fba3652423f7080ed980dc6b2a528dd42693ba1d))
+
+
+### Features
+
+* add support for Arabic language and adjust tile ordering for RTL ([5e05b1b](https://github.com/white-label-loyalty/wll-react-sdk/commit/5e05b1b93c18aec719e5da367781c29a226ae642))
+* **Carousel:** add explicit direction prop for RTL support ([7529c2a](https://github.com/white-label-loyalty/wll-react-sdk/commit/7529c2ab1629cf0952a4408de423d01f8a97f8d5))
+* **Carousel:** remove explicit direction prop and enhance RTL support ([3caab85](https://github.com/white-label-loyalty/wll-react-sdk/commit/3caab85a89fd54fa0447bb2074de67a2803e590c))
+
+
+
 ## [1.5.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.0...v1.5.1) (2025-12-08)
 
 
