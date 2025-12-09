@@ -24,7 +24,7 @@ export const FullFlex = ({
   ...rest
 }: FullFlexProps): React.ReactElement => {
   return (
-    <View style={[{ flex: 1 }, style]} {...rest}>
+    <View style={[{ flex: 1, direction: 'inherit' }, style]} {...rest}>
       {children}
     </View>
   );
