@@ -1,3 +1,35 @@
+# [1.6.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.1...v1.6.0) (2025-12-08)
+
+
+### Bug Fixes
+
+* **Carousel:** remove RTL handling ([7c7b95e](https://github.com/white-label-loyalty/wll-react-sdk/commit/7c7b95ece6856e80ed9941ebcb50a54506c488c5))
+* **Carousel:** revert change ([dc12220](https://github.com/white-label-loyalty/wll-react-sdk/commit/dc122202bb133910fd89136b9f806ec301ed3022))
+* **Carousel:** update style to set direction to ltr for consistency ([fba3652](https://github.com/white-label-loyalty/wll-react-sdk/commit/fba3652423f7080ed980dc6b2a528dd42693ba1d))
+
+
+### Features
+
+* add support for Arabic language and adjust tile ordering for RTL ([5e05b1b](https://github.com/white-label-loyalty/wll-react-sdk/commit/5e05b1b93c18aec719e5da367781c29a226ae642))
+* **Carousel:** add explicit direction prop for RTL support ([7529c2a](https://github.com/white-label-loyalty/wll-react-sdk/commit/7529c2ab1629cf0952a4408de423d01f8a97f8d5))
+* **Carousel:** remove explicit direction prop and enhance RTL support ([3caab85](https://github.com/white-label-loyalty/wll-react-sdk/commit/3caab85a89fd54fa0447bb2074de67a2803e590c))
+
+
+
+## [1.5.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.0...v1.5.1) (2025-12-08)
+
+
+### Bug Fixes
+
+* adjust date formatting in BadgeTile tests ([933ab47](https://github.com/white-label-loyalty/wll-react-sdk/commit/933ab4724dd3d9787b7bf9b31b32cb623f44b282))
+* make 2 rows default ([4924a8a](https://github.com/white-label-loyalty/wll-react-sdk/commit/4924a8ad03339db9baf1314037fe41758646ac49))
+* make xl size 20px ([8d4df1d](https://github.com/white-label-loyalty/wll-react-sdk/commit/8d4df1de2e72bfda2d82719f71f3ffa1fa8d9594))
+* type for locked reward ([dace718](https://github.com/white-label-loyalty/wll-react-sdk/commit/dace7180c5fe3f2371f7ab0e5ec103e3cc2933ca))
+* update content tile titles to 20px font size ([852c663](https://github.com/white-label-loyalty/wll-react-sdk/commit/852c663d8e4fcc581a1a0de745d4a465b86e1889))
+* **VenueTile:** update title font size to 20px ([9b3151a](https://github.com/white-label-loyalty/wll-react-sdk/commit/9b3151a5c4b3ba1826ecbb20ad4bf0120f002430))
+
+
+
 # [1.5.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.4.10...v1.5.0) (2025-11-24)
 
 

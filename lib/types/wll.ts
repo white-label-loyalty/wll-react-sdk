@@ -23,6 +23,7 @@ export class Reward {
   summary?: string;
   redemptionMessage?: string;
   visibilityCriteria?: string;
+  isLocked?: boolean;
 }
 
 export type RewardCategory = {
