@@ -45,7 +45,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
     </div>
     <div
       class="css-view-175oi2r"
-      style="flex: 1;"
+      style="flex: 1; direction: inherit;"
     >
       <h1
         aria-label="Summer Points Splash"
