@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { RewardTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
@@ -34,7 +35,9 @@ const isArtworkOnly = (configuration?: RewardTileConfig): boolean => {
  * @returns React.ReactElement or null if tile is inactive or not a full-height tile
  */
 
-const RewardTileRoot = ({ tile }: RewardTileProps): React.ReactElement | null => {
+const RewardTileRoot = ({
+  tile,
+}: RewardTileProps): React.ReactElement | null => {
   const styles = useRewardTileStyles();
 
   if (
@@ -46,18 +49,26 @@ const RewardTileRoot = ({ tile }: RewardTileProps): React.ReactElement | null =>
     return null;
 
   const configuration = tile.configuration as RewardTileConfig;
-
+  const artworkOnly = isArtworkOnly(configuration);
   return (
     <BaseTile tile={tile}>
-      <RewardTile.Media isArtworkOnly={isArtworkOnly(configuration)} />
-      <Layout>
-        <Row justify="between" align="center" style={styles.header}>
-          <RewardTile.Title />
-          <RewardTile.Chevron />
-        </Row>
-        <RewardTile.Summary />
-        <RewardTile.Points />
-      </Layout>
+      <RewardTile.Media isArtworkOnly={artworkOnly} />
+      {!artworkOnly && (
+        <Layout>
+          <Row justify="between" align="center" style={styles.header}>
+            <RewardTile.Title />
+            <RewardTile.Chevron />
+          </Row>
+          {/**
+           * Ensure text wrapping works in constrained layouts (e.g., 50% width tiles on mobile).
+           * React Native Web requires minWidth: 0 on flex children to allow shrink/wrap.
+           */}
+          <View style={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
+            <RewardTile.Summary />
+          </View>
+          <RewardTile.Points />
+        </Layout>
+      )}
     </BaseTile>
   );
 };

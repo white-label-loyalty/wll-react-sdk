@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import RewardTile from './index';
+import { View } from 'react-native';
 // @ts-ignore
 import rewardImage from '../../../assets/reward.png';
 import { createRewardTileMock } from '../../../mocks/tiles/rewardTile';
@@ -63,3 +64,18 @@ ArtworkOnlyLocked.args = {
     isLocked: true,
   }),
 };
+
+const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
+  <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+    <TileWrapper containerStyle={{ width: '50%' }}>
+      <RewardTile {...args} />
+    </TileWrapper>
+    <TileWrapper containerStyle={{ width: '50%' }}>
+      <RewardTile {...args}/>
+
+    </TileWrapper>
+  </View>
+);
+
+export const TwoPerRow = TwoPerRowTemplate.bind({});
+TwoPerRow.args = DefaultWithPoints.args;

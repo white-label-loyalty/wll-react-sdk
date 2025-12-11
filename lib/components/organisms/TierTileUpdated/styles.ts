@@ -8,7 +8,6 @@ export const useTierTileStyles = () => {
   const { theme } = useWllSdk();
   return StyleSheet.create({
     header: {
-      flexBasis: '50%',
       width: '100%',
       overflow: 'hidden',
       marginBottom: useResponsiveValue(

@@ -42,9 +42,22 @@ export const RewardTileMedia = ({
 
   if (!artworkUrl || !showArtwork) return null;
 
-  const containerStyle: ResponsiveViewStyle = {
-    flexBasis: isArtworkOnly ? '100%' : '50%',
-  };
+  // When artwork-only, the media should occupy the full tile height and compensate
+  // for any content layout that might be hidden. We therefore force the media
+  // container to flex and take the entire available height, removing default
+  // bottom margins and min-heights coming from styles.
+  const containerStyle: ResponsiveViewStyle = isArtworkOnly
+    ? {
+        flexBasis: '100%',
+        flex: 1,
+        height: '100%',
+        marginBottom: 0,
+        minHeight: 0,
+        aspectRatio: 1,
+      }
+    : {
+        flexBasis: '50%',
+      };
 
   return (
     <View

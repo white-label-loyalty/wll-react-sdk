@@ -17,7 +17,7 @@ exports[`<BannerTile  /> renders and matches snapshot 1`] = `
       style="width: 30%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-height-1pi2tsx r-objectFit-1t7uo4s r-position-u8s1d r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-minHeight-1r5jyh0 r-height-1pi2tsx r-objectFit-1t7uo4s r-position-u8s1d r-width-13qz1uu"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
