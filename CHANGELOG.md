@@ -1,3 +1,36 @@
+## [1.6.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.0...v1.6.1) (2025-12-15)
+
+
+### Bug Fixes
+
+* adjust font size for responsive design ([f3b1a55](https://github.com/white-label-loyalty/wll-react-sdk/commit/f3b1a5570f53dc8ed6fcb032430a23eed9574113))
+* allow for 2 rows instead of just one ([52459c0](https://github.com/white-label-loyalty/wll-react-sdk/commit/52459c05fcbd91f13bfaeb24d3c771d989a5686f))
+* **BannerTile, Carousel:** set direction to inherit for consistency ([4456b71](https://github.com/white-label-loyalty/wll-react-sdk/commit/4456b715074f85ea89acf64b474d4393d6d8bb02))
+* **BannerTile:** add aspectRatio class for improved layout consistency ([c5f1624](https://github.com/white-label-loyalty/wll-react-sdk/commit/c5f1624c100b6fca6458dd8e0f6c6c32bf881432))
+* **ContentTile:** conditionally render Layout for improved display of summary ([e10ff5a](https://github.com/white-label-loyalty/wll-react-sdk/commit/e10ff5aa4fdd30cc6660c52bf715becee68ada46))
+* **FullFlex:** set direction to inherit ([233d8e9](https://github.com/white-label-loyalty/wll-react-sdk/commit/233d8e91fd11f846d753b405028878c8031a3e59))
+* **Layout:** replace flex with flexGrow for improved layout behavior ([4e903ff](https://github.com/white-label-loyalty/wll-react-sdk/commit/4e903ffdf323a97cc95ae8e56a5bc9394d7908a7))
+* **Layout:** replace flex with flexGrow for improved layout behavior ([989aa65](https://github.com/white-label-loyalty/wll-react-sdk/commit/989aa65f326fbdeef665d9a3c9c6b68a2606790b))
+* remove aspectRatio property from tile style ([b9ce43a](https://github.com/white-label-loyalty/wll-react-sdk/commit/b9ce43a63cb43145903943a45545864236a8bb79))
+* remove unnecessary height properties ([f1add30](https://github.com/white-label-loyalty/wll-react-sdk/commit/f1add303a88b7e58369967a084fd14b9aec7d342))
+* remove unnecessary height properties from snapshot tests ([0a50e39](https://github.com/white-label-loyalty/wll-react-sdk/commit/0a50e391d018a0c65ffe4ded0edf4e8f9d25832c))
+* **RewardTile:** add aspectRatio back for banners ([fffaeeb](https://github.com/white-label-loyalty/wll-react-sdk/commit/fffaeebe7d6e423a6687dd331a872a7cb18e1632))
+* **RewardTile:** allow natural height for reward tiles with details ([de1dd94](https://github.com/white-label-loyalty/wll-react-sdk/commit/de1dd940689e9835a2bd088eeac0a7f55c87307b))
+* **RewardTile:** improve text wrapping in constrained layouts ([3984a43](https://github.com/white-label-loyalty/wll-react-sdk/commit/3984a43a063afa2998d6aa76f5f6ad8b27e5f474))
+* **RewardTilePoints:** add flex property to container for improved layout ([d34a0a9](https://github.com/white-label-loyalty/wll-react-sdk/commit/d34a0a9cddc5f27b512cb34bc96257d97b637af1))
+* **RewardTilePoints:** add flex property to container for improved layout ([dd1f592](https://github.com/white-label-loyalty/wll-react-sdk/commit/dd1f5925da41b43869a1812059b28f72aa4c6064))
+* **RewardTilePoints:** adjust margin style for improved layout ([0522904](https://github.com/white-label-loyalty/wll-react-sdk/commit/052290458f2c02621ccbada94b66c66bc42917cc))
+* **RewardTilePoints:** remove unnecessary flex property from styles ([63c77b5](https://github.com/white-label-loyalty/wll-react-sdk/commit/63c77b556a08ceb4752e49f7d2b194164a362790))
+* **RewardTilePoints:** replace aspectRatio with minHeight for image container ([c2487fa](https://github.com/white-label-loyalty/wll-react-sdk/commit/c2487fadfaff78e77a84084b79672d647c10940c))
+* **RewardTilePoints:** set minHeight for improved layout consistency ([525e398](https://github.com/white-label-loyalty/wll-react-sdk/commit/525e39887c8c0c00a7a3489ff4027586d07c3a00))
+* **RewardTilePoints:** update class names for improved styling in snapshot tests ([9a174fc](https://github.com/white-label-loyalty/wll-react-sdk/commit/9a174fc2b396655cab06048f02161826ab9416de))
+* **RewardTile:** remove aspectRatio from styles for improved layout flexibility ([d3365ec](https://github.com/white-label-loyalty/wll-react-sdk/commit/d3365ec107068c1b96bc0716349c24cd997fad3b))
+* **RewardTile:** revert wrong change ([a99e15b](https://github.com/white-label-loyalty/wll-react-sdk/commit/a99e15b4ea6796a359bb80e65aa56b36872cec89))
+* **RewardTile:** update tests ([ee5c70a](https://github.com/white-label-loyalty/wll-react-sdk/commit/ee5c70ac3aa3fdffb32a41d65b0a3f7995684280))
+* **Tiles:** remove aspectRatio class from various tile components for improved layout consistency ([5b80945](https://github.com/white-label-loyalty/wll-react-sdk/commit/5b80945488b35bbf367ac708291d7480f9947ab4))
+
+
+
 # [1.6.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.5.1...v1.6.0) (2025-12-08)
 
 
