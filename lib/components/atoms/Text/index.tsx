@@ -75,7 +75,7 @@ export const Text = ({
           color: theme.derivedSurfaceText[20],
           fontSize: useResponsiveValue(
             theme.sizes.md,
-            theme.sizes.xs,
+            theme.sizes.sm,
             isDesktop,
             isTablet
           ),

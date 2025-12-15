@@ -102,10 +102,6 @@ const styles = StyleSheet.create({
   skeleton: {
     overflow: 'hidden',
   },
-  square: {
-    width: 1000 / 4,
-    aspectRatio: 1,
-  },
 });
 
 export default Skeleton;

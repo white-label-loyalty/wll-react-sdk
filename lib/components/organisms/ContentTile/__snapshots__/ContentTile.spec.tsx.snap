@@ -4,7 +4,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
 <div>
   <article
     aria-label="Gold Tier Unlocked!"
-    class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+    class="css-view-175oi2r r-borderRadius-y47klf r-flex-13awgt0 r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
     role="article"
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
@@ -16,7 +16,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
       style="flex-basis: 50%;"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-bottom-jumn1c r-height-1dcj8od r-left-wwqw7s r-position-u8s1d r-right-dvzd6p r-top-3sxh79 r-width-7y7nrq"
+        class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-justifyContent-1777fci r-minHeight-1r5jyh0 r-position-bnwqim r-width-13qz1uu"
         style="background-color: rgba(57, 46, 215, 0.2);"
       >
         <div
@@ -43,7 +43,7 @@ exports[`<ContentTile /> renders and matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1h0z5md r-paddingInline-3o4zer"
+      class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingInline-3o4zer"
       style="padding-bottom: 0px; margin-bottom: 0px;"
     >
       <div

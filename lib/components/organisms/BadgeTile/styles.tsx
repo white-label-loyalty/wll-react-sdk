@@ -44,7 +44,6 @@ export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       fontWeight: 'bold',
     },
     header: {
-      flexBasis: '50%',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',

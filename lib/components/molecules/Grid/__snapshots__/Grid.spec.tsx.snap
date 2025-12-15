@@ -28,7 +28,7 @@ exports[`<Grid /> matches snapshot 1`] = `
     >
       <div
         class="css-view-175oi2r"
-        style="width: calc(50% - 8px); margin-bottom: 16px; height: auto; margin-right: 16px;"
+        style="width: calc(50% - 8px); margin-bottom: 16px; margin-right: 16px;"
       >
         <div
           class="css-view-175oi2r r-flex-13awgt0 r-width-13qz1uu"
@@ -39,12 +39,12 @@ exports[`<Grid /> matches snapshot 1`] = `
           >
             <article
               aria-label="Tile"
-              class="css-view-175oi2r r-aspectRatio-1ujkv8a r-borderRadius-y47klf r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
+              class="css-view-175oi2r r-borderRadius-y47klf r-flex-13awgt0 r-height-1pi2tsx r-overflow-1udh08x r-position-bnwqim r-width-13qz1uu"
               role="article"
               style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1habvwh r-flex-13awgt0 r-flexDirection-eqz5dr r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
+                class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1wtj0ep r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
               >
                 <div
                   aria-label="Badge title: Badge Title"
