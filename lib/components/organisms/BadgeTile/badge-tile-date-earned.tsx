@@ -17,7 +17,9 @@ import { useTileContext } from '../../atoms/BaseTile';
 export const BadgeTileDateEarned = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
-  if (!isContextValid(tileContext)) return null;
+  if (!isContextValid(tileContext)) {
+    return null;
+  }
 
   const {
     count,
