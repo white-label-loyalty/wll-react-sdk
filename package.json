@@ -13,6 +13,9 @@
   "engines": {
     "node": ">=20"
   },
+  "repository": {
+    "url": "https://github.com/white-label-loyalty/wll-react-sdk"
+  },
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "build:types": "rollup -c --bundleConfigAsCjs",
