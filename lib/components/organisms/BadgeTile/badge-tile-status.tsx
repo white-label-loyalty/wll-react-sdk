@@ -33,7 +33,6 @@ export const BadgeTileStatus = (): React.ReactElement | null => {
   return (
     <View
       style={styles.indicatorContainer}
-      accessible
       accessibilityLabel="badge"
       testID="badge-tile-status"
     >
