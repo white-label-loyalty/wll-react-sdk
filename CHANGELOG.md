@@ -1,3 +1,12 @@
+## [1.6.9](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.8...v1.6.9) (2025-12-16)
+
+
+### Bug Fixes
+
+* add repository url ([97bfc19](https://github.com/white-label-loyalty/wll-react-sdk/commit/97bfc197b84997ea93a48ffd88e1601771b4a925))
+
+
+
 ## [1.6.8](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.7...v1.6.8) (2025-12-16)
 
 
