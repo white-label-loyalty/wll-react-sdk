@@ -1,3 +1,13 @@
+## [1.6.4](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.3...v1.6.4) (2025-12-16)
+
+
+### Bug Fixes
+
+* **BadgeTileDescription:** update if statement ([3a8604c](https://github.com/white-label-loyalty/wll-react-sdk/commit/3a8604c894dafafd5e084dd66647cbb1790e250c))
+* **BadgeTileDescription:** update if statement ([f9166b3](https://github.com/white-label-loyalty/wll-react-sdk/commit/f9166b30218232e7f0f448075ddc8a90dd3490a0))
+
+
+
 ## [1.6.3](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.2...v1.6.3) (2025-12-15)
 
 
