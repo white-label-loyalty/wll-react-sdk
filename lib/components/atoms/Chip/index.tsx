@@ -44,7 +44,7 @@ const mapLiveRegion = (ariaLive: AriaLive = 'polite'): LiveRegionMapping => {
 const Chip = ({
   label,
   variant = StatusVariant.PRIMARY,
-  role = 'none',
+  role = 'text',
   ariaLive = 'polite',
   accessibilityLabel,
   testID,
