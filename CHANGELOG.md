@@ -1,3 +1,21 @@
+## [1.6.5](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.4...v1.6.5) (2025-12-16)
+
+
+### Bug Fixes
+
+* **BadgeTilestatus:** update accesibility label ([e652098](https://github.com/white-label-loyalty/wll-react-sdk/commit/e65209816e33e8988da33c8b9ab7b4b9254ebd3b))
+* **BadgeTilestatus:** update accesibility label ([2d60c54](https://github.com/white-label-loyalty/wll-react-sdk/commit/2d60c5483745f368fb2e885ebc618ae06bd8a51f))
+* **BadgeTilestatus:** update accesibility label ([678cb9c](https://github.com/white-label-loyalty/wll-react-sdk/commit/678cb9c47b10b2f12d2e3217d73ffcca86cde403))
+* **BadgeTilestatus:** update accesibility label ([4254ee1](https://github.com/white-label-loyalty/wll-react-sdk/commit/4254ee1c9e345d9d1a8461fe5f2f2a5528ebed2f))
+* **BadgeTilestatus:** update chip role ([90cd3d0](https://github.com/white-label-loyalty/wll-react-sdk/commit/90cd3d02560fef5ba8d282a3b59688a977ed3ae4))
+* **BadgeTilestatus:** update chip role ([93feef0](https://github.com/white-label-loyalty/wll-react-sdk/commit/93feef066a0f4364ce6c906f0f57b02f6558d178))
+* **BadgeTilestatus:** update chip role ([f4e2f4f](https://github.com/white-label-loyalty/wll-react-sdk/commit/f4e2f4f63c413441baf9206f565927cdc9b00d69))
+* **Chip:** update chip role ([c78ea96](https://github.com/white-label-loyalty/wll-react-sdk/commit/c78ea969c2803c997e630f9b280fb4a4e1652c67))
+* **version:** update permissions ([6eb950a](https://github.com/white-label-loyalty/wll-react-sdk/commit/6eb950aec07da11b731110add0c75e3e9b54c8e9))
+* **version:** update permissions ([21bea8c](https://github.com/white-label-loyalty/wll-react-sdk/commit/21bea8c3543e5b507a4e3c75741db6ba87742d40))
+
+
+
 ## [1.6.4](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.3...v1.6.4) (2025-12-16)
 
 
