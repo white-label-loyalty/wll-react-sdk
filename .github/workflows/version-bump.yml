@@ -61,7 +61,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          npm install -g conventional-changelog-cli
+          npm install -g npm@11.5.1 conventional-changelog-cli
 
       - name: Configure Git
         run: |
