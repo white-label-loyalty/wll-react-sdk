@@ -61,7 +61,6 @@ exports[`<Grid /> matches snapshot 1`] = `
                   </h1>
                 </div>
                 <div
-                  aria-label="Badge description: Badge Description"
                   class="css-view-175oi2r"
                   data-testid="badge-tile-description"
                   style="width: 100%; overflow-x: hidden; overflow-y: hidden;"
