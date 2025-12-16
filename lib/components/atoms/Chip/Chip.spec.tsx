@@ -15,7 +15,7 @@ describe('<Chip />', () => {
       .getComputedStyle(chip)
       .backgroundColor.replace(/\s/g, '');
 
-    expect(chip).toHaveAttribute('role', 'status');
+    expect(chip).toHaveAttribute('role', 'none');
     expect(chip).toHaveAttribute('aria-live', 'polite');
     expect(chip).toHaveAccessibleName('Active');
     expect(computedBackground).toBe(expectedBackground.replace(/\s/g, ''));
