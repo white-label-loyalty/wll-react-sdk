@@ -31,6 +31,7 @@ jobs:
       ))
     runs-on: ubuntu-latest
     permissions:
+      id-token: write  # Required for OIDC
       contents: write
 
     steps:
@@ -38,7 +39,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
           ref: main
 
       - name: Setup Node.js
@@ -119,8 +119,6 @@ jobs:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.version.outputs.version }}
           release_name: Release v${{ steps.version.outputs.version }}
@@ -136,5 +134,3 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
