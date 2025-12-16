@@ -17,7 +17,9 @@ export const BadgeTileStatus = (): React.ReactElement | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
 
-  if (!isContextValid(tileContext)) return null;
+  if (!isContextValid(tileContext)) {
+    return null;
+  }
 
   const { count, type } = tileContext.configuration as BadgeTileConfig;
 
