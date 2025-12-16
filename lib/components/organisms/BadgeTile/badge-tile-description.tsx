@@ -15,7 +15,9 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const width = useWindowDimensions().width;
 
-  if (!isContextValid(tileContext)) return null;
+  if (!isContextValid(tileContext)) {
+    return null;
+  }
 
   const { count, description, type } =
     tileContext.configuration as BadgeTileConfig;
