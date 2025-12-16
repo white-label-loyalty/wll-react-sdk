@@ -61,6 +61,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                   </h1>
                 </div>
                 <div
+                  aria-label="Badge description: Badge Description"
                   class="css-view-175oi2r"
                   data-testid="badge-tile-description"
                   style="width: 100%; overflow-x: hidden; overflow-y: hidden;"
@@ -82,7 +83,7 @@ exports[`<Grid /> matches snapshot 1`] = `
                   aria-live="polite"
                   class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-k200y r-borderRadius-sdzlij r-flexDirection-18u37iz r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-overflow-1udh08x r-paddingBlock-vuvdlw r-paddingInline-3o4zer"
                   data-testid="badge-tile-date-earned"
-                  role="status"
+                  role="presentation"
                   style="background-color: rgba(57, 46, 215, 0.1);"
                 >
                   <div

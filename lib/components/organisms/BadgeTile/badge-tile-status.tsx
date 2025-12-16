@@ -17,9 +17,7 @@ export const BadgeTileStatus = (): React.ReactElement | null => {
   const styles = useBadgeTileStyles();
   const tileContext = useTileContext();
 
-  if (!isContextValid(tileContext)) {
-    return null;
-  }
+  if (!isContextValid(tileContext)) return null;
 
   const { count, type } = tileContext.configuration as BadgeTileConfig;
 
@@ -28,19 +26,31 @@ export const BadgeTileStatus = (): React.ReactElement | null => {
   }
 
   const isLocked = count === 0;
-  // const statusLabel = isLocked ? 'Badge locked' : `Earned ${count} times`;
+  const statusLabel = isLocked ? 'Badge locked' : `Earned ${count} times`;
 
   return (
-    <View style={styles.indicatorContainer} testID="badge-tile-status">
+    <View
+      style={styles.indicatorContainer}
+      accessible
+      accessibilityLabel={statusLabel}
+      testID="badge-tile-status"
+    >
       {isLocked ? (
         <Icon
           name="LockKeyhole"
           testID="badge-tile-status-locked"
           color="#FFF"
           size={20}
+          accessibilityElementsHidden={true}
         />
       ) : (
-        <Text style={styles.countText}>{count}x</Text>
+        <Text
+          style={styles.countText}
+          accessibilityElementsHidden={true}
+          importantForAccessibility="no-hide-descendants"
+        >
+          {count}x
+        </Text>
       )}
     </View>
   );

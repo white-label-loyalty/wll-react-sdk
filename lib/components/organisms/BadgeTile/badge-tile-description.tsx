@@ -15,16 +15,12 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const width = useWindowDimensions().width;
 
-  if (!isContextValid(tileContext)) {
-    return null;
-  }
+  if (!isContextValid(tileContext)) return null;
 
   const { count, description, type } =
     tileContext.configuration as BadgeTileConfig;
 
-  if (!description) {
-    return null;
-  }
+  if (!description) return null;
 
   // For Latest type, hide description when count = 0
   // For Specific type, always show description
@@ -39,13 +35,21 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
 
   return (
     <View
+      accessible
+      accessibilityLabel={`Badge description: ${description}`}
       testID="badge-tile-description"
       style={{
         width: '100%',
         overflow: 'hidden',
       }}
     >
-      <Text variant="body" numberOfLines={numberOfLines} ellipsizeMode="tail">
+      <Text
+        variant="body"
+        numberOfLines={numberOfLines}
+        ellipsizeMode="tail"
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+      >
         {description}
       </Text>
     </View>
