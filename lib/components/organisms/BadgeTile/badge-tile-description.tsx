@@ -22,7 +22,9 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
   const { count, description, type } =
     tileContext.configuration as BadgeTileConfig;
 
-  if (!description) return null;
+  if (!description) {
+    return null;
+  }
 
   // For Latest type, hide description when count = 0
   // For Specific type, always show description
