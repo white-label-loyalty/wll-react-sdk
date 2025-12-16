@@ -39,21 +39,13 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
 
   return (
     <View
-      accessible
-      accessibilityLabel={`Badge description: ${description}`}
       testID="badge-tile-description"
       style={{
         width: '100%',
         overflow: 'hidden',
       }}
     >
-      <Text
-        variant="body"
-        numberOfLines={numberOfLines}
-        ellipsizeMode="tail"
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
-      >
+      <Text variant="body" numberOfLines={numberOfLines} ellipsizeMode="tail">
         {description}
       </Text>
     </View>

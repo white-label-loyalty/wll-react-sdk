@@ -31,27 +31,16 @@ export const BadgeTileStatus = (): React.ReactElement | null => {
   // const statusLabel = isLocked ? 'Badge locked' : `Earned ${count} times`;
 
   return (
-    <View
-      style={styles.indicatorContainer}
-      accessibilityLabel="badge"
-      testID="badge-tile-status"
-    >
+    <View style={styles.indicatorContainer} testID="badge-tile-status">
       {isLocked ? (
         <Icon
           name="LockKeyhole"
           testID="badge-tile-status-locked"
           color="#FFF"
           size={20}
-          accessibilityElementsHidden={true}
         />
       ) : (
-        <Text
-          style={styles.countText}
-          accessibilityElementsHidden={true}
-          importantForAccessibility="no-hide-descendants"
-        >
-          {count}x
-        </Text>
+        <Text style={styles.countText}>{count}x</Text>
       )}
     </View>
   );
