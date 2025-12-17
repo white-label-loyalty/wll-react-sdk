@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18nManager } from 'react-native';
 import { View, ViewProps, ViewStyle } from 'react-native';
 
 /**
@@ -24,7 +25,18 @@ export const FullFlex = ({
   ...rest
 }: FullFlexProps): React.ReactElement => {
   return (
-    <View style={[{ flex: 1, direction: 'inherit' }, style]} {...rest}>
+    <View
+      style={[
+        {
+          flex: 1,
+          // Set layout direction based on current locale.
+          // If the language is Arabic (RTL), use 'rtl', otherwise 'ltr'.
+          direction: I18nManager.isRTL ? 'rtl' : 'ltr',
+        },
+        style,
+      ]}
+      {...rest}
+    >
       {children}
     </View>
   );
