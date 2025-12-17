@@ -1,3 +1,12 @@
+## [1.6.13](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.12...v1.6.13) (2025-12-17)
+
+
+### Bug Fixes
+
+* adjust Artwork only media aspect ratio ([da2437b](https://github.com/white-label-loyalty/wll-react-sdk/commit/da2437b3901d15f576885be021012def03236a21))
+
+
+
 ## [1.6.12](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.11...v1.6.12) (2025-12-17)
 
 
