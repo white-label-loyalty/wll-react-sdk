@@ -1,3 +1,13 @@
+## [1.6.14](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.13...v1.6.14) (2025-12-17)
+
+
+### Bug Fixes
+
+* adjust badge tile message number of lines ([2c6a932](https://github.com/white-label-loyalty/wll-react-sdk/commit/2c6a932f3eb75d2dfc3afaed6076a2ca6f8e6945))
+* adjust badge tile message number of lines ([0ba4dd2](https://github.com/white-label-loyalty/wll-react-sdk/commit/0ba4dd254962f57cd3a7c58eb6fff17709eb5b1b))
+
+
+
 ## [1.6.13](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.12...v1.6.13) (2025-12-17)
 
 
