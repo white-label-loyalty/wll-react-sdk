@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
 
 /**
  * Props for the FullFlex component.
@@ -23,8 +24,23 @@ export const FullFlex = ({
   style,
   ...rest
 }: FullFlexProps): React.ReactElement => {
+  const isRTL =
+    IS_WEB &&
+    typeof document !== 'undefined' &&
+    document.documentElement.dir === 'rtl';
+
   return (
-    <View style={[{ flex: 1, direction: 'inherit' }, style]} {...rest}>
+    <View
+      style={[
+        {
+          flex: 1,
+          // If the language is Arabic (RTL), use 'rtl', otherwise 'ltr'.
+          direction: isRTL ? 'rtl' : 'ltr',
+        },
+        style,
+      ]}
+      {...rest}
+    >
       {children}
     </View>
   );
