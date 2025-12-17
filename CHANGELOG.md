@@ -1,3 +1,12 @@
+## [1.6.11](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.10...v1.6.11) (2025-12-17)
+
+
+### Bug Fixes
+
+* upgrade npm before determining version ([22621b3](https://github.com/white-label-loyalty/wll-react-sdk/commit/22621b36543998f9d1808a13f60ea5f7a2075a1e))
+
+
+
 ## [1.6.10](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.9...v1.6.10) (2025-12-17)
 
 
