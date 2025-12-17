@@ -1,3 +1,14 @@
+## [1.6.12](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.11...v1.6.12) (2025-12-17)
+
+
+### Bug Fixes
+
+* adjust direction based on locale ([6911908](https://github.com/white-label-loyalty/wll-react-sdk/commit/6911908984ad6527b5ad7e1ce595c19ddb6dd8af))
+* adjust direction based on locale ([13a57d1](https://github.com/white-label-loyalty/wll-react-sdk/commit/13a57d1c834b49fe97d94a57665a4e7a4b4fc221))
+* adjust direction based on locale ([8ec8315](https://github.com/white-label-loyalty/wll-react-sdk/commit/8ec831515a99d75326a9a0d484feaf42d9290bbd))
+
+
+
 ## [1.6.11](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.10...v1.6.11) (2025-12-17)
 
 
