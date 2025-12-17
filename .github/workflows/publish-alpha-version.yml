@@ -1,0 +1,71 @@
+name: Publish Alpha Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+      - run: yarn
+      - run: yarn test
+      - run: yarn build
+  publish-alpha:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - name: Determine version
+        id: version
+        run: |
+          # Get current version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+
+          # Get short SHA
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+
+          # Get timestamp for uniqueness
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
+          # Create alpha version: version-alpha.timestamp.sha
+          ALPHA_VERSION="${CURRENT_VERSION}-alpha.${TIMESTAMP}.${SHORT_SHA}"
+
+          echo "alpha_version=$ALPHA_VERSION" >> $GITHUB_OUTPUT
+          echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+
+          echo "📦 Alpha version: $ALPHA_VERSION"
+
+      - name: Update package.json with alpha version
+        run: |
+          npm version ${{ steps.version.outputs.alpha_version }} --no-git-tag-version
+
+      - name: Publish alpha to NPM
+        run: npm publish --access public --tag alpha
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Output summary
+        run: |
+          echo "## 🎉 Alpha Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Package:** @wlloyalty/wll-react-sdk" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.alpha_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ steps.version.outputs.branch_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** alpha" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Install" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm install @wlloyalty/wll-react-sdk@${{ steps.version.outputs.alpha_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
