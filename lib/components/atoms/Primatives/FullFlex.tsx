@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
+import { IS_WEB } from '../../../constants/device';
 
 /**
  * Props for the FullFlex component.
@@ -24,7 +25,9 @@ export const FullFlex = ({
   ...rest
 }: FullFlexProps): React.ReactElement => {
   const isRTL =
-    typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
+    IS_WEB &&
+    typeof document !== 'undefined' &&
+    document.documentElement.dir === 'rtl';
 
   return (
     <View

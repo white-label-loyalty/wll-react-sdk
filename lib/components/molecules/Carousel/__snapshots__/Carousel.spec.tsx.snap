@@ -50,7 +50,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
               >
                 <div
                   class="css-view-175oi2r"
-                  style="flex: 1; direction: inherit;"
+                  style="flex: 1; direction: ltr;"
                 >
                   <h1
                     aria-label="Second Banner"
@@ -89,7 +89,7 @@ exports[`<Carousel /> matches snapshot 1`] = `
               >
                 <div
                   class="css-view-175oi2r"
-                  style="flex: 1; direction: inherit;"
+                  style="flex: 1; direction: ltr;"
                 >
                   <h1
                     aria-label="First Banner"
