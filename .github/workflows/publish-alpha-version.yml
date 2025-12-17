@@ -18,6 +18,7 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: read
 
     steps:
@@ -53,8 +54,6 @@ jobs:
 
       - name: Publish alpha to NPM
         run: npm publish --access public --tag alpha
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Output summary
         run: |
