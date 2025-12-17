@@ -1,3 +1,12 @@
+## [1.6.10](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.9...v1.6.10) (2025-12-17)
+
+
+### Bug Fixes
+
+* use id tokens for publishing ([d95f89a](https://github.com/white-label-loyalty/wll-react-sdk/commit/d95f89a069a1383404abe3894ae04c7993700aa7))
+
+
+
 ## [1.6.9](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.8...v1.6.9) (2025-12-16)
 
 
