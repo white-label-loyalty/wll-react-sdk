@@ -1,6 +1,6 @@
 name: Version and Release
 
-run-name: ${{ github.event.inputs.release_type == 'alpha' && '🧪 Publish Alpha Version' || '🚀 Version and Release' }}
+run-name: ${{ github.event.inputs.release_type == 'alpha' && format('🧪 Publish Alpha Version ({0})', github.ref_name) || '🚀 Version and Release' }}
 
 on:
   workflow_dispatch:
