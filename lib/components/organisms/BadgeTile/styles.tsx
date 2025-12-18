@@ -44,6 +44,8 @@ export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       fontWeight: 'bold',
     },
     header: {
+      width: '100%',
+      flexBasis: '50%',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
@@ -57,6 +59,7 @@ export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
     image: {
       width: '100%',
       height: '100%',
+      objectFit: 'cover',
     },
     titleText: {
       marginBottom: useResponsiveValue(
