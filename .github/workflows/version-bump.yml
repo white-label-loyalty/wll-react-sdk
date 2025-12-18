@@ -1,6 +1,11 @@
 name: Version and Release
 
-run-name: ${{ github.event.inputs.release_type == 'alpha' && format('🧪 Publish Alpha Version ({0})', github.ref_name) || '🚀 Version and Release' }}
+run-name: >-
+  ${{
+    github.event.inputs.release_type == 'alpha' && format('🧪 Publish Alpha Version ({0})', github.ref_name) ||
+    github.event.inputs.release_type == 'cleanup_alphas' && '🧹 Cleanup Alphas' ||
+    '🚀 Version and Release'
+  }}
 
 on:
   workflow_dispatch:
@@ -13,8 +18,9 @@ on:
         options:
           - release
           - alpha
+          - cleanup_alphas
       bump_type:
-        description: 'Version bump type (ignored for alpha)'
+        description: 'Version bump type (ignored for alpha/cleanup)'
         required: true
         default: 'patch'
         type: choice
@@ -194,3 +200,84 @@ jobs:
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
           echo "npm install @wlloyalty/wll-react-sdk@${{ steps.version.outputs.alpha_version }}" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  cleanup-alphas:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.release_type == 'cleanup_alphas'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Upgrade npm
+        run: npm install -g npm@11.5.1
+
+      - name: Remove old alpha versions
+        run: |
+          PACKAGE_NAME="@wlloyalty/wll-react-sdk"
+
+          echo "🧹 Cleaning up alpha versions..."
+
+          # Get all versions and filter for alpha versions
+          ALL_VERSIONS=$(npm view "$PACKAGE_NAME" versions --json 2>/dev/null || echo "[]")
+
+          # Extract alpha versions
+          ALPHA_VERSIONS=$(echo "$ALL_VERSIONS" | node -e "
+            const versions = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+            const alphas = (Array.isArray(versions) ? versions : [versions])
+              .filter(v => v.includes('-alpha.'));
+            alphas.forEach(v => console.log(v));
+          ")
+
+          if [ -z "$ALPHA_VERSIONS" ]; then
+            echo "No alpha versions found."
+            echo "## ℹ️ No Alpha Versions Found" >> $GITHUB_STEP_SUMMARY
+            echo "There are no alpha versions to remove." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Found alpha versions to remove:"
+            echo "$ALPHA_VERSIONS"
+
+            REMOVED_COUNT=0
+            FAILED_COUNT=0
+            REMOVED_LIST=""
+            FAILED_LIST=""
+
+            for VERSION in $ALPHA_VERSIONS; do
+              echo "Unpublishing $PACKAGE_NAME@$VERSION..."
+              if npm unpublish "$PACKAGE_NAME@$VERSION" 2>/dev/null; then
+                echo "✅ Removed $VERSION"
+                REMOVED_COUNT=$((REMOVED_COUNT + 1))
+                REMOVED_LIST="$REMOVED_LIST\n- $VERSION"
+              else
+                echo "⚠️ Could not remove $VERSION (may be older than 72 hours)"
+                FAILED_COUNT=$((FAILED_COUNT + 1))
+                FAILED_LIST="$FAILED_LIST\n- $VERSION"
+              fi
+            done
+
+            echo ""
+            echo "Summary: Removed $REMOVED_COUNT versions, $FAILED_COUNT failed (likely >72h old)"
+
+            # Write summary
+            echo "## 🧹 Alpha Cleanup Complete" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Removed:** $REMOVED_COUNT versions" >> $GITHUB_STEP_SUMMARY
+            echo "**Failed:** $FAILED_COUNT versions (likely >72h old)" >> $GITHUB_STEP_SUMMARY
+            if [ -n "$REMOVED_LIST" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### Removed Versions" >> $GITHUB_STEP_SUMMARY
+              echo -e "$REMOVED_LIST" >> $GITHUB_STEP_SUMMARY
+            fi
+            if [ -n "$FAILED_LIST" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### Failed to Remove (>72h old)" >> $GITHUB_STEP_SUMMARY
+              echo -e "$FAILED_LIST" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
