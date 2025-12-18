@@ -50,10 +50,8 @@ const TileContainer = ({ tiles }: TileContainerProps): React.ReactElement => {
           <View
             key={tile.id}
             style={[
-              {
-                width: '100%',
-                ...(isHalfHeight ? { flex: 0.5 } : { flex: 1 }),
-              },
+              styles.tileWrapper,
+              isHalfHeight && styles.halfHeightTile,
               index > 0 && {
                 marginTop: allHalfHeight ? halfHeightGap : GRID_GAP,
               },
