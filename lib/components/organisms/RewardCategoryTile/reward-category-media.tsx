@@ -14,7 +14,7 @@ import { useRewardCategoryTileStyles } from './styles';
 export const RewardCategoryMedia = (): React.ReactElement | null => {
   const tileContext = useTileContext();
 
-  const styles = useRewardCategoryTileStyles(tileContext?.tileHeight);
+  const styles = useRewardCategoryTileStyles();
 
   if (!isContextValid(tileContext)) return null;
 
