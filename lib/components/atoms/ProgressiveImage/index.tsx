@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import {
   Animated,
   ImageSourcePropType,
@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
+import { TileHeight } from '../../../types/tile';
 import { desaturateColor } from '../../../utils/themeHelpers';
+import { TileContext } from '../BaseTile';
 
 type ProgressiveImageProps = {
   source: ImageSourcePropType;
@@ -27,6 +29,9 @@ const ProgressiveImage = ({
 }: ProgressiveImageProps): React.ReactElement => {
   const imageAnimated = useRef(new Animated.Value(0)).current;
   const { theme } = useWllSdk();
+  const tileContext = useContext(TileContext);
+
+  const isHalfHeight = tileContext?.tileHeight === TileHeight.Half;
 
   const onImageLoad = (): void => {
     requestAnimationFrame(() => {
@@ -64,7 +69,14 @@ const ProgressiveImage = ({
   );
 
   return (
-    <View style={[styles.container, style, { backgroundColor }]}>
+    <View
+      style={[
+        styles.container,
+        isHalfHeight && { minHeight: 0 },
+        style,
+        { backgroundColor },
+      ]}
+    >
       {/* Placeholder that fades out as the main image loads */}
       <Animated.View
         style={[

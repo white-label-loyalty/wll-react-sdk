@@ -4,17 +4,24 @@ import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 import { getDirectionalMargin } from '../../../utils/styling';
 
+import { TileHeight } from '../../../types/tile';
+
 /**
  * Custom hook that returns the styles for the ContentTile component.
  * Applies responsive styling based on the current device.
  *
+ * @param hasArtwork - Whether the tile has artwork
+ * @param tileHeight - The height of the tile
  * @returns StyleSheet styles for the ContentTile component
  */
 export const useContentTileStyles = (
-  hasArtwork = false
+  hasArtwork = false,
+  tileHeight?: TileHeight
 ): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
+
+  const isHalfHeight = tileHeight === TileHeight.Half;
 
   const getHeaderStyle = (hasArtwork: boolean): ViewStyle => ({
     width: '100%',
@@ -41,7 +48,8 @@ export const useContentTileStyles = (
       overflow: 'hidden',
     },
     image: {
-      resizeMode: 'cover',
+      resizeMode: isHalfHeight ? 'contain' : 'cover',
+      objectFit: isHalfHeight ? 'contain' : 'cover',
     },
     content: {
       paddingHorizontal: useResponsiveValue(
