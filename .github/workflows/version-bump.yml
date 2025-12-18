@@ -1,10 +1,20 @@
 name: Version and Release
 
+run-name: ${{ github.event.inputs.release_type == 'alpha' && '🧪 Publish Alpha Version' || '🚀 Version and Release' }}
+
 on:
   workflow_dispatch:
     inputs:
+      release_type:
+        description: 'Release type'
+        required: true
+        default: 'release'
+        type: choice
+        options:
+          - release
+          - alpha
       bump_type:
-        description: 'Version bump type'
+        description: 'Version bump type (ignored for alpha)'
         required: true
         default: 'patch'
         type: choice
@@ -22,7 +32,7 @@ on:
 jobs:
   version-and-release:
     if: |
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_type == 'release') ||
       (github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main' && (
         contains(github.event.workflow_run.head_commit.message, 'feat:') ||
@@ -31,7 +41,7 @@ jobs:
       ))
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC
+      id-token: write # Required for OIDC
       contents: write
 
     steps:
@@ -136,3 +146,51 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish --access public
+
+  publish-alpha:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.release_type == 'alpha'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: yarn test
+      - run: yarn build
+
+      - name: Upgrade npm
+        run: npm install -g npm@11.5.1
+
+      - name: Determine version
+        id: version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          ALPHA_VERSION="${CURRENT_VERSION}-alpha.${TIMESTAMP}.${SHORT_SHA}"
+          echo "alpha_version=$ALPHA_VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Alpha version: $ALPHA_VERSION"
+
+      - name: Update package.json with alpha version
+        run: npm version ${{ steps.version.outputs.alpha_version }} --no-git-tag-version
+
+      - name: Publish alpha to NPM
+        run: npm publish --access public --tag alpha
+
+      - name: Output summary
+        run: |
+          echo "## 🎉 Alpha Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.alpha_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** alpha" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Install" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm install @wlloyalty/wll-react-sdk@${{ steps.version.outputs.alpha_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
