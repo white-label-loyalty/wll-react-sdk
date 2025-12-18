@@ -27,7 +27,7 @@ exports[`<VenueTile /> renders and matches snapshot 1`] = `
         />
         <div
           aria-label="Venue image for The Spicy Lobster House"
-          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu"
           role="img"
           style="opacity: 0;"
         >

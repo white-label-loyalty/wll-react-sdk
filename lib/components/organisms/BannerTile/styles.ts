@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
-import { getDirectionalMargin } from '../../../utils/styling';
 
 /**
  * Custom hook that returns the styles for the BannerTile component.
@@ -23,13 +22,11 @@ export const useBannerTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       aspectRatio: 1,
       position: 'relative',
       overflow: 'hidden',
-      ...getDirectionalMargin(
-        useResponsiveValue(
-          theme.sizes.xxl,
-          theme.sizes.xxs,
-          isDesktop,
-          isTablet
-        )
+      marginRight: useResponsiveValue(
+        theme.sizes.xxl,
+        theme.sizes.xxs,
+        isDesktop,
+        isTablet
       ),
       maxHeight: useResponsiveValue(253, 120, isDesktop, isTablet),
       minHeight: 120,

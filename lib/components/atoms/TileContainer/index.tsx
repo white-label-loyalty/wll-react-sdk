@@ -41,7 +41,10 @@ const TileContainer = ({ tiles }: TileContainerProps): React.ReactElement => {
   const halfHeightGap = allHalfHeight ? GRID_GAP / 2 : GRID_GAP;
 
   return (
-    <View style={styles.container} testID="tile-container">
+    <View
+      style={[styles.container, allHalfHeight && { aspectRatio: 1 }]}
+      testID="tile-container"
+    >
       {tiles.map((tile, index) => {
         const TileComponent = TILE_COMPONENTS[tile.type!];
         const isHalfHeight = tile.tileHeight === TileHeight.Half;

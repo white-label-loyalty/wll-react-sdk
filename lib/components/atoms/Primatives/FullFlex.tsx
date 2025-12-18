@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
 import { IS_WEB } from '../../../constants/device';
+import { useResponsiveValue } from '../../../utils/responsiveHelper';
+import { useResponsive } from '../../../hooks/useResponsive';
+import { useWllSdk } from '../../../context/WllSdkContext';
 
 /**
  * Props for the FullFlex component.
@@ -24,6 +27,9 @@ export const FullFlex = ({
   style,
   ...rest
 }: FullFlexProps): React.ReactElement => {
+  const { isDesktop, isTablet } = useResponsive();
+  const { theme } = useWllSdk();
+
   const isRTL =
     IS_WEB &&
     typeof document !== 'undefined' &&
@@ -36,6 +42,14 @@ export const FullFlex = ({
           flex: 1,
           // If the language is Arabic (RTL), use 'rtl', otherwise 'ltr'.
           direction: isRTL ? 'rtl' : 'ltr',
+          ...(isRTL && {
+            marginRight: useResponsiveValue(
+              theme.sizes.xxl,
+              theme.sizes.xxs,
+              isDesktop,
+              isTablet
+            ),
+          }),
         },
         style,
       ]}

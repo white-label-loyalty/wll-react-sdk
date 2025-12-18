@@ -33,7 +33,6 @@ export const ContentTileMedia = ({
 
   const containerStyle: ResponsiveViewStyle = {
     flexBasis: isArtworkOnly ? '100%' : '50%',
-    ...(isArtworkOnly && { aspectRatio: 1 }),
   };
 
   return (
