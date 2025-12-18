@@ -197,15 +197,12 @@ MixedHeights.args = {
       {
         tileHeight: TileHeight.Half,
         active: true,
-        type: TileType.RewardCategory,
+        type: TileType.Content,
         configuration: {
-          showName: true,
-          rewardCategoryId: 'reward-category-1',
-          name: 'Food & Drink',
           artworkUrl:
             'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
         },
-        id: 'reward-category-tile-1',
+        id: 'content-tile-1',
         createdAt: '2024-11-11T16:17:23.784Z',
         updatedAt: '2024-11-11T16:17:23.784Z',
         priority: 5,
@@ -213,11 +210,10 @@ MixedHeights.args = {
       {
         tileHeight: TileHeight.Half,
         active: true,
-        type: TileType.RewardCategory,
+        type: TileType.Content,
         configuration: {
           showName: true,
-          rewardCategoryId: 'reward-category-2',
-          name: 'Exclusive Access',
+
           artworkUrl:
             'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
         },
