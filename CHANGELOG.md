@@ -1,3 +1,31 @@
+## [1.6.15](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.14...v1.6.15) (2025-12-18)
+
+
+### Bug Fixes
+
+* show branch name along with alpha ([cca85de](https://github.com/white-label-loyalty/wll-react-sdk/commit/cca85dee91fd970b6778c3d217727b9b7059948f))
+
+
+
+## [1.6.14](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.13...v1.6.14) (2025-12-17)
+
+
+### Bug Fixes
+
+* adjust badge tile message number of lines ([2c6a932](https://github.com/white-label-loyalty/wll-react-sdk/commit/2c6a932f3eb75d2dfc3afaed6076a2ca6f8e6945))
+* adjust badge tile message number of lines ([0ba4dd2](https://github.com/white-label-loyalty/wll-react-sdk/commit/0ba4dd254962f57cd3a7c58eb6fff17709eb5b1b))
+
+
+
+## [1.6.13](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.12...v1.6.13) (2025-12-17)
+
+
+### Bug Fixes
+
+* adjust Artwork only media aspect ratio ([da2437b](https://github.com/white-label-loyalty/wll-react-sdk/commit/da2437b3901d15f576885be021012def03236a21))
+
+
+
 ## [1.6.12](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.11...v1.6.12) (2025-12-17)
 
 
