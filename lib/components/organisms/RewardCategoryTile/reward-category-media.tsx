@@ -12,9 +12,9 @@ import { useRewardCategoryTileStyles } from './styles';
  */
 
 export const RewardCategoryMedia = (): React.ReactElement | null => {
-  const styles = useRewardCategoryTileStyles();
-
   const tileContext = useTileContext();
+
+  const styles = useRewardCategoryTileStyles(tileContext?.tileHeight);
 
   if (!isContextValid(tileContext)) return null;
 

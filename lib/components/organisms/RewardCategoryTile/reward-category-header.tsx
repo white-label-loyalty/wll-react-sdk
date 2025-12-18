@@ -14,10 +14,9 @@ import { useRewardCategoryTileStyles } from './styles';
  */
 
 export const RewardCategoryHeader = (): React.ReactElement | null => {
-  const styles = useRewardCategoryTileStyles();
-  const { theme } = useWllSdk();
-
   const tileContext = useTileContext();
+  const styles = useRewardCategoryTileStyles(tileContext?.tileHeight);
+  const { theme } = useWllSdk();
 
   if (!isContextValid(tileContext)) return null;
 

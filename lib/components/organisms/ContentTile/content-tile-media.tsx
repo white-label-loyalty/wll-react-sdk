@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { ContentTileConfig } from '../../../types/tile';
+import { ContentTileConfig, TileHeight } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -33,7 +33,9 @@ export const ContentTileMedia = ({
 
   const containerStyle: ResponsiveViewStyle = {
     flexBasis: isArtworkOnly ? '100%' : '50%',
-    ...(isArtworkOnly && { aspectRatio: 1 }),
+    ...(isArtworkOnly && {
+      aspectRatio: tileContext.tileHeight === TileHeight.Half ? 2 : 1,
+    }),
   };
 
   return (

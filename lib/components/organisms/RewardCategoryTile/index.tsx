@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tile } from '../../../types/tile';
+import { Tile, TileHeight } from '../../../types/tile';
 import { BaseTile } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardCategoryHeader } from './reward-category-header';
@@ -25,7 +25,9 @@ const RewardCategoryTileRoot = ({
 
   return (
     <BaseTile tile={tile}>
-      <View style={{ aspectRatio: 1 }}>
+      <View
+        style={{ aspectRatio: tile.tileHeight === TileHeight.Half ? 2 : 1 }}
+      >
         <RewardCategoryTile.Header />
         <RewardCategoryTile.Media />
       </View>

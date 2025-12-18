@@ -186,3 +186,47 @@ Default.args = {
     pointsMultiplier: 1,
   },
 };
+
+export const MixedHeights = Template.bind({});
+MixedHeights.args = {
+  section: {
+    ...Default.args!.section!,
+    id: '70a6b9e3-14c7-4b49-a363-b6dc2f16dae1',
+    name: 'Mixed Height Tiles',
+    tiles: [
+      {
+        tileHeight: TileHeight.Half,
+        active: true,
+        type: TileType.RewardCategory,
+        configuration: {
+          showName: true,
+          rewardCategoryId: 'reward-category-1',
+          name: 'Food & Drink',
+          artworkUrl:
+            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+        },
+        id: 'reward-category-tile-1',
+        createdAt: '2024-11-11T16:17:23.784Z',
+        updatedAt: '2024-11-11T16:17:23.784Z',
+        priority: 5,
+      },
+      {
+        tileHeight: TileHeight.Half,
+        active: true,
+        type: TileType.RewardCategory,
+        configuration: {
+          showName: true,
+          rewardCategoryId: 'reward-category-2',
+          name: 'Exclusive Access',
+          artworkUrl:
+            'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+        },
+        id: 'reward-category-tile-2',
+        createdAt: '2024-11-11T16:17:23.784Z',
+        updatedAt: '2024-11-11T16:17:23.784Z',
+        priority: 4,
+      },
+      ...Default.args!.section!.tiles.slice(2),
+    ],
+  } as any,
+};

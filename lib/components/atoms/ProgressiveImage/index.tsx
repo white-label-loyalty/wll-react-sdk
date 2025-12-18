@@ -5,7 +5,6 @@ import {
   StyleProp,
   StyleSheet,
   View,
-  ViewStyle,
 } from 'react-native';
 import { IS_WEB } from '../../../constants/device';
 import { useWllSdk } from '../../../context/WllSdkContext';
@@ -13,7 +12,7 @@ import { desaturateColor } from '../../../utils/themeHelpers';
 
 type ProgressiveImageProps = {
   source: ImageSourcePropType;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<any>;
   isDesaturated?: boolean;
   alt?: string;
   [key: string]: any;
@@ -49,6 +48,7 @@ const ProgressiveImage = ({
       source={source}
       style={[
         styles.imageOverlay,
+        style,
         {
           opacity: imageAnimated,
           ...(IS_WEB && {
@@ -92,6 +92,7 @@ const ProgressiveImage = ({
               source={source}
               style={[
                 styles.imageOverlay,
+                style,
                 {
                   opacity: imageAnimated.interpolate({
                     inputRange: [0, 1],

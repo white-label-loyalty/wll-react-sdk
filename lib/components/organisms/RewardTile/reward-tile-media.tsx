@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { RewardTileConfig } from '../../../types/tile';
+import { RewardTileConfig, TileHeight } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Icon, ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
@@ -53,10 +53,11 @@ export const RewardTileMedia = ({
         height: '100%',
         marginBottom: 0,
         minHeight: 0,
-        aspectRatio: 1,
+        aspectRatio: tileContext.tileHeight === TileHeight.Half ? 2 : 1,
       }
     : {
         flexBasis: '50%',
+        ...(tileContext.tileHeight === TileHeight.Half && { minHeight: 0 }),
       };
 
   return (

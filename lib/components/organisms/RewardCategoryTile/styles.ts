@@ -3,18 +3,23 @@ import { useWllSdk } from '../../../context/WllSdkContext';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
+import { TileHeight } from '../../../types/tile';
+
 /**
  * Custom hook that returns the styles for the RewardCategory component.
  * Applies responsive styling based on the current device.
  *
+ * @param tileHeight - The height of the tile
  * @returns StyleSheet styles for the RewardCategory component
  */
 
-export const useRewardCategoryTileStyles = (): ReturnType<
-  typeof StyleSheet.create
-> => {
+export const useRewardCategoryTileStyles = (
+  tileHeight?: TileHeight
+): ReturnType<typeof StyleSheet.create> => {
   const { isDesktop, isTablet } = useResponsive();
   const { theme } = useWllSdk();
+
+  const isHalfHeight = tileHeight === TileHeight.Half;
 
   return StyleSheet.create({
     header: {
@@ -47,7 +52,8 @@ export const useRewardCategoryTileStyles = (): ReturnType<
       position: 'absolute',
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
+      objectFit: isHalfHeight ? 'contain' : 'cover',
+      resizeMode: isHalfHeight ? 'contain' : 'cover',
     },
   });
 };
