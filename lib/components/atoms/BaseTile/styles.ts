@@ -8,6 +8,7 @@ import { useResponsiveValue } from '../../../utils/responsiveHelper';
 
 export const baseStyles = StyleSheet.create({
   imageContainer: {
+    width: '100%',
     position: 'relative',
   },
   container: {

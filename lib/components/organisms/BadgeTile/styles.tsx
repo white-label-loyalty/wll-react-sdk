@@ -58,7 +58,6 @@ export const useBadgeTileStyles = (): ReturnType<typeof StyleSheet.create> => {
     image: {
       width: '100%',
       height: '100%',
-      objectFit: 'cover',
     },
     titleText: {
       marginBottom: useResponsiveValue(

@@ -41,6 +41,7 @@ export const useContentTileStyles = (
       overflow: 'hidden',
     },
     image: {
+      width: '100%',
       resizeMode: 'cover',
     },
     content: {

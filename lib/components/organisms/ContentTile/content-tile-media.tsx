@@ -29,7 +29,7 @@ export const ContentTileMedia = ({
   if (!artworkUrl) return null;
 
   const hasArtwork = Boolean(artworkUrl);
-  const styles = useContentTileStyles(hasArtwork, tileContext.tileHeight);
+  const styles = useContentTileStyles(hasArtwork);
 
   const containerStyle: ResponsiveViewStyle = {
     flexBasis: isArtworkOnly ? '100%' : '50%',
