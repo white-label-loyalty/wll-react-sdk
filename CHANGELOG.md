@@ -1,3 +1,12 @@
+## [1.6.17](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.16...v1.6.17) (2025-12-19)
+
+
+### Bug Fixes
+
+* update web aspect ratio ([2227be5](https://github.com/white-label-loyalty/wll-react-sdk/commit/2227be5f173ace920a1dd43e8bb334c4b1fc056a))
+
+
+
 ## [1.6.16](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.15...v1.6.16) (2025-12-18)
 
 
