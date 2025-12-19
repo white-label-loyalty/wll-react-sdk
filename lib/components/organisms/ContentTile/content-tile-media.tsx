@@ -5,6 +5,7 @@ import { isContextValid } from '../../../utils/contextHelpers';
 import { ProgressiveImage } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
 import { useContentTileStyles } from './styles';
+import { IS_WEB } from '../../../constants/device';
 
 // We are using percentage values for flexBasis, which is valid in
 // React Native but TypeScript expects a number.
@@ -33,6 +34,7 @@ export const ContentTileMedia = ({
 
   const containerStyle: ResponsiveViewStyle = {
     flexBasis: isArtworkOnly ? '100%' : '50%',
+    ...(isArtworkOnly && IS_WEB && { aspectRatio: 1 }),
   };
 
   return (
