@@ -44,6 +44,7 @@ export const usePointsTileStyles = (
     },
     contentColumn: {
       flexGrow: 1,
+      paddingBottom: theme.sizes.xxs,
     },
     mediaColumn: {
       flexDirection: 'row',
@@ -75,7 +76,6 @@ export const usePointsTileStyles = (
     },
     imageContainer: {
       width: isFullSize ? '100%' : isDesktop ? 57 : 40,
-      height: isFullSize ? '50%' : isDesktop ? 57 : 40,
       marginBottom: isFullSize
         ? useResponsiveValue(
             theme.sizes.sm,
@@ -92,9 +92,9 @@ export const usePointsTileStyles = (
       overflow: 'hidden',
     } as ViewStyle,
     image: {
+      minHeight: 130,
       width: '100%',
       height: '100%',
-      position: 'absolute',
       resizeMode: 'contain',
     } as ImageStyle,
   });
