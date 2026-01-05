@@ -1,3 +1,14 @@
+## [1.6.18](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.17...v1.6.18) (2026-01-05)
+
+
+### Bug Fixes
+
+* add minimum height to PointsTile component for layout consistency ([2b7e17d](https://github.com/white-label-loyalty/wll-react-sdk/commit/2b7e17d9d493785ea633baf511b35e9060759e53))
+* add minimum height to PointsTile component for layout consistency ([4fb2c0b](https://github.com/white-label-loyalty/wll-react-sdk/commit/4fb2c0b3cf93e187eb9027e9d811fcdec3adbafb))
+* adjust padding and minimum height for layout consistency ([f0a6723](https://github.com/white-label-loyalty/wll-react-sdk/commit/f0a67233a5e1ee426047f95dddfa5b04b7d3cf50))
+
+
+
 ## [1.6.17](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.16...v1.6.17) (2025-12-19)
 
 
