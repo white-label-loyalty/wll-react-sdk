@@ -76,7 +76,6 @@ export const usePointsTileStyles = (
     },
     imageContainer: {
       width: isFullSize ? '100%' : isDesktop ? 57 : 40,
-      height: isFullSize ? '50%' : isDesktop ? 57 : 40,
       marginBottom: isFullSize
         ? useResponsiveValue(
             theme.sizes.sm,
