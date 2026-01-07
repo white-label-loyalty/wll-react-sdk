@@ -1,3 +1,12 @@
+## [1.6.19](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.18...v1.6.19) (2026-01-07)
+
+
+### Bug Fixes
+
+* adjust padding for badge tile description ([64df09c](https://github.com/white-label-loyalty/wll-react-sdk/commit/64df09c248c31f96f264d1ea5d2af7d107ccce7d))
+
+
+
 ## [1.6.18](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.17...v1.6.18) (2026-01-05)
 
 
