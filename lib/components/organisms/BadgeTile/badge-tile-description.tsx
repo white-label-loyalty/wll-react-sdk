@@ -4,6 +4,7 @@ import { BadgeTileConfig, BadgeTileType } from '../../../types/tile';
 import { isContextValid } from '../../../utils/contextHelpers';
 import { Text } from '../../atoms';
 import { useTileContext } from '../../atoms/BaseTile';
+import { useWllSdk } from '../../../context/WllSdkContext';
 
 /**
  * Renders the description for a Badge Tile.
@@ -14,6 +15,7 @@ import { useTileContext } from '../../atoms/BaseTile';
 export const BadgeTileDescription = (): React.ReactElement | null => {
   const tileContext = useTileContext();
   const width = useWindowDimensions().width;
+  const { theme } = useWllSdk();
 
   if (!isContextValid(tileContext)) return null;
 
@@ -41,6 +43,7 @@ export const BadgeTileDescription = (): React.ReactElement | null => {
       style={{
         width: '100%',
         overflow: 'hidden',
+        paddingBottom: theme.sizes.xxs,
       }}
     >
       <Text
