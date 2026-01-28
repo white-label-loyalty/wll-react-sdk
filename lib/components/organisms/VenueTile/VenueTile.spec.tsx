@@ -35,25 +35,65 @@ describe('<VenueTile /> Rendering States', () => {
 });
 
 describe('<VenueTile /> Media', () => {
-  it('renders correctly when artworkUrl and showArtwork are provided', () => {
+  it('renders correctly when artworkUrl is provided', () => {
     const { getByTestId } = render(<VenueTile tile={VenueTileMock} />);
     expect(getByTestId('venue-tile-media')).toBeInTheDocument();
   });
 
-  it('does not render when artworkUrl is missing', () => {
+  it('renders media container even when artworkUrl is missing', () => {
     const tileWithoutArtwork = createVenueTileMock({
       artworkUrl: undefined,
     });
-    const { queryByTestId } = render(<VenueTile tile={tileWithoutArtwork} />);
-    expect(queryByTestId('venue-tile-media')).not.toBeInTheDocument();
+    const { getByTestId } = render(<VenueTile tile={tileWithoutArtwork} />);
+    expect(getByTestId('venue-tile-media')).toBeInTheDocument();
+  });
+
+  it('renders pin overlay when media is present', () => {
+    const tileWithArtwork = createVenueTileMock({
+      artworkUrl: 'https://example.com/image.jpg',
+    });
+    const { getByTestId } = render(<VenueTile tile={tileWithArtwork} />);
+    expect(getByTestId('pin-overlay')).toBeInTheDocument();
+  });
+
+  it('renders centered pin icon when media is missing and not locked', () => {
+    const tileWithoutArtwork = createVenueTileMock({
+      artworkUrl: undefined,
+      isLocked: false,
+    });
+    const { getByTestId, queryByTestId } = render(
+      <VenueTile tile={tileWithoutArtwork} />
+    );
+    expect(getByTestId('lock-overlay')).toBeInTheDocument();
+    // The small pin overlay should NOT be there
+    expect(queryByTestId('pin-overlay')).not.toBeInTheDocument();
+  });
+
+  it('renders lock icon centered (and no pin overlay) when locked even if no media', () => {
+    const lockedTileWithoutArtwork = createVenueTileMock({
+      artworkUrl: undefined,
+      isLocked: true,
+    });
+    const { getByTestId } = render(
+      <VenueTile tile={lockedTileWithoutArtwork} />
+    );
+    expect(getByTestId('lock-overlay')).toBeInTheDocument();
+    expect(getByTestId('pin-overlay')).toBeInTheDocument();
+  });
+
+  it('renders lock overlay always', () => {
+    const unlockedTile = createVenueTileMock({ isLocked: false });
+    const { getByTestId } = render(<VenueTile tile={unlockedTile} />);
+    expect(getByTestId('lock-overlay')).toBeInTheDocument();
   });
 
   it('does not render when description is missing', () => {
     const tileWithoutDescription = createVenueTileMock({
       description: undefined,
     });
-    const { queryByTestId } = render(<VenueTile tile={tileWithoutDescription} />);
+    const { queryByTestId } = render(
+      <VenueTile tile={tileWithoutDescription} />
+    );
     expect(queryByTestId('venue-tile-description')).not.toBeInTheDocument();
   });
 });
-

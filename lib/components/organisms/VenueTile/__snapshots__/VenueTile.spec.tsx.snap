@@ -12,7 +12,7 @@ exports[`<VenueTile /> renders and matches snapshot 1`] = `
   >
     <div
       aria-label="Venue image for The Spicy Lobster House"
-      class="css-view-175oi2r r-marginBottom-6gpygo r-width-13qz1uu"
+      class="css-view-175oi2r r-marginBottom-6gpygo r-minHeight-1r5jyh0 r-overflow-1udh08x r-width-13qz1uu"
       data-testid="venue-tile-media"
       role="img"
       style="flex-basis: 50%;"
@@ -43,12 +43,47 @@ exports[`<VenueTile /> renders and matches snapshot 1`] = `
           />
         </div>
       </div>
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1ffj0ar r-bottom-1p0dtai r-justifyContent-1777fci r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-mhe3cw"
+        data-testid="lock-overlay"
+      >
+        <div
+          class="css-view-175oi2r r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-wc24c3"
+          data-testid="pin-overlay"
+        >
+          <div
+            class="css-view-175oi2r"
+          >
+            <svg
+              class="lucide lucide-map-pin"
+              fill="none"
+              height="24"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+              />
+              <circle
+                cx="12"
+                cy="10"
+                r="3"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-paddingTop-1h8ys4a r-width-13qz1uu"
       >
         <h1
           aria-label="Venue title: The Spicy Lobster House"
