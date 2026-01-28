@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.20...v1.7.0) (2026-01-28)
+
+
+### Features
+
+* rework venue tile ([7993b57](https://github.com/white-label-loyalty/wll-react-sdk/commit/7993b570935a26c04108b289e07728c4442d48bc))
+
+
+
 ## [1.6.20](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.19...v1.6.20) (2026-01-09)
 
 
