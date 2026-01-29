@@ -4,12 +4,12 @@
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![React Support](https://img.shields.io/badge/React-18.0.0+-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
-[![React Native Support](https://img.shields.io/badge/React%20Native-0.70--0.72-61DAFB?logo=react&logoColor=white)](https://reactnative.dev/)
+[![React Native Support](https://img.shields.io/badge/React%20Native-0.77.0+-61DAFB?logo=react&logoColor=white)](https://reactnative.dev/)
 
 ## ✨ Features
 
 - 🎨 **Flexible Theming** - Full control over visual styling with automatic color derivation and responsive design system
-- 🧩 **Composable Tiles** - Pre-built components for rewards, points, badges, and tiers that work together seamlessly
+- 🧩 **Composable Tiles** - Pre-built components for rewards, points, badges, banners, venues, and tiers that work together seamlessly
 - 🔌 **Platform Agnostic** - Bring your own navigation and network layer to integrate with any React application
 - 📱 **Mobile First** - Responsive components optimized for both mobile and desktop experiences
 - 🔒 **Secure by Design** - Built-in support for custom API integration through your own backend proxy
@@ -35,8 +35,8 @@ yarn add @wlloyalty/wll-react-sdk
 
 The SDK is compatible with:
 
-- React: ^18.0.0
-- React Native: >=0.70.0 <0.73.0
+- React: >=18.0.0
+- React Native: >=0.77.0
 
 Please ensure your project meets these version requirements for optimal compatibility.
 
@@ -140,7 +140,7 @@ The script will generate a new component with the proper file structure and boil
 
 MIT License - See [LICENSE](LICENSE) for more information.
 
-Copyright (c) 2024 WLL
+Copyright (c) 2026 WLL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
