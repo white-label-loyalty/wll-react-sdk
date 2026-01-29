@@ -9,7 +9,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
     style="background-color: rgb(248, 247, 252); flex-direction: column; justify-content: flex-start; align-items: stretch;"
   >
     <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-ku1wi2 r-position-bnwqim"
+      class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-ku1wi2 r-position-bnwqim r-width-13qz1uu"
       data-testid="badge-tile-media"
     >
       <div
@@ -22,7 +22,7 @@ exports[`<BadgeTile /> matches snapshot 1`] = `
         />
         <div
           aria-label="Badge Top Spender (not earned)"
-          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+          class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-height-1pi2tsx r-width-13qz1uu"
           role="img"
           style="opacity: 0;"
         >

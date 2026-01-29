@@ -14,11 +14,10 @@ type VenueTileProps = {
 };
 
 /**
- * The VenueTile component renders a tile with media, title, summary, points, and a chevron.
+ * The VenueTile component renders a tile with media, title, description, and a chevron.
  *
  * @param {VenueTileProps} props - Component props
  * @param {Tile} props.tile - The tile data to render
- * @returns React.ReactElement or null if tile is inactive or not a full-height tile
  */
 
 const VenueTileRoot = ({ tile }: VenueTileProps): React.ReactElement | null => {

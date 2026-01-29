@@ -58,7 +58,7 @@ exports[`<Section/> matches snapshot 1`] = `
                     />
                     <div
                       aria-label="Image for Welcome to Platinum Status"
-                      class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+                      class="css-view-175oi2r r-flexBasis-1mlwlqe r-overflow-1udh08x r-zIndex-417010 r-bottom-1p0dtai r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu"
                       role="img"
                       style="opacity: 0;"
                     >
@@ -76,8 +76,7 @@ exports[`<Section/> matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingInline-3o4zer"
-                  style="padding-bottom: 0px; margin-bottom: 0px;"
+                  class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-eqz5dr r-flexGrow-16y2uox r-justifyContent-1h0z5md r-paddingBottom-kzbkwu r-paddingInline-3o4zer"
                 >
                   <div
                     class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-marginTop-156q2ks r-width-13qz1uu"

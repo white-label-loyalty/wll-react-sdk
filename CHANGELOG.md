@@ -1,3 +1,69 @@
+# [1.7.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.20...v1.7.0) (2026-01-28)
+
+
+### Features
+
+* rework venue tile ([7993b57](https://github.com/white-label-loyalty/wll-react-sdk/commit/7993b570935a26c04108b289e07728c4442d48bc))
+
+
+
+## [1.6.20](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.19...v1.6.20) (2026-01-09)
+
+
+### Bug Fixes
+
+* adjust padding for badge tile description ([0ffba88](https://github.com/white-label-loyalty/wll-react-sdk/commit/0ffba88092a1bf40cb2d12a2b5bf7b9b7d895aee))
+
+
+
+## [1.6.19](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.18...v1.6.19) (2026-01-07)
+
+
+### Bug Fixes
+
+* adjust padding for badge tile description ([64df09c](https://github.com/white-label-loyalty/wll-react-sdk/commit/64df09c248c31f96f264d1ea5d2af7d107ccce7d))
+
+
+
+## [1.6.18](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.17...v1.6.18) (2026-01-05)
+
+
+### Bug Fixes
+
+* add minimum height to PointsTile component for layout consistency ([2b7e17d](https://github.com/white-label-loyalty/wll-react-sdk/commit/2b7e17d9d493785ea633baf511b35e9060759e53))
+* add minimum height to PointsTile component for layout consistency ([4fb2c0b](https://github.com/white-label-loyalty/wll-react-sdk/commit/4fb2c0b3cf93e187eb9027e9d811fcdec3adbafb))
+* adjust padding and minimum height for layout consistency ([f0a6723](https://github.com/white-label-loyalty/wll-react-sdk/commit/f0a67233a5e1ee426047f95dddfa5b04b7d3cf50))
+
+
+
+## [1.6.17](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.16...v1.6.17) (2025-12-19)
+
+
+### Bug Fixes
+
+* update web aspect ratio ([2227be5](https://github.com/white-label-loyalty/wll-react-sdk/commit/2227be5f173ace920a1dd43e8bb334c4b1fc056a))
+
+
+
+## [1.6.16](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.15...v1.6.16) (2025-12-18)
+
+
+### Bug Fixes
+
+* adjust banner margin ([8674011](https://github.com/white-label-loyalty/wll-react-sdk/commit/867401149813898475dd9db2e321c8e90ae677ce))
+* adjust banner margin ([f83c201](https://github.com/white-label-loyalty/wll-react-sdk/commit/f83c2019d9a9ec08a7d9e3274cd6b9671d662d2c))
+* adjust half tile images ([f3175e3](https://github.com/white-label-loyalty/wll-react-sdk/commit/f3175e3e4a6603948c76369fbaa50aaca6fabf67))
+* adjust images ([f8c56b5](https://github.com/white-label-loyalty/wll-react-sdk/commit/f8c56b5b4e78da481074537b29fd1ee085225b0b))
+* adjust images ([0295bc5](https://github.com/white-label-loyalty/wll-react-sdk/commit/0295bc586b89683b4daa77dfcb8b8c9d3cfc5077))
+* adjust tile container and badge tile styles ([477e824](https://github.com/white-label-loyalty/wll-react-sdk/commit/477e824f75ad7c94e167fb460994134acc8ece60))
+* adjust tile heights ([81511cd](https://github.com/white-label-loyalty/wll-react-sdk/commit/81511cdba493ae5f02d73ed43bd0e9502f6aaf62))
+* revert image resizing ([ec78170](https://github.com/white-label-loyalty/wll-react-sdk/commit/ec78170d7485e1bbbae0a9e755f78baf3ed65af9))
+* tile container styles ([56b3d59](https://github.com/white-label-loyalty/wll-react-sdk/commit/56b3d59e092fbbfe8f4897ca580cdbe9c0d5776d))
+* update tests ([d8be081](https://github.com/white-label-loyalty/wll-react-sdk/commit/d8be0818763d17b7f2b2057e747b71bae554018e))
+* use flexBasis only for mobile ([d28dc51](https://github.com/white-label-loyalty/wll-react-sdk/commit/d28dc51dfef5ec05318da4d2c380cd1fa72d9c10))
+
+
+
 ## [1.6.15](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.14...v1.6.15) (2025-12-18)
 
 ### Bug Fixes

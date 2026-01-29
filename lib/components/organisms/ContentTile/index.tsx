@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentTileConfig, Tile } from '../../../types/tile';
+import { ContentTileConfig, Tile, TileHeight } from '../../../types/tile';
 import { BaseTile, Layout, Row } from '../../atoms';
 import { withTileFetching } from '../../hoc/withTileFetching';
 import { ContentTileChevron } from './content-tile-chevron';
@@ -46,7 +46,10 @@ const ContentTileRoot = ({
       {!isArtworkOnly(configuration) && (
         <Layout
           justify={hasArtwork ? 'start' : 'center'}
-          style={{ paddingBottom: 0, marginBottom: 0 }}
+          style={{
+            ...(!hasArtwork &&
+              tile.tileHeight === TileHeight.Full && { aspectRatio: 1 }),
+          }}
         >
           <Row justify="between" align="center" style={styles.header}>
             <ContentTile.Title />

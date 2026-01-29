@@ -17,7 +17,7 @@ import { baseStyles, useBaseTileStyles } from './styles';
 /**
  * Context to provide the current tile to child components.
  */
-const TileContext = createContext<Tile | null>(null);
+export const TileContext = createContext<Tile | null>(null);
 
 /**
  * Custom hook to access the TileContext.

@@ -18,6 +18,8 @@ export const useVenueTileStyles = (): ReturnType<typeof StyleSheet.create> => {
   return StyleSheet.create({
     imageContainer: {
       width: '100%',
+      minHeight: 130,
+      overflow: 'hidden',
       marginBottom: useResponsiveValue(
         theme.sizes.sm,
         theme.sizes.xxs,
@@ -63,6 +65,7 @@ export const useVenueTileStyles = (): ReturnType<typeof StyleSheet.create> => {
     },
     header: {
       width: '100%',
+      paddingTop: theme.sizes.xxxs,
       marginBottom: useResponsiveValue(
         theme.sizes.xxs,
         theme.sizes.xxxs,
@@ -85,6 +88,12 @@ export const useVenueTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 10,
+    },
+    pinOverlay: {
+      position: 'absolute',
+      top: 8,
+      right: 8,
+      zIndex: 20,
     },
   });
 };
