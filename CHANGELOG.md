@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.7.0...v1.8.0) (2026-01-29)
+
+
+### Features
+
+* update sdk to support react native 0.81.4 ([532b227](https://github.com/white-label-loyalty/wll-react-sdk/commit/532b227a18fe7cc4bf923ead080eb60486f2a35b))
+
+
+
 # [1.7.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.6.20...v1.7.0) (2026-01-28)
 
 
