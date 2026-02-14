@@ -145,8 +145,38 @@ export const MockSectionProvider: React.FC<MockSectionProviderProps> = ({
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      const selectedTheme = context.globals.theme as ThemeName;
-      const theme = themes[selectedTheme] || defaultTheme;
+      const selectedTheme = context.globals.theme || 'default';
+      const selectedFont = context.globals.fontFamily || 'system';
+      const baseTheme = themes[selectedTheme as ThemeName] || defaultTheme;
+
+      const getFontFamily = (font: string) => {
+        switch (font) {
+          case 'Inter':
+            return '"Inter", sans-serif';
+          case 'Roboto':
+            return '"Roboto", sans-serif';
+          case 'Open Sans':
+            return '"Open Sans", sans-serif';
+          case 'Lato':
+            return '"Lato", sans-serif';
+          case 'Montserrat':
+            return '"Montserrat", sans-serif';
+          case 'Poppins':
+            return '"Poppins", sans-serif';
+          case 'Source Sans 3':
+            return '"Source Sans 3", sans-serif';
+          case 'Nunito':
+            return '"Nunito", sans-serif';
+          default:
+            return baseTheme.fontFamily;
+        }
+      };
+
+      // Create a new theme object with the selected font family
+      const theme = {
+        ...baseTheme,
+        fontFamily: getFontFamily(selectedFont),
+      };
 
       return (
         <WllSdkProvider theme={theme} config={sdkConfig}>
@@ -190,6 +220,25 @@ const preview: Preview = {
           { value: 'warm', title: 'Warm' },
           { value: 'forest', title: 'Forest' },
           { value: 'sunset', title: 'Sunset' },
+        ],
+      },
+    },
+    fontFamily: {
+      name: 'Font Family',
+      description: 'Global font family for all stories',
+      defaultValue: 'system',
+      toolbar: {
+        icon: 'book',
+        items: [
+          { value: 'system', title: 'System Default' },
+          { value: 'Inter', title: 'Inter' },
+          { value: 'Roboto', title: 'Roboto' },
+          { value: 'Open Sans', title: 'Open Sans' },
+          { value: 'Lato', title: 'Lato' },
+          { value: 'Montserrat', title: 'Montserrat' },
+          { value: 'Poppins', title: 'Poppins' },
+          { value: 'Source Sans 3', title: 'Source Sans 3' },
+          { value: 'Nunito', title: 'Nunito' },
         ],
       },
     },
