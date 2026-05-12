@@ -102,6 +102,7 @@ export class RewardTileConfig {
   stockCapacity?: number;
   stockConsumed?: number;
   outOfStockMessage?: string;
+  stockRemainingMessage?: string;
   tier: string | null = null;
   category: RewardCategory = {
     name: '',

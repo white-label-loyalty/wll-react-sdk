@@ -17,23 +17,28 @@ export const RewardTileStatus = (): React.ReactElement | null => {
 
   if (!isContextValid(tileContext)) return null;
 
-  const { stockCapacity, stockConsumed, outOfStockMessage } =
-    tileContext.configuration as RewardTileConfig;
+  const {
+    stockCapacity,
+    stockConsumed,
+    outOfStockMessage,
+    stockRemainingMessage,
+  } = tileContext.configuration as RewardTileConfig;
 
-  if (
-    stockCapacity === undefined ||
-    stockConsumed === undefined ||
-    stockCapacity > stockConsumed ||
-    !outOfStockMessage
-  )
-    return null;
+  const isOutOfStock =
+    stockCapacity !== undefined &&
+    stockConsumed !== undefined &&
+    stockCapacity <= stockConsumed;
+
+  const label = isOutOfStock ? outOfStockMessage : stockRemainingMessage;
+
+  if (!label) return null;
 
   return (
     <Chip
-      label={outOfStockMessage}
+      label={label}
       role="status"
       ariaLive="off"
-      accessibilityLabel={outOfStockMessage}
+      accessibilityLabel={label}
       testID="reward-tile-status"
       variant={StatusVariant.GREY}
       style={styles.statusChip}

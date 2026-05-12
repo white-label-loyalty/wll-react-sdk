@@ -93,6 +93,20 @@ ArtworkOnlyOutOfStock.args = {
   }),
 };
 
+export const StockRemaining = Template.bind({});
+StockRemaining.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 50,
+    stockConsumed: 45,
+    stockRemainingMessage: '5 remaining',
+    name: 'Wagyu Steak Night',
+    summary: 'Premium wagyu beef dining experience',
+    price: 40,
+    pointsSuffix: 'pts',
+    artworkUrl: rewardImage,
+  }),
+};
+
 const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
     <TileWrapper containerStyle={{ width: '50%' }}>

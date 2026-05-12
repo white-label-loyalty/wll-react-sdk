@@ -55,10 +55,13 @@ const RewardTileRoot = ({
     configuration.showPrice !== false &&
     configuration.price !== undefined &&
     configuration.price !== 0;
-  const hasStatus =
+  const isOutOfStock =
     configuration.stockCapacity !== undefined &&
     configuration.stockConsumed !== undefined &&
     configuration.stockCapacity <= configuration.stockConsumed;
+  const hasStatus = isOutOfStock
+    ? !!configuration.outOfStockMessage
+    : !!configuration.stockRemainingMessage;
   const hasFooter = hasPoints || hasStatus;
 
   return (

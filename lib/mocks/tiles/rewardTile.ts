@@ -31,6 +31,7 @@ const defaultConfig = {
   stockCapacity: 100,
   stockConsumed: 0,
   outOfStockMessage: 'Out of stock',
+  stockRemainingMessage: '',
   type: 'VOUCHER',
   codeType: 'HUMAN',
   isLocked: false,
@@ -83,6 +84,7 @@ export const createRewardTileMock = (config?: RewardTileMockConfig): Tile => {
       stockCapacity: mergedConfig.stockCapacity,
       stockConsumed: mergedConfig.stockConsumed,
       outOfStockMessage: mergedConfig.outOfStockMessage,
+      stockRemainingMessage: mergedConfig.stockRemainingMessage,
       tier: null,
       category: {
         name: 'Chicken Salad',
