@@ -58,6 +58,38 @@ describe('<RewardTile /> Media', () => {
     const { queryByTestId } = render(<RewardTile tile={tileWithoutArtwork} />);
     expect(queryByTestId('reward-tile-media')).not.toBeInTheDocument();
   });
+
+  it('renders an out of stock status when the reward stock is consumed', () => {
+    const outOfStockTile = createRewardTileMock({
+      stockCapacity: 10,
+      stockConsumed: 10,
+      outOfStockMessage: 'Out of stock',
+    });
+    const { getByTestId } = render(<RewardTile tile={outOfStockTile} />);
+
+    expect(getByTestId('reward-tile-status')).toBeInTheDocument();
+    expect(screen.getByText('Out of stock')).toBeInTheDocument();
+  });
+
+  it('does not render an out of stock status when the reward is purchasable', () => {
+    const { queryByTestId } = render(<RewardTile tile={RewardTileMock} />);
+
+    expect(queryByTestId('reward-tile-status')).not.toBeInTheDocument();
+  });
+
+  it('does not render an out of stock status for artwork only reward tiles', () => {
+    const artworkOnlyOutOfStockTile = createRewardTileMock({
+      showDetails: false,
+      stockCapacity: 10,
+      stockConsumed: 10,
+      outOfStockMessage: 'Out of stock',
+    });
+    const { queryByTestId } = render(
+      <RewardTile tile={artworkOnlyOutOfStockTile} />
+    );
+
+    expect(queryByTestId('reward-tile-status')).not.toBeInTheDocument();
+  });
 });
 
 describe('<RewardTile /> Points', () => {

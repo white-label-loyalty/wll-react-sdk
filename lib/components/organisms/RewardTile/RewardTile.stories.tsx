@@ -65,14 +65,41 @@ ArtworkOnlyLocked.args = {
   }),
 };
 
+export const OutOfStock = Template.bind({});
+OutOfStock.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 10,
+    stockConsumed: 10,
+    outOfStockMessage: 'Sold out',
+    name: 'Sold Out Supper Club',
+    summary: 'This reward will be back soon',
+    price: 25,
+    pointsSuffix: 'pts',
+    artworkUrl: rewardImage,
+  }),
+};
+
+export const ArtworkOnlyOutOfStock = Template.bind({});
+ArtworkOnlyOutOfStock.args = {
+  tile: createRewardTileMock({
+    showDetails: false,
+    stockCapacity: 10,
+    stockConsumed: 10,
+    outOfStockMessage: 'Sold out',
+    artworkUrl: rewardImage,
+    name: 'Spotify Premium',
+    summary: 'Get 1 year subscription',
+    price: 61,
+  }),
+};
+
 const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
     <TileWrapper containerStyle={{ width: '50%' }}>
       <RewardTile {...args} />
     </TileWrapper>
     <TileWrapper containerStyle={{ width: '50%' }}>
-      <RewardTile {...args}/>
-
+      <RewardTile {...args} />
     </TileWrapper>
   </View>
 );

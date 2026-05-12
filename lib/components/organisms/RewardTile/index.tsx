@@ -7,6 +7,7 @@ import { withTileFetching } from '../../hoc/withTileFetching';
 import { RewardTileChevron } from './reward-tile-chevron';
 import { RewardTileMedia } from './reward-tile-media';
 import { RewardTilePoints } from './reward-tile-points';
+import { RewardTileStatus } from './reward-tile-status';
 import { RewardTileSummary } from './reward-tile-summary';
 import { RewardTileTitle } from './reward-tile-title';
 import { useRewardTileStyles } from './styles';
@@ -50,6 +51,16 @@ const RewardTileRoot = ({
 
   const configuration = tile.configuration as RewardTileConfig;
   const artworkOnly = isArtworkOnly(configuration);
+  const hasPoints =
+    configuration.showPrice !== false &&
+    configuration.price !== undefined &&
+    configuration.price !== 0;
+  const hasStatus =
+    configuration.stockCapacity !== undefined &&
+    configuration.stockConsumed !== undefined &&
+    configuration.stockCapacity <= configuration.stockConsumed;
+  const hasFooter = hasPoints || hasStatus;
+
   return (
     <BaseTile tile={tile}>
       <RewardTile.Media isArtworkOnly={artworkOnly} />
@@ -66,7 +77,12 @@ const RewardTileRoot = ({
           <View style={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
             <RewardTile.Summary />
           </View>
-          <RewardTile.Points />
+          {hasFooter && (
+            <Row justify="between" align="center" style={styles.footer}>
+              <RewardTile.Points />
+              <RewardTile.Status />
+            </Row>
+          )}
         </Layout>
       )}
     </BaseTile>
@@ -83,6 +99,7 @@ export const RewardTile = Object.assign(RewardTileRoot, {
   Summary: RewardTileSummary,
   Points: RewardTilePoints,
   Chevron: RewardTileChevron,
+  Status: RewardTileStatus,
 });
 
 export default withTileFetching(RewardTile);

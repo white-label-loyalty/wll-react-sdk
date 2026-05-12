@@ -99,6 +99,9 @@ export class RewardTileConfig {
     end: '',
   };
   purchasable: boolean = false;
+  stockCapacity?: number;
+  stockConsumed?: number;
+  outOfStockMessage?: string;
   tier: string | null = null;
   category: RewardCategory = {
     name: '',
