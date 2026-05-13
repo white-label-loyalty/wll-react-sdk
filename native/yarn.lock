@@ -7546,6 +7546,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react-native@npm:^0.479.0":
+  version: 0.479.0
+  resolution: "lucide-react-native@npm:0.479.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+    react-native-svg: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+  checksum: 10c0/7b503848655ccbcf8a7695ee5e688c5fe6560185ad63ebc798a72b39cc487f46f6228a3a78d3ad23654a5c8464ef9ddf9be4bc2967ef3eaa5e3a7986a0ee0439
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:^0.427.0":
+  version: 0.427.0
+  resolution: "lucide-react@npm:0.427.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+  checksum: 10c0/a7250995879429b0b2e0be4072b98b8d7b99ff1c7e30fcefa8bcf58ccdc45c49bb5ad05babc2a1104e0a4050627e5336db1535e0e309ed6c04550b738d2f8143
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^2.0.0, make-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "make-dir@npm:2.1.0"
@@ -10235,6 +10255,8 @@ __metadata:
     cross-env: "npm:^7.0.3"
     expo: "npm:^52.0.0"
     expo-constants: "npm:~17.0.0"
+    lucide-react: "npm:^0.427.0"
+    lucide-react-native: "npm:^0.479.0"
     metro: "npm:0.81.0"
     metro-config: "npm:0.81.0"
     metro-core: "npm:0.81.0"
