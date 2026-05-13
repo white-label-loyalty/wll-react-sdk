@@ -12,6 +12,8 @@ export const TileWrapper = ({
 }): React.ReactElement => {
   const wrapperStyle: ViewStyle = {
     maxWidth: 280,
+    // Let stories naturally grow to fit content; use fixed height only for half tiles
+    // Use undefined rather than 'auto' to avoid RN type issues while allowing natural height
     height: isHalfTile ? 150 : undefined,
     minHeight: isHalfTile ? 150 : 280,
     padding: 8,
