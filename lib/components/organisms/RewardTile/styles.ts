@@ -49,7 +49,13 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       ),
     },
     footer: {
-      marginTop: 8,
+      width: '100%',
+      marginTop: useResponsiveValue(
+        theme.sizes.xxs,
+        theme.sizes.xxxs,
+        isDesktop,
+        isTablet
+      ),
     },
     pointsContainer: {
       flexDirection: 'row',
@@ -89,6 +95,10 @@ export const useRewardTileStyles = (): ReturnType<typeof StyleSheet.create> => {
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 10,
+    },
+    statusChip: {
+      flexShrink: 1,
+      marginLeft: 'auto',
     },
   });
 };

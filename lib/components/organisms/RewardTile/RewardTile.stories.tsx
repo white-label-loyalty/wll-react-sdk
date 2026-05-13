@@ -65,17 +65,72 @@ ArtworkOnlyLocked.args = {
   }),
 };
 
+export const OutOfStock = Template.bind({});
+OutOfStock.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 10,
+    stockConsumed: 10,
+    outOfStockMessage: 'Sold out',
+    name: 'Sold Out Supper Club',
+    summary: 'This reward will be back soon',
+    price: 25,
+    pointsSuffix: 'pts',
+    artworkUrl: rewardImage,
+  }),
+};
+
+export const ArtworkOnlyOutOfStock = Template.bind({});
+ArtworkOnlyOutOfStock.args = {
+  tile: createRewardTileMock({
+    showDetails: false,
+    stockCapacity: 10,
+    stockConsumed: 10,
+    outOfStockMessage: 'Sold out',
+    artworkUrl: rewardImage,
+    name: 'Spotify Premium',
+    summary: 'Get 1 year subscription',
+    price: 61,
+  }),
+};
+
+export const StockRemaining = Template.bind({});
+StockRemaining.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 50,
+    stockConsumed: 45,
+    stockRemainingMessage: 'Only 5 left',
+    outOfStockMessage: 'Sold out',
+  }),
+};
+
+export const StockRemainingWithPoints = Template.bind({});
+StockRemainingWithPoints.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 10000,
+    stockConsumed: 865,
+    stockRemainingMessage: '9135 remaining',
+    outOfStockMessage: 'Sold out',
+    name: 'Wagyu Steak Night',
+    summary: 'Premium wagyu beef dining experience',
+    price: 40,
+    pointsSuffix: 'pts',
+    artworkUrl: rewardImage,
+  }),
+};
+
 const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
     <TileWrapper containerStyle={{ width: '50%' }}>
       <RewardTile {...args} />
     </TileWrapper>
     <TileWrapper containerStyle={{ width: '50%' }}>
-      <RewardTile {...args}/>
-
+      <RewardTile {...args} />
     </TileWrapper>
   </View>
 );
 
 export const TwoPerRow = TwoPerRowTemplate.bind({});
 TwoPerRow.args = DefaultWithPoints.args;
+
+export const TwoPerRowMerchandise = TwoPerRowTemplate.bind({});
+TwoPerRowMerchandise.args = StockRemaining.args;

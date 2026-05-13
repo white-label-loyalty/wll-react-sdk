@@ -40,7 +40,6 @@ export const RewardTilePoints = (): React.ReactElement | null => {
 
   return (
     <View
-      style={{ marginTop: 'auto' }}
       testID="reward-tile-points"
       role="article"
       accessibilityLabel={accessibilityLabel}
