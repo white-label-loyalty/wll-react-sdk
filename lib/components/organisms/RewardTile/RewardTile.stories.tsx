@@ -98,7 +98,18 @@ StockRemaining.args = {
   tile: createRewardTileMock({
     stockCapacity: 50,
     stockConsumed: 45,
-    stockRemainingMessage: '5 remaining',
+    stockRemainingMessage: 'Only 5 left',
+    outOfStockMessage: 'Sold out',
+  }),
+};
+
+export const StockRemainingWithPoints = Template.bind({});
+StockRemainingWithPoints.args = {
+  tile: createRewardTileMock({
+    stockCapacity: 10000,
+    stockConsumed: 865,
+    stockRemainingMessage: '9135 remaining',
+    outOfStockMessage: 'Sold out',
     name: 'Wagyu Steak Night',
     summary: 'Premium wagyu beef dining experience',
     price: 40,
@@ -120,3 +131,6 @@ const TwoPerRowTemplate: StoryFn<typeof RewardTile> = (args) => (
 
 export const TwoPerRow = TwoPerRowTemplate.bind({});
 TwoPerRow.args = DefaultWithPoints.args;
+
+export const TwoPerRowMerchandise = TwoPerRowTemplate.bind({});
+TwoPerRowMerchandise.args = StockRemaining.args;
