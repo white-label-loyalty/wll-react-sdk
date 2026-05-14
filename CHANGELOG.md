@@ -1,3 +1,16 @@
+## [1.8.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.8.0...v1.8.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* add back storybook helper comment ([1ff16df](https://github.com/white-label-loyalty/wll-react-sdk/commit/1ff16df8ff85fdf466e7c1d02bcee245af6b86a2))
+* full working native storybook ([bf95458](https://github.com/white-label-loyalty/wll-react-sdk/commit/bf95458184fe4295228a7a3bc78503f538b8cc65))
+
+
+### Features
+
+* add out of stock status to reward tiles per config ([d5cc623](https://github.com/white-label-loyalty/wll-react-sdk/commit/d5cc623cdc6b1b70dcbb59ada767a1adc9ca7894))
+* stock remaining message ([f309de3](https://github.com/white-label-loyalty/wll-react-sdk/commit/f309de3f64ce8e31daa8066bf061139d5a1cd8f0))
 # [1.8.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.7.0...v1.8.0) (2026-01-29)
 
 
