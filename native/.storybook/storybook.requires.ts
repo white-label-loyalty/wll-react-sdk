@@ -21,6 +21,30 @@ const normalizedStories = [
   },
   {
     titlePrefix: "",
+    directory: "../lib/components/atoms/Chip",
+    files: "Chip.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Chip\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/atoms/Chip",
+      false,
+      /^\.[\\/](?:Chip\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/atoms/Icon",
+    files: "Icon.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Icon\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/atoms/Icon",
+      false,
+      /^\.[\\/](?:Icon\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
     directory: "../lib/components/atoms/ProgressBar",
     files: "ProgressBar.stories.tsx",
     importPathMatcher: /^\.[\\/](?:ProgressBar\.stories\.tsx)$/,
@@ -65,6 +89,186 @@ const normalizedStories = [
       "../../lib/components/atoms/Text",
       false,
       /^\.[\\/](?:Text\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/molecules/Carousel",
+    files: "Carousel.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Carousel\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/molecules/Carousel",
+      false,
+      /^\.[\\/](?:Carousel\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/molecules/Grid",
+    files: "Grid.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Grid\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/molecules/Grid",
+      false,
+      /^\.[\\/](?:Grid\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/molecules/ProgressIndicator",
+    files: "ProgressIndicator.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:ProgressIndicator\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/molecules/ProgressIndicator",
+      false,
+      /^\.[\\/](?:ProgressIndicator\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/molecules/SectionHeader",
+    files: "SectionHeader.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:SectionHeader\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/molecules/SectionHeader",
+      false,
+      /^\.[\\/](?:SectionHeader\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/BadgeTile",
+    files: "BadgeTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:BadgeTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/BadgeTile",
+      false,
+      /^\.[\\/](?:BadgeTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/BannerTile",
+    files: "BannerTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:BannerTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/BannerTile",
+      false,
+      /^\.[\\/](?:BannerTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/ContentTile",
+    files: "ContentTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:ContentTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/ContentTile",
+      false,
+      /^\.[\\/](?:ContentTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/Group",
+    files: "Group.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Group\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/Group",
+      false,
+      /^\.[\\/](?:Group\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/PointsTile",
+    files: "PointsTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:PointsTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/PointsTile",
+      false,
+      /^\.[\\/](?:PointsTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/RewardCategoryTile",
+    files: "RewardCategoryTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:RewardCategoryTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/RewardCategoryTile",
+      false,
+      /^\.[\\/](?:RewardCategoryTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/RewardTile",
+    files: "RewardTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:RewardTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/RewardTile",
+      false,
+      /^\.[\\/](?:RewardTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/RoundupTile",
+    files: "RoundupTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:RoundupTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/RoundupTile",
+      false,
+      /^\.[\\/](?:RoundupTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/Section",
+    files: "Section.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:Section\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/Section",
+      false,
+      /^\.[\\/](?:Section\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/TierTileUpdated",
+    files: "TierTileUpdated.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:TierTileUpdated\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/TierTileUpdated",
+      false,
+      /^\.[\\/](?:TierTileUpdated\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/VenueTile",
+    files: "VenueTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:VenueTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/VenueTile",
+      false,
+      /^\.[\\/](?:VenueTile\.stories\.tsx)$/
     ),
   },
 ];
