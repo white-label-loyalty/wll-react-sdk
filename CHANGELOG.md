@@ -1,3 +1,9 @@
+# [1.10.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.9.0...v1.10.0) (2026-06-26)
+
+
+### Bug Fixes
+
+* **ContentTile:** use fixed aspect ratio for content tiles on mobile as well as web ([508af1d](https://github.com/white-label-loyalty/wll-react-sdk/commit/508af1dd043255e5e7618d93181fb2e22a222b5d))
 # [1.9.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.8.1...v1.9.0) (2026-06-26)
 
 
