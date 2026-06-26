@@ -2,31 +2,69 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20.19.4
-        cache: 'yarn'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+          cache: 'yarn'
 
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
-    - name: Run tests
-      run: yarn test
+      - name: Run tests
+        run: yarn test
 
-    - name: Type check
-      run: yarn type-check
+      - name: Type check
+        run: yarn type-check
 
-    - name: Build
-      run: yarn build
+      - name: Build
+        run: yarn build
+
+  test-react18:
+    name: Test (React 18)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.4
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Override the React/RN dev deps to the 18 line to verify the SDK still
+      # builds, type-checks and tests cleanly against React 18 consumers.
+      # Lockfile changes here are intentional and discarded with the runner.
+      - name: Pin React 18 + compatible React Native
+        run: |
+          yarn add --dev --ignore-scripts \
+            react@18.3.1 \
+            react-dom@18.3.1 \
+            react-test-renderer@18.3.1 \
+            @types/react@^18.3.0 \
+            @types/react-dom@^18.3.0 \
+            react-native@0.77.2
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Type check
+        run: yarn type-check
+
+      - name: Build
+        run: yarn build
