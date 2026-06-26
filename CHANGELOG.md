@@ -1,3 +1,9 @@
+# [1.9.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.8.1...v1.9.0) (2026-06-26)
+
+
+### Features
+
+* make sizes configurable in the theme ([961a327](https://github.com/white-label-loyalty/wll-react-sdk/commit/961a3277d43aa7c8931d539480ac9bff6b8ac2d3))
 ## [1.8.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.8.0...v1.8.1) (2026-05-14)
 
 
