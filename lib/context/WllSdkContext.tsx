@@ -70,8 +70,8 @@ type WllSdkContextType = ThemeContextType & {
     callback: (data?: any) => void
   ) => () => void;
 } & Readonly<{
-    readonly config: SDKConfig;
-  }>;
+  readonly config: SDKConfig;
+}>;
 
 type WllSdkProviderProps = WithChildren & {
   theme?: Partial<BaseThemeObject>;
@@ -80,14 +80,18 @@ type WllSdkProviderProps = WithChildren & {
 };
 
 const createTheme = (baseTheme: Partial<BaseThemeObject> = {}): ThemeObject => {
+  const { sizes: userSizes, ...restBaseTheme } = baseTheme;
   const mergedTheme = {
     ...defaultTheme,
-    ...baseTheme,
+    ...restBaseTheme,
   } as BaseThemeObject;
 
   return {
     ...mergedTheme,
-    sizes,
+    sizes: {
+      ...sizes,
+      ...userSizes,
+    },
     derivedBackground: getDerivedColor(mergedTheme.background),
     primaryText: getReadableTextColor(mergedTheme.primary),
     accentText: getReadableTextColor(mergedTheme.accent),

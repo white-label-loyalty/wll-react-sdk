@@ -1,4 +1,3 @@
-import { sizes } from '../utils/styling';
 import { WithChildren } from './helpers';
 import { BadgeTileType } from './tile';
 
@@ -9,6 +8,24 @@ export type DerivedColors = {
 
 // TODO: Add more types when needed
 export type DesaturationType = BadgeTileType.Specific | BadgeTileType.Latest;
+
+export type Sizes = {
+  borderRadiusSm: number;
+  borderRadiusLg: number;
+  borderRadiusButton: number;
+  borderRadiusRounded: number;
+  xxxs: number;
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  xxxl: number;
+  xxxxl: number;
+  xxxxxl: number;
+};
 
 export type BaseThemeObject = {
   fontFamily: string;
@@ -23,6 +40,7 @@ export type BaseThemeObject = {
   surface: string;
   surfaceText: string;
   text: string;
+  sizes?: Partial<Sizes>;
 };
 
 export type DerivedProperties = {
@@ -39,7 +57,7 @@ export type DerivedProperties = {
 
 export type ThemeObject = BaseThemeObject &
   DerivedProperties & {
-    readonly sizes: typeof sizes;
+    sizes: Sizes;
   };
 
 export type ThemeContextType = {
