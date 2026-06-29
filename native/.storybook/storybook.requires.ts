@@ -9,6 +9,18 @@ import "@storybook/addon-ondevice-backgrounds/register";
 const normalizedStories = [
   {
     titlePrefix: "",
+    directory: "../lib/components/atoms/BaseTile",
+    files: "BaseTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:BaseTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/atoms/BaseTile",
+      false,
+      /^\.[\\/](?:BaseTile\.stories\.tsx)$/
+    ),
+  },
+  {
+    titlePrefix: "",
     directory: "../lib/components/atoms/Button",
     files: "Button.stories.tsx",
     importPathMatcher: /^\.[\\/](?:Button\.stories\.tsx)$/,

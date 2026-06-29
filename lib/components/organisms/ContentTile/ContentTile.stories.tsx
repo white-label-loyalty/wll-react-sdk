@@ -1,9 +1,13 @@
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
+import { View } from 'react-native';
 import ContentTile from '.';
+import { WllSdkProvider } from '../../../context/WllSdkContext';
 import { createContentTileMock } from '../../../mocks/tiles';
 import { CTALinkTarget, TileHeight } from '../../../types/tile';
+import { defaultTheme } from '../../../utils/styling';
 import { TileWrapper } from '../../../utils/storybookHelpers';
+import { BaseTile } from '../../atoms/BaseTile';
 
 export default {
   title: 'components/organisms/ContentTile',
@@ -185,3 +189,130 @@ HalfSizeArtworkOnly.args = {
       'https://images.pexels.com/photos/3123915/pexels-photo-3123915.jpeg',
   }),
 };
+
+
+// --- Border Radius Stories using BaseTile as wrapper ---
+
+const sdkConfig = {
+  apiKey: 'test',
+  coreApiUrl: 'https://api.core.wlloyalty.net/v1' as const,
+};
+
+const BorderRadiusBaseTileTemplate: StoryFn<{
+  borderRadiusSm: number;
+  borderRadiusLg: number;
+}> = ({ borderRadiusSm, borderRadiusLg }) => {
+  const theme = {
+    ...defaultTheme,
+    sizes: { borderRadiusSm, borderRadiusLg },
+  };
+
+  const tile = createContentTileMock({
+    title: 'Gold Tier Unlocked!',
+    body: "You've unlocked exclusive Gold member benefits including 2X points on every purchase.",
+    artworkUrl:
+      'https://images.pexels.com/photos/352097/pexels-photo-352097.jpeg',
+  });
+
+  return (
+    <WllSdkProvider theme={theme} config={sdkConfig}>
+      <TileWrapper>
+        <BaseTile tile={tile}>
+          <BaseTile.Media />
+          <BaseTile.Content>
+            <BaseTile.Header>
+              <BaseTile.Title />
+            </BaseTile.Header>
+            <BaseTile.Body />
+          </BaseTile.Content>
+        </BaseTile>
+      </TileWrapper>
+    </WllSdkProvider>
+  );
+};
+
+export const BaseTileSharpCorners = BorderRadiusBaseTileTemplate.bind({});
+BaseTileSharpCorners.args = {
+  borderRadiusSm: 0,
+  borderRadiusLg: 0,
+};
+BaseTileSharpCorners.argTypes = {
+  borderRadiusSm: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+  borderRadiusLg: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+};
+
+export const BaseTileDefaultRadius = BorderRadiusBaseTileTemplate.bind({});
+BaseTileDefaultRadius.args = {
+  borderRadiusSm: 15,
+  borderRadiusLg: 20,
+};
+BaseTileDefaultRadius.argTypes = {
+  borderRadiusSm: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+  borderRadiusLg: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+};
+
+export const BaseTileExtraRound = BorderRadiusBaseTileTemplate.bind({});
+BaseTileExtraRound.args = {
+  borderRadiusSm: 30,
+  borderRadiusLg: 40,
+};
+BaseTileExtraRound.argTypes = {
+  borderRadiusSm: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+  borderRadiusLg: { control: { type: 'range', min: 0, max: 40, step: 1 } },
+};
+
+/**
+ * Side-by-side comparison of BaseTile with different borderRadius values.
+ */
+const BorderRadiusComparisonTemplate: StoryFn = () => {
+  const radiusVariants = [
+    { sm: 0, lg: 0, label: 'Sharp (0)' },
+    { sm: 8, lg: 10, label: 'Subtle (8/10)' },
+    { sm: 15, lg: 20, label: 'Default (15/20)' },
+    { sm: 30, lg: 40, label: 'Extra Round (30/40)' },
+  ];
+
+  const tile = createContentTileMock({
+    title: 'Reward Tile',
+    body: 'Demonstrating different border radius values.',
+    artworkUrl:
+      'https://images.pexels.com/photos/7679473/pexels-photo-7679473.jpeg',
+  });
+
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
+      {radiusVariants.map(({ sm, lg, label }) => (
+        <WllSdkProvider
+          key={label}
+          theme={{ ...defaultTheme, sizes: { borderRadiusSm: sm, borderRadiusLg: lg } }}
+          config={sdkConfig}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <TileWrapper>
+              <BaseTile tile={tile}>
+                <BaseTile.Media />
+                <BaseTile.Content>
+                  <BaseTile.Header>
+                    <BaseTile.Title />
+                  </BaseTile.Header>
+                  <BaseTile.Body />
+                </BaseTile.Content>
+              </BaseTile>
+            </TileWrapper>
+            <View style={{ marginTop: 4 }}>
+              <ContentTile
+                tile={createContentTileMock({
+                  title: label,
+                  body: `borderRadiusSm: ${sm}, borderRadiusLg: ${lg}`,
+                  artworkUrl: undefined,
+                })}
+              />
+            </View>
+          </View>
+        </WllSdkProvider>
+      ))}
+    </View>
+  );
+};
+
+export const BaseTileBorderRadiusComparison = BorderRadiusComparisonTemplate.bind({});

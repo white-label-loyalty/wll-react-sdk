@@ -2,6 +2,7 @@
 module.exports = {
   stories: [
     // Atoms
+    "../../lib/components/atoms/BaseTile/BaseTile.stories.tsx",
     "../../lib/components/atoms/Button/Button.stories.tsx",
     "../../lib/components/atoms/Chip/Chip.stories.tsx",
     "../../lib/components/atoms/Icon/Icon.stories.tsx",
