@@ -271,6 +271,18 @@ const normalizedStories = [
       /^\.[\\/](?:VenueTile\.stories\.tsx)$/
     ),
   },
+  {
+    titlePrefix: "",
+    directory: "../lib/components/organisms/CampaignTile",
+    files: "CampaignTile.stories.tsx",
+    importPathMatcher: /^\.[\\/](?:CampaignTile\.stories\.tsx)$/,
+    // @ts-ignore
+    req: require.context(
+      "../../lib/components/organisms/CampaignTile",
+      false,
+      /^\.[\\/](?:CampaignTile\.stories\.tsx)$/
+    ),
+  },
 ];
 
 declare global {
