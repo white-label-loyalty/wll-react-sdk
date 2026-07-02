@@ -55,6 +55,7 @@ export default {
           items: [
             { text: 'Badge Tile', link: '/components/badge-tile' },
             { text: 'Banner Tile', link: '/components/banner-tile' },
+            { text: 'Campaign Tile', link: '/components/campaign-tile' },
             { text: 'Content Tile', link: '/components/content-tile' },
             { text: 'Points Tile', link: '/components/points-tile' },
             {
