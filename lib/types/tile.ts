@@ -25,7 +25,7 @@ export enum TileType {
   Tier = 'TIER',
   Roundup = 'ROUND_UP_BALANCE',
   Venue = 'VENUE',
-  Campaign = 'CAMPAIGN',
+  Campaign = 'EARNING_CAMPAIGN',
 }
 
 export enum TileHeight {
