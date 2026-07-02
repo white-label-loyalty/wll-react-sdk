@@ -69,36 +69,40 @@ exports[`<CampaignTile /> renders and matches snapshot 1`] = `
         Exclusive summer rewards
       </div>
       <div
-        class="css-view-175oi2r r-marginTop-knv0ih r-width-13qz1uu"
-        data-testid="campaign-tile-progress"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-marginTop-knv0ih r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-width-13qz1uu"
+          class="css-view-175oi2r r-marginTop-knv0ih r-width-13qz1uu"
+          data-testid="campaign-tile-progress"
         >
           <div
-            class="css-view-175oi2r r-borderRadius-sdzlij r-flex-13awgt0 r-overflow-1udh08x"
-            style="height: 8px; background-color: rgb(190, 181, 227);"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-width-13qz1uu"
           >
             <div
-              class="css-view-175oi2r r-borderRadius-sdzlij r-height-1pi2tsx"
-              style="background-color: rgb(57, 46, 215); width: 50%;"
-            />
-          </div>
-          <div
-            aria-label="1 of 2 completed"
-            class="css-view-175oi2r r-alignItems-1d09ksm r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginLeft-1jkjb"
-          >
-            <div
-              class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-a023e6 r-fontWeight-vw2c0b"
-              dir="auto"
+              class="css-view-175oi2r r-borderRadius-sdzlij r-flex-13awgt0 r-overflow-1udh08x"
+              style="height: 8px; background-color: rgb(190, 181, 227);"
             >
-              1
+              <div
+                class="css-view-175oi2r r-borderRadius-sdzlij r-height-1pi2tsx"
+                style="background-color: rgb(57, 46, 215); width: 50%;"
+              />
             </div>
             <div
-              class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1enofrn"
-              dir="auto"
+              aria-label="1 of 2 completed"
+              class="css-view-175oi2r r-alignItems-1d09ksm r-flexDirection-18u37iz r-flexShrink-1q142lx r-marginLeft-1jkjb"
             >
-               / 2
+              <div
+                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-10weppm r-fontSize-a023e6 r-fontWeight-vw2c0b"
+                dir="auto"
+              >
+                1
+              </div>
+              <div
+                class="css-text-146c3p1 r-fontFamily-lhg2x6 r-color-1khnkhu r-fontSize-1enofrn"
+                dir="auto"
+              >
+                 / 2
+              </div>
             </div>
           </div>
         </div>
