@@ -4,24 +4,48 @@ import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { Size, ThemeObject, Variant } from '../../../types/theme';
 import { createVariantSystem } from '../../../utils/variant';
+import Text from '../Text';
 
 export type ProgressBarProps = {
   percentage: number;
   variant?: Variant;
   height?: Size;
   animationDuration?: number;
+  currentValue?: number;
+  targetValue?: number;
+  showProgressLabel?: boolean;
 };
 
 const useStyles = (theme: ThemeObject) => {
   return StyleSheet.create({
-    container: {
+    wrapper: {
+      flexDirection: 'row',
+      alignItems: 'center',
       width: '100%',
+    },
+    container: {
+      flex: 1,
       borderRadius: theme.sizes.borderRadiusRounded,
       overflow: 'hidden',
     },
     progress: {
       borderRadius: theme.sizes.borderRadiusRounded,
       height: '100%',
+    },
+    labelContainer: {
+      flexDirection: 'row',
+      alignItems: 'baseline',
+      marginLeft: 8,
+      flexShrink: 0,
+    },
+    labelCurrent: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      color: theme.primary,
+    },
+    labelTarget: {
+      fontSize: 12,
+      color: theme.derivedSurfaceText[20],
     },
   });
 };
@@ -48,6 +72,9 @@ const ProgressBar = ({
   variant = 'primary',
   height = 'sm',
   animationDuration = 300,
+  currentValue,
+  targetValue,
+  showProgressLabel = false,
 }: ProgressBarProps): React.ReactElement => {
   const { theme } = useWllSdk();
   const styles = useStyles(theme);
@@ -77,9 +104,35 @@ const ProgressBar = ({
     }),
   };
 
+  const shouldShowLabel =
+    showProgressLabel &&
+    currentValue !== undefined &&
+    targetValue !== undefined;
+
+  if (!shouldShowLabel) {
+    return (
+      <View style={[containerStyle, { width: '100%' }]}>
+        <Animated.View
+          style={[styles.progress, progressStyles, progressWidth]}
+        />
+      </View>
+    );
+  }
+
   return (
-    <View style={containerStyle}>
-      <Animated.View style={[styles.progress, progressStyles, progressWidth]} />
+    <View style={styles.wrapper}>
+      <View style={[containerStyle]}>
+        <Animated.View
+          style={[styles.progress, progressStyles, progressWidth]}
+        />
+      </View>
+      <View
+        style={styles.labelContainer}
+        accessibilityLabel={`${currentValue} of ${targetValue} completed`}
+      >
+        <Text style={styles.labelCurrent}>{currentValue}</Text>
+        <Text style={styles.labelTarget}>{` / ${targetValue}`}</Text>
+      </View>
     </View>
   );
 };

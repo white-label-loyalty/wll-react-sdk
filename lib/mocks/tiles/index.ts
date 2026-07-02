@@ -1,6 +1,7 @@
 import { Tile, TileType } from '../../types/tile';
 import { createBadgeTileMock } from './badgeTile';
 import { createBannerTileMock } from './bannerTile';
+import { createCampaignTileMock } from './campaignTile';
 import { createContentTileMock } from './contentTile';
 import { createPointsTileMock } from './pointsTile';
 import { createRewardCategoryTileMock } from './rewardCategoryTile';
@@ -27,6 +28,8 @@ export const createTileMock = (type: TileType, config?: any): Tile => {
       return createTierTileMock(config);
     case TileType.Roundup:
       return createRoundupTileMock(config);
+    case TileType.Campaign:
+      return createCampaignTileMock(config);
     default:
       throw new Error(`Tile type ${type} not yet implemented`);
   }
