@@ -69,12 +69,15 @@ const BaseTileContainer = ({
 
   const handlePress = useHandleTilePress(tile, ctaLink, ctaLinkTarget);
 
+  const interactiveTiles = [
+    TileType.Reward,
+    TileType.RewardCategory,
+    TileType.Venue,
+    TileType.Campaign
+  ]
+
   const isInteractive = Boolean(
-    ctaLink ||
-      tile.type === TileType.Reward ||
-      tile.type === TileType.RewardCategory ||
-      tile.type === TileType.Venue ||
-      tile.type === TileType.Campaign
+    ctaLink || (tile.type && interactiveTiles.includes(tile.type))
   );
 
   const layout: LayoutProps = {
