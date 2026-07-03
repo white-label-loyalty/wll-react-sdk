@@ -19,13 +19,15 @@ import numberThree from '../../../assets/numberThree.png';
 import numberFour from '../../../assets/numberFour.png';
 // @ts-ignore
 import avionPoints from '../../../assets/avion-points.png';
+// @ts-ignore
+import rewardImage from '../../../assets/reward.png';
 
 // @ts-ignore
 
 import { themes } from '../../../utils/themeHelpers';
 import Group from './index';
 import { createContentTileMock } from '../../../mocks/tiles';
-import { CTALinkTarget, TileHeight } from '../../../types/tile';
+import { CTALinkTarget, TileHeight, TileType } from '../../../types/tile';
 
 const programData = {
   status: 'success',
@@ -42,8 +44,8 @@ const programData = {
         tiles: [
           {
             active: true,
-            tileHeight: 'FULL',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Full,
+            type: TileType.Content,
             configuration: {
               artworkUrl:
                 'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -54,7 +56,7 @@ const programData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'POINTS',
             active: true,
             configuration: {
@@ -67,7 +69,7 @@ const programData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'TIER',
             active: true,
             configuration: {
@@ -86,9 +88,9 @@ const programData = {
             },
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'CONTENT',
+            type: TileType.Content,
             configuration: {
               title: '',
               body: '',
@@ -97,9 +99,9 @@ const programData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             active: true,
-            type: 'CONTENT',
+            type: TileType.Content,
             configuration: {
               title: '2X Miles Bonus!',
               body: 'Book your next flight by December 31st to earn double miles! Perfect for reaching Platinum status faster.',
@@ -107,9 +109,9 @@ const programData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             active: true,
-            type: 'CONTENT',
+            type: TileType.Content,
             configuration: {
               title: 'Your Elite Benefits',
               body: 'Access your premium travel perks: Priority Check-in, Extra Baggage, Lounge Access, and more!',
@@ -127,8 +129,8 @@ const programData = {
         id: 'c7671657-8634-4b2f-8c25-49022ba4f950',
         tiles: [
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               details: [],
@@ -144,8 +146,8 @@ const programData = {
             priority: 4,
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
@@ -160,8 +162,8 @@ const programData = {
             priority: 3,
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
@@ -176,8 +178,8 @@ const programData = {
             priority: 2,
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
@@ -206,9 +208,9 @@ const programData = {
         id: '60a6b9e3-14c7-4b49-a363-b6dc2f16dae0',
         tiles: [
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -236,9 +238,9 @@ const programData = {
             priority: 4,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -267,9 +269,9 @@ const programData = {
             priority: 3,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -298,9 +300,9 @@ const programData = {
             priority: 2,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               createdAt: '2024-08-06T08:53:24.307Z',
               updatedAt: '2024-08-06T08:53:24.307Z',
@@ -352,8 +354,8 @@ const gamifiedGroupData = {
           'Track your experience points, unlock legendary abilities, and discover epic quests!',
         tiles: [
           {
-            tileHeight: 'FULL',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Full,
+            type: TileType.Content,
             active: true,
             configuration: {
               artworkUrl:
@@ -365,7 +367,7 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'POINTS',
             active: true,
             configuration: {
@@ -378,7 +380,7 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'TIER',
             active: true,
             configuration: {
@@ -395,8 +397,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Full,
+            type: TileType.Content,
             active: true,
             configuration: {
               artworkUrl:
@@ -408,8 +410,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Half,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: '2X XP Event!',
@@ -418,8 +420,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Half,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: 'Your Class Abilities',
@@ -438,8 +440,8 @@ const gamifiedGroupData = {
           'Embark on epic quests across magical realms and earn legendary rewards!',
         tiles: [
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: '9d8287e0-bae9-47b4-8bf0-0115fd64336a',
@@ -452,8 +454,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
@@ -466,8 +468,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
@@ -480,8 +482,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'REWARD_CATEGORY',
+            tileHeight: TileHeight.Full,
+            type: TileType.RewardCategory,
             active: true,
             configuration: {
               rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
@@ -504,8 +506,8 @@ const gamifiedGroupData = {
           'Your heroic deeds immortalized in legendary badges. Each one tells the tale of your epic adventures across the realms.',
         tiles: [
           {
-            tileHeight: 'FULL',
-            type: 'BADGE',
+            tileHeight: TileHeight.Full,
+            type: TileType.Badge,
             active: true,
             configuration: {
               type: 'SPECIFIC',
@@ -525,8 +527,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'BADGE',
+            tileHeight: TileHeight.Full,
+            type: TileType.Badge,
             active: true,
             configuration: {
               type: 'SPECIFIC',
@@ -546,8 +548,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'BADGE',
+            tileHeight: TileHeight.Full,
+            type: TileType.Badge,
             active: true,
             configuration: {
               type: 'SPECIFIC',
@@ -567,8 +569,8 @@ const gamifiedGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'BADGE',
+            tileHeight: TileHeight.Full,
+            type: TileType.Badge,
             active: true,
             configuration: {
               type: 'SPECIFIC',
@@ -615,8 +617,8 @@ const mockGroupData = {
         priority: 5,
         tiles: [
           {
-            tileHeight: 'HALF',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Half,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: 'Welcome Graeme!',
@@ -626,7 +628,7 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'POINTS',
             active: true,
             configuration: {
@@ -640,7 +642,7 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
+            tileHeight: TileHeight.Half,
             type: 'TIER',
             active: true,
             configuration: {
@@ -657,8 +659,8 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'HALF',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Half,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: 'Double Points!',
@@ -667,8 +669,8 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Full,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: "Chef's Table!",
@@ -680,8 +682,8 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
-            type: 'CONTENT',
+            tileHeight: TileHeight.Full,
+            type: TileType.Content,
             active: true,
             configuration: {
               title: 'Foodie Benefits',
@@ -711,9 +713,9 @@ const mockGroupData = {
         priority: 4,
         tiles: [
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -746,9 +748,9 @@ const mockGroupData = {
             priority: 4,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -779,9 +781,9 @@ const mockGroupData = {
             priority: 3,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -812,9 +814,9 @@ const mockGroupData = {
             priority: 2,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'BADGE',
+            type: TileType.Badge,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -867,9 +869,9 @@ const mockGroupData = {
         priority: 3,
         tiles: [
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD',
+            type: TileType.Reward,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -905,7 +907,7 @@ const mockGroupData = {
               category: {
                 name: 'Chicken Salad',
                 priority: 0,
-                type: 'REWARD',
+                type: TileType.Reward,
                 details: null,
                 defaultLocale: 'en',
                 id: '677b6b88-d97c-4b8d-80f4-88b04c86948f',
@@ -926,9 +928,9 @@ const mockGroupData = {
             priority: 4,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD',
+            type: TileType.Reward,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -964,7 +966,7 @@ const mockGroupData = {
               category: {
                 name: 'Chicken Salad',
                 priority: 0,
-                type: 'REWARD',
+                type: TileType.Reward,
                 details: null,
                 defaultLocale: 'en',
                 id: '677b6b88-d97c-4b8d-80f4-88b04c86948f',
@@ -985,9 +987,9 @@ const mockGroupData = {
             priority: 3,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD',
+            type: TileType.Reward,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -1024,7 +1026,7 @@ const mockGroupData = {
               category: {
                 name: 'Chicken Salad',
                 priority: 0,
-                type: 'REWARD',
+                type: TileType.Reward,
                 details: null,
                 defaultLocale: 'en',
                 id: '677b6b88-d97c-4b8d-80f4-88b04c86948f',
@@ -1045,9 +1047,9 @@ const mockGroupData = {
             priority: 2,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD',
+            type: TileType.Reward,
             configuration: {
               defaultLocale: 'en',
               details: [],
@@ -1083,7 +1085,7 @@ const mockGroupData = {
               category: {
                 name: 'Noodle Salad',
                 priority: 0,
-                type: 'REWARD',
+                type: TileType.Reward,
                 details: null,
                 defaultLocale: 'en',
                 id: 'b6dca41a-9e8b-45d9-83ce-4f3cf2aa32e0',
@@ -1130,9 +1132,9 @@ const mockGroupData = {
         priority: 2,
         tiles: [
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '9d8287e0-bae9-47b4-8bf0-0115fd64336a',
@@ -1149,9 +1151,9 @@ const mockGroupData = {
             priority: 8,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: 'e2aa1cab-60c3-4fad-adfb-88f1f7bc6825',
@@ -1168,9 +1170,9 @@ const mockGroupData = {
             priority: 7,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '257c8c80-00a0-4512-ab15-235d6fd8f749',
@@ -1187,9 +1189,9 @@ const mockGroupData = {
             priority: 6,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '0251ca85-d75a-4293-a0f9-ad7f86a1ca3d',
@@ -1206,9 +1208,9 @@ const mockGroupData = {
             priority: 5,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '1a7e0123-4f3e-4bf5-8bea-fb7ba98e0df3',
@@ -1225,9 +1227,9 @@ const mockGroupData = {
             priority: 4,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: 'ea38991c-1d2b-4d89-851b-124801ca2249',
@@ -1244,9 +1246,9 @@ const mockGroupData = {
             priority: 3,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '3be7a630-556b-490f-b00f-f8f162875b56',
@@ -1263,9 +1265,9 @@ const mockGroupData = {
             priority: 2,
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
-            type: 'REWARD_CATEGORY',
+            type: TileType.RewardCategory,
             configuration: {
               details: [],
               rewardCategoryId: '7597ec32-bc50-4d10-bb33-4d193d11f641',
@@ -1300,7 +1302,7 @@ const mockGroupData = {
         priority: 1,
         tiles: [
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             active: true,
             type: 'BANNER',
             configuration: {
@@ -1315,7 +1317,7 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             type: 'BANNER',
             active: true,
             configuration: {
@@ -1330,7 +1332,7 @@ const mockGroupData = {
             },
           },
           {
-            tileHeight: 'FULL',
+            tileHeight: TileHeight.Full,
             type: 'BANNER',
             active: true,
             configuration: {
@@ -1350,6 +1352,146 @@ const mockGroupData = {
         description:
           'Your gateway to exceptional dining experiences. Discover seasonal menus, redeem rewards, and elevate your culinary journey with exclusive events and masterclasses.',
         pointsMultiplier: 1,
+      },
+      {
+        details: [],
+        defaultLocale: 'en',
+        name: 'Campaign Tiles',
+        type: 'GRID',
+        active: true,
+        id: 'a1b2c3d4-5678-9abc-def0-123456789abc',
+        createdAt: '2026-06-01T00:00:00.000Z',
+        updatedAt: '2026-06-01T00:00:00.000Z',
+        visibilityCriteria: null,
+        priority: 0,
+        tiles: [
+          {
+            tileHeight: TileHeight.Full,
+            active: true,
+            type: TileType.Campaign,
+            configuration: {
+              campaignId: '7a59d8a4-0740-46e9-a54e-697470a7a54a',
+              type: 'GOAL_BASED',
+              status: 'ACTIVE',
+              name: 'Summer Coffee Challenge',
+              description: 'Complete every step to earn the reward.',
+              artworkUrl: rewardImage,
+              showDetails: true,
+              effectivity: { start: null, end: null },
+              progress: {
+                currentValue: 2,
+                targetValue: 3,
+                windowStart: null,
+                windowEnd: null,
+                optedInAt: null,
+                completedAt: null,
+                availableAgainAt: null,
+                cooldownCycle: null,
+              },
+              missions: [],
+            },
+            id: 'campaign-full-progress',
+            priority: 7,
+          },
+          {
+            tileHeight: TileHeight.Full,
+            active: true,
+            type: TileType.Campaign,
+            configuration: {
+              campaignId: '8b60e9b5-1851-47fa-b65f-808581b8b65b',
+              type: 'GOAL_BASED',
+              status: 'COMPLETED',
+              name: 'Completed Challenge',
+              description: 'You did it! All missions complete.',
+              artworkUrl: rewardImage,
+              showDetails: true,
+              effectivity: { start: null, end: null },
+              progress: {
+                currentValue: 3,
+                targetValue: 3,
+                windowStart: null,
+                windowEnd: null,
+                optedInAt: null,
+                completedAt: '2026-06-25T14:05:00.000Z',
+                availableAgainAt: null,
+                cooldownCycle: null,
+              },
+              missions: [],
+            },
+            id: 'campaign-full-completed',
+            priority: 5,
+          },
+          {
+            tileHeight: TileHeight.Full,
+            active: true,
+            type: TileType.Campaign,
+            configuration: {
+              campaignId: '9c71fab6-2962-58gb-c76g-919692c9c76c',
+              type: 'GOAL_BASED',
+              status: 'ACTIVE',
+              name: 'No Progress Yet',
+              description: 'Opt in to start tracking your progress.',
+              artworkUrl: rewardImage,
+              showDetails: true,
+              effectivity: { start: null, end: null },
+              progress: null,
+              missions: [],
+            },
+            id: 'campaign-full-no-progress',
+            priority: 4,
+          },
+          {
+            tileHeight: TileHeight.Full,
+            active: true,
+            type: TileType.Campaign,
+            configuration: {
+              campaignId: 'cf04ide9-5c95-8bjd-fa9j-c4c9c5fcfa9f',
+              type: 'GOAL_BASED',
+              status: 'ACTIVE',
+              name: 'Artwork Only Full',
+              description: '',
+              artworkUrl: rewardImage,
+              showDetails: false,
+              effectivity: { start: null, end: null },
+              progress: null,
+              missions: [],
+            },
+            id: 'campaign-full-artwork-only',
+            priority: 2,
+          },
+          {
+            tileHeight: TileHeight.Full,
+            active: true,
+            type: TileType.Campaign,
+            configuration: {
+              campaignId: 'ad82gbc7-3a73-69hc-d87h-a2a7a3dad87d',
+              type: 'GOAL_BASED',
+              status: 'ACTIVE',
+              name: 'No Image Campaign',
+              description: 'Campaign without artwork, with progress.',
+              artworkUrl: '',
+              showDetails: true,
+              effectivity: { start: null, end: null },
+              progress: {
+                currentValue: 7,
+                targetValue: 10,
+                windowStart: null,
+                windowEnd: null,
+                optedInAt: null,
+                completedAt: null,
+                availableAgainAt: null,
+                cooldownCycle: null,
+              },
+              missions: [],
+            },
+            id: 'campaign-full-no-image',
+            priority: 0,
+          },
+        ],
+        title: 'Active Campaigns',
+        locale: 'en',
+        description:
+          'Track your campaign progress and earn rewards by completing challenges.',
       },
     ],
   },

@@ -20,6 +20,7 @@ const defaultConfig = {
   name: 'Summer Loyalty',
   description: 'Exclusive summer rewards',
   artworkUrl: 'https://ucarecdn.com/3d3731b2-faec-4779-9cd8-3691631d280c/',
+  showDetails: true,
   effectivity: {
     start: new Date('2026-06-01T00:00:00.000Z'),
     end: new Date('2026-08-31T23:59:59.000Z'),
@@ -63,6 +64,7 @@ export const createCampaignTileMock = (
       name: mergedConfig.name,
       description: mergedConfig.description,
       artworkUrl: mergedConfig.artworkUrl,
+      showDetails: mergedConfig.showDetails,
       effectivity: mergedConfig.effectivity,
       progress: mergedConfig.progress,
       missions: mergedConfig.missions,

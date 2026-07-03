@@ -13,13 +13,21 @@ type ResponsiveViewStyle = StyleProp<ViewStyle> & {
   flexBasis?: string | number;
 };
 
+type CampaignTileMediaProps = {
+  isArtworkOnly?: boolean;
+};
+
 /**
  * Renders the media header for a Campaign Tile.
  *
+ * @param props {CampaignTileMediaProps} - Component props
+ * @param props.isArtworkOnly {boolean} - Whether the media should occupy the full tile height
  * @returns React.ReactElement or null if no artworkUrl is present
  */
 
-export const CampaignTileMedia = (): React.ReactElement | null => {
+export const CampaignTileMedia = ({
+  isArtworkOnly = false,
+}: CampaignTileMediaProps): React.ReactElement | null => {
   const styles = useCampaignTileStyles();
   const tileContext = useTileContext();
 
@@ -28,12 +36,19 @@ export const CampaignTileMedia = (): React.ReactElement | null => {
   const { artworkUrl, name = 'Campaign' } =
     tileContext.configuration as CampaignTileConfig;
 
-  if (!artworkUrl) return null;
-
-  const containerStyle: ResponsiveViewStyle = {
-    flexBasis: '50%',
-    ...(tileContext.tileHeight === TileHeight.Half && { minHeight: 0 }),
-  };
+  const containerStyle: ResponsiveViewStyle = isArtworkOnly
+    ? {
+        flexBasis: '100%',
+        flex: 1,
+        height: '100%',
+        marginBottom: 0,
+        minHeight: 0,
+        aspectRatio: tileContext.tileHeight === TileHeight.Half ? 2 : 1,
+      }
+    : {
+        flexBasis: '50%',
+        ...(tileContext.tileHeight === TileHeight.Half && { minHeight: 0 }),
+      };
 
   return (
     <View

@@ -215,8 +215,15 @@ export class CampaignTileConfig {
   name: string = '';
   description: string = '';
   artworkUrl: string = '';
-  effectivity: { start: Date | null; end: Date | null } = { start: null, end: null };
-  progress: CampaignProgress = {
+  showDetails?: boolean;
+  effectivity: {
+    start: Date | null;
+    end: Date | null
+  } = {
+    start: null,
+    end: null
+  };
+  progress: CampaignProgress | null = {
     currentValue: 0,
     targetValue: 0,
     windowStart: null,
@@ -232,11 +239,11 @@ export class CampaignTileConfig {
 export type CampaignProgress = {
   currentValue: number;
   targetValue: number;
-  windowStart: Date | null;
-  windowEnd: Date | null;
-  optedInAt: Date | null;
-  completedAt: Date | null;
-  availableAgainAt: Date | null;
+  windowStart: string | null;
+  windowEnd: string | null;
+  optedInAt: string | null;
+  completedAt: string | null;
+  availableAgainAt: string | null;
   cooldownCycle: number | null;
 };
 
