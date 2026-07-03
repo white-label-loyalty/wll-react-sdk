@@ -60,13 +60,18 @@ exports[`<CampaignTile /> renders and matches snapshot 1`] = `
         </h1>
       </div>
       <div
-        aria-label="Exclusive summer rewards"
-        class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
-        data-testid="campaign-tile-description"
-        dir="auto"
-        style="color: rgb(51, 51, 51); font-size: 14px;"
+        class="css-view-175oi2r"
+        style="width: 100%; max-width: 100%; min-width: 0px;"
       >
-        Exclusive summer rewards
+        <div
+          aria-label="Exclusive summer rewards"
+          class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-lhg2x6"
+          data-testid="campaign-tile-description"
+          dir="auto"
+          style="color: rgb(51, 51, 51); font-size: 14px;"
+        >
+          Exclusive summer rewards
+        </div>
       </div>
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginBottom-5oul0u r-marginTop-knv0ih r-width-13qz1uu"

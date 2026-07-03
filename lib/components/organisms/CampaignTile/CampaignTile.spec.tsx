@@ -35,12 +35,12 @@ describe('<CampaignTile /> Media', () => {
     expect(getByTestId('campaign-tile-media')).toBeInTheDocument();
   });
 
-  it('does not render media when artworkUrl is empty', () => {
+  it('does render placeholder when artworkUrl is empty', () => {
     const tileWithoutImage = createCampaignTileMock({ artworkUrl: '' });
     const { queryByTestId } = render(
       <CampaignTile tile={tileWithoutImage} />
     );
-    expect(queryByTestId('campaign-tile-media')).not.toBeInTheDocument();
+    expect(queryByTestId('campaign-tile-media')).toBeInTheDocument();
   });
 });
 
