@@ -3,7 +3,7 @@ import { FlexStyle, Pressable, View, ViewStyle } from 'react-native';
 import { useWllSdk } from '../../../context/WllSdkContext';
 import { useHandleTilePress } from '../../../hooks/useHandleTilePress';
 import { useTileSize } from '../../../hooks/useTileSize';
-import { ContentTileConfig, Tile } from '../../../types/tile';
+import { ContentTileConfig, Tile, TileType } from '../../../types/tile';
 
 import { BaseTileBody } from './base-tile-body';
 import { BaseTileContent } from './base-tile-content';
@@ -71,9 +71,10 @@ const BaseTileContainer = ({
 
   const isInteractive = Boolean(
     ctaLink ||
-      tile.type === 'REWARD' ||
-      tile.type === 'REWARD_CATEGORY' ||
-      tile.type === 'VENUE'
+      tile.type === TileType.Reward ||
+      tile.type === TileType.RewardCategory ||
+      tile.type === TileType.Venue ||
+      tile.type === TileType.Campaign
   );
 
   const layout: LayoutProps = {
