@@ -7,6 +7,7 @@ import { CampaignTileDescription } from './campaign-tile-description';
 import { CampaignTileMedia } from './campaign-tile-media';
 import { CampaignTileProgress } from './campaign-tile-progress';
 import { CampaignTileTitle } from './campaign-tile-title';
+import { CampaignTileChevron } from './campaign-tile-chevron';
 import { useCampaignTileStyles } from './styles';
 
 type CampaignTileProps = {
@@ -56,6 +57,7 @@ const CampaignTileRoot = ({
         <Layout>
           <Row justify="between" align="center" style={styles.titleRow}>
             <CampaignTile.Title />
+            <CampaignTile.Chevron />
           </Row>
           <View style={{ width: '100%', maxWidth: '100%', minWidth: 0 }}>
             <CampaignTile.Description />
@@ -78,6 +80,7 @@ export const CampaignTile = Object.assign(CampaignTileRoot, {
   Title: CampaignTileTitle,
   Description: CampaignTileDescription,
   Progress: CampaignTileProgress,
+  Chevron: CampaignTileChevron
 });
 
 export default withTileFetching(CampaignTile);
