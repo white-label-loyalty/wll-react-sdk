@@ -13,9 +13,16 @@ const lerp = (start: number, end: number, t: number) =>
 
 const getWindowWidth = () => {
   if (Platform.OS === 'web') {
-    return window.innerWidth;
+    if (typeof window !== 'undefined') {
+      return window.innerWidth;
+    }
+    return 0;
   }
-  return Dimensions.get('window').width;
+  try {
+    return Dimensions.get('window').width;
+  } catch {
+    return 0;
+  }
 };
 
 export const getResponsiveValue = (

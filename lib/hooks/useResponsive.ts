@@ -26,7 +26,13 @@ export function getDimensionMode(window: WindowDimensions): DimensionMode {
 }
 
 export function useResponsive() {
-  const deviceWindow = Dimensions.get('window');
+  const deviceWindow = (() => {
+    try {
+      return Dimensions.get('window');
+    } catch {
+      return { width: 0, height: 0 };
+    }
+  })();
   const [dimensionMode, setDimensionMode] = useState<DimensionMode>(
     getDimensionMode(deviceWindow)
   );
