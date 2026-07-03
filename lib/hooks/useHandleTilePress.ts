@@ -45,7 +45,7 @@ export const useHandleTilePress = (
    if (tile?.type === TileType.Campaign) {
       const config = tile.configuration as CampaignTileConfig;
       if (config?.campaignId) {
-        const url = `/campaign?id=${config.campaignId}`;
+        const url = `/campaigns/${config.campaignId}`;
         return handleNavigation(url, CTALinkTarget.sameWindow);
       }
     }
