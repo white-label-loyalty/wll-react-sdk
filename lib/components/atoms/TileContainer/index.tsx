@@ -5,6 +5,7 @@ import { Tile, TileHeight, TileType } from '../../../types/tile';
 import {
   BadgeTile,
   BannerTile,
+  CampaignTile,
   PointsTile,
   RewardCategoryTile,
   RewardTile,
@@ -28,6 +29,7 @@ const TILE_COMPONENTS: Record<TileType, React.ComponentType<{ tile: Tile }>> = {
   [TileType.Banner]: BannerTile,
   [TileType.Roundup]: RoundupTile,
   [TileType.Venue]: VenueTile,
+  [TileType.Campaign]: CampaignTile,
 };
 
 /**

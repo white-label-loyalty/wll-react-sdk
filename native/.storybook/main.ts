@@ -26,6 +26,7 @@ module.exports = {
     "../../lib/components/organisms/Section/Section.stories.tsx",
     "../../lib/components/organisms/TierTileUpdated/TierTileUpdated.stories.tsx",
     "../../lib/components/organisms/VenueTile/VenueTile.stories.tsx",
+    "../../lib/components/organisms/CampaignTile/CampaignTile.stories.tsx",
   ],
   addons: [
     "@storybook/addon-ondevice-controls",

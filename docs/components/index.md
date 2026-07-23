@@ -17,6 +17,7 @@ The Loyalty Tiles SDK provides a set of flexible components for building dynamic
 Tiles are the building blocks of your loyalty interface. Each tile type serves a specific purpose and can be configured to match your needs.
 
 - [`<BadgeTile>`](/components/badge-tile) - Display user achievements and badges
+- [`<CampaignTile>`](/components/campaign-tile) - Display campaign progress and goals
 - [`<PointsTile>`](/components/points-tile) - Show point balances and point-related information
 - [`<TierTile>`](/components/tier-tile) - Present tier status and progression
 - [`<RewardTile>`](/components/reward-tile) - Showcase individual rewards

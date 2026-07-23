@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 export { default as BadgeTile } from './BadgeTile';
 export { default as BannerTile } from './BannerTile';
+export { default as CampaignTile } from './CampaignTile';
 export { default as ContentTile } from './ContentTile';
 export { default as Group } from './Group';
 export { default as PointsTile } from './PointsTile';

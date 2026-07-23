@@ -17,6 +17,15 @@ export default {
       control: "select",
       options: ["sm", "md", "lg"],
     },
+    currentValue: {
+      control: { type: "number" },
+    },
+    targetValue: {
+      control: { type: "number" },
+    },
+    showProgressLabel: {
+      control: "boolean",
+    },
   },
 } as Meta;
 
@@ -57,4 +66,44 @@ Empty.args = {
   percentage: 0,
   variant: "primary",
   height: "sm",
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  percentage: 66,
+  variant: "primary",
+  height: "sm",
+  currentValue: 2,
+  targetValue: 3,
+  showProgressLabel: true,
+};
+
+export const WithLabelFull = Template.bind({});
+WithLabelFull.args = {
+  percentage: 100,
+  variant: "primary",
+  height: "sm",
+  currentValue: 3,
+  targetValue: 3,
+  showProgressLabel: true,
+};
+
+export const WithLabelEmpty = Template.bind({});
+WithLabelEmpty.args = {
+  percentage: 0,
+  variant: "primary",
+  height: "sm",
+  currentValue: 0,
+  targetValue: 5,
+  showProgressLabel: true,
+};
+
+export const WithLabelAccent = Template.bind({});
+WithLabelAccent.args = {
+  percentage: 40,
+  variant: "accent",
+  height: "md",
+  currentValue: 4,
+  targetValue: 10,
+  showProgressLabel: true,
 };

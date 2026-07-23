@@ -25,6 +25,7 @@ export enum TileType {
   Tier = 'TIER',
   Roundup = 'ROUND_UP_BALANCE',
   Venue = 'VENUE',
+  Campaign = 'EARNING_CAMPAIGN',
 }
 
 export enum TileHeight {
@@ -207,6 +208,60 @@ export class TierTileConfig {
   locale: string = 'en';
 }
 
+export class CampaignTileConfig {
+  campaignId: string = '';
+  type: string = '';
+  status: string = '';
+  name: string = '';
+  description: string = '';
+  artworkUrl: string = '';
+  showDetails?: boolean;
+  effectivity: {
+    start: Date | null;
+    end: Date | null
+  } = {
+    start: null,
+    end: null
+  };
+  progress: CampaignProgress | null = {
+    currentValue: 0,
+    targetValue: 0,
+    windowStart: null,
+    windowEnd: null,
+    optedInAt: null,
+    completedAt: null,
+    availableAgainAt: null,
+    cooldownCycle: null,
+  };
+  missions: CampaignMission[] = [];
+}
+
+export type CampaignProgress = {
+  currentValue: number;
+  targetValue: number;
+  windowStart: string | null;
+  windowEnd: string | null;
+  optedInAt: string | null;
+  completedAt: string | null;
+  availableAgainAt: string | null;
+  cooldownCycle: number | null;
+};
+
+export type CampaignMission = {
+  id: string;
+  name: string;
+  description: string | null;
+  pictureUrl: string | null;
+  completionType: string;
+  targetValue: number;
+  displayStyle: string;
+  requiresOptIn: boolean;
+  lockState: string;
+  order: number;
+  duration: number | null;
+  cooldownDuration: number | null;
+  progress: CampaignProgress;
+};
 export type Tile = {
   id: string | null;
   type?: TileType;
@@ -236,6 +291,8 @@ const getConfigForTileType = (tileType: TileType) => {
       return RewardCategoryTileConfig;
     case TileType.Tier:
       return TierTileConfig;
+    case TileType.Campaign:
+      return CampaignTileConfig;
     default:
       throw new Error(`Tile type ${tileType} is not supported`);
   }

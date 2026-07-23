@@ -7,6 +7,7 @@ import {
   VenueTileConfig,
   Tile,
   TileType,
+  CampaignTileConfig,
 } from '../types/tile';
 
 export const useHandleTilePress = (
@@ -35,8 +36,16 @@ export const useHandleTilePress = (
 
     if (tile?.type === TileType.RewardCategory) {
       const config = tile.configuration as RewardCategoryTileConfig;
-      const url = `/category?id=${config.rewardCategoryId}`;
       if (config?.rewardCategoryId) {
+        const url = `/category?id=${config.rewardCategoryId}`;
+        return handleNavigation(url, CTALinkTarget.sameWindow);
+      }
+    }
+
+   if (tile?.type === TileType.Campaign) {
+      const config = tile.configuration as CampaignTileConfig;
+      if (config?.campaignId) {
+        const url = `/campaigns/${config.campaignId}`;
         return handleNavigation(url, CTALinkTarget.sameWindow);
       }
     }
