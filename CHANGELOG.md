@@ -1,3 +1,26 @@
+# [1.11.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.10.0...v1.11.0) (2026-07-29)
+
+
+### Bug Fixes
+
+* add documentation for campaign tile ([513cd81](https://github.com/white-label-loyalty/wll-react-sdk/commit/513cd81becd93029858715583fbdf75a2c63a6c0))
+* campaign tile chevron ([d649822](https://github.com/white-label-loyalty/wll-react-sdk/commit/d6498228037c742bc082f77aa7149087cb4ed03c))
+* campaign tile spec ([e11b28f](https://github.com/white-label-loyalty/wll-react-sdk/commit/e11b28fe7de5dee25230bc1f053010a654d340e8))
+* campaigns redirect url ([80d8e78](https://github.com/white-label-loyalty/wll-react-sdk/commit/80d8e785c6b188e02cb3107c3fabf9f8259e3b9f))
+* externalize react/react-native subpaths in rollup build ([7fe4a45](https://github.com/white-label-loyalty/wll-react-sdk/commit/7fe4a45e745a0bad6ec6f73319d41c69c26922da))
+* grid spec snapshot ([a9ffcd5](https://github.com/white-label-loyalty/wll-react-sdk/commit/a9ffcd5600c41dc31aeb394f6a4f26470bc9fb14))
+* interactin for campaign tiles ([c41c3c1](https://github.com/white-label-loyalty/wll-react-sdk/commit/c41c3c1de8cf16b2ba7b2e76c57f8ef5ba18962a))
+* make campaign tile interactive ([dc32f1f](https://github.com/white-label-loyalty/wll-react-sdk/commit/dc32f1f734624f486db9c4a8b5ba0fe836f2a18a))
+* navigation for the campaign tiles ([8bfe33d](https://github.com/white-label-loyalty/wll-react-sdk/commit/8bfe33d4b6bb9d8942d93a36a24c5b9f08e4f5b3))
+* react native issues in microsite ([058635f](https://github.com/white-label-loyalty/wll-react-sdk/commit/058635fd236fbdb64ac3e0760f32b683da60c417))
+* snapshot ([27e3c30](https://github.com/white-label-loyalty/wll-react-sdk/commit/27e3c30d3189dde00fdfc2bb846233645eb43d54))
+* tile navigation and update group and grid stories to include campaign tiles ([6bdfc9b](https://github.com/white-label-loyalty/wll-react-sdk/commit/6bdfc9bab421935ab858f1caff4c6e30c2a68abe))
+* update snapshot ([c3e1a11](https://github.com/white-label-loyalty/wll-react-sdk/commit/c3e1a117752bb08dbf3c45f0ed5c1bc10a43834a))
+
+
+### Features
+
+* **CampaignTile:** add ability to support campaign tiles ([42badae](https://github.com/white-label-loyalty/wll-react-sdk/commit/42badae31fd4ec06dfe47d3e3345185b51ec9cef))
 # [1.10.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.9.0...v1.10.0) (2026-06-26)
 
 
