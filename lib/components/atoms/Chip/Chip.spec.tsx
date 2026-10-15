@@ -41,4 +41,34 @@ describe('<Chip />', () => {
 
     expect(chip).toHaveAttribute('aria-live', 'off');
   });
+
+  it('constrains the chip to its parent width so it cannot overflow', () => {
+    const { getByTestId } = render(
+      <Chip label="You haven't earned this badge yet" testID="chip" />
+    );
+
+    const chip = getByTestId('chip');
+
+    expect(window.getComputedStyle(chip).maxWidth).toBe('100%');
+  });
+
+  it('wraps the label onto a second line by default', () => {
+    const { getByText } = render(
+      <Chip label="You haven't earned this badge yet" testID="chip" />
+    );
+
+    const label = getByText("You haven't earned this badge yet");
+
+    expect(window.getComputedStyle(label).whiteSpace).not.toBe('nowrap');
+  });
+
+  it('keeps the label on a single line when numberOfLines is 1', () => {
+    const { getByText } = render(
+      <Chip label="Awarded 28/03/2025" numberOfLines={1} testID="chip" />
+    );
+
+    const label = getByText('Awarded 28/03/2025');
+
+    expect(window.getComputedStyle(label).whiteSpace).toBe('nowrap');
+  });
 });

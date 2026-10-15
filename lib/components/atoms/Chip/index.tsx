@@ -27,6 +27,13 @@ export type ChipProps = {
   testID?: string;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
+  /**
+   * Maximum number of lines the label may wrap onto before truncating.
+   * Defaults to 2 so long, tenant-configured labels wrap onto a second row
+   * and stay inside the parent (e.g. a badge tile) instead of overflowing.
+   * Pass 1 to force a single line with tail truncation.
+   */
+  numberOfLines?: number;
 };
 
 const mapLiveRegion = (ariaLive: AriaLive = 'polite'): LiveRegionMapping => {
@@ -50,6 +57,7 @@ const Chip = ({
   testID,
   style,
   labelStyle,
+  numberOfLines = 2,
 }: ChipProps): React.ReactElement => {
   const styles = useChipStyles();
   const { theme } = useWllSdk();
@@ -95,7 +103,7 @@ const Chip = ({
     >
       <RNText
         style={[styles.label, variantStyles.label, labelStyle]}
-        numberOfLines={1}
+        numberOfLines={numberOfLines}
         ellipsizeMode="tail"
         accessible={false}
         importantForAccessibility="no"
