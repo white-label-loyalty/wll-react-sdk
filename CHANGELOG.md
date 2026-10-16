@@ -1,3 +1,9 @@
+## [1.11.1](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.11.0...v1.11.1) (2026-10-16)
+
+
+### Bug Fixes
+
+* add numberOfLines prop to Chip component for label wrapping control ([722c54d](https://github.com/white-label-loyalty/wll-react-sdk/commit/722c54d3391f281efe9c6b3ad5c7dc4e2520ac56))
 # [1.11.0](https://github.com/white-label-loyalty/wll-react-sdk/compare/v1.10.0...v1.11.0) (2026-07-29)
 
 
