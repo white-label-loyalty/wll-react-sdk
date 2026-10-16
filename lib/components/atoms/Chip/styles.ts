@@ -28,6 +28,7 @@ export const useChipStyles = () => {
       borderRadius: theme.sizes.borderRadiusRounded,
       overflow: 'hidden',
       flexShrink: 1,
+      maxWidth: '100%',
     },
     label: {
       fontFamily: theme.fontFamily,
