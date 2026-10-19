@@ -325,7 +325,6 @@ if: |
 ### 4. Type Safety
 
 - Comprehensive TypeScript coverage
-- Runtime validation with Zod
 - Strict type checking configuration
 
 ## Maintenance Notes
