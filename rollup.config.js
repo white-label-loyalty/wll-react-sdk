@@ -12,7 +12,6 @@ const external = [
   'react-native-web',
   'color',
   'lucide-react',
-  'zod',
 ];
 
 const baseConfig = {
